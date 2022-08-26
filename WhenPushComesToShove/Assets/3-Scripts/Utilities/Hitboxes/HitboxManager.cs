@@ -22,8 +22,11 @@ public class HitboxManager : MonoBehaviour
 
     void Awake()
     {
-        hitEvents = new Dictionary<HitHandler, List<HitEvent>>();
-        instance = this;
+        if(instance == null)
+        {
+            hitEvents = new Dictionary<HitHandler, List<HitEvent>>();
+            instance = this;
+        }
     }
     public void RegisterHit(Hitbox hitbox, Hurtbox hurtbox)
     {
@@ -75,5 +78,11 @@ public class HitboxManager : MonoBehaviour
     {
         SendHits();
         hitEvents.Clear();
+    }
+
+    //Reset instance when switching scenes
+    public void OnDestroy()
+    {
+        instance = null;
     }
 }
