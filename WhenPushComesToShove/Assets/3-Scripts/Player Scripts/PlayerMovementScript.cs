@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Handles the movement input action
 public class PlayerMovementScript : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
