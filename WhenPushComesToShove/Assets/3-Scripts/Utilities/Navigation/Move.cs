@@ -9,6 +9,7 @@ public abstract class Move : MonoBehaviour
 {
     public float speed;
     protected VelocitySetter velocitySetter;
+    [HideInInspector]
     public Vector2 target;
 
     protected void Start()

@@ -6,7 +6,6 @@ using Freya;
 public class MoveWithAvoidance : Move
 {
     public float maxLookAhead;
-    public float avoidance;
     public int numSeeRays;
     public float raySeperation;
     public float collisionCorrectionScalar;
