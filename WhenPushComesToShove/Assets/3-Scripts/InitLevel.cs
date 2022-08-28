@@ -14,6 +14,9 @@ public class InitLevel : MonoBehaviour
     {
         if (initOnStart)
         {
+            //Prevent players from being spawned separately
+            PlayerConfigManager.Instance.levelInitRef = null;
+
             //Spawn the players in their set locations for the level.
             PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
             for (int i = 0; i < playerConfigs.Length; i++)
@@ -22,15 +25,22 @@ public class InitLevel : MonoBehaviour
                 player.GetComponent<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
             }
         }
+        else
+        {
+            //Pass in this reference so that players can be spwaned when they join
+            PlayerConfigManager.Instance.levelInitRef = this;
+        }
 
     }
 
     /// <summary>
     /// Used if players are not spawned on start
     /// </summary>
-    public void SpawnPlayer( int playerIndex)
+    public void SpawnPlayer( int index )
     {
         PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
+        GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
+        player.GetComponent<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
     }
 
 }

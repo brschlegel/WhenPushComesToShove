@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
+//Script to take in player input and trigger the necessary actions
 public class PlayerInputHandler : MonoBehaviour
 {
-    private PlayerConfiguration playerConfig;
+    [HideInInspector] public PlayerConfiguration playerConfig;
     private PlayerMovementScript mover;
 
-    [SerializeField] private MeshRenderer playerMesh;
+    private SpriteRenderer sr;
 
     private PlayerControls controls;
 
@@ -22,6 +23,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void Init()
     {
+        sr = GetComponent<SpriteRenderer>();
         mover = GetComponent<PlayerMovementScript>();
         controls = new PlayerControls();
     }
@@ -33,10 +35,14 @@ public class PlayerInputHandler : MonoBehaviour
     public void InitializePlayer(PlayerConfiguration config)
     {
         playerConfig = config;
-        playerMesh.material = config.PlayerMaterial;
+        sr.material = config.PlayerMaterial;
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
     }
 
+    /// <summary>
+    /// Checks the input used and calls the nessecary functions
+    /// </summary>
+    /// <param name="obj"></param>
     private void Input_onActionTriggered(CallbackContext obj)
     {
         if (obj.action.name == controls.PlayerMovement.Movement.name)
@@ -45,6 +51,10 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the input vector for the movement input
+    /// </summary>
+    /// <param name="context"></param>
     public void OnMove(CallbackContext context)
     {
         if (mover != null)
