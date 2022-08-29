@@ -10,6 +10,9 @@ public class PlayerMovementScript : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private Vector2 inputVector = Vector2.zero;
 
+    [HideInInspector] public int playerIndex = 0;
+
+    public VelocitySetter vs;
     // Update is called once per frame
     void Update()
     {
@@ -22,10 +25,12 @@ public class PlayerMovementScript : MonoBehaviour
     public void Move()
     {
         moveDirection = new Vector3(inputVector.x, inputVector.y, 0);
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= moveSpeed;
+        //moveDirection = transform.TransformDirection(moveDirection);
+        //moveDirection *= moveSpeed;
 
-        transform.position += (moveDirection * Time.deltaTime);
+        //transform.position += (moveDirection * Time.deltaTime);
+
+        vs.AddSource("player_" + playerIndex, moveDirection, moveSpeed);
     }
 
     /// <summary>
