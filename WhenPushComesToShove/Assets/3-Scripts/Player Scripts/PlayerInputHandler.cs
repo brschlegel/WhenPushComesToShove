@@ -8,8 +8,18 @@ using static UnityEngine.InputSystem.InputAction;
 //Script to take in player input and trigger the necessary actions
 public class PlayerInputHandler : MonoBehaviour
 {
+    [SerializeField] private int actionCooldown = 1;
+
     [HideInInspector] public PlayerConfiguration playerConfig;
+
+    private VelocitySetter vs;
+
     private PlayerMovementScript mover;
+    private PlayerLightShoveScript lightShoveScript;
+    private PlayerHeavyShoveScript heavyShoveScript;
+    private PlayerDashScript dashScript;
+
+    [HideInInspector] public bool performingAction = false;
 
     private SpriteRenderer sr;
 
@@ -23,9 +33,19 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void Init()
     {
-        sr = GetComponent<SpriteRenderer>();
-        mover = GetComponent<PlayerMovementScript>();
+        sr = GetComponentInParent<SpriteRenderer>();
         controls = new PlayerControls();
+
+        vs = GetComponentInParent<VelocitySetter>();
+        vs.Init();
+
+        mover = GetComponent<PlayerMovementScript>();
+        lightShoveScript = GetComponent<PlayerLightShoveScript>();
+        heavyShoveScript = GetComponent<PlayerHeavyShoveScript>();
+        dashScript = GetComponent<PlayerDashScript>();
+
+        //Assign Velocity Setter to Necessary Input Scripts
+        mover.vs = vs;
     }
 
     /// <summary>
@@ -49,6 +69,37 @@ public class PlayerInputHandler : MonoBehaviour
         {
             OnMove(obj);
         }
+        else if (obj.action.name == controls.PlayerMovement.Select.name)
+        {
+            Debug.Log("Player " + playerConfig.PlayerIndex + " Performed the Select Action");
+        }
+        else if (obj.action.name == controls.PlayerMovement.LightShove.name)
+        {
+            if (!performingAction)
+            {
+                performingAction = true;
+                lightShoveScript.OnLightShove(playerConfig.PlayerIndex);
+                StartCoroutine(ActionCooldown());
+            }
+        }
+        else if (obj.action.name == controls.PlayerMovement.HeavyShove.name)
+        {
+            if (!performingAction)
+            {
+                performingAction = true;
+                heavyShoveScript.OnHeavyShove(playerConfig.PlayerIndex);
+                StartCoroutine(ActionCooldown());
+            }
+        }
+        else if (obj.action.name == controls.PlayerMovement.Dash.name)
+        {
+            if (!performingAction)
+            {
+                performingAction = true;
+                dashScript.OnDash(playerConfig.PlayerIndex);
+                StartCoroutine(ActionCooldown());
+            }
+        }
     }
 
     /// <summary>
@@ -61,5 +112,11 @@ public class PlayerInputHandler : MonoBehaviour
         {
             mover.SetInputVector(context.ReadValue<Vector2>());
         }
+    }
+
+    public IEnumerator ActionCooldown()
+    {
+        yield return new WaitForSeconds(actionCooldown);
+        performingAction = false;
     }
 }

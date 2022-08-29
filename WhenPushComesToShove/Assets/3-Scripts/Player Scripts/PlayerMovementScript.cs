@@ -12,12 +12,6 @@ public class PlayerMovementScript : MonoBehaviour
 
     [HideInInspector] public VelocitySetter vs;
 
-    public void Awake()
-    {
-        vs = GetComponent<VelocitySetter>();
-        vs.Init();
-    }
-
     // Update is called once per frame
     void Update()
     {

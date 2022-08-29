@@ -40,7 +40,7 @@ public class InitLevel : MonoBehaviour
     {
         PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
         GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
-        player.GetComponent<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
+        player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
     }
 
 }
