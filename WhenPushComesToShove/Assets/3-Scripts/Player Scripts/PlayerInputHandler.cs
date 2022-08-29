@@ -37,9 +37,6 @@ public class PlayerInputHandler : MonoBehaviour
         playerConfig = config;
         sr.material = config.PlayerMaterial;
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
-
-        //Assign player index to mover
-        mover.playerIndex = playerConfig.PlayerIndex;
     }
 
     /// <summary>
