@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 
 //direction and speed stored seperately so that speed can be tweened
 public struct VelocityData
 {
     public Vector2 direction;
-    public float speed;
+    public float  speed;
 }
 [RequireComponent(typeof(Rigidbody2D))]
 public class VelocitySetter : MonoBehaviour
 {
     private Rigidbody2D rb;
-    Dictionary<string, VelocityData> sources;
+    Dictionary<string, Vector2> sources;
     void Start()
     {
         if(sources == null)
@@ -24,7 +25,7 @@ public class VelocitySetter : MonoBehaviour
 
     public void Init()
     {
-        sources = new Dictionary<string, VelocityData>();
+        sources = new Dictionary<string, Vector2>();
         rb = GetComponent<Rigidbody2D>();
     }
     
@@ -36,9 +37,7 @@ public class VelocitySetter : MonoBehaviour
     /// <param name="speed">Magnitude of the target vector</param>
     public void AddSource(string sourceID, Vector2 direction, float speed)
     {
-        VelocityData data = new VelocityData();
-        data.direction = direction.normalized;
-        data.speed = speed;
+        Vector2 data = direction.normalized * speed;
         if(!sources.ContainsKey(sourceID))
         {
             sources.Add(sourceID, data);
@@ -48,28 +47,55 @@ public class VelocitySetter : MonoBehaviour
             sources[sourceID] = data;
         }
     }
+
+        
+    /// <summary>
+    /// Adds a velocity source, will overwrite previous source with same ID
+    /// </summary>
+    /// <param name="sourceID">String ID the contribution is stored under</param>
+    /// <param name="Source">Source</param>
+    public void AddSource(string sourceID, Vector2 source)
+    {
+        if(!sources.ContainsKey(sourceID))
+        {
+            sources.Add(sourceID, source);
+        }
+        else
+        {
+            sources[sourceID] = source;
+        }
+    }
+
     /// <summary>
     /// Adds a velocity source, and then cancels it after some time
     /// </summary>
     /// <param name="sourceID">String ID the contribution is stored under</param>
-    /// <param name="direction">Direction of the target velocity. WILL BE NORMALIZED INSIDE OF FUNCTION</param>
-    /// <param name="speed">Magnitude of the target vector</param>
+    /// <param name="source">Vector2 source</param>
     /// <param name="time">Seconds before source is cancelled</param>
-    public void AddSource(string sourceID, Vector2 direction, float speed, float time)
+    public void AddSourceForTime(string sourceID, Vector2 source, float time)
     {
-        VelocityData data = new VelocityData();
-        data.direction = direction.normalized;
-        data.speed = speed;
         if(!sources.ContainsKey(sourceID))
         {
-            sources.Add(sourceID, data);
+            sources.Add(sourceID, source);
         }
         else
         {
-            sources[sourceID] = data;
+            sources[sourceID] = source;
         }
         StartCoroutine(CancelAfterSeconds(sourceID, time));
     }
+    /// <summary>
+    /// Adds a velocity source, then cancels it after tween is completed
+    /// </summary>
+    /// <param name="sourceID">String ID the contribution is stored under</param>
+    /// <param name="source">Vector2 source</param>
+    /// <param name="tween">Tween used on velocity source</param>
+    public void AddSource(string sourceID, Vector2 source, Tween tween)
+    {
+        AddSource(sourceID, source);
+        StartCoroutine(CancelAfterTween(sourceID, tween));
+    }
+
     /// <summary>
     /// Checks for the velocity associated with a sourceID
     /// </summary>
@@ -80,7 +106,7 @@ public class VelocitySetter : MonoBehaviour
     {
         if (sources.ContainsKey(sourceID))
         {
-            velocity = sources[sourceID].direction * sources[sourceID].speed;
+            velocity = sources[sourceID];
             return true;
         }
         velocity = Vector2.zero;
@@ -115,8 +141,23 @@ public class VelocitySetter : MonoBehaviour
         yield return new WaitForSeconds(time);
         Cancel(requestID);
     }
+    
+    private IEnumerator CancelAfterTween(string requestID, Tween tween)
+    {
+        yield return tween.WaitForCompletion();
+        Cancel(requestID);
+    }
     #endregion
 
+    /// <summary>
+    /// For use with virtual tweens
+    /// </summary>
+    /// <param name="f">float to update</param>
+    /// <param name="sourceID">Source ID</param>
+    public void UpdateVelocityMagnitude(string sourceID, float f)
+    {
+        sources[sourceID] = sources[sourceID].normalized * f;
+    }
     #region Properties
     public Vector2 Velocity
     {
@@ -134,8 +175,9 @@ public class VelocitySetter : MonoBehaviour
         //Apply requests 
         foreach(string key in sources.Keys)
         {
-            VelocityData data = sources[key];
-            velocity += data.direction * data.speed;
+            Vector2 data = sources[key];
+            velocity += data;
+            Debug.Log(data.magnitude);
         }
         rb.velocity = velocity;
     }
