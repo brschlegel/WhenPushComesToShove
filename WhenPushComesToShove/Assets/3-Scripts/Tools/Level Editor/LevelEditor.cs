@@ -32,6 +32,8 @@ public class LevelEditor : MonoBehaviour
 
     [Header("Selected File")]
     public GameObject selectedLevel;
+    GameObject previousSelectedLevel;
+    GameObject selectedLevelFirstChild;
 
     ObjectSelectionWindow currentWindow;
 
@@ -47,22 +49,37 @@ public class LevelEditor : MonoBehaviour
         }
 
         //Update the level editor to the selected level
-        if(selectedLevel != null)
+        if(selectedLevel != null && previousSelectedLevel != selectedLevel)
         {
+            Debug.Log(previousSelectedLevel);
             //Update level name
             if (levelName != selectedLevel.name)
                 levelName = selectedLevel.name;
 
-            //Update the sprite layers
-            if (gameObject.transform.GetChild(0) != selectedLevel.transform.GetChild(0))
+            //Update the sprite layers to match the selected Level
+            if (gameObject.transform.GetChild(0) != selectedLevelFirstChild)
             {
-                for(int i = gameObject.transform.childCount - 1; i >= 0; i++)
-                {
-                    DestroyImmediate(gameObject.transform.GetChild(i).gameObject);
-                }
-            }
-        }
+                //Add the selected levels sprite layers to the editor
+                selectedLevelFirstChild = Instantiate(selectedLevel.transform.GetChild(0).gameObject);
+                selectedLevelFirstChild.transform.parent = transform;
+                floorLayer = selectedLevelFirstChild;
 
+                GameObject secondLayer = Instantiate(selectedLevel.transform.GetChild(1).gameObject);
+                secondLayer.transform.parent = transform;
+                wallLayer = secondLayer;
+
+                GameObject thirdLayer = Instantiate(selectedLevel.transform.GetChild(2).gameObject);
+                thirdLayer.transform.parent = transform;
+                placeableLayer = thirdLayer;
+
+                if (previousSelectedLevel == null)
+                    SetActiveChildren(gameObject, false, gameObject.transform.childCount - 3);
+                else
+                    DeleteChildren(gameObject, gameObject.transform.childCount - 3);               
+            }
+                
+        }
+        previousSelectedLevel = selectedLevel;
     }
 
     public void OpenWindow()
@@ -90,6 +107,38 @@ public class LevelEditor : MonoBehaviour
         }         
     }
 
+    public void DeleteChildren(GameObject parent, int startingIndex = -1, int endIndex = 0)
+    {
+        if (startingIndex == -1)
+            startingIndex = parent.transform.childCount;
+        for (int i = startingIndex - 1; i >= endIndex; i--)
+        {
+            DestroyImmediate(parent.transform.GetChild(i).gameObject);
+        }
+    }
+
+    public void SetActiveChildren(GameObject parent, bool active, int startingIndex = -1)
+    {
+        if (startingIndex == -1)
+            startingIndex = parent.transform.childCount;
+        for (int i = startingIndex - 1; i >= 0; i--)
+        {
+            parent.transform.GetChild(i).gameObject.SetActive(active);
+        }
+    }
+
+    public void Reset()
+    {
+        DeleteChildren(gameObject, gameObject.transform.childCount, gameObject.transform.childCount - 3);
+        SetActiveChildren(gameObject, true, 3);
+
+        levelName = "";
+        selectedLevel = null;
+
+        floorLayer = gameObject.transform.GetChild(0).gameObject;
+        wallLayer = gameObject.transform.GetChild(1).gameObject;
+        placeableLayer = gameObject.transform.GetChild(2).gameObject;
+    }
 }
 
 [CustomEditor(typeof(LevelEditor))]
@@ -123,6 +172,7 @@ public class CustomLevelEditor : Editor
             if (testObj != null)
             {
                 Debug.LogError("Asset already has that name");
+                DestroyImmediate(root);
                 return;
             }
 
@@ -130,6 +180,9 @@ public class CustomLevelEditor : Editor
 
             DestroyImmediate(root);
         }
+
+        if (GUILayout.Button("Reset to Default"))
+            level.Reset();
     }
 
     public void OnSceneGUI()
