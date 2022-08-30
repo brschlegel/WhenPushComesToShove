@@ -65,32 +65,37 @@ public class PlayerInputHandler : MonoBehaviour
     /// <param name="obj"></param>
     private void Input_onActionTriggered(CallbackContext obj)
     {
+        //Movement
         if (obj.action.name == controls.PlayerMovement.Movement.name)
         {
             OnMove(obj);
         }
+        //Select
         else if (obj.action.name == controls.PlayerMovement.Select.name)
         {
             Debug.Log("Player " + playerConfig.PlayerIndex + " Performed the Select Action");
         }
+        //Light Shove
         else if (obj.action.name == controls.PlayerMovement.LightShove.name)
         {
             if (!performingAction)
             {
                 performingAction = true;
-                lightShoveScript.OnLightShove(playerConfig.PlayerIndex);
+                lightShoveScript.OnLightShove();
                 StartCoroutine(ActionCooldown());
             }
         }
+        //Heavy Shove
         else if (obj.action.name == controls.PlayerMovement.HeavyShove.name)
         {
             if (!performingAction)
             {
                 performingAction = true;
-                heavyShoveScript.OnHeavyShove(playerConfig.PlayerIndex);
+                heavyShoveScript.OnHeavyShove();
                 StartCoroutine(ActionCooldown());
             }
         }
+        //Dash
         else if (obj.action.name == controls.PlayerMovement.Dash.name)
         {
             if (!performingAction)
@@ -99,6 +104,11 @@ public class PlayerInputHandler : MonoBehaviour
                 dashScript.OnDash(playerConfig.PlayerIndex);
                 StartCoroutine(ActionCooldown());
             }
+        }
+        //Aim
+        else if (obj.action.name == controls.PlayerMovement.Aim.name)
+        {
+            OnAim(obj);
         }
     }
 
@@ -110,10 +120,26 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (mover != null)
         {
-            mover.SetInputVector(context.ReadValue<Vector2>());
+            mover.SetMoveInputVector(context.ReadValue<Vector2>());
         }
     }
 
+    /// <summary>
+    /// Sets the input vector for aim input
+    /// </summary>
+    /// <param name="context"></param>
+    public void OnAim(CallbackContext context)
+    {
+        if (mover != null)
+        {
+            mover.SetAimInputVector(context.ReadValue<Vector2>());
+        }
+    }
+
+    /// <summary>
+    /// A fuction to prevent players from performing an action for some time
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator ActionCooldown()
     {
         yield return new WaitForSeconds(actionCooldown);

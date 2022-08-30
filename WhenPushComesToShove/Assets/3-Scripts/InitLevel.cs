@@ -22,7 +22,7 @@ public class InitLevel : MonoBehaviour
             for (int i = 0; i < playerConfigs.Length; i++)
             {
                 GameObject player = Instantiate(playerPrefab, playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
-                player.GetComponent<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
+                player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
             }
         }
         else

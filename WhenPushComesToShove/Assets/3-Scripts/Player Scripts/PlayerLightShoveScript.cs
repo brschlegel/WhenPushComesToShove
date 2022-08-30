@@ -4,8 +4,30 @@ using UnityEngine;
 
 public class PlayerLightShoveScript : MonoBehaviour
 {
-    public void OnLightShove( int playerIndex )
+    [SerializeField] private GameObject hitbox;
+    [SerializeField] private float cooldown = .5f;
+
+    public void Start()
     {
-        Debug.Log("Player " + playerIndex + " Light Shove");
+        hitbox.SetActive(false);
+    }
+
+    /// <summary>
+    /// A function called in input handler to activate the hitbox for the light shove
+    /// </summary>
+    public void OnLightShove()
+    {
+        hitbox.SetActive(true);
+        StartCoroutine(HitboxCooldown());
+    }
+
+    /// <summary>
+    /// Disables the hitbox after its cooldown
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator HitboxCooldown()
+    {
+        yield return new WaitForSeconds(cooldown);
+        hitbox.SetActive(false);
     }
 }
