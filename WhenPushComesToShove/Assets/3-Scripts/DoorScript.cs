@@ -10,7 +10,7 @@ public class DoorScript : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            int playerIndex = collision.gameObject.GetComponent<PlayerInputHandler>().playerConfig.PlayerIndex;
+            int playerIndex = collision.gameObject.GetComponentInChildren<PlayerInputHandler>().playerConfig.PlayerIndex;
             PlayerConfigManager.Instance.ReadyPlayer(playerIndex);
         }
     }
@@ -19,7 +19,7 @@ public class DoorScript : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            int playerIndex = collision.gameObject.GetComponent<PlayerInputHandler>().playerConfig.PlayerIndex;
+            int playerIndex = collision.gameObject.GetComponentInChildren<PlayerInputHandler>().playerConfig.PlayerIndex;
             PlayerConfigManager.Instance.UnreadyPlayer(playerIndex);
         }
     }

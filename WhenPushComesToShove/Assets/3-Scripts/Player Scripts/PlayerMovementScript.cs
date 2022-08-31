@@ -8,7 +8,17 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
 
     private Vector3 moveDirection = Vector3.zero;
-    private Vector2 inputVector = Vector2.zero;
+    private Vector2 moveInputVector = Vector2.zero;
+    private Vector2 aimInputVector = Vector2.zero;
+
+    [HideInInspector] public VelocitySetter vs;
+
+    private Transform player;
+
+    private void Awake()
+    {
+        player = transform.parent;
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,19 +31,45 @@ public class PlayerMovementScript : MonoBehaviour
     /// </summary>
     public void Move()
     {
-        moveDirection = new Vector3(inputVector.x, inputVector.y, 0);
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= moveSpeed;
+        moveDirection = new Vector3(moveInputVector.x, moveInputVector.y, 0);
 
-        transform.position += (moveDirection * Time.deltaTime);
+        if (vs != null)
+        {
+            vs.AddSource("playerMovement", moveDirection, moveSpeed);
+        }
+
+        //If moving but not aiming, default aim to move direction
+        if (aimInputVector == Vector2.zero && moveDirection != Vector3.zero)
+        {
+            player.right = moveDirection.normalized;
+        }
     }
 
     /// <summary>
     /// Function for the PlayerInputHandler to pass in the move direction
     /// </summary>
     /// <param name="direction"></param>
-    public void SetInputVector(Vector2 direction)
+    public void SetMoveInputVector(Vector2 direction)
     {
-        inputVector = direction;
+        moveInputVector = direction;
+    }
+
+    /// <summary>
+    /// Function for the PlayerInputHandler to pass in the aim direction
+    /// </summary>
+    /// <param name="direction"></param>
+    public void SetAimInputVector(Vector2 direction)
+    {
+        //If not aiming, set vector to zero
+        if (direction == Vector2.zero)
+        {
+            aimInputVector = Vector2.zero;
+            return;
+        }
+
+        aimInputVector = direction;
+
+        //Rotate player to that direction
+        player.right = aimInputVector.normalized;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MoveToClick : MonoBehaviour
 {
@@ -22,7 +23,9 @@ public class MoveToClick : MonoBehaviour
             Rigidbody2D rb = subject.GetComponent<Rigidbody2D>();
             var v = ((Vector2)subject.transform.position - mousePos);
 
-            vs.AddSource("MouseClick",v, force, knockbackTime );
+            Vector2 knockback = v.normalized * force;
+            Tween t = DOVirtual.Float(force, 0, knockbackTime, f=> vs.UpdateVelocityMagnitude("MouseClick", f)).SetEase(Ease.OutBack);
+            vs.AddSource("MouseClick",knockback, t );
         }
     }
 }
