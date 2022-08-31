@@ -4,12 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 
 
-//direction and speed stored seperately so that speed can be tweened
-public struct VelocityData
-{
-    public Vector2 direction;
-    public float  speed;
-}
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class VelocitySetter : MonoBehaviour
 {
