@@ -129,15 +129,40 @@ public class LevelEditor : MonoBehaviour
 
     public void Reset()
     {
-        DeleteChildren(gameObject, gameObject.transform.childCount, gameObject.transform.childCount - 3);
-        SetActiveChildren(gameObject, true, 3);
+        //Resets the editor if a level is loaded in
+        if(gameObject.transform.childCount > 3)
+        {
+            DeleteChildren(gameObject, gameObject.transform.childCount, gameObject.transform.childCount - 3);
+            SetActiveChildren(gameObject, true, 3);
 
-        levelName = "";
-        selectedLevel = null;
+            levelName = "";
+            selectedLevel = null;
 
-        floorLayer = gameObject.transform.GetChild(0).gameObject;
-        wallLayer = gameObject.transform.GetChild(1).gameObject;
-        placeableLayer = gameObject.transform.GetChild(2).gameObject;
+            floorLayer = gameObject.transform.GetChild(0).gameObject;
+            wallLayer = gameObject.transform.GetChild(1).gameObject;
+            placeableLayer = gameObject.transform.GetChild(2).gameObject;
+        }
+        //Resets the editor from scrath
+        else
+        {
+            DeleteChildren(gameObject, gameObject.transform.childCount);
+
+            levelName = "";
+            selectedLevel = null;
+
+            floorLayer = Instantiate(defaultFloorLayer);
+            floorLayer.transform.parent = transform;
+            floorLayer.name = "Floor Tile Map";
+
+            wallLayer = Instantiate(defaultWallLayer);
+            wallLayer.transform.parent = transform;
+            wallLayer.name = "Wall Tile Map";
+
+            placeableLayer = Instantiate(defaultPlaceableLayer);
+            placeableLayer.transform.parent = transform;
+            placeableLayer.name = "Placeable Objects";
+        }
+        
     }
 }
 
