@@ -974,7 +974,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1356,7 +1356,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2583,6 +2583,8 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 96
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 96
     m_Data:
@@ -2604,7 +2606,9 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - m_RefCount: 96
-    m_Data: {r: 0.95813113, g: 0.41909298, b: 0.44956687, a: 1}
+    m_Data: {r: 0.86878765, g: 0.5930918, b: 0.6358033, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 2.93225e-40, g: 2.93225e-40, b: 2.93225e-40, a: 2.93225e-40}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
