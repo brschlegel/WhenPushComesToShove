@@ -54,7 +54,6 @@ public class LevelEditor : MonoBehaviour
         //Update the level editor to the selected level
         if(selectedLevel != null && previousSelectedLevel != selectedLevel)
         {
-            Debug.Log(previousSelectedLevel);
             //Update level name
             if (levelName != selectedLevel.name)
                 levelName = selectedLevel.name;
@@ -261,7 +260,7 @@ public class CustomLevelEditor : Editor
             //Check to make sure that there's at least one hazard stat
             if (level.hazardStats.Length <= 0)
             {
-                Debug.Log("There needs to be at least 1 hazard stat.");
+                Debug.LogError("There needs to be at least 1 hazard stat.");
                 return;
             }
             else
