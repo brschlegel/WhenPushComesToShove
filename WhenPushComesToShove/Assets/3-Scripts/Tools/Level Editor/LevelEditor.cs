@@ -13,22 +13,25 @@ public class LevelEditor : MonoBehaviour
     [Header("Layers - DO NOT EDIT")]
     public GameObject floorLayer;
     public GameObject wallLayer;
+    public GameObject fadeablelayer;
     public GameObject placeableLayer;
 
     //Default Layers
     [Header("Default Layers - DO NOT EDIT")]
     [SerializeField] GameObject defaultFloorLayer;
     [SerializeField] GameObject defaultWallLayer;
+    [SerializeField] GameObject defaultFadeableLayer;
     [SerializeField] GameObject defaultPlaceableLayer;
 
     //Placeable Objects
-    [Header("Placeable Objects")]
+    [Header("Placeable Objects - DO NOT EDIT")]
     [SerializeField] PlaceableObject.ObjectStats[] hazards;
     [SerializeField] PlaceableObject.ObjectStats[] spawnPoints;
     [SerializeField] PlaceableObject.ObjectStats[] decorations;
 
-    [Header("Level Name")]
+    [Header("Level Properties")]
     public string levelName;
+    public HazardDifficulty.HazardStats[] hazardStats;
 
     [Header("Selected File")]
     public GameObject selectedLevel;
@@ -56,6 +59,9 @@ public class LevelEditor : MonoBehaviour
             if (levelName != selectedLevel.name)
                 levelName = selectedLevel.name;
 
+            //Update hazard stats
+            hazardStats = selectedLevel.GetComponent<LevelProperties>().hazards;
+
             //Update the sprite layers to match the selected Level
             if (gameObject.transform.GetChild(0) != selectedLevelFirstChild)
             {
@@ -72,10 +78,14 @@ public class LevelEditor : MonoBehaviour
                 thirdLayer.transform.parent = transform;
                 placeableLayer = thirdLayer;
 
+                GameObject forthLayer = Instantiate(selectedLevel.transform.GetChild(3).gameObject);
+                forthLayer.transform.parent = transform;
+                placeableLayer = forthLayer;
+
                 if (previousSelectedLevel == null)
-                    SetActiveChildren(gameObject, false, gameObject.transform.childCount - 3);
+                    SetActiveChildren(gameObject, false, gameObject.transform.childCount - 4);
                 else
-                    DeleteChildren(gameObject, gameObject.transform.childCount - 3);               
+                    DeleteChildren(gameObject, gameObject.transform.childCount - 4);               
             }
                 
         }
@@ -130,25 +140,20 @@ public class LevelEditor : MonoBehaviour
     public void Reset()
     {
         //Resets the editor if a level is loaded in
-        if(gameObject.transform.childCount > 3)
+        if(gameObject.transform.childCount > 4)
         {
-            DeleteChildren(gameObject, gameObject.transform.childCount, gameObject.transform.childCount - 3);
-            SetActiveChildren(gameObject, true, 3);
-
-            levelName = "";
-            selectedLevel = null;
+            DeleteChildren(gameObject, gameObject.transform.childCount, gameObject.transform.childCount - 4);
+            SetActiveChildren(gameObject, true, 4);
 
             floorLayer = gameObject.transform.GetChild(0).gameObject;
             wallLayer = gameObject.transform.GetChild(1).gameObject;
-            placeableLayer = gameObject.transform.GetChild(2).gameObject;
+            fadeablelayer = gameObject.transform.GetChild(2).gameObject;
+            placeableLayer = gameObject.transform.GetChild(3).gameObject;
         }
         //Resets the editor from scrath
         else
         {
             DeleteChildren(gameObject, gameObject.transform.childCount);
-
-            levelName = "";
-            selectedLevel = null;
 
             floorLayer = Instantiate(defaultFloorLayer);
             floorLayer.transform.parent = transform;
@@ -158,11 +163,19 @@ public class LevelEditor : MonoBehaviour
             wallLayer.transform.parent = transform;
             wallLayer.name = "Wall Tile Map";
 
+            fadeablelayer = Instantiate(defaultFadeableLayer);
+            fadeablelayer.transform.parent = transform;
+            fadeablelayer.name = "Fadeable Object Tile Map";
+
             placeableLayer = Instantiate(defaultPlaceableLayer);
             placeableLayer.transform.parent = transform;
             placeableLayer.name = "Placeable Objects";
         }
-        
+
+        levelName = "";
+        selectedLevel = null;
+        hazardStats = null;
+
     }
 }
 
@@ -185,12 +198,80 @@ public class CustomLevelEditor : Editor
         {
             //Spawn the object
             GameObject root = new GameObject(level.levelName);
+            LevelProperties levelProp = root.AddComponent<LevelProperties>();
+
             Instantiate(level.floorLayer).transform.parent = root.transform;
             Instantiate(level.wallLayer).transform.parent = root.transform;
-            Instantiate(level.placeableLayer).transform.parent = root.transform;
+            Instantiate(level.fadeablelayer).transform.parent = root.transform;
 
-            
+            GameObject objLayer = Instantiate(level.placeableLayer);
+            objLayer.transform.parent = root.transform;
 
+            //Check to make sure it has enough spawn points
+            int numOfPlayerSpawn = 0;
+            List<GameObject> playerSpawns = new List<GameObject>();
+
+            for(int i = 0; i < objLayer.transform.childCount; i++)
+            {
+                if (objLayer.transform.GetChild(i).CompareTag("PlayerSpawn"))
+                {
+                    numOfPlayerSpawn++;
+                    playerSpawns.Add(objLayer.transform.GetChild(i).gameObject);
+                }
+            }
+
+            if(numOfPlayerSpawn < 4)
+            {
+                Debug.LogError("Not enough player spawn positions. 4 are required.");
+                playerSpawns.Clear();
+                return;
+            }
+            else if(numOfPlayerSpawn > 4)
+            {
+                Debug.LogError("Too many player spawn positions. 4 are required.");
+                playerSpawns.Clear();
+                return;
+            }
+            else
+            {
+                levelProp.playerSpawns = playerSpawns.ToArray();
+                playerSpawns.Clear();
+            }
+
+            //Check to make sure there's at least one enemy spawn point
+
+            List<GameObject> enemySpawns = new List<GameObject>();
+            for(int i = 0; i < objLayer.transform.childCount; i++)
+            {
+                if (objLayer.transform.GetChild(i).CompareTag("EnemySpawn"))
+                    enemySpawns.Add(objLayer.transform.GetChild(i).gameObject);
+            }
+
+            if(enemySpawns.Count <= 0)
+            {
+                Debug.LogError("There must be at least 1 enemy spawn point");
+                return;
+            }
+            else
+            {
+                levelProp.enemySpawns = enemySpawns.ToArray();
+                enemySpawns.Clear();
+            }
+
+            //Check to make sure that there's at least one hazard stat
+            if (level.hazardStats.Length <= 0)
+            {
+                Debug.Log("There needs to be at least 1 hazard stat.");
+                return;
+            }
+            else
+                levelProp.hazards = level.hazardStats;
+
+            if(root.name == "")
+            {
+                Debug.LogError("Level name can't be blank.");
+                return;
+            }    
             string path = "Assets/Resources/Levels/" + root.name + ".prefab";
 
             GameObject testObj = Resources.Load<GameObject>("Levels/" + root.name);
