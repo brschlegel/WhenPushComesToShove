@@ -8,8 +8,11 @@ using DG.Tweening;
 [RequireComponent(typeof(Rigidbody2D))]
 public class VelocitySetter : MonoBehaviour
 {
+    [SerializeField]
+    private bool printDebug;
     private Rigidbody2D rb;
     Dictionary<string, Vector2> sources;
+    int tempIdCounter;
     void Start()
     {
         if(sources == null)
@@ -67,7 +70,7 @@ public class VelocitySetter : MonoBehaviour
     /// <param name="sourceID">String ID the contribution is stored under</param>
     /// <param name="source">Vector2 source</param>
     /// <param name="time">Seconds before source is cancelled</param>
-    public void AddSourceForTime(string sourceID, Vector2 source, float time)
+    public void AddSourceTime(string sourceID, Vector2 source, float time)
     {
         if(!sources.ContainsKey(sourceID))
         {
@@ -85,12 +88,53 @@ public class VelocitySetter : MonoBehaviour
     /// <param name="sourceID">String ID the contribution is stored under</param>
     /// <param name="source">Vector2 source</param>
     /// <param name="tween">Tween used on velocity source</param>
-    public void AddSource(string sourceID, Vector2 source, Tween tween)
+    public void AddSourceTween(string sourceID, Vector2 source, Tween tween)
     {
+        Debug.Log("Adding Source: " + sourceID + " " + source);
         AddSource(sourceID, source);
         StartCoroutine(CancelAfterTween(sourceID, tween));
     }
 
+    /// <summary>
+    /// Adds source with unique ID
+    /// </summary>
+    /// <param name="source">Source Vector</param>
+    /// <param name="time">Time to be cancelled after</param>
+    /// <returns>Generated ID</returns>
+    public string AddSourceTimeUniqueID(Vector2 source, float time)
+    {
+        tempIdCounter++;
+        string id = "Temp" + tempIdCounter;
+        AddSourceTime(id, source, time);
+        return id;
+    }
+
+    /// <summary>
+    /// Adds source with unique ID
+    /// </summary>
+    /// <param name="source">Source Vector</param>
+    /// <returns>Generated ID</returns>
+    public string AddSourceUniqueID(Vector2 source)
+    {
+        tempIdCounter++;
+        string id = "Temp" + tempIdCounter;
+        AddSource(id, source);
+        return id;
+    }
+
+    /// <summary>
+    /// Adds source with a unique id
+    /// </summary>
+    /// <param name="source">Source vector</param>
+    /// <param name="tween">Tween to cancel tween on</param>
+    /// <returns>Generated ID</returns>
+    public string AddSourceTweenUniqueID(Vector2 source, Tween tween)
+    {
+        tempIdCounter++;
+        string id = "Temp" + tempIdCounter;
+        AddSourceTween(id, source, tween);
+        return id;
+    }
     /// <summary>
     /// Checks for the velocity associated with a sourceID
     /// </summary>
@@ -153,6 +197,17 @@ public class VelocitySetter : MonoBehaviour
     {
         sources[sourceID] = sources[sourceID].normalized * f;
     }
+
+    /// <summary>
+    /// Generates a unique ID to be used 
+    /// </summary>
+    /// <returns>Generated ID</returns>
+    public string GenerateUniqueID()
+    {
+        tempIdCounter++;
+        string id = "Temp" + tempIdCounter;
+        return id;
+    }
     #region Properties
     public Vector2 Velocity
     {
@@ -172,7 +227,10 @@ public class VelocitySetter : MonoBehaviour
         {
             Vector2 data = sources[key];
             velocity += data;
-            Debug.Log(data.magnitude);
+            if(printDebug)
+            {
+                Debug.Log(key + ":" + sources[key]);
+            }
         }
         rb.velocity = velocity;
     }
