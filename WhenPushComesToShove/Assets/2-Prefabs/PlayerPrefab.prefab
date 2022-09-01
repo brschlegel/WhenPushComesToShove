@@ -48,7 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726528bca45d1734bae1501dc0d95de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionCooldown: 1
+  shoveActionCooldown: 1
+  dashActionCooldown: 1
+  movementLockCooldown: 0.5
   performingAction: 0
 --- !u!114 &7604760025507816548
 MonoBehaviour:
@@ -107,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vs: {fileID: 0}
   dashSpeed: 15
-  dashTime: 1
+  dashTime: 0.5
 --- !u!1 &5782972655189162237
 GameObject:
   m_ObjectHideFlags: 0

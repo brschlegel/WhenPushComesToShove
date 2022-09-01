@@ -8,7 +8,9 @@ using static UnityEngine.InputSystem.InputAction;
 //Script to take in player input and trigger the necessary actions
 public class PlayerInputHandler : MonoBehaviour
 {
-    [SerializeField] private int actionCooldown = 1;
+    [SerializeField] private float shoveActionCooldown = 1;
+    [SerializeField] private float dashActionCooldown = 1;
+    [SerializeField] private float movementLockCooldown = .6f;
 
     [HideInInspector] public PlayerConfiguration playerConfig;
 
@@ -20,6 +22,7 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerDashScript dashScript;
 
     [HideInInspector] public bool performingAction = false;
+    private bool lockMovement = false;
 
     private SpriteRenderer sr;
 
@@ -81,9 +84,8 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction)
             {
-                performingAction = true;
+                LockAction(shoveActionCooldown);
                 lightShoveScript.OnLightShove();
-                StartCoroutine(ActionCooldown());
             }
         }
         //Heavy Shove
@@ -91,9 +93,8 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction)
             {
-                performingAction = true;
+                LockAction(shoveActionCooldown);
                 heavyShoveScript.OnHeavyShove();
-                StartCoroutine(ActionCooldown());
             }
         }
         //Dash
@@ -101,9 +102,9 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction)
             {
-                performingAction = true;
+                LockAction(dashActionCooldown);
+                LockMovement(movementLockCooldown);
                 dashScript.OnDash(DetermineDashDirection());
-                StartCoroutine(ActionCooldown());
             }
         }
         //Aim
@@ -121,6 +122,12 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (mover != null)
         {
+            if (lockMovement)
+            {
+                mover.SetMoveInputVector(Vector2.zero);
+                return;
+            }
+
             mover.SetMoveInputVector(context.ReadValue<Vector2>());
         }
     }
@@ -162,12 +169,43 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     /// <summary>
+    /// Locks the player from performing an action for a period of time
+    /// </summary>
+    /// <param name="cooldown"></param>
+    public void LockAction(float cooldown)
+    {
+        performingAction = true;
+        StartCoroutine(ActionCooldown(cooldown));
+    }
+
+    /// <summary>
+    /// Locks the player's movement for a period of time
+    /// </summary>
+    /// <param name="cooldown"></param>
+    public void LockMovement(float cooldown)
+    {
+        lockMovement = true;
+        StartCoroutine(MovementLockCooldown(cooldown));
+    }
+
+    /// <summary>
     /// A fuction to prevent players from performing an action for some time
     /// </summary>
     /// <returns></returns>
-    public IEnumerator ActionCooldown()
+    public IEnumerator ActionCooldown(float cooldown)
     {
-        yield return new WaitForSeconds(actionCooldown);
+        yield return new WaitForSeconds(cooldown);
         performingAction = false;
+    }
+
+    /// <summary>
+    /// A function to unlock movement after a period of time
+    /// </summary>
+    /// <param name="cooldown"></param>
+    /// <returns></returns>
+    public IEnumerator MovementLockCooldown(float cooldown)
+    {
+        yield return new WaitForSeconds(cooldown);
+        lockMovement = false;
     }
 }
