@@ -189,6 +189,22 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     /// <summary>
+    /// Used to externally force the player's movement to lock
+    /// </summary>
+    public void ForceLockMovement()
+    {
+        lockMovement = true;
+    }
+
+    /// <summary>
+    /// Used to externally force the player's movement to unlock
+    /// </summary>
+    public void ForceUnlockMoement()
+    {
+        lockMovement = false;
+    }
+
+    /// <summary>
     /// A fuction to prevent players from performing an action for some time
     /// </summary>
     /// <returns></returns>
