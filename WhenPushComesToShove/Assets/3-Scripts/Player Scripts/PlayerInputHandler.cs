@@ -46,6 +46,7 @@ public class PlayerInputHandler : MonoBehaviour
 
         //Assign Velocity Setter to Necessary Input Scripts
         mover.vs = vs;
+        dashScript.vs = vs;
     }
 
     /// <summary>
@@ -101,7 +102,7 @@ public class PlayerInputHandler : MonoBehaviour
             if (!performingAction)
             {
                 performingAction = true;
-                dashScript.OnDash(playerConfig.PlayerIndex);
+                dashScript.OnDash(DetermineDashDirection());
                 StartCoroutine(ActionCooldown());
             }
         }
@@ -134,6 +135,30 @@ public class PlayerInputHandler : MonoBehaviour
         {
             mover.SetAimInputVector(context.ReadValue<Vector2>());
         }
+    }
+
+    /// <summary>
+    /// Helper function to determine if the direction of a dash
+    /// </summary>
+    /// <returns></returns>
+    public Vector2 DetermineDashDirection()
+    {
+        Vector2 direction = Vector2.zero;
+
+        if (mover.GetMoveDirection() != Vector3.zero)
+        {
+            direction = mover.GetMoveDirection();
+        }
+        else if (mover.GetAimDirection() != Vector2.zero)
+        {
+            direction = mover.GetAimDirection();
+        }
+        else
+        {
+            direction = mover.player.right;
+        }
+
+        return direction;
     }
 
     /// <summary>

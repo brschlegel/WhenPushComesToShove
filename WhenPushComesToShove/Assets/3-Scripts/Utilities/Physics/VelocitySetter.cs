@@ -172,7 +172,7 @@ public class VelocitySetter : MonoBehaviour
         {
             Vector2 data = sources[key];
             velocity += data;
-            Debug.Log(data.magnitude);
+            //Debug.Log(data.magnitude);
         }
         rb.velocity = velocity;
     }

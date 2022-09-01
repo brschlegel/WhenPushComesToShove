@@ -13,7 +13,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     [HideInInspector] public VelocitySetter vs;
 
-    private Transform player;
+    [HideInInspector] public Transform player;
 
     private void Awake()
     {
@@ -71,5 +71,15 @@ public class PlayerMovementScript : MonoBehaviour
 
         //Rotate player to that direction
         player.right = aimInputVector.normalized;
+    }
+
+    public Vector3 GetMoveDirection()
+    {
+        return moveDirection;
+    }
+
+    public Vector2 GetAimDirection()
+    {
+        return aimInputVector;
     }
 }
