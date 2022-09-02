@@ -17,9 +17,7 @@ public class KnockbackReciever : MonoBehaviour
     [SerializeField]
     private VelocitySetter vs;
 
-    public float mass;
-    public Ease ease;
-    public float speed;
+    private float mass;
     /// <summary>
     /// Applies Knockback
     /// </summary>
@@ -27,10 +25,10 @@ public class KnockbackReciever : MonoBehaviour
     /// <param name="direction">Direction of vector</param>
     public void TakeKnockback(float force, Vector2 direction, KnockbackType type = KnockbackType.Normal)
     {
-        
-        float kb = force ;
+        float kb = force / mass ;
+        float speed = mass * GlobalSettings.frictionCoeff;
         string id = vs.GenerateUniqueID();
-        Tween t = DOVirtual.Float(kb, 0, speed, v => vs.UpdateVelocityMagnitude(id, v)).SetSpeedBased().SetEase(ease);
+        Tween t = DOVirtual.Float(kb, 0, speed, v => vs.UpdateVelocityMagnitude(id, v)).SetSpeedBased().SetEase(Ease.InOutExpo);
  
         vs.AddSourceTween(id, direction * kb, t );
     }
@@ -41,6 +39,9 @@ public class KnockbackReciever : MonoBehaviour
         if(vs == null)
         {
             vs = GetComponent<VelocitySetter>();
+
         }
+        mass = vs.GetComponent<Rigidbody2D>().mass;
+
     }
 }

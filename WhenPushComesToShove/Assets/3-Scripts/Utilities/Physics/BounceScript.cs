@@ -13,7 +13,6 @@ public class BounceScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         WallData data = collision.collider.GetComponent<WallData>();
-        Debug.Log(data + "From: " + collision.collider.gameObject.name);
         if (data != null)
         {
             //Can't modify the source list during loop
@@ -27,7 +26,6 @@ public class BounceScript : MonoBehaviour
                     Vector2 L = -vel.normalized;
                     Vector2 R = 2 * (Vector2.Dot(N, L)) * N - L;
                     changes.Add(id, R);
-                    Debug.Log("reflecting this: " + id + ": " + vel);
                 }
              
             }
