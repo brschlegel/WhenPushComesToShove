@@ -271,7 +271,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfb45aa8271de64c9aad4b74693fc91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  printDebug: 0
 --- !u!1001 &1716887033791413235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,6 +300,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 559066407742172469}
     m_Modifications:
+    - target: {fileID: 11582261079953831, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
+      propertyPath: force
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 11582261079953831, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
+      propertyPath: strength
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191520, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_Name
       value: HeavyHitbox
@@ -390,6 +399,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 559066407742172469}
     m_Modifications:
+    - target: {fileID: 11582261079953831, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
+      propertyPath: force
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 11582261079953831, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
+      propertyPath: strength
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191520, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_Name
       value: LightHitbox
@@ -481,6 +498,10 @@ PrefabInstance:
       propertyPath: owner
       value: 
       objectReference: {fileID: 6273220948599445249}
+    - target: {fileID: 1864335183953101693, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
+      propertyPath: handler
+      value: 
+      objectReference: {fileID: 1298808046723905279}
     - target: {fileID: 7725880952350467008, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: m_Name
       value: Hurtbox
@@ -539,9 +560,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4813940601423497835, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
+    - {fileID: 98020525822575043, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
 --- !u!4 &3632258541538756738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7725880952350467021, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
   m_PrefabInstance: {fileID: 6440015718095629135}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3632258541538756751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7725880952350467008, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
+  m_PrefabInstance: {fileID: 6440015718095629135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1298808046723905279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632258541538756751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804d1f5914bf8aa4aa997248149528b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kbReciever: {fileID: 5395361809422544588}
+--- !u!114 &5395361809422544588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632258541538756751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461e510ab41d8f841a691a7ff2043762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vs: {fileID: 924639791968285090}

@@ -25,7 +25,7 @@ public class MoveToClick : MonoBehaviour
 
             Vector2 knockback = v.normalized * force;
             Tween t = DOVirtual.Float(force, 0, knockbackTime, f=> vs.UpdateVelocityMagnitude("MouseClick", f)).SetEase(Ease.OutBack);
-            vs.AddSource("MouseClick",knockback, t );
+            vs.AddSourceTween("MouseClick",knockback, t );
         }
     }
 }
