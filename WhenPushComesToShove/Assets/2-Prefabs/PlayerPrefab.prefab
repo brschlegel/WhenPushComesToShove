@@ -416,6 +416,34 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6854435290789191520, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
   m_PrefabInstance: {fileID: 1716887033791413235}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8959929956123766181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245641597600162963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62293ab1ddc4be04db4db7a9db165809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+--- !u!114 &1234664598768712674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245641597600162963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0c84de9be280743a422fa87ffe32a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  strength: 75
+  axis: 0
 --- !u!4 &5245641597600162974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
@@ -511,6 +539,34 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6854435290789191520, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
   m_PrefabInstance: {fileID: 6163376413596852368}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5307571948319187696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763200320402767856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62293ab1ddc4be04db4db7a9db165809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+--- !u!114 &5934036066957526007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763200320402767856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0c84de9be280743a422fa87ffe32a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  strength: 50
+  axis: 0
 --- !u!4 &763200320402767869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}

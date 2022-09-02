@@ -8,8 +8,7 @@ public class PlayerHitHandler : HitHandler
   private KnockbackReciever kbReciever;
   public override void RecieveHit(HitEvent e)
   {
- 
-    AttackData data = e.hitbox.data;
+    KnockbackData data = e.hitbox.knockbackData;
     Vector2 direction =  e.hurtbox.transform.position-e.hitbox.transform.position;
     kbReciever.TakeKnockback(data.strength, direction.normalized);
   }
