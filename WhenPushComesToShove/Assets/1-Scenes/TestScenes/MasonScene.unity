@@ -236,7 +236,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca82af0d42a3e544281e55a9430ac860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazardLevels: []
+  hazardLevels:
+  - hazard: 0
+    level: 0
+  - hazard: 1
+    level: 0
+  - hazard: 2
+    level: 0
+  - hazard: 3
+    level: 0
+  numOfRoom: 5
 --- !u!4 &1354758088
 Transform:
   m_ObjectHideFlags: 0
