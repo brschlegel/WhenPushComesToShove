@@ -3,13 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+public struct TweenInfo{
+    public Ease ease;
+    public float speed;
+    public TweenInfo(Ease ease, float speed)
+    {
+        this.ease = ease;
+        this.speed = speed;
+    }
+}
 public class KnockbackReciever : MonoBehaviour
 {
     [SerializeField]
-    [Range(0,1)]
-    private float knockBackResistance;
-    [SerializeField]
     private VelocitySetter vs;
+
+    public float mass;
+    public Ease ease;
+    public float speed;
     /// <summary>
     /// Applies Knockback
     /// </summary>
@@ -18,9 +28,10 @@ public class KnockbackReciever : MonoBehaviour
     public void TakeKnockback(float force, Vector2 direction, KnockbackType type = KnockbackType.Normal)
     {
         
-        float kb = force * (1-knockBackResistance);
+        float kb = force ;
         string id = vs.GenerateUniqueID();
-        Tween t = DOVirtual.Float(kb, 0, 1.0f, v => vs.UpdateVelocityMagnitude(id, v));
+        Tween t = DOVirtual.Float(kb, 0, speed, v => vs.UpdateVelocityMagnitude(id, v)).SetSpeedBased().SetEase(ease);
+ 
         vs.AddSourceTween(id, direction * kb, t );
     }
 

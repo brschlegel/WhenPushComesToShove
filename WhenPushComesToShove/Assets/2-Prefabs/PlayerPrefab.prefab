@@ -264,7 +264,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 11582261079953831, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: force
-      value: 600
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 11582261079953831, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: strength
@@ -367,7 +367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11582261079953831, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: strength
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191520, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_Name
@@ -561,3 +561,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockBackResistance: 0
   vs: {fileID: 924639791968285090}
+  ease: 0
+  speed: 0

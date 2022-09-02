@@ -11,7 +11,8 @@ public class VelocitySetter : MonoBehaviour
     [SerializeField]
     private bool printDebug;
     private Rigidbody2D rb;
-    Dictionary<string, Vector2> sources;
+    public  Dictionary<string, Vector2> sources;
+    public Dictionary<string, Tween> activeTweens;
     int tempIdCounter;
     void Start()
     {
@@ -24,6 +25,7 @@ public class VelocitySetter : MonoBehaviour
     public void Init()
     {
         sources = new Dictionary<string, Vector2>();
+        activeTweens = new Dictionary<string, Tween>();
         rb = GetComponent<Rigidbody2D>();
     }
     
@@ -90,9 +92,9 @@ public class VelocitySetter : MonoBehaviour
     /// <param name="tween">Tween used on velocity source</param>
     public void AddSourceTween(string sourceID, Vector2 source, Tween tween)
     {
-        Debug.Log("Adding Source: " + sourceID + " " + source);
         AddSource(sourceID, source);
         StartCoroutine(CancelAfterTween(sourceID, tween));
+        activeTweens.Add(sourceID, tween);
     }
 
     /// <summary>
@@ -161,6 +163,11 @@ public class VelocitySetter : MonoBehaviour
         {
             sources.Remove(sourceID);
         }
+        if(activeTweens.ContainsKey(sourceID))
+        {
+            activeTweens[sourceID].Kill();
+            activeTweens.Remove(sourceID);
+        }
     }
     /// <summary>
     /// Cancel all sources
@@ -178,13 +185,19 @@ public class VelocitySetter : MonoBehaviour
     private IEnumerator CancelAfterSeconds(string requestID, float time)
     {
         yield return new WaitForSeconds(time);
-        Cancel(requestID);
+        if (sources.ContainsKey(requestID))
+        {
+            Cancel(requestID);
+        }
     }
     
     private IEnumerator CancelAfterTween(string requestID, Tween tween)
     {
         yield return tween.WaitForCompletion();
-        Cancel(requestID);
+        if (sources.ContainsKey(requestID))
+        {
+            Cancel(requestID);
+        }
     }
     #endregion
 
