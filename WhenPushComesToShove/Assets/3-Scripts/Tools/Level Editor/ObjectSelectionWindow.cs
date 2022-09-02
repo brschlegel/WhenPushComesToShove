@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-
+#if UNITY_EDITOR
 public class ObjectSelectionWindow : EditorWindow
 {
     public enum TypeOfObject {hazards, spawnPoints, decorations};
@@ -91,3 +91,4 @@ public class ObjectSelectionWindow : EditorWindow
         }
     }
 }
+#endif
