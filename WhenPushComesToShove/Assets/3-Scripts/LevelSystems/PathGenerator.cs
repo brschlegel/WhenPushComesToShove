@@ -30,6 +30,7 @@ public class PathGenerator : MonoBehaviour
             GameObject room = Instantiate(path[i]);
             room.transform.parent = transform;
             room.SetActive(false);
+            path[i] = room;
         }
 
         LevelManager.onNewRoom.Invoke();
