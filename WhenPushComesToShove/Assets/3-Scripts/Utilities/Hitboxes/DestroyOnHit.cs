@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyOnHit : HitHandler
 {
-    public override void RecieveHit(HitEvent e)
+    public override void ReceiveHit(HitEvent e)
     {
         Destroy(gameObject);
     }

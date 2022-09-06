@@ -5,7 +5,7 @@ using UnityEngine;
 public class KnockbackHitHandler : HitHandler
 {
     public KnockbackReciever kbReciever;
-    public override void RecieveHit(HitEvent e)
+    public override void ReceiveHit(HitEvent e)
     {
         KnockbackData data = e.hitbox.knockbackData;
         Vector2 direction = e.hitbox.transform.right;

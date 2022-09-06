@@ -13,6 +13,7 @@ public class VelocitySetter : MonoBehaviour
     private Rigidbody2D rb;
     public  Dictionary<string, Vector2> sources;
     public Dictionary<string, Tween> activeTweens;
+    private bool halted;
     int tempIdCounter;
     void Start()
     {
@@ -174,9 +175,10 @@ public class VelocitySetter : MonoBehaviour
     /// </summary>
     public void CancelAll()
     {
-        foreach(string r in sources.Keys)
+        List<string> keys = new List<string>(sources.Keys);
+       foreach(string key in keys)
         {
-            Cancel(r);
+            Cancel(key);
         }
     }
 
@@ -235,16 +237,30 @@ public class VelocitySetter : MonoBehaviour
     private void CalculateVelocity()
     {
         Vector2 velocity = Vector2.zero;
-        //Apply requests 
-        foreach(string key in sources.Keys)
+        if (!halted)
         {
-            Vector2 data = sources[key];
-            velocity += data;
-            if(printDebug)
+            //Apply requests 
+            foreach (string key in sources.Keys)
             {
-                Debug.Log(key + ":" + sources[key]);
+                Vector2 data = sources[key];
+                velocity += data;
+                if (printDebug)
+                {
+                    Debug.Log(key + ":" + sources[key]);
+                }
             }
         }
         rb.velocity = velocity;
+    }
+
+    public void Halt()
+    {
+        CancelAll();
+        halted = true;
+    }
+
+    public void UnHalt()
+    {
+        halted = false;
     }
 }

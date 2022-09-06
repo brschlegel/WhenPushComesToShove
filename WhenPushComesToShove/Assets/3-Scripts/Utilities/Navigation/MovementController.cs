@@ -49,5 +49,15 @@ public class MovementController : MonoBehaviour
         move = GetComponent<Move>();
     }
 
+    public void LockMovement()
+    {
+        move.movementLocked = true;
+    }
+
+    public void UnlockMovement()
+    {
+        move.movementLocked = false;
+    }
+
 
 }

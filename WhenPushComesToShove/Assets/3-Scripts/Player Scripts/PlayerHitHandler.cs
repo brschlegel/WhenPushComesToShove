@@ -8,7 +8,7 @@ public class PlayerHitHandler : HitHandler
   private KnockbackReciever kbReciever;
   [SerializeField]
   private Health health;
-  public override void RecieveHit(HitEvent e)
+  public override void ReceiveHit(HitEvent e)
   {
       KnockbackData kbData = e.hitbox.knockbackData;
       AttackData attackData = e.hitbox.attackData;
