@@ -10,8 +10,8 @@ public class PathGenerator : MonoBehaviour
 
     [Header("Path properties")]
     [SerializeField] int numOfRoom;
-    int currentRoomNum = 0;
-    List<GameObject> path = new List<GameObject>();
+    int currentPathNum = 0;
+    public List<GameObject> path = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -27,21 +27,19 @@ public class PathGenerator : MonoBehaviour
 
         for(int i = 0; i < path.Count; i++)
         {
-            Debug.Log(path[i].name);
+            GameObject room = Instantiate(path[i]);
+            room.transform.parent = transform;
+            room.SetActive(false);
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        LevelManager.onNewRoom.Invoke();
     }
 
     void GeneratePath()
     {
         LevelProperties[] shuffledRooms = ShuffleRooms();
 
-        while(currentRoomNum < numOfRoom)
+        while(currentPathNum < numOfRoom)
         {
             //Go through the rooms and see if the hazard levels match 
             for (int i = 0; i < shuffledRooms.Length; i++)
@@ -72,15 +70,16 @@ public class PathGenerator : MonoBehaviour
                 if(i == shuffledRooms.Length - 1)
                 {
                     Debug.Log("No remaining rooms for this path");
-                    currentRoomNum = numOfRoom;
+                    currentPathNum = numOfRoom;
                 }
             }
 
-            currentRoomNum++;
-        }
-        
-        
+            currentPathNum++;
+        }   
     }
+
+
+    //Helper Functions
 
     /// <summary>
     /// Puts the rooms in a random order
