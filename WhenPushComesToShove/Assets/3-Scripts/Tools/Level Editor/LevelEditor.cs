@@ -75,7 +75,7 @@ public class LevelEditor : MonoBehaviour
 
                 GameObject thirdLayer = Instantiate(selectedLevel.transform.GetChild(2).gameObject);
                 thirdLayer.transform.parent = transform;
-                placeableLayer = thirdLayer;
+                fadeablelayer = thirdLayer;
 
                 GameObject forthLayer = Instantiate(selectedLevel.transform.GetChild(3).gameObject);
                 forthLayer.transform.parent = transform;
@@ -198,6 +198,7 @@ public class CustomLevelEditor : Editor
             //Spawn the object
             GameObject root = new GameObject(level.levelName);
             LevelProperties levelProp = root.AddComponent<LevelProperties>();
+            root.AddComponent<Grid>();
 
             Instantiate(level.floorLayer).transform.parent = root.transform;
             Instantiate(level.wallLayer).transform.parent = root.transform;
@@ -274,7 +275,7 @@ public class CustomLevelEditor : Editor
             string path = "Assets/Resources/Levels/" + root.name + ".prefab";
 
             GameObject testObj = Resources.Load<GameObject>("Levels/" + root.name);
-            if (testObj != null)
+            if (testObj != null && level.selectedLevel == null)
             {
                 Debug.LogError("Asset already has that name");
                 DestroyImmediate(root);

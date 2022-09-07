@@ -16,7 +16,7 @@ public class PlayerDashScript : MonoBehaviour
     {
         if (vs != null)
         {
-            vs.AddSourceForTime("playerDash", dashDirection * dashSpeed, dashTime);
+            vs.AddSourceTime("playerDash", dashDirection * dashSpeed, dashTime);
         }
     }
 }
