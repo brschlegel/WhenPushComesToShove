@@ -9,16 +9,13 @@ public class InitLevel : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private bool initOnStart = true;
 
+    [HideInInspector] public bool lockPlayerSpawn = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (initOnStart)
+        if (PlayerConfigManager.Instance.levelInitRef != null)
         {
-            
-        }
-        else
-        {
-            //Pass in this reference so that players can be spwaned when they join
             PlayerConfigManager.Instance.levelInitRef = this;
         }
 
@@ -29,6 +26,11 @@ public class InitLevel : MonoBehaviour
     /// </summary>
     public void SpawnPlayer( int index )
     {
+        if (lockPlayerSpawn)
+        {
+            return;
+        }
+
         PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
         GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
         player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
