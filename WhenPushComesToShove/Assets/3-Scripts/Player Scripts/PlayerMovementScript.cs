@@ -5,7 +5,7 @@ using UnityEngine;
 //Handles the movement input action
 public class PlayerMovementScript : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 10f;
+    public float moveSpeed = 10f;
 
     private Vector3 moveDirection = Vector3.zero;
     private Vector2 moveInputVector = Vector2.zero;
