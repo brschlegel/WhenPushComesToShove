@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             onNewRoom();
         }
@@ -59,6 +59,7 @@ public class LevelManager : MonoBehaviour
         GameObject room = path[currentRoomIndex];
         room.SetActive(true);
 
+
         currentRoomIndex++;
 
         SetPlayerSpawns(room.GetComponent<LevelProperties>());
@@ -70,11 +71,20 @@ public class LevelManager : MonoBehaviour
     /// <param name="levelProps">Properties of the current room</param>
     void SetPlayerSpawns(LevelProperties levelProps)
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag(("Player"));
-        
-        for(int i = 0; i < players.Length; i++)
+        InitLevel init = PlayerConfigManager.Instance.levelInitRef;
+
+        //Convert the gameobjects into transfomrs
+        Transform[] levelPlayerSpawn = new Transform[init.playerSpawns.Length];
+        for (int i = 0; i < levelPlayerSpawn.Length; i++)
         {
-            players[i].transform.position = levelProps.playerSpawns[i].transform.position;
+            levelPlayerSpawn[i] = levelProps.playerSpawns[i].transform;
         }
+
+        //Set the players spawn positions
+        init.playerSpawns = levelPlayerSpawn;
+
+        Debug.Log(init.lockPlayerSpawn);
+        if(init.lockPlayerSpawn)
+            init.SpawnPlayersInLevel();
     }
 }

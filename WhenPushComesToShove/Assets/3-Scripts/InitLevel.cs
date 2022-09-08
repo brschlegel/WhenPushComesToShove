@@ -5,7 +5,7 @@ using UnityEngine;
 //Inits the level based on player data
 public class InitLevel : MonoBehaviour
 {
-    [SerializeField] private Transform[] playerSpawns;
+    public Transform[] playerSpawns;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private bool initOnStart = true;
 
@@ -14,7 +14,7 @@ public class InitLevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerConfigManager.Instance.levelInitRef != null)
+        if (PlayerConfigManager.Instance.levelInitRef == null)
         {
             PlayerConfigManager.Instance.levelInitRef = this;
         }
@@ -39,8 +39,6 @@ public class InitLevel : MonoBehaviour
 
     public void SpawnPlayersInLevel()
     {
-        //Prevent players from being spawned separately
-        PlayerConfigManager.Instance.levelInitRef = null;
 
         //Spawn the players in their set locations for the level.
         PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
