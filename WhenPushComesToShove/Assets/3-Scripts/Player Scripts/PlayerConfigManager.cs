@@ -113,6 +113,8 @@ public class PlayerConfiguration
     public bool IsReady { get; set; }
     public Material PlayerMaterial { get; set; }
 
+    public GameObject PlayerObject;
+
     public PlayerConfiguration(PlayerInput input)
     {
         PlayerIndex = input.playerIndex;

@@ -14,16 +14,7 @@ public class InitLevel : MonoBehaviour
     {
         if (initOnStart)
         {
-            //Prevent players from being spawned separately
-            PlayerConfigManager.Instance.levelInitRef = null;
-
-            //Spawn the players in their set locations for the level.
-            PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
-            for (int i = 0; i < playerConfigs.Length; i++)
-            {
-                GameObject player = Instantiate(playerPrefab, playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
-                player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
-            }
+            
         }
         else
         {
@@ -41,6 +32,23 @@ public class InitLevel : MonoBehaviour
         PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
         GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
         player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
+        playerConfigs[index].PlayerObject = player;
+    }
+
+    public void SpawnPlayersInLevel()
+    {
+        //Prevent players from being spawned separately
+        PlayerConfigManager.Instance.levelInitRef = null;
+
+        //Spawn the players in their set locations for the level.
+        PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
+        for (int i = 0; i < playerConfigs.Length; i++)
+        {
+            //GameObject player = Instantiate(playerPrefab, playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
+            //player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
+
+            playerConfigs[i].PlayerObject.transform.position = playerSpawns[i].transform.position;
+        }
     }
 
 }
