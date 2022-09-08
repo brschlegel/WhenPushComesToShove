@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+using System;
 
 //Script to take in player input and trigger the necessary actions
 public class PlayerInputHandler : MonoBehaviour
@@ -27,6 +28,8 @@ public class PlayerInputHandler : MonoBehaviour
     private SpriteRenderer sr;
 
     private PlayerControls controls;
+
+    public Action onSelect;
 
     // Start is called before the first frame update
     void Awake()
@@ -77,7 +80,10 @@ public class PlayerInputHandler : MonoBehaviour
         //Select
         else if (obj.action.name == controls.PlayerMovement.Select.name)
         {
-            Debug.Log("Player " + playerConfig.PlayerIndex + " Performed the Select Action");
+            if (onSelect != null)
+            {
+                onSelect();
+            }
         }
         //Light Shove
         else if (obj.action.name == controls.PlayerMovement.LightShove.name)
@@ -85,7 +91,7 @@ public class PlayerInputHandler : MonoBehaviour
             if (!performingAction)
             {
                 LockAction(shoveActionCooldown);
-                lightShoveScript.OnLightShove();
+                lightShoveScript.onLightShove();
             }
         }
         //Heavy Shove
@@ -94,7 +100,7 @@ public class PlayerInputHandler : MonoBehaviour
             if (!performingAction)
             {
                 LockAction(shoveActionCooldown);
-                heavyShoveScript.OnHeavyShove();
+                heavyShoveScript.onHeavyShove();
             }
         }
         //Dash
@@ -223,5 +229,13 @@ public class PlayerInputHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldown);
         lockMovement = false;
+    }
+
+    /// <summary>
+    /// Helper function to clear the current action assigned to select
+    /// </summary>
+    public void ClearSelectAction()
+    {
+        onSelect = null;
     }
 }
