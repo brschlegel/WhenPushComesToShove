@@ -7,5 +7,5 @@ using UnityEngine;
 //If we decide this is too bloated to pass around we can look at slimming it down
 public abstract class HitHandler : MonoBehaviour 
 {
-    public abstract void RecieveHit(HitEvent e);
+    public abstract void ReceiveHit(HitEvent e);
 }
