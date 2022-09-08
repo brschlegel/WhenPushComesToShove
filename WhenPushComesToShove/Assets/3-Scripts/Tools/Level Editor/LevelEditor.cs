@@ -32,6 +32,7 @@ public class LevelEditor : MonoBehaviour
     [Header("Level Properties")]
     public string levelName;
     public HazardDifficulty.HazardStats[] hazardStats;
+    public EnemyDifficulty.EnemyLevelStats[] enemyStats;
 
     [Header("Selected File")]
     public GameObject selectedLevel;
@@ -58,8 +59,14 @@ public class LevelEditor : MonoBehaviour
             if (levelName != selectedLevel.name)
                 levelName = selectedLevel.name;
 
-            //Update hazard stats
-            hazardStats = selectedLevel.GetComponent<LevelProperties>().hazards;
+            //Update stats
+            LevelProperties selectedProps = selectedLevel.GetComponent<LevelProperties>();
+
+            //Hazard stats
+            hazardStats = selectedProps.hazards;
+
+            //Enemy stats
+            enemyStats = selectedProps.enemyStats;
 
             //Update the sprite layers to match the selected Level
             if (gameObject.transform.GetChild(0) != selectedLevelFirstChild)
@@ -174,6 +181,7 @@ public class LevelEditor : MonoBehaviour
         levelName = "";
         selectedLevel = null;
         hazardStats = null;
+        enemyStats = null;
 
     }
 }
@@ -266,6 +274,14 @@ public class CustomLevelEditor : Editor
             }
             else
                 levelProp.hazards = level.hazardStats;
+
+            if (level.enemyStats.Length <= 0)
+            {
+                Debug.LogError("There needs to be at least 1 enemy stat.");
+                return;
+            }
+            else
+                levelProp.enemyStats = level.enemyStats;
 
             if(root.name == "")
             {
