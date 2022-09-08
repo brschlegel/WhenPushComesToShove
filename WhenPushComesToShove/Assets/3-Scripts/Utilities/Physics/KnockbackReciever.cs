@@ -3,15 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public struct TweenInfo{
-    public Ease ease;
-    public float speed;
-    public TweenInfo(Ease ease, float speed)
-    {
-        this.ease = ease;
-        this.speed = speed;
-    }
-}
+
 public class KnockbackReciever : MonoBehaviour
 {
     [SerializeField]

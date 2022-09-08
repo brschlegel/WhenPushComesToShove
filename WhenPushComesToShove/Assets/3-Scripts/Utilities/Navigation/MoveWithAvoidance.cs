@@ -59,8 +59,16 @@ public class MoveWithAvoidance : Move
 
     public void FixedUpdate()
     {
-        Vector2 v = Vector2.Lerp(velocitySetter.Velocity.normalized, GetMovementDirection(target), .9f );
-        velocitySetter.AddSource("Move", v, speed);
+        if (movementLocked)
+        {
+            velocitySetter.AddSource("Move", Vector2.zero);
+        }
+        else
+        {
+           // Vector2 v = Vector2.Lerp(velocitySetter.Velocity.normalized, GetMovementDirection(target), .9f);
+            Vector2 v = GetMovementDirection(target);
+            velocitySetter.AddSource("Move", v, speed);
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

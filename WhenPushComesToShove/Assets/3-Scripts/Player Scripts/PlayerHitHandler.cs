@@ -6,11 +6,14 @@ public class PlayerHitHandler : HitHandler
 {
   [SerializeField]
   private KnockbackReciever kbReciever;
-  public override void RecieveHit(HitEvent e)
+  [SerializeField]
+  private Health health;
+  public override void ReceiveHit(HitEvent e)
   {
- 
-    AttackData data = e.hitbox.data;
-    Vector2 direction =  e.hurtbox.transform.position-e.hitbox.transform.position;
-    kbReciever.TakeKnockback(data.strength, direction.normalized);
+      KnockbackData kbData = e.hitbox.knockbackData;
+      AttackData attackData = e.hitbox.attackData;
+      Vector2 direction = e.hurtbox.transform.position - e.hitbox.transform.position;
+      kbReciever.TakeKnockback(kbData.strength, direction.normalized);
+      health.TakeDamage(attackData.damage);
   }
 }
