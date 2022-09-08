@@ -56,7 +56,13 @@ public class MovementController : MonoBehaviour
 
     public void UnlockMovement()
     {
+        Debug.Log("Unlocked");
         move.movementLocked = false;
+    }
+
+    public bool IsMoveEnabled()
+    {
+        return move.enabled;
     }
 
 

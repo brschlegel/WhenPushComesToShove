@@ -10,11 +10,19 @@ public class SlimeBrain : MonoBehaviour
     private JumpAttack jumpAttack;
     [SerializeField]
     private VelocitySetter vs;
+    [SerializeField]
+    private EnemyHitstun hitstun;
+    [SerializeField]
+    private MovementController movement;
     private Transform target;
+
+    private bool isAttacking;
     // Start is called before the first frame update
     void Start()
     {
         jumpAttack.vs = vs;
+        jumpAttack.onAttackEnd += JumpAttackEnd;
+        jumpAttack.movement = movement;
     }
 
     // Update is called once per frame
@@ -26,8 +34,11 @@ public class SlimeBrain : MonoBehaviour
             if (target != null)
             {
                 chase.SetTarget(target);
-                chase.enabled = true;
             }
+        }
+        else if(chase.closeEnough && !isAttacking && !hitstun.inHitstun)
+        {
+            JumpAttack();
         }
     }
 
@@ -49,6 +60,13 @@ public class SlimeBrain : MonoBehaviour
 
     public void JumpAttack()
     {
+
+        isAttacking = true;
         jumpAttack.Attack(target);
+    }
+
+    public void JumpAttackEnd(Transform target)
+    {
+        isAttacking = false;
     }
 }

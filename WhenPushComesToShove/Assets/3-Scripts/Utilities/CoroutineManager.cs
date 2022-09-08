@@ -16,6 +16,11 @@ public class CoroutineManager : MonoBehaviour
     {
         return Instance.StartCoroutine(coroutine);
     }
+
+    public static void StopGlobalCoroutine(Coroutine coroutine)
+    {
+        Instance.StopCoroutine(coroutine);
+    }
     public void Awake()
     {
         Init();

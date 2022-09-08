@@ -12,13 +12,14 @@ public class EnemyHitstun : MonoBehaviour
     private MovementController movement;
     [SerializeField]
     private float hitstunThreshold;
+    public bool inHitstun;
 
     private void Start()
     {
         rb = vs.GetComponent<Rigidbody2D>();
         movement = GetComponent<MovementController>();
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (vs.QuerySource("Move", out Vector2 vel))
         {
@@ -26,11 +27,15 @@ public class EnemyHitstun : MonoBehaviour
 
             if (rb.velocity.magnitude - movementMagnitude >= hitstunThreshold)
             {
-                movement.LockMovement();
+                if(!inHitstun)
+                    movement.LockMovement();
+                inHitstun = true;
             }
             else
             {
-                movement.UnlockMovement();
+                if(inHitstun)
+                    movement.UnlockMovement();
+                inHitstun = false;
             }
         }
     }

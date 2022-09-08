@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Chase : MovementController
 {
-    private bool closeEnough;
+    public bool closeEnough;
     [SerializeField]
     private Transform chaseTarget;
 
