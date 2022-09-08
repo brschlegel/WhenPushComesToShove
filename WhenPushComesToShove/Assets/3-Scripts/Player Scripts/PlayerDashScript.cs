@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerDashScript : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class PlayerDashScript : MonoBehaviour
     {
         if (vs != null)
         {
-            vs.AddSourceTime("playerDash", dashDirection * dashSpeed, dashTime);
+            Tween tween = DOVirtual.Float(dashSpeed, 0, dashTime, f => vs.UpdateVelocityMagnitude("playerDash", f)).SetEase(Ease.OutQuint);
+            vs.AddSourceTween("playerDash", dashDirection * dashSpeed, tween);
         }
     }
 }

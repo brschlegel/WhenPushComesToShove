@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(AttackData))]
 public class Hitbox : MonoBehaviour
 {
     public void Start()
@@ -12,7 +11,8 @@ public class Hitbox : MonoBehaviour
         {
             Debug.LogError("NO HITBOX MANAGER IN SCENE!");
         }
-        data = GetComponent<AttackData>();
+        attackData = GetComponent<AttackData>();
+        knockbackData = GetComponent<KnockbackData>();
     }
 
     [Tooltip("Hit Handler for hitbox, OPTIONAL")]
@@ -23,7 +23,9 @@ public class Hitbox : MonoBehaviour
     public GameObject owner;
 
     [HideInInspector]
-    public AttackData data;
+    public AttackData attackData;
+    [HideInInspector]
+    public KnockbackData knockbackData;
 
    
 }

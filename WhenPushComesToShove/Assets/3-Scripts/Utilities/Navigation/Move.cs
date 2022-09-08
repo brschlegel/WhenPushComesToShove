@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-[RequireComponent(typeof(VelocitySetter))]
 public abstract class Move : MonoBehaviour
 {
     public float speed;
+    [SerializeField]
     protected VelocitySetter velocitySetter;
     [HideInInspector]
     public Vector2 target;
+    public bool movementLocked;
 
     protected void Start()
     {
@@ -29,5 +29,6 @@ public abstract class Move : MonoBehaviour
 
     public abstract void Stop();
   
+   
 
 }

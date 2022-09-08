@@ -5,6 +5,7 @@ using UnityEngine;
 public class PathGenerator : MonoBehaviour
 {
     [SerializeField] HazardDifficulty.HazardStats[] hazardLevels;
+    [SerializeField] EnemyDifficulty.EnemyLevelStats[] enemyStatLevels;
     Object[] levels;
     List<LevelProperties> levelProps = new List<LevelProperties>();
 
@@ -61,6 +62,16 @@ public class PathGenerator : MonoBehaviour
                             }
                         }
 
+                        //Ups the enemy levels in the path
+                        foreach(EnemyDifficulty.EnemyLevelStats stat in shuffledRooms[i].enemyStats)
+                        {
+                            for(int j = 0; j < enemyStatLevels.Length; j++)
+                            {
+                                if (stat.enemy == enemyStatLevels[j].enemy)
+                                    enemyStatLevels[j].level++;
+                            }
+                        }
+
                         //Ensures the same room ins't spawned twice
                         shuffledRooms[i] = null;
                         break;
@@ -106,6 +117,7 @@ public class PathGenerator : MonoBehaviour
     //Tests to see if a room's hazards are the correct difficulty
     bool IsCompatibleRoom(LevelProperties prop)
     {
+        //Check if the level's hazards match the path's
         foreach (HazardDifficulty.HazardStats haz in prop.hazards)
         {
             foreach(HazardDifficulty.HazardStats hazLevel in hazardLevels)
@@ -120,6 +132,20 @@ public class PathGenerator : MonoBehaviour
             }
         }
 
+        //Check if the level's enemies match the path's
+        foreach(EnemyDifficulty.EnemyLevelStats enm in prop.enemyStats)
+        {
+            foreach(EnemyDifficulty.EnemyLevelStats enmLevel in enemyStatLevels)
+            {
+                //Makes sure that the same enemies are being compared
+                if(enm.enemy == enmLevel.enemy)
+                {
+                    //Make sure that enemies are the same level
+                    if (enm.level != enmLevel.level)
+                        return false;
+                }
+            }
+        }
         return true;
     }
 }

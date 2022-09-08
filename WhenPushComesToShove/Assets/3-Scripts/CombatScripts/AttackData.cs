@@ -6,7 +6,5 @@ public enum KnockbackType{Normal, None}
 //Data class regarding attacks
 public class AttackData : MonoBehaviour
 {
-   public float strength;
    public float damage;
-   public KnockbackType type;
 }

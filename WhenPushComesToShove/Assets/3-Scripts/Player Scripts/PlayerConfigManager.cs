@@ -102,6 +102,9 @@ public class PlayerConfigManager : MonoBehaviour
 
             levelInitRef.SpawnPlayer(input.playerIndex);
         }
+
+        if (playerConfigs.Count >= maxPlayers)
+            levelInitRef.lockPlayerSpawn = true;
     }
 }
 
@@ -112,6 +115,8 @@ public class PlayerConfiguration
     public int PlayerIndex { get; set; }
     public bool IsReady { get; set; }
     public Material PlayerMaterial { get; set; }
+
+    public GameObject PlayerObject;
 
     public PlayerConfiguration(PlayerInput input)
     {

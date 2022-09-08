@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Chase : MovementController
 {
-    private bool closeEnough;
+    public bool closeEnough;
     [SerializeField]
     private Transform chaseTarget;
 
-    private void FixedUpdate()
+    private void Update()
     {
+        if(chaseTarget == null)
+            return;
         move.target = chaseTarget.position;
         if(Vector2.Distance(transform.position, move.target) > destinationTolerance)
         {

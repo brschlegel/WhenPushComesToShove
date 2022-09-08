@@ -5,10 +5,10 @@ using UnityEngine;
 public class KnockbackHitHandler : HitHandler
 {
     public KnockbackReciever kbReciever;
-    public override void RecieveHit(HitEvent e)
+    public override void ReceiveHit(HitEvent e)
     {
-        AttackData data = e.hitbox.data;
+        KnockbackData data = e.hitbox.knockbackData;
         Vector2 direction = e.hitbox.transform.right;
-        kbReciever.TakeKnockback(data.strength, direction.normalized);
+        kbReciever.TakeKnockback(data.strength, data.GetDirection(e));
     }
 }
