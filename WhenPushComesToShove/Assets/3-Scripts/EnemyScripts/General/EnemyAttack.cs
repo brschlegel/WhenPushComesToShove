@@ -17,7 +17,7 @@ public abstract class EnemyAttack : MonoBehaviour
 
     public virtual void Attack(Transform target)
     {
-        coroutine = CoroutineManager.StartGlobalCoroutine(AttackCoroutine(target));
+       
     }
 
     protected abstract IEnumerator AttackCoroutine(Transform target);
