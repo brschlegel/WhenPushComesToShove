@@ -103,7 +103,7 @@ public class PlayerConfigManager : MonoBehaviour
             levelInitRef.SpawnPlayer(input.playerIndex);
         }
 
-        if (playerConfigs.Count >= maxPlayers)
+        if (playerConfigs.Count >= 1)
             levelInitRef.lockPlayerSpawn = true;
     }
 }

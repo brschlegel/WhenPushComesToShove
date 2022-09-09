@@ -24,7 +24,8 @@ public class PathGenerator : MonoBehaviour
             levelProps.Add(obj.GetComponent<LevelProperties>());
         }
 
-        GeneratePath();
+        if(path.Count <= 0)
+            GeneratePath();
 
         for(int i = 0; i < path.Count; i++)
         {

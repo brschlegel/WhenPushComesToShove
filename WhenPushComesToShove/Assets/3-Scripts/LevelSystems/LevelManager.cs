@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
     int currentRoomIndex = 0;
     PathGenerator pathGen;
     List<GameObject> path;
+    [Tooltip("Debug Variable. Will cause the path to cycle to the beginning.")]
+    [SerializeField] bool repeatPath;
     public static Action onNewRoom;
 
     private void OnEnable()
@@ -45,9 +47,16 @@ public class LevelManager : MonoBehaviour
         if (path == null)
             path = pathGen.path;
 
-        if (currentRoomIndex >= path.Count)
+        if (currentRoomIndex >= path.Count && repeatPath == false)
             return;
+        else if (currentRoomIndex >= path.Count && repeatPath == true)
+        {
+            Debug.Log(currentRoomIndex);
+            currentRoomIndex = 0;
+        }
+            
 
+        
         //Hide the previous room
         for (int i = 0; i < path.Count; i++)
         {
@@ -83,7 +92,7 @@ public class LevelManager : MonoBehaviour
         //Set the players spawn positions
         init.playerSpawns = levelPlayerSpawn;
 
-        Debug.Log(init.lockPlayerSpawn);
+        //Debug.Log(init.lockPlayerSpawn);
         if(init.lockPlayerSpawn)
             init.SpawnPlayersInLevel();
     }
