@@ -8,4 +8,7 @@ using UnityEngine;
 public abstract class HitHandler : MonoBehaviour 
 {
     public abstract void ReceiveHit(HitEvent e);
+
+    [Tooltip("Will ignore hits from these tags: PUT TAG ON HITBOX OBJECT")]
+    public List<string> tagsToIgnore;
 }

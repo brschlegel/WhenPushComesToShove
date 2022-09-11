@@ -1,5 +1,141 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &881103313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 881103314}
+  - component: {fileID: 881103319}
+  - component: {fileID: 881103318}
+  - component: {fileID: 881103317}
+  - component: {fileID: 881103316}
+  - component: {fileID: 881103315}
+  - component: {fileID: 881103320}
+  m_Layer: 0
+  m_Name: States
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &881103314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881103313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 999011918721939297}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &881103319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881103313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976f52f9930b71f449ab4e7b2aede650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 0}
+  target: {fileID: 0}
+  chase: {fileID: 999011920109504316}
+  hitstun: {fileID: 999011920109504318}
+  anim: {fileID: 999011919433777032}
+  hitboxObject: {fileID: 5963588997929702906}
+--- !u!114 &881103318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881103313}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31ac6675138afa4cb5ee8db1bc3ec00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Run
+  anim: {fileID: 0}
+  target: {fileID: 0}
+  chase: {fileID: 0}
+--- !u!114 &881103317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881103313}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a335b491e24c9f4a90359670b8b3529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Land
+  anim: {fileID: 0}
+  chase: {fileID: 0}
+  hitboxObject: {fileID: 0}
+  hitboxActiveTime: 0.2
+--- !u!114 &881103316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881103313}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cd6af1a8c4508a499536527e16aa6a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Jump
+  anim: {fileID: 0}
+  target: {fileID: 0}
+  chase: {fileID: 0}
+  secondsStationary: 0.2
+  jumpSpeed: 5
+--- !u!114 &881103315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881103313}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c331290a929ea04a9d97ae37d01c585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Hit
+  anim: {fileID: 0}
+  hitstun: {fileID: 0}
+  additionalStunTime: 0.5
+--- !u!114 &881103320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881103313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8f0201ef3c3d34f983b918ab68faa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Idle
+  anim: {fileID: 0}
 --- !u!1 &999011918721937567
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +150,6 @@ GameObject:
   - component: {fileID: 999011918721939299}
   - component: {fileID: 999011918721939298}
   - component: {fileID: 999011918721939302}
-  - component: {fileID: 999011918721939303}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -39,6 +174,7 @@ Transform:
   - {fileID: 5963588997929702903}
   - {fileID: 999011919433777031}
   - {fileID: 999011920060830535}
+  - {fileID: 881103314}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -128,23 +264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vs: {fileID: 999011918721939299}
---- !u!114 &999011918721939303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 999011918721937567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 976f52f9930b71f449ab4e7b2aede650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chase: {fileID: 999011920109504316}
-  jumpAttack: {fileID: 999011918499859282}
-  vs: {fileID: 999011918721939299}
-  hitstun: {fileID: 999011920109504318}
-  movement: {fileID: 999011920109504316}
 --- !u!1 &999011919433777030
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +275,7 @@ GameObject:
   - component: {fileID: 999011919433777031}
   - component: {fileID: 999011919433777033}
   - component: {fileID: 999011919433777032}
+  - component: {fileID: 790300681}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -250,6 +370,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &790300681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999011919433777030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f038b70573f98409519b2aa2d275a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRightFlipped: 0
+  brain: {fileID: 881103319}
+  rb: {fileID: 999011918721939300}
 --- !u!1 &999011920060830534
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vs: {fileID: 999011918721939299}
-  hitstunThreshold: 5
+  hitstunThreshold: 3
   inHitstun: 0
 --- !u!1001 &999011918593432200
 PrefabInstance:
@@ -519,9 +654,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outputs:
   - {fileID: 999011920278194450}
-  - {fileID: 999011920278194455}
   - {fileID: 999011920278194456}
---- !u!114 &999011920278194455
+  - {fileID: 2035447770}
+--- !u!114 &999011920278194456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415990179920017736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22dbf66df48581a4383e407aa75f4828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 999011920060830536}
+--- !u!114 &2035447770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -536,9 +684,9 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 999011918499859282}
-        m_TargetAssemblyTypeName: JumpAttack, Assembly-CSharp
-        m_MethodName: Cancel
+      - m_Target: {fileID: 881103319}
+        m_TargetAssemblyTypeName: SlimeBrain, Assembly-CSharp
+        m_MethodName: OnHit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -548,19 +696,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &999011920278194456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7415990179920017736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22dbf66df48581a4383e407aa75f4828, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 999011920060830536}
 --- !u!1001 &999011919620934298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -656,22 +791,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6854435290789191520, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
   m_PrefabInstance: {fileID: 999011919620934298}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &999011918499859282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5963588997929702906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b770d7d6881c894c834d45832f65106, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpSpeed: 2
-  vs: {fileID: 0}
-  anim: {fileID: 999011919433777032}
-  movement: {fileID: 0}
 --- !u!114 &999011918499859283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,19 +806,6 @@ MonoBehaviour:
   type: 0
   strength: 40
   axis: 0
---- !u!114 &999011918499859294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5963588997929702906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22dbf66df48581a4383e407aa75f4828, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 999011920060830536}
 --- !u!1001 &999011920256741617
 PrefabInstance:
   m_ObjectHideFlags: 0
