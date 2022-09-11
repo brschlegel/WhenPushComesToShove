@@ -9,9 +9,9 @@ public class SpeedBoots : LootData
     /// </summary>
     public override void Action()
     {
-        if (player != null)
+        if (playerRef != null)
         {
-            player.GetComponentInChildren<PlayerMovementScript>().moveSpeed *= 2;
+            playerRef.GetComponentInChildren<PlayerMovementScript>().moveSpeed *= 2;
         }
     }
 }

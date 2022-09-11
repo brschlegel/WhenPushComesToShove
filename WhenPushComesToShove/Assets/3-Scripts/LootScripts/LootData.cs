@@ -16,7 +16,7 @@ public class LootData : MonoBehaviour
     [HideInInspector]public Sprite sprite;
     public LootType lootType;
     public bool overrideBaseAction = true;
-    [HideInInspector]public Transform player;
+    [HideInInspector]public Transform playerRef;
 
     public virtual void Awake()
     {
@@ -24,7 +24,24 @@ public class LootData : MonoBehaviour
     }
 
     /// <summary>
-    /// The function for the powerup to override. If the item is passive it will be called on equip otherwise it will be attached to the shove action
+    /// Function for the loot to modify something on equip
+    /// </summary>
+    /// <param name="player"></param>
+    public virtual void OnEquip( Transform player )
+    {
+        playerRef = player;
+    }
+
+    /// <summary>
+    /// Function for the loot to modify something on unequip
+    /// </summary>
+    public virtual void OnUnequip( Transform player )
+    {
+
+    }
+
+    /// <summary>
+    /// Function to override or add to the base functionality of a shove
     /// </summary>
     public virtual void Action() 
     {

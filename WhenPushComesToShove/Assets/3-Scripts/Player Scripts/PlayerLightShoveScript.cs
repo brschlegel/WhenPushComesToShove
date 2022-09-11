@@ -7,12 +7,12 @@ public class PlayerLightShoveScript : MonoBehaviour
 {
     public Action onLightShove;
 
-    [SerializeField] private GameObject hitbox;
+    public Hitbox hitbox;
     [SerializeField] private float cooldown = .5f;
 
     public void Start()
     {
-        hitbox.SetActive(false);
+        hitbox.gameObject.SetActive(false);
 
         EnableBaseLightShove();
     }
@@ -22,7 +22,7 @@ public class PlayerLightShoveScript : MonoBehaviour
     /// </summary>
     public void EnableShoveBaseHitbox()
     {
-        hitbox.SetActive(true);
+        hitbox.gameObject.SetActive(true);
         StartCoroutine(HitboxCooldown());
     }
 
@@ -33,7 +33,7 @@ public class PlayerLightShoveScript : MonoBehaviour
     public IEnumerator HitboxCooldown()
     {
         yield return new WaitForSeconds(cooldown);
-        hitbox.SetActive(false);
+        hitbox.gameObject.SetActive(false);
     }
 
     public void EnableBaseLightShove()
