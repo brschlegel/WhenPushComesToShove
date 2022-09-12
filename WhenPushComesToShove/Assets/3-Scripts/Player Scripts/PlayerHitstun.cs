@@ -18,7 +18,7 @@ public class PlayerHitstun : Hitstun
 
     protected override void Unstun()
     {
-        inputHandler.ForceLockMovement();
+        inputHandler.ForceUnlockMovement();
     }
 
 
