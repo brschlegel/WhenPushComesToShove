@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 8683604864337146482}
   - component: {fileID: 8866138083129418701}
   - component: {fileID: 3186559500755933933}
-  - component: {fileID: 5866333075181614657}
+  - component: {fileID: 5322327363945852087}
   m_Layer: 0
   m_Name: InputHandler
   m_TagString: Untagged
@@ -160,7 +160,7 @@ MonoBehaviour:
   vs: {fileID: 0}
   dashSpeed: 25
   dashTime: 0.75
---- !u!114 &5866333075181614657
+--- !u!114 &5322327363945852087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,11 +169,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3192962310233775801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd94aa531c89c394db69dfa2360cc6dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 7468362213533ae4b9d3bfb93585f1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vs: {fileID: 924639791968285090}
-  hitstunThreshold: 5
+  hitstunThreshold: 3
+  inHitstun: 0
 --- !u!1 &5782972655189162237
 GameObject:
   m_ObjectHideFlags: 0
