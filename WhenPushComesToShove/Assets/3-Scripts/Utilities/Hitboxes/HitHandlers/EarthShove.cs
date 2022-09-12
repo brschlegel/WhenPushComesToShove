@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireShove : HitHandler
+public class EarthShove : HitHandler
 {
     [SerializeField] private float burnTime = 5;
     [SerializeField] private float timeBetweenBurns = 1;

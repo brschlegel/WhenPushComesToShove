@@ -6,7 +6,7 @@ public class IceShove : HitHandler
 {
     [SerializeField] private float slowTime = 5;
     [SerializeField] private float percentSpeedDecrease = .5f;
-    [SerializeField] private string slowID = "SlowID";
+    [SerializeField] private string slowID = "Slow";
     private Coroutine slowRoutine;
 
     public override void ReceiveHit(HitEvent e)
@@ -35,5 +35,7 @@ public class IceShove : HitHandler
         yield return new WaitForSeconds(slowTime);
 
         move.Speed /= percentSpeedDecrease;
+
+        ailmentRef.statusAilments.Remove(slowID);
     }
 }

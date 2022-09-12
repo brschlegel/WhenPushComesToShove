@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 347616166255666304}
   - component: {fileID: 4489494046589434935}
   m_Layer: 0
-  m_Name: PassiveDebug
+  m_Name: SppedBoots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,4 +127,5 @@ MonoBehaviour:
   sprite: {fileID: 0}
   lootType: 2
   overrideBaseAction: 1
-  player: {fileID: 0}
+  playerRef: {fileID: 0}
+  percentSpeedIncrease: 0.5

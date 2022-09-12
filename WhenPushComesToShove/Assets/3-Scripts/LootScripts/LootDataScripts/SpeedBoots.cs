@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpeedBoots : LootData
 {
+    [SerializeField] private float percentSpeedIncrease = .5f;
+
     /// <summary>
     /// Doubles the players current move speed
     /// </summary>
@@ -11,7 +13,13 @@ public class SpeedBoots : LootData
     {
         if (playerRef != null)
         {
-            playerRef.GetComponentInChildren<PlayerMovementScript>().moveSpeed *= 2;
+            PlayerMovementScript move = playerRef.GetComponentInChildren<PlayerMovementScript>();
+            move.moveSpeed *= (1 + percentSpeedIncrease);
+
+            if (move.moveSpeed > move.maxMoveSpeed)
+            {
+                move.moveSpeed = move.maxMoveSpeed;
+            }
         }
     }
 }
