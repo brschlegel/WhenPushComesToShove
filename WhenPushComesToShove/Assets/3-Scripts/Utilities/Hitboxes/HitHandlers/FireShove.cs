@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class FireShove : HitHandler
 {
-    [SerializeField]private float burnTime = 5;
+    [SerializeField] private float burnTime = 5;
     [SerializeField] private float timeBetweenBurns = 1;
     [SerializeField] private float burnDamage = 1;
-    private Coroutine burnRoutine;
+    [SerializeField] private string burnID = "Burn";
     private float timer = 0;
 
     public override void ReceiveHit(HitEvent e)
     {
-        if (burnRoutine != null)
-        {
-            StopCoroutine(burnRoutine);
-        }
+        //Check if enemy if already burning
+        EnemyStatusAilments enemyAilments = e.hurtbox.GetComponent<EnemyStatusAilments>();
 
-        burnRoutine = StartCoroutine(BurnOverTime(e));
+        if (enemyAilments.statusAilments.ContainsKey(burnID))
+        {
+            StopCoroutine(enemyAilments.statusAilments[burnID]);
+            enemyAilments.statusAilments[burnID] = StartCoroutine(BurnOverTime(e, enemyAilments));
+        }
+        else
+        {
+
+            enemyAilments.statusAilments.Add(burnID, StartCoroutine(BurnOverTime(e, enemyAilments)));
+        }
     }
 
-    public IEnumerator BurnOverTime(HitEvent e)
+    public IEnumerator BurnOverTime(HitEvent e, EnemyStatusAilments ailmentRef)
     {
         Health health = e.hurtbox.transform.parent.GetComponentInChildren<Health>();
         timer = 0;
@@ -32,5 +39,7 @@ public class FireShove : HitHandler
             Debug.Log("Burn");
             timer += timeBetweenBurns;
         }
+
+        ailmentRef.statusAilments.Remove(burnID);
     }
 }

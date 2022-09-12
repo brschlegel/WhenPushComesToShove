@@ -164,11 +164,17 @@ public class PlayerInventory : MonoBehaviour
         {
             case LootData.LootType.Light:
                 lightShoveScript.hitbox.gameObject.AddComponent(handler.GetType());
-                lightShoveScript.hitbox.handler = lightShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
+                HitHandler newHandler = lightShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
+                newHandler = Extensions.GetCopyOf(newHandler, handler);
+                lightShoveScript.hitbox.handler = newHandler;
+                lightShoveScript.hitbox.gameObject.name = "LightHitbox";
                 break;
             case LootData.LootType.Heavy:
                 heavyShoveScript.hitbox.gameObject.AddComponent(handler.GetType());
-                heavyShoveScript.hitbox.handler = heavyShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
+                HitHandler newHeavyHandler = heavyShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
+                newHandler = Extensions.GetCopyOf(newHeavyHandler, handler);
+                heavyShoveScript.hitbox.handler = newHandler;
+                heavyShoveScript.hitbox.gameObject.name = "HeavyHitbox";
                 break;
             default:
                 Debug.LogError("Cannot override HitHandler with this loot type.");
