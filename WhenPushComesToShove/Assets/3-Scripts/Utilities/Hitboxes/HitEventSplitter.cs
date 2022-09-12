@@ -10,7 +10,7 @@ public class HitEventSplitter : HitHandler
    {
         foreach(HitHandler handler in outputs)
         {
-            handler.ReceiveHit(e);
+            handler.ProcessHit(e);
         }
    }
 }
