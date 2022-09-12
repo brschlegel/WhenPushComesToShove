@@ -12,14 +12,15 @@ public class CoroutineManager : MonoBehaviour
         return Instance.gameObject;
     }
 
-    public static Coroutine StartGlobalCoroutine(IEnumerator coroutine)
+    public static IEnumerator StartGlobalCoroutine(IEnumerator enumerator)
     {
-        return Instance.StartCoroutine(coroutine);
+        Instance.StartCoroutine(enumerator);
+        return enumerator;
     }
 
-    public static void StopGlobalCoroutine(Coroutine coroutine)
+    public static void StopGlobalCoroutine(IEnumerator enumerator)
     {
-        Instance.StopCoroutine(coroutine);
+        Instance.StopCoroutine(enumerator);
     }
     public void Awake()
     {

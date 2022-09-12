@@ -2,71 +2,125 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeBrain : MonoBehaviour
+public class SlimeBrain : EnemyBrain
 {
+    //#region States
+    SlimeIdle idleState;
+    SlimeRun runState;
+    SlimeJump jumpState;
+    SlimeLand landState;
+    SlimeHit hitState;
+    //#endregion
+
     [SerializeField]
     private Chase chase;
     [SerializeField]
-    private JumpAttack jumpAttack;
-    [SerializeField]
-    private VelocitySetter vs;
-    [SerializeField]
     private EnemyHitstun hitstun;
     [SerializeField]
-    private MovementController movement;
-    private Transform target;
+    private Animator anim;
+    [SerializeField]
+    private GameObject hitboxObject;
 
-    private bool isAttacking;
-    // Start is called before the first frame update
-    void Start()
-    {
-        jumpAttack.vs = vs;
-        jumpAttack.onAttackEnd += JumpAttackEnd;
-        jumpAttack.movement = movement;
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (target == null)
+        if(runState == null)
         {
-            target = PickTarget();
-            if (target != null)
-            {
-                chase.SetTarget(target);
-            }
-        }
-        else if(chase.closeEnough && !isAttacking && !hitstun.inHitstun)
-        {
-            JumpAttack();
+            Init();
         }
     }
 
-    private Transform PickTarget()
+    private void Update()
     {
-        float dist = float.PositiveInfinity;
-        Transform closest = null;
-        foreach(Transform t in GameState.players)
+        if(runState.enabled)
+            target = runState.target;
+    }
+
+    private void Init()
+    {
+        idleState = GetComponent<SlimeIdle>();
+        runState = GetComponent<SlimeRun>();
+        jumpState = GetComponent<SlimeJump>();
+        landState = GetComponent<SlimeLand>();
+        hitState = GetComponent<SlimeHit>();
+
+        idleState.onStateExit += OutIdle;
+        runState.chase = chase;
+        runState.anim = anim;
+        runState.onStateExit += OutRun;
+
+        jumpState.chase = chase;
+        jumpState.anim = anim;
+        jumpState.onStateExit += OutJump;
+
+        landState.chase = chase;
+        landState.anim = anim;
+        landState.hitboxObject = hitboxObject;
+        landState.onStateExit += OutLand;
+
+        hitState.anim = anim;
+        hitState.hitstun = hitstun;
+        hitState.onStateExit += OutHit;
+        
+    }
+
+    private void OutLand(bool success)
+    {
+        if(success)
         {
-            float temp = Vector2.Distance(transform.position, t.position);
-            if(temp < dist)
-            {
-                dist = temp;
-                closest = t;
-            }
+            currentState = runState;
+            runState.enabled = true;
         }
-        return closest;
     }
 
-    public void JumpAttack()
+    private void OutJump(bool success)
     {
-
-        isAttacking = true;
-        jumpAttack.Attack(target);
+        if(success)
+        {
+            currentState = landState;
+            landState.enabled = true;
+        }
     }
 
-    public void JumpAttackEnd(Transform target)
+    private void OutRun(bool success)
     {
-        isAttacking = false;
+        if(success)
+        {
+            currentState = jumpState;
+            jumpState.target = target;
+            jumpState.enabled = true;
+        }
     }
+
+    private void OutIdle(bool success)
+    {
+        if(success)
+        {
+            currentState = runState;
+            runState.enabled = true;
+        }
+    }
+
+    private void OutHit(bool success)
+    {
+        if(success)
+        {
+            currentState = runState;
+            runState.enabled = true;
+        }
+    }
+
+    /// <summary>
+    /// When slime gets hit, change to hit state
+    /// </summary>
+    public void OnHit()
+    {
+        currentState.enabled = false;
+        currentState = hitState;
+        hitState.enabled = true;
+    }
+
+
+
+  
 }

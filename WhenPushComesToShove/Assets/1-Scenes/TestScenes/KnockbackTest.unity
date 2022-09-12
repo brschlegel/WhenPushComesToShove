@@ -310,6 +310,7 @@ MonoBehaviour:
   - {fileID: 1347505020}
   playerPrefab: {fileID: 6273220948599445249, guid: 06a8200273c476048a5a1372f2ec0988, type: 3}
   initOnStart: 0
+  lockPlayerSpawn: 0
 --- !u!1 &276471232
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8868fc24decd05e40b88174ab164b657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elasticity: 0.25
+  elasticity: 1
+  damageMultiplier: 0.6
 --- !u!1 &324201405
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8868fc24decd05e40b88174ab164b657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elasticity: 0.75
+  elasticity: 1
+  damageMultiplier: 0.6
 --- !u!1 &747943603
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elasticity: 1
+  damageMultiplier: 0.6
 --- !u!1 &1347505019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,7 +1128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8868fc24decd05e40b88174ab164b657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elasticity: 0.5
+  elasticity: 1
+  damageMultiplier: 0.6
 --- !u!1 &1544443831 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1883854870026651927, guid: afb30945538a837429b920c372b3ff52, type: 3}
