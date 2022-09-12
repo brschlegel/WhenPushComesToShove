@@ -5,6 +5,15 @@ using UnityEngine;
 public class HitHandlerOverride : LootData
 {
     [SerializeField] private HitHandler handler;
+
+    private void Start()
+    {
+        if (handler == null)
+        {
+            handler = GetComponent<HitHandler>();
+        }
+    }
+
     public override void OnEquip( Transform player )
     {
         base.OnEquip(player);

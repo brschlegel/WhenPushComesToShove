@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 948fd7582a9b9814cbeebbfb7e112c72, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d19d0fed4745dc14fa93e86993f9f2d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,7 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ff1cef7f7c0dc44b707daa76cf9d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - Player
   burnTime: 5
   timeBetweenBurns: 1
   burnDamage: 1

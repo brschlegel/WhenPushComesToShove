@@ -8,11 +8,13 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     public Action onHeavyShove;
 
     public Hitbox hitbox;
+    private Collider2D collider;
     [SerializeField] private float cooldown = .5f;
 
     public void Start()
     {
-        hitbox.gameObject.SetActive(false);
+        collider = hitbox.gameObject.GetComponent<Collider2D>();
+        collider.enabled = false;
 
         EnableBaseHeavyShove();
     }
@@ -22,7 +24,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     /// </summary>
     public void EnableShoveBaseHitbox()
     {
-        hitbox.gameObject.SetActive(true);
+        collider.enabled = true;
         StartCoroutine(HitboxCooldown());
     }
 
@@ -33,7 +35,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     public IEnumerator HitboxCooldown()
     {
         yield return new WaitForSeconds(cooldown);
-        hitbox.gameObject.SetActive(false);
+        collider.enabled = false;
     }
 
     public void EnableBaseHeavyShove()

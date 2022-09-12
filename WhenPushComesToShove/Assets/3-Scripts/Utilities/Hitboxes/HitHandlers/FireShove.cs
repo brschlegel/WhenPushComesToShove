@@ -22,13 +22,14 @@ public class FireShove : HitHandler
 
     public IEnumerator BurnOverTime(HitEvent e)
     {
-        Health health = e.hitbox.transform.parent.GetComponentInChildren<Health>();
+        Health health = e.hurtbox.transform.parent.GetComponentInChildren<Health>();
         timer = 0;
 
         while (timer < burnTime)
         {
             yield return new WaitForSeconds(timeBetweenBurns);
             health.TakeDamage(burnDamage);
+            Debug.Log("Burn");
             timer += timeBetweenBurns;
         }
     }
