@@ -21,6 +21,7 @@ public class PathGenerator : MonoBehaviour
         for(int i = 0; i < levels.Length; i++)
         {
             GameObject obj = (GameObject)levels[i];
+            Debug.Log(obj.name);
             levelProps.Add(obj.GetComponent<LevelProperties>());
         }
 
@@ -49,7 +50,7 @@ public class PathGenerator : MonoBehaviour
             {
                 if(shuffledRooms[i] != null)
                 {
-                    if(IsCompatibleRoom(shuffledRooms[i]))
+                    if(IsCompatibleRoom(shuffledRooms[i]) && shuffledRooms[i].levelType == LevelType.Dungeon)
                     {
                         path.Add(shuffledRooms[i].gameObject);
 
@@ -88,10 +89,32 @@ public class PathGenerator : MonoBehaviour
             }
 
             currentPathNum++;
-        }   
+        }
 
         //Spawn Arena Room
+        LevelProperties arena = null;
+        for (int i = 0; i < shuffledRooms.Length; i++)
+        {
+            if (shuffledRooms[i] != null)
+            {
+                if(shuffledRooms[i].levelType == LevelType.Arena)
+                {
+                    if (IsCompatibleRoom(shuffledRooms[i], true))
+                    {
+                        arena = shuffledRooms[i];
+                        path.Add(arena.gameObject);
+                    }                       
+                    break;
+                }
+            }
+        }
 
+        if (arena == null)
+        {
+            Debug.LogError("No arena available for this path. Loading in default arena");
+            path.Add(Resources.Load<GameObject>("Levels/Arenas/DefaultArena"));
+        }
+            
     }
 
 

@@ -23,7 +23,9 @@ public class LevelProperties : MonoBehaviour
         foreach (GameObject obj in enemySpawns)
         {
             EnemySpawnPoint currentPoint = obj.GetComponent<EnemySpawnPoint>();
-            currentPoint.currentWave = 0;
+            if (currentPoint)
+                currentPoint.currentWave = 0;
+
             enemySpawnProps.Add(currentPoint);
             
         }
