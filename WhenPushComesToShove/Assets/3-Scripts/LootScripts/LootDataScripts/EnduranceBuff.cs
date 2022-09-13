@@ -8,7 +8,7 @@ public class EnduranceBuff : LootData
     [SerializeField] public float maxMass = 100;
 
     /// <summary>
-    /// Doubles the players current move speed
+    /// Increases the players mass
     /// </summary>
     public override void Action()
     {

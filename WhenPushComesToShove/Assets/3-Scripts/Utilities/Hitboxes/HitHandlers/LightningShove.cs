@@ -27,7 +27,12 @@ public class LightningShove : HitHandler
             enemyAilments.statusAilments.Add(shockID, StartCoroutine(ShockOverTime(e, enemyAilments)));
         }
     }
-
+    /// <summary>
+    /// Causes the afflicted to be stuned every so often over a period of time
+    /// </summary>
+    /// <param name="e"></param>
+    /// <param name="ailmentRef"></param>
+    /// <returns></returns>
     public IEnumerator ShockOverTime(HitEvent e, EnemyStatusAilments ailmentRef)
     {
         timer = 0;

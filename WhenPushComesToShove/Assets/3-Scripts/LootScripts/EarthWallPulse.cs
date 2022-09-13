@@ -16,6 +16,11 @@ public class EarthWallPulse : MonoBehaviour
         StartCoroutine(Pulse());
     }
 
+
+    /// <summary>
+    /// Expands the wall's hit box over time
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Pulse()
     {
         transform.DOScale(originalScale * endScale, timePerPulse);

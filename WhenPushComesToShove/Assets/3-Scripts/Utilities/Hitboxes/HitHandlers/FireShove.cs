@@ -22,11 +22,15 @@ public class FireShove : HitHandler
         }
         else
         {
-
             enemyAilments.statusAilments.Add(burnID, StartCoroutine(BurnOverTime(e, enemyAilments)));
         }
     }
-
+    /// <summary>
+    /// Causes the afflicted to take damage over time
+    /// </summary>
+    /// <param name="e"></param>
+    /// <param name="ailmentRef"></param>
+    /// <returns></returns>
     public IEnumerator BurnOverTime(HitEvent e, EnemyStatusAilments ailmentRef)
     {
         Health health = e.hurtbox.transform.parent.GetComponentInChildren<Health>();

@@ -26,6 +26,12 @@ public class IceShove : HitHandler
         }
     }
 
+    /// <summary>
+    /// Causes the afflicated to move slower for a period of time
+    /// </summary>
+    /// <param name="e"></param>
+    /// <param name="ailmentRef"></param>
+    /// <returns></returns>
     public IEnumerator Slow(HitEvent e, EnemyStatusAilments ailmentRef)
     {
         MovementController move = e.hurtbox.transform.parent.GetComponentInChildren<MovementController>();

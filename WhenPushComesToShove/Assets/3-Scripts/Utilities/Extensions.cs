@@ -21,6 +21,13 @@ public static class Extensions
     }
 
     //https://answers.unity.com/questions/530178/how-to-get-a-component-from-an-object-and-add-it-t.html
+    /// <summary>
+    /// Copys a component's values and pastes it into the new component through script
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="comp">New Component</param>
+    /// <param name="other">Componetn to Copy</param>
+    /// <returns></returns>
     public static T GetCopyOf<T>(this T comp, T other) where T : Component
     {
         Type type = comp.GetType();

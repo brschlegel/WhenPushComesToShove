@@ -14,6 +14,9 @@ public class EarthShove : LootData
         SpawnWall();
     }
 
+    /// <summary>
+    /// Spawns the wall prefab
+    /// </summary>
     private void SpawnWall()
     {
         if (wallRef != null)
