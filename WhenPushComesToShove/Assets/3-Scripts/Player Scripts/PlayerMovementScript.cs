@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovementScript : MonoBehaviour
 {
     public float moveSpeed = 10f;
+    public float maxMoveSpeed = 20f;
 
     private Vector3 moveDirection = Vector3.zero;
     private Vector2 moveInputVector = Vector2.zero;
