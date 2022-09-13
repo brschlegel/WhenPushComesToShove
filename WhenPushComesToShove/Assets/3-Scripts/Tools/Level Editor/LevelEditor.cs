@@ -294,9 +294,21 @@ public class CustomLevelEditor : Editor
 
             levelProp.levelType = level.levelType;
 
-            string path = "Assets/Resources/Levels/" + root.name + ".prefab";
+            string path = "";
+            GameObject testObj = null;
+            if (level.levelType == LevelType.Dungeon)
+            {
+                path = "Assets/Resources/Levels/" + root.name + ".prefab";
+                testObj = Resources.Load<GameObject>("Levels/" + root.name);
+            }              
+            else if(level.levelType == LevelType.Arena)
+            {
+                path = "Assets/Resources/Levels/Arenas/" + root.name + ".prefab";
+                testObj = Resources.Load<GameObject>("Levels/Arenas/" + root.name);
+            }
+                
 
-            GameObject testObj = Resources.Load<GameObject>("Levels/" + root.name);
+            
             if (testObj != null && level.selectedLevel == null)
             {
                 Debug.LogError("Asset already has that name");

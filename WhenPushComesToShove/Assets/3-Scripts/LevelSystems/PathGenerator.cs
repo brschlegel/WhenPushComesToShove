@@ -90,7 +90,8 @@ public class PathGenerator : MonoBehaviour
             currentPathNum++;
         }   
 
-        //
+        //Spawn Arena Room
+
     }
 
 
@@ -118,7 +119,7 @@ public class PathGenerator : MonoBehaviour
     }
 
     //Tests to see if a room's hazards are the correct difficulty
-    bool IsCompatibleRoom(LevelProperties prop)
+    bool IsCompatibleRoom(LevelProperties prop, bool onlyHazards = false)
     {
         //Check if the level's hazards match the path's
         foreach (HazardDifficulty.HazardStats haz in prop.hazards)
@@ -135,20 +136,24 @@ public class PathGenerator : MonoBehaviour
             }
         }
 
-        //Check if the level's enemies match the path's
-        foreach(EnemyDifficulty.EnemyLevelStats enm in prop.enemyStats)
+        if (!onlyHazards)
         {
-            foreach(EnemyDifficulty.EnemyLevelStats enmLevel in enemyStatLevels)
+            //Check if the level's enemies match the path's
+            foreach (EnemyDifficulty.EnemyLevelStats enm in prop.enemyStats)
             {
-                //Makes sure that the same enemies are being compared
-                if(enm.enemy == enmLevel.enemy)
+                foreach (EnemyDifficulty.EnemyLevelStats enmLevel in enemyStatLevels)
                 {
-                    //Make sure that enemies are the same level
-                    if (enm.level != enmLevel.level)
-                        return false;
+                    //Makes sure that the same enemies are being compared
+                    if (enm.enemy == enmLevel.enemy)
+                    {
+                        //Make sure that enemies are the same level
+                        if (enm.level != enmLevel.level)
+                            return false;
+                    }
                 }
             }
         }
+        
         return true;
     }
 }
