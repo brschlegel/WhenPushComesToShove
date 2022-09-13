@@ -627,6 +627,34 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7725880952350467008, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
   m_PrefabInstance: {fileID: 999011918593432200}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2035447770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415990179920017736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93619288de6e09348afef84ff792f52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 881103319}
+        m_TargetAssemblyTypeName: SlimeBrain, Assembly-CSharp
+        m_MethodName: OnHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &999011920278194450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,6 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5507211a3cdd2714b8b487751e703291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagsToIgnore: []
   kbReciever: {fileID: 999011918721939298}
 --- !u!114 &999011920278194451
 MonoBehaviour:
@@ -652,6 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deafbcdcbff1f0a428ee561f1d1dc96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagsToIgnore: []
   outputs:
   - {fileID: 999011920278194450}
   - {fileID: 999011920278194456}
@@ -668,34 +698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22dbf66df48581a4383e407aa75f4828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagsToIgnore: []
   health: {fileID: 999011920060830536}
---- !u!114 &2035447770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7415990179920017736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93619288de6e09348afef84ff792f52c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 881103319}
-        m_TargetAssemblyTypeName: SlimeBrain, Assembly-CSharp
-        m_MethodName: OnHit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &999011919620934298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -714,6 +718,10 @@ PrefabInstance:
     - target: {fileID: 6854435290789191520, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191520, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191521, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: owner

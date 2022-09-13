@@ -228,6 +228,11 @@ public class VelocitySetter : MonoBehaviour
     {
         get {return rb.velocity;}
     }
+
+    public float Mass
+    {
+        get {return rb.mass;}
+    }
     #endregion
 
     private void FixedUpdate()
