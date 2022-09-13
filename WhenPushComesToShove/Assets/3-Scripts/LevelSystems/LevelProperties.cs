@@ -5,6 +5,8 @@ using UnityEngine;
 public enum Hazards { None, Spikes, Spring, Fire };
 public enum EnemyTypes { General, Slimes};
 
+public enum LevelType { Dungeon, Arena};
+
 public class LevelProperties : MonoBehaviour
 {
     //Properties needed for the level editor
@@ -12,6 +14,7 @@ public class LevelProperties : MonoBehaviour
     public EnemyDifficulty.EnemyLevelStats[] enemyStats;
     public GameObject[] playerSpawns;
     public GameObject[] enemySpawns;
+    public LevelType levelType;
 
     [HideInInspector] public List<EnemySpawnPoint> enemySpawnProps = new List<EnemySpawnPoint>();
 
@@ -51,4 +54,5 @@ public class LevelProperties : MonoBehaviour
         }
     }
 
+    
 }

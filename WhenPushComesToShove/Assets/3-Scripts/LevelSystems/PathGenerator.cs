@@ -10,7 +10,7 @@ public class PathGenerator : MonoBehaviour
     List<LevelProperties> levelProps = new List<LevelProperties>();
 
     [Header("Path properties")]
-    [SerializeField] int numOfRoom;
+    [SerializeField] int numOfDungeonRooms;
     int currentPathNum = 0;
     public List<GameObject> path = new List<GameObject>();
 
@@ -42,7 +42,7 @@ public class PathGenerator : MonoBehaviour
     {
         LevelProperties[] shuffledRooms = ShuffleRooms();
 
-        while(currentPathNum < numOfRoom)
+        while(currentPathNum < numOfDungeonRooms)
         {
             //Go through the rooms and see if the hazard levels match 
             for (int i = 0; i < shuffledRooms.Length; i++)
@@ -83,12 +83,14 @@ public class PathGenerator : MonoBehaviour
                 if(i == shuffledRooms.Length - 1)
                 {
                     Debug.Log("No remaining rooms for this path");
-                    currentPathNum = numOfRoom;
+                    currentPathNum = numOfDungeonRooms;
                 }
             }
 
             currentPathNum++;
         }   
+
+        //
     }
 
 
