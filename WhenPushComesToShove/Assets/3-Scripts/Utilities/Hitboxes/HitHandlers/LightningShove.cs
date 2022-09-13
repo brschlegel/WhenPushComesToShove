@@ -18,7 +18,7 @@ public class LightningShove : HitHandler
         if (enemyAilments.statusAilments.ContainsKey(shockID))
         {
             StopCoroutine(enemyAilments.statusAilments[shockID]);
-            e.hurtbox.transform.parent.GetComponentInChildren<MovementController>().UnlockMovement();
+            e.hurtbox.transform.parent.GetComponent<VelocitySetter>().UnHalt();
             enemyAilments.statusAilments[shockID] = StartCoroutine(ShockOverTime(e, enemyAilments));
         }
         else
@@ -32,13 +32,16 @@ public class LightningShove : HitHandler
     {
         timer = 0;
 
+        GameObject enemy = e.hurtbox.transform.parent.gameObject;
+
         while (timer < shockTime)
         {
-            StartCoroutine(StunEnemy(e.hurtbox.transform.parent.gameObject));
+            enemy.GetComponent<VelocitySetter>().Halt();
             Debug.Log("Shock");
             yield return new WaitForSeconds(timeToBeShocked);
 
             Debug.Log("Unstun");
+            enemy.GetComponent<VelocitySetter>().UnHalt();
 
             yield return new WaitForSeconds(timeBetweenShocks);
 
@@ -46,31 +49,6 @@ public class LightningShove : HitHandler
         }
 
         ailmentRef.statusAilments.Remove(shockID);
-    }
-
-    private IEnumerator StunEnemy(GameObject enemy)
-    {
-        Debug.Log(enemy);
-        EnemyState[] states = enemy.GetComponentsInChildren<EnemyState>();
-
-        EnemyState activeState = null;
-
-        for (int i = 0; i < states.Length; i++)
-        {
-            if (states[i].enabled)
-            {
-                activeState = states[i];
-                break;
-            }
-        }
-
-        enemy.GetComponentInChildren<MovementController>().LockMovement();
-        activeState.enabled = false; 
-
-        yield return new WaitForSeconds(timeToBeShocked);
-
-        enemy.GetComponentInChildren<MovementController>().UnlockMovement();
-        activeState.enabled = true;
     }
 }
 

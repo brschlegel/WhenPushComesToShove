@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 347616166255666334}
   - component: {fileID: 1556193439351839175}
   - component: {fileID: 347616166255666304}
-  - component: {fileID: 2622996976772239586}
-  - component: {fileID: 6674398865955343965}
+  - component: {fileID: 2095181106653902624}
   m_Layer: 0
-  m_Name: HeavyFireShove
+  m_Name: LightEarthShove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 1222077959
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2476b41f1d9f7084c9eedfd22c919cfa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1d03cf2b9af47447bc796f4a6d3237a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -113,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &2622996976772239586
+--- !u!114 &2095181106653902624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,29 +121,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 347616166255666306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 741d4482ce158f542b9d05cbf0065dd5, type: 3}
+  m_Script: {fileID: 11500000, guid: c41ce69f334f6b44e86e24a49b1314ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  lootType: 1
-  overrideBaseAction: 0
+  lootType: 0
+  overrideBaseAction: 1
   playerRef: {fileID: 0}
-  handler: {fileID: 6674398865955343965}
---- !u!114 &6674398865955343965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347616166255666306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ff1cef7f7c0dc44b707daa76cf9d3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagsToIgnore:
-  - Player
-  burnTime: 5
-  timeBetweenBurns: 1
-  burnDamage: 1
-  burnID: Burn
+  earthWallPrefab: {fileID: 5075963273140143227, guid: d193a65fa9327534d80dfaa6d9533561, type: 3}
+  distanceFromPlayer: 2
