@@ -21,7 +21,6 @@ public class PathGenerator : MonoBehaviour
         for(int i = 0; i < levels.Length; i++)
         {
             GameObject obj = (GameObject)levels[i];
-            Debug.Log(obj.name);
             levelProps.Add(obj.GetComponent<LevelProperties>());
         }
 
