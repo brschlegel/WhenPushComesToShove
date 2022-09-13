@@ -3,40 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MovementController))]
-public class EnemyHitstun : MonoBehaviour
+public class EnemyHitstun : Hitstun
 {  
-    private Rigidbody2D rb;
-
-    [SerializeField]
-    private VelocitySetter vs;
     private MovementController movement;
-    [SerializeField]
-    private float hitstunThreshold;
-    public bool inHitstun;
 
     private void Start()
     {
-        rb = vs.GetComponent<Rigidbody2D>();
+        sourcesToIgnore = new List<string>() {"Move"};
         movement = GetComponent<MovementController>();
     }
-    private void Update()
-    {
-        if (vs.QuerySource("Move", out Vector2 vel))
-        {
-            float movementMagnitude = vel.magnitude;
 
-            if (rb.velocity.magnitude - movementMagnitude >= hitstunThreshold)
-            {
-                if(!inHitstun)
-                    movement.LockMovement();
-                inHitstun = true;
-            }
-            else
-            {
-                if(inHitstun)
-                    movement.UnlockMovement();
-                inHitstun = false;
-            }
-        }
+    protected override void Stun()
+    {
+        movement.LockMovement();
+    }
+
+    protected override void Unstun()
+    {
+        movement.UnlockMovement();
     }
 }

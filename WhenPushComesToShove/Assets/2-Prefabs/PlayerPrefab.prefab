@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 8683604864337146482}
   - component: {fileID: 8866138083129418701}
   - component: {fileID: 3186559500755933933}
-  - component: {fileID: 5866333075181614657}
+  - component: {fileID: 5322327363945852087}
   m_Layer: 0
   m_Name: InputHandler
   m_TagString: Untagged
@@ -160,7 +160,7 @@ MonoBehaviour:
   vs: {fileID: 0}
   dashSpeed: 25
   dashTime: 0.75
---- !u!114 &5866333075181614657
+--- !u!114 &5322327363945852087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,11 +169,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3192962310233775801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd94aa531c89c394db69dfa2360cc6dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 7468362213533ae4b9d3bfb93585f1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vs: {fileID: 924639791968285090}
-  hitstunThreshold: 5
+  hitstunThreshold: 3
+  inHitstun: 0
 --- !u!1 &5782972655189162237
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +549,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191520, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
+      propertyPath: m_TagString
+      value: Shove
+      objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191521, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: owner
       value: 
@@ -671,6 +676,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightHitbox
       objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191520, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
+      propertyPath: m_TagString
+      value: Shove
+      objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191521, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: owner
       value: 
@@ -789,7 +798,7 @@ PrefabInstance:
     - target: {fileID: 1864335183953101693, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: handler
       value: 
-      objectReference: {fileID: 1298808046723905279}
+      objectReference: {fileID: 277620881175501212}
     - target: {fileID: 7725880952350467008, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: m_Name
       value: Hurtbox
@@ -860,7 +869,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7725880952350467008, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
   m_PrefabInstance: {fileID: 6440015718095629135}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1298808046723905279
+--- !u!114 &277620881175501212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -869,10 +878,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 3632258541538756751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 804d1f5914bf8aa4aa997248149528b3, type: 3}
+  m_Script: {fileID: 11500000, guid: deafbcdcbff1f0a428ee561f1d1dc96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kbReciever: {fileID: 5395361809422544588}
+  tagsToIgnore: []
+  outputs:
+  - {fileID: 5800497215203821077}
+  - {fileID: 888565384545538148}
+--- !u!114 &888565384545538148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632258541538756751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22dbf66df48581a4383e407aa75f4828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore:
+  - Shove
   health: {fileID: 3912680492871693738}
 --- !u!114 &5395361809422544588
 MonoBehaviour:
@@ -887,3 +913,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vs: {fileID: 924639791968285090}
+--- !u!114 &5800497215203821077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632258541538756751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5507211a3cdd2714b8b487751e703291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  kbReciever: {fileID: 5395361809422544588}

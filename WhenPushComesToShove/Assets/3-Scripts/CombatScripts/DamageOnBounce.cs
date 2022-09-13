@@ -30,7 +30,6 @@ public class DamageOnBounce : MonoBehaviour
             }
         }
         float damage = Mathf.Clamp(magnitude * data.damageMultiplier * GlobalSettings.wallDamageCoeff, float.NegativeInfinity, GlobalSettings.wallDamageCap);
-        Debug.Log("Damage: " + damage);
         health.TakeDamage(damage);
     }
 
