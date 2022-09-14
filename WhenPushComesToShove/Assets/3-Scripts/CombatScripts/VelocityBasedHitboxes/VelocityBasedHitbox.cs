@@ -9,10 +9,11 @@ public class VelocityBasedHitbox : MonoBehaviour
     [SerializeField]
     private VelocitySetter vs;
     [SerializeField]
-    private GameObject hitboxObject;
+    protected GameObject hitboxObject;
 
     private AttackData attack;
     private KnockbackData kb;
+    private IEnumerator enumerator;
 
     void Start()
     {
@@ -33,16 +34,16 @@ public class VelocityBasedHitbox : MonoBehaviour
     {
 
         UpdateData();
-        if(vs.Velocity.magnitude >= velocityThreshold)
+        if(vs.ListedVelocity.magnitude >= velocityThreshold)
         {
-            if(!hitboxObject.activeSelf)
+            if(!hitboxObject.activeSelf && enumerator == null)
             {
                 Activate(true);
             }
         }
         else
         {
-            if(hitboxObject.activeSelf)
+            if(hitboxObject.activeSelf && enumerator != null)
             {
                 Activate(false);
             }
@@ -57,6 +58,25 @@ public class VelocityBasedHitbox : MonoBehaviour
 
     protected virtual void Activate(bool on)
     {
-        hitboxObject.SetActive(on);
+        if (on)
+        {
+            enumerator = CoroutineManager.StartGlobalCoroutine(WaitToActivate());
+        }
+        else
+        {
+            if (enumerator != null)
+            {
+                CoroutineManager.StopGlobalCoroutine(enumerator);
+                enumerator = null;
+            }
+            hitboxObject.SetActive(false);
+        }
+   
+    }
+
+    private IEnumerator WaitToActivate()
+    {
+        yield return new WaitForSeconds(GlobalSettings.velocityHitboxDelay);
+        hitboxObject.SetActive(true);
     }
 }

@@ -11,5 +11,25 @@ public class HitstunBasedHitbox : VelocityBasedHitbox
     {
         base.Init();
         hitstun = GetComponent<Hitstun>();
+    
+    }
+
+    private void Update()
+    {
+        UpdateData();
+        if(hitstun.inHitstun)
+        {
+            if(!hitboxObject.activeSelf)
+            {
+                Activate(true);
+            }
+        }
+        else
+        {
+            if(hitboxObject.activeSelf)
+            {
+                Activate(false);
+            }
+        }
     }
 }
