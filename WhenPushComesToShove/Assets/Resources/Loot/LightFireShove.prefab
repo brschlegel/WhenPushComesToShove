@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 347616166255666334}
   - component: {fileID: 1556193439351839175}
   - component: {fileID: 347616166255666304}
-  - component: {fileID: 347616166255666305}
+  - component: {fileID: 2622996976772239586}
+  - component: {fileID: 6674398865955343965}
   m_Layer: 0
-  m_Name: HeavyDebug
+  m_Name: LightFireShove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347616166255666306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4838429, y: -0.2690333, z: -0.024370838}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,10 +73,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1222077959
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bda1dcb9a2eda764fbcc0b8771f6437e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d19d0fed4745dc14fa93e86993f9f2d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,7 +113,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &347616166255666305
+--- !u!114 &2622996976772239586
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,9 +122,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 347616166255666306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a434ab2ba5cb543b7297076beec409, type: 3}
+  m_Script: {fileID: 11500000, guid: 741d4482ce158f542b9d05cbf0065dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: bda1dcb9a2eda764fbcc0b8771f6437e, type: 3}
-  lootType: 1
-  overrideBaseAction: 1
+  sprite: {fileID: 0}
+  lootType: 0
+  overrideBaseAction: 0
+  playerRef: {fileID: 0}
+  handler: {fileID: 6674398865955343965}
+--- !u!114 &6674398865955343965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347616166255666306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ff1cef7f7c0dc44b707daa76cf9d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore:
+  - Player
+  burnTime: 3
+  timeBetweenBurns: 1
+  burnDamage: 1
+  burnID: Burn
