@@ -10,7 +10,7 @@ public class PathGenerator : MonoBehaviour
     List<LevelProperties> levelProps = new List<LevelProperties>();
 
     [Header("Path properties")]
-    [SerializeField] int numOfRoom;
+    [SerializeField] int numOfDungeonRooms;
     int currentPathNum = 0;
     public List<GameObject> path = new List<GameObject>();
 
@@ -42,14 +42,14 @@ public class PathGenerator : MonoBehaviour
     {
         LevelProperties[] shuffledRooms = ShuffleRooms();
 
-        while(currentPathNum < numOfRoom)
+        while(currentPathNum < numOfDungeonRooms)
         {
             //Go through the rooms and see if the hazard levels match 
             for (int i = 0; i < shuffledRooms.Length; i++)
             {
                 if(shuffledRooms[i] != null)
                 {
-                    if(IsCompatibleRoom(shuffledRooms[i]))
+                    if(IsCompatibleRoom(shuffledRooms[i]) && shuffledRooms[i].levelType == LevelType.Dungeon)
                     {
                         path.Add(shuffledRooms[i].gameObject);
 
@@ -83,12 +83,37 @@ public class PathGenerator : MonoBehaviour
                 if(i == shuffledRooms.Length - 1)
                 {
                     Debug.Log("No remaining rooms for this path");
-                    currentPathNum = numOfRoom;
+                    currentPathNum = numOfDungeonRooms;
                 }
             }
 
             currentPathNum++;
-        }   
+        }
+
+        //Spawn Arena Room
+        LevelProperties arena = null;
+        for (int i = 0; i < shuffledRooms.Length; i++)
+        {
+            if (shuffledRooms[i] != null)
+            {
+                if(shuffledRooms[i].levelType == LevelType.Arena)
+                {
+                    if (IsCompatibleRoom(shuffledRooms[i], true))
+                    {
+                        arena = shuffledRooms[i];
+                        path.Add(arena.gameObject);
+                    }                       
+                    break;
+                }
+            }
+        }
+
+        if (arena == null)
+        {
+            Debug.LogError("No arena available for this path. Loading in default arena");
+            path.Add(Resources.Load<GameObject>("Levels/Arenas/DefaultArena"));
+        }
+            
     }
 
 
@@ -116,7 +141,7 @@ public class PathGenerator : MonoBehaviour
     }
 
     //Tests to see if a room's hazards are the correct difficulty
-    bool IsCompatibleRoom(LevelProperties prop)
+    bool IsCompatibleRoom(LevelProperties prop, bool onlyHazards = false)
     {
         //Check if the level's hazards match the path's
         foreach (HazardDifficulty.HazardStats haz in prop.hazards)
@@ -133,20 +158,24 @@ public class PathGenerator : MonoBehaviour
             }
         }
 
-        //Check if the level's enemies match the path's
-        foreach(EnemyDifficulty.EnemyLevelStats enm in prop.enemyStats)
+        if (!onlyHazards)
         {
-            foreach(EnemyDifficulty.EnemyLevelStats enmLevel in enemyStatLevels)
+            //Check if the level's enemies match the path's
+            foreach (EnemyDifficulty.EnemyLevelStats enm in prop.enemyStats)
             {
-                //Makes sure that the same enemies are being compared
-                if(enm.enemy == enmLevel.enemy)
+                foreach (EnemyDifficulty.EnemyLevelStats enmLevel in enemyStatLevels)
                 {
-                    //Make sure that enemies are the same level
-                    if (enm.level != enmLevel.level)
-                        return false;
+                    //Makes sure that the same enemies are being compared
+                    if (enm.enemy == enmLevel.enemy)
+                    {
+                        //Make sure that enemies are the same level
+                        if (enm.level != enmLevel.level)
+                            return false;
+                    }
                 }
             }
         }
+        
         return true;
     }
 }

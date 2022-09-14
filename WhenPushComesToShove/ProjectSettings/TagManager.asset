@@ -8,6 +8,7 @@ TagManager:
   - EnemySpawn
   - Enemy
   - Shove
+  - EnemyPool
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Loot
+    uniqueID: 1222077959
+    locked: 0
+  - name: Players
+    uniqueID: 3795481407
     locked: 0

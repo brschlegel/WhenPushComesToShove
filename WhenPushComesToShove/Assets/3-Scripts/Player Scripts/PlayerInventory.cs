@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class PlayerInventory : MonoBehaviour
                 if (lightShoveLoot == null)
                 {
                     lightShoveLoot = loot;
-                    loot.player = transform.parent;
+                    loot.OnEquip(transform.parent);
 
                     if (loot.overrideBaseAction)
                     {
@@ -58,7 +59,7 @@ public class PlayerInventory : MonoBehaviour
                 if (heavyShoveLoot == null)
                 {
                     heavyShoveLoot = loot;
-                    loot.player = transform.parent;
+                    loot.OnEquip(transform.parent);
 
                     if (loot.overrideBaseAction)
                     {
@@ -79,7 +80,7 @@ public class PlayerInventory : MonoBehaviour
             case LootData.LootType.Passive:
                 //Add the loot
                 passiveLoot.Add(loot);
-                loot.player = transform.parent;
+                loot.OnEquip(transform.parent);
 
                 //Trigger the Pasive Action
                 loot.Action();
@@ -113,6 +114,7 @@ public class PlayerInventory : MonoBehaviour
         switch (type)
         {
             case LootData.LootType.Light:
+                lightShoveLoot.OnUnequip(transform.parent);
                 lightShoveScript.onLightShove = null;
                 lightShoveScript.EnableBaseLightShove();
 
@@ -122,6 +124,7 @@ public class PlayerInventory : MonoBehaviour
                 lightShoveLoot = null;
                 break;
             case LootData.LootType.Heavy:
+                heavyShoveLoot.OnUnequip(transform.parent);
                 heavyShoveScript.onHeavyShove = null;
                 heavyShoveScript.EnableBaseHeavyShove();
 
@@ -130,7 +133,7 @@ public class PlayerInventory : MonoBehaviour
 
                 heavyShoveLoot = null;
                 break;
-            case LootData.LootType.Passive:
+            case LootData.LootType.Passive: //Not sure if we want players to drop passive loot
                 break;
             default:
                 break;
@@ -152,6 +155,48 @@ public class PlayerInventory : MonoBehaviour
         if (inRangeLoot.Count == 0)
         {
             inputHandler.ClearSelectAction();
+        }
+    }
+
+    public void AssignHitHandler(LootData.LootType lootType, HitHandler handler)
+    {
+        switch(lootType)
+        {
+            case LootData.LootType.Light:
+                lightShoveScript.hitbox.gameObject.AddComponent(handler.GetType());
+                HitHandler newHandler = lightShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
+                newHandler = Extensions.GetCopyOf(newHandler, handler);
+                lightShoveScript.hitbox.handler = newHandler;
+                lightShoveScript.hitbox.gameObject.name = "LightHitbox";
+                break;
+            case LootData.LootType.Heavy:
+                heavyShoveScript.hitbox.gameObject.AddComponent(handler.GetType());
+                HitHandler newHeavyHandler = heavyShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
+                newHandler = Extensions.GetCopyOf(newHeavyHandler, handler);
+                heavyShoveScript.hitbox.handler = newHandler;
+                heavyShoveScript.hitbox.gameObject.name = "HeavyHitbox";
+                break;
+            default:
+                Debug.LogError("Cannot override HitHandler with this loot type.");
+                break;
+        }
+    }
+
+    public void RemoveHitHandler(LootData.LootType lootType, HitHandler handler)
+    {
+        switch (lootType)
+        {
+            case LootData.LootType.Light:
+                Destroy(lightShoveScript.hitbox.gameObject.GetComponent(handler.GetType()));
+                lightShoveScript.hitbox.handler = null;
+                break;
+            case LootData.LootType.Heavy:
+                Destroy(heavyShoveScript.hitbox.gameObject.GetComponent(handler.GetType()));
+                heavyShoveScript.hitbox.handler = null;
+                break;
+            default:
+                Debug.LogError("Cannot remove HitHandler with this loot type.");
+                break;
         }
     }
 }

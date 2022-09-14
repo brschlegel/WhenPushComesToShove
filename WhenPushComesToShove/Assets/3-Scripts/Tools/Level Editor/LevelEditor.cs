@@ -33,6 +33,7 @@ public class LevelEditor : MonoBehaviour
     public string levelName;
     public HazardDifficulty.HazardStats[] hazardStats;
     public EnemyDifficulty.EnemyLevelStats[] enemyStats;
+    public LevelType levelType;
 
     [Header("Selected File")]
     public GameObject selectedLevel;
@@ -67,6 +68,8 @@ public class LevelEditor : MonoBehaviour
 
             //Enemy stats
             enemyStats = selectedProps.enemyStats;
+
+            levelType = selectedProps.levelType;
 
             //Update the sprite layers to match the selected Level
             if (gameObject.transform.GetChild(0) != selectedLevelFirstChild)
@@ -287,10 +290,25 @@ public class CustomLevelEditor : Editor
             {
                 Debug.LogError("Level name can't be blank.");
                 return;
-            }    
-            string path = "Assets/Resources/Levels/" + root.name + ".prefab";
+            }
 
-            GameObject testObj = Resources.Load<GameObject>("Levels/" + root.name);
+            levelProp.levelType = level.levelType;
+
+            string path = "";
+            GameObject testObj = null;
+            if (level.levelType == LevelType.Dungeon)
+            {
+                path = "Assets/Resources/Levels/" + root.name + ".prefab";
+                testObj = Resources.Load<GameObject>("Levels/" + root.name);
+            }              
+            else if(level.levelType == LevelType.Arena)
+            {
+                path = "Assets/Resources/Levels/Arenas/" + root.name + ".prefab";
+                testObj = Resources.Load<GameObject>("Levels/Arenas/" + root.name);
+            }
+                
+
+            
             if (testObj != null && level.selectedLevel == null)
             {
                 Debug.LogError("Asset already has that name");
