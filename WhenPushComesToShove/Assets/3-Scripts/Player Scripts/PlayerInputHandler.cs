@@ -12,6 +12,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private float shoveActionCooldown = 1;
     [SerializeField] private float dashActionCooldown = 1;
     [SerializeField] private float movementLockCooldown = .6f;
+    [SerializeField] private float selectActionCooldown = .5f;
 
     [HideInInspector] public PlayerConfiguration playerConfig;
 
@@ -82,8 +83,9 @@ public class PlayerInputHandler : MonoBehaviour
         //Select
         else if (obj.action.name == controls.PlayerMovement.Select.name)
         {
-            if (onSelect != null)
+            if (onSelect != null && !performingAction)
             {
+                LockAction(selectActionCooldown);
                 onSelect();
             }
         }

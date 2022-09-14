@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 347616166255666334}
-  - component: {fileID: 1556193439351839175}
+  - component: {fileID: 347616166255666335}
   - component: {fileID: 347616166255666304}
-  - component: {fileID: 347616166255666305}
+  - component: {fileID: 8899145472999278979}
   m_Layer: 0
-  m_Name: HeavyDebug
+  m_Name: FriendEnder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,14 +27,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347616166255666306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4838429, y: -0.2690333, z: -0.024370838}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1556193439351839175
+--- !u!212 &347616166255666335
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,10 +72,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1222077959
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bda1dcb9a2eda764fbcc0b8771f6437e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ccdd60a5d1a6f0642af579e26cb04a3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &347616166255666305
+--- !u!114 &8899145472999278979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,9 +121,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 347616166255666306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a434ab2ba5cb543b7297076beec409, type: 3}
+  m_Script: {fileID: 11500000, guid: 263b924f7daf017479a3bfa563ca67b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: bda1dcb9a2eda764fbcc0b8771f6437e, type: 3}
-  lootType: 1
+  sprite: {fileID: 0}
+  lootType: 2
   overrideBaseAction: 1
+  playerRef: {fileID: 0}

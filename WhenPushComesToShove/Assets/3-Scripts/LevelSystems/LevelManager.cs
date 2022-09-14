@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     List<GameObject> path;
     [Tooltip("Debug Variable. Will cause the path to cycle to the beginning.")]
     [SerializeField] bool repeatPath;
+    [SerializeField] GameObject lootArenaEquip;
     public static Action onNewRoom;
     EnemySpawnPoint[] enemySpawns;
 
@@ -62,7 +63,7 @@ public class LevelManager : MonoBehaviour
             currentRoomIndex = 0;
         }
             
-
+        
         
         //Hide the previous room
         for (int i = 0; i < path.Count; i++)
@@ -77,6 +78,15 @@ public class LevelManager : MonoBehaviour
 
         //Grab the enemy spawn points
         LevelProperties levelProp = room.GetComponent<LevelProperties>();
+
+        if(levelProp.levelType == LevelType.Arena)
+        {
+            foreach(Transform player in GameState.players)
+            {
+                LootData loot = Instantiate(lootArenaEquip, transform).GetComponent<LootData>();
+                player.GetComponentInChildren<PlayerInventory>().EquipItem(loot);
+            }
+        }
         
         if(levelProp.enemySpawnProps.Count > 0)
         {
