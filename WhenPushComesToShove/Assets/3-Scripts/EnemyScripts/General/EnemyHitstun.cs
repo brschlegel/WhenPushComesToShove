@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MovementController))]
+
 public class EnemyHitstun : Hitstun
 {  
+    [SerializeField]
     private MovementController movement;
 
     private void Start()
     {
         sourcesToIgnore = new List<string>() {"Move"};
-        movement = GetComponent<MovementController>();
     }
 
     protected override void Stun()

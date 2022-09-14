@@ -16,7 +16,7 @@ public class PlayerConfigManager : MonoBehaviour
     public static PlayerConfigManager Instance { get; private set; }
 
     [HideInInspector] public InitLevel levelInitRef;
-    [SerializeField] private Material[] defaultColors = new Material[4];
+    [SerializeField] private RuntimeAnimatorController[] defaultColors = new RuntimeAnimatorController[4];
 
     public void Awake()
     {
@@ -51,9 +51,9 @@ public class PlayerConfigManager : MonoBehaviour
     /// </summary>
     /// <param name="index">The player's index</param>
     /// <param name="color">The material to assign to the spriteRenderer</param>
-    public void SetPlayerColor(int index, Material color)
+    public void SetPlayerColor(int index, RuntimeAnimatorController color)
     {
-        playerConfigs[index].PlayerMaterial = color;
+        playerConfigs[index].PlayerAnimations = color;
     }
 
     /// <summary>
@@ -114,7 +114,7 @@ public class PlayerConfiguration
     public PlayerInput Input { get; set; }
     public int PlayerIndex { get; set; }
     public bool IsReady { get; set; }
-    public Material PlayerMaterial { get; set; }
+    public RuntimeAnimatorController PlayerAnimations { get; set; }
 
     public GameObject PlayerObject;
 
