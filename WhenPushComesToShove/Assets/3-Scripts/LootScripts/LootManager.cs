@@ -32,7 +32,7 @@ public class LootManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator TestSpawnOverTime()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(1);
         DropRandomLoot(Vector2.zero);
         StartCoroutine(TestSpawnOverTime());
     }

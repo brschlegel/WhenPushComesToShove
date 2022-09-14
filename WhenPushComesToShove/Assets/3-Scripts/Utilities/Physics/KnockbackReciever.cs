@@ -9,7 +9,7 @@ public class KnockbackReciever : MonoBehaviour
     [SerializeField]
     private VelocitySetter vs;
 
-    private float mass;
+    public float mass;
     /// <summary>
     /// Applies Knockback
     /// </summary>

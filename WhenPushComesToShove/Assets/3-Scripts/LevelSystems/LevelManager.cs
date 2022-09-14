@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Debug Variable. Will cause the path to cycle to the beginning.")]
     [SerializeField] bool repeatPath;
     public static Action onNewRoom;
+    EnemySpawnPoint[] enemySpawns;
 
     private void OnEnable()
     {
@@ -35,8 +36,15 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Temp code to test if the room transitions work
         if (Input.GetKeyDown(KeyCode.E))
         {
+            GameObject enemyPool = GameObject.FindGameObjectWithTag("EnemyPool");
+            for(int i = enemyPool.transform.childCount - 1; i >= 0; i--)
+            {
+                Destroy(enemyPool.transform.GetChild(i).gameObject);
+            }
+
             onNewRoom();
         }
     }
@@ -51,7 +59,6 @@ public class LevelManager : MonoBehaviour
             return;
         else if (currentRoomIndex >= path.Count && repeatPath == true)
         {
-            Debug.Log(currentRoomIndex);
             currentRoomIndex = 0;
         }
             
@@ -68,6 +75,17 @@ public class LevelManager : MonoBehaviour
         GameObject room = path[currentRoomIndex];
         room.SetActive(true);
 
+        //Grab the enemy spawn points
+        LevelProperties levelProp = room.GetComponent<LevelProperties>();
+        
+        if(levelProp.enemySpawnProps.Count > 0)
+        {
+            foreach (EnemySpawnPoint spawn in levelProp.enemySpawnProps)
+            {
+                spawn.SpawnWave();
+            }
+        }
+        
 
         currentRoomIndex++;
 
