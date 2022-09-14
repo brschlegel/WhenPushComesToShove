@@ -100,6 +100,7 @@ MonoBehaviour:
   shoveActionCooldown: 1
   dashActionCooldown: 1
   movementLockCooldown: 0.5
+  selectActionCooldown: 0.5
   performingAction: 0
 --- !u!114 &7604760025507816548
 MonoBehaviour:
@@ -144,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitbox: {fileID: 5245641597600162963}
   cooldown: 0.8
+  buildUpTime: 0.3
 --- !u!114 &3186559500755933933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +287,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &6088014971122531299
@@ -687,7 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  strength: 75
+  strength: 50
   axis: 0
 --- !u!114 &8959929956123766181
 MonoBehaviour:
@@ -820,6 +822,10 @@ PrefabInstance:
       value: LightHitbox
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191520, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191520, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_TagString
       value: Shove
       objectReference: {fileID: 0}
@@ -920,7 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  strength: 50
+  strength: 25
   axis: 0
 --- !u!4 &763200320402767869 stripped
 Transform:

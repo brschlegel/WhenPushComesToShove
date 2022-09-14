@@ -27,6 +27,7 @@ public class PlayerInputHandler : MonoBehaviour
     private bool lockMovement = false;
 
     private SpriteRenderer sr;
+    private Animator anim;
 
     private PlayerControls controls;
 
@@ -41,6 +42,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void Init()
     {
         sr = GetComponentInParent<SpriteRenderer>();
+        anim = GetComponentInParent<Animator>();
         controls = new PlayerControls();
 
         vs = GetComponentInParent<VelocitySetter>();
@@ -63,7 +65,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void InitializePlayer(PlayerConfiguration config)
     {
         playerConfig = config;
-        sr.material = config.PlayerMaterial;
+        anim.runtimeAnimatorController = config.PlayerAnimations;
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
     }
 

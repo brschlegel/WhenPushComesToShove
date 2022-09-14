@@ -206,6 +206,50 @@ MonoBehaviour:
   playerPrefab: {fileID: 6273220948599445249, guid: 06a8200273c476048a5a1372f2ec0988, type: 3}
   initOnStart: 0
   lockPlayerSpawn: 0
+--- !u!1 &702363033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 702363035}
+  - component: {fileID: 702363034}
+  m_Layer: 0
+  m_Name: CoroutineManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &702363034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702363033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e00ab6f4e24225047a6ec472e56a109c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &702363035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702363033}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &860583489
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repeatPath: 0
+  lootArenaEquip: {fileID: 347616166255666306, guid: 261b47bf1ce5aa94185670685bd134ca, type: 3}
 --- !u!1 &1864724959
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 2
-  m_MaxPlayerCount: 2
+  m_MaxPlayerCount: 4
   m_AllowJoining: 1
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
@@ -732,14 +777,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a440aa253be8382438c2bf471903de62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPlayers: 2
-  maxPlayers: 2
+  minPlayers: 4
+  maxPlayers: 4
   levelInitRef: {fileID: 0}
   defaultColors:
-  - {fileID: 2100000, guid: a52898b823077c341884b14800e0feea, type: 2}
-  - {fileID: 2100000, guid: ab539ef0a976f894bae4a0f49f3d81ff, type: 2}
-  - {fileID: 2100000, guid: 2e3e01834e43474408ae72d62e425d0d, type: 2}
-  - {fileID: 2100000, guid: b3c1a3bf5cafd17449130a59eaef4f32, type: 2}
+  - {fileID: 9100000, guid: 65da5288a1fc01b4f8f7b09075193de4, type: 2}
+  - {fileID: 9100000, guid: 893785c89d1660b4d8f6467b92ba1e33, type: 2}
+  - {fileID: 9100000, guid: f3491e98635ceb842bef8571558dcb79, type: 2}
+  - {fileID: 9100000, guid: 6eb688f05c581a246ac731e968b13fad, type: 2}
 --- !u!4 &2086439675
 Transform:
   m_ObjectHideFlags: 0
