@@ -57,30 +57,6 @@ public class PlayerConfigManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Helper function to signal that a player is ready to move to the next room
-    /// </summary>
-    /// <param name="index">The player's index</param>
-    public void ReadyPlayer(int index)
-    {
-        playerConfigs[index].IsReady = true;
-
-        //Check if all players are ready and move to the next level if so
-        if (playerConfigs.Count >= minPlayers && playerConfigs.All(p => p.IsReady == true))
-        {
-            SceneManager.LoadScene("DestinyScene");
-        }
-    }
-
-    /// <summary>
-    /// Helper function to back a player out of being ready to move to the next room
-    /// </summary>
-    /// <param name="index"> The player's index</param>
-    public void UnreadyPlayer( int index )
-    {
-        playerConfigs[index].IsReady = false;
-    }
-
-    /// <summary>
     /// Handles a player joining at the start of the game
     /// </summary>
     /// <param name="input">The input to assign to the player</param>
@@ -106,6 +82,19 @@ public class PlayerConfigManager : MonoBehaviour
         if (playerConfigs.Count >= maxPlayers)
             levelInitRef.lockPlayerSpawn = true;
     }
+
+    public bool CheckAllPlayerDeath()
+    {
+        foreach (PlayerConfiguration config in playerConfigs)
+        {
+            if (!config.IsDead)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
 
 //Used to hold information specific to each player
@@ -113,7 +102,7 @@ public class PlayerConfiguration
 {
     public PlayerInput Input { get; set; }
     public int PlayerIndex { get; set; }
-    public bool IsReady { get; set; }
+    public bool IsDead { get; set; }
     public RuntimeAnimatorController PlayerAnimations { get; set; }
 
     public GameObject PlayerObject;

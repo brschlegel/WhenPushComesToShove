@@ -47,6 +47,11 @@ public class InitLevel : MonoBehaviour
         {
             //GameObject player = Instantiate(playerPrefab, playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
             //player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
+            if (playerConfigs[i].IsDead)
+            {
+                playerConfigs[i].PlayerObject.GetComponentInChildren<PlayerHealth>().ResetHealth();
+                playerConfigs[i].IsDead = false;
+            }
 
             playerConfigs[i].PlayerObject.transform.position = playerSpawns[i].transform.position;
         }
