@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeRun : EnemyState
+public class SlimeRun : State
 {
     [HideInInspector]
     public Transform target;

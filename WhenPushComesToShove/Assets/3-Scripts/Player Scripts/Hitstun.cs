@@ -25,7 +25,7 @@ public abstract class Hitstun : MonoBehaviour
             }
         }
 
-        if (vs.Velocity.magnitude - ignoreMagnitude >= hitstunThreshold)
+        if (vs.ListedVelocity.magnitude - ignoreMagnitude >= hitstunThreshold)
         {
             inHitstun = true;
             Stun();

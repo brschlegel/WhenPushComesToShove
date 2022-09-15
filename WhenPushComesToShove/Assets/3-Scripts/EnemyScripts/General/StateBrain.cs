@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBrain : MonoBehaviour
+public class StateBrain : MonoBehaviour
 {
     [SerializeField]
-    protected EnemyState currentState;
+    protected State currentState;
     public Transform target;
 
 }

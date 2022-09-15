@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class SlimeJump : EnemyState
+public class SlimeJump : State
 {
     private IEnumerator enumerator;
     private Tween tween;

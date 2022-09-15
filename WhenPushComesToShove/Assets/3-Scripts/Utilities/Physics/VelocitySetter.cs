@@ -228,6 +228,28 @@ public class VelocitySetter : MonoBehaviour
     {
         get {return rb.velocity;}
     }
+
+    public float Mass
+    {
+        get {return rb.mass;}
+    }
+
+    /// <summary>
+    /// This is the velocity as listed in this setter (IE: Not including velocity made from collisions on the Unity side)
+    /// </summary>
+    /// <value></value>
+    public Vector2 ListedVelocity
+    {
+        get 
+        {
+            Vector2 listedVel = Vector2.zero;
+            foreach(string s in sources.Keys)
+            {
+                listedVel += sources[s];
+            }
+            return listedVel;
+        }
+    }
     #endregion
 
     private void FixedUpdate()

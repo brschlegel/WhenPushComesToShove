@@ -9,7 +9,7 @@ public class SpriteFlipper : MonoBehaviour
     [SerializeField]
     private bool isRightFlipped;
     [SerializeField]
-    private EnemyBrain brain;
+    private StateBrain brain;
     [SerializeField]
     private Rigidbody2D rb;
     private SpriteRenderer sr;
