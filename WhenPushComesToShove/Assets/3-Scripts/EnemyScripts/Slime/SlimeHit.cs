@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeHit : EnemyState
+public class SlimeHit : State
 {
     private IEnumerator enumerator;
 
