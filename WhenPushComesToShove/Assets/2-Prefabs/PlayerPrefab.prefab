@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3467010525216778814}
   - component: {fileID: 8184684198277851572}
   - component: {fileID: 6403724034090220453}
+  - component: {fileID: 9061896472865154378}
+  - component: {fileID: 5086147342537534610}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -50,6 +52,8 @@ MonoBehaviour:
   target: {fileID: 0}
   anim: {fileID: 9170336539225875185}
   vs: {fileID: 924639791968285090}
+  hitstun: {fileID: 7021260591000458096}
+  dashScript: {fileID: 3186559500755933933}
 --- !u!114 &8184684198277851572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: idle
   anim: {fileID: 0}
+  vs: {fileID: 0}
 --- !u!114 &6403724034090220453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +83,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: run
   anim: {fileID: 0}
+  vs: {fileID: 0}
+--- !u!114 &9061896472865154378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624796887541275756}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5ab2facb3436d4fb4009b0f3130559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: hit
+  anim: {fileID: 0}
+  hitstun: {fileID: 0}
+--- !u!114 &5086147342537534610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624796887541275756}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4e868f7fa679f489232b2ae1cb9116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: dash
+  anim: {fileID: 0}
+  vs: {fileID: 0}
 --- !u!1 &2372328146738964214
 GameObject:
   m_ObjectHideFlags: 0

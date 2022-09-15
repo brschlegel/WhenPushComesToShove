@@ -2,25 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : State
+public class PlayerDashState : State
 {
     [HideInInspector]
     public VelocitySetter vs;
 
-    void OnEnable()
+    private void OnEnable()
     {
-        anim.Play("Base Layer.AN_Player_Idle");
+        //Play animation here 
+        Debug.Log("Dash State entered");
     }
 
     private void Update()
     {
-        if (vs.QuerySource("playerMovement", out Vector2 vel))
+        if(vs.QuerySource("playerDash", out Vector2 dash))
         {
-            if (vel.magnitude >= .01f)
+            if(dash.magnitude <= .01f)
             {
                 this.enabled = false;
                 InvokeOnStateExit(true);
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("Dash stae left");
     }
 }
