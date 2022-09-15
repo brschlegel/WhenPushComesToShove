@@ -12,16 +12,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField] bool repeatPath;
     [SerializeField] GameObject lootArenaEquip;
     public static Action onNewRoom;
+    public static Action onEndGame;
     EnemySpawnPoint[] enemySpawns;
 
     private void OnEnable()
     {
         onNewRoom += ShowRoom;
+        onEndGame += ResetPath;
     }
 
     private void OnDisable()
     {
         onNewRoom -= ShowRoom;
+        onEndGame -= ResetPath;
     }
 
     private void Awake()
@@ -102,6 +105,13 @@ public class LevelManager : MonoBehaviour
         SetPlayerSpawns(room.GetComponent<LevelProperties>());
     }
 
+    
+    public void ResetPath()
+    {
+        //Temp code - Will just put everyone back into the lobby
+        currentRoomIndex = 0;
+        //Should remake the path
+    }
     /// <summary>
     /// Sets all of the players to their respective spawn points
     /// </summary>

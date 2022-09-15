@@ -27,6 +27,7 @@ public class LevelEditor : MonoBehaviour
     [Header("Placeable Objects - DO NOT EDIT")]
     [SerializeField] PlaceableObject.ObjectStats[] hazards;
     [SerializeField] PlaceableObject.ObjectStats[] spawnPoints;
+    [SerializeField] PlaceableObject.ObjectStats[] endConditions;
     [SerializeField] PlaceableObject.ObjectStats[] decorations;
 
     [Header("Level Properties")]
@@ -111,6 +112,9 @@ public class LevelEditor : MonoBehaviour
 
         if (spawnPoints != ObjectSelectionWindow.spawnPoints)
             ObjectSelectionWindow.spawnPoints = spawnPoints;
+
+        if (endConditions != ObjectSelectionWindow.endConditions)
+            ObjectSelectionWindow.endConditions = endConditions;
 
         if (decorations != ObjectSelectionWindow.decorations)
             ObjectSelectionWindow.decorations = decorations;

@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField]
     private float currentHealth;
     public float maxHealth;
+    [HideInInspector] public bool dead;
 
 
     public float CurrentHealth
@@ -31,10 +32,12 @@ public class Health : MonoBehaviour
     {
         Debug.Log(transform.root.name + " is dead!");
         currentHealth = maxHealth;
+        dead = true;
     }
 
     private void Start()
     {
         currentHealth = maxHealth;
+        dead = false;
     }
 }
