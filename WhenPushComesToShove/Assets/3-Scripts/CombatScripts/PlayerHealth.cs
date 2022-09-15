@@ -22,6 +22,7 @@ public class PlayerHealth : Health
     {
         dead = false;
         currentHealth = maxHealth;
+        playerRef.sr.color = new Color(playerRef.sr.color.r, playerRef.sr.color.g, playerRef.sr.color.b, 1f);
     }
 
     private void Update()
