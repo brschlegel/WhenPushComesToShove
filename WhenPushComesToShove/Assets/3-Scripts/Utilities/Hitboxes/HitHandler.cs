@@ -13,7 +13,7 @@ public abstract class HitHandler : MonoBehaviour
     {
         foreach(string s in tagsToIgnore)
         {
-            if(e.hitbox.CompareTag(s))
+            if(e.hitbox.CompareTag(s) || e.hurtbox.CompareTag(s))
             {
                return;
             }
