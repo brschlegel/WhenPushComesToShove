@@ -31,7 +31,7 @@ public class BaseEndCondition : MonoBehaviour
         StartCoroutine(TransitionRooms());
     }
 
-    protected IEnumerator TransitionRooms()
+    protected virtual IEnumerator TransitionRooms()
     {
         yield return delay;
         LevelManager.onNewRoom.Invoke();
