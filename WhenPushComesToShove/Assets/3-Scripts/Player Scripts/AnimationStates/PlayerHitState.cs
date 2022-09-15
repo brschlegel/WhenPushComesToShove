@@ -9,7 +9,7 @@ public class PlayerHitState : State
 
     private void OnEnable()
     {
-        Debug.Log("HitState entered");
+       
     }
 
     private void Update()
@@ -23,6 +23,6 @@ public class PlayerHitState : State
 
     private void OnDisable()
     {
-        Debug.Log("HitState left");
+
     }
 }

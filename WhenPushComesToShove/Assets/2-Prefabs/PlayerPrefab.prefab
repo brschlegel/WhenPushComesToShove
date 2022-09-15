@@ -1192,7 +1192,7 @@ MonoBehaviour:
   outputs:
   - {fileID: 5800497215203821077}
   - {fileID: 888565384545538148}
-  - {fileID: 888565384545538148}
+  - {fileID: 4022305041691375480}
 --- !u!114 &888565384545538148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1248,3 +1248,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df9f769fc77c024eae2d36121e3ca8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4022305041691375480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632258541538756751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93619288de6e09348afef84ff792f52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3467010525216778814}
+        m_TargetAssemblyTypeName: PlayerAnimBrain, Assembly-CSharp
+        m_MethodName: OnHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

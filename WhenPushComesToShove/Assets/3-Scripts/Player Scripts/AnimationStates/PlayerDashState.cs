@@ -10,7 +10,6 @@ public class PlayerDashState : State
     private void OnEnable()
     {
         //Play animation here 
-        Debug.Log("Dash State entered");
     }
 
     private void Update()
@@ -27,6 +26,6 @@ public class PlayerDashState : State
 
     private void OnDisable()
     {
-        Debug.Log("Dash stae left");
+        
     }
 }
