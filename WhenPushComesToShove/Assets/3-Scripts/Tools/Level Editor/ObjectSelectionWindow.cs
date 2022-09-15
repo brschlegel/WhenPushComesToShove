@@ -6,15 +6,17 @@ using UnityEditor;
 #if UNITY_EDITOR
 public class ObjectSelectionWindow : EditorWindow
 {
-    public enum TypeOfObject {hazards, spawnPoints, decorations};
+    public enum TypeOfObject {hazards, spawnPoints, endConditions, decorations};
     public TypeOfObject typeOfObject;
 
     public static PlaceableObject.ObjectStats[] hazards;
     public static PlaceableObject.ObjectStats[] spawnPoints;
+    public static PlaceableObject.ObjectStats[] endConditions;
     public static PlaceableObject.ObjectStats[] decorations;
 
     List<GUIContent> hazardContent = new List<GUIContent>();
     List<GUIContent> spawnContent = new List<GUIContent>();
+    List<GUIContent> endContent = new List<GUIContent>();
     List<GUIContent> decoContent = new List<GUIContent>();
 
     public GameObject selectedObject;
@@ -44,6 +46,10 @@ public class ObjectSelectionWindow : EditorWindow
                 ShowSpawnPointsMenu();
                 selectedObject = spawnPoints[toolBarSelect].objectPrefab;
                 break;
+            case TypeOfObject.endConditions:
+                ShowEndConditionsMenu();
+                selectedObject = endConditions[toolBarSelect].objectPrefab;
+                break;
             case TypeOfObject.decorations:
                 ShowDecorationsMenu();
                 selectedObject = decorations[toolBarSelect].objectPrefab;
@@ -66,6 +72,13 @@ public class ObjectSelectionWindow : EditorWindow
 
         if(spawnContent.Count > 0)
             toolBarSelect = GUILayout.Toolbar(toolBarSelect, spawnContent.ToArray());
+    }
+
+    void ShowEndConditionsMenu()
+    {
+        PopulateContentList(endContent, endConditions);
+        if (endContent.Count > 0)
+            toolBarSelect = GUILayout.Toolbar(toolBarSelect, endContent.ToArray());
     }
 
     void ShowDecorationsMenu()
