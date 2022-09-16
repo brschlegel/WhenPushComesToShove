@@ -16,16 +16,27 @@ public class LastManStandingEndCondition : BaseEndCondition
         if (testForAllPlayersDead)
             minPlayers = 0;
         else
-            minPlayers = 1;
-
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach(GameObject obj in players)
-        {
-            playerHealth.Add(obj.GetComponent<Health>());
-        }
+            minPlayers = 1;       
 
         base.Start();
+    }
+
+    protected void OnEnable()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject obj in players)
+        {
+            playerHealth.Add(obj.GetComponentInChildren<Health>());
+        }
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        playerHealth.Clear();
+        playersToRemove.Clear();
     }
 
     protected override void TestCondition()

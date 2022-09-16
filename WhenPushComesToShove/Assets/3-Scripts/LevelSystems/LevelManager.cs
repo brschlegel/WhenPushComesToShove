@@ -43,11 +43,7 @@ public class LevelManager : MonoBehaviour
         //Temp code to test if the room transitions work
         if (Input.GetKeyDown(KeyCode.E))
         {
-            GameObject enemyPool = GameObject.FindGameObjectWithTag("EnemyPool");
-            for(int i = enemyPool.transform.childCount - 1; i >= 0; i--)
-            {
-                Destroy(enemyPool.transform.GetChild(i).gameObject);
-            }
+            ClearEnemies();
 
             onNewRoom();
         }
@@ -108,9 +104,31 @@ public class LevelManager : MonoBehaviour
     
     public void ResetPath()
     {
+        Debug.Log("Reset");
         //Temp code - Will just put everyone back into the lobby
-        currentRoomIndex = 0;
+        currentRoomIndex = path.Count;
+        repeatPath = true;
+        ShowRoom();
+        ClearEnemies();
+        repeatPath = false;
+
+        //Resets any players who died
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject obj in players)
+        {
+            obj.GetComponentInChildren<Health>().dead = false;
+        }
         //Should remake the path
+    }
+
+    public void ClearEnemies()
+    {
+        GameObject enemyPool = GameObject.FindGameObjectWithTag("EnemyPool");
+        for (int i = enemyPool.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(enemyPool.transform.GetChild(i).gameObject);
+        }
     }
     /// <summary>
     /// Sets all of the players to their respective spawn points
@@ -120,7 +138,7 @@ public class LevelManager : MonoBehaviour
     {
         InitLevel init = PlayerConfigManager.Instance.levelInitRef;
 
-        //Convert the gameobjects into transfomrs
+        //Convert the gameobjects into transforms
         Transform[] levelPlayerSpawn = new Transform[init.playerSpawns.Length];
         for (int i = 0; i < levelPlayerSpawn.Length; i++)
         {
