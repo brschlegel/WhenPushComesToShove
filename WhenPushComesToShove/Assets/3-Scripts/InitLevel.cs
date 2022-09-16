@@ -40,13 +40,17 @@ public class InitLevel : MonoBehaviour
 
     public void SpawnPlayersInLevel()
     {
-
         //Spawn the players in their set locations for the level.
         PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
         for (int i = 0; i < playerConfigs.Length; i++)
         {
             //GameObject player = Instantiate(playerPrefab, playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
             //player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
+            if (playerConfigs[i].IsDead)
+            {
+                playerConfigs[i].PlayerObject.GetComponentInChildren<PlayerHealth>().ResetHealth();
+                playerConfigs[i].IsDead = false;
+            }
 
             playerConfigs[i].PlayerObject.transform.position = playerSpawns[i].transform.position;
         }

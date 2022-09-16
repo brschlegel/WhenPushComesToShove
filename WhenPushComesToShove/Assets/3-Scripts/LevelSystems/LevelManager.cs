@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,17 +10,21 @@ public class LevelManager : MonoBehaviour
     List<GameObject> path;
     [Tooltip("Debug Variable. Will cause the path to cycle to the beginning.")]
     [SerializeField] bool repeatPath;
+    [SerializeField] GameObject lootArenaEquip;
     public static Action onNewRoom;
+    public static Action onEndGame;
     EnemySpawnPoint[] enemySpawns;
 
     private void OnEnable()
     {
         onNewRoom += ShowRoom;
+        onEndGame += ResetPath;
     }
 
     private void OnDisable()
     {
         onNewRoom -= ShowRoom;
+        onEndGame -= ResetPath;
     }
 
     private void Awake()
@@ -39,11 +43,7 @@ public class LevelManager : MonoBehaviour
         //Temp code to test if the room transitions work
         if (Input.GetKeyDown(KeyCode.E))
         {
-            GameObject enemyPool = GameObject.FindGameObjectWithTag("EnemyPool");
-            for(int i = enemyPool.transform.childCount - 1; i >= 0; i--)
-            {
-                Destroy(enemyPool.transform.GetChild(i).gameObject);
-            }
+            ClearEnemies();
 
             onNewRoom();
         }
@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour
             currentRoomIndex = 0;
         }
             
-
+        
         
         //Hide the previous room
         for (int i = 0; i < path.Count; i++)
@@ -77,6 +77,15 @@ public class LevelManager : MonoBehaviour
 
         //Grab the enemy spawn points
         LevelProperties levelProp = room.GetComponent<LevelProperties>();
+
+        if(levelProp.levelType == LevelType.Arena)
+        {
+            foreach(Transform player in GameState.players)
+            {
+                LootData loot = Instantiate(lootArenaEquip, transform).GetComponent<LootData>();
+                player.GetComponentInChildren<PlayerInventory>().EquipItem(loot);
+            }
+        }
         
         if(levelProp.enemySpawnProps.Count > 0)
         {
@@ -92,6 +101,35 @@ public class LevelManager : MonoBehaviour
         SetPlayerSpawns(room.GetComponent<LevelProperties>());
     }
 
+    
+    public void ResetPath()
+    {
+        Debug.Log("Reset");
+        //Temp code - Will just put everyone back into the lobby
+        currentRoomIndex = path.Count;
+        repeatPath = true;
+        ShowRoom();
+        ClearEnemies();
+        repeatPath = false;
+
+        //Resets any players who died
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject obj in players)
+        {
+            obj.GetComponentInChildren<Health>().dead = false;
+        }
+        //Should remake the path
+    }
+
+    public void ClearEnemies()
+    {
+        GameObject enemyPool = GameObject.FindGameObjectWithTag("EnemyPool");
+        for (int i = enemyPool.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(enemyPool.transform.GetChild(i).gameObject);
+        }
+    }
     /// <summary>
     /// Sets all of the players to their respective spawn points
     /// </summary>
@@ -100,7 +138,7 @@ public class LevelManager : MonoBehaviour
     {
         InitLevel init = PlayerConfigManager.Instance.levelInitRef;
 
-        //Convert the gameobjects into transfomrs
+        //Convert the gameobjects into transforms
         Transform[] levelPlayerSpawn = new Transform[init.playerSpawns.Length];
         for (int i = 0; i < levelPlayerSpawn.Length; i++)
         {

@@ -10,7 +10,6 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     public Hitbox hitbox;
     private Collider2D collider;
     [SerializeField] private float cooldown = 1f;
-    [SerializeField] private float buildUpTime = .3f;
 
     public void Start()
     {
@@ -34,7 +33,6 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     /// <returns></returns>
     public IEnumerator HitboxCooldown()
     {
-        yield return new WaitForSeconds(buildUpTime);
         collider.enabled = true;
         yield return new WaitForSeconds(cooldown);
         collider.enabled = false;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeBrain : EnemyBrain
+public class SlimeBrain : StateBrain
 {
     //#region States
     SlimeIdle idleState;
@@ -22,6 +22,7 @@ public class SlimeBrain : EnemyBrain
     private GameObject hitboxObject;
 
 
+
     private void Start()
     {
         if(runState == null)
@@ -33,7 +34,17 @@ public class SlimeBrain : EnemyBrain
     private void Update()
     {
         if(runState.enabled)
+        {
             target = runState.target;
+        }
+        else if(target != null)
+        {
+            if (target.GetComponentInChildren<Health>().dead)
+            {
+                target = null;
+                chase.SetTarget(null);
+            }   
+        }
     }
 
     private void Init()

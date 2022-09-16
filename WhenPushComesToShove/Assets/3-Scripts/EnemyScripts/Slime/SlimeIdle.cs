@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeIdle : EnemyState
+public class SlimeIdle : State
 {
    public void Update()
    {

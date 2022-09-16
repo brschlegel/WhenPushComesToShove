@@ -2,34 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerInputHandler))]
-public class Hitstun : MonoBehaviour
+
+public abstract class Hitstun : MonoBehaviour
 {
-    
-    private Rigidbody2D rb;
 
     [SerializeField]
     private VelocitySetter vs;
-    private PlayerInputHandler inputHandler;
     [SerializeField]
     private float hitstunThreshold;
+    public bool inHitstun;
+    protected List<string> sourcesToIgnore;
 
-    private void Start()
+    private void Update()
     {
-        rb = vs.GetComponent<Rigidbody2D>();
-        inputHandler = GetComponent<PlayerInputHandler>();
-    }
-    private void FixedUpdate()
-    {
-        float movementMagnitude = vs.sources["playerMovement"].magnitude;
-       
-        if(rb.velocity.magnitude - movementMagnitude >= hitstunThreshold)
+
+        float ignoreMagnitude = 0;
+        foreach (string source in sourcesToIgnore)
         {
-            inputHandler.ForceLockMovement();
+            if (vs.QuerySource(source, out Vector2 vel))
+            {
+                ignoreMagnitude += vel.magnitude;
+            }
+        }
+
+        if (vs.ListedVelocity.magnitude - ignoreMagnitude >= hitstunThreshold)
+        {
+            inHitstun = true;
+            Stun();
         }
         else
         {
-            inputHandler.ForceUnlockMovement();
+            inHitstun = false;
+            Unstun();
         }
     }
+
+    /// <summary>
+    /// Place entity in hitstun
+    /// </summary>
+    protected abstract void Stun();
+
+    /// <summary>
+    /// Get entity out of hitstun
+    /// </summary>
+    protected abstract void Unstun();
 }

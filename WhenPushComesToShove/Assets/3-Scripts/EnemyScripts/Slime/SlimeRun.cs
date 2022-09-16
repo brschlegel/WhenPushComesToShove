@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeRun : EnemyState
+public class SlimeRun : State
 {
     [HideInInspector]
     public Transform target;
@@ -39,11 +39,15 @@ public class SlimeRun : EnemyState
         Transform closest = null;
         foreach(Transform t in GameState.players)
         {
-            float temp = Vector2.Distance(transform.position, t.position);
-            if(temp < dist)
+            //Run only if player is alive
+            if (!t.GetComponentInChildren<Health>().dead)
             {
-                dist = temp;
-                closest = t;
+                float temp = Vector2.Distance(transform.position, t.position);
+                if (temp < dist)
+                {
+                    dist = temp;
+                    closest = t;
+                }
             }
         }
         return closest;

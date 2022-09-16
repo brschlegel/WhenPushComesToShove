@@ -16,7 +16,7 @@ public class PlayerConfigManager : MonoBehaviour
     public static PlayerConfigManager Instance { get; private set; }
 
     [HideInInspector] public InitLevel levelInitRef;
-    [SerializeField] private Material[] defaultColors = new Material[4];
+    [SerializeField] private RuntimeAnimatorController[] defaultColors = new RuntimeAnimatorController[4];
 
     public void Awake()
     {
@@ -46,38 +46,19 @@ public class PlayerConfigManager : MonoBehaviour
         return playerConfigs;
     }
 
+    public int GetMinPlayer()
+    {
+        return minPlayers;
+    }
+
     /// <summary>
     /// Helper function to set a player's color
     /// </summary>
     /// <param name="index">The player's index</param>
     /// <param name="color">The material to assign to the spriteRenderer</param>
-    public void SetPlayerColor(int index, Material color)
+    public void SetPlayerColor(int index, RuntimeAnimatorController color)
     {
-        playerConfigs[index].PlayerMaterial = color;
-    }
-
-    /// <summary>
-    /// Helper function to signal that a player is ready to move to the next room
-    /// </summary>
-    /// <param name="index">The player's index</param>
-    public void ReadyPlayer(int index)
-    {
-        playerConfigs[index].IsReady = true;
-
-        //Check if all players are ready and move to the next level if so
-        if (playerConfigs.Count >= minPlayers && playerConfigs.All(p => p.IsReady == true))
-        {
-            SceneManager.LoadScene("DestinyScene");
-        }
-    }
-
-    /// <summary>
-    /// Helper function to back a player out of being ready to move to the next room
-    /// </summary>
-    /// <param name="index"> The player's index</param>
-    public void UnreadyPlayer( int index )
-    {
-        playerConfigs[index].IsReady = false;
+        playerConfigs[index].PlayerAnimations = color;
     }
 
     /// <summary>
@@ -102,9 +83,19 @@ public class PlayerConfigManager : MonoBehaviour
 
             levelInitRef.SpawnPlayer(input.playerIndex);
         }
+    }
 
-        if (playerConfigs.Count >= maxPlayers)
-            levelInitRef.lockPlayerSpawn = true;
+    public bool CheckAllPlayerDeath()
+    {
+        foreach (PlayerConfiguration config in playerConfigs)
+        {
+            if (!config.IsDead)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
 
@@ -113,8 +104,8 @@ public class PlayerConfiguration
 {
     public PlayerInput Input { get; set; }
     public int PlayerIndex { get; set; }
-    public bool IsReady { get; set; }
-    public Material PlayerMaterial { get; set; }
+    public bool IsDead { get; set; }
+    public RuntimeAnimatorController PlayerAnimations { get; set; }
 
     public GameObject PlayerObject;
 

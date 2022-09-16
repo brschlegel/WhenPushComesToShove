@@ -64,10 +64,10 @@ public class HitboxManager : MonoBehaviour
                 }
                 if(currentEvent != null)
                 {
-                    handler.ReceiveHit(currentEvent);
+                    handler.ProcessHit(currentEvent);
                     if(currentEvent.hitbox.handler != null)
                     {
-                        currentEvent.hitbox.handler.ReceiveHit(currentEvent);
+                        currentEvent.hitbox.handler.ProcessHit(currentEvent);
                     }
                 }
             }

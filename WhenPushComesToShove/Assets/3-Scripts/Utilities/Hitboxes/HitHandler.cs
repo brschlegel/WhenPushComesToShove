@@ -9,6 +9,19 @@ public abstract class HitHandler : MonoBehaviour
 {
     public abstract void ReceiveHit(HitEvent e);
 
+    public void ProcessHit(HitEvent e)
+    {
+        foreach(string s in tagsToIgnore)
+        {
+            if(e.hitbox.CompareTag(s) || e.hurtbox.CompareTag(s))
+            {
+               return;
+            }
+        }
+
+        ReceiveHit(e);
+    }
+
     [Tooltip("Will ignore hits from these tags: PUT TAG ON HITBOX OBJECT")]
     public List<string> tagsToIgnore;
 }

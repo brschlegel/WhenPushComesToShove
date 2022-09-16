@@ -56,7 +56,10 @@ public class LootData : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            collision.GetComponentInChildren<PlayerInventory>().EquipItem(this);
+            if (!collision.GetComponentInChildren<Health>().dead)
+            {
+                collision.GetComponentInChildren<PlayerInventory>().EquipItem(this);
+            }
         }
     }
 
