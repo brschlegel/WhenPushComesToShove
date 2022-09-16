@@ -12,7 +12,19 @@ public class LootManager : MonoBehaviour
     {
         droppedLoot = new List<LootData>();
         avaliableLoot = Resources.LoadAll<LootData>("Loot/");
+
+        LevelManager.onNewRoom += ClearDroppedLoot;
+
         StartCoroutine(TestSpawnOverTime());
+    }
+
+    private void Update()
+    {
+        //For Debugging
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            ClearDroppedLoot();
+        }
     }
 
     /// <summary>
@@ -23,7 +35,7 @@ public class LootManager : MonoBehaviour
     {
         int index = Random.Range(0, avaliableLoot.Length);
         GameObject lootObject = Instantiate(avaliableLoot[index].gameObject, transform);
-        droppedLoot.Add(avaliableLoot[index]);
+        droppedLoot.Add(lootObject.GetComponent<LootData>());
     }
 
     /// <summary>
@@ -35,6 +47,19 @@ public class LootManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         DropRandomLoot(Vector2.zero);
         StartCoroutine(TestSpawnOverTime());
+    }
+
+    /// <summary>
+    /// Destroys and clears any dropped loot in the current room
+    /// </summary>
+    public void ClearDroppedLoot()
+    {
+        for (int i = 0; i < droppedLoot.Count; i++)
+        {
+            Destroy(droppedLoot[i].gameObject);
+        }
+
+        droppedLoot.Clear();
     }
 
 }
