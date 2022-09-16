@@ -34,7 +34,17 @@ public class SlimeBrain : StateBrain
     private void Update()
     {
         if(runState.enabled)
+        {
             target = runState.target;
+        }
+        else if(target != null)
+        {
+            if (target.GetComponentInChildren<Health>().dead)
+            {
+                target = null;
+                chase.SetTarget(null);
+            }   
+        }
     }
 
     private void Init()

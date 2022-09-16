@@ -38,12 +38,15 @@ public class SlimeJump : State
 
     private IEnumerator AttackCoroutine(Transform target)
     {
-        chase.LockMovement();
-        yield return new WaitForSeconds(secondsStationary);
-        targetLocation = target.position;
-        tween = transform.parent.DOMove((Vector3)targetLocation, jumpSpeed).SetSpeedBased().SetEase(Ease.InQuad);
-        yield return tween.WaitForCompletion();
-        this.enabled = false;
-        InvokeOnStateExit(true);
+        if (target != null)
+        {
+            chase.LockMovement();
+            yield return new WaitForSeconds(secondsStationary);
+            targetLocation = target.position;
+            tween = transform.parent.DOMove((Vector3)targetLocation, jumpSpeed).SetSpeedBased().SetEase(Ease.InQuad);
+            yield return tween.WaitForCompletion();
+            this.enabled = false;
+            InvokeOnStateExit(true);
+        }
     }
 }

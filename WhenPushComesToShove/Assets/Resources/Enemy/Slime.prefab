@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 170120473}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vs: {fileID: 999011918721939299}
+  mass: 0
 --- !u!114 &999011918721939302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 50
+  dead: 0
 --- !u!1 &999011920109504314
 GameObject:
   m_ObjectHideFlags: 0

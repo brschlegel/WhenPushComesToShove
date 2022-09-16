@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private float currentHealth;
+    protected float currentHealth;
     public float maxHealth;
     [HideInInspector] public bool dead;
 
@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
 
-    public void Die()
+    public virtual void Die()
     {
         Debug.Log(transform.root.name + " is dead!");
         currentHealth = maxHealth;

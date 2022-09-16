@@ -25,8 +25,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     [HideInInspector] public bool performingAction = false;
     private bool lockMovement = false;
+    [HideInInspector] public bool dead = false;
 
-    private SpriteRenderer sr;
+    [HideInInspector] public SpriteRenderer sr;
     private Animator anim;
 
     private PlayerControls controls;
@@ -81,7 +82,7 @@ public class PlayerInputHandler : MonoBehaviour
             OnMove(obj);
         }
         //Select
-        else if (obj.action.name == controls.PlayerMovement.Select.name)
+        else if (obj.action.name == controls.PlayerMovement.Select.name && !playerConfig.IsDead)
         {
             if (onSelect != null && !performingAction)
             {
@@ -90,7 +91,7 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
         //Light Shove
-        else if (obj.action.name == controls.PlayerMovement.LightShove.name)
+        else if (obj.action.name == controls.PlayerMovement.LightShove.name && !playerConfig.IsDead)
         {
             if (!performingAction)
             {
@@ -99,7 +100,7 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
         //Heavy Shove
-        else if (obj.action.name == controls.PlayerMovement.HeavyShove.name)
+        else if (obj.action.name == controls.PlayerMovement.HeavyShove.name && !playerConfig.IsDead)
         {
             if (!performingAction)
             {
