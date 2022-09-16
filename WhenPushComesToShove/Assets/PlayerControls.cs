@@ -60,7 +60,16 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""id"": ""12c50add-f66d-4a88-8d0a-e3e717979033"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HeavyShoveCharge"",
+                    ""type"": ""Button"",
+                    ""id"": ""3946c64e-94c7-4a92-a918-61c8cd8bc051"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -225,6 +234,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb476f7a-b597-45ab-b8fa-e0738e11bb16"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Xbox Controller Scheme"",
+                    ""action"": ""HeavyShoveCharge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4028490-84d2-4288-bd39-f48f08757c39"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyShoveCharge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -249,6 +280,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Select = m_PlayerMovement.FindAction("Select", throwIfNotFound: true);
         m_PlayerMovement_LightShove = m_PlayerMovement.FindAction("LightShove", throwIfNotFound: true);
         m_PlayerMovement_HeavyShove = m_PlayerMovement.FindAction("HeavyShove", throwIfNotFound: true);
+        m_PlayerMovement_HeavyShoveCharge = m_PlayerMovement.FindAction("HeavyShoveCharge", throwIfNotFound: true);
         m_PlayerMovement_Dash = m_PlayerMovement.FindAction("Dash", throwIfNotFound: true);
         m_PlayerMovement_Aim = m_PlayerMovement.FindAction("Aim", throwIfNotFound: true);
     }
@@ -314,6 +346,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Select;
     private readonly InputAction m_PlayerMovement_LightShove;
     private readonly InputAction m_PlayerMovement_HeavyShove;
+    private readonly InputAction m_PlayerMovement_HeavyShoveCharge;
     private readonly InputAction m_PlayerMovement_Dash;
     private readonly InputAction m_PlayerMovement_Aim;
     public struct PlayerMovementActions
@@ -324,6 +357,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Select => m_Wrapper.m_PlayerMovement_Select;
         public InputAction @LightShove => m_Wrapper.m_PlayerMovement_LightShove;
         public InputAction @HeavyShove => m_Wrapper.m_PlayerMovement_HeavyShove;
+        public InputAction @HeavyShoveCharge => m_Wrapper.m_PlayerMovement_HeavyShoveCharge;
         public InputAction @Dash => m_Wrapper.m_PlayerMovement_Dash;
         public InputAction @Aim => m_Wrapper.m_PlayerMovement_Aim;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
@@ -347,6 +381,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @HeavyShove.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShove;
                 @HeavyShove.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShove;
                 @HeavyShove.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShove;
+                @HeavyShoveCharge.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShoveCharge;
+                @HeavyShoveCharge.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShoveCharge;
+                @HeavyShoveCharge.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShoveCharge;
                 @Dash.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnDash;
@@ -369,6 +406,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @HeavyShove.started += instance.OnHeavyShove;
                 @HeavyShove.performed += instance.OnHeavyShove;
                 @HeavyShove.canceled += instance.OnHeavyShove;
+                @HeavyShoveCharge.started += instance.OnHeavyShoveCharge;
+                @HeavyShoveCharge.performed += instance.OnHeavyShoveCharge;
+                @HeavyShoveCharge.canceled += instance.OnHeavyShoveCharge;
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
@@ -394,6 +434,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnSelect(InputAction.CallbackContext context);
         void OnLightShove(InputAction.CallbackContext context);
         void OnHeavyShove(InputAction.CallbackContext context);
+        void OnHeavyShoveCharge(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
     }
