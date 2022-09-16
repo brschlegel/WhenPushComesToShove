@@ -38,7 +38,16 @@
                     "id": "12c50add-f66d-4a88-8d0a-e3e717979033",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HeavyShoveCharge",
+                    "type": "Button",
+                    "id": "3946c64e-94c7-4a92-a918-61c8cd8bc051",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
@@ -201,6 +210,28 @@
                     "processors": "StickDeadzone",
                     "groups": "Xbox Controller Scheme",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb476f7a-b597-45ab-b8fa-e0738e11bb16",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Xbox Controller Scheme",
+                    "action": "HeavyShoveCharge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4028490-84d2-4288-bd39-f48f08757c39",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HeavyShoveCharge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
