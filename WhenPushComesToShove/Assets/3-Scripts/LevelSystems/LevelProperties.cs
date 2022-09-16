@@ -33,6 +33,11 @@ public class LevelProperties : MonoBehaviour
 
     private void OnDisable()
     {
+        foreach(EnemySpawnPoint point in enemySpawnProps)
+        {
+            point.currentWave = 0;
+            point.complete = false;
+        }
         enemySpawnProps.Clear();
     }
 

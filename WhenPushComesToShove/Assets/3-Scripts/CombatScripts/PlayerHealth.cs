@@ -14,7 +14,7 @@ public class PlayerHealth : Health
 
         if (PlayerConfigManager.Instance.CheckAllPlayerDeath())
         {
-            GameObject.Find("Path").GetComponent<LevelManager>().ResetPath();
+            //GameObject.Find("Path").GetComponent<LevelManager>().ResetPath();
         }
     }
 
