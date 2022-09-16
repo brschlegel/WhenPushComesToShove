@@ -46,6 +46,11 @@ public class PlayerConfigManager : MonoBehaviour
         return playerConfigs;
     }
 
+    public int GetMinPlayer()
+    {
+        return minPlayers;
+    }
+
     /// <summary>
     /// Helper function to set a player's color
     /// </summary>
@@ -78,9 +83,6 @@ public class PlayerConfigManager : MonoBehaviour
 
             levelInitRef.SpawnPlayer(input.playerIndex);
         }
-
-        if (playerConfigs.Count >= maxPlayers)
-            levelInitRef.lockPlayerSpawn = true;
     }
 
     public bool CheckAllPlayerDeath()

@@ -120,7 +120,7 @@ public class LevelManager : MonoBehaviour
     {
         InitLevel init = PlayerConfigManager.Instance.levelInitRef;
 
-        //Convert the gameobjects into transfomrs
+        //Convert the gameobjects into transforms
         Transform[] levelPlayerSpawn = new Transform[init.playerSpawns.Length];
         for (int i = 0; i < levelPlayerSpawn.Length; i++)
         {
@@ -130,6 +130,7 @@ public class LevelManager : MonoBehaviour
         //Set the players spawn positions
         init.playerSpawns = levelPlayerSpawn;
 
+        Debug.Log("Hasn't locked yet");
         //Debug.Log(init.lockPlayerSpawn);
         if(init.lockPlayerSpawn)
             init.SpawnPlayersInLevel();

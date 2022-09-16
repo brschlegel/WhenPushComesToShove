@@ -22,7 +22,7 @@ public class LastManStandingEndCondition : BaseEndCondition
 
         foreach(GameObject obj in players)
         {
-            playerHealth.Add(obj.GetComponent<Health>());
+            playerHealth.Add(obj.GetComponentInChildren<Health>());
         }
 
         base.Start();
