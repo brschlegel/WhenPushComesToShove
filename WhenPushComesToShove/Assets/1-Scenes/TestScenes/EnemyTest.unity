@@ -1418,10 +1418,10 @@ MonoBehaviour:
   maxPlayers: 2
   levelInitRef: {fileID: 0}
   defaultColors:
-  - {fileID: 2100000, guid: a52898b823077c341884b14800e0feea, type: 2}
-  - {fileID: 2100000, guid: ab539ef0a976f894bae4a0f49f3d81ff, type: 2}
-  - {fileID: 2100000, guid: 2e3e01834e43474408ae72d62e425d0d, type: 2}
-  - {fileID: 2100000, guid: b3c1a3bf5cafd17449130a59eaef4f32, type: 2}
+  - {fileID: 9100000, guid: 65da5288a1fc01b4f8f7b09075193de4, type: 2}
+  - {fileID: 9100000, guid: 893785c89d1660b4d8f6467b92ba1e33, type: 2}
+  - {fileID: 9100000, guid: f3491e98635ceb842bef8571558dcb79, type: 2}
+  - {fileID: 9100000, guid: 6eb688f05c581a246ac731e968b13fad, type: 2}
 --- !u!4 &1953411768
 Transform:
   m_ObjectHideFlags: 0
@@ -1564,17 +1564,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 881103319, guid: 6f6bae884535d794987296190dee6baa, type: 3}
-      propertyPath: hitstun
-      value: 
-      objectReference: {fileID: 999011920109504318, guid: 6f6bae884535d794987296190dee6baa, type: 3}
     - target: {fileID: 999011918721937567, guid: 6f6bae884535d794987296190dee6baa, type: 3}
       propertyPath: m_Name
       value: Slime
-      objectReference: {fileID: 0}
-    - target: {fileID: 999011918721937567, guid: 6f6bae884535d794987296190dee6baa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 999011918721939297, guid: 6f6bae884535d794987296190dee6baa, type: 3}
       propertyPath: m_RootOrder
@@ -1619,6 +1611,14 @@ PrefabInstance:
     - target: {fileID: 999011918721939297, guid: 6f6bae884535d794987296190dee6baa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052854012435890495, guid: 6f6bae884535d794987296190dee6baa, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251813542473979276, guid: 6f6bae884535d794987296190dee6baa, type: 3}
+      propertyPath: animName
+      value: Base.SpikedSlime_Death
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6bae884535d794987296190dee6baa, type: 3}

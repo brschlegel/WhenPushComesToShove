@@ -22,16 +22,16 @@ public class SpriteFlipper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(rb.velocity.magnitude >= .001f)
-        {
-            bool isXPositive = rb.velocity.x >= 0;
-            // (isRightFlipped && isXPositive) || (!isRightFlipped && !isXPositive);
-            sr.flipX = isRightFlipped == isXPositive;
-        }
-        else if(brain.target != null)
+        if(brain.target != null)
         {
             Vector2 toTarget = brain.target.position - brain.transform.position;
             bool isXPositive = toTarget.x >= 0;
+            // (isRightFlipped && isXPositive) || (!isRightFlipped && !isXPositive);
+            sr.flipX = isRightFlipped == isXPositive;
+        }
+        else if(rb.velocity.magnitude >= .001f)
+        {
+            bool isXPositive = rb.velocity.x >= 0;
             // (isRightFlipped && isXPositive) || (!isRightFlipped && !isXPositive);
             sr.flipX = isRightFlipped == isXPositive;
         }

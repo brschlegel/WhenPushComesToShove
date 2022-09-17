@@ -77,6 +77,7 @@ public class VelocityBasedHitbox : MonoBehaviour
     private IEnumerator WaitToActivate()
     {
         yield return new WaitForSeconds(GlobalSettings.velocityHitboxDelay);
-        hitboxObject.SetActive(true);
+        if(hitboxObject != null)
+            hitboxObject.SetActive(true);
     }
 }
