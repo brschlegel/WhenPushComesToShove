@@ -106,10 +106,14 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Reset");
         //Temp code - Will just put everyone back into the lobby
+
+        ClearEnemies();
+
+        pathGen.ResetPath();
+
         currentRoomIndex = path.Count;
         repeatPath = true;
-        ShowRoom();
-        ClearEnemies();
+        ShowRoom();        
         repeatPath = false;
 
         //Resets any players who died
