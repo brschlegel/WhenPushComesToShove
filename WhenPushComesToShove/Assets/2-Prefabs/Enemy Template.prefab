@@ -74,13 +74,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 881103314}
-  - component: {fileID: 881103319}
-  - component: {fileID: 881103318}
-  - component: {fileID: 881103317}
-  - component: {fileID: 881103316}
-  - component: {fileID: 881103315}
-  - component: {fileID: 881103320}
-  - component: {fileID: 6251813542473979276}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -103,121 +96,6 @@ Transform:
   m_Father: {fileID: 999011918721939297}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &881103319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881103313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 976f52f9930b71f449ab4e7b2aede650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: {fileID: 0}
-  target: {fileID: 0}
-  chase: {fileID: 999011920109504316}
-  hitstun: {fileID: 252859135}
-  anim: {fileID: 999011919433777032}
-  hitboxObject: {fileID: 5963588997929702906}
-  rootObject: {fileID: 999011918721937567}
---- !u!114 &881103318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881103313}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a31ac6675138afa4cb5ee8db1bc3ec00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: Run
-  anim: {fileID: 0}
-  target: {fileID: 0}
-  chase: {fileID: 0}
---- !u!114 &881103317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881103313}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a335b491e24c9f4a90359670b8b3529, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: Land
-  anim: {fileID: 0}
-  chase: {fileID: 0}
-  hitboxObject: {fileID: 0}
-  hitboxActiveTime: 0.2
---- !u!114 &881103316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881103313}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd6af1a8c4508a499536527e16aa6a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: Jump
-  anim: {fileID: 0}
-  target: {fileID: 0}
-  chase: {fileID: 0}
-  secondsStationary: 0.2
-  jumpSpeed: 5
---- !u!114 &881103315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881103313}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c331290a929ea04a9d97ae37d01c585, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: Hit
-  anim: {fileID: 0}
-  hitstun: {fileID: 0}
-  additionalStunTime: 0.5
---- !u!114 &881103320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881103313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc8f0201ef3c3d34f983b918ab68faa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: Idle
-  anim: {fileID: 0}
---- !u!114 &6251813542473979276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881103313}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8e1fd3a5989bcc4994342a825a24cb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: Death
-  anim: {fileID: 0}
-  animName: Base.SpikedSlime_Death
 --- !u!1 &999011918721937567
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +112,7 @@ GameObject:
   - component: {fileID: 999011918721939302}
   - component: {fileID: 170120473}
   m_Layer: 0
-  m_Name: Slime
+  m_Name: Enemy Template
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,6 +137,7 @@ Transform:
   - {fileID: 999011920060830535}
   - {fileID: 881103314}
   - {fileID: 252859133}
+  - {fileID: 3590825691938974262}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -361,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e4872b3bbe5c44c8d905b01671f21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 999011920060830536}
   vs: {fileID: 999011918721939299}
   sourcesToIgnore:
   - Move
@@ -484,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRightFlipped: 0
-  brain: {fileID: 881103319}
+  brain: {fileID: 0}
   rb: {fileID: 999011918721939300}
 --- !u!1 &999011920060830534
 GameObject:
@@ -495,7 +374,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 999011920060830535}
-  - component: {fileID: 3052854012435890495}
+  - component: {fileID: 999011920060830536}
+  - component: {fileID: 3075990788883239344}
   m_Layer: 0
   m_Name: Combat
   m_TagString: Untagged
@@ -519,7 +399,22 @@ Transform:
   m_Father: {fileID: 999011918721939297}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3052854012435890495
+--- !u!114 &999011920060830536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999011920060830534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eea28615ab24824fb7a301cb8be3b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 50
+  dead: 0
+--- !u!114 &3075990788883239344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -537,19 +432,7 @@ MonoBehaviour:
   rootObject: {fileID: 999011918721937567}
   onDeath:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 881103319}
-        m_TargetAssemblyTypeName: SlimeBrain, Assembly-CSharp
-        m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &999011920109504314
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,6 +508,85 @@ MonoBehaviour:
   move: {fileID: 999011920109504317}
   closeEnough: 0
   chaseTarget: {fileID: 0}
+--- !u!1 &6519861113405650387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3590825691938974262}
+  - component: {fileID: 2396300858512014288}
+  - component: {fileID: 4734747574977284805}
+  - component: {fileID: 201831532097230365}
+  m_Layer: 0
+  m_Name: HitHandlers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3590825691938974262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519861113405650387}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 999011918721939297}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2396300858512014288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519861113405650387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5507211a3cdd2714b8b487751e703291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  kbReciever: {fileID: 999011918721939298}
+--- !u!114 &4734747574977284805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519861113405650387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deafbcdcbff1f0a428ee561f1d1dc96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore:
+  - Enemy
+  outputs:
+  - {fileID: 2396300858512014288}
+  - {fileID: 201831532097230365}
+--- !u!114 &201831532097230365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519861113405650387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22dbf66df48581a4383e407aa75f4828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  health: {fileID: 999011920060830536}
 --- !u!1001 &999011918593432200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -639,7 +601,7 @@ PrefabInstance:
     - target: {fileID: 1864335183953101693, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: handler
       value: 
-      objectReference: {fileID: 999011920278194451}
+      objectReference: {fileID: 0}
     - target: {fileID: 7725880952350467008, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: m_Name
       value: Hurtbox
@@ -729,34 +691,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7725880952350467008, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
   m_PrefabInstance: {fileID: 999011918593432200}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2035447770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7415990179920017736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93619288de6e09348afef84ff792f52c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagsToIgnore: []
-  onHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 881103319}
-        m_TargetAssemblyTypeName: SlimeBrain, Assembly-CSharp
-        m_MethodName: OnHit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &999011920278194450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -771,50 +705,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToIgnore: []
   kbReciever: {fileID: 999011918721939298}
---- !u!114 &999011920278194451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7415990179920017736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deafbcdcbff1f0a428ee561f1d1dc96f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagsToIgnore:
-  - Enemy
-  outputs:
-  - {fileID: 999011920278194450}
-  - {fileID: 999011920278194456}
-  - {fileID: 2035447770}
---- !u!114 &999011920278194456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7415990179920017736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22dbf66df48581a4383e407aa75f4828, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagsToIgnore: []
-  health: {fileID: 3052854012435890495}
---- !u!114 &3303909162636323491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7415990179920017736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df9f769fc77c024eae2d36121e3ca8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &999011919620934298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1047,7 +937,7 @@ PrefabInstance:
     - target: {fileID: 5430042844801083219, guid: eb4a84f9753ea2946ad89ad1f767d3aa, type: 3}
       propertyPath: combat
       value: 
-      objectReference: {fileID: 3052854012435890495}
+      objectReference: {fileID: 999011920060830536}
     - target: {fileID: 5430042844801083219, guid: eb4a84f9753ea2946ad89ad1f767d3aa, type: 3}
       propertyPath: maxScale
       value: 0.4

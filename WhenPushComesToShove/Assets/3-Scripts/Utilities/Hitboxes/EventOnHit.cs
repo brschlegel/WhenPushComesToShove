@@ -10,7 +10,7 @@ public class EventOnHit : HitHandler
 
     public override void ReceiveHit(HitEvent e )
     {
-        onHit.Invoke();
+        onHit?.Invoke();
     }
 
 }
