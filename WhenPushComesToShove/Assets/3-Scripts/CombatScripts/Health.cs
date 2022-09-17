@@ -30,7 +30,6 @@ public class Health : MonoBehaviour
 
     public virtual void Die()
     {
-        Debug.Log(transform.root.name + " is dead!");
         currentHealth = maxHealth;
         dead = true;
     }

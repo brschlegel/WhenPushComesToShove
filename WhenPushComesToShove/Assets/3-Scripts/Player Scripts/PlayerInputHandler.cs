@@ -23,8 +23,13 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerHeavyShoveScript heavyShoveScript;
     private PlayerDashScript dashScript;
 
+    private bool heavyShoveIsCharging = false;
+    private float heavyShoveCharge = 0;
+    [SerializeField] private float heavyShoveChargeTime = 1;
+
     [HideInInspector] public bool performingAction = false;
     private bool lockMovement = false;
+    private Coroutine movementUnlockRoutine;
     [HideInInspector] public bool dead = false;
 
     [HideInInspector] public SpriteRenderer sr;
@@ -59,6 +64,14 @@ public class PlayerInputHandler : MonoBehaviour
         dashScript.vs = vs;
     }
 
+    private void Update()
+    {
+        if (heavyShoveIsCharging)
+        {
+            heavyShoveCharge += Time.deltaTime;
+        }
+    }
+
     /// <summary>
     /// Function called in InitLevel to set up the player prefab and input for the level
     /// </summary>
@@ -84,7 +97,7 @@ public class PlayerInputHandler : MonoBehaviour
         //Select
         else if (obj.action.name == controls.PlayerMovement.Select.name && !playerConfig.IsDead)
         {
-            if (onSelect != null && !performingAction)
+            if (onSelect != null && !performingAction && !heavyShoveIsCharging)
             {
                 LockAction(selectActionCooldown);
                 onSelect();
@@ -93,25 +106,39 @@ public class PlayerInputHandler : MonoBehaviour
         //Light Shove
         else if (obj.action.name == controls.PlayerMovement.LightShove.name && !playerConfig.IsDead)
         {
-            if (!performingAction)
+            if (!performingAction && !heavyShoveIsCharging)
             {
                 LockAction(shoveActionCooldown);
                 lightShoveScript.onLightShove();
             }
         }
-        //Heavy Shove
-        else if (obj.action.name == controls.PlayerMovement.HeavyShove.name && !playerConfig.IsDead)
+        //Heavy Shove Charge
+        else if (obj.action.name == controls.PlayerMovement.HeavyShoveCharge.name && !playerConfig.IsDead)
         {
             if (!performingAction)
             {
+                heavyShoveIsCharging = true;
+                Debug.Log("Charge");
+            }
+        }
+        //Heavy Shove
+        else if (obj.action.name == controls.PlayerMovement.HeavyShove.name && !playerConfig.IsDead)
+        {
+            if (!performingAction && heavyShoveCharge >= heavyShoveChargeTime)
+            {
                 LockAction(shoveActionCooldown);
                 heavyShoveScript.onHeavyShove();
+
+                Debug.Log("Shove");
             }
+
+            heavyShoveIsCharging = false;
+            heavyShoveCharge = 0;
         }
         //Dash
         else if (obj.action.name == controls.PlayerMovement.Dash.name)
         {
-            if (!performingAction)
+            if (!performingAction && !heavyShoveIsCharging)
             {
                 LockAction(dashActionCooldown);
                 LockMovement(movementLockCooldown);
@@ -196,7 +223,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void LockMovement(float cooldown)
     {
         lockMovement = true;
-        StartCoroutine(MovementLockCooldown(cooldown));
+        movementUnlockRoutine = StartCoroutine(MovementLockCooldown(cooldown));
     }
 
     /// <summary>
@@ -204,6 +231,11 @@ public class PlayerInputHandler : MonoBehaviour
     /// </summary>
     public void ForceLockMovement()
     {
+        if (movementUnlockRoutine != null)
+        {
+            StopCoroutine(movementUnlockRoutine);
+        }
+
         lockMovement = true;
     }
 

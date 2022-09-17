@@ -17,6 +17,11 @@ public class BaseEndCondition : MonoBehaviour
         delay = new WaitForSeconds(delayBeforeEndCondition);
     }
 
+    protected virtual void OnDisable()
+    {
+        conditionMet = false;
+    }
+
     // Update is called once per frame
     protected virtual void Update()
     {

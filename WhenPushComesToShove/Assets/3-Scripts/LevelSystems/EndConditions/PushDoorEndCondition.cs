@@ -8,13 +8,17 @@ public class PushDoorEndCondition : BaseEndCondition
 
     protected override void TestCondition()
     {
-        //Ensures the room doesn't transition if there isn't any players
-        if (PlayerConfigManager.Instance.GetPlayerConfigs().Count <= 0)
+        //Ensures the room doesn't transition if there isn't enough players
+        if (PlayerConfigManager.Instance.GetPlayerConfigs().Count < PlayerConfigManager.Instance.GetMinPlayer())
             return;
 
         //Tests if the number of players in the trigger box matches the number of players in the game
         if(numOfPlayersInTrigger == PlayerConfigManager.Instance.GetPlayerConfigs().Count)
+        {
+            PlayerConfigManager.Instance.levelInitRef.lockPlayerSpawn = true;
             base.TestCondition();
+        }
+            
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

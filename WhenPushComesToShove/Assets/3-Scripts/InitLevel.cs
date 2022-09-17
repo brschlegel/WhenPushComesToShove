@@ -40,7 +40,6 @@ public class InitLevel : MonoBehaviour
 
     public void SpawnPlayersInLevel()
     {
-
         //Spawn the players in their set locations for the level.
         PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
         for (int i = 0; i < playerConfigs.Length; i++)
