@@ -8,74 +8,42 @@ public class EnemySpawnPoint : MonoBehaviour
 
     public int currentWave = 0;
     [HideInInspector] public bool waveComplete = false;
-    public bool complete = false;
-
-    List<GameObject> currentEnemies = new List<GameObject>();
-    List<EnemyWaveSpawn.EnemyWaveStats> enemiesInWave = new List<EnemyWaveSpawn.EnemyWaveStats>();
-
-    int enemyCount = 0;
-    int waveEnemyMax = 0;
-
+ 
+    
+    private List<List<EnemyWaveSpawn.EnemyWaveStats>> waves;
+ 
     GameObject enemyPool;
 
-    public void Start()
+
+
+    public void Init(int maxWaves)
     {
         enemyPool = GameObject.FindGameObjectWithTag("EnemyPool");
+        waves = new List<List<EnemyWaveSpawn.EnemyWaveStats>>();
+        for (int i = 0; i < maxWaves; i++)
+        {
+            waves.Add(new List<EnemyWaveSpawn.EnemyWaveStats>());
+        }
+
+        //Setting up all wave lists
+        foreach(EnemyWaveSpawn.EnemyWaveStats e in enemyWaveStats)
+        {
+            waves[e.waveNum].Add(e);
+        }
     }
 
-    public void SpawnWave()
+    public IEnumerator SpawnWave(int waveNum)
     {
         waveComplete = false;
-        //Populate a list with the enemies of this wave       
-        foreach(EnemyWaveSpawn.EnemyWaveStats stat in enemyWaveStats)
+         foreach(EnemyWaveSpawn.EnemyWaveStats stat in waves[waveNum])
         {
-            if(stat.waveNum == currentWave)
-            {
-                enemiesInWave.Add(stat);
-                waveEnemyMax++;
-            }
+            yield return new WaitForSeconds(stat.spawnDelay);
+            GameObject obj = Instantiate(EnemyPrefabReturn.ReturnEnemyPrefab(stat.enemy), transform.position, Quaternion.identity);
+            obj.transform.parent = enemyPool.transform;
         }
-
-        //Triggers that the there are no more waves in this spawn point
-        if(enemiesInWave.Count <= 0)
-        {
-            complete = true;
-            return;
-        }
-
-        //Begin spawning the enemies
-        if (gameObject.activeInHierarchy)
-        {
-            foreach (EnemyWaveSpawn.EnemyWaveStats stat in enemiesInWave)
-            {
-                StartCoroutine(SpawnEnemy(EnemyPrefabReturn.ReturnEnemyPrefab(stat.enemy), stat.spawnDelay));
-            }
-        }
-
-        //Test if the wave is complete
-        StartCoroutine(TestWaveComplete());
-        
-    }
-
-    IEnumerator SpawnEnemy(GameObject prefab, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        GameObject obj = Instantiate(prefab, transform.position, Quaternion.identity);
-        obj.transform.parent = enemyPool.transform;
-        enemyCount++;
-        //currentEnemies.Add(obj);
-    }
-
-    IEnumerator TestWaveComplete()
-    {
-        yield return new WaitUntil(() => enemyCount >= waveEnemyMax);
-
-        //Reset all values
-        enemyCount = 0;
-        waveEnemyMax = 0;
-        enemiesInWave.Clear();
 
         waveComplete = true;
-        currentWave++;
     }
+
+
 }

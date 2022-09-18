@@ -17,15 +17,7 @@ public class EnemyDeathEndCondition : BaseEndCondition
         if (enemyPool == null || levelProp.enemySpawnProps == null)
             return;
 
-        //Won't progress until all spawn points are done spawning enemies
-        foreach(EnemySpawnPoint spawnPoint in levelProp.enemySpawnProps)
-        {
-            if (spawnPoint.complete == false)
-                return;
-        }
-
-        //Won't progess until all the enemies are dead
-        if (enemyPool.transform.childCount > 0)
+        if (!levelProp.waveManager.complete)
             return;
 
         base.TestCondition();

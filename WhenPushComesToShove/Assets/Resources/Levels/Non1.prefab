@@ -543,7 +543,6 @@ MonoBehaviour:
     waveNum: 1
   currentWave: 0
   waveComplete: 0
-  complete: 0
 --- !u!1 &3783180967905355425
 GameObject:
   m_ObjectHideFlags: 0
@@ -3921,6 +3920,7 @@ GameObject:
   - component: {fileID: 549726878121767971}
   - component: {fileID: 2961532421600466931}
   - component: {fileID: 7192164635266010199}
+  - component: {fileID: 2572769961362205944}
   m_Layer: 0
   m_Name: Non1
   m_TagString: Untagged
@@ -3975,6 +3975,7 @@ MonoBehaviour:
   enemySpawns:
   - {fileID: 3401093097235586343}
   levelType: 0
+  waveManager: {fileID: 2572769961362205944}
   enemySpawnProps: []
 --- !u!156049354 &7192164635266010199
 Grid:
@@ -3988,6 +3989,21 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &2572769961362205944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842461812455616755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ca3362c77c0f6408f6ac92a2695cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveDelays:
+  - 2
+  currentWave: 0
 --- !u!1 &6906643269036166351
 GameObject:
   m_ObjectHideFlags: 0
