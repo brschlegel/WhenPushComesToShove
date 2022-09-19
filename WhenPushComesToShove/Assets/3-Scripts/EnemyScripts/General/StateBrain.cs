@@ -8,4 +8,11 @@ public class StateBrain : MonoBehaviour
     protected State currentState;
     public Transform target;
 
+    protected void ChangeState(State newState)
+    {
+        currentState.enabled = false;
+        currentState = newState;
+        currentState.enabled = true;
+    }
+
 }

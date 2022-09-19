@@ -9,6 +9,8 @@ public class PlayerAnimBrain : StateBrain
     PlayerRunState runState;
     PlayerHitState hitState;
     PlayerDashState dashState;
+    PlayerLightShoveState lightState;
+    PlayerHeavyShoveState heavyState;
     //#endregion
 
     [SerializeField]
@@ -19,6 +21,8 @@ public class PlayerAnimBrain : StateBrain
     private Hitstun hitstun;
     [SerializeField]
     private PlayerDashScript dashScript;
+    [SerializeField]
+    private Transform playerInputHandlerObject;
 
     private void Start()
     {
@@ -39,6 +43,8 @@ public class PlayerAnimBrain : StateBrain
         runState = GetComponent<PlayerRunState>();
         hitState = GetComponent<PlayerHitState>();
         dashState = GetComponent<PlayerDashState>();
+        lightState = GetComponent<PlayerLightShoveState>();
+        heavyState = GetComponent<PlayerHeavyShoveState>();
 
         idleState.anim = anim;
         idleState.vs = vs;
@@ -56,6 +62,12 @@ public class PlayerAnimBrain : StateBrain
         dashState.vs = vs;
         dashScript.onDashStart += OnDash;
         dashState.onStateExit += OutDash;
+
+        lightState.anim = anim;
+        playerInputHandlerObject.GetComponent<PlayerLightShoveScript>().onLightShove += OnLightShove();
+
+        heavyState.anim = anim;
+        playerInputHandlerObject.GetComponent<PlayerHeavyShoveScript>().onHeavyShove += OnHeavyShove();
 
         currentState = idleState;
         currentState.enabled = true;
@@ -99,16 +111,22 @@ public class PlayerAnimBrain : StateBrain
 
     public void OnHit()
     {
-        currentState.enabled = false;
-        currentState = hitState;
-        currentState.enabled = true;
+        ChangeState(hitState);
     }
 
     public void OnDash(Vector3 dir)
     {
-        currentState.enabled = false;
-        currentState = dashState;
-        currentState.enabled = true;
+        ChangeState(dashState);
+    }
+
+    public void OnLightShove()
+    {
+        ChangeState(lightState);
+    }
+
+    public void OnHeavyShove()
+    {   
+        ChangeState(heavyState);
     }
 
     private bool CheckVelocityMagnitude(string id, bool greaterThanZero)
