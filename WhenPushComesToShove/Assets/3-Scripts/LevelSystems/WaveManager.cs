@@ -6,6 +6,7 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField]
     private List<float> waveDelays;
+    private int waveCount;
     [SerializeField]
     private int currentWave = -1;
     private List<EnemySpawnPoint> spawnPoints;
@@ -30,14 +31,15 @@ public class WaveManager : MonoBehaviour
             complete = false;
             spawnPoints = new List<EnemySpawnPoint>(GetComponentsInChildren<EnemySpawnPoint>());
             enemyPool = GameObject.FindGameObjectWithTag("EnemyPool").transform;
+            waveCount = waveDelays.Count + 1;
             foreach (EnemySpawnPoint e in spawnPoints)
             {
-                e.Init(waveDelays.Count + 1);
+                e.Init(waveCount);
             }
         }
         else
         {
-            SpawnAllWaves();
+            SpawnCurrentWave();
         }
     }
 
@@ -46,7 +48,7 @@ public class WaveManager : MonoBehaviour
     {
         if (CheckAllWaveComplete())
         {
-            if (currentWave < waveDelays.Count)
+            if (currentWave < waveCount - 1)
             {
                 if (delayRoutine == null)
                 {
@@ -55,7 +57,7 @@ public class WaveManager : MonoBehaviour
                 }
                 if (enemyPool.childCount == 0)
                 {
-                    SpawnAllWaves();
+                    SpawnCurrentWave();
                     StopCoroutine(delayRoutine);
                 }
             }
@@ -66,12 +68,12 @@ public class WaveManager : MonoBehaviour
                
 
         }
-
-
-
-       
     }
 
+    /// <summary>
+    /// Checks to see if the spawn points are done spawning their waves
+    /// </summary>
+    /// <returns></returns>
     private bool CheckAllWaveComplete()
     {
         
@@ -80,7 +82,7 @@ public class WaveManager : MonoBehaviour
             if(!e.waveComplete)
                 return false;
         }
-        if (currentWave < waveDelays.Count)
+        if (currentWave < waveCount - 1)
         {
             foreach (EnemySpawnPoint e in spawnPoints)
             {
@@ -90,15 +92,19 @@ public class WaveManager : MonoBehaviour
      
         return true;
     }
+    
 
     private IEnumerator DelaySpawnWave()
     {
         yield return new WaitForSeconds(waveDelays[currentWave]);
-        SpawnAllWaves();
+        SpawnCurrentWave();
         delayRoutine = null;
     }
 
-    private void SpawnAllWaves()
+    /// <summary>
+    /// Will spawn the current wave on all enemy spawn points
+    /// </summary>
+    private void SpawnCurrentWave()
     {
         currentWave++;
         foreach (EnemySpawnPoint e in spawnPoints)
@@ -107,8 +113,12 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tests if all of the enemies are dead in this room
+    /// </summary>
+    /// <returns></returns>
     public bool AllEnemiesDead()
     {
-        return currentWave == waveDelays.Count && enemyPool.childCount == 0;
+        return currentWave == waveCount - 1 && enemyPool.childCount == 0;
     }
 }
