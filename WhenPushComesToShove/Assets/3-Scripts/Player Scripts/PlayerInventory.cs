@@ -167,15 +167,15 @@ public class PlayerInventory : MonoBehaviour
                 HitHandler newHandler = lightShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
                 newHandler = Extensions.GetCopyOf(newHandler, handler);
                 lightShoveScript.hitbox.handler = newHandler;
-                newHandler.tagsToIgnore.Add("PlayerHurtbox");
+                //newHandler.tagsToIgnore.Add("PlayerHurtbox");
                 lightShoveScript.hitbox.gameObject.name = "LightHitbox";
                 break;
             case LootData.LootType.Heavy:
                 heavyShoveScript.hitbox.gameObject.AddComponent(handler.GetType());
                 HitHandler newHeavyHandler = heavyShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
                 newHandler = Extensions.GetCopyOf(newHeavyHandler, handler);
-                heavyShoveScript.hitbox.handler = newHandler;
-                newHandler.tagsToIgnore.Add("PlayerHurtbox");
+                //newHandler.tagsToIgnore.Add("PlayerHurtbox");
+                heavyShoveScript.hitbox.handler = newHandler;                
                 heavyShoveScript.hitbox.gameObject.name = "HeavyHitbox";
                 break;
             default:

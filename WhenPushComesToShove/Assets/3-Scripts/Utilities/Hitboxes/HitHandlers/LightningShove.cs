@@ -41,12 +41,12 @@ public class LightningShove : HitHandler
 
         while (timer < shockTime)
         {
-            enemy.GetComponent<VelocitySetter>().Halt();
+            enemy?.GetComponent<VelocitySetter>()?.Halt();
             Debug.Log("Shock");
             yield return new WaitForSeconds(timeToBeShocked);
 
             Debug.Log("Unstun");
-            enemy.GetComponent<VelocitySetter>().UnHalt();
+            enemy?.GetComponent<VelocitySetter>()?.UnHalt();
 
             yield return new WaitForSeconds(timeBetweenShocks);
 
