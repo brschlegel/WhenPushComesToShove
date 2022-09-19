@@ -86,16 +86,7 @@ public class LevelManager : MonoBehaviour
                 player.GetComponentInChildren<PlayerInventory>().EquipItem(loot);
             }
         }
-        
-        if(levelProp.enemySpawnProps.Count > 0)
-        {
-            foreach (EnemySpawnPoint spawn in levelProp.enemySpawnProps)
-            {
-                spawn.SpawnWave();
-            }
-        }
-        
-
+       
         currentRoomIndex++;
 
         SetPlayerSpawns(room.GetComponent<LevelProperties>());
