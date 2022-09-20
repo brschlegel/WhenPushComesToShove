@@ -27,13 +27,7 @@ public class PathGenerator : MonoBehaviour
         if(path.Count <= 0)
             GeneratePath();
 
-        for(int i = 0; i < path.Count; i++)
-        {
-            GameObject room = Instantiate(path[i]);
-            room.transform.parent = transform;
-            room.SetActive(false);
-            path[i] = room;
-        }
+        InstantiatePathRooms();
 
         LevelManager.onNewRoom.Invoke();
     }
@@ -116,6 +110,43 @@ public class PathGenerator : MonoBehaviour
             
     }
 
+    public void ResetPath()
+    {
+        //Clean out the current path
+        currentPathNum = 0;
+        path.Clear();
+        foreach(Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        //Reset levels for hazards and enemies
+        for(int i = 0; i < hazardLevels.Length; i++)
+        {
+            hazardLevels[i].level = 0;
+        }
+
+        for(int i = 0; i < enemyStatLevels.Length; i++)
+        {
+            enemyStatLevels[i].level = 0;
+        }
+
+        //Generate and spawn new path
+        GeneratePath();
+        InstantiatePathRooms();
+    }
+
+    void InstantiatePathRooms()
+    {
+        for (int i = 0; i < path.Count; i++)
+        {
+            Debug.Log(path.Count);
+            GameObject room = Instantiate(path[i]);
+            room.transform.parent = transform;
+            room.SetActive(false);
+            path[i] = room;
+        }
+    }
 
     //Helper Functions
 

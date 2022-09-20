@@ -37,7 +37,7 @@ public class SlimeLand : State
     {
         chase.LockMovement();
         anim.Play("Base.Slime_Land", 0);
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        yield return new WaitForSeconds(anim.GetCurrentClipLength());
         hitboxObject.SetActive(true);
         yield return new WaitForSeconds(hitboxActiveTime);
         hitboxObject.SetActive(false);

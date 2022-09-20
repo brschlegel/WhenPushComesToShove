@@ -86,16 +86,7 @@ public class LevelManager : MonoBehaviour
                 player.GetComponentInChildren<PlayerInventory>().EquipItem(loot);
             }
         }
-        
-        if(levelProp.enemySpawnProps.Count > 0)
-        {
-            foreach (EnemySpawnPoint spawn in levelProp.enemySpawnProps)
-            {
-                spawn.SpawnWave();
-            }
-        }
-        
-
+       
         currentRoomIndex++;
 
         SetPlayerSpawns(room.GetComponent<LevelProperties>());
@@ -106,10 +97,14 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Reset");
         //Temp code - Will just put everyone back into the lobby
+
+        ClearEnemies();
+
+        pathGen.ResetPath();
+
         currentRoomIndex = path.Count;
         repeatPath = true;
-        ShowRoom();
-        ClearEnemies();
+        ShowRoom();        
         repeatPath = false;
 
         //Resets any players who died

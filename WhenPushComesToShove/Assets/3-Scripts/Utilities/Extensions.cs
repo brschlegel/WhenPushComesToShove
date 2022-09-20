@@ -20,6 +20,13 @@ public static class Extensions
         return v;
     }
 
+    public static float GetCurrentClipLength(this Animator anim)
+    {
+        //Must update to ensure get current methods are accurate
+        anim.Update(Time.deltaTime);
+        return anim.GetCurrentAnimatorClipInfo(0)[0].clip.length / anim.GetCurrentAnimatorStateInfo(0).speed;
+    }
+
     //https://answers.unity.com/questions/530178/how-to-get-a-component-from-an-object-and-add-it-t.html
     /// <summary>
     /// Copys a component's values and pastes it into the new component through script

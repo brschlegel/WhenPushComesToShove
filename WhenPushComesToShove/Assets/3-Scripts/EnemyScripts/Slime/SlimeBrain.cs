@@ -10,6 +10,7 @@ public class SlimeBrain : StateBrain
     SlimeJump jumpState;
     SlimeLand landState;
     SlimeHit hitState;
+    PlayAnimState deathState;
     //#endregion
 
     [SerializeField]
@@ -20,6 +21,8 @@ public class SlimeBrain : StateBrain
     private Animator anim;
     [SerializeField]
     private GameObject hitboxObject;
+    [SerializeField]
+    private GameObject rootObject;
 
 
 
@@ -54,8 +57,10 @@ public class SlimeBrain : StateBrain
         jumpState = GetComponent<SlimeJump>();
         landState = GetComponent<SlimeLand>();
         hitState = GetComponent<SlimeHit>();
+        deathState = GetComponent<PlayAnimState>();
 
         idleState.onStateExit += OutIdle;
+
         runState.chase = chase;
         runState.anim = anim;
         runState.onStateExit += OutRun;
@@ -68,6 +73,10 @@ public class SlimeBrain : StateBrain
         landState.anim = anim;
         landState.hitboxObject = hitboxObject;
         landState.onStateExit += OutLand;
+
+        deathState.anim = anim;
+        deathState.onStateExit += OutDeath;
+
 
         hitState.anim = anim;
         hitState.hitstun = hitstun;
@@ -121,14 +130,33 @@ public class SlimeBrain : StateBrain
         }
     }
 
+    private void OutDeath(bool success)
+    {
+        if(success)
+        {
+            Destroy(rootObject);
+        }
+    }
+
     /// <summary>
     /// When slime gets hit, change to hit state
     /// </summary>
     public void OnHit()
     {
+        if (currentState != deathState)
+        {
+            currentState.enabled = false;
+            currentState = hitState;
+            hitState.enabled = true;
+        }
+    }
+
+    public void OnDeath()
+    {
         currentState.enabled = false;
-        currentState = hitState;
-        hitState.enabled = true;
+        currentState = deathState;
+        deathState.enabled = true;
+        chase.LockMovement();
     }
 
 

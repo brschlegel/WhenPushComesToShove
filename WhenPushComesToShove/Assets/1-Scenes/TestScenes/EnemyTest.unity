@@ -158,6 +158,17 @@ Transform:
   m_Father: {fileID: 1750270792}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &61960813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3052854012435890495, guid: 6f6bae884535d794987296190dee6baa, type: 3}
+  m_PrefabInstance: {fileID: 999011919178601312}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13723a790e591a84ea21fc29c3e30289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &121138606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,10 +1429,10 @@ MonoBehaviour:
   maxPlayers: 2
   levelInitRef: {fileID: 0}
   defaultColors:
-  - {fileID: 2100000, guid: a52898b823077c341884b14800e0feea, type: 2}
-  - {fileID: 2100000, guid: ab539ef0a976f894bae4a0f49f3d81ff, type: 2}
-  - {fileID: 2100000, guid: 2e3e01834e43474408ae72d62e425d0d, type: 2}
-  - {fileID: 2100000, guid: b3c1a3bf5cafd17449130a59eaef4f32, type: 2}
+  - {fileID: 9100000, guid: 65da5288a1fc01b4f8f7b09075193de4, type: 2}
+  - {fileID: 9100000, guid: 893785c89d1660b4d8f6467b92ba1e33, type: 2}
+  - {fileID: 9100000, guid: f3491e98635ceb842bef8571558dcb79, type: 2}
+  - {fileID: 9100000, guid: 6eb688f05c581a246ac731e968b13fad, type: 2}
 --- !u!4 &1953411768
 Transform:
   m_ObjectHideFlags: 0
@@ -1564,17 +1575,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 881103319, guid: 6f6bae884535d794987296190dee6baa, type: 3}
-      propertyPath: hitstun
+    - target: {fileID: 170120473, guid: 6f6bae884535d794987296190dee6baa, type: 3}
+      propertyPath: health
       value: 
-      objectReference: {fileID: 999011920109504318, guid: 6f6bae884535d794987296190dee6baa, type: 3}
+      objectReference: {fileID: 61960813}
     - target: {fileID: 999011918721937567, guid: 6f6bae884535d794987296190dee6baa, type: 3}
       propertyPath: m_Name
       value: Slime
-      objectReference: {fileID: 0}
-    - target: {fileID: 999011918721937567, guid: 6f6bae884535d794987296190dee6baa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 999011918721939297, guid: 6f6bae884535d794987296190dee6baa, type: 3}
       propertyPath: m_RootOrder
