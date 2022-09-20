@@ -11,6 +11,9 @@ public class InitLevel : MonoBehaviour
 
     [HideInInspector] public bool lockPlayerSpawn = false;
 
+    public GameObject[] playerUI= new GameObject[4];
+    public Color[] playerHitboxColors = new Color[4];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,19 @@ public class InitLevel : MonoBehaviour
         GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
         GameState.players.Add(player.transform);
         player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
+
+        //Assign and enable UI
+        GameObject UI = player.GetComponentInChildren<PlayerInventory>().UIRef = playerUI[index];
+        UI.SetActive(true);
+
+        //Assign Hitbox Colors
+        Hitbox[] hitboxes = player.GetComponentsInChildren<Hitbox>();
+
+        foreach (Hitbox h in hitboxes)
+        {
+            h.gameObject.GetComponent<SpriteRenderer>().color = playerHitboxColors[index];
+        }
+
         playerConfigs[index].PlayerObject = player;
     }
 
