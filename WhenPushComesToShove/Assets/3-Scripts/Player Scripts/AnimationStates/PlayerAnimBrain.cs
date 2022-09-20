@@ -10,6 +10,7 @@ public class PlayerAnimBrain : StateBrain
     PlayerHitState hitState;
     PlayerDashState dashState;
     PlayerLightShoveState lightState;
+    PlayerChargeState chargeState;
     PlayerHeavyShoveState heavyState;
     //#endregion
 
@@ -22,7 +23,7 @@ public class PlayerAnimBrain : StateBrain
     [SerializeField]
     private PlayerDashScript dashScript;
     [SerializeField]
-    private Transform playerInputHandlerObject;
+    private PlayerInputHandler playerInputHandler;
 
     private void Start()
     {
@@ -44,6 +45,7 @@ public class PlayerAnimBrain : StateBrain
         hitState = GetComponent<PlayerHitState>();
         dashState = GetComponent<PlayerDashState>();
         lightState = GetComponent<PlayerLightShoveState>();
+        chargeState = GetComponent<PlayerChargeState>();
         heavyState = GetComponent<PlayerHeavyShoveState>();
 
         idleState.anim = anim;
@@ -64,10 +66,14 @@ public class PlayerAnimBrain : StateBrain
         dashState.onStateExit += OutDash;
 
         lightState.anim = anim;
-        playerInputHandlerObject.GetComponent<PlayerLightShoveScript>().onLightShove += OnLightShove();
+        playerInputHandler.GetComponent<PlayerLightShoveScript>().onLightShove += OnLightShove;
+        playerInputHandler.onLightShoveComplete += OutShove;
+
+        chargeState.anim = anim;
 
         heavyState.anim = anim;
-        playerInputHandlerObject.GetComponent<PlayerHeavyShoveScript>().onHeavyShove += OnHeavyShove();
+        playerInputHandler.GetComponent<PlayerHeavyShoveScript>().onHeavyShove += OnHeavyShove;
+        playerInputHandler.onHeavyShoveComplete += OutShove;
 
         currentState = idleState;
         currentState.enabled = true;
@@ -109,6 +115,11 @@ public class PlayerAnimBrain : StateBrain
         }
     }
 
+    private void OutShove()
+    {
+        ChangeState(idleState);
+    }
+
     public void OnHit()
     {
         ChangeState(hitState);
@@ -129,6 +140,12 @@ public class PlayerAnimBrain : StateBrain
         ChangeState(heavyState);
     }
 
+    /// <summary>
+    /// How does velocity magnitude compare to zero
+    /// </summary>
+    /// <param name="id">Source id</param>
+    /// <param name="greaterThanZero">Checking if greater than zero</param>
+    /// <returns></returns>
     private bool CheckVelocityMagnitude(string id, bool greaterThanZero)
     {
         if(vs.QuerySource(id, out Vector2 vel))

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHeavyShoveState : MonoBehaviour
+public class PlayerHeavyShoveState : State
 {
     private void OnEnable()
     {
