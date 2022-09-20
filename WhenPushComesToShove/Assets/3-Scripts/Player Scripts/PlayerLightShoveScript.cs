@@ -11,10 +11,14 @@ public class PlayerLightShoveScript : MonoBehaviour
     private Collider2D collider;
     public float cooldown;
 
+    private SpriteRenderer sr;
+
     public void Start()
     {
         collider = hitbox.gameObject.GetComponent<Collider2D>();
         collider.enabled = false;
+        sr = hitbox.gameObject.GetComponent<SpriteRenderer>();
+        sr.enabled = false;
 
         EnableBaseLightShove();
     }
@@ -25,6 +29,7 @@ public class PlayerLightShoveScript : MonoBehaviour
     public void EnableShoveBaseHitbox()
     {
         collider.enabled = true;
+        sr.enabled = true;
         //hitbox.gameObject.SetActive(true);
         StartCoroutine(HitboxCooldown());
     }
@@ -37,6 +42,7 @@ public class PlayerLightShoveScript : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldown);
         collider.enabled = false;
+        sr.enabled = false;
     }
 
     public void EnableBaseLightShove()

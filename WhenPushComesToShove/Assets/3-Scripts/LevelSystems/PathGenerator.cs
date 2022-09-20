@@ -104,7 +104,7 @@ public class PathGenerator : MonoBehaviour
 
         if (arena == null)
         {
-            Debug.LogError("No arena available for this path. Loading in default arena");
+            Debug.LogWarning("No arena available for this path. Loading in default arena");
             path.Add(Resources.Load<GameObject>("Levels/Arenas/DefaultArena"));
         }
             

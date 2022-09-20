@@ -225,6 +225,7 @@ MonoBehaviour:
   passiveLoot: []
   lightShoveScript: {fileID: 8683604864337146482}
   heavyShoveScript: {fileID: 8866138083129418701}
+  UIRef: {fileID: 0}
 --- !u!1 &3192962310233775801
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,8 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c6c0021667e16418519c4815c3aa26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  maxMoveSpeed: 20
+  moveSpeed: 5
+  maxMoveSpeed: 10
   vs: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &8683604864337146482

@@ -47,6 +47,13 @@ public class LevelManager : MonoBehaviour
 
             onNewRoom();
         }
+
+        //Temp code to reset the game fully
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ClearEnemies();
+            onEndGame();
+        }
     }
 
     //Will ensure that only the current room on the path will show up
