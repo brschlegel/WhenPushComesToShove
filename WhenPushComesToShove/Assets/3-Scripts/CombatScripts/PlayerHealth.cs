@@ -5,6 +5,20 @@ using UnityEngine;
 public class PlayerHealth : Health
 {
     public PlayerInputHandler playerRef;
+
+
+    private void OnEnable()
+    {
+        LevelManager.onNewRoom += ResetHealth;
+        LevelManager.onEndGame += ResetHealth;
+    }
+
+    private void OnDisable()
+    {
+        LevelManager.onNewRoom -= ResetHealth;
+        LevelManager.onEndGame -= ResetHealth;
+    }
+
     public override void Die()
     {
         playerRef.sr.color = new Color(playerRef.sr.color.r, playerRef.sr.color.g, playerRef.sr.color.b, .5f);
