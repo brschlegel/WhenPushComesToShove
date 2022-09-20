@@ -56,12 +56,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""HeavyShove"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""12c50add-f66d-4a88-8d0a-e3e717979033"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)"",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""HeavyShoveCharge"",
