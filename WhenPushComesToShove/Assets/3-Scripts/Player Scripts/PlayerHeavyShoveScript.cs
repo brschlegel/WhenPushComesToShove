@@ -9,7 +9,8 @@ public class PlayerHeavyShoveScript : MonoBehaviour
 
     public Hitbox hitbox;
     private Collider2D collider;
-    [SerializeField] private float cooldown = 1f;
+
+    public float cooldown;
     private SpriteRenderer sr;
 
     public void Start()

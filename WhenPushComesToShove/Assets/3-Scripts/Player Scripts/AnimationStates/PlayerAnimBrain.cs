@@ -9,6 +9,10 @@ public class PlayerAnimBrain : StateBrain
     PlayerRunState runState;
     PlayerHitState hitState;
     PlayerDashState dashState;
+    PlayerLightShoveState lightState;
+    PlayerChargeState chargeState;
+    PlayerHeavyShoveState heavyState;
+    PlayAnimState deathState;
     //#endregion
 
     [SerializeField]
@@ -19,6 +23,8 @@ public class PlayerAnimBrain : StateBrain
     private Hitstun hitstun;
     [SerializeField]
     private PlayerDashScript dashScript;
+    [SerializeField]
+    private PlayerInputHandler playerInputHandler;
 
     private void Start()
     {
@@ -39,6 +45,10 @@ public class PlayerAnimBrain : StateBrain
         runState = GetComponent<PlayerRunState>();
         hitState = GetComponent<PlayerHitState>();
         dashState = GetComponent<PlayerDashState>();
+        lightState = GetComponent<PlayerLightShoveState>();
+        chargeState = GetComponent<PlayerChargeState>();
+        heavyState = GetComponent<PlayerHeavyShoveState>();
+        deathState = GetComponent<PlayAnimState>();
 
         idleState.anim = anim;
         idleState.vs = vs;
@@ -56,6 +66,19 @@ public class PlayerAnimBrain : StateBrain
         dashState.vs = vs;
         dashScript.onDashStart += OnDash;
         dashState.onStateExit += OutDash;
+
+        lightState.anim = anim;
+        playerInputHandler.GetComponent<PlayerLightShoveScript>().onLightShove += OnLightShove;
+        playerInputHandler.onLightShoveComplete += OutShove;
+
+        chargeState.anim = anim;
+
+        heavyState.anim = anim;
+        playerInputHandler.GetComponent<PlayerHeavyShoveScript>().onHeavyShove += OnHeavyShove;
+        playerInputHandler.onHeavyShoveComplete += OutShove;
+
+        deathState.anim = anim;
+        deathState.onStateExit += OutDeath;
 
         currentState = idleState;
         currentState.enabled = true;
@@ -97,20 +120,55 @@ public class PlayerAnimBrain : StateBrain
         }
     }
 
+    private void OutDeath(bool success)
+    {
+        if(success)
+        {
+            currentState = idleState;
+            currentState.enabled = true;
+        }
+    }
+
+    private void OutShove()
+    {
+        ChangeState(idleState);
+    }
+
+
     public void OnHit()
     {
-        currentState.enabled = false;
-        currentState = hitState;
-        currentState.enabled = true;
+        if (currentState != deathState)
+        {
+            ChangeState(hitState);
+        }
     }
 
     public void OnDash(Vector3 dir)
     {
-        currentState.enabled = false;
-        currentState = dashState;
-        currentState.enabled = true;
+        ChangeState(dashState);
     }
 
+    public void OnLightShove()
+    {
+        ChangeState(lightState);
+    }
+
+    public void OnHeavyShove()
+    {   
+        ChangeState(heavyState);
+    }
+
+    public void OnDeath()
+    {
+        ChangeState(deathState);
+    }
+
+    /// <summary>
+    /// How does velocity magnitude compare to zero
+    /// </summary>
+    /// <param name="id">Source id</param>
+    /// <param name="greaterThanZero">Checking if greater than zero</param>
+    /// <returns></returns>
     private bool CheckVelocityMagnitude(string id, bool greaterThanZero)
     {
         if(vs.QuerySource(id, out Vector2 vel))

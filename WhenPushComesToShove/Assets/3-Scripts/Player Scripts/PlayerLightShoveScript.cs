@@ -9,7 +9,7 @@ public class PlayerLightShoveScript : MonoBehaviour
 
     public Hitbox hitbox;
     private Collider2D collider;
-    [SerializeField] private float cooldown = .5f;
+    public float cooldown;
 
     private SpriteRenderer sr;
 
@@ -52,6 +52,6 @@ public class PlayerLightShoveScript : MonoBehaviour
 
     public void DisableBaseLightShove()
     {
-        onLightShove = null;
+        onLightShove -= EnableShoveBaseHitbox;
     }
 }

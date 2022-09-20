@@ -141,8 +141,11 @@ public class PlayerInventory : MonoBehaviour
             case LootData.LootType.Light:
                 
                 lightShoveLoot.OnUnequip(transform.parent);
-                lightShoveScript.onLightShove = null;
-                lightShoveScript.EnableBaseLightShove();
+                lightShoveScript.onLightShove -= lightShoveLoot.Action;
+                if (lightShoveLoot.overrideBaseAction)
+                {
+                    lightShoveScript.EnableBaseLightShove();
+                }
 
                 if (dropOnGround)
                 {
@@ -157,8 +160,13 @@ public class PlayerInventory : MonoBehaviour
                 break;
             case LootData.LootType.Heavy:
                 heavyShoveLoot.OnUnequip(transform.parent);
-                heavyShoveScript.onHeavyShove = null;
-                heavyShoveScript.EnableBaseHeavyShove();
+                heavyShoveScript.onHeavyShove -= heavyShoveLoot.Action;
+                if (heavyShoveLoot.overrideBaseAction)
+                {
+                    heavyShoveScript.EnableBaseHeavyShove();
+                }
+                heavyShoveLoot.transform.position = transform.parent.position;
+                heavyShoveLoot.gameObject.SetActive(true);
 
                 if (dropOnGround)
                 {
@@ -167,6 +175,7 @@ public class PlayerInventory : MonoBehaviour
                 }
                 lootManager.droppedLoot.Add(heavyShoveLoot);
                 UIRef.transform.GetChild(1).GetComponent<Image>().sprite = null;
+
                 heavyShoveLoot = null;
                 break;
             case LootData.LootType.Passive: //Not sure if we want players to drop passive loot

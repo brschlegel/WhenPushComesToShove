@@ -9,7 +9,8 @@ using System;
 //Script to take in player input and trigger the necessary actions
 public class PlayerInputHandler : MonoBehaviour
 {
-    [SerializeField] private float shoveActionCooldown = 1;
+    private float lightShoveActionCooldown = .5f;
+    private float heavyShoveActionCooldown = 1;
     [SerializeField] private float dashActionCooldown = 1;
     [SerializeField] private float movementLockCooldown = .6f;
     [SerializeField] private float selectActionCooldown = .5f;
@@ -30,6 +31,10 @@ public class PlayerInputHandler : MonoBehaviour
     [HideInInspector] public bool performingAction = false;
     private bool lockMovement = false;
     private Coroutine movementUnlockRoutine;
+    public Action onLightShoveComplete;
+    public Action onHeavyShoveComplete;
+    public Action onHeavyShoveCharge;
+
     [HideInInspector] public bool dead = false;
 
     [HideInInspector] public SpriteRenderer sr;
@@ -62,6 +67,9 @@ public class PlayerInputHandler : MonoBehaviour
         //Assign Velocity Setter to Necessary Input Scripts
         mover.vs = vs;
         dashScript.vs = vs;
+        lightShoveActionCooldown = lightShoveScript.cooldown;
+        heavyShoveActionCooldown = heavyShoveScript.cooldown;
+
     }
 
     private void Update()
@@ -99,7 +107,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (onSelect != null && !performingAction && !heavyShoveIsCharging)
             {
-                LockAction(selectActionCooldown);
+                LockAction(selectActionCooldown, null);
                 onSelect();
             }
         }
@@ -108,8 +116,9 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && !heavyShoveIsCharging)
             {
-                LockMovement(shoveActionCooldown);
-                LockAction(shoveActionCooldown);
+                LockAction(lightShoveActionCooldown, onLightShoveComplete);
+                LockMovement(lightShoveActionCooldown);
+
                 lightShoveScript.onLightShove();
             }
         }
@@ -130,7 +139,7 @@ public class PlayerInputHandler : MonoBehaviour
 
             if (!performingAction && heavyShoveCharge >= heavyShoveChargeTime)
             {
-                LockAction(shoveActionCooldown);
+                LockAction(heavyShoveActionCooldown, onHeavyShoveComplete);
                 heavyShoveScript.onHeavyShove();
 
                 Debug.Log("Shove");
@@ -145,7 +154,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && !heavyShoveIsCharging)
             {
-                LockAction(dashActionCooldown);
+                LockAction(dashActionCooldown, null);
                 LockMovement(movementLockCooldown);
                 dashScript.OnDash(DetermineDashDirection());
             }
@@ -188,6 +197,18 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     /// <summary>
+    /// Interrupts charging if hit
+    /// </summary>
+    public void InterruptCharge()
+    {
+        if(heavyShoveIsCharging)
+        {
+            heavyShoveIsCharging = false;
+            heavyShoveChargeTime = 0;
+        }
+    }
+
+    /// <summary>
     /// Helper function to determine if the direction of a dash
     /// </summary>
     /// <returns></returns>
@@ -215,10 +236,10 @@ public class PlayerInputHandler : MonoBehaviour
     /// Locks the player from performing an action for a period of time
     /// </summary>
     /// <param name="cooldown"></param>
-    public void LockAction(float cooldown)
+    public void LockAction(float cooldown, Action onComplete)
     {
         performingAction = true;
-        StartCoroutine(ActionCooldown(cooldown));
+        StartCoroutine(ActionCooldown(cooldown, onComplete));
     }
 
     /// <summary>
@@ -256,10 +277,14 @@ public class PlayerInputHandler : MonoBehaviour
     /// A fuction to prevent players from performing an action for some time
     /// </summary>
     /// <returns></returns>
-    public IEnumerator ActionCooldown(float cooldown)
+    public IEnumerator ActionCooldown(float cooldown, Action onComplete)
     {
         yield return new WaitForSeconds(cooldown);
         performingAction = false;
+        if(onComplete != null)
+        {
+            onComplete?.Invoke();
+        }
     }
 
     /// <summary>
