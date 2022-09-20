@@ -187,8 +187,8 @@ public class PlayerInventory : MonoBehaviour
                 heavyShoveScript.hitbox.gameObject.AddComponent(handler.GetType());
                 HitHandler newHeavyHandler = heavyShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
                 newHandler = Extensions.GetCopyOf(newHeavyHandler, handler);
-                heavyShoveScript.hitbox.handler = newHandler;
                 //newHandler.tagsToIgnore.Add("PlayerHurtbox");
+                heavyShoveScript.hitbox.handler = newHandler;                
                 heavyShoveScript.hitbox.gameObject.name = "HeavyHitbox";
                 break;
             default:
