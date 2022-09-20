@@ -34,20 +34,11 @@
                 },
                 {
                     "name": "HeavyShove",
-                    "type": "Value",
-                    "id": "12c50add-f66d-4a88-8d0a-e3e717979033",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "HeavyShoveCharge",
                     "type": "Button",
                     "id": "3946c64e-94c7-4a92-a918-61c8cd8bc051",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Press(pressPoint=0.1)",
                     "initialStateCheck": false
                 },
                 {
@@ -171,28 +162,6 @@
                 },
                 {
                     "name": "",
-                    "id": "d4297696-a619-495a-8db2-d1865b1b668f",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox Controller Scheme",
-                    "action": "HeavyShove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "85b94213-23ad-4479-9a4d-0fdd907f3cf7",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HeavyShove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "8ed3f68e-4ca7-4d45-a9fa-57caa2b7ed3c",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
@@ -220,7 +189,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Xbox Controller Scheme",
-                    "action": "HeavyShoveCharge",
+                    "action": "HeavyShove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -231,7 +200,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HeavyShoveCharge",
+                    "action": "HeavyShove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

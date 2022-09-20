@@ -67,9 +67,7 @@ public class LevelManager : MonoBehaviour
         else if (currentRoomIndex >= path.Count && repeatPath == true)
         {
             currentRoomIndex = 0;
-        }
-            
-        
+        }  
         
         //Hide the previous room
         for (int i = 0; i < path.Count; i++)

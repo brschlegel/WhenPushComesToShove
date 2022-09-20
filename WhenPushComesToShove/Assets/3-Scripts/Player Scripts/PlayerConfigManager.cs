@@ -46,6 +46,11 @@ public class PlayerConfigManager : MonoBehaviour
         return playerConfigs;
     }
 
+    public int GetMaxPlayers()
+    {
+        return maxPlayers;
+    }
+
     public int GetMinPlayer()
     {
         return minPlayers;
@@ -67,6 +72,11 @@ public class PlayerConfigManager : MonoBehaviour
     /// <param name="input">The input to assign to the player</param>
     public void HandlePlayerJoin(PlayerInput input)
     {
+        if (levelInitRef.lockPlayerSpawn)
+        {
+            return;
+        }
+
         Debug.Log("Player joined " + input.playerIndex);
 
         if (!playerConfigs.Any(p => p.PlayerIndex == input.playerIndex))

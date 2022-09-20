@@ -22,6 +22,8 @@ public class InitLevel : MonoBehaviour
             PlayerConfigManager.Instance.levelInitRef = this;
         }
 
+        LevelManager.onEndGame += UnlockPlayerSpawn;
+
     }
 
     /// <summary>
@@ -29,11 +31,6 @@ public class InitLevel : MonoBehaviour
     /// </summary>
     public void SpawnPlayer( int index )
     {
-        if (lockPlayerSpawn)
-        {
-            return;
-        }
-
         PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
         GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
         GameState.players.Add(player.transform);
@@ -69,6 +66,27 @@ public class InitLevel : MonoBehaviour
             }
 
             playerConfigs[i].PlayerObject.transform.position = playerSpawns[i].transform.position;
+        }
+    }
+
+    /// <summary>
+    /// Helper Function to Lock Player Spawn 
+    /// </summary>
+    public void LockPlayerSpawn()
+    {
+        lockPlayerSpawn = true;
+    }
+
+    /// <summary>
+    /// Helper Function to Unlock Player Spawn If Possible
+    /// </summary>
+    public void UnlockPlayerSpawn()
+    {
+        PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
+
+        if (playerConfigs.Length < PlayerConfigManager.Instance.GetMaxPlayers())
+        {
+            lockPlayerSpawn = false;
         }
     }
 
