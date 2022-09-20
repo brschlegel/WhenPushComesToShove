@@ -13,6 +13,19 @@ public class EarthShove : LootData
     {
         SpawnWall();
     }
+    public override void OnEquip(Transform player)
+    {
+        base.OnEquip(player);
+
+        LevelManager.onNewRoom += DestroyWallOnNewRoom;
+    }
+
+    public override void OnUnequip(Transform player)
+    {
+        base.OnUnequip(player);
+
+        LevelManager.onNewRoom -= DestroyWallOnNewRoom;
+    }
 
     /// <summary>
     /// Spawns the wall prefab
@@ -26,6 +39,14 @@ public class EarthShove : LootData
         Vector3 dir = playerRef.GetChild(0).transform.right;
         wallRef = Instantiate(earthWallPrefab, playerRef.transform.position + (dir * distanceFromPlayer), Quaternion.identity);
         wallRef.GetComponentInChildren<Hitbox>().owner = playerRef.gameObject;
+    }
+
+    private void DestroyWallOnNewRoom()
+    {
+        if (wallRef != null)
+        {
+            Destroy(wallRef);
+        }
     }
 
 }

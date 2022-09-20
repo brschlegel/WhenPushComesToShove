@@ -98,7 +98,7 @@ public class PlayerInputHandler : MonoBehaviour
         else if (obj.action.name == controls.PlayerMovement.Select.name && !playerConfig.IsDead)
         {
             if (onSelect != null && !performingAction && !heavyShoveIsCharging)
-            {
+            {;
                 LockAction(selectActionCooldown);
                 onSelect();
             }
@@ -108,6 +108,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && !heavyShoveIsCharging)
             {
+                LockMovement(shoveActionCooldown);
                 LockAction(shoveActionCooldown);
                 lightShoveScript.onLightShove();
             }
@@ -118,6 +119,7 @@ public class PlayerInputHandler : MonoBehaviour
             if (!performingAction)
             {
                 heavyShoveIsCharging = true;
+                ForceLockMovement();
                 Debug.Log("Charge");
             }
         }
@@ -132,6 +134,7 @@ public class PlayerInputHandler : MonoBehaviour
                 Debug.Log("Shove");
             }
 
+            ForceUnlockMovement();
             heavyShoveIsCharging = false;
             heavyShoveCharge = 0;
         }

@@ -163,6 +163,7 @@ MonoBehaviour:
   passiveLoot: []
   lightShoveScript: {fileID: 8683604864337146482}
   heavyShoveScript: {fileID: 8866138083129418701}
+  UIRef: {fileID: 0}
 --- !u!1 &3192962310233775801
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +216,7 @@ MonoBehaviour:
   dashActionCooldown: 1
   movementLockCooldown: 0.5
   selectActionCooldown: 0.5
+  heavyShoveChargeTime: 1
   performingAction: 0
   dead: 0
   sr: {fileID: 0}
@@ -230,8 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c6c0021667e16418519c4815c3aa26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  maxMoveSpeed: 20
+  moveSpeed: 5
+  maxMoveSpeed: 10
   vs: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &8683604864337146482
@@ -262,7 +264,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitbox: {fileID: 5245641597600162962}
   cooldown: 0.8
-  buildUpTime: 0.3
 --- !u!114 &3186559500755933933
 MonoBehaviour:
   m_ObjectHideFlags: 0

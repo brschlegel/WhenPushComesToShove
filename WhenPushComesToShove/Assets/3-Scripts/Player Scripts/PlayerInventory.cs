@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerInventory : MonoBehaviour
 
     private PlayerInputHandler inputHandler;
     private List<LootData> inRangeLoot;
+
+    [HideInInspector] public GameObject UIRef;
 
     public void Awake()
     {
@@ -33,6 +36,9 @@ public class PlayerInventory : MonoBehaviour
                 {
                     lightShoveLoot = loot;
                     loot.OnEquip(transform.parent);
+
+                    //Assign Sprite to UI
+                    UIRef.transform.GetChild(0).GetComponent<Image>().sprite = loot.sprite;
 
                     if (loot.overrideBaseAction)
                     {
@@ -60,6 +66,9 @@ public class PlayerInventory : MonoBehaviour
                 {
                     heavyShoveLoot = loot;
                     loot.OnEquip(transform.parent);
+
+                    //Assign Sprite to UI
+                    UIRef.transform.GetChild(1).GetComponent<Image>().sprite = loot.sprite;
 
                     if (loot.overrideBaseAction)
                     {
