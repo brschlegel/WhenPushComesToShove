@@ -16,7 +16,7 @@ public class PlayerCollisions : MonoBehaviour
     {
         if (playerHealth.dead)
         {
-            if (collision.gameObject.tag == "Enemy")
+            if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player")
             {
                 Physics2D.IgnoreCollision(collision.collider, collider);
             }

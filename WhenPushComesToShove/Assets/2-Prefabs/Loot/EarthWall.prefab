@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1642169588278143135}
   m_Layer: 6
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Shove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0699013d898575c42872d0c408cf3b88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handler: {fileID: 0}
+  handler: {fileID: 5075963273801095965}
   priority: 0
   owner: {fileID: 0}
   attackData: {fileID: 0}
@@ -157,8 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e109169ccc5c741ab5e095c5673466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagsToIgnore:
+  - PlayerHurtbox
   timePerPulse: 2
   endScale: 2
+  timeBeforeDestroy: 5
 --- !u!114 &1642169588278143135
 MonoBehaviour:
   m_ObjectHideFlags: 0

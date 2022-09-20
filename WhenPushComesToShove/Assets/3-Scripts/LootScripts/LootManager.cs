@@ -7,6 +7,9 @@ public class LootManager : MonoBehaviour
     public LootData[] avaliableLoot;
     public List<LootData> droppedLoot;
 
+    public float lootRadius = 5;
+    public float timeBetweenSpawns = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +21,6 @@ public class LootManager : MonoBehaviour
         StartCoroutine(TestSpawnOverTime());
     }
 
-    private void Update()
-    {
-        //For Debugging
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            ClearDroppedLoot();
-        }
-    }
-
     /// <summary>
     /// Picks a random piece of loot from avaliable loot and spawns it
     /// </summary>
@@ -34,7 +28,7 @@ public class LootManager : MonoBehaviour
     public void DropRandomLoot( Vector2 position )
     {
         int index = Random.Range(0, avaliableLoot.Length);
-        GameObject lootObject = Instantiate(avaliableLoot[index].gameObject, transform);
+        GameObject lootObject = Instantiate(avaliableLoot[index].gameObject, position, Quaternion.identity);
         droppedLoot.Add(lootObject.GetComponent<LootData>());
     }
 
@@ -44,8 +38,8 @@ public class LootManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator TestSpawnOverTime()
     {
-        yield return new WaitForSeconds(1);
-        DropRandomLoot(Vector2.zero);
+        yield return new WaitForSeconds(timeBetweenSpawns);
+        DropRandomLoot(FindRandomPointInRadius());
         StartCoroutine(TestSpawnOverTime());
     }
 
@@ -60,6 +54,14 @@ public class LootManager : MonoBehaviour
         }
 
         droppedLoot.Clear();
+    }
+
+    private Vector3 FindRandomPointInRadius()
+    {
+        float x = Random.Range(transform.position.x - lootRadius, transform.position.x + lootRadius);
+        float y = Random.Range(transform.position.y - lootRadius, transform.position.y + lootRadius);
+
+        return new Vector3(x, y, 0);
     }
 
 }

@@ -108,6 +108,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && !heavyShoveIsCharging)
             {
+                LockMovement(shoveActionCooldown);
                 LockAction(shoveActionCooldown);
                 lightShoveScript.onLightShove();
             }
@@ -118,12 +119,15 @@ public class PlayerInputHandler : MonoBehaviour
             if (!performingAction)
             {
                 heavyShoveIsCharging = true;
+                ForceLockMovement();
                 Debug.Log("Charge");
             }
         }
         //Heavy Shove
-        else if (obj.action.name == controls.PlayerMovement.HeavyShove.name && !playerConfig.IsDead)
+        else if (obj.action.name == controls.PlayerMovement.HeavyShove.name && !playerConfig.IsDead && obj.canceled)
         {
+            Debug.Log("Heavy Shove");
+
             if (!performingAction && heavyShoveCharge >= heavyShoveChargeTime)
             {
                 LockAction(shoveActionCooldown);
@@ -132,6 +136,7 @@ public class PlayerInputHandler : MonoBehaviour
                 Debug.Log("Shove");
             }
 
+            ForceUnlockMovement();
             heavyShoveIsCharging = false;
             heavyShoveCharge = 0;
         }

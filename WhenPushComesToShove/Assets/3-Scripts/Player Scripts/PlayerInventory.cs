@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class PlayerInventory : MonoBehaviour
         LevelManager.onEndGame -= ResetLoot;
     }
 
+    [HideInInspector] public GameObject UIRef;
+
     public void Awake()
     {
         inputHandler = transform.parent.GetComponentInChildren<PlayerInputHandler>();
@@ -46,6 +49,9 @@ public class PlayerInventory : MonoBehaviour
                 {
                     lightShoveLoot = loot;
                     loot.OnEquip(transform.parent);
+
+                    //Assign Sprite to UI
+                    UIRef.transform.GetChild(0).GetComponent<Image>().sprite = loot.sprite;
 
                     if (loot.overrideBaseAction)
                     {
@@ -74,6 +80,9 @@ public class PlayerInventory : MonoBehaviour
                 {
                     heavyShoveLoot = loot;
                     loot.OnEquip(transform.parent);
+
+                    //Assign Sprite to UI
+                    UIRef.transform.GetChild(1).GetComponent<Image>().sprite = loot.sprite;
 
                     if (loot.overrideBaseAction)
                     {
@@ -141,6 +150,8 @@ public class PlayerInventory : MonoBehaviour
                     lightShoveLoot.gameObject.SetActive(true);
                 }
 
+                UIRef.transform.GetChild(0).GetComponent<Image>().sprite = null;
+
                 lootManager.droppedLoot.Add(lightShoveLoot);
                 lightShoveLoot = null;
                 break;
@@ -155,6 +166,7 @@ public class PlayerInventory : MonoBehaviour
                     heavyShoveLoot.gameObject.SetActive(true);
                 }
                 lootManager.droppedLoot.Add(heavyShoveLoot);
+                UIRef.transform.GetChild(1).GetComponent<Image>().sprite = null;
                 heavyShoveLoot = null;
                 break;
             case LootData.LootType.Passive: //Not sure if we want players to drop passive loot
