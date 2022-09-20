@@ -70,6 +70,12 @@ public class LevelEditor : MonoBehaviour
             //Enemy stats
             enemyStats = selectedProps.enemyStats;
 
+            //Wave Manager
+            WaveManager selectedWaveManager = selectedLevel.GetComponent<WaveManager>();
+
+            if(selectedWaveManager != null)
+                GetComponent<WaveManager>().waveDelays = selectedWaveManager.waveDelays;
+
             levelType = selectedProps.levelType;
 
             //Update the sprite layers to match the selected Level
@@ -189,6 +195,7 @@ public class LevelEditor : MonoBehaviour
         selectedLevel = null;
         hazardStats = null;
         enemyStats = null;
+        GetComponent<WaveManager>().waveDelays.Clear();
 
     }
 }
@@ -214,6 +221,13 @@ public class CustomLevelEditor : Editor
             GameObject root = new GameObject(level.levelName);
             LevelProperties levelProp = root.AddComponent<LevelProperties>();
             root.AddComponent<Grid>();
+
+            WaveManager rootWaveManager = root.AddComponent<WaveManager>();
+            WaveManager levelWaveManager = level.GetComponent<WaveManager>();
+
+            //Will only add the WaveManager if there's delays set
+            if(levelWaveManager.waveDelays.Count > 0)
+                rootWaveManager.waveDelays = levelWaveManager.waveDelays;
 
             Instantiate(level.floorLayer).transform.parent = root.transform;
             Instantiate(level.wallLayer).transform.parent = root.transform;

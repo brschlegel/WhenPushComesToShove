@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    [SerializeField]
-    private List<float> waveDelays;
+    public List<float> waveDelays;
     private int waveCount;
     [SerializeField]
     private int currentWave = -1;
