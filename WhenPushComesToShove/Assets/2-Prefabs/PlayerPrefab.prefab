@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4260169592841271269}
   - component: {fileID: 278065994103786336}
   - component: {fileID: 274202108947305611}
+  - component: {fileID: 2033113999610898427}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -160,6 +161,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: heavy
   anim: {fileID: 0}
+--- !u!114 &2033113999610898427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624796887541275756}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e1fd3a5989bcc4994342a825a24cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: death
+  anim: {fileID: 0}
+  animName: Base Layer.AN_Player_Dead
 --- !u!1 &2372328146738964214
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +659,21 @@ MonoBehaviour:
   maxHealth: 100
   dead: 0
   playerRef: {fileID: 1870107280854562992}
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3467010525216778814}
+        m_TargetAssemblyTypeName: PlayerAnimBrain, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7232917086713832237
 GameObject:
   m_ObjectHideFlags: 0

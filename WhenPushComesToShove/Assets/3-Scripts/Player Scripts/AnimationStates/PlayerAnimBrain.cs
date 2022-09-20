@@ -12,6 +12,7 @@ public class PlayerAnimBrain : StateBrain
     PlayerLightShoveState lightState;
     PlayerChargeState chargeState;
     PlayerHeavyShoveState heavyState;
+    PlayAnimState deathState;
     //#endregion
 
     [SerializeField]
@@ -47,6 +48,7 @@ public class PlayerAnimBrain : StateBrain
         lightState = GetComponent<PlayerLightShoveState>();
         chargeState = GetComponent<PlayerChargeState>();
         heavyState = GetComponent<PlayerHeavyShoveState>();
+        deathState = GetComponent<PlayAnimState>();
 
         idleState.anim = anim;
         idleState.vs = vs;
@@ -74,6 +76,9 @@ public class PlayerAnimBrain : StateBrain
         heavyState.anim = anim;
         playerInputHandler.GetComponent<PlayerHeavyShoveScript>().onHeavyShove += OnHeavyShove;
         playerInputHandler.onHeavyShoveComplete += OutShove;
+
+        deathState.anim = anim;
+        deathState.onStateExit += OutDeath;
 
         currentState = idleState;
         currentState.enabled = true;
@@ -115,14 +120,27 @@ public class PlayerAnimBrain : StateBrain
         }
     }
 
+    private void OutDeath(bool success)
+    {
+        if(success)
+        {
+            currentState = idleState;
+            currentState.enabled = true;
+        }
+    }
+
     private void OutShove()
     {
         ChangeState(idleState);
     }
 
+
     public void OnHit()
     {
-        ChangeState(hitState);
+        if (currentState != deathState)
+        {
+            ChangeState(hitState);
+        }
     }
 
     public void OnDash(Vector3 dir)
@@ -138,6 +156,11 @@ public class PlayerAnimBrain : StateBrain
     public void OnHeavyShove()
     {   
         ChangeState(heavyState);
+    }
+
+    public void OnDeath()
+    {
+        ChangeState(deathState);
     }
 
     /// <summary>

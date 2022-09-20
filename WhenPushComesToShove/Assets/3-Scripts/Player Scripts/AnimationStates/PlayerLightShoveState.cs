@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PlayerLightShoveState : State
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
+        anim.Play("Base Layer.AN_Player_LightShove");
     }
 
     // Update is called once per frame
