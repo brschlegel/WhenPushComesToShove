@@ -21,10 +21,6 @@ public class LootManager : MonoBehaviour
         StartCoroutine(TestSpawnOverTime());
     }
 
-    private void Update()
-    {
-    }
-
     /// <summary>
     /// Picks a random piece of loot from avaliable loot and spawns it
     /// </summary>
