@@ -98,7 +98,7 @@ public class PlayerInputHandler : MonoBehaviour
         else if (obj.action.name == controls.PlayerMovement.Select.name && !playerConfig.IsDead)
         {
             if (onSelect != null && !performingAction && !heavyShoveIsCharging)
-            {;
+            {
                 LockAction(selectActionCooldown);
                 onSelect();
             }
