@@ -127,13 +127,13 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && obj.started)
             {
+                //Assign Release Method
+                obj.action.canceled += WaitForChargeRelease;
+
                 heavyShoveIsCharging = true;
                 heavyShoveCharge = 0;
                 ForceLockMovement();
                 Debug.Log("Charge");
-
-                //Assign Release Method
-                obj.action.canceled += WaitForChargeRelease;
             }
         }
         //Dash
@@ -293,6 +293,10 @@ public class PlayerInputHandler : MonoBehaviour
         onSelect = null;
     }
 
+    /// <summary>
+    /// Function called when the player release the heavy shove button
+    /// </summary>
+    /// <param name="obj"></param>
     public void WaitForChargeRelease(CallbackContext obj)
     {
         ForceUnlockMovement();
