@@ -115,8 +115,11 @@ public class PlayerInventory : MonoBehaviour
         {
             case LootData.LootType.Light:
                 lightShoveLoot.OnUnequip(transform.parent);
-                lightShoveScript.onLightShove = null;
-                lightShoveScript.EnableBaseLightShove();
+                lightShoveScript.onLightShove -= lightShoveLoot.Action;
+                if (lightShoveLoot.overrideBaseAction)
+                {
+                    lightShoveScript.EnableBaseLightShove();
+                }
 
                 lightShoveLoot.transform.position = transform.parent.position;
                 lightShoveLoot.gameObject.SetActive(true);
@@ -125,9 +128,11 @@ public class PlayerInventory : MonoBehaviour
                 break;
             case LootData.LootType.Heavy:
                 heavyShoveLoot.OnUnequip(transform.parent);
-                heavyShoveScript.onHeavyShove = null;
-                heavyShoveScript.EnableBaseHeavyShove();
-
+                heavyShoveScript.onHeavyShove -= heavyShoveLoot.Action;
+                if (heavyShoveLoot.overrideBaseAction)
+                {
+                    heavyShoveScript.EnableBaseHeavyShove();
+                }
                 heavyShoveLoot.transform.position = transform.parent.position;
                 heavyShoveLoot.gameObject.SetActive(true);
 

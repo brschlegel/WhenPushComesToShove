@@ -46,6 +46,6 @@ public class PlayerLightShoveScript : MonoBehaviour
 
     public void DisableBaseLightShove()
     {
-        onLightShove = null;
+        onLightShove -= EnableShoveBaseHitbox;
     }
 }
