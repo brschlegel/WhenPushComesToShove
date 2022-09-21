@@ -14,8 +14,11 @@ public class PlayerHitstun : Hitstun
     }
     protected override void Stun()
     {
-       inputHandler.ForceLockMovement();
-       stunned = true;
+        if (!stunned)
+        {
+            inputHandler.ForceLockMovement();
+            stunned = true;
+        }
     }
 
     protected override void Unstun()
