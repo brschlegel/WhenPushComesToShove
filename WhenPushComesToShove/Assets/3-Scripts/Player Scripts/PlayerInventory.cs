@@ -238,9 +238,9 @@ public class PlayerInventory : MonoBehaviour
             case LootData.LootType.Heavy:
                 heavyShoveScript.hitbox.gameObject.AddComponent(handler.GetType());
                 HitHandler newHeavyHandler = heavyShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
-                newHandler = Extensions.GetCopyOf(newHeavyHandler, handler);
-                newHandler.tagsToIgnore.Add("PlayerHurtbox");
-                heavyShoveScript.hitbox.handler = newHandler;                
+                newHeavyHandler = Extensions.GetCopyOf(newHeavyHandler, handler);
+                newHeavyHandler.tagsToIgnore.Add("PlayerHurtbox");
+                heavyShoveScript.hitbox.handler = newHeavyHandler;                
                 heavyShoveScript.hitbox.gameObject.name = "HeavyHitbox";
                 break;
             default:
@@ -251,13 +251,14 @@ public class PlayerInventory : MonoBehaviour
 
     public void RemoveHitHandler(LootData.LootType lootType, HitHandler handler)
     {
+        Debug.Log("Hit Hanlder Removed");
         switch (lootType)
         {
-            case LootData.LootType.Light:
+            case LootData.LootType.Light:                
                 Destroy(lightShoveScript.hitbox.gameObject.GetComponent(handler.GetType()));
                 lightShoveScript.hitbox.handler = null;
                 break;
-            case LootData.LootType.Heavy:
+            case LootData.LootType.Heavy:                
                 Destroy(heavyShoveScript.hitbox.gameObject.GetComponent(handler.GetType()));
                 heavyShoveScript.hitbox.handler = null;
                 break;
