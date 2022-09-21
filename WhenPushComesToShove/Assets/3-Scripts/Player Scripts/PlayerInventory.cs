@@ -165,8 +165,6 @@ public class PlayerInventory : MonoBehaviour
                 {
                     heavyShoveScript.EnableBaseHeavyShove();
                 }
-                heavyShoveLoot.transform.position = transform.parent.position;
-                heavyShoveLoot.gameObject.SetActive(true);
 
                 if (dropOnGround)
                 {
@@ -194,7 +192,11 @@ public class PlayerInventory : MonoBehaviour
             DropLoot(lightShoveLoot.lootType, false);
 
         if(heavyShoveLoot != null)
+        {
+            Debug.Log(heavyShoveLoot.name);
             DropLoot(heavyShoveLoot.lootType, false);
+        }
+            
 
         foreach(LootData loot in passiveLoot)
         {
@@ -230,14 +232,14 @@ public class PlayerInventory : MonoBehaviour
                 HitHandler newHandler = lightShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
                 newHandler = Extensions.GetCopyOf(newHandler, handler);
                 lightShoveScript.hitbox.handler = newHandler;
-                //newHandler.tagsToIgnore.Add("PlayerHurtbox");
+                newHandler.tagsToIgnore.Add("PlayerHurtbox");
                 lightShoveScript.hitbox.gameObject.name = "LightHitbox";
                 break;
             case LootData.LootType.Heavy:
                 heavyShoveScript.hitbox.gameObject.AddComponent(handler.GetType());
                 HitHandler newHeavyHandler = heavyShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
                 newHandler = Extensions.GetCopyOf(newHeavyHandler, handler);
-                //newHandler.tagsToIgnore.Add("PlayerHurtbox");
+                newHandler.tagsToIgnore.Add("PlayerHurtbox");
                 heavyShoveScript.hitbox.handler = newHandler;                
                 heavyShoveScript.hitbox.gameObject.name = "HeavyHitbox";
                 break;
