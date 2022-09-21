@@ -7,18 +7,27 @@ public class PlayerHitstun : Hitstun
 {   
     [SerializeField]
     private PlayerInputHandler inputHandler;
+    private bool stunned = false;
     private void Start()
     {
         sourcesToIgnore = new List<string>(){"playerMovement", "playerDash"};
     }
     protected override void Stun()
     {
-       inputHandler.ForceLockMovement();
+        if (!stunned)
+        {
+            inputHandler.ForceLockMovement();
+            stunned = true;
+        }
     }
 
     protected override void Unstun()
     {
-        inputHandler.ForceUnlockMovement();
+        if (stunned)
+        {
+            inputHandler.ForceUnlockMovement();
+            stunned = false;
+        }
     }
 
 

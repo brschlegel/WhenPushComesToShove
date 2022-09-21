@@ -17,4 +17,12 @@ public class FriendEnder : LootData
             h.tagsToIgnore.Remove("PlayerHurtbox");
         }
     }
+
+    public override void OnUnequip(Transform player)
+    {
+        base.OnUnequip(player);
+
+        playerRef.GetComponentInChildren<DamageHitHandler>().tagsToIgnore.Add("Shove");
+
+    }
 }
