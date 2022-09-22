@@ -165,8 +165,6 @@ public class PlayerInventory : MonoBehaviour
                 {
                     heavyShoveScript.EnableBaseHeavyShove();
                 }
-                heavyShoveLoot.transform.position = transform.parent.position;
-                heavyShoveLoot.gameObject.SetActive(true);
 
                 if (dropOnGround)
                 {
@@ -194,7 +192,11 @@ public class PlayerInventory : MonoBehaviour
             DropLoot(lightShoveLoot.lootType, false);
 
         if(heavyShoveLoot != null)
+        {
+            Debug.Log(heavyShoveLoot.name);
             DropLoot(heavyShoveLoot.lootType, false);
+        }
+            
 
         foreach(LootData loot in passiveLoot)
         {
@@ -227,19 +229,17 @@ public class PlayerInventory : MonoBehaviour
         {
             case LootData.LootType.Light:
                 lightShoveScript.hitbox.gameObject.AddComponent(handler.GetType());
-                HitHandler newHandler = lightShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
+                HitHandler newHandler = lightShoveScript.hitbox.gameObject.GetComponent(handler.GetType()) as HitHandler;
                 newHandler = Extensions.GetCopyOf(newHandler, handler);
                 lightShoveScript.hitbox.handler = newHandler;
-                //newHandler.tagsToIgnore.Add("PlayerHurtbox");
                 lightShoveScript.hitbox.gameObject.name = "LightHitbox";
                 lightShoveScript.hitbox.gameObject.tag = "Shove";
                 break;
             case LootData.LootType.Heavy:
                 heavyShoveScript.hitbox.gameObject.AddComponent(handler.GetType());
-                HitHandler newHeavyHandler = heavyShoveScript.hitbox.gameObject.GetComponent<HitHandler>();
-                newHandler = Extensions.GetCopyOf(newHeavyHandler, handler);
-                //newHandler.tagsToIgnore.Add("PlayerHurtbox");
-                heavyShoveScript.hitbox.handler = newHandler;                
+                HitHandler newHeavyHandler = heavyShoveScript.hitbox.gameObject.GetComponent(handler.GetType()) as HitHandler;
+                newHeavyHandler = Extensions.GetCopyOf(newHeavyHandler, handler);
+                heavyShoveScript.hitbox.handler = newHeavyHandler;                
                 heavyShoveScript.hitbox.gameObject.name = "HeavyHitbox";
                 heavyShoveScript.hitbox.gameObject.tag = "Shove";
                 break;
@@ -251,13 +251,14 @@ public class PlayerInventory : MonoBehaviour
 
     public void RemoveHitHandler(LootData.LootType lootType, HitHandler handler)
     {
+        Debug.Log("Hit Hanlder Removed");
         switch (lootType)
         {
-            case LootData.LootType.Light:
+            case LootData.LootType.Light:                
                 Destroy(lightShoveScript.hitbox.gameObject.GetComponent(handler.GetType()));
                 lightShoveScript.hitbox.handler = null;
                 break;
-            case LootData.LootType.Heavy:
+            case LootData.LootType.Heavy:                
                 Destroy(heavyShoveScript.hitbox.gameObject.GetComponent(handler.GetType()));
                 heavyShoveScript.hitbox.handler = null;
                 break;

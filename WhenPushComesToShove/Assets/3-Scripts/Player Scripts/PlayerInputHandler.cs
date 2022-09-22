@@ -24,9 +24,10 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerHeavyShoveScript heavyShoveScript;
     private PlayerDashScript dashScript;
 
-    private bool heavyShoveIsCharging = false;
-    private float heavyShoveCharge = 0;
-    [SerializeField] private float heavyShoveChargeTime = 1;
+    
+    [HideInInspector] public bool heavyShoveIsCharging = false;
+    [HideInInspector] public float heavyShoveCharge = 0;
+    [SerializeField] public float heavyShoveChargeTime = 1;
 
     [HideInInspector] public bool performingAction = false;
     private bool lockMovement = false;
@@ -191,7 +192,7 @@ public class PlayerInputHandler : MonoBehaviour
         if(heavyShoveIsCharging)
         {
             heavyShoveIsCharging = false;
-            heavyShoveChargeTime = 0;
+            heavyShoveCharge = 0;
         }
     }
 

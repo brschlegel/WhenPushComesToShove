@@ -131,7 +131,6 @@ MonoBehaviour:
   overrideBaseAction: 0
   playerRef: {fileID: 0}
   handler: {fileID: 1828450144525533115}
-  shoveVfx: {fileID: 6697197715617920750, guid: 6fc4c94ea0d7c45439bd550017330be4, type: 3}
 --- !u!114 &1828450144525533115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,8 +147,7 @@ MonoBehaviour:
   - PlayerHurtbox
   slowTime: 3
   percentSpeedDecrease: 0.5
-  slowID: SlowID
-  slowAilmentVfx: {fileID: 6202767874956598938, guid: e79ae02071d5e7943be7a10230672c5e, type: 3}
+  slowID: LightSlow
 --- !u!1 &3670573543903801197
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +221,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b7d17931d0bcbbe418b39ed2168c4b16, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e303b4880aea6b94787f1033c0a14bc1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
