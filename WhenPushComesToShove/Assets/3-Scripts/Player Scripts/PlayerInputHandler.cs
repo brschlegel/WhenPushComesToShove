@@ -192,7 +192,7 @@ public class PlayerInputHandler : MonoBehaviour
         if(heavyShoveIsCharging)
         {
             heavyShoveIsCharging = false;
-            heavyShoveChargeTime = 0;
+            heavyShoveCharge = 0;
         }
     }
 
