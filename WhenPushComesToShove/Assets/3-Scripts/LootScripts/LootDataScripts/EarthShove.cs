@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class EarthShove : LootData
 {
@@ -9,8 +10,13 @@ public class EarthShove : LootData
 
     [SerializeField] private float distanceFromPlayer = 5;
 
+    [SerializeField] private VisualEffect groundPillars;
+    private VisualEffect pillarRef;
+
     public override void Action()
     {
+        SpawnVFX();
+        StartCoroutine("WaitForVFX", 1f);
         SpawnWall();
     }
     public override void OnEquip(Transform player)
@@ -41,6 +47,19 @@ public class EarthShove : LootData
         wallRef.GetComponentInChildren<Hitbox>().owner = playerRef.gameObject;
     }
 
+    /// <summary>
+    /// Spawns the Ground Pillars VFX prefab
+    /// </summary>
+    private void SpawnVFX()
+    {
+        if (pillarRef != null)
+        {
+            Destroy(pillarRef);
+        }
+        Vector3 dir = playerRef.GetChild(0).transform.right;
+        pillarRef = Instantiate(groundPillars, playerRef.transform.position + (dir * (distanceFromPlayer - 2.75f)), Quaternion.identity);
+    }
+
     private void DestroyWallOnNewRoom()
     {
         if (wallRef != null)
@@ -49,4 +68,8 @@ public class EarthShove : LootData
         }
     }
 
+    private IEnumerator WaitForVFX(float t)
+    {
+        yield return new WaitForSeconds(t);
+    }
 }

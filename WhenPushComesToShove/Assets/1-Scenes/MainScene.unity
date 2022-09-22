@@ -1686,17 +1686,25 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_JoinAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
-      m_Name: 
+      m_Name: Join
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: 4afb5e34-bcac-46e5-b215-b5a18ee1351d
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 0216d823-5f65-4706-8961-0e9585b79cd0
+        m_Path: <Keyboard>/f
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: 7230245380291277779, guid: ceb43eccdc574f4468d9e6a4f8d810c1, type: 3}
   m_PlayerPrefab: {fileID: 3125353624767484785, guid: a861d77c3b86f2640b6dce02dd4f2341, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
