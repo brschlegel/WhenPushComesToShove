@@ -295,9 +295,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c6c0021667e16418519c4815c3aa26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  maxMoveSpeed: 10
+  maxSpeed: 16
+  acceleration: 200
+  maxAccelerationForce: 300
   vs: {fileID: 0}
+  rb: {fileID: 5467828016632480258}
   player: {fileID: 0}
 --- !u!114 &8683604864337146482
 MonoBehaviour:
@@ -513,7 +515,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -1534,8 +1536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461e510ab41d8f841a691a7ff2043762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vs: {fileID: 924639791968285090}
-  mass: 0
+  rb: {fileID: 0}
 --- !u!114 &7154406361154819215
 MonoBehaviour:
   m_ObjectHideFlags: 0

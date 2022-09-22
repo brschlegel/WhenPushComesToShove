@@ -7,10 +7,9 @@ using DG.Tweening;
 public class KnockbackReciever : MonoBehaviour
 {
     [SerializeField]
-    private VelocitySetter vs;
+    private Rigidbody2D rb;
 
-    [HideInInspector]
-    public float mass;
+   
     /// <summary>
     /// Applies Knockback
     /// </summary>
@@ -18,23 +17,10 @@ public class KnockbackReciever : MonoBehaviour
     /// <param name="direction">Direction of vector</param>
     public void TakeKnockback(float force, Vector2 direction, KnockbackType type = KnockbackType.Normal)
     {
-        float kb = force / mass ;
-        float speed = mass * GlobalSettings.frictionCoeff;
-        string id = vs.GenerateUniqueID();
-        Tween t = DOVirtual.Float(kb, 0, speed, v => vs.UpdateVelocityMagnitude(id, v)).SetSpeedBased().SetEase(Ease.InOutExpo);
- 
-        vs.AddSourceTween(id, direction * kb, t );
+        float kb = force / rb.mass ;
+        Debug.Log(direction * kb);
+        rb.AddForce(direction * kb);
     }
 
-    private void Start()
-    {
-        //If we don't have a velocity setter, try to find one 
-        if(vs == null)
-        {
-            vs = GetComponent<VelocitySetter>();
-
-        }
-        mass = vs.GetComponent<Rigidbody2D>().mass;
-
-    }
+  
 }
