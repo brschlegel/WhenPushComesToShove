@@ -9,6 +9,7 @@ public class EarthShove : LootData
     private GameObject wallRef;
 
     [SerializeField] private float distanceFromPlayer = 5;
+    [SerializeField] private float pillarDistanceFromPlayer = 2;
 
     [SerializeField] private VisualEffect groundPillars;
     private VisualEffect pillarRef;
@@ -59,7 +60,9 @@ public class EarthShove : LootData
             Destroy(pillarRef);
         }
         Vector3 dir = playerRef.GetChild(0).transform.right;
-        pillarRef = Instantiate(groundPillars, playerRef.transform.position + (dir * (distanceFromPlayer - 2.75f)), Quaternion.identity);
+        pillarRef = Instantiate(groundPillars, playerRef.transform.position + (dir * (pillarDistanceFromPlayer)), Quaternion.identity);
+
+        pillarRef.transform.right = playerRef.GetChild(0).transform.right;
     }
 
     private void DestroyWallOnNewRoom()
