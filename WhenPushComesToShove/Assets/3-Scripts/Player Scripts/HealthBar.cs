@@ -14,6 +14,6 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = new Vector3((combat.CurrentHealth * maxScale) / combat.maxHealth,transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(Mathf.Clamp((combat.CurrentHealth * maxScale) / combat.maxHealth,0,maxScale),transform.localScale.y, transform.localScale.z);
     }
 }
