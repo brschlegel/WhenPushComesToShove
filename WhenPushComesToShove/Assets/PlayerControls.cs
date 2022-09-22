@@ -56,20 +56,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""HeavyShove"",
-                    ""type"": ""Value"",
-                    ""id"": ""12c50add-f66d-4a88-8d0a-e3e717979033"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""HeavyShoveCharge"",
                     ""type"": ""Button"",
                     ""id"": ""3946c64e-94c7-4a92-a918-61c8cd8bc051"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Press(pressPoint=0.01)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -159,78 +150,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""WASD"",
-                    ""id"": ""e8be309a-0e98-47ca-ab2b-5f32960f0f58"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""4f9ed3a5-5db4-4515-b330-2dc1f4eab2f4"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PlayerMovementKeyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""14ad4a86-5a86-45ec-8f9e-5d36fbe67c56"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PlayerMovementKeyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""e202bb0b-2d50-4328-9fb8-3854635786d8"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PlayerMovementKeyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""5b8b1a8f-3819-408c-bbbf-5e39e99d36a1"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PlayerMovementKeyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""2b895834-6540-4ef0-9f42-b5e59842c99b"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Select"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8924cf19-26ab-4b56-9864-48cc007d85a6"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PlayerMovementKeyboard"",
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -259,66 +184,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9b598512-d43e-4523-8a92-21fc8267af30"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PlayerMovementKeyboard"",
-                    ""action"": ""LightShove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d4297696-a619-495a-8db2-d1865b1b668f"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Xbox Controller Scheme"",
-                    ""action"": ""HeavyShove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""85b94213-23ad-4479-9a4d-0fdd907f3cf7"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HeavyShove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ecfdc767-5f08-43fd-9228-7f30f3b50a01"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PlayerMovementKeyboard"",
-                    ""action"": ""HeavyShove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""8ed3f68e-4ca7-4d45-a9fa-57caa2b7ed3c"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox Controller Scheme"",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d058e0d8-4405-40f0-8b6e-c6f675980390"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PlayerMovementKeyboard"",
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -336,23 +206,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2f94a790-cccb-4bdd-aa00-22d0889e4334"",
-                    ""path"": ""<Pointer>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PlayerMovementKeyboard"",
-                    ""action"": ""Aim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""bb476f7a-b597-45ab-b8fa-e0738e11bb16"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Xbox Controller Scheme"",
-                    ""action"": ""HeavyShoveCharge"",
+                    ""action"": ""HeavyShove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -363,18 +222,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HeavyShoveCharge"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""dcf2dd60-5f74-428b-ba1f-efdbc096f4f2"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PlayerMovementKeyboard"",
-                    ""action"": ""HeavyShoveCharge"",
+                    ""action"": ""HeavyShove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -392,22 +240,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
-        },
-        {
-            ""name"": ""PlayerMovementKeyboard"",
-            ""bindingGroup"": ""PlayerMovementKeyboard"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<Mouse>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
         }
     ]
 }");
@@ -417,7 +249,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Select = m_PlayerMovement.FindAction("Select", throwIfNotFound: true);
         m_PlayerMovement_LightShove = m_PlayerMovement.FindAction("LightShove", throwIfNotFound: true);
         m_PlayerMovement_HeavyShove = m_PlayerMovement.FindAction("HeavyShove", throwIfNotFound: true);
-        m_PlayerMovement_HeavyShoveCharge = m_PlayerMovement.FindAction("HeavyShoveCharge", throwIfNotFound: true);
         m_PlayerMovement_Dash = m_PlayerMovement.FindAction("Dash", throwIfNotFound: true);
         m_PlayerMovement_Aim = m_PlayerMovement.FindAction("Aim", throwIfNotFound: true);
     }
@@ -483,7 +314,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Select;
     private readonly InputAction m_PlayerMovement_LightShove;
     private readonly InputAction m_PlayerMovement_HeavyShove;
-    private readonly InputAction m_PlayerMovement_HeavyShoveCharge;
     private readonly InputAction m_PlayerMovement_Dash;
     private readonly InputAction m_PlayerMovement_Aim;
     public struct PlayerMovementActions
@@ -494,7 +324,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Select => m_Wrapper.m_PlayerMovement_Select;
         public InputAction @LightShove => m_Wrapper.m_PlayerMovement_LightShove;
         public InputAction @HeavyShove => m_Wrapper.m_PlayerMovement_HeavyShove;
-        public InputAction @HeavyShoveCharge => m_Wrapper.m_PlayerMovement_HeavyShoveCharge;
         public InputAction @Dash => m_Wrapper.m_PlayerMovement_Dash;
         public InputAction @Aim => m_Wrapper.m_PlayerMovement_Aim;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
@@ -518,9 +347,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @HeavyShove.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShove;
                 @HeavyShove.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShove;
                 @HeavyShove.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShove;
-                @HeavyShoveCharge.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShoveCharge;
-                @HeavyShoveCharge.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShoveCharge;
-                @HeavyShoveCharge.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnHeavyShoveCharge;
                 @Dash.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnDash;
@@ -543,9 +369,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @HeavyShove.started += instance.OnHeavyShove;
                 @HeavyShove.performed += instance.OnHeavyShove;
                 @HeavyShove.canceled += instance.OnHeavyShove;
-                @HeavyShoveCharge.started += instance.OnHeavyShoveCharge;
-                @HeavyShoveCharge.performed += instance.OnHeavyShoveCharge;
-                @HeavyShoveCharge.canceled += instance.OnHeavyShoveCharge;
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
@@ -565,22 +388,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_XboxControllerSchemeSchemeIndex];
         }
     }
-    private int m_PlayerMovementKeyboardSchemeIndex = -1;
-    public InputControlScheme PlayerMovementKeyboardScheme
-    {
-        get
-        {
-            if (m_PlayerMovementKeyboardSchemeIndex == -1) m_PlayerMovementKeyboardSchemeIndex = asset.FindControlSchemeIndex("PlayerMovementKeyboard");
-            return asset.controlSchemes[m_PlayerMovementKeyboardSchemeIndex];
-        }
-    }
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnLightShove(InputAction.CallbackContext context);
         void OnHeavyShove(InputAction.CallbackContext context);
-        void OnHeavyShoveCharge(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
     }

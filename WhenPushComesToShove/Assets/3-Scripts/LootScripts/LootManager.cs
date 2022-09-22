@@ -17,8 +17,17 @@ public class LootManager : MonoBehaviour
         avaliableLoot = Resources.LoadAll<LootData>("Loot/");
 
         LevelManager.onNewRoom += ClearDroppedLoot;
+        LevelManager.onEndGame += ClearDroppedLoot;
 
         StartCoroutine(TestSpawnOverTime());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            ClearDroppedLoot();
+        }
     }
 
     /// <summary>

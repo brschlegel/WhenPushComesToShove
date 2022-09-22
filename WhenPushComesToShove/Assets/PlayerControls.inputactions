@@ -34,20 +34,11 @@
                 },
                 {
                     "name": "HeavyShove",
-                    "type": "Value",
-                    "id": "12c50add-f66d-4a88-8d0a-e3e717979033",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "HeavyShoveCharge",
                     "type": "Button",
                     "id": "3946c64e-94c7-4a92-a918-61c8cd8bc051",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Press(pressPoint=0.01)",
                     "initialStateCheck": false
                 },
                 {
@@ -137,78 +128,12 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "WASD",
-                    "id": "e8be309a-0e98-47ca-ab2b-5f32960f0f58",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "4f9ed3a5-5db4-4515-b330-2dc1f4eab2f4",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PlayerMovementKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "14ad4a86-5a86-45ec-8f9e-5d36fbe67c56",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PlayerMovementKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "e202bb0b-2d50-4328-9fb8-3854635786d8",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PlayerMovementKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "5b8b1a8f-3819-408c-bbbf-5e39e99d36a1",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PlayerMovementKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "2b895834-6540-4ef0-9f42-b5e59842c99b",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8924cf19-26ab-4b56-9864-48cc007d85a6",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PlayerMovementKeyboard",
                     "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -237,66 +162,11 @@
                 },
                 {
                     "name": "",
-                    "id": "9b598512-d43e-4523-8a92-21fc8267af30",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PlayerMovementKeyboard",
-                    "action": "LightShove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d4297696-a619-495a-8db2-d1865b1b668f",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox Controller Scheme",
-                    "action": "HeavyShove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "85b94213-23ad-4479-9a4d-0fdd907f3cf7",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HeavyShove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ecfdc767-5f08-43fd-9228-7f30f3b50a01",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PlayerMovementKeyboard",
-                    "action": "HeavyShove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "8ed3f68e-4ca7-4d45-a9fa-57caa2b7ed3c",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Xbox Controller Scheme",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d058e0d8-4405-40f0-8b6e-c6f675980390",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PlayerMovementKeyboard",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -314,23 +184,12 @@
                 },
                 {
                     "name": "",
-                    "id": "2f94a790-cccb-4bdd-aa00-22d0889e4334",
-                    "path": "<Pointer>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PlayerMovementKeyboard",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "bb476f7a-b597-45ab-b8fa-e0738e11bb16",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Xbox Controller Scheme",
-                    "action": "HeavyShoveCharge",
+                    "action": "HeavyShove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -341,18 +200,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HeavyShoveCharge",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dcf2dd60-5f74-428b-ba1f-efdbc096f4f2",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PlayerMovementKeyboard",
-                    "action": "HeavyShoveCharge",
+                    "action": "HeavyShove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -366,22 +214,6 @@
             "devices": [
                 {
                     "devicePath": "<XInputController>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "PlayerMovementKeyboard",
-            "bindingGroup": "PlayerMovementKeyboard",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                },
-                {
-                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }

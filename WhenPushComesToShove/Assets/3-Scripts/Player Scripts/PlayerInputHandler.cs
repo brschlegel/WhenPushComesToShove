@@ -123,31 +123,18 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
         //Heavy Shove Charge
-        else if (obj.action.name == controls.PlayerMovement.HeavyShoveCharge.name && !playerConfig.IsDead)
+        else if (obj.action.name == controls.PlayerMovement.HeavyShove.name && !playerConfig.IsDead)
         {
-            if (!performingAction)
+            if (!performingAction && obj.started)
             {
+                //Assign Release Method
+                obj.action.canceled += WaitForChargeRelease;
+
                 heavyShoveIsCharging = true;
+                heavyShoveCharge = 0;
                 ForceLockMovement();
                 Debug.Log("Charge");
             }
-        }
-        //Heavy Shove
-        else if (obj.action.name == controls.PlayerMovement.HeavyShove.name && !playerConfig.IsDead && obj.canceled)
-        {
-            Debug.Log("Heavy Shove");
-
-            if (!performingAction && heavyShoveCharge >= heavyShoveChargeTime)
-            {
-                LockAction(heavyShoveActionCooldown, onHeavyShoveComplete);
-                heavyShoveScript.onHeavyShove();
-
-                Debug.Log("Shove");
-            }
-
-            ForceUnlockMovement();
-            heavyShoveIsCharging = false;
-            heavyShoveCharge = 0;
         }
         //Dash
         else if (obj.action.name == controls.PlayerMovement.Dash.name)
@@ -304,5 +291,24 @@ public class PlayerInputHandler : MonoBehaviour
     public void ClearSelectAction()
     {
         onSelect = null;
+    }
+
+    /// <summary>
+    /// Function called when the player release the heavy shove button
+    /// </summary>
+    /// <param name="obj"></param>
+    public void WaitForChargeRelease(CallbackContext obj)
+    {
+        ForceUnlockMovement();
+        heavyShoveIsCharging = false;
+
+        if (heavyShoveCharge >= heavyShoveChargeTime)
+        {
+            Debug.Log("Heavy Shove");
+            LockAction(heavyShoveActionCooldown, onHeavyShoveComplete);
+            heavyShoveScript.onHeavyShove();
+        }
+
+        heavyShoveCharge = 0;
     }
 }

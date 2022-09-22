@@ -24,6 +24,7 @@ public class EarthShove : LootData
         base.OnEquip(player);
 
         LevelManager.onNewRoom += DestroyWallOnNewRoom;
+        LevelManager.onEndGame += DestroyWallOnNewRoom;
     }
 
     public override void OnUnequip(Transform player)
@@ -31,6 +32,7 @@ public class EarthShove : LootData
         base.OnUnequip(player);
 
         LevelManager.onNewRoom -= DestroyWallOnNewRoom;
+        LevelManager.onEndGame -= DestroyWallOnNewRoom;
     }
 
     /// <summary>
