@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemySpawnCondition {OnStart, InCamera};
 public class WaveManager : MonoBehaviour
 {
+    [SerializeField] private EnemySpawnCondition enemySpawnCondition;
+
     public List<float> waveDelays;
     private int waveCount;
     [SerializeField]
@@ -14,13 +17,6 @@ public class WaveManager : MonoBehaviour
     private IEnumerator delayRoutine;
     //[HideInInspector]
     public bool complete;
-    private bool lastWaveComplete;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-     
-    }
 
     private void OnEnable()
     {
@@ -30,7 +26,13 @@ public class WaveManager : MonoBehaviour
             complete = false;
             spawnPoints = new List<EnemySpawnPoint>(GetComponentsInChildren<EnemySpawnPoint>());
             enemyPool = GameObject.FindGameObjectWithTag("EnemyPool").transform;
-            waveCount = waveDelays.Count + 1;
+
+            //Will only allow a spawn point 1 wave if it starts spawning in the camera
+            if(enemySpawnCondition == EnemySpawnCondition.OnStart)
+                waveCount = waveDelays.Count + 1;
+            else if(enemySpawnCondition == EnemySpawnCondition.InCamera)
+                    waveCount = 1;
+
             foreach (EnemySpawnPoint e in spawnPoints)
             {
                 e.Init(waveCount);
@@ -38,35 +40,38 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
-            SpawnCurrentWave();
+            if(enemySpawnCondition == EnemySpawnCondition.OnStart)
+                SpawnCurrentWave();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CheckAllWaveComplete())
+        if(enemySpawnCondition == EnemySpawnCondition.OnStart)
         {
-            if (currentWave < waveCount - 1)
+            if (CheckAllWaveComplete())
             {
-                if (delayRoutine == null)
+                if (currentWave < waveCount - 1)
                 {
-                    delayRoutine = DelaySpawnWave();
-                    StartCoroutine(delayRoutine);
+                    if (delayRoutine == null)
+                    {
+                        delayRoutine = DelaySpawnWave();
+                        StartCoroutine(delayRoutine);
+                    }
+                    if (enemyPool.childCount == 0)
+                    {
+                        SpawnCurrentWave();
+                        StopCoroutine(delayRoutine);
+                    }
                 }
-                if (enemyPool.childCount == 0)
+                else if (enemyPool.childCount == 0)
                 {
-                    SpawnCurrentWave();
-                    StopCoroutine(delayRoutine);
+                    complete = true;
                 }
             }
-            else if(enemyPool.childCount == 0)
-            {
-                complete = true;
-            }
-               
-
         }
+        
     }
 
     /// <summary>

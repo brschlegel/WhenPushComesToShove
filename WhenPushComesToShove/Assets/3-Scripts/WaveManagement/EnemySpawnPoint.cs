@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemySpawnPoint : MonoBehaviour
 {
+    [Tooltip("Will only spawn enemies if the spawn point can be seen by the camera")]
+
+    [SerializeField] bool spawnInCamera;
     [SerializeField] EnemyWaveSpawn.EnemyWaveStats[] enemyWaveStats;
 
     public int currentWave = 0;
