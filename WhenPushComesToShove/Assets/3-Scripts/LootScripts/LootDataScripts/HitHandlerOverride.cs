@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitHandlerOverride : LootData
 {
     [SerializeField] private HitHandler handler;
+    [SerializeField] private GameObject shoveVfx;
 
     private void Start()
     {
@@ -27,5 +28,10 @@ public class HitHandlerOverride : LootData
         base.OnUnequip(player);
 
         player.GetComponentInChildren<PlayerInventory>().RemoveHitHandler(lootType, handler);
+    }
+
+    public override void Action()
+    {
+        base.Action();
     }
 }

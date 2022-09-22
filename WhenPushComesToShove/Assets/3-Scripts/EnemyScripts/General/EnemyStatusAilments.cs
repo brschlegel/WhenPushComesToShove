@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyStatusAilments : MonoBehaviour
 {
     public Dictionary<string, Coroutine> statusAilments;
+    public Dictionary<string, GameObject> statusAilmentVfx;
 
     public void OnEnable()
     {
@@ -14,5 +15,6 @@ public class EnemyStatusAilments : MonoBehaviour
     public void Init()
     {
         statusAilments = new Dictionary<string, Coroutine>();
+        statusAilmentVfx = new Dictionary<string, GameObject>();
     }
 }

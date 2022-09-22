@@ -10,6 +10,8 @@ public class LightningShove : HitHandler
     [SerializeField] private string shockID = "Shock";
     private float timer = 0;
 
+    [SerializeField] private GameObject shockAilmentVfx;
+
     public override void ReceiveHit(HitEvent e)
     {
         //Check if enemy if already burning
@@ -25,6 +27,11 @@ public class LightningShove : HitHandler
         {
 
             enemyAilments.statusAilments.Add(shockID, StartCoroutine(ShockOverTime(e, enemyAilments)));
+
+            if (shockAilmentVfx != null)
+            {
+                enemyAilments.statusAilmentVfx.Add(shockID, Instantiate(shockAilmentVfx, enemyAilments.transform));
+            }
         }
     }
     /// <summary>
@@ -54,6 +61,12 @@ public class LightningShove : HitHandler
         }
 
         ailmentRef.statusAilments.Remove(shockID);
+
+        if (shockAilmentVfx != null)
+        {
+            Destroy(ailmentRef.statusAilmentVfx[shockID]);
+            ailmentRef.statusAilmentVfx.Remove((shockID));
+        }
     }
 }
 

@@ -10,6 +10,8 @@ public class FireShove : HitHandler
     [SerializeField] private string burnID = "Burn";
     private float timer = 0;
 
+    [SerializeField] private GameObject fireAilmentVfx;
+
     public override void ReceiveHit(HitEvent e)
     {
         //Check if enemy if already burning
@@ -23,6 +25,11 @@ public class FireShove : HitHandler
         else
         {
             enemyAilments.statusAilments.Add(burnID, StartCoroutine(BurnOverTime(e, enemyAilments)));
+
+            if (fireAilmentVfx != null)
+            {
+                enemyAilments.statusAilmentVfx.Add(burnID, Instantiate(fireAilmentVfx, enemyAilments.transform));
+            }
         }
     }
     /// <summary>
@@ -45,5 +52,11 @@ public class FireShove : HitHandler
         }
 
         ailmentRef.statusAilments.Remove(burnID);
+
+        if (fireAilmentVfx != null)
+        {
+            Destroy(ailmentRef.statusAilmentVfx[burnID]);
+            ailmentRef.statusAilmentVfx.Remove((burnID));
+        }
     }
 }

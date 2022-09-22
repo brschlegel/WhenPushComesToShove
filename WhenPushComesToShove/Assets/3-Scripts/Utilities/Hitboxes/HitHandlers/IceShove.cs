@@ -9,6 +9,8 @@ public class IceShove : HitHandler
     [SerializeField] private string slowID = "Slow";
     private Coroutine slowRoutine;
 
+    [SerializeField] private GameObject slowAilmentVfx;
+
     public override void ReceiveHit(HitEvent e)
     {
         //Check if enemy if already slowed
@@ -23,6 +25,11 @@ public class IceShove : HitHandler
         else
         {
             enemyAilments.statusAilments.Add(slowID, StartCoroutine(Slow(e, enemyAilments)));
+
+            if (slowAilmentVfx != null)
+            {
+                enemyAilments.statusAilmentVfx.Add(slowID, Instantiate(slowAilmentVfx, enemyAilments.transform));
+            }
         }
     }
 
@@ -43,5 +50,11 @@ public class IceShove : HitHandler
         move.Speed /= percentSpeedDecrease;
 
         ailmentRef.statusAilments.Remove(slowID);
+
+        if (slowAilmentVfx != null)
+        {
+            Destroy(ailmentRef.statusAilmentVfx[slowID]);
+            ailmentRef.statusAilmentVfx.Remove((slowID));
+        }
     }
 }
