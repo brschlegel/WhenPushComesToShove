@@ -131,6 +131,7 @@ MonoBehaviour:
   overrideBaseAction: 0
   playerRef: {fileID: 0}
   handler: {fileID: 5725635563570568764}
+  shoveVfx: {fileID: 0}
 --- !u!114 &5725635563570568764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +150,7 @@ MonoBehaviour:
   timeBetweenShocks: 2
   timeToBeShocked: 1
   shockID: LightShock
+  shockAilmentVfx: {fileID: 6120653113242435402, guid: e52876a026b44f94ca4de97d0a1eace7, type: 3}
 --- !u!1 &7048834357803189490
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +224,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e303b4880aea6b94787f1033c0a14bc1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7d17931d0bcbbe418b39ed2168c4b16, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
