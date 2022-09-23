@@ -37,9 +37,11 @@ public class PlayerMovementScript : MonoBehaviour
     {
         moveDirection = new Vector3(moveInputVector.x, moveInputVector.y, 0);
 
+        Debug.Log(moveDirection);
+
         if (vs != null)
         {
-            vs.AddSource("playerMovement", moveDirection, moveSpeed);
+            vs.AddSource("playerMovement", moveDirection, moveSpeed * moveDirection.magnitude);
         }
 
         //If moving but not aiming, default aim to move direction
