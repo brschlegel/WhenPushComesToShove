@@ -8,6 +8,8 @@ public class PlayerMovementScript : MonoBehaviour
     public float moveSpeed = 10f;
     public float maxMoveSpeed = 20f;
 
+    private float originalSpeed;
+
     private Vector3 moveDirection = Vector3.zero;
     private Vector2 moveInputVector = Vector2.zero;
     private Vector2 aimInputVector = Vector2.zero;
@@ -19,6 +21,7 @@ public class PlayerMovementScript : MonoBehaviour
     private void Awake()
     {
         player = transform.parent;
+        originalSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -82,5 +85,25 @@ public class PlayerMovementScript : MonoBehaviour
     public Vector2 GetAimDirection()
     {
         return aimInputVector;
+    }
+
+    //Helper Functions for Modifying Move Speed
+    public void ChangeMoveSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
+    }
+
+    public void ResetMoveSpeed()
+    {
+        moveSpeed = originalSpeed;
+    }
+
+    public IEnumerator ChangeMoveSpeedForTime(float newSpeed, float time)
+    {
+        moveSpeed = newSpeed;
+
+        yield return new WaitForSeconds(time);
+
+        moveSpeed = originalSpeed;
     }
 }

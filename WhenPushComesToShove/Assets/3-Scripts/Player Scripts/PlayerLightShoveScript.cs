@@ -7,6 +7,8 @@ public class PlayerLightShoveScript : MonoBehaviour
 {
     public Action onLightShove;
 
+    public float speedDecrease = .5f;
+
     public Hitbox hitbox;
     private Collider2D collider;
     public float cooldown;
