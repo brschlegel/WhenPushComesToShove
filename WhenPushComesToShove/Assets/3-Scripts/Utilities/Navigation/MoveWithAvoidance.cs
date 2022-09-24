@@ -5,6 +5,13 @@ using Freya;
 
 public class MoveWithAvoidance : Move
 {
+
+
+    [Header("Enemy")]
+    public Vector2 target;
+    public bool movementLocked;
+
+    [Header("Avoidance")]
     public float maxLookAhead;
     public int numSeeRays;
     public float raySeperation;
@@ -12,9 +19,9 @@ public class MoveWithAvoidance : Move
 
     private Vector2 collisionCorrection;
 
-    public override Vector3 GetMovementDirection(Vector2 target)
+    public Vector3 GetMovementDirection(Vector2 target)
     {
-        Vector2 currentVelocity = velocitySetter.Velocity;
+        Vector2 currentVelocity = pMode.Velocity;
         Vector2 movement = collisionCorrection;
         Vector2 currentPos = transform.position;
         Vector2 toTarget = (target - currentPos).normalized;
@@ -32,7 +39,7 @@ public class MoveWithAvoidance : Move
             float sign = (i % 2 == 0) ? -1 : 1;
             float delta = sign * ((i+1) / 2) * raySeperation;
             //If our velocity is zero, then use to target to try and move from
-            Vector2 baseVector = velocitySetter.Velocity.sqrMagnitude >= .01f ? velocitySetter.Velocity : toTarget;
+            Vector2 baseVector = pMode.Velocity.sqrMagnitude >= .01f ? pMode.Velocity : toTarget;
             Vector2 v  = MathfsExtensions.Rotate(baseVector, Freya.MathfsExtensions.DegToRad(delta));
             RaycastHit2D hit = Physics2D.Raycast(transform.position, v.normalized, maxLookAhead, 1 << LayerMask.NameToLayer("Obstacle"));
             Color c = Color.green;
@@ -51,24 +58,20 @@ public class MoveWithAvoidance : Move
         return new Vector2(-toTarget.y, toTarget.x).normalized;
     }
 
-    public override void Stop()
-    {
-        this.enabled = false;
-        velocitySetter.Cancel("Move");
-    }
-
     public void FixedUpdate()
     {
-        if (movementLocked)
+        if (!movementLocked)
         {
-            velocitySetter.AddSource("Move", Vector2.zero);
-        }
-        else
-        {
-           // Vector2 v = Vector2.Lerp(velocitySetter.Velocity.normalized, GetMovementDirection(target), .9f);
+            //Keep movement locked if in projectile mode
+            if(pMode.enabled)
+            {
+                movementLocked = true;
+                return;
+            }
             Vector2 v = GetMovementDirection(target);
-            velocitySetter.AddSource("Move", v, speed);
+            pMode.AddForce(GetForce(v));
         }
+       
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
