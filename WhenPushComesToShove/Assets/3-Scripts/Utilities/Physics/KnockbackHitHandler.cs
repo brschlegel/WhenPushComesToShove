@@ -7,7 +7,10 @@ public class KnockbackHitHandler : HitHandler
     public KnockbackReciever kbReciever;
     public override void ReceiveHit(HitEvent e)
     {
-        KnockbackData data = e.hitbox.knockbackData;   
-        kbReciever.TakeKnockback(data.strength, data.GetDirection(e));
+        KnockbackData data = e.hitbox.knockbackData;
+        if (data != null)
+        {
+            kbReciever.TakeKnockback(data.strength, data.GetDirection(e), e.hitbox.owner);
+        }
     }
 }

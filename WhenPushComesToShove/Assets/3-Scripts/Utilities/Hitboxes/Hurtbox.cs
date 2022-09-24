@@ -11,6 +11,7 @@ public class Hurtbox : MonoBehaviour
         {
             Debug.LogError("NO HITBOX MANAGER IN SCENE!");
         }
+        ownersToIgnore = new List<GameObject>();
     }
 
     [Tooltip("The component which handles the hit event")]
@@ -19,6 +20,9 @@ public class Hurtbox : MonoBehaviour
     public int priority;
     [Tooltip("Hitboxes will not collide with hurtboxes who have the same owner")]
     public GameObject owner;
+
+    [HideInInspector]
+    public List<GameObject> ownersToIgnore;
 
 
     public void OnTriggerEnter2D(Collider2D collider)

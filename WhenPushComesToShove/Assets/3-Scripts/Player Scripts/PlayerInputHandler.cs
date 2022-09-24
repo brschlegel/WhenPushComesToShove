@@ -57,9 +57,6 @@ public class PlayerInputHandler : MonoBehaviour
         anim = GetComponentInParent<Animator>();
         controls = new PlayerControls();
 
-        vs = GetComponentInParent<VelocitySetter>();
-        vs.Init();
-
         mover = GetComponent<PlayerMovementScript>();
         lightShoveScript = GetComponent<PlayerLightShoveScript>();
         heavyShoveScript = GetComponent<PlayerHeavyShoveScript>();

@@ -14,13 +14,13 @@ public class PlayerIdleState : State
 
     private void Update()
     {
-        if (vs.QuerySource("playerMovement", out Vector2 vel))
-        {
-            if (vel.magnitude >= .01f)
-            {
-                this.enabled = false;
-                InvokeOnStateExit(true);
-            }
-        }
+        // if (vs.QuerySource("playerMovement", out Vector2 vel))
+        // {
+        //     if (vel.magnitude >= .01f)
+        //     {
+        //         this.enabled = false;
+        //         InvokeOnStateExit(true);
+        //     }
+        // }
     }
 }

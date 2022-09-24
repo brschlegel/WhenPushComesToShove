@@ -7,7 +7,7 @@ using DG.Tweening;
 public class KnockbackReciever : MonoBehaviour
 {
     [SerializeField]
-    private Rigidbody2D rb;
+    private ProjectileMode pMode;
 
    
     /// <summary>
@@ -15,11 +15,13 @@ public class KnockbackReciever : MonoBehaviour
     /// </summary>
     /// <param name="force">Magnitude of vector</param>
     /// <param name="direction">Direction of vector</param>
-    public void TakeKnockback(float force, Vector2 direction, KnockbackType type = KnockbackType.Normal)
+    public void TakeKnockback(float force, Vector2 direction, GameObject instigator)
     {
-        float kb = force / rb.mass ;
-        Debug.Log(direction * kb);
-        rb.AddForce(direction * kb);
+        pMode.enabled = true;
+        pMode.AddForce(direction * force);
+        //Tell the projectile mode hitbox to ignore whoever sent it into projectile mode
+        pMode.pHitbox.OwnersToIgnore.Add(instigator);
+  
     }
 
   
