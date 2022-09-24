@@ -6,15 +6,9 @@ using UnityEngine;
 
 public class PlayerMovementScript : Move
 {
-
-
     private Vector3 moveDirection = Vector3.zero;
     private Vector2 moveInputVector = Vector2.zero;
     private Vector2 aimInputVector = Vector2.zero;
-
-
-    
-
     [HideInInspector] public Transform player;
 
     private void Awake()
@@ -42,22 +36,6 @@ public class PlayerMovementScript : Move
         //Apply the force
         pMode.AddForce(GetForce(unitMove));
 
-    }
-
-    /// <summary>
-    /// Basic function to apply movement based on input
-    /// </summary>
-    public void Move()
-    {
-        moveDirection = new Vector3(moveInputVector.x, moveInputVector.y, 0);
-
-       
-
-        //If moving but not aiming, default aim to move direction
-        if (aimInputVector == Vector2.zero && moveDirection != Vector3.zero)
-        {
-            player.right = moveDirection.normalized;
-        }
     }
 
     /// <summary>
