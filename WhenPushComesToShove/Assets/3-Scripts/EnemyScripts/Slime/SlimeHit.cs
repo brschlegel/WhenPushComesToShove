@@ -18,7 +18,7 @@ public class SlimeHit : State
 
     private IEnumerator Stun()
     {
-        yield return new WaitUntil (()=>!hitstun.inHitstun);
+        yield return new WaitUntil (()=>!hitstun.enabled);
         yield return new WaitForSeconds(additionalStunTime);
         this.enabled = false;
         InvokeOnStateExit(true);

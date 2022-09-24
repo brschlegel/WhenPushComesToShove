@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class ProjectileMode : MonoBehaviour
@@ -23,10 +24,13 @@ public class ProjectileMode : MonoBehaviour
     [SerializeField]
     private PhysicsMaterial2D sMaterial;
 
-    private Rigidbody2D rb;
 
-    private Vector2 lastVelocity;
-    private float speedChange;
+    private Rigidbody2D rb;
+    [Header("Events")]  
+    public UnityEvent onPModeEnter;
+    public UnityEvent onPModeExit;
+
+    private float frames;
 
     public void Init()
     {
@@ -40,20 +44,21 @@ public class ProjectileMode : MonoBehaviour
 
         rb.drag = pDrag;
         rb.sharedMaterial = pMaterial;
-        lastVelocity = Vector2.zero;
         pHitbox.gameObject.SetActive(true);
+        frames = 0;
+        onPModeEnter?.Invoke();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        speedChange = (rb.velocity.magnitude - lastVelocity.magnitude) / Time.fixedDeltaTime;
-        lastVelocity = rb.velocity;
-        if(rb.velocity.magnitude <= velocityThreshold && speedChange < 0 )
+     
+        //First frame after adding a force the force hasnt been applied. 
+        if(frames > 0 && rb.velocity.magnitude <= velocityThreshold )
         {
             this.enabled = false;
         }
+        frames++;
 
     }
 
@@ -63,6 +68,7 @@ public class ProjectileMode : MonoBehaviour
         rb.sharedMaterial = sMaterial;
         pHitbox.gameObject.SetActive(false);
         pHitbox.OwnersToIgnore.Clear();
+        onPModeExit?.Invoke();
     }
 
     public float Mass

@@ -14,14 +14,7 @@ public class PlayerDashState : State
 
     private void Update()
     {
-        if(vs.QuerySource("playerDash", out Vector2 dash))
-        {
-            if(dash.magnitude <= .01f)
-            {
-                this.enabled = false;
-                InvokeOnStateExit(true);
-            }
-        }
+       
     }
 
     private void OnDisable()
