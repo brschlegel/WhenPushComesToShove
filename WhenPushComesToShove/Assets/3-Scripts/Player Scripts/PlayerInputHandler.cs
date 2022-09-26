@@ -142,7 +142,7 @@ public class PlayerInputHandler : MonoBehaviour
             if (!performingAction && !heavyShoveIsCharging)
             {
                 LockAction(dashActionCooldown, null);
-                LockMovement(movementLockCooldown);
+                //LockMovement(movementLockCooldown);
                 dashScript.OnDash(DetermineDashDirection());
             }
         }
