@@ -129,6 +129,7 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 //Assign Release Method
                 obj.action.canceled += WaitForChargeRelease;
+                onHeavyShoveCharge?.Invoke();
 
                 heavyShoveIsCharging = true;
                 heavyShoveCharge = 0;
