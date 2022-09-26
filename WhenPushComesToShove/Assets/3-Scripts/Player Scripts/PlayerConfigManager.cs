@@ -17,6 +17,7 @@ public class PlayerConfigManager : MonoBehaviour
 
     [HideInInspector] public InitLevel levelInitRef;
     [SerializeField] private RuntimeAnimatorController[] defaultColors = new RuntimeAnimatorController[4];
+    public Material[] playerOutlines = new Material[4];
 
     public void Awake()
     {
@@ -61,9 +62,10 @@ public class PlayerConfigManager : MonoBehaviour
     /// </summary>
     /// <param name="index">The player's index</param>
     /// <param name="color">The material to assign to the spriteRenderer</param>
-    public void SetPlayerColor(int index, RuntimeAnimatorController color)
+    public void SetPlayerColor(int index, RuntimeAnimatorController color, Material mat)
     {
         playerConfigs[index].PlayerAnimations = color;
+        playerConfigs[index].Outline = mat;
     }
 
     /// <summary>
@@ -89,7 +91,7 @@ public class PlayerConfigManager : MonoBehaviour
         if (levelInitRef != null)
         {
             //Set to a default color
-            SetPlayerColor(input.playerIndex, defaultColors[input.playerIndex]);
+            SetPlayerColor(input.playerIndex, defaultColors[input.playerIndex], playerOutlines[input.playerIndex]);
 
             levelInitRef.SpawnPlayer(input.playerIndex);
         }
@@ -116,6 +118,8 @@ public class PlayerConfiguration
     public int PlayerIndex { get; set; }
     public bool IsDead { get; set; }
     public RuntimeAnimatorController PlayerAnimations { get; set; }
+
+    public Material Outline { get; set; }
 
     public GameObject PlayerObject;
 
