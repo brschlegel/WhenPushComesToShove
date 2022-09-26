@@ -7,6 +7,7 @@ public class PlayerHeavyShoveState : State
     private void OnEnable()
     {
         //Play animation here 
+        anim.Play("Base Layer.AN_Player_HeavyShove_Release");
     }
 
     private void Update()
