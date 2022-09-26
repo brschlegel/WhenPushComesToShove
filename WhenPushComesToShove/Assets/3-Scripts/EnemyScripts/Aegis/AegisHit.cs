@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AegisIdle : State
+public class AegisHit : State
 {
-    private void OnEnable()
+    // Start is called before the first frame update
+    void Start()
     {
-        anim.Play("Base Layer.Enemy Idle");
+        
     }
 
     // Update is called once per frame
