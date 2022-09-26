@@ -9,7 +9,11 @@ public class DamageHitHandler : HitHandler
     public override void ReceiveHit(HitEvent e)
     {
         AttackData data = e.hitbox.attackData;
-        health.TakeDamage(data.damage);
+        if(data != null)
+        {
+            health.TakeDamage(data.damage);
+        }
+    
 
     }
 }

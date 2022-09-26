@@ -51,11 +51,17 @@ public class HitboxManager : MonoBehaviour
                     {
                         continue;
                     }
+
+                    if(e.hitbox.ownersToIgnore.Contains(e.hurtbox.owner) || e.hurtbox.ownersToIgnore.Contains(e.hitbox.owner))
+                    {
+                        continue;
+                    }
                     //Check priority
                     if(currentEvent == null || currentEvent.hurtbox.priority <= e.hurtbox.priority)
                     {
                         currentEvent = e;
                     }
+
                     //Check hitbox priority
                     if(currentEvent.hurtbox == e.hurtbox && e.hitbox.priority > currentEvent.hitbox.priority)
                     {

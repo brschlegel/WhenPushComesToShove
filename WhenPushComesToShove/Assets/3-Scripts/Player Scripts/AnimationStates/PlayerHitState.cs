@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHitState : State
 {
     [HideInInspector]
-    public Hitstun hitstun;
+    public ProjectileMode pMode;
 
     private void OnEnable()
     {
@@ -14,7 +14,7 @@ public class PlayerHitState : State
 
     private void Update()
     {
-        if(!hitstun.inHitstun)
+        if(!pMode.enabled)
         {
             this.enabled = false;
             InvokeOnStateExit(true);

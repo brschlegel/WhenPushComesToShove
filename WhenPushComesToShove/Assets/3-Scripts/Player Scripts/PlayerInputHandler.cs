@@ -17,7 +17,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     [HideInInspector] public PlayerConfiguration playerConfig;
 
-    private VelocitySetter vs;
+    [SerializeField]
+    private ProjectileMode pMode;
 
     private PlayerMovementScript mover;
     private PlayerLightShoveScript lightShoveScript;
@@ -57,17 +58,14 @@ public class PlayerInputHandler : MonoBehaviour
         anim = GetComponentInParent<Animator>();
         controls = new PlayerControls();
 
-        vs = GetComponentInParent<VelocitySetter>();
-        vs.Init();
-
         mover = GetComponent<PlayerMovementScript>();
         lightShoveScript = GetComponent<PlayerLightShoveScript>();
         heavyShoveScript = GetComponent<PlayerHeavyShoveScript>();
         dashScript = GetComponent<PlayerDashScript>();
 
         //Assign Velocity Setter to Necessary Input Scripts
-        mover.vs = vs;
-        dashScript.vs = vs;
+        mover.pMode = pMode;
+        dashScript.pMode = pMode;
         lightShoveActionCooldown = lightShoveScript.cooldown;
         heavyShoveActionCooldown = heavyShoveScript.cooldown;
 

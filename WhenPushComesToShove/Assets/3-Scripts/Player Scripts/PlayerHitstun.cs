@@ -8,10 +8,7 @@ public class PlayerHitstun : Hitstun
     [SerializeField]
     private PlayerInputHandler inputHandler;
     private bool stunned = false;
-    private void Start()
-    {
-        sourcesToIgnore = new List<string>(){"playerMovement", "playerDash"};
-    }
+
     protected override void Stun()
     {
         if (!stunned)

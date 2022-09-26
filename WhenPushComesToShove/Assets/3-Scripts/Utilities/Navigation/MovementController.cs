@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Move))]
+[RequireComponent(typeof(MoveWithAvoidance))]
 public class MovementController : MonoBehaviour
 {
     public Vector2 Destination {get; set;}
     [SerializeField]
     [Tooltip("How far from the destination before stopping")]
     protected float destinationTolerance;
+    [SerializeField]
+    protected ProjectileMode pMode;
 
     [Header("Events")]
     [SerializeField]
@@ -25,15 +27,15 @@ public class MovementController : MonoBehaviour
     {
         get
         {
-            return move.speed;
+            return move.maxSpeed;
         }
         set
         {
-            move.speed = value;
+            move.maxSpeed = value;
         }
     }
-    [SerializeField]
-    protected Move move;
+    
+    protected MoveWithAvoidance move;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +48,8 @@ public class MovementController : MonoBehaviour
 
     public void Init()
     {
-        move = GetComponent<Move>();
+        move = GetComponent<MoveWithAvoidance>();
+        move.pMode = pMode;
     }
 
     public void LockMovement()

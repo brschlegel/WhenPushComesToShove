@@ -14,12 +14,12 @@ public class SpeedBoots : LootData
         if (playerRef != null)
         {
             PlayerMovementScript move = playerRef.GetComponentInChildren<PlayerMovementScript>();
-            move.moveSpeed *= (1 + percentSpeedIncrease);
+            move.maxSpeed *= (1 + percentSpeedIncrease);
 
-            if (move.moveSpeed > move.maxMoveSpeed)
-            {
-                move.moveSpeed = move.maxMoveSpeed;
-            }
+            // if (move.maxSpeed > move.maxMoveSpeed)
+            // {
+            //     move.moveSpeed = move.maxMoveSpeed;
+            // }
         }
     }
 }

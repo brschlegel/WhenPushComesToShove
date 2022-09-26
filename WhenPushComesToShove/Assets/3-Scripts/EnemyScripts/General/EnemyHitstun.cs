@@ -8,11 +8,6 @@ public class EnemyHitstun : Hitstun
     [SerializeField]
     private MovementController movement;
 
-    private void Start()
-    {
-        sourcesToIgnore = new List<string>() {"Move"};
-    }
-
     protected override void Stun()
     {
         movement.LockMovement();

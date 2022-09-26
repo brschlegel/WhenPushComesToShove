@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Handles the movement input action
-public class PlayerMovementScript : MonoBehaviour
-{
-    public float moveSpeed = 10f;
-    public float maxMoveSpeed = 20f;
 
+public class PlayerMovementScript : Move
+{
     private Vector3 moveDirection = Vector3.zero;
     private Vector2 moveInputVector = Vector2.zero;
     private Vector2 aimInputVector = Vector2.zero;
-
-    [HideInInspector] public VelocitySetter vs;
-
     [HideInInspector] public Transform player;
 
     private void Awake()
@@ -24,26 +19,23 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        
     }
 
-    /// <summary>
-    /// Basic function to apply movement based on input
-    /// </summary>
-    public void Move()
+    //https://www.youtube.com/watch?v=qdskE8PJy6Q&ab_channel=ToyfulGames
+    private void FixedUpdate()
     {
-        moveDirection = new Vector3(moveInputVector.x, moveInputVector.y, 0);
-
-        if (vs != null)
-        {
-            vs.AddSource("playerMovement", moveDirection, moveSpeed);
-        }
-
+        Vector2 unitMove = moveInputVector.normalized;
+      
         //If moving but not aiming, default aim to move direction
-        if (aimInputVector == Vector2.zero && moveDirection != Vector3.zero)
+        if (aimInputVector == Vector2.zero && unitMove != Vector2.zero)
         {
-            player.right = moveDirection.normalized;
+            player.right = unitMove.normalized;
         }
+      
+        //Apply the force
+        pMode.AddForce(GetForce(unitMove));
+
     }
 
     /// <summary>
@@ -82,5 +74,10 @@ public class PlayerMovementScript : MonoBehaviour
     public Vector2 GetAimDirection()
     {
         return aimInputVector;
+    }
+
+    public bool IsMoving
+    {
+        get{return moveInputVector.magnitude > 0;}
     }
 }
