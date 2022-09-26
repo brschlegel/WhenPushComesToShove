@@ -280,7 +280,7 @@ MonoBehaviour:
   pMode: {fileID: 519120853313958755}
   heavyShoveIsCharging: 0
   heavyShoveCharge: 0
-  heavyShoveChargeTime: 1
+  heavyShoveChargeTime: 0.5
   performingAction: 0
   dead: 0
   sr: {fileID: 0}
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c6c0021667e16418519c4815c3aa26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 10
+  maxSpeed: 5
   acceleration: 80
   accelerationFactorFromDot:
     serializedVersion: 2
@@ -366,6 +366,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   pMode: {fileID: 0}
+  slowAmount: 1
   player: {fileID: 0}
 --- !u!114 &8683604864337146482
 MonoBehaviour:
@@ -379,6 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6121f9c185541047b80427bd42b5180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedDecrease: 0.2
   hitbox: {fileID: 763200320402767857}
   cooldown: 0.5
 --- !u!114 &8866138083129418701
@@ -393,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298f56ad23321e24cabc2e933d5a47b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedDecrease: 0.2
   hitbox: {fileID: 5245641597600162962}
   cooldown: 0.8
 --- !u!114 &3186559500755933933

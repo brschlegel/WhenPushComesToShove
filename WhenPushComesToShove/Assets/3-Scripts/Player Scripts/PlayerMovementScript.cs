@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class PlayerMovementScript : Move
 {
+    public float slowAmount = 1f;
+
     private Vector3 moveDirection = Vector3.zero;
     private Vector2 moveInputVector = Vector2.zero;
     private Vector2 aimInputVector = Vector2.zero;
@@ -25,7 +27,7 @@ public class PlayerMovementScript : Move
     //https://www.youtube.com/watch?v=qdskE8PJy6Q&ab_channel=ToyfulGames
     private void FixedUpdate()
     {
-        Vector2 unitMove = moveInputVector.normalized;
+        Vector2 unitMove = moveInputVector;
       
         //If moving but not aiming, default aim to move direction
         if (aimInputVector == Vector2.zero && unitMove != Vector2.zero)
@@ -34,7 +36,7 @@ public class PlayerMovementScript : Move
         }
       
         //Apply the force
-        pMode.AddForce(GetForce(unitMove));
+        pMode.AddForce(GetForce(unitMove * slowAmount));
 
     }
 
@@ -79,5 +81,25 @@ public class PlayerMovementScript : Move
     public bool IsMoving
     {
         get{return moveInputVector.magnitude > 0;}
+    }
+
+    //Helper Functions for Modifying Move Speed
+    public void ChangeMoveSpeed(float newSpeed)
+    {
+        slowAmount = newSpeed;
+    }
+
+    public void ResetMoveSpeed()
+    {
+        slowAmount = 1f;
+    }
+
+    public IEnumerator ChangeMoveSpeedForTime(float newSpeed, float time)
+    {
+        slowAmount = newSpeed;
+
+        yield return new WaitForSeconds(time);
+
+        slowAmount = 1f;
     }
 }
