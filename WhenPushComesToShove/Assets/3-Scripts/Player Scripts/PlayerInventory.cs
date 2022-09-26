@@ -36,7 +36,7 @@ public class PlayerInventory : MonoBehaviour
         passiveLoot = new List<LootData>();
         inRangeLoot = new List<LootData>();
 
-        //lootManager = GameObject.Find("LootManager").GetComponent<LootManager>();
+        lootManager = GameObject.Find("LootManager").GetComponent<LootManager>();
     }
 
     public void EquipItem(LootData loot) //TODO Prompt player for loot switch in some way

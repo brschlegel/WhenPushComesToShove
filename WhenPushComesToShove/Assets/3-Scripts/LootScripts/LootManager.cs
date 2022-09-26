@@ -19,7 +19,7 @@ public class LootManager : MonoBehaviour
         LevelManager.onNewRoom += ClearDroppedLoot;
         LevelManager.onEndGame += ClearDroppedLoot;
 
-        StartCoroutine(TestSpawnOverTime());
+        //StartCoroutine(TestSpawnOverTime());
     }
 
     private void Update()
