@@ -19,7 +19,7 @@ public class Walk : MovementController
             {
                 endMovingEvent.Invoke();
             }
-            move.Stop();
+            move.enabled = false;
         }
     }
 }

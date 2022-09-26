@@ -28,7 +28,7 @@ public class Chase : MovementController
             {
                 endMovingEvent.Invoke();
             }
-            move.Stop();
+            move.enabled = false;
             closeEnough = true;
         }
         if(!closeEnough)

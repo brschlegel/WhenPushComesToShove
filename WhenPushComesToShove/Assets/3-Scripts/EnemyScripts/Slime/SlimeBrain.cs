@@ -16,14 +16,13 @@ public class SlimeBrain : StateBrain
     [SerializeField]
     private Chase chase;
     [SerializeField]
-    private EnemyHitstun hitstun;
-    [SerializeField]
     private Animator anim;
     [SerializeField]
     private GameObject hitboxObject;
     [SerializeField]
     private GameObject rootObject;
-
+    [SerializeField]
+    private ProjectileMode pMode;
 
 
     private void Start()
@@ -79,8 +78,11 @@ public class SlimeBrain : StateBrain
 
 
         hitState.anim = anim;
-        hitState.hitstun = hitstun;
+        hitState.pMode = pMode;
         hitState.onStateExit += OutHit;
+
+        currentState = idleState;
+        currentState.enabled = true;
         
     }
 

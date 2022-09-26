@@ -3,52 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Handles the movement input action
-public class PlayerMovementScript : MonoBehaviour
-{
-    public float moveSpeed = 10f;
-    public float maxMoveSpeed = 20f;
 
-    private float originalSpeed;
+public class PlayerMovementScript : Move
+{
+    public float slowAmount = 1f;
 
     private Vector3 moveDirection = Vector3.zero;
     private Vector2 moveInputVector = Vector2.zero;
     private Vector2 aimInputVector = Vector2.zero;
-
-    [HideInInspector] public VelocitySetter vs;
-
     [HideInInspector] public Transform player;
 
     private void Awake()
     {
         player = transform.parent;
-        originalSpeed = moveSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        
     }
 
-    /// <summary>
-    /// Basic function to apply movement based on input
-    /// </summary>
-    public void Move()
+    //https://www.youtube.com/watch?v=qdskE8PJy6Q&ab_channel=ToyfulGames
+    private void FixedUpdate()
     {
-        moveDirection = new Vector3(moveInputVector.x, moveInputVector.y, 0);
-
-        Debug.Log(moveDirection);
-
-        if (vs != null)
-        {
-            vs.AddSource("playerMovement", moveDirection, moveSpeed * moveDirection.magnitude);
-        }
-
+        Vector2 unitMove = moveInputVector;
+      
         //If moving but not aiming, default aim to move direction
-        if (aimInputVector == Vector2.zero && moveDirection != Vector3.zero)
+        if (aimInputVector == Vector2.zero && unitMove != Vector2.zero)
         {
-            player.right = moveDirection.normalized;
+            player.right = unitMove.normalized;
         }
+      
+        //Apply the force
+        pMode.AddForce(GetForce(unitMove * slowAmount));
+
     }
 
     /// <summary>
@@ -89,23 +78,28 @@ public class PlayerMovementScript : MonoBehaviour
         return aimInputVector;
     }
 
+    public bool IsMoving
+    {
+        get{return moveInputVector.magnitude > 0;}
+    }
+
     //Helper Functions for Modifying Move Speed
     public void ChangeMoveSpeed(float newSpeed)
     {
-        moveSpeed = newSpeed;
+        slowAmount = newSpeed;
     }
 
     public void ResetMoveSpeed()
     {
-        moveSpeed = originalSpeed;
+        slowAmount = 1f;
     }
 
     public IEnumerator ChangeMoveSpeedForTime(float newSpeed, float time)
     {
-        moveSpeed = newSpeed;
+        slowAmount = newSpeed;
 
         yield return new WaitForSeconds(time);
 
-        moveSpeed = originalSpeed;
+        slowAmount = 1f;
     }
 }
