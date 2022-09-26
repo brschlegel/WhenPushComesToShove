@@ -17,6 +17,8 @@ public class EnemyDeathEndCondition : BaseEndCondition
         if (enemyPool == null || levelProp.enemySpawnProps == null)
             return;
 
+        Debug.Log(levelProp.waveManager);
+
         if (!levelProp.waveManager.complete)
             return;
 
