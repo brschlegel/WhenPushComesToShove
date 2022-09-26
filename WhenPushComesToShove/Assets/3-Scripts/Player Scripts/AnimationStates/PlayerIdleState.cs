@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerIdleState : State
 {
     [HideInInspector]
-    public VelocitySetter vs;
+    public PlayerMovementScript mover;
 
     void OnEnable()
     {
@@ -14,13 +14,11 @@ public class PlayerIdleState : State
 
     private void Update()
     {
-        if (vs.QuerySource("playerMovement", out Vector2 vel))
+        
+        if(mover.IsMoving)
         {
-            if (vel.magnitude >= .01f)
-            {
-                this.enabled = false;
-                InvokeOnStateExit(true);
-            }
+            this.enabled = false;
+            InvokeOnStateExit(true);
         }
     }
 }

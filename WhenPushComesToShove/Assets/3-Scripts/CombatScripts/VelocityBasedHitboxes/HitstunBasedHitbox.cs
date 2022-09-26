@@ -17,7 +17,7 @@ public class HitstunBasedHitbox : VelocityBasedHitbox
     private void Update()
     {
         UpdateData();
-        if(hitstun.inHitstun)
+        if(hitstun.enabled)
         {
             if(!hitboxObject.activeSelf)
             {

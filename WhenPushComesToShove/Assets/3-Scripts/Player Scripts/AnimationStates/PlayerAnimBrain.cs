@@ -8,7 +8,7 @@ public class PlayerAnimBrain : StateBrain
     PlayerIdleState idleState;
     PlayerRunState runState;
     PlayerHitState hitState;
-    PlayerDashState dashState;
+    PlayAnimState dashState;
     PlayerLightShoveState lightState;
     PlayerChargeState chargeState;
     PlayerHeavyShoveState heavyState;
@@ -18,13 +18,13 @@ public class PlayerAnimBrain : StateBrain
     [SerializeField]
     private Animator anim;
     [SerializeField]
-    private VelocitySetter vs;
-    [SerializeField]
-    private Hitstun hitstun;
+    private ProjectileMode pMode;
     [SerializeField]
     private PlayerDashScript dashScript;
     [SerializeField]
     private PlayerInputHandler playerInputHandler;
+    [SerializeField]
+    private PlayerMovementScript mover;
 
     private void Start()
     {
@@ -44,26 +44,40 @@ public class PlayerAnimBrain : StateBrain
         idleState = GetComponent<PlayerIdleState>();
         runState = GetComponent<PlayerRunState>();
         hitState = GetComponent<PlayerHitState>();
-        dashState = GetComponent<PlayerDashState>();
         lightState = GetComponent<PlayerLightShoveState>();
         chargeState = GetComponent<PlayerChargeState>();
         heavyState = GetComponent<PlayerHeavyShoveState>();
-        deathState = GetComponent<PlayAnimState>();
+
+        PlayAnimState[] animStates = GetComponents<PlayAnimState>();
+        foreach(PlayAnimState state in animStates)
+        {
+            switch(state.id)
+            {
+                case "dash":
+                    dashState = state;
+                    break;
+                case "death":
+                    deathState = state;
+                    break;
+                default:
+                    Debug.LogError("UNKNOWN ANIM STATE ID: " + state.id);
+                    break;
+            }
+        }
 
         idleState.anim = anim;
-        idleState.vs = vs;
+        idleState.mover = mover;
         idleState.onStateExit += OutIdle;
 
         runState.anim = anim;
-        runState.vs = vs;
+        runState.mover = mover;
         runState.onStateExit += OutRun;
 
         hitState.anim = anim;
-        hitState.hitstun = hitstun;
+        hitState.pMode = pMode;
         hitState.onStateExit += OutHit;
 
         dashState.anim = anim;
-        dashState.vs = vs;
         dashScript.onDashStart += OnDash;
         dashState.onStateExit += OutDash;
 
@@ -163,18 +177,5 @@ public class PlayerAnimBrain : StateBrain
         ChangeState(deathState);
     }
 
-    /// <summary>
-    /// How does velocity magnitude compare to zero
-    /// </summary>
-    /// <param name="id">Source id</param>
-    /// <param name="greaterThanZero">Checking if greater than zero</param>
-    /// <returns></returns>
-    private bool CheckVelocityMagnitude(string id, bool greaterThanZero)
-    {
-        if(vs.QuerySource(id, out Vector2 vel))
-        {
-            return (vel.magnitude >= .01f) == greaterThanZero;
-        }
-        return !greaterThanZero;
-    }
+   
 }

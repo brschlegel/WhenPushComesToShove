@@ -6,7 +6,7 @@ using DG.Tweening;
 public delegate void DashEvent (Vector3 v);
 public class PlayerDashScript : MonoBehaviour
 {
-    [HideInInspector] public VelocitySetter vs;
+    [HideInInspector] public ProjectileMode pMode;
     [SerializeField] private float dashSpeed = 15;
     [SerializeField] private float dashTime = 1;
 
@@ -17,10 +17,9 @@ public class PlayerDashScript : MonoBehaviour
     /// <param name="playerIndex"></param>
     public void OnDash(Vector3 dashDirection)
     {
-        if (vs != null)
+        if (pMode != null)
         {
-            Tween tween = DOVirtual.Float(dashSpeed, 0, dashTime, f => vs.UpdateVelocityMagnitude("playerDash", f)).SetEase(Ease.OutQuint);
-            vs.AddSourceTween("playerDash", dashDirection * dashSpeed, tween);
+            pMode.AddForce(dashDirection * dashSpeed);
             onDashStart?.Invoke(dashDirection);
         }
     }
