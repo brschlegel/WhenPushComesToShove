@@ -7,6 +7,8 @@ public class PlayerHeavyShoveScript : MonoBehaviour
 {
     public Action onHeavyShove;
 
+    public float speedDecrease = .5f;
+
     public Hitbox hitbox;
     private Collider2D collider;
 

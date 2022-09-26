@@ -17,7 +17,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     [HideInInspector] public PlayerConfiguration playerConfig;
 
-    private VelocitySetter vs;
+    [SerializeField]
+    private ProjectileMode pMode;
 
     private PlayerMovementScript mover;
     private PlayerLightShoveScript lightShoveScript;
@@ -57,17 +58,14 @@ public class PlayerInputHandler : MonoBehaviour
         anim = GetComponentInParent<Animator>();
         controls = new PlayerControls();
 
-        vs = GetComponentInParent<VelocitySetter>();
-        vs.Init();
-
         mover = GetComponent<PlayerMovementScript>();
         lightShoveScript = GetComponent<PlayerLightShoveScript>();
         heavyShoveScript = GetComponent<PlayerHeavyShoveScript>();
         dashScript = GetComponent<PlayerDashScript>();
 
         //Assign Velocity Setter to Necessary Input Scripts
-        mover.vs = vs;
-        dashScript.vs = vs;
+        mover.pMode = pMode;
+        dashScript.pMode = pMode;
         lightShoveActionCooldown = lightShoveScript.cooldown;
         heavyShoveActionCooldown = heavyShoveScript.cooldown;
 
@@ -115,10 +113,10 @@ public class PlayerInputHandler : MonoBehaviour
         //Light Shove
         else if (obj.action.name == controls.PlayerMovement.LightShove.name && !playerConfig.IsDead)
         {
-            if (!performingAction && !heavyShoveIsCharging)
+            if (!performingAction && !heavyShoveIsCharging && obj.started)
             {
                 LockAction(lightShoveActionCooldown, onLightShoveComplete);
-                LockMovement(lightShoveActionCooldown);
+                StartCoroutine(mover.ChangeMoveSpeedForTime(lightShoveScript.speedDecrease, lightShoveActionCooldown));
 
                 lightShoveScript.onLightShove();
             }
@@ -133,7 +131,8 @@ public class PlayerInputHandler : MonoBehaviour
 
                 heavyShoveIsCharging = true;
                 heavyShoveCharge = 0;
-                ForceLockMovement();
+                mover.ChangeMoveSpeed(heavyShoveScript.speedDecrease);
+                //ForceLockMovement();
                 Debug.Log("Charge");
             }
         }
@@ -143,7 +142,7 @@ public class PlayerInputHandler : MonoBehaviour
             if (!performingAction && !heavyShoveIsCharging)
             {
                 LockAction(dashActionCooldown, null);
-                LockMovement(movementLockCooldown);
+                //LockMovement(movementLockCooldown);
                 dashScript.OnDash(DetermineDashDirection());
             }
         }
@@ -300,7 +299,8 @@ public class PlayerInputHandler : MonoBehaviour
     /// <param name="obj"></param>
     public void WaitForChargeRelease(CallbackContext obj)
     {
-        ForceUnlockMovement();
+        //ForceUnlockMovement();
+        mover.ResetMoveSpeed();
         heavyShoveIsCharging = false;
 
         if (heavyShoveCharge >= heavyShoveChargeTime)

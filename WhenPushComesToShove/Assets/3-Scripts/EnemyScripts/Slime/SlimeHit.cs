@@ -7,7 +7,7 @@ public class SlimeHit : State
     private IEnumerator enumerator;
 
     [HideInInspector]
-    public EnemyHitstun hitstun;
+    public ProjectileMode pMode;
     [SerializeField]
     public float additionalStunTime;
     private void OnEnable()
@@ -18,8 +18,8 @@ public class SlimeHit : State
 
     private IEnumerator Stun()
     {
-        yield return new WaitUntil (()=>!hitstun.inHitstun);
-        yield return new WaitForSeconds(additionalStunTime);
+        yield return new WaitUntil (()=>!pMode.enabled);
+       // yield return new WaitForSeconds(additionalStunTime);
         this.enabled = false;
         InvokeOnStateExit(true);
     }

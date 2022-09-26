@@ -13,6 +13,7 @@ public class Hitbox : MonoBehaviour
         }
         attackData = GetComponent<AttackData>();
         knockbackData = GetComponent<KnockbackData>();
+        ownersToIgnore = new List<GameObject>();
     }
 
     [Tooltip("Hit Handler for hitbox, OPTIONAL")]
@@ -26,6 +27,8 @@ public class Hitbox : MonoBehaviour
     public AttackData attackData;
     [HideInInspector]
     public KnockbackData knockbackData;
+    [HideInInspector]
+    public List<GameObject> ownersToIgnore;
 
    
 }

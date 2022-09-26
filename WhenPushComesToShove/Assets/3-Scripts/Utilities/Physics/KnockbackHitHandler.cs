@@ -8,7 +8,9 @@ public class KnockbackHitHandler : HitHandler
     public override void ReceiveHit(HitEvent e)
     {
         KnockbackData data = e.hitbox.knockbackData;
-        Vector2 direction = e.hitbox.transform.right;
-        kbReciever.TakeKnockback(data.strength, data.GetDirection(e));
+        if (data != null)
+        {
+            kbReciever.TakeKnockback(data.strength, data.GetDirection(e), e.hitbox.owner);
+        }
     }
 }

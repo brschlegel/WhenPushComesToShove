@@ -15,13 +15,8 @@ public class EnduranceBuff : LootData
         if (playerRef != null)
         {
             KnockbackReciever reciever = playerRef.GetComponentInChildren<KnockbackReciever>();
-            playerRef.GetComponent<Rigidbody2D>().mass *= 1 + percentMassIncrease;
-            reciever.mass *= 1 + percentMassIncrease;
-
-            if (reciever.mass > maxMass)
-            {
-                reciever.mass = maxMass;
-            }
+            playerRef.GetComponent<Rigidbody2D>().mass *= Mathf.Clamp(1 + percentMassIncrease, 0, maxMass);
+        
         }
     }
 }
