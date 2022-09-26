@@ -5,7 +5,7 @@ using UnityEngine;
 public class Chargebar : MonoBehaviour
 {
     [SerializeField]
-    private PlayerInputHandler inputHandler;
+    private PlayerHeavyShoveScript heavyShoveScript;
     [SerializeField]
     private float maxScale;
 
@@ -20,11 +20,11 @@ public class Chargebar : MonoBehaviour
     void Update()
     {
         //If heavy shove is charging then sprite renderer should be on, if it isnt then sprite renderer shouldnt be on
-        if(inputHandler.heavyShoveIsCharging != sr.enabled)
+        if(heavyShoveScript.heavyShoveIsCharging != sr.enabled)
         {
-            sr.enabled = inputHandler.heavyShoveIsCharging;
+            sr.enabled = heavyShoveScript.heavyShoveIsCharging;
         }
-        transform.localScale = new Vector3(Mathf.Clamp((inputHandler.heavyShoveCharge * maxScale) / inputHandler.heavyShoveChargeTime, 0 , maxScale),transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(Mathf.Clamp((heavyShoveScript.heavyShoveCharge * maxScale) / heavyShoveScript.heavyShoveChargeTime, 0 , maxScale),transform.localScale.y, transform.localScale.z);
       
     }
 }

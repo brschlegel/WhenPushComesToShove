@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerLightShoveScript : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class PlayerLightShoveScript : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private PlayerMovementScript mover;
+    private PlayerInputHandler handler;
+
     public void Start()
     {
         collider = hitbox.gameObject.GetComponent<Collider2D>();
@@ -22,7 +27,25 @@ public class PlayerLightShoveScript : MonoBehaviour
         sr = hitbox.gameObject.GetComponent<SpriteRenderer>();
         sr.enabled = false;
 
+        mover = GetComponent<PlayerMovementScript>();
+        handler = GetComponent<PlayerInputHandler>();
+
         EnableBaseLightShove();
+    }
+
+    /// <summary>
+    /// Triggers the Light Shove
+    /// </summary>
+    /// <param name="context"></param>
+    public void OnLightShoveStart(CallbackContext context)
+    {
+        if (context.started)
+        {
+            handler.LockAction(cooldown, handler.onLightShoveComplete);
+            StartCoroutine(mover.ChangeMoveSpeedForTime(speedDecrease, cooldown));
+
+            onLightShove();
+        }
     }
 
     /// <summary>

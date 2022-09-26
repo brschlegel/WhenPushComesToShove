@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 public delegate void DashEvent (Vector3 v);
 public class PlayerDashScript : MonoBehaviour
@@ -11,11 +13,27 @@ public class PlayerDashScript : MonoBehaviour
     [SerializeField] private float dashTime = 1;
 
     public event DashEvent onDashStart;
+
+    private PlayerMovementScript mover;
+    private PlayerInputHandler handler;
+
+    public void Start()
+    {
+        mover = GetComponent<PlayerMovementScript>();
+        handler = GetComponent<PlayerInputHandler>();
+    }
+
+    public void OnDash(CallbackContext context)
+    {
+        handler.LockAction(dashTime, null);
+        PerformDash(mover);
+    }
+
     /// <summary>
     /// A function called in input handler to trigger a dash
     /// </summary>
     /// <param name="playerIndex"></param>
-    public void OnDash(PlayerMovementScript mover)
+    public void PerformDash(PlayerMovementScript mover)
     {
         Vector2 dashDirection = DetermineDashDirection(mover);
 

@@ -9,10 +9,6 @@ using System;
 //Script to take in player input and trigger the necessary actions
 public class PlayerInputHandler : MonoBehaviour
 {
-    private float lightShoveActionCooldown = .5f;
-    private float heavyShoveActionCooldown = 1;
-    [SerializeField] private float dashActionCooldown = 1;
-    [SerializeField] private float movementLockCooldown = .6f;
     [SerializeField] private float selectActionCooldown = .5f;
 
     [HideInInspector] public PlayerConfiguration playerConfig;
@@ -25,14 +21,8 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerHeavyShoveScript heavyShoveScript;
     private PlayerDashScript dashScript;
 
-    
-    [HideInInspector] public bool heavyShoveIsCharging = false;
-    [HideInInspector] public float heavyShoveCharge = 0;
-    [SerializeField] public float heavyShoveChargeTime = 1;
-
     [HideInInspector] public bool performingAction = false;
-    private bool lockMovement = false;
-    private Coroutine movementUnlockRoutine;
+
     public Action onLightShoveComplete;
     public Action onHeavyShoveComplete;
     public Action onHeavyShoveCharge;
@@ -66,17 +56,7 @@ public class PlayerInputHandler : MonoBehaviour
         //Assign Velocity Setter to Necessary Input Scripts
         mover.pMode = pMode;
         dashScript.pMode = pMode;
-        lightShoveActionCooldown = lightShoveScript.cooldown;
-        heavyShoveActionCooldown = heavyShoveScript.cooldown;
 
-    }
-
-    private void Update()
-    {
-        if (heavyShoveIsCharging)
-        {
-            heavyShoveCharge += Time.deltaTime;
-        }
     }
 
     /// <summary>
@@ -99,12 +79,15 @@ public class PlayerInputHandler : MonoBehaviour
         //Movement
         if (obj.action.name == controls.PlayerMovement.Movement.name)
         {
-            OnMove(obj);
+            if (mover != null)
+            {
+                mover.SetMoveInputVector(obj.ReadValue<Vector2>());
+            }
         }
         //Select
         else if (obj.action.name == controls.PlayerMovement.Select.name && !playerConfig.IsDead)
         {
-            if (onSelect != null && !performingAction && !heavyShoveIsCharging)
+            if (onSelect != null && !performingAction && !heavyShoveScript.heavyShoveIsCharging)
             {
                 LockAction(selectActionCooldown, null);
                 onSelect();
@@ -113,94 +96,46 @@ public class PlayerInputHandler : MonoBehaviour
         //Light Shove
         else if (obj.action.name == controls.PlayerMovement.LightShove.name && !playerConfig.IsDead)
         {
-            OnLightShove(obj);
+            if (!performingAction && !heavyShoveScript.heavyShoveIsCharging)
+            {
+                lightShoveScript.OnLightShoveStart(obj);
+            }
+            
         }
         //Heavy Shove Charge
         else if (obj.action.name == controls.PlayerMovement.HeavyShove.name && !playerConfig.IsDead)
         {
-            OnHeavyShove(obj);
+            if (!performingAction)
+            {
+                heavyShoveScript.OnHeavyShoveStart(obj);
+            }
         }
         //Dash
         else if (obj.action.name == controls.PlayerMovement.Dash.name)
         {
-            OnDash();
+            if (!performingAction && !heavyShoveScript.heavyShoveIsCharging)
+            {
+                dashScript.OnDash(obj);
+            }
         }
         //Aim
         else if (obj.action.name == controls.PlayerMovement.Aim.name)
         {
-            OnAim(obj);
-        }
-    }
-
-    #region InputHandlers
-    /// <summary>
-    /// Sets the input vector for the movement input
-    /// </summary>
-    /// <param name="context"></param>
-    public void OnMove(CallbackContext context)
-    {
-        if (mover != null)
-        {
-            mover.SetMoveInputVector(context.ReadValue<Vector2>());
+            if (mover != null)
+            {
+                mover.SetAimInputVector(obj.ReadValue<Vector2>());
+            }
         }
     }
 
     /// <summary>
-    /// Sets the input vector for aim input
+    /// Helper function to clear the current action assigned to select
     /// </summary>
-    /// <param name="context"></param>
-    public void OnAim(CallbackContext context)
+    public void ClearSelectAction()
     {
-        if (mover != null)
-        {
-            mover.SetAimInputVector(context.ReadValue<Vector2>());
-        }
+        onSelect = null;
     }
 
-    /// <summary>
-    /// Triggers the Light Shove
-    /// </summary>
-    /// <param name="context"></param>
-    public void OnLightShove(CallbackContext context)
-    {
-        if (!performingAction && !heavyShoveIsCharging && context.started)
-        {
-            LockAction(lightShoveActionCooldown, onLightShoveComplete);
-            StartCoroutine(mover.ChangeMoveSpeedForTime(lightShoveScript.speedDecrease, lightShoveActionCooldown));
-
-            lightShoveScript.onLightShove();
-        }
-    }
-
-    /// <summary>
-    /// Triggers the Heavy Shove
-    /// </summary>
-    /// <param name="context"></param>
-    public void OnHeavyShove(CallbackContext context)
-    {
-        if (!performingAction && context.started)
-        {
-            //Assign Release Method
-            context.action.canceled += WaitForChargeRelease;
-
-            heavyShoveIsCharging = true;
-            heavyShoveCharge = 0;
-            mover.ChangeMoveSpeed(heavyShoveScript.speedDecrease);
-            //ForceLockMovement();
-            Debug.Log("Charge");
-        }
-    }
-
-    public void OnDash()
-    {
-        if (!performingAction && !heavyShoveIsCharging)
-        {
-            LockAction(dashActionCooldown, null);
-            //LockMovement(movementLockCooldown);
-            dashScript.OnDash(mover);
-        }
-    }
-    #endregion
     #region LockActions
     /// <summary>
     /// Locks the player from performing an action for a period of time
@@ -226,44 +161,4 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
     #endregion
-
-    /// <summary>
-    /// Helper function to clear the current action assigned to select
-    /// </summary>
-    public void ClearSelectAction()
-    {
-        onSelect = null;
-    }
-
-    /// <summary>
-    /// Interrupts charging if hit
-    /// </summary>
-    public void InterruptCharge()
-    {
-        if(heavyShoveIsCharging)
-        {
-            heavyShoveIsCharging = false;
-            heavyShoveCharge = 0;
-        }
-    }
-
-    /// <summary>
-    /// Function called when the player release the heavy shove button
-    /// </summary>
-    /// <param name="obj"></param>
-    public void WaitForChargeRelease(CallbackContext obj)
-    {
-        //ForceUnlockMovement();
-        mover.ResetMoveSpeed();
-        heavyShoveIsCharging = false;
-
-        if (heavyShoveCharge >= heavyShoveChargeTime)
-        {
-            Debug.Log("Heavy Shove");
-            LockAction(heavyShoveActionCooldown, onHeavyShoveComplete);
-            heavyShoveScript.onHeavyShove();
-        }
-
-        heavyShoveCharge = 0;
-    }
 }
