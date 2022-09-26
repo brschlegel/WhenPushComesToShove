@@ -13,20 +13,39 @@ public class PlayerMovementScript : Move
     private Vector2 aimInputVector = Vector2.zero;
     [HideInInspector] public Transform player;
 
+    private bool lockMovement = false;
+    private Coroutine movementUnlockRoutine;
+
+    #region Properties
+    public Vector3 GetMoveDirection()
+    {
+        return moveDirection;
+    }
+
+    public Vector2 GetAimDirection()
+    {
+        return aimInputVector;
+    }
+
+    public bool IsMoving
+    {
+        get { return moveInputVector.magnitude > 0; }
+    }
+    #endregion
+
     private void Awake()
     {
         player = transform.parent;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //https://www.youtube.com/watch?v=qdskE8PJy6Q&ab_channel=ToyfulGames
     private void FixedUpdate()
     {
+        if (lockMovement)
+        {
+            SetMoveInputVector(Vector2.zero);
+        }
+
         Vector2 unitMove = moveInputVector;
       
         //If moving but not aiming, default aim to move direction
@@ -68,20 +87,7 @@ public class PlayerMovementScript : Move
         player.right = aimInputVector.normalized;
     }
 
-    public Vector3 GetMoveDirection()
-    {
-        return moveDirection;
-    }
-
-    public Vector2 GetAimDirection()
-    {
-        return aimInputVector;
-    }
-
-    public bool IsMoving
-    {
-        get{return moveInputVector.magnitude > 0;}
-    }
+    #region ChangingMoveSpeed
 
     //Helper Functions for Modifying Move Speed
     public void ChangeMoveSpeed(float newSpeed)
@@ -102,4 +108,48 @@ public class PlayerMovementScript : Move
 
         slowAmount = 1f;
     }
+    #endregion
+    #region LockingMovement
+    /// <summary>
+    /// Locks the player's movement for a period of time
+    /// </summary>
+    /// <param name="cooldown"></param>
+    public void LockMovementForTime(float cooldown)
+    {
+        lockMovement = true;
+        movementUnlockRoutine = StartCoroutine(MovementLockCooldown(cooldown));
+    }
+
+    /// <summary>
+    /// A function to unlock movement after a period of time
+    /// </summary>
+    /// <param name="cooldown"></param>
+    /// <returns></returns>
+    public IEnumerator MovementLockCooldown(float cooldown)
+    {
+        yield return new WaitForSeconds(cooldown);
+        lockMovement = false;
+    }
+
+    /// <summary>
+    /// Used to externally force the player's movement to lock
+    /// </summary>
+    public void ForceLockMovement()
+    {
+        if (movementUnlockRoutine != null)
+        {
+            StopCoroutine(movementUnlockRoutine);
+        }
+
+        lockMovement = true;
+    }
+
+    /// <summary>
+    /// Used to externally force the player's movement to unlock
+    /// </summary>
+    public void ForceUnlockMovement()
+    {
+        lockMovement = false;
+    }
+    #endregion
 }

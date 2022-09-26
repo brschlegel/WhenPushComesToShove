@@ -113,38 +113,17 @@ public class PlayerInputHandler : MonoBehaviour
         //Light Shove
         else if (obj.action.name == controls.PlayerMovement.LightShove.name && !playerConfig.IsDead)
         {
-            if (!performingAction && !heavyShoveIsCharging && obj.started)
-            {
-                LockAction(lightShoveActionCooldown, onLightShoveComplete);
-                StartCoroutine(mover.ChangeMoveSpeedForTime(lightShoveScript.speedDecrease, lightShoveActionCooldown));
-
-                lightShoveScript.onLightShove();
-            }
+            OnLightShove(obj);
         }
         //Heavy Shove Charge
         else if (obj.action.name == controls.PlayerMovement.HeavyShove.name && !playerConfig.IsDead)
         {
-            if (!performingAction && obj.started)
-            {
-                //Assign Release Method
-                obj.action.canceled += WaitForChargeRelease;
-
-                heavyShoveIsCharging = true;
-                heavyShoveCharge = 0;
-                mover.ChangeMoveSpeed(heavyShoveScript.speedDecrease);
-                //ForceLockMovement();
-                Debug.Log("Charge");
-            }
+            OnHeavyShove(obj);
         }
         //Dash
         else if (obj.action.name == controls.PlayerMovement.Dash.name)
         {
-            if (!performingAction && !heavyShoveIsCharging)
-            {
-                LockAction(dashActionCooldown, null);
-                //LockMovement(movementLockCooldown);
-                dashScript.OnDash(DetermineDashDirection());
-            }
+            OnDash();
         }
         //Aim
         else if (obj.action.name == controls.PlayerMovement.Aim.name)
@@ -153,6 +132,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    #region InputHandlers
     /// <summary>
     /// Sets the input vector for the movement input
     /// </summary>
@@ -161,12 +141,6 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (mover != null)
         {
-            if (lockMovement)
-            {
-                mover.SetMoveInputVector(Vector2.zero);
-                return;
-            }
-
             mover.SetMoveInputVector(context.ReadValue<Vector2>());
         }
     }
@@ -184,41 +158,50 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// Interrupts charging if hit
+    /// Triggers the Light Shove
     /// </summary>
-    public void InterruptCharge()
+    /// <param name="context"></param>
+    public void OnLightShove(CallbackContext context)
     {
-        if(heavyShoveIsCharging)
+        if (!performingAction && !heavyShoveIsCharging && context.started)
         {
-            heavyShoveIsCharging = false;
-            heavyShoveCharge = 0;
+            LockAction(lightShoveActionCooldown, onLightShoveComplete);
+            StartCoroutine(mover.ChangeMoveSpeedForTime(lightShoveScript.speedDecrease, lightShoveActionCooldown));
+
+            lightShoveScript.onLightShove();
         }
     }
 
     /// <summary>
-    /// Helper function to determine if the direction of a dash
+    /// Triggers the Heavy Shove
     /// </summary>
-    /// <returns></returns>
-    public Vector2 DetermineDashDirection()
+    /// <param name="context"></param>
+    public void OnHeavyShove(CallbackContext context)
     {
-        Vector2 direction = Vector2.zero;
+        if (!performingAction && context.started)
+        {
+            //Assign Release Method
+            context.action.canceled += WaitForChargeRelease;
 
-        if (mover.GetMoveDirection() != Vector3.zero)
-        {
-            direction = mover.GetMoveDirection();
+            heavyShoveIsCharging = true;
+            heavyShoveCharge = 0;
+            mover.ChangeMoveSpeed(heavyShoveScript.speedDecrease);
+            //ForceLockMovement();
+            Debug.Log("Charge");
         }
-        else if (mover.GetAimDirection() != Vector2.zero)
-        {
-            direction = mover.GetAimDirection();
-        }
-        else
-        {
-            direction = mover.player.right;
-        }
-
-        return direction;
     }
 
+    public void OnDash()
+    {
+        if (!performingAction && !heavyShoveIsCharging)
+        {
+            LockAction(dashActionCooldown, null);
+            //LockMovement(movementLockCooldown);
+            dashScript.OnDash(mover);
+        }
+    }
+    #endregion
+    #region LockActions
     /// <summary>
     /// Locks the player from performing an action for a period of time
     /// </summary>
@@ -230,37 +213,6 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// Locks the player's movement for a period of time
-    /// </summary>
-    /// <param name="cooldown"></param>
-    public void LockMovement(float cooldown)
-    {
-        lockMovement = true;
-        movementUnlockRoutine = StartCoroutine(MovementLockCooldown(cooldown));
-    }
-
-    /// <summary>
-    /// Used to externally force the player's movement to lock
-    /// </summary>
-    public void ForceLockMovement()
-    {
-        if (movementUnlockRoutine != null)
-        {
-            StopCoroutine(movementUnlockRoutine);
-        }
-
-        lockMovement = true;
-    }
-
-    /// <summary>
-    /// Used to externally force the player's movement to unlock
-    /// </summary>
-    public void ForceUnlockMovement()
-    {
-        lockMovement = false;
-    }
-
-    /// <summary>
     /// A fuction to prevent players from performing an action for some time
     /// </summary>
     /// <returns></returns>
@@ -268,22 +220,12 @@ public class PlayerInputHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldown);
         performingAction = false;
-        if(onComplete != null)
+        if (onComplete != null)
         {
             onComplete?.Invoke();
         }
     }
-
-    /// <summary>
-    /// A function to unlock movement after a period of time
-    /// </summary>
-    /// <param name="cooldown"></param>
-    /// <returns></returns>
-    public IEnumerator MovementLockCooldown(float cooldown)
-    {
-        yield return new WaitForSeconds(cooldown);
-        lockMovement = false;
-    }
+    #endregion
 
     /// <summary>
     /// Helper function to clear the current action assigned to select
@@ -291,6 +233,18 @@ public class PlayerInputHandler : MonoBehaviour
     public void ClearSelectAction()
     {
         onSelect = null;
+    }
+
+    /// <summary>
+    /// Interrupts charging if hit
+    /// </summary>
+    public void InterruptCharge()
+    {
+        if(heavyShoveIsCharging)
+        {
+            heavyShoveIsCharging = false;
+            heavyShoveCharge = 0;
+        }
     }
 
     /// <summary>

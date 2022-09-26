@@ -15,12 +15,38 @@ public class PlayerDashScript : MonoBehaviour
     /// A function called in input handler to trigger a dash
     /// </summary>
     /// <param name="playerIndex"></param>
-    public void OnDash(Vector3 dashDirection)
+    public void OnDash(PlayerMovementScript mover)
     {
+        Vector2 dashDirection = DetermineDashDirection(mover);
+
         if (pMode != null)
         {
             pMode.AddForce(dashDirection * dashSpeed);
             onDashStart?.Invoke(dashDirection);
         }
+    }
+
+    /// <summary>
+    /// Helper function to determine if the direction of a dash
+    /// </summary>
+    /// <returns></returns>
+    public Vector2 DetermineDashDirection(PlayerMovementScript mover)
+    {
+        Vector2 direction = Vector2.zero;
+
+        if (mover.GetMoveDirection() != Vector3.zero)
+        {
+            direction = mover.GetMoveDirection();
+        }
+        else if (mover.GetAimDirection() != Vector2.zero)
+        {
+            direction = mover.GetAimDirection();
+        }
+        else
+        {
+            direction = mover.player.right;
+        }
+
+        return direction;
     }
 }
