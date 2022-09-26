@@ -224,6 +224,7 @@ public class CustomLevelEditor : Editor
 
             WaveManager rootWaveManager = root.AddComponent<WaveManager>();
             WaveManager levelWaveManager = level.GetComponent<WaveManager>();
+            levelProp.waveManager = rootWaveManager;
 
             //Will only add the WaveManager if there's delays set
             if(levelWaveManager.waveDelays.Count > 0)
