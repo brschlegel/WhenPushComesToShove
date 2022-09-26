@@ -46,9 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9683d3a309eff874094b9449c9d53e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vs: {fileID: 999011918721939299}
-  hitstunThreshold: 3
-  inHitstun: 0
+  pMode: {fileID: 0}
   movement: {fileID: 999011920109504316}
 --- !u!114 &252859134
 MonoBehaviour:
@@ -127,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 999011918721937567}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.540849, y: -1.4737804, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7415990179920017733}
@@ -213,8 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461e510ab41d8f841a691a7ff2043762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vs: {fileID: 999011918721939299}
-  mass: 0
+  pMode: {fileID: 0}
 --- !u!114 &999011918721939302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,8 +475,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b006bb25d29ed40b6c7cc80abac6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  velocitySetter: {fileID: 999011918721939299}
+  maxSpeed: 0
+  acceleration: 0
+  accelerationFactorFromDot:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxAccelerationForce: 0
+  maxAccelerationForceFactorFromDot:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  pMode: {fileID: 0}
   target: {x: 0, y: 0}
   movementLocked: 0
   maxLookAhead: 10
@@ -499,13 +510,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationTolerance: 2
+  pMode: {fileID: 0}
   startMovingEvent:
     m_PersistentCalls:
       m_Calls: []
   endMovingEvent:
     m_PersistentCalls:
       m_Calls: []
-  move: {fileID: 999011920109504317}
   closeEnough: 0
   chaseTarget: {fileID: 0}
 --- !u!1 &6519861113405650387

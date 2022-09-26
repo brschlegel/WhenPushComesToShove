@@ -67,6 +67,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         playerConfig = config;
         anim.runtimeAnimatorController = config.PlayerAnimations;
+        sr.material = config.Outline;
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
     }
 
