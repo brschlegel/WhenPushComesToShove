@@ -95,7 +95,7 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
         //Light Shove
-        else if (obj.action.name == controls.PlayerMovement.LightShove.name && !playerConfig.IsDead)
+        else if (obj.action.name == controls.PlayerMovement.LightShove.name)
         {
             if (!performingAction && !heavyShoveScript.heavyShoveIsCharging)
             {
@@ -104,7 +104,7 @@ public class PlayerInputHandler : MonoBehaviour
             
         }
         //Heavy Shove Charge
-        else if (obj.action.name == controls.PlayerMovement.HeavyShove.name && !playerConfig.IsDead)
+        else if (obj.action.name == controls.PlayerMovement.HeavyShove.name)
         {
             if (!performingAction)
             {
