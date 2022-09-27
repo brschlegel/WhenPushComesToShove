@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LootManager : MonoBehaviour
 {
+    public LootLists lootToSpawn;
     public LootData[] avaliableLoot;
     public List<LootData> droppedLoot;
 
@@ -14,7 +15,7 @@ public class LootManager : MonoBehaviour
     void Start()
     {
         droppedLoot = new List<LootData>();
-        avaliableLoot = Resources.LoadAll<LootData>("Loot/");
+        avaliableLoot = lootToSpawn.lootToSpawn;
 
         LevelManager.onNewRoom += ClearDroppedLoot;
         LevelManager.onEndGame += ClearDroppedLoot;

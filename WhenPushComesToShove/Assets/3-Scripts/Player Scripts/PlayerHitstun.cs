@@ -6,14 +6,14 @@ using UnityEngine;
 public class PlayerHitstun : Hitstun
 {   
     [SerializeField]
-    private PlayerInputHandler inputHandler;
+    private PlayerMovementScript mover;
     private bool stunned = false;
 
     protected override void Stun()
     {
         if (!stunned)
         {
-            inputHandler.ForceLockMovement();
+            mover.ForceLockMovement();
             stunned = true;
         }
     }
@@ -22,7 +22,7 @@ public class PlayerHitstun : Hitstun
     {
         if (stunned)
         {
-            inputHandler.ForceUnlockMovement();
+            mover.ForceUnlockMovement();
             stunned = false;
         }
     }

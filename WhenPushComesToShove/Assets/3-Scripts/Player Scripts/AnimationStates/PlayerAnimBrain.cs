@@ -86,7 +86,7 @@ public class PlayerAnimBrain : StateBrain
         playerInputHandler.onLightShoveComplete += OutShove;
 
         chargeState.anim = anim;
-        playerInputHandler.onHeavyShoveCharge += OnCharge;
+        playerInputHandler.GetComponent<PlayerHeavyShoveScript>().onHeavyCharge += OnHeavyCharge;
 
         heavyState.anim = anim;
         playerInputHandler.GetComponent<PlayerHeavyShoveScript>().onHeavyShove += OnHeavyShove;
@@ -173,14 +173,14 @@ public class PlayerAnimBrain : StateBrain
         ChangeState(heavyState);
     }
 
+    public void OnHeavyCharge()
+    {
+        ChangeState(chargeState);
+    }
+
     public void OnDeath()
     {
         ChangeState(deathState);
-    }
-
-    public void OnCharge()
-    {
-        ChangeState(chargeState);
     }
 
    
