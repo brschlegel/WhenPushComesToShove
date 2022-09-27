@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Debug Variable. Will cause the path to cycle to the beginning.")]
     [SerializeField] bool repeatPath;
     [SerializeField] GameObject lootArenaEquip;
+    private DamageEnabler damageEnabler;
     public static Action onNewRoom;
     public static Action onEndGame;
     EnemySpawnPoint[] enemySpawns;
@@ -30,6 +31,7 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         pathGen = GetComponent<PathGenerator>();
+        damageEnabler = GetComponent<DamageEnabler>();
     }
     // Start is called before the first frame update
     void Start()
@@ -68,6 +70,8 @@ public class LevelManager : MonoBehaviour
         {
             currentRoomIndex = 0;
         }  
+
+        damageEnabler.EnableDamage(currentRoomIndex > 0);
         
         //Hide the previous room
         for (int i = 0; i < path.Count; i++)
@@ -109,7 +113,7 @@ public class LevelManager : MonoBehaviour
 
         currentRoomIndex = path.Count;
         repeatPath = true;
-        ShowRoom();        
+        ShowRoom();     
         repeatPath = false;
 
         //Resets any players who died
