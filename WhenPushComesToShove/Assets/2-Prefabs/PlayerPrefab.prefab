@@ -274,13 +274,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726528bca45d1734bae1501dc0d95de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashActionCooldown: 1
-  movementLockCooldown: 0.5
   selectActionCooldown: 0.5
   pMode: {fileID: 519120853313958755}
-  heavyShoveIsCharging: 0
-  heavyShoveCharge: 0
-  heavyShoveChargeTime: 0.5
   performingAction: 0
   dead: 0
   sr: {fileID: 0}
@@ -395,6 +390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298f56ad23321e24cabc2e933d5a47b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heavyShoveIsCharging: 0
+  heavyShoveCharge: 0
+  heavyShoveChargeTime: 1
   speedDecrease: 0.2
   hitbox: {fileID: 5245641597600162962}
   cooldown: 0.8
@@ -1216,7 +1214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b760bd679c2b164db328e247772f6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputHandler: {fileID: 1870107280854562992}
+  heavyShoveScript: {fileID: 8866138083129418701}
   maxScale: 0.5
 --- !u!4 &7232097478963898692 stripped
 Transform:
