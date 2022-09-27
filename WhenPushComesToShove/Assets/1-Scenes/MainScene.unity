@@ -1578,6 +1578,7 @@ GameObject:
   - component: {fileID: 1589640427}
   - component: {fileID: 1589640426}
   - component: {fileID: 1589640428}
+  - component: {fileID: 1589640429}
   m_Layer: 0
   m_Name: Path
   m_TagString: Untagged
@@ -1642,6 +1643,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   repeatPath: 0
   lootArenaEquip: {fileID: 347616166255666306, guid: 261b47bf1ce5aa94185670685bd134ca, type: 3}
+--- !u!114 &1589640429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589640425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d94498bb7e11a74d9bf9e9d4dba667e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1822908328
 GameObject:
   m_ObjectHideFlags: 0
