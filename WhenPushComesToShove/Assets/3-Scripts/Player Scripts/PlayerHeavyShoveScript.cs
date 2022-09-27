@@ -14,6 +14,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     public float speedDecrease = .2f;
 
     public Action onHeavyShove;
+    public Action onHeavyCharge;
 
     public Hitbox hitbox;
     private Collider2D collider;
@@ -59,6 +60,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
             heavyShoveIsCharging = true;
             heavyShoveCharge = 0;
             mover.ChangeMoveSpeed(speedDecrease);
+            onHeavyCharge?.Invoke();
         }
     }
 
