@@ -20,6 +20,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     private Collider2D collider;
 
     public float cooldown;
+    public float hitBoxCooldown;
     private SpriteRenderer sr;
 
     private PlayerInputHandler handler;
@@ -100,7 +101,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
         
         collider.enabled = true;
         sr.enabled = true;
-        yield return new WaitForSeconds(cooldown);
+        yield return new WaitForSeconds(hitBoxCooldown);
         collider.enabled = false;
         sr.enabled = false;
     }
