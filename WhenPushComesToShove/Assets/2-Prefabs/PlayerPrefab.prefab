@@ -377,7 +377,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedDecrease: 0.2
   hitbox: {fileID: 763200320402767857}
-  cooldown: 0.5
+  cooldown: 0.35
+  hitBoxCooldown: 0.2
 --- !u!114 &8866138083129418701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +396,8 @@ MonoBehaviour:
   heavyShoveChargeTime: 1
   speedDecrease: 0.2
   hitbox: {fileID: 5245641597600162962}
-  cooldown: 0.8
+  cooldown: 0.35
+  hitBoxCooldown: 0.2
 --- !u!114 &3186559500755933933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,7 +736,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 100
   dead: 0
-  playerRef: {fileID: 1870107280854562992}
+  playerInputRef: {fileID: 1870107280854562992}
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -818,6 +820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToIgnore:
   - Shove
+  - GhostShove
   health: {fileID: 5551845860662291163}
 --- !u!114 &1075145129282054902
 MonoBehaviour:
@@ -831,7 +834,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5507211a3cdd2714b8b487751e703291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
   kbReciever: {fileID: 5395361809422544588}
 --- !u!114 &102798743431046658
 MonoBehaviour:
@@ -845,7 +849,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93619288de6e09348afef84ff792f52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -885,7 +890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bb67aac4ea2fa4eaf5285039fa6955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
   myPMode: {fileID: 519120853313958755}
 --- !u!1001 &203077628382891742
 PrefabInstance:

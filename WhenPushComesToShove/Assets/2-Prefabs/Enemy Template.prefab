@@ -565,7 +565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5507211a3cdd2714b8b487751e703291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
   kbReciever: {fileID: 999011918721939298}
 --- !u!114 &4734747574977284805
 MonoBehaviour:
@@ -581,6 +582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToIgnore:
   - Enemy
+  - GhostShove
   outputs:
   - {fileID: 2396300858512014288}
   - {fileID: 201831532097230365}
@@ -596,7 +598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22dbf66df48581a4383e407aa75f4828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
   health: {fileID: 999011920060830536}
 --- !u!1001 &999011918593432200
 PrefabInstance:
@@ -714,7 +717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5507211a3cdd2714b8b487751e703291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
   kbReciever: {fileID: 999011918721939298}
 --- !u!1001 &999011919620934298
 PrefabInstance:

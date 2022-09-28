@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 public class PlayerHealth : Health
 {
-    public PlayerInputHandler playerRef;
+    public PlayerInputHandler playerInputRef;
 
     public UnityEvent onDeath;
-    
+ 
     private void OnEnable()
     {
         LevelManager.onNewRoom += ResetHealth;
@@ -22,15 +22,22 @@ public class PlayerHealth : Health
     }
     public override void Die()
     {
-        playerRef.sr.color = new Color(playerRef.sr.color.r, playerRef.sr.color.g, playerRef.sr.color.b, .5f);
+        playerInputRef.sr.color = new Color(playerInputRef.sr.color.r, playerInputRef.sr.color.g, playerInputRef.sr.color.b, .5f);
 
         dead = true;
-        playerRef.playerConfig.IsDead = true;
+        playerInputRef.playerConfig.IsDead = true;
 
-        if (PlayerConfigManager.Instance.CheckAllPlayerDeath())
+        //Unassign Ghost Shove Tags
+        KnockbackHitHandler kbReciever = transform.parent.GetComponentInChildren<KnockbackHitHandler>();
+        if (kbReciever.tagsToIgnore.Contains("GhostShove"))
         {
-            //GameObject.Find("Path").GetComponent<LevelManager>().ResetPath();
+            kbReciever.tagsToIgnore.Remove("GhostShove");
+            kbReciever.tagsToIgnore.Add("Shove");
         }
+
+        KnockbackAlongAxis kbHit = transform.parent.GetComponentInChildren<KnockbackAlongAxis>();
+        kbHit.gameObject.tag = "GhostShove";
+
         onDeath?.Invoke();
     }
 
@@ -38,7 +45,18 @@ public class PlayerHealth : Health
     {
         dead = false;
         currentHealth = maxHealth;
-        playerRef.sr.color = new Color(playerRef.sr.color.r, playerRef.sr.color.g, playerRef.sr.color.b, 1f);
+        playerInputRef.sr.color = new Color(playerInputRef.sr.color.r, playerInputRef.sr.color.g, playerInputRef.sr.color.b, 1f);
+
+        //Reassign Ghost Shove Tags
+        KnockbackHitHandler kbReciever = transform.parent.GetComponentInChildren<KnockbackHitHandler>();
+        if (!kbReciever.tagsToIgnore.Contains("GhostShove"))
+        {
+            kbReciever.tagsToIgnore.Add("GhostShove");
+            kbReciever.tagsToIgnore.Remove("Shove");
+        }
+
+        KnockbackAlongAxis kbHit = transform.parent.GetComponentInChildren<KnockbackAlongAxis>();
+        kbHit.gameObject.tag = "Shove";
     }
 
     private void Update()

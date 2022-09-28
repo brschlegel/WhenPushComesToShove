@@ -14,6 +14,7 @@ public class PlayerLightShoveScript : MonoBehaviour
     public Hitbox hitbox;
     private Collider2D collider;
     public float cooldown;
+    public float hitBoxCooldown = .2f;
 
     private SpriteRenderer sr;
 
@@ -65,7 +66,7 @@ public class PlayerLightShoveScript : MonoBehaviour
     /// <returns></returns>
     public IEnumerator HitboxCooldown()
     {
-        yield return new WaitForSeconds(cooldown);
+        yield return new WaitForSeconds(hitBoxCooldown);
         collider.enabled = false;
         sr.enabled = false;
     }
