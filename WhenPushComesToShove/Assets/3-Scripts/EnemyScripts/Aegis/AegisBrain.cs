@@ -10,9 +10,13 @@ public class AegisBrain : StateBrain
     AegisHit hitState;
 
     [SerializeField]
+    AegisWall wall;
+    [SerializeField]
     private Animator anim;
+    [SerializeField]
+    private Chase chase;
     // Start is called before the first frame update
-    void Start()
+    void Start() 
     {
         if(setupState == null)
             Init();
@@ -21,7 +25,7 @@ public class AegisBrain : StateBrain
     // Update is called once per frame
     void Update()
     {
-        
+        wall.target = target;
     }
 
     public void Init()  
@@ -35,8 +39,11 @@ public class AegisBrain : StateBrain
         setupState.onStateExit += OutSetup;
 
         idleState.anim = anim;
+        idleState.onStateExit += OutIdle;
 
         runState.anim = anim;
+        runState.chase = chase;
+        runState.onStateExit += OutRun;
 
         hitState.anim = anim;
 
@@ -47,5 +54,19 @@ public class AegisBrain : StateBrain
     public void OutSetup(bool success)
     {
         ChangeState(idleState);
+    }
+
+    public void OutIdle(bool success)
+    {
+        ChangeState(runState);
+    }
+
+    private void OutRun(bool success)
+    {
+        if(success)
+        {
+            target = runState.target;
+            
+        }
     }
 }

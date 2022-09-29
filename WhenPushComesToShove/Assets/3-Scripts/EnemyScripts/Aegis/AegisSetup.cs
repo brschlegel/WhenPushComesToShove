@@ -8,7 +8,7 @@ public class AegisSetup : State
    
     private void OnEnable()
     {
-        
+        StartCoroutine(PlayAnimations());
     }
     // Update is called once per frame
     void Update()

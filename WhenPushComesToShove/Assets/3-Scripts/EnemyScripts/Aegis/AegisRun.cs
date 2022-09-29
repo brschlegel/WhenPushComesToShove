@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class AegisRun : State
 {
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector]
+    public Transform target;
+    [HideInInspector]
+    public Chase chase;
+    void OnEnable()
     {
         anim.Play("Base Layer.Enemy Run");
     }
@@ -13,6 +16,19 @@ public class AegisRun : State
     // Update is called once per frame
     void Update()
     {
-        if()
+        if(target == null || target.GetComponentInChildren<PlayerHealth>().dead)
+        {
+            target = GameState.GetNearestPlayer(transform);
+        }
+
+        if(target != null)
+        {
+            chase.SetTarget(target);
+        }
+        if(chase.closeEnough)
+        {
+            enabled = false;
+            InvokeOnStateExit(true);
+        }
     }
 }
