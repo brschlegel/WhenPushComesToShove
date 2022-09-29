@@ -29,7 +29,7 @@ public class PlayerMovementScript : Move
 
     public bool IsMoving
     {
-        get { return moveInputVector.magnitude > 0; }
+        get { return moveInputVector.magnitude > 0 && !lockMovement; }
     }
     #endregion
 
