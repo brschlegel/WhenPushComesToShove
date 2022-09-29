@@ -35,21 +35,6 @@ public class SlimeRun : State
 
     private Transform PickTarget()
     {
-        float dist = float.PositiveInfinity;
-        Transform closest = null;
-        foreach(Transform t in GameState.players)
-        {
-            //Run only if player is alive
-            if (!t.GetComponentInChildren<Health>().dead)
-            {
-                float temp = Vector2.Distance(transform.position, t.position);
-                if (temp < dist)
-                {
-                    dist = temp;
-                    closest = t;
-                }
-            }
-        }
-        return closest;
+        return GameState.GetNearestPlayer(transform);
     }
 }
