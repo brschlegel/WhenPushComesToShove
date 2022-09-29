@@ -413,6 +413,7 @@ MonoBehaviour:
   pMode: {fileID: 0}
   dashSpeed: 15000
   dashTime: 0.75
+  collider: {fileID: 7738541377467117733}
 --- !u!1 &5782972655189162237
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 5551845860662291163}
+  tagsToIgnoreCollision: []
 --- !u!114 &519120853313958755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,6 +739,7 @@ MonoBehaviour:
   maxHealth: 100
   dead: 0
   playerInputRef: {fileID: 1870107280854562992}
+  collider: {fileID: 7738541377467117733}
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -766,6 +769,7 @@ GameObject:
   - component: {fileID: 1075145129282054902}
   - component: {fileID: 102798743431046658}
   - component: {fileID: 5050357902423793123}
+  - component: {fileID: 2121349159120627536}
   m_Layer: 0
   m_Name: HitHandlers
   m_TagString: Untagged
@@ -806,6 +810,7 @@ MonoBehaviour:
   - {fileID: 5928355534833855564}
   - {fileID: 1075145129282054902}
   - {fileID: 102798743431046658}
+  - {fileID: 2121349159120627536}
 --- !u!114 &5928355534833855564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,6 +827,7 @@ MonoBehaviour:
   - Shove
   - GhostShove
   health: {fileID: 5551845860662291163}
+  damageEnabled: 0
 --- !u!114 &1075145129282054902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,6 +899,23 @@ MonoBehaviour:
   tagsToIgnore:
   - GhostShove
   myPMode: {fileID: 519120853313958755}
+--- !u!114 &2121349159120627536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7232917086713832237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706ffe37b2a5fe141978808b99901efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore:
+  - GhostShove
+  timeForInvulnerability: 0.8
+  hurtboxRef: {fileID: 3632258541538756751}
+  health: {fileID: 5551845860662291163}
 --- !u!1001 &203077628382891742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1093,7 +1116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  strength: 25000
+  strength: 35000
   axis: 0
 --- !u!114 &8959929956123766181
 MonoBehaviour:
