@@ -6,12 +6,16 @@ public class DamageHitHandler : HitHandler
 {
 
     public Health health;
+    public bool damageEnabled;
     public override void ReceiveHit(HitEvent e)
     {
-        AttackData data = e.hitbox.attackData;
-        if(data != null)
+        if(damageEnabled)
         {
-            health.TakeDamage(data.damage);
+            AttackData data = e.hitbox.attackData;
+            if (data != null)
+            {
+                health.TakeDamage(data.damage);
+            }
         }
     
 
