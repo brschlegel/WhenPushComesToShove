@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BaseEndCondition : MonoBehaviour
 {
@@ -10,11 +11,16 @@ public class BaseEndCondition : MonoBehaviour
     protected WaitForSeconds delay;
     protected bool conditionMet = false;
 
+    public string roomExplanation = "";
+    private TextMeshProUGUI text;
     // Start is called before the first frame update
     protected virtual void Start()
     {
         levelProp = gameObject.transform.parent.parent.GetComponent<LevelProperties>();
         delay = new WaitForSeconds(delayBeforeEndCondition);
+
+        text = GameObject.Find("RoomExplanation").GetComponent<TextMeshProUGUI>();
+        text.text = roomExplanation;
     }
 
     protected virtual void OnDisable()
