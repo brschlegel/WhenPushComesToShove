@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Debug Variable. Will cause the path to cycle to the beginning.")]
     [SerializeField] bool repeatPath;
     [SerializeField] Countdown newRoomCountdown;
+    [SerializeField] UIManager uiRef;
     [SerializeField] GameObject lootArenaEquip;
     private DamageEnabler damageEnabler;
     public static Action onNewRoom;
@@ -31,6 +32,11 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        if (UIManager.instance == null)
+        {
+            uiRef.Init();
+        }
+        
         pathGen = GetComponent<PathGenerator>();
         damageEnabler = GetComponent<DamageEnabler>();
     }

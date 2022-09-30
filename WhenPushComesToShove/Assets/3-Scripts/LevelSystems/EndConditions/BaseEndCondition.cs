@@ -19,7 +19,7 @@ public class BaseEndCondition : MonoBehaviour
         levelProp = gameObject.transform.parent.parent.GetComponent<LevelProperties>();
         delay = new WaitForSeconds(delayBeforeEndCondition);
 
-        text = GameObject.Find("RoomExplanation").GetComponent<TextMeshProUGUI>();
+        text = UIManager.instance.roomText;
         text.text = roomExplanation;
     }
 
