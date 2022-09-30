@@ -18,33 +18,33 @@ public class HitboxManager : MonoBehaviour
 {
     static public HitboxManager instance;
     
-    private Dictionary<HitHandler, List<HitEvent>> hitEvents;
+    private Dictionary<GameObject, List<HitEvent>> hitEvents;
 
     void Awake()
     {
         if(instance == null)
         {
-            hitEvents = new Dictionary<HitHandler, List<HitEvent>>();
+            hitEvents = new Dictionary<GameObject, List<HitEvent>>();
             instance = this;
         }
     }
     public void RegisterHit(Hitbox hitbox, Hurtbox hurtbox)
     {
-        if(!hitEvents.ContainsKey(hurtbox.handler))
+        if(!hitEvents.ContainsKey(hurtbox.owner))
         {
-            hitEvents.Add(hurtbox.handler, new List<HitEvent>());
+            hitEvents.Add(hurtbox.owner, new List<HitEvent>());
         }
-        hitEvents[hurtbox.handler].Add(new HitEvent(hitbox, hurtbox));
+        hitEvents[hurtbox.owner].Add(new HitEvent(hitbox, hurtbox));
     }
 
     private void SendHits()
     {
         if(hitEvents.Count > 0)
         {
-            foreach(HitHandler handler in hitEvents.Keys)
+            foreach(GameObject owner in hitEvents.Keys)
             {
                 HitEvent currentEvent = null;
-                foreach(HitEvent e in hitEvents[handler])
+                foreach(HitEvent e in hitEvents[owner])
                 {
                     //Check ownership
                     if(e.hurtbox.owner != null && e.hurtbox.owner == e.hitbox.owner)
@@ -70,7 +70,7 @@ public class HitboxManager : MonoBehaviour
                 }
                 if(currentEvent != null)
                 {
-                    handler.ProcessHit(currentEvent);
+                    currentEvent.hurtbox.handler.ProcessHit(currentEvent);
                     if(currentEvent.hitbox.handler != null)
                     {
                         currentEvent.hitbox.handler.ProcessHit(currentEvent);
