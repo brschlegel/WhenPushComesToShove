@@ -140,7 +140,6 @@ public class PathGenerator : MonoBehaviour
     {
         for (int i = 0; i < path.Count; i++)
         {
-            Debug.Log(path.Count);
             GameObject room = Instantiate(path[i]);
             room.transform.parent = transform;
             room.SetActive(false);
