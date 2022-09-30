@@ -25,6 +25,8 @@ public class PlayerAnimBrain : StateBrain
     private PlayerInputHandler playerInputHandler;
     [SerializeField]
     private PlayerMovementScript mover;
+    [SerializeField]
+    private ParticleSystem shoveExclamation;
 
     private void Start()
     {
@@ -82,6 +84,7 @@ public class PlayerAnimBrain : StateBrain
         dashState.onStateExit += OutDash;
 
         lightState.anim = anim;
+        lightState.shoveExclamation = shoveExclamation;
         playerInputHandler.GetComponent<PlayerLightShoveScript>().onLightShove += OnLightShove;
         playerInputHandler.onLightShoveComplete += OutShove;
 
