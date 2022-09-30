@@ -5,13 +5,20 @@ using UnityEditor;
 
 public class SpringHazard : MonoBehaviour
 {
+    [SerializeField] float cooldownTime;
+    WaitForSeconds cooldown;
+
     [SerializeField] DirectionProperties.Direction[] direction;
+
+    private GameObject arrowParent;
+
     List<Vector2> possibleDirections = new List<Vector2>();
 
+    int rng;
+
     KnockbackSetDirection kback;
-
-    GameObject arrow;
-
+    BoxCollider2D boxCollider;
+    SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +29,22 @@ public class SpringHazard : MonoBehaviour
     private void Init()
     {
         kback = GetComponentInChildren<KnockbackSetDirection>();
+        boxCollider = GetComponentInChildren<BoxCollider2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        arrowParent = gameObject.transform.GetChild(1).gameObject;
+
+        EnableArrows();
+
+        cooldown = new WaitForSeconds(cooldownTime);
 
         foreach(DirectionProperties.Direction dir in direction)
         {
             if (dir.enabled)
                 possibleDirections.Add(dir.direction);
         }
+
+        //Assigns a random direction before the player hits it
+        grabRandomIndex();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,8 +54,36 @@ public class SpringHazard : MonoBehaviour
 
     private void ThrowInRandomDirection()
     {
-        int rng = Random.Range(0, possibleDirections.Count);
+        StartCoroutine(StartCooldown());
 
+        //Add a knockback force in the assigned random direction
         kback.direction = possibleDirections[rng];
+
+        //Grabs a new random direction
+        grabRandomIndex();
     }
+
+    IEnumerator StartCooldown()
+    {
+        boxCollider.enabled = false;
+        sprite.color = Color.gray;
+        yield return cooldown;
+        boxCollider.enabled = true;
+        sprite.color = Color.white;
+    }
+
+    /// <summary>
+    /// Sets up the arrows based on the direction of the spring
+    /// </summary>
+    void EnableArrows()
+    {
+        for(int i = 0; i < arrowParent.transform.childCount; i++)
+        {
+            arrowParent.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().enabled = direction[i].enabled;
+        }
+    }
+
+    //Helper functions
+    private void grabRandomIndex() => rng = Random.Range(0, possibleDirections.Count);
+
 }
