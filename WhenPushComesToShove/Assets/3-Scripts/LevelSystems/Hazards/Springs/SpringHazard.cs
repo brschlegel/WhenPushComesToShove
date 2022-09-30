@@ -47,6 +47,13 @@ public class SpringHazard : MonoBehaviour
         grabRandomIndex();
     }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        boxCollider.enabled = true;
+        sprite.color = Color.white;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ThrowInRandomDirection();
