@@ -6,6 +6,7 @@ public class PlayerCollisions : MonoBehaviour
 {
     [SerializeField] private Health playerHealth;
     private Collider2D collider;
+    public List<string> tagsToIgnoreCollision = new List<string>();
 
     private void Awake()
     {
@@ -14,12 +15,10 @@ public class PlayerCollisions : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (playerHealth.dead)
+
+        if (tagsToIgnoreCollision.Contains(collision.gameObject.tag))
         {
-            if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player")
-            {
-                Physics2D.IgnoreCollision(collision.collider, collider);
-            }
+            Physics2D.IgnoreCollision(collision.collider, collider);
         }
     }
 }

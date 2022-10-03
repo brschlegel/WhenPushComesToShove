@@ -37,6 +37,8 @@ public class PlayerHeavyShoveScript : MonoBehaviour
         handler = GetComponent<PlayerInputHandler>();
 
         EnableBaseHeavyShove();
+
+        LevelManager.onNewRoom += InterruptCharge;
     }
 
     public void Update()
@@ -115,6 +117,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
         {
             heavyShoveIsCharging = false;
             heavyShoveCharge = 0;
+            handler.onHeavyShoveComplete();
         }
     }
 

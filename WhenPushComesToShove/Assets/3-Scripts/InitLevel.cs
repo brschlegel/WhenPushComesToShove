@@ -11,6 +11,8 @@ public class InitLevel : MonoBehaviour
 
     [HideInInspector] public bool lockPlayerSpawn = false;
 
+    [SerializeField] private bool spawnPlayerUI = false;
+
     public GameObject[] playerUI= new GameObject[4];
     public Color[] playerHitboxColors = new Color[4];
 
@@ -36,9 +38,12 @@ public class InitLevel : MonoBehaviour
         GameState.players.Add(player.transform);
         player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
 
-        //Assign and enable UI
-        GameObject UI = player.GetComponentInChildren<PlayerInventory>().UIRef = playerUI[index];
-        UI.SetActive(true);
+        if (spawnPlayerUI)
+        {
+            //Assign and enable UI
+            GameObject UI = player.GetComponentInChildren<PlayerInventory>().UIRef = playerUI[index];
+            UI.SetActive(true);
+        }
 
         //Assign Hitbox Colors
         Hitbox[] hitboxes = player.GetComponentsInChildren<Hitbox>();

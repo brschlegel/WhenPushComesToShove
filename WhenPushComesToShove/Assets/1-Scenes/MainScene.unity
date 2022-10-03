@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6203429871819391902, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
+      propertyPath: m_RefResolutionX
+      value: 640
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
 --- !u!1 &90727796 stripped
@@ -1613,7 +1617,10 @@ MonoBehaviour:
   - enemy: 1
     level: 0
   numOfDungeonRooms: 5
-  path: []
+  path:
+  - {fileID: 6254306470328373913, guid: 5a3664862d4e60f4b968a10d39e0c82e, type: 3}
+  - {fileID: 3570501899456482206, guid: dea9f63b2e56d164e8a758d1aff62102, type: 3}
+  - {fileID: 8019208146700160841, guid: 8ef5ae5f5e2bda244b30c67ebdd86bed, type: 3}
 --- !u!4 &1589640427
 Transform:
   m_ObjectHideFlags: 0
@@ -1641,7 +1648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bde7e046bfa914e86bd85c8345584a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repeatPath: 0
+  repeatPath: 1
   lootArenaEquip: {fileID: 347616166255666306, guid: 261b47bf1ce5aa94185670685bd134ca, type: 3}
 --- !u!114 &1589640429
 MonoBehaviour:

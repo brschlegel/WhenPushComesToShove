@@ -34,7 +34,8 @@ public class EnemySpawnPoint : MonoBehaviour
 
     public IEnumerator SpawnWave(int waveNum)
     {
-        waveComplete = false;
+        Debug.Log(waveNum)
+;       waveComplete = false;
          foreach(EnemyWaveSpawn.EnemyWaveStats stat in waves[waveNum])
         {
             yield return new WaitForSeconds(stat.spawnDelay);
