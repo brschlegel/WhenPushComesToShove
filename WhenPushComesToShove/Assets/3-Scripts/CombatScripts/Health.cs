@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
     {
         get { return currentHealth;}
     }
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
         if(currentHealth <= 0)
