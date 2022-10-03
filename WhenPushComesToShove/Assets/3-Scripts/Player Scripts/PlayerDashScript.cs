@@ -17,6 +17,8 @@ public class PlayerDashScript : MonoBehaviour
     private PlayerMovementScript mover;
     private PlayerInputHandler handler;
 
+    [SerializeField] private PlayerCollisions collider;
+
     public void Start()
     {
         mover = GetComponent<PlayerMovementScript>();
@@ -40,6 +42,7 @@ public class PlayerDashScript : MonoBehaviour
         if (pMode != null)
         {
             pMode.AddForce(dashDirection * dashSpeed);
+            StartCoroutine(ColliderCooldown());
             onDashStart?.Invoke(dashDirection);
         }
     }
@@ -66,5 +69,23 @@ public class PlayerDashScript : MonoBehaviour
         }
 
         return direction;
+    }
+
+    private IEnumerator ColliderCooldown()
+    {
+        collider.tagsToIgnoreCollision.Add("Player");
+        collider.tagsToIgnoreCollision.Add("Enemy");
+
+        yield return new WaitForSeconds(dashTime);
+
+        if (collider.tagsToIgnoreCollision.Contains("Player"))
+        {
+            collider.tagsToIgnoreCollision.Remove("Player");
+        }
+
+        if (collider.tagsToIgnoreCollision.Contains("Enemy"))
+        {
+            collider.tagsToIgnoreCollision.Remove("Enemy");
+        }
     }
 }
