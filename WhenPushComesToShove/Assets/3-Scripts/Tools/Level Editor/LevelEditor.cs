@@ -30,6 +30,10 @@ public class LevelEditor : MonoBehaviour
     [SerializeField] PlaceableObject.ObjectStats[] endConditions;
     [SerializeField] PlaceableObject.ObjectStats[] decorations;
 
+    //Object Window Style
+    [Header("Object Window Style - DO NOT EDIT")]
+    [SerializeField] GUIStyle style;
+
     [Header("Level Properties")]
     public string levelName;
     public HazardDifficulty.HazardStats[] hazardStats;
@@ -109,12 +113,7 @@ public class LevelEditor : MonoBehaviour
                 fourthLayer.transform.parent = transform;
                 placeableLayer = fourthLayer;
 
-                DeleteChildren(gameObject, gameObject.transform.childCount - 4);
-
-                //if (previousSelectedLevel == null)
-                //    SetActiveChildren(gameObject, false, gameObject.transform.childCount - 4);
-                //else
-                //    DeleteChildren(gameObject, gameObject.transform.childCount - 4);               
+                DeleteChildren(gameObject, gameObject.transform.childCount - 4);     
             }
                 
         }
@@ -123,7 +122,13 @@ public class LevelEditor : MonoBehaviour
 
     public void OpenWindow()
     {
-        currentWindow = ObjectSelectionWindow.ShowWindow();
+        if(!Selection.Contains(gameObject))
+        {
+            Debug.LogWarning("Please select Level Editor to open this window");
+            return;
+        }
+
+        currentWindow = ObjectSelectionWindow.ShowWindow(style);
 
         //Assign and update placeable objects
         if (hazards != ObjectSelectionWindow.hazards)
