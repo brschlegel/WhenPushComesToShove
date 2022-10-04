@@ -9,7 +9,7 @@ public class SlimeBrain : StateBrain
     SlimeRun runState;
     SlimeJump jumpState;
     SlimeLand landState;
-    SlimeHit hitState;
+    EnemyHit hitState;
     PlayAnimState deathState;
     //#endregion
 
@@ -23,6 +23,8 @@ public class SlimeBrain : StateBrain
     private GameObject rootObject;
     [SerializeField]
     private ProjectileMode pMode;
+    [SerializeField]
+    private EventOnHit hitEvent;
 
 
     private void Start()
@@ -55,7 +57,7 @@ public class SlimeBrain : StateBrain
         runState = GetComponent<SlimeRun>();
         jumpState = GetComponent<SlimeJump>();
         landState = GetComponent<SlimeLand>();
-        hitState = GetComponent<SlimeHit>();
+        hitState = GetComponent<EnemyHit>();
         deathState = GetComponent<PlayAnimState>();
 
         idleState.onStateExit += OutIdle;
@@ -78,8 +80,11 @@ public class SlimeBrain : StateBrain
 
 
         hitState.anim = anim;
+        hitState.animName = "Base.Slime_Hit";
         hitState.pMode = pMode;
+        hitEvent.onHit += OnHit; 
         hitState.onStateExit += OutHit;
+        
 
         currentState = idleState;
         currentState.enabled = true;
@@ -143,7 +148,7 @@ public class SlimeBrain : StateBrain
     /// <summary>
     /// When slime gets hit, change to hit state
     /// </summary>
-    public void OnHit()
+    public void OnHit(GameObject instigator, GameObject receiver)
     {
         if (currentState != deathState)
         {

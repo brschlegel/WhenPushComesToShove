@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Hurtbox : MonoBehaviour
 {
+    private new BoxCollider2D collider;
     public void Start()
     {
         if(HitboxManager.instance == null)
@@ -12,6 +13,7 @@ public class Hurtbox : MonoBehaviour
             Debug.LogError("NO HITBOX MANAGER IN SCENE!");
         }
         ownersToIgnore = new List<GameObject>();
+        collider = GetComponent<BoxCollider2D>();
     }
 
     [Tooltip("The component which handles the hit event")]
@@ -34,4 +36,10 @@ public class Hurtbox : MonoBehaviour
 
         }
     }
+
+    public Vector2 Center 
+    {
+        get {return collider.offset + (Vector2) transform.position;}
+    }
+    
 }

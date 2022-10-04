@@ -12,7 +12,7 @@ public class AegisIdle : State
     // Update is called once per frame
     void Update()
     {
-        if(GameState.players.Count >= 0)
+        if(GameState.players.Count > 0)
         {
             InvokeOnStateExit(true);
             enabled = false;

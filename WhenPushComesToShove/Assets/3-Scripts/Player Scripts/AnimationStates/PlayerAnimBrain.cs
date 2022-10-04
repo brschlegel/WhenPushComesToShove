@@ -27,6 +27,8 @@ public class PlayerAnimBrain : StateBrain
     private PlayerMovementScript mover;
     [SerializeField]
     private ParticleSystem shoveExclamation;
+    [SerializeField]
+    private EventOnHit hitEvent;
 
     private void Start()
     {
@@ -77,6 +79,8 @@ public class PlayerAnimBrain : StateBrain
 
         hitState.anim = anim;
         hitState.pMode = pMode;
+        hitEvent.onHit += OnHit;
+        hitEvent.onHit += playerInputHandler.GetComponent<PlayerHeavyShoveScript>().InterruptChargeOnHit;
         hitState.onStateExit += OutHit;
 
         dashState.anim = anim;
@@ -153,7 +157,7 @@ public class PlayerAnimBrain : StateBrain
     }
 
 
-    public void OnHit()
+    public void OnHit(GameObject instigator, GameObject receiver)
     {
         if (currentState != deathState)
         {

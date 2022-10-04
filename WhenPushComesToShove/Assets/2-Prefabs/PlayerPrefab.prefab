@@ -60,6 +60,7 @@ MonoBehaviour:
   playerInputHandler: {fileID: 1870107280854562992}
   mover: {fileID: 7604760025507816548}
   shoveExclamation: {fileID: 7073454900502714721}
+  hitEvent: {fileID: 102798743431046658}
 --- !u!114 &8184684198277851572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10712,33 +10713,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToIgnore:
   - GhostShove
-  onHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3467010525216778814}
-        m_TargetAssemblyTypeName: PlayerAnimBrain, Assembly-CSharp
-        m_MethodName: OnHit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8866138083129418701}
-        m_TargetAssemblyTypeName: PlayerHeavyShoveScript, Assembly-CSharp
-        m_MethodName: InterruptCharge
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5050357902423793123
 MonoBehaviour:
   m_ObjectHideFlags: 0

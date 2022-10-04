@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeHit : State
+public class EnemyHit : State
 {
     private IEnumerator enumerator;
 
     [HideInInspector]
     public ProjectileMode pMode;
-    [SerializeField]
-    public float additionalStunTime;
+    [HideInInspector]
+    public string animName;
+
     private void OnEnable()
     {
-        anim.Play("Base.Slime_Hit", 0);
+        anim.Play(animName, 0);
         enumerator = CoroutineManager.StartGlobalCoroutine(Stun());
     }
 

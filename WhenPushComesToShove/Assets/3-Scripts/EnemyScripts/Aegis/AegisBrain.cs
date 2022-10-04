@@ -7,7 +7,8 @@ public class AegisBrain : StateBrain
     AegisSetup setupState;
     AegisIdle idleState;
     AegisRun runState;
-    AegisHit hitState;
+    EnemyHit hitState;
+    AegisAttack attackState;
 
     [SerializeField]
     AegisWall wall;
@@ -15,6 +16,10 @@ public class AegisBrain : StateBrain
     private Animator anim;
     [SerializeField]
     private Chase chase;
+    [SerializeField]
+    private ProjectileMode pMode;
+    [SerializeField]
+    private EventOnHit hitEvent;
     // Start is called before the first frame update
     void Start() 
     {
@@ -25,6 +30,13 @@ public class AegisBrain : StateBrain
     // Update is called once per frame
     void Update()
     {
+        if (GameState.players.Count > 0)
+        {
+            if (target == null || target.GetComponentInChildren<PlayerHealth>().dead)
+            {
+                target = GameState.GetNearestPlayer(transform);
+            }
+        }
         wall.target = target;
     }
 
@@ -33,7 +45,8 @@ public class AegisBrain : StateBrain
         setupState = GetComponent<AegisSetup>();
         idleState = GetComponent<AegisIdle>();
         runState = GetComponent<AegisRun>();
-        hitState = GetComponent<AegisHit>();
+        hitState = GetComponent<EnemyHit>();
+        attackState = GetComponent<AegisAttack>();
 
         setupState.anim = anim;
         setupState.onStateExit += OutSetup;
@@ -46,6 +59,14 @@ public class AegisBrain : StateBrain
         runState.onStateExit += OutRun;
 
         hitState.anim = anim;
+        hitEvent.onHit += OnHit;
+        hitState.pMode = pMode;
+        hitState.animName = "Base Layer.Enemy Hit";
+        hitState.onStateExit += OutHit;
+
+        attackState.anim = anim;
+ 
+        attackState.onStateExit += OutAttack;
 
         currentState = setupState;
         setupState.enabled = true;
@@ -58,15 +79,40 @@ public class AegisBrain : StateBrain
 
     public void OutIdle(bool success)
     {
+        runState.target = target;
         ChangeState(runState);
+
     }
 
     private void OutRun(bool success)
     {
         if(success)
         {
-            target = runState.target;
-            
+           ChangeState(attackState);
         }
+    }
+
+    private void OutHit(bool success)
+    {
+        if(success)
+        {
+            runState.target = target;
+            ChangeState(runState);
+        }
+    }
+
+    private void OutAttack(bool success)
+    {
+        if(success)
+        {
+            runState.target = target;
+            ChangeState(runState);
+        }
+    }
+
+    public void OnHit(GameObject instigator, GameObject receiver)
+    {
+        target = instigator.transform;
+        ChangeState(hitState);
     }
 }

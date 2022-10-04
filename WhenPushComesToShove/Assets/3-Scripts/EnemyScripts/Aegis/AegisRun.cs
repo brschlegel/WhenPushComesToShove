@@ -16,11 +16,6 @@ public class AegisRun : State
     // Update is called once per frame
     void Update()
     {
-        if(target == null || target.GetComponentInChildren<PlayerHealth>().dead)
-        {
-            target = GameState.GetNearestPlayer(transform);
-        }
-
         if(target != null)
         {
             chase.SetTarget(target);
