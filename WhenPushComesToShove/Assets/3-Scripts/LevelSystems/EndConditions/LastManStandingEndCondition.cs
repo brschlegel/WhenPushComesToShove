@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LastManStandingEndCondition : BaseEndCondition
 {
@@ -11,18 +12,27 @@ public class LastManStandingEndCondition : BaseEndCondition
     [SerializeField] bool testForAllPlayersDead;
     int minPlayers;
 
+    [SerializeField] private bool showWinnerText = true;
+    private TextMeshProUGUI winnerText;
+
     protected override void Start()
     {
         if (testForAllPlayersDead)
             minPlayers = 0;
         else
-            minPlayers = 1;       
+            minPlayers = 1;
 
         base.Start();
     }
 
     protected void OnEnable()
     {
+        if (winnerText == null)
+        {
+            winnerText = UIManager.instance.victoryText;
+            winnerText.gameObject.SetActive(false);
+        }
+
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
         foreach (GameObject obj in players)
@@ -35,6 +45,7 @@ public class LastManStandingEndCondition : BaseEndCondition
     {
         base.OnDisable();
 
+        winnerText.gameObject.SetActive(false);
         playerHealth.Clear();
         playersToRemove.Clear();
     }
@@ -53,12 +64,26 @@ public class LastManStandingEndCondition : BaseEndCondition
         }
 
         if(playerHealth.Count <= minPlayers)
+        {
+            //If winner text exists, display winner
+            if (minPlayers == 1 && showWinnerText)
+            {
+                DisplayWinner(playerHealth[0].transform.parent.GetComponentInChildren<PlayerInputHandler>().playerConfig.PlayerColorName);
+            }
+
             base.TestCondition();
+        }
     }
 
     protected override IEnumerator TransitionRooms()
     {
         yield return delay;
         LevelManager.onEndGame.Invoke();
+    }
+
+    private void DisplayWinner(string playerName)
+    {
+        winnerText.gameObject.SetActive(true);
+        winnerText.text = playerName + " Player Won!";
     }
 }

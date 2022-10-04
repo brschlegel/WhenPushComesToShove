@@ -12,9 +12,10 @@ public class WaveManager : MonoBehaviour
 
     private Transform enemyPool;
     private IEnumerator delayRoutine;
-    //[HideInInspector]
     public bool complete;
     private bool lastWaveComplete;
+
+    [HideInInspector] public float delayAllWaveTime;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class WaveManager : MonoBehaviour
             spawnPoints = new List<EnemySpawnPoint>(GetComponentsInChildren<EnemySpawnPoint>());
             enemyPool = GameObject.FindGameObjectWithTag("EnemyPool").transform;
             waveCount = waveDelays.Count + 1;
+            Debug.Log("Count: " + spawnPoints.Count);
             foreach (EnemySpawnPoint e in spawnPoints)
             {
                 e.Init(waveCount);
@@ -38,34 +40,37 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
-            SpawnCurrentWave();
+            StartCoroutine(WaitForCountdown());
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CheckAllWaveComplete())
+        if (spawnPoints != null)
         {
-            if (currentWave < waveCount - 1)
+            if (CheckAllWaveComplete())
             {
-                if (delayRoutine == null)
+                if (currentWave < waveCount - 1)
                 {
-                    delayRoutine = DelaySpawnWave();
-                    StartCoroutine(delayRoutine);
+                    if (delayRoutine == null)
+                    {
+                        delayRoutine = DelaySpawnWave();
+                        StartCoroutine(delayRoutine);
+                    }
+                    if (enemyPool.childCount == 0)
+                    {
+                        SpawnCurrentWave();
+                        StopCoroutine(delayRoutine);
+                    }
                 }
-                if (enemyPool.childCount == 0)
+                else if (enemyPool.childCount == 0)
                 {
-                    SpawnCurrentWave();
-                    StopCoroutine(delayRoutine);
+                    complete = true;
                 }
-            }
-            else if(enemyPool.childCount == 0)
-            {
-                complete = true;
-            }
-               
 
+
+            }
         }
     }
 
@@ -119,5 +124,13 @@ public class WaveManager : MonoBehaviour
     public bool AllEnemiesDead()
     {
         return currentWave == waveCount - 1 && enemyPool.childCount == 0;
+    }
+
+    private IEnumerator WaitForCountdown()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(delayAllWaveTime);
+
+        SpawnCurrentWave();
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class PlayerHealth : Health
 {
     public PlayerInputHandler playerInputRef;
+    [SerializeField] private PlayerCollisions collider;
 
     public UnityEvent onDeath;
  
@@ -20,9 +21,10 @@ public class PlayerHealth : Health
         LevelManager.onNewRoom -= ResetHealth;
         LevelManager.onEndGame -= ResetHealth;
     }
+
     public override void Die()
     {
-        playerInputRef.sr.color = new Color(playerInputRef.sr.color.r, playerInputRef.sr.color.g, playerInputRef.sr.color.b, .5f);
+        playerInputRef.sr.color = new Color(playerInputRef.sr.color.r, playerInputRef.sr.color.g, playerInputRef.sr.color.b, .3f);
 
         dead = true;
         playerInputRef.playerConfig.IsDead = true;
@@ -38,11 +40,22 @@ public class PlayerHealth : Health
         KnockbackAlongAxis kbHit = transform.parent.GetComponentInChildren<KnockbackAlongAxis>();
         kbHit.gameObject.tag = "GhostShove";
 
+        //Allow passage through players and enemies
+        collider.tagsToIgnoreCollision.Add("Player");
+        collider.tagsToIgnoreCollision.Add("Enemy");
+
         onDeath?.Invoke();
     }
 
     public void ResetHealth()
     {
+        //Prevent passage through players and enemies
+        if (dead)
+        {
+            collider.tagsToIgnoreCollision.Remove("Player");
+            collider.tagsToIgnoreCollision.Remove("Enemy");
+        }
+
         dead = false;
         currentHealth = maxHealth;
         playerInputRef.sr.color = new Color(playerInputRef.sr.color.r, playerInputRef.sr.color.g, playerInputRef.sr.color.b, 1f);
