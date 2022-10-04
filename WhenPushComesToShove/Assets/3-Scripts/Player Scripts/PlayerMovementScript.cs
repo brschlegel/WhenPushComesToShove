@@ -13,6 +13,11 @@ public class PlayerMovementScript : Move
     private Vector2 aimInputVector = Vector2.zero;
     [HideInInspector] public Transform player;
 
+    [SerializeField] private Transform aimTriangle;
+
+    private float fixedX;
+    private float fixedY;
+
     private bool lockMovement = false;
     private Coroutine movementUnlockRoutine;
 
@@ -29,13 +34,15 @@ public class PlayerMovementScript : Move
 
     public bool IsMoving
     {
-        get { return moveInputVector.magnitude > 0; }
+        get { return moveInputVector.magnitude > 0 && !lockMovement; }
     }
     #endregion
 
     private void Awake()
     {
         player = transform.parent;
+        fixedX = aimTriangle.eulerAngles.x;
+        fixedY = aimTriangle.eulerAngles.y;
     }
 
     //https://www.youtube.com/watch?v=qdskE8PJy6Q&ab_channel=ToyfulGames
@@ -52,6 +59,7 @@ public class PlayerMovementScript : Move
         if (aimInputVector == Vector2.zero && unitMove != Vector2.zero)
         {
             player.right = unitMove.normalized;
+            aimTriangle.eulerAngles = new Vector3(fixedX, fixedY, player.transform.eulerAngles.z);
         }
       
         //Apply the force
@@ -85,6 +93,7 @@ public class PlayerMovementScript : Move
 
         //Rotate player to that direction
         player.right = aimInputVector.normalized;
+        aimTriangle.eulerAngles = new Vector3(fixedX, fixedY, player.transform.eulerAngles.z);
     }
 
     #region ChangingMoveSpeed
