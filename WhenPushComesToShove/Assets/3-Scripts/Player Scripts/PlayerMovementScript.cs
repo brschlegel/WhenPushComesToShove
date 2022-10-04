@@ -17,7 +17,6 @@ public class PlayerMovementScript : Move
 
     private float fixedX;
     private float fixedY;
-    private float fixedW;
 
     private bool lockMovement = false;
     private Coroutine movementUnlockRoutine;
