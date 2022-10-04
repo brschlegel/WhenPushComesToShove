@@ -27,10 +27,12 @@ public class KnockbackVFX : MonoBehaviour
     private Texture verticalSheet;
 
     private ParticleSystem.ShapeModule gustShape;
+    private ParticleSystemRenderer gustRenderer;
     // Start is called before the first frame update
     void Start()
     {   
         gustShape = gustPS.shape;
+        gustRenderer = gustPS.GetComponent<ParticleSystemRenderer>();
     }
 
     // Update is called once per frame
@@ -55,17 +57,19 @@ public class KnockbackVFX : MonoBehaviour
         //Horizontal
         if(angle <= 45)
         {
-            gustPS.transform.localScale = new Vector3(Mathf.Abs(gustPS.transform.localScale.x) * xSign,gustPS.transform.localScale.y, gustPS.transform.localScale.z ); 
+            gustPS.transform.localScale = new Vector3(Mathf.Abs(gustPS.transform.localScale.x) * xSign,Mathf.Abs(gustPS.transform.localScale.y), gustPS.transform.localScale.z ); 
             gustTransform.right = Vector2.right;
             windGustMat.mainTexture = horizontalSheet;
             gustShape.position = horizontalOffset;
+            gustRenderer.sortingOrder = 0;
         }
         else 
         {
-            gustPS.transform.localScale = new Vector3(gustPS.transform.localScale.x, Mathf.Abs(gustPS.transform.localScale.y) * ySign, gustPS.transform.localScale.z );
+            gustPS.transform.localScale = new Vector3(Mathf.Abs(gustPS.transform.localScale.x), Mathf.Abs(gustPS.transform.localScale.y) * ySign, gustPS.transform.localScale.z );
             gustTransform.right = Vector2.right;
             windGustMat.mainTexture = verticalSheet;
             gustShape.position = verticalOffset;
+            gustRenderer.sortingOrder = -1;
         }
 
         // if(angle >= 90)
