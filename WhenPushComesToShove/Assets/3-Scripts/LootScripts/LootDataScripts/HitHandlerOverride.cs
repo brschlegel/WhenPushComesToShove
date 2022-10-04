@@ -34,4 +34,5 @@ public class HitHandlerOverride : LootData
     {
         base.Action();
     }
+
 }

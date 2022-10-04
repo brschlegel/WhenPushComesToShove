@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     List<GameObject> path;
     [Tooltip("Debug Variable. Will cause the path to cycle to the beginning.")]
     [SerializeField] bool repeatPath;
+    [SerializeField] Countdown newRoomCountdown;
+    [SerializeField] UIManager uiRef;
     [SerializeField] GameObject lootArenaEquip;
     private DamageEnabler damageEnabler;
     public static Action onNewRoom;
@@ -30,6 +32,11 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        if (UIManager.instance == null)
+        {
+            uiRef.Init();
+        }
+        
         pathGen = GetComponent<PathGenerator>();
         damageEnabler = GetComponent<DamageEnabler>();
     }
@@ -99,6 +106,22 @@ public class LevelManager : MonoBehaviour
         currentRoomIndex++;
 
         SetPlayerSpawns(room.GetComponent<LevelProperties>());
+
+        //Countdown
+        if (newRoomCountdown != null && currentRoomIndex -1 > 0)
+        {
+            newRoomCountdown.gameObject.SetActive(true);
+            room.GetComponent<WaveManager>().delayAllWaveTime = newRoomCountdown.countdownTime;
+            newRoomCountdown.roomText.text = room.GetComponentInChildren<BaseEndCondition>().roomExplanation;
+
+            //Lock Player Input
+            foreach (Transform player in GameState.players)
+            {
+                player.GetComponentInChildren<PlayerInputHandler>().LockAction(newRoomCountdown.countdownTime, null);
+                player.GetComponentInChildren<PlayerMovementScript>().LockMovementForTime(newRoomCountdown.countdownTime);
+            }
+            
+        }
     }
 
     
