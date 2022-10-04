@@ -7520,6 +7520,7 @@ MonoBehaviour:
   - 1
   currentWave: -1
   complete: 0
+  delayAllWaveTime: 0
 --- !u!1 &3572121464610557068
 GameObject:
   m_ObjectHideFlags: 0
@@ -8978,6 +8979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeEndCondition: 2
+  roomExplanation: Defeat All Enemies
 --- !u!1 &5020125608257372287
 GameObject:
   m_ObjectHideFlags: 0
@@ -13586,7 +13588,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeEndCondition: 2
+  roomExplanation: Defeat All Enemies
   testForAllPlayersDead: 1
+  showWinnerText: 1
 --- !u!1 &7515738803433878486
 GameObject:
   m_ObjectHideFlags: 0

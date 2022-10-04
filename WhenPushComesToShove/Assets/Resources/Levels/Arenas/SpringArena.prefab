@@ -2525,7 +2525,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeEndCondition: 2
+  roomExplanation: Fight Other Players
   testForAllPlayersDead: 0
+  showWinnerText: 1
 --- !u!1 &2545478451929366964
 GameObject:
   m_ObjectHideFlags: 0
@@ -5106,6 +5108,7 @@ MonoBehaviour:
   waveDelays: []
   currentWave: -1
   complete: 0
+  delayAllWaveTime: 0
 --- !u!1 &4695838609686734884
 GameObject:
   m_ObjectHideFlags: 0
