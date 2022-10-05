@@ -644,8 +644,9 @@ GameObject:
   m_Component:
   - component: {fileID: 575259086140682081}
   - component: {fileID: 3299932415865420950}
-  m_Layer: 9
-  m_Name: WallHitbox
+  - component: {fileID: 3583841522412520363}
+  m_Layer: 10
+  m_Name: FeetCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -692,6 +693,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 0.05}
   m_EdgeRadius: 0
+--- !u!114 &3583841522412520363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2456956712685644366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3f634404b37d04d88004afa5ddc04e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handler: {fileID: 999011920278194451}
+  priority: 0
+  owner: {fileID: 999011918721937567}
+  ownersToIgnore: []
 --- !u!1001 &999011918593432200
 PrefabInstance:
   m_ObjectHideFlags: 0
