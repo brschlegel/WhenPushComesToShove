@@ -9,7 +9,6 @@ public class PlaceableObject : MonoBehaviour
     public struct ObjectStats
     {
         public string objectName;
-        public Sprite objectSprite;
         public GameObject objectPrefab;
     }
    
