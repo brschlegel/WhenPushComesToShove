@@ -57,6 +57,12 @@ public class SpringHazard : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ThrowInRandomDirection();
+
+        //Trigger Rumble
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponentInChildren<ControllerRumble>().RumbleLinear(.4f, 0, .8f, 0, .3f, false);
+        }
     }
 
     private void ThrowInRandomDirection()

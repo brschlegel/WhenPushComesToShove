@@ -5136,6 +5136,7 @@ GameObject:
   - component: {fileID: 8683604864337146482}
   - component: {fileID: 8866138083129418701}
   - component: {fileID: 3186559500755933933}
+  - component: {fileID: 1495853962286914703}
   m_Layer: 0
   m_Name: InputHandler
   m_TagString: Untagged
@@ -5311,6 +5312,19 @@ MonoBehaviour:
   dashSpeed: 15000
   dashTime: 0.75
   collider: {fileID: 0}
+--- !u!114 &1495853962286914703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3192962310233775801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55c9531401a8aa49933f63498cad8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 1870107280854562992}
 --- !u!1 &5245935623350664667
 GameObject:
   m_ObjectHideFlags: 0
