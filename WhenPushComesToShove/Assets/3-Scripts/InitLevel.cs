@@ -53,6 +53,14 @@ public class InitLevel : MonoBehaviour
             h.gameObject.GetComponent<SpriteRenderer>().color = playerHitboxColors[index];
         }
 
+        //Assign Ground UI Colors
+        SpriteRenderer[] srs = player.transform.GetChild(9).GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (SpriteRenderer sr in srs)
+        {
+            sr.color = playerHitboxColors[index];
+        }
+
         playerConfigs[index].PlayerObject = player;
     }
 
