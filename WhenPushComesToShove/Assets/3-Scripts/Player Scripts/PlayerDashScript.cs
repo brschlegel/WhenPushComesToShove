@@ -27,6 +27,7 @@ public class PlayerDashScript : MonoBehaviour
 
     public void OnDash(CallbackContext context)
     {
+        LoggingInfo.instance.dashUses[handler.playerConfig.PlayerIndex] += 1;
         handler.LockAction(dashTime, null);
         PerformDash(mover);
     }
