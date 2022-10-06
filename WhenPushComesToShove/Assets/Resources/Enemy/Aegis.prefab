@@ -286,8 +286,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 7.5
-  m_LinearDrag: 40
+  m_Mass: 10
+  m_LinearDrag: 20
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -321,11 +321,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72bbad3808e30042b498502a8076ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pDrag: 10
+  pDrag: 5
   pMaterial: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
   velocityThreshold: 0.1
   pHitbox: {fileID: 6300729222095546536}
-  sDrag: 40
+  sDrag: 20
   sMaterial: {fileID: 0}
   onPModeEnter:
     m_PersistentCalls:
@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  strength: 20000
+  strength: 12000
   axis: 0
 --- !u!1001 &758554076198647017
 PrefabInstance:

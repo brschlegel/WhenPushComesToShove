@@ -13,8 +13,8 @@ public static class GlobalSettings
 
    //Velocity Based Damage;
    public readonly static float velocityHitboxDelay = .2f;
-   public readonly static float velocityDamageCoeff = .5f;
-   public readonly static float velocityDamageCap = 20.0f;
+   public readonly static float velocityDamageCoeff = .2f;
+   public readonly static float velocityDamageCap = 10.0f;
    public readonly static float velocityKnockbackCoeff = 2;
    public readonly static float velocityKnockbackCap = 70.0f;
 }

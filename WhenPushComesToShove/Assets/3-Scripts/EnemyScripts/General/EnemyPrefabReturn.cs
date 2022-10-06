@@ -19,6 +19,10 @@ public class EnemyPrefabReturn : MonoBehaviour
             case EnemyTypes.Slimes:
                 enemy = FindEnemy("Slime");
                 break;
+
+            case EnemyTypes.Aegis:
+                enemy = FindEnemy("Aegis");
+                break;
         }
         return enemy;
     }

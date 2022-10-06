@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+[ExecuteAlways]
 public class SpringHazard : MonoBehaviour
 {
     [SerializeField] float cooldownTime;
@@ -10,7 +11,7 @@ public class SpringHazard : MonoBehaviour
 
     [SerializeField] DirectionProperties.Direction[] direction;
 
-    private GameObject arrowParent;
+    [HideInInspector] public GameObject arrowParent;
 
     List<Vector2> possibleDirections = new List<Vector2>();
 
@@ -47,22 +48,27 @@ public class SpringHazard : MonoBehaviour
         grabRandomIndex();
     }
 
+    private void Update()
+    {
+        if (!Application.IsPlaying(gameObject))
+        {
+            arrowParent = gameObject.transform.GetChild(1).gameObject;
+            EnableArrows();
+        }
+    }
+
     private void OnDisable()
     {
         StopAllCoroutines();
-        boxCollider.enabled = true;
-        sprite.color = Color.white;
+        if (boxCollider != null)
+            boxCollider.enabled = true;
+        if(sprite != null)
+            sprite.color = Color.white;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ThrowInRandomDirection();
-
-        //Trigger Rumble
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponentInChildren<ControllerRumble>().RumbleLinear(.4f, 0, .8f, 0, .3f, false);
-        }
     }
 
     private void ThrowInRandomDirection()
@@ -88,7 +94,7 @@ public class SpringHazard : MonoBehaviour
     /// <summary>
     /// Sets up the arrows based on the direction of the spring
     /// </summary>
-    void EnableArrows()
+    public void EnableArrows()
     {
         for(int i = 0; i < arrowParent.transform.childCount; i++)
         {
