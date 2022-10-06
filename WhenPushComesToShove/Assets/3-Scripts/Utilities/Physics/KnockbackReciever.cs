@@ -9,13 +9,8 @@ public class KnockbackReciever : MonoBehaviour
     [SerializeField]
     private ProjectileMode pMode;
     [SerializeField]
-    private Transform exclamationTransform;
-    [SerializeField]
-    private ParticleSystem exclamationPS;
-    [SerializeField]
-    private Transform gustTransform;
-    [SerializeField]
-    private ParticleSystem gustPS;
+    private KnockbackVFX vfx;
+
 
 
    
@@ -31,7 +26,9 @@ public class KnockbackReciever : MonoBehaviour
         //Tell the projectile mode hitbox to ignore whoever sent it into projectile mode
         pMode.pHitbox.OwnersToIgnore.Add(instigator);
 
-       
+        //VFX
+        vfx.Play(force, direction);
+  
     }
 
   

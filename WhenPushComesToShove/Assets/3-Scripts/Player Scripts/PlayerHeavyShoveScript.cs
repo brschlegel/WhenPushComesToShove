@@ -60,6 +60,8 @@ public class PlayerHeavyShoveScript : MonoBehaviour
             //Assign Release Method
             context.action.canceled += WaitForChargeRelease;
 
+            handler.rumble.RumbleLinear(0, .5f, 0, .5f, heavyShoveChargeTime, true);
+
             heavyShoveIsCharging = true;
             heavyShoveCharge = 0;
             mover.ChangeMoveSpeed(speedDecrease);
@@ -83,6 +85,9 @@ public class PlayerHeavyShoveScript : MonoBehaviour
         }
 
         heavyShoveCharge = 0;
+
+        handler.rumble.ForceStopRumble();
+        StartCoroutine(ShoveRumbleDelay(.02f));
     }
 
 
@@ -138,5 +143,11 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     public void DisableBaseHeavyShove()
     {
         onHeavyShove -= EnableShoveBaseHitbox;
+    }
+
+    private IEnumerator ShoveRumbleDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        handler.rumble.RumbleConstant(1.7f, 2f, .4f);
     }
 }

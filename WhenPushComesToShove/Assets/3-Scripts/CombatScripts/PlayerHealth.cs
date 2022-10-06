@@ -7,9 +7,10 @@ public class PlayerHealth : Health
 {
     public PlayerInputHandler playerInputRef;
     [SerializeField] private PlayerCollisions collider;
-
+    
     public UnityEvent onDeath;
- 
+    private Material playerMat;
+
     private void OnEnable()
     {
         LevelManager.onNewRoom += ResetHealth;
@@ -21,6 +22,26 @@ public class PlayerHealth : Health
         LevelManager.onNewRoom -= ResetHealth;
         LevelManager.onEndGame -= ResetHealth;
     }
+
+    //gets reference to player Material
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        playerMat = this.gameObject.GetComponentInParent<SpriteRenderer>().material;
+        Debug.Log("turning white woo");
+        playerMat.SetInt("_IsDamaged", 1);
+        playerInputRef.rumble.RumbleLinear(.4f, 0, .8f, 0, .2f, false);
+        StartCoroutine(DamageFlash());
+    }
+
+    //momentarily turns the variable of playerMat on and then off.
+    IEnumerator DamageFlash()
+    {        
+        yield return new WaitForSeconds(0.2f);
+        playerMat.SetInt("_IsDamaged", 0);
+        
+    }
+
 
     public override void Die()
     {

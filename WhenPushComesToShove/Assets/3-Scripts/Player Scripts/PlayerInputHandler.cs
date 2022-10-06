@@ -21,6 +21,8 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerHeavyShoveScript heavyShoveScript;
     private PlayerDashScript dashScript;
 
+    [HideInInspector] public ControllerRumble rumble;
+
     [HideInInspector] public bool performingAction = false;
 
     public Action onLightShoveComplete;
@@ -53,9 +55,15 @@ public class PlayerInputHandler : MonoBehaviour
         heavyShoveScript = GetComponent<PlayerHeavyShoveScript>();
         dashScript = GetComponent<PlayerDashScript>();
 
+        rumble = GetComponent<ControllerRumble>();
+
         //Assign Velocity Setter to Necessary Input Scripts
         mover.pMode = pMode;
         dashScript.pMode = pMode;
+
+
+        //On Join Controller Rumble;
+        rumble.RumbleLinear(1, 0, 1, 0, .5f, false);
 
     }
 
@@ -100,6 +108,7 @@ public class PlayerInputHandler : MonoBehaviour
             if (!performingAction && !heavyShoveScript.heavyShoveIsCharging)
             {
                 lightShoveScript.OnLightShoveStart(obj);
+                rumble.RumbleConstant(.2f, .4f, .1f);
             }
             
         }
