@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6203429871819391900, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
       propertyPath: orthographic size
-      value: 5.625
+      value: 8.078125
       objectReference: {fileID: 0}
     - target: {fileID: 6203429871819391900, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -202,10 +202,6 @@ PrefabInstance:
     - target: {fileID: 6203429871819391902, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
       propertyPath: m_RefResolutionX
       value: 640
-      objectReference: {fileID: 0}
-    - target: {fileID: 6203429871819391902, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
-      propertyPath: m_RefResolutionY
-      value: 360
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
@@ -1101,13 +1097,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092695187}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2143158, y: -0.5084982, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1822908330}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1144692872
 GameObject:
@@ -1665,10 +1661,8 @@ MonoBehaviour:
   numOfDungeonRooms: 5
   path:
   - {fileID: 6254306470328373913, guid: 5a3664862d4e60f4b968a10d39e0c82e, type: 3}
-  - {fileID: 5179269232829181889, guid: 7493768a8f3e56a4597231dac6c35706, type: 3}
-  - {fileID: 4185438678166616129, guid: 022e6c26bc3410b44b7ac35fe957c456, type: 3}
-  - {fileID: 7596175056869841851, guid: f4455d2a7288d3c44a91e6f47a186143, type: 3}
-  - {fileID: 6212178899482229079, guid: 3a4348564b4e2f24096052dc2a42e810, type: 3}
+  - {fileID: 3570501899456482206, guid: dea9f63b2e56d164e8a758d1aff62102, type: 3}
+  - {fileID: 8019208146700160841, guid: 8ef5ae5f5e2bda244b30c67ebdd86bed, type: 3}
 --- !u!4 &1589640427
 Transform:
   m_ObjectHideFlags: 0
@@ -1975,8 +1969,7 @@ Transform:
   m_LocalPosition: {x: 1.2143158, y: 0.5084982, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1092695190}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
