@@ -60,9 +60,10 @@ public class SpringHazard : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
-        if (boxCollider)
+        if (boxCollider != null)
             boxCollider.enabled = true;
-        sprite.color = Color.white;
+        if(sprite != null)
+            sprite.color = Color.white;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
