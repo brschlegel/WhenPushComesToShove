@@ -39,7 +39,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25183720684463445}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -210,6 +210,7 @@ MonoBehaviour:
   - enabled: 1
     name: Down Right
     direction: {x: 0.5, y: -0.5}
+  arrowParent: {fileID: 3960176121765838798}
 --- !u!50 &3353924038953065095
 Rigidbody2D:
   serializedVersion: 4
@@ -575,6 +576,7 @@ MonoBehaviour:
   - enabled: 0
     name: Down Right
     direction: {x: 0.5, y: -0.5}
+  arrowParent: {fileID: 5480911599850055959}
 --- !u!50 &6865346090219560727
 Rigidbody2D:
   serializedVersion: 4
@@ -3263,7 +3265,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4074889193063657958}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3378,7 +3380,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5166846177561851578}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3650,7 +3652,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5486242438337607681}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3844,7 +3846,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6100233233729505513}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3990,6 +3992,7 @@ MonoBehaviour:
   waveDelays: []
   currentWave: -1
   complete: 0
+  delayAllWaveTime: 0
 --- !u!1 &6983966874965423633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4119,6 +4122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeEndCondition: 2
+  roomExplanation: 
 --- !u!1 &6995423792257696198
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,7 +4136,7 @@ GameObject:
   - component: {fileID: 6995423792257696200}
   - component: {fileID: 6995423792257696202}
   - component: {fileID: 6995423792257696203}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: TriggerBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4349,7 +4353,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7473619422449664292}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -4407,7 +4411,7 @@ GameObject:
   - component: {fileID: 4092270957594431506}
   - component: {fileID: 4797271016569684649}
   - component: {fileID: 8942159806615691686}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: TriggerBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4624,7 +4628,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7654540616660917442}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -9351,7 +9355,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8240171087248065253}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -9435,7 +9439,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8365500282275800184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -9603,7 +9607,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8725144782310151119}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

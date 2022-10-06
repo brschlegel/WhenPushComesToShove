@@ -126,6 +126,7 @@ MonoBehaviour:
   - enabled: 1
     name: Down Right
     direction: {x: 0.5, y: -0.5}
+  arrowParent: {fileID: 5373484312378673165}
 --- !u!50 &6468563699047153165
 Rigidbody2D:
   serializedVersion: 4
@@ -619,7 +620,7 @@ GameObject:
   - component: {fileID: 7464385896071061714}
   - component: {fileID: 7464385896071061712}
   - component: {fileID: 7464385896071061713}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: TriggerBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
