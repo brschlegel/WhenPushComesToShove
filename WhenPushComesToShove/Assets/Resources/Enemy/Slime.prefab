@@ -125,7 +125,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   pMode: {fileID: 0}
   animName: 
-  additionalStunTime: 0.5
+  additionalStunTime: 0
 --- !u!114 &881103320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 7.5
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -272,11 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72bbad3808e30042b498502a8076ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pDrag: 10
+  pDrag: 2
   pMaterial: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
   velocityThreshold: 0.1
   pHitbox: {fileID: 5608110272139918810}
-  sDrag: 20
+  sDrag: 10
   sMaterial: {fileID: 0}
   onPModeEnter:
     m_PersistentCalls:
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  strength: 10000
+  strength: 9000
 --- !u!1001 &999011920256741617
 PrefabInstance:
   m_ObjectHideFlags: 0
