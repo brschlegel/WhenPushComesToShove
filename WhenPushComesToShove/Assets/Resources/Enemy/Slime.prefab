@@ -57,6 +57,7 @@ MonoBehaviour:
   hitboxObject: {fileID: 5963588997929702906}
   rootObject: {fileID: 999011918721937567}
   pMode: {fileID: 2522405558536066583}
+  hitEvent: {fileID: 2035447770}
 --- !u!114 &881103318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +124,7 @@ MonoBehaviour:
   id: Hit
   anim: {fileID: 0}
   pMode: {fileID: 0}
+  animName: 
   additionalStunTime: 0.5
 --- !u!114 &881103320
 MonoBehaviour:
@@ -644,6 +646,7 @@ GameObject:
   m_Component:
   - component: {fileID: 575259086140682081}
   - component: {fileID: 3299932415865420950}
+  - component: {fileID: 4283319809092758573}
   m_Layer: 10
   m_Name: FeetCollider
   m_TagString: Untagged
@@ -692,6 +695,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 0.05}
   m_EdgeRadius: 0
+--- !u!114 &4283319809092758573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2456956712685644366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3f634404b37d04d88004afa5ddc04e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handler: {fileID: 999011920278194451}
+  priority: 0
+  owner: {fileID: 999011918721937567}
+  ownersToIgnore: []
 --- !u!1001 &999011918593432200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -810,21 +829,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToIgnore:
   - GhostShove
-  onHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 881103319}
-        m_TargetAssemblyTypeName: SlimeBrain, Assembly-CSharp
-        m_MethodName: OnHit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &999011920278194450
 MonoBehaviour:
   m_ObjectHideFlags: 0
