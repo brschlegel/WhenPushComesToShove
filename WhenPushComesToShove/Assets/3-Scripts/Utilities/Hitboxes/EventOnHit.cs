@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public delegate void OnHit(GameObject instigator, GameObject receiver);
+public delegate void OnHit(HitEvent e);
 public class EventOnHit : HitHandler
 {
 
@@ -12,7 +12,7 @@ public class EventOnHit : HitHandler
 
     public override void ReceiveHit(HitEvent e )
     {
-        onHit?.Invoke(e.hitbox.owner, e.hurtbox.owner);
+        onHit?.Invoke(e);
     }
 
 }

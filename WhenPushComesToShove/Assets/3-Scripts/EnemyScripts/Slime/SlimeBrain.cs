@@ -13,6 +13,7 @@ public class SlimeBrain : StateBrain
     PlayAnimState deathState;
     //#endregion
 
+
     [SerializeField]
     private Chase chase;
     [SerializeField]
@@ -77,7 +78,7 @@ public class SlimeBrain : StateBrain
 
         deathState.anim = anim;
         deathState.onStateExit += OutDeath;
-
+        deathState.animName = "Base.SpikedSlime_Death";
 
         hitState.anim = anim;
         hitState.animName = "Base.Slime_Hit";
@@ -148,7 +149,7 @@ public class SlimeBrain : StateBrain
     /// <summary>
     /// When slime gets hit, change to hit state
     /// </summary>
-    public void OnHit(GameObject instigator, GameObject receiver)
+    public void OnHit(HitEvent e)
     {
         if (currentState != deathState)
         {

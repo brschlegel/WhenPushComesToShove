@@ -9,6 +9,8 @@ public class AegisBrain : StateBrain
     AegisRun runState;
     EnemyHit hitState;
     AegisAttack attackState;
+    AegisBlock blockState;
+    PlayAnimState deathState;
 
     [SerializeField]
     AegisWall wall;
@@ -20,6 +22,12 @@ public class AegisBrain : StateBrain
     private ProjectileMode pMode;
     [SerializeField]
     private EventOnHit hitEvent;
+    [SerializeField]
+    private GameObject hitboxObject;
+    [SerializeField]
+    private WallFilterHitHandler wallFilter;
+    [SerializeField]
+    private GameObject rootObject;
     // Start is called before the first frame update
     void Start() 
     {
@@ -47,6 +55,8 @@ public class AegisBrain : StateBrain
         runState = GetComponent<AegisRun>();
         hitState = GetComponent<EnemyHit>();
         attackState = GetComponent<AegisAttack>();
+        blockState = GetComponent<AegisBlock>();
+        deathState = GetComponent<PlayAnimState>();
 
         setupState.anim = anim;
         setupState.onStateExit += OutSetup;
@@ -65,8 +75,19 @@ public class AegisBrain : StateBrain
         hitState.onStateExit += OutHit;
 
         attackState.anim = anim;
- 
+        attackState.wall = wall;
+        attackState.hitboxObject = hitboxObject;
+        attackState.chase = chase;
         attackState.onStateExit += OutAttack;
+
+        blockState.anim = anim;
+        blockState.wall = wall;
+        wallFilter.onBlock += OnBlock;
+        blockState.onStateExit += OutBlock;
+
+        deathState.anim = anim;
+        deathState.animName = "Base Layer.Enemy Death";
+        deathState.onStateExit += OutDeath;
 
         currentState = setupState;
         setupState.enabled = true;
@@ -101,6 +122,16 @@ public class AegisBrain : StateBrain
         }
     }
 
+    private void OutBlock(bool success)
+    {
+        if(success)
+        {
+            runState.target = target;
+            ChangeState(runState);
+        }
+
+    }
+
     private void OutAttack(bool success)
     {
         if(success)
@@ -110,9 +141,35 @@ public class AegisBrain : StateBrain
         }
     }
 
-    public void OnHit(GameObject instigator, GameObject receiver)
+    private void OutDeath(bool success)
     {
-        target = instigator.transform;
-        ChangeState(hitState);
+        if(success)
+        {
+            Destroy(rootObject);
+        }
+    }
+
+    public void OnHit(HitEvent e)
+    {
+
+        if (currentState != deathState)
+        {
+            if (e.hitbox.tag == "Shove")
+            {
+                target = e.hitbox.owner.transform;
+            }
+            ChangeState(hitState);
+        }
+    }
+
+    private void OnBlock()
+    {
+        ChangeState(blockState);
+    }
+
+    public void OnDeath()
+    {
+        ChangeState(deathState);
+        chase.LockMovement();
     }
 }

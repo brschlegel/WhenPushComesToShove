@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.Events;
 
 public class WallFilterHitHandler : HitHandler
 {
     [SerializeField]
     private Hurtbox fallbackHurtbox;
+
+    public UnityAction onBlock;
 
     public override void ReceiveHit(HitEvent e)
     {
@@ -14,6 +18,10 @@ public class WallFilterHitHandler : HitHandler
         {
             //Block the attack!
             Debug.Log("Blocked");
+            if (e.hitbox.tag == "Shove")
+            {
+                onBlock?.Invoke();
+            }
         }
         else
         {

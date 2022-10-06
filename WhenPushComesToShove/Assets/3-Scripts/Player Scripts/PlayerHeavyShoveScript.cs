@@ -111,7 +111,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     /// <summary>
     /// Interrupts charging if hit, takes parameters to match on hit event
     /// </summary>
-    public void InterruptChargeOnHit(GameObject instigator, GameObject receiver)
+    public void InterruptChargeOnHit(HitEvent e )
     {
        InterruptCharge();
     }

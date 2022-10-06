@@ -7,8 +7,8 @@ using UnityEngine;
 /// </summary>
 public class PlayAnimState : State
 {
-    [SerializeField]
-    private string animName;
+    [HideInInspector]
+    public string animName;
     private void OnEnable()
     {
         StartCoroutine(PlayAnimation(animName));

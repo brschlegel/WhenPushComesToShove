@@ -10,6 +10,8 @@ public class EnemyHit : State
     public ProjectileMode pMode;
     [HideInInspector]
     public string animName;
+    [SerializeField]
+    private float additionalStunTime = 0;
 
     private void OnEnable()
     {
@@ -20,7 +22,7 @@ public class EnemyHit : State
     private IEnumerator Stun()
     {
         yield return new WaitUntil (()=>!pMode.enabled);
-       // yield return new WaitForSeconds(additionalStunTime);
+        yield return new WaitForSeconds(additionalStunTime);
         this.enabled = false;
         InvokeOnStateExit(true);
     }
