@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Hazards { None, Spikes, Spring, Fire };
-public enum EnemyTypes { General, Slimes};
+public enum EnemyTypes { General, Slimes, Aegis};
 
 public enum LevelType { Dungeon, Arena};
 

@@ -331,7 +331,7 @@ MonoBehaviour:
   - enemy: 1
     spawnDelay: 2
     waveNum: 0
-  - enemy: 1
+  - enemy: 2
     spawnDelay: 3
     waveNum: 0
   currentWave: 0
@@ -798,7 +798,7 @@ MonoBehaviour:
   - enemy: 1
     spawnDelay: 2
     waveNum: 0
-  - enemy: 1
+  - enemy: 2
     spawnDelay: 3
     waveNum: 0
   currentWave: 0
@@ -7680,6 +7680,8 @@ MonoBehaviour:
     level: 1
   enemyStats:
   - enemy: 1
+    level: 1
+  - enemy: 2
     level: 1
   playerSpawns:
   - {fileID: 585223403186709946}
