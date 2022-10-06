@@ -73,12 +73,19 @@ public class ProjectileMode : MonoBehaviour
 
     public float Mass
     {
-        get {return rb.mass;}
+        get { return rb.mass; }
     }
 
     public Vector2 Velocity
     {
-        get{return rb.velocity;}
+        get
+        {
+            if (rb == null)
+            {
+                Init();
+            }
+            return rb.velocity;
+        }
     }
 
     public void AddForce(Vector2 force)

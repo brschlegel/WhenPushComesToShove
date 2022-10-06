@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeRun : State
+public class AegisRun : State
 {
     [HideInInspector]
     public Transform target;
     [HideInInspector]
     public Chase chase;
-    private void OnEnable()
+    void OnEnable()
     {
-        anim.Play("Base.Slime_Run", 0);
+        anim.Play("Base Layer.Enemy Run");
     }
 
     // Update is called once per frame
     void Update()
     {
-        target = PickTarget();
-        if (target != null)
+        if(target != null)
         {
             chase.SetTarget(target);
         }
@@ -26,15 +25,5 @@ public class SlimeRun : State
             enabled = false;
             InvokeOnStateExit(true);
         }
-    }
-
-    private void OnDisable()
-    {
-
-    }
-
-    private Transform PickTarget()
-    {
-        return GameState.GetNearestPlayer(transform);
     }
 }

@@ -2,24 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeHit : State
+public class EnemyHit : State
 {
     private IEnumerator enumerator;
 
     [HideInInspector]
     public ProjectileMode pMode;
+    [HideInInspector]
+    public string animName;
     [SerializeField]
-    public float additionalStunTime;
+    private float additionalStunTime = 0;
+
     private void OnEnable()
     {
-        anim.Play("Base.Slime_Hit", 0);
+        anim.Play(animName, 0);
         enumerator = CoroutineManager.StartGlobalCoroutine(Stun());
     }
 
     private IEnumerator Stun()
     {
         yield return new WaitUntil (()=>!pMode.enabled);
-       // yield return new WaitForSeconds(additionalStunTime);
+        yield return new WaitForSeconds(additionalStunTime);
         this.enabled = false;
         InvokeOnStateExit(true);
     }

@@ -114,7 +114,15 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     }
 
     /// <summary>
-    /// Interrupts charging if hit
+    /// Interrupts charging if hit, takes parameters to match on hit event
+    /// </summary>
+    public void InterruptChargeOnHit(HitEvent e )
+    {
+       InterruptCharge();
+    }
+
+        /// <summary>
+    /// Interrupts charging 
     /// </summary>
     public void InterruptCharge()
     {
@@ -125,6 +133,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
             handler.onHeavyShoveComplete();
         }
     }
+
 
     public void EnableBaseHeavyShove()
     {
