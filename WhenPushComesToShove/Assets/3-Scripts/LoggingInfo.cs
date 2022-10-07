@@ -13,6 +13,11 @@ public class LoggingInfo : MonoBehaviour
     [HideInInspector] public int[] heavyShoveUses = new int[4] { 0, 0, 0, 0 };
     [HideInInspector] public int[] heavyShoveInterrupts = new int[4] { 0, 0, 0, 0 };
     [HideInInspector] public int[] dashUses = new int[4] { 0, 0, 0, 0 };
+    [HideInInspector] public int numOfRoomsTraveled = 0;
+    [HideInInspector] public int numOfRunsFailed = 0;
+    [HideInInspector] public int numOfRunsCompleted = 0;
+
+    [HideInInspector] public string currentRoomName = "";
 
     private void Awake()
     {
@@ -42,13 +47,13 @@ public class LoggingInfo : MonoBehaviour
 
     public void AddPlayerDeath(int playerIndex, string causeOfDeath)
     {
-        playerDeaths[playerIndex] += "_" + causeOfDeath;
+        playerDeaths[playerIndex] += "_" + causeOfDeath +"-InRoom:" + currentRoomName;
     }
 
     public void SendInfoToSurvey()
     {
         //Woo lets make a string
-        string fullURL = surveyURL + "?gameName=WhenPushComesToShove";
+        string fullURL = surveyURL + "?gameName=WhenPushComesToShove-";
 
         //Player Death
         for (int i = 0; i < playerDeaths.Length; i++)
@@ -76,6 +81,10 @@ public class LoggingInfo : MonoBehaviour
         {
             fullURL += "&numOfDash_" + (i + 1).ToString() + "=" + dashUses[i];
         }
+
+        fullURL += "&numOfRoomsTraveled=" + numOfRoomsTraveled;
+        fullURL += "&numOfRunsFailed=" + numOfRunsFailed;
+        fullURL += "&numOfRunsCompleted=" + numOfRunsCompleted;
 
         Application.OpenURL(fullURL);
         Debug.Log(fullURL);
