@@ -6,6 +6,7 @@ public static class GlobalSettings
 {
    //Physics
    public readonly static float frictionCoeff = .6f;
+   public readonly static float terminalVelocity = 45.0f;
 
    //Wall Bounce Damage
    public readonly static float wallDamageCoeff = 1;

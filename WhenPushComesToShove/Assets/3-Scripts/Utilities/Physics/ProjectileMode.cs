@@ -49,6 +49,8 @@ public class ProjectileMode : MonoBehaviour
         onPModeEnter?.Invoke();
     }
 
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -60,6 +62,10 @@ public class ProjectileMode : MonoBehaviour
         }
         frames++;
 
+        if(Velocity.magnitude > GlobalSettings.terminalVelocity)
+        {
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, GlobalSettings.terminalVelocity);
+        }
     }
 
     void OnDisable()

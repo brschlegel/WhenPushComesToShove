@@ -54,11 +54,19 @@ public class MovementController : MonoBehaviour
 
     public void LockMovement()
     {
+        if(move == null)
+        {
+            Init();
+        }
         move.movementLocked = true;
     }
 
     public void UnlockMovement()
     {
+        if(move == null)
+        {
+            Init();
+        }
         move.movementLocked = false;
     }
 
