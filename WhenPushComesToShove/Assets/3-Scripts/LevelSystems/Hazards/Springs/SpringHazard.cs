@@ -68,6 +68,10 @@ public class SpringHazard : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Resets velocity before adding a new force
+        Rigidbody2D rb =  collision.transform.parent.GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.zero;
+
         ThrowInRandomDirection();
     }
 
