@@ -46,7 +46,7 @@ public class FireShove : HitHandler
         while (timer < burnTime)
         {
             yield return new WaitForSeconds(timeBetweenBurns);
-            health.TakeDamage(burnDamage);
+            health.TakeDamage(burnDamage, e.hitbox.owner.name);
             Debug.Log("Burn");
             timer += timeBetweenBurns;
         }

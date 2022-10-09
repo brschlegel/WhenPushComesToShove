@@ -80,6 +80,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
 
         if (heavyShoveCharge >= heavyShoveChargeTime)
         {
+            LoggingInfo.instance.heavyShoveUses[handler.playerConfig.PlayerIndex] += 1;
             handler.LockAction(cooldown, handler.onHeavyShoveComplete);
             onHeavyShove();
         }
@@ -128,6 +129,9 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     {
         if (heavyShoveIsCharging)
         {
+            LoggingInfo.instance.heavyShoveInterrupts[handler.playerConfig.PlayerIndex] += 1;
+
+            handler.rumble.ForceStopRumble();
             heavyShoveIsCharging = false;
             heavyShoveCharge = 0;
             handler.onHeavyShoveComplete();

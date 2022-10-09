@@ -122,6 +122,10 @@ public class LevelManager : MonoBehaviour
             }
             
         }
+
+        //Update Logging
+        LoggingInfo.instance.currentRoomName = room.name;
+        LoggingInfo.instance.numOfRoomsTraveled++;
     }
 
     
