@@ -20,6 +20,7 @@ public class PlayerMovementScript : Move
 
     private bool lockMovement = false;
     private Coroutine movementUnlockRoutine;
+    private int forceMovementLocks = 0;
 
     #region Properties
     public Vector3 GetMoveDirection()
@@ -48,7 +49,7 @@ public class PlayerMovementScript : Move
     //https://www.youtube.com/watch?v=qdskE8PJy6Q&ab_channel=ToyfulGames
     private void FixedUpdate()
     {
-        if (lockMovement)
+        if (forceMovementLocks > 0)
         {
             SetMoveInputVector(Vector2.zero);
         }
@@ -125,7 +126,8 @@ public class PlayerMovementScript : Move
     /// <param name="cooldown"></param>
     public void LockMovementForTime(float cooldown)
     {
-        lockMovement = true;
+        //lockMovement = true;
+        forceMovementLocks++;
         movementUnlockRoutine = StartCoroutine(MovementLockCooldown(cooldown));
     }
 
@@ -137,7 +139,8 @@ public class PlayerMovementScript : Move
     public IEnumerator MovementLockCooldown(float cooldown)
     {
         yield return new WaitForSeconds(cooldown);
-        lockMovement = false;
+        //lockMovement = false;
+        forceMovementLocks--;
     }
 
     /// <summary>
@@ -150,7 +153,8 @@ public class PlayerMovementScript : Move
             StopCoroutine(movementUnlockRoutine);
         }
 
-        lockMovement = true;
+        //lockMovement = true;
+        forceMovementLocks++;
     }
 
     /// <summary>
@@ -158,7 +162,8 @@ public class PlayerMovementScript : Move
     /// </summary>
     public void ForceUnlockMovement()
     {
-        lockMovement = false;
+        //lockMovement = false;
+        forceMovementLocks--;
     }
     #endregion
 }
