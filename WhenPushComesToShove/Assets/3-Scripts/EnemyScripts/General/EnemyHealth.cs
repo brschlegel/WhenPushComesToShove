@@ -11,7 +11,7 @@ public class EnemyHealth : Health
     private GameObject rootObject; 
 
     public UnityEvent onDeath;
-    public override void Die()
+    public override void Die(string source)
     {
         onDeath?.Invoke();
     }

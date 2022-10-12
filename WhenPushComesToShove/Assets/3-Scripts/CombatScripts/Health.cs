@@ -14,12 +14,12 @@ public class Health : MonoBehaviour
     {
         get { return currentHealth;}
     }
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage, string source)
     {
         currentHealth -= damage;
         if(currentHealth <= 0)
         {
-            Die();
+            Die(source);
         }
     }
 
@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
 
-    public virtual void Die()
+    public virtual void Die(string source)
     {
         currentHealth = maxHealth;
         dead = true;

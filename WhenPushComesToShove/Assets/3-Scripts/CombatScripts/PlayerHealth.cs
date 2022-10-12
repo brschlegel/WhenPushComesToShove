@@ -24,9 +24,9 @@ public class PlayerHealth : Health
     }
 
     //gets reference to player Material
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float damage, string source)
     {
-        base.TakeDamage(damage);
+        base.TakeDamage(damage, source);
         playerMat = this.gameObject.GetComponentInParent<SpriteRenderer>().material;
         Debug.Log("turning white woo");
         playerMat.SetInt("_IsDamaged", 1);
@@ -43,8 +43,11 @@ public class PlayerHealth : Health
     }
 
 
-    public override void Die()
+    public override void Die(string source)
     {
+        //Log death
+        LoggingInfo.instance.AddPlayerDeath(playerInputRef.playerConfig.PlayerIndex, source);
+
         playerInputRef.sr.color = new Color(playerInputRef.sr.color.r, playerInputRef.sr.color.g, playerInputRef.sr.color.b, .3f);
 
         dead = true;

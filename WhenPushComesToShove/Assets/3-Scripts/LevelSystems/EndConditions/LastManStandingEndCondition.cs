@@ -71,6 +71,16 @@ public class LastManStandingEndCondition : BaseEndCondition
                 DisplayWinner(playerHealth[0].transform.parent.GetComponentInChildren<PlayerInputHandler>().playerConfig.PlayerColorName);
             }
 
+            //Update Logging
+            if (testForAllPlayersDead)
+            {
+                LoggingInfo.instance.numOfRunsFailed++;
+            }
+            else
+            {
+                LoggingInfo.instance.numOfRunsCompleted++;
+            }
+
             base.TestCondition();
         }
     }
