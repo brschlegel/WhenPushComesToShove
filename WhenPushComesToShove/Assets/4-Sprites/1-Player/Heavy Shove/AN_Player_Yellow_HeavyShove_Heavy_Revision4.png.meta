@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e7076e6ebbab1c04ab7d2dadbb2e0980
+guid: 216c9c5a0ce635544a2f1408517833f5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -101,6 +101,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -116,12 +128,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AN_Player_Red_HeavyShove_Revision2_0
+      name: AN_Player_Yellow_HeavyShove_Heavy_Revision4_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 26
+        width: 28
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -130,19 +142,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 545c59e2925247349a86825c2dc771d9
-      internalID: -2101533569
+      spriteID: 8dd0d907a80ec8f48b0948002d7dd03e
+      internalID: 637085720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AN_Player_Red_HeavyShove_Revision2_1
+      name: AN_Player_Yellow_HeavyShove_Heavy_Revision4_1
       rect:
         serializedVersion: 2
-        x: 66
+        x: 68
         y: 0
-        width: 34
+        width: 27
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -151,19 +163,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9922d3b80e7796445867530f89da29dd
-      internalID: -1174180468
+      spriteID: 7f6326211068cd94d9cb941a7e2fba7d
+      internalID: -644888332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AN_Player_Red_HeavyShove_Revision2_2
+      name: AN_Player_Yellow_HeavyShove_Heavy_Revision4_2
       rect:
         serializedVersion: 2
-        x: 132
+        x: 133
         y: 0
-        width: 37
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -172,8 +184,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a7ae08ce113e18449d443c73b3bafed
-      internalID: -1517918873
+      spriteID: 1b9839dac3ad2ee4493b3e75b64c5c25
+      internalID: 533537902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AN_Player_Yellow_HeavyShove_Heavy_Revision4_3
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 0
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5096a09e6702c041a7665db92928da4
+      internalID: -546746639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AN_Player_Yellow_HeavyShove_Heavy_Revision4_4
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 0
+        width: 41
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e3f6708d5360b45a0d3689c9ece46a
+      internalID: 57801463
       vertices: []
       indices: 
       edges: []
@@ -189,9 +243,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AN_Player_Red_HeavyShove_Revision2_0: -2101533569
-      AN_Player_Red_HeavyShove_Revision2_2: -1517918873
-      AN_Player_Red_HeavyShove_Revision2_1: -1174180468
+      AN_Player_Yellow_HeavyShove_Heavy_Revision4_4: 57801463
+      AN_Player_Yellow_HeavyShove_Heavy_Revision4_2: 533537902
+      AN_Player_Yellow_HeavyShove_Heavy_Revision4_0: 637085720
+      AN_Player_Yellow_HeavyShove_Heavy_Revision4_1: -644888332
+      AN_Player_Yellow_HeavyShove_Heavy_Revision4_3: -546746639
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
