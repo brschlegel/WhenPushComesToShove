@@ -9381,7 +9381,7 @@ MonoBehaviour:
   - enemy: 1
     spawnDelay: 0
     waveNum: 1
-  - enemy: 2
+  - enemy: 1
     spawnDelay: 2
     waveNum: 2
   currentWave: 0
@@ -15015,7 +15015,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9529412, g: 0.73333335, b: 0.8901961, a: 1}
   m_Origin: {x: -15, y: -8, z: 0}
   m_Size: {x: 30, y: 16, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -16058,7 +16058,7 @@ GameObject:
   - component: {fileID: 7033525170798068412}
   - component: {fileID: 4349957346514743260}
   m_Layer: 0
-  m_Name: Spring3 - 1
+  m_Name: Spring3_S3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16100,8 +16100,6 @@ MonoBehaviour:
     level: 3
   enemyStats:
   - enemy: 1
-    level: 3
-  - enemy: 2
     level: 3
   playerSpawns:
   - {fileID: 801455624577389485}
@@ -16149,8 +16147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveDelays:
+  - 3
   - 5
-  - 10
   currentWave: -1
   complete: 0
   delayAllWaveTime: 0
@@ -16202,7 +16200,7 @@ MonoBehaviour:
   - enemy: 1
     spawnDelay: 0
     waveNum: 1
-  - enemy: 2
+  - enemy: 1
     spawnDelay: 1
     waveNum: 2
   currentWave: 0
@@ -17872,7 +17870,7 @@ MonoBehaviour:
   - enemy: 1
     spawnDelay: 0
     waveNum: 1
-  - enemy: 2
+  - enemy: 1
     spawnDelay: 1
     waveNum: 2
   currentWave: 0
@@ -18139,7 +18137,7 @@ MonoBehaviour:
   - enemy: 1
     spawnDelay: 0
     waveNum: 1
-  - enemy: 2
+  - enemy: 1
     spawnDelay: 2
     waveNum: 2
   currentWave: 0

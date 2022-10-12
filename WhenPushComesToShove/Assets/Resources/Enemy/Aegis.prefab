@@ -1000,7 +1000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5507211a3cdd2714b8b487751e703291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
   kbReciever: {fileID: 1691551635500605968}
 --- !u!114 &1130031589353500534
 MonoBehaviour:
@@ -1014,7 +1015,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22dbf66df48581a4383e407aa75f4828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
   health: {fileID: 3528930675911414861}
   damageEnabled: 1
 --- !u!114 &2128939377
@@ -1029,7 +1031,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dcdad97efa0c0d4a8abbbe2b96f7cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
   fallbackHurtbox: {fileID: 1055790341512154247}
 --- !u!114 &2128939382
 MonoBehaviour:
@@ -1043,7 +1046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93619288de6e09348afef84ff792f52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
 --- !u!1001 &147463848692885017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1067,6 +1071,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191521, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: owner
+      value: 
+      objectReference: {fileID: 1691551635500606957}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_RootOrder
       value: 0

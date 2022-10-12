@@ -160,6 +160,10 @@ MonoBehaviour:
   heavyShoveUses: 00000000000000000000000000000000
   heavyShoveInterrupts: 00000000000000000000000000000000
   dashUses: 00000000000000000000000000000000
+  numOfRoomsTraveled: 0
+  numOfRunsFailed: 0
+  numOfRunsCompleted: 0
+  currentRoomName: 
 --- !u!4 &31629697
 Transform:
   m_ObjectHideFlags: 0
@@ -193,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6203429871819391900, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
       propertyPath: orthographic size
-      value: 8.078125
+      value: 5.625
       objectReference: {fileID: 0}
     - target: {fileID: 6203429871819391900, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -1701,8 +1705,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hazardLevels:
-  - hazard: 0
-    level: 0
   - hazard: 1
     level: 0
   - hazard: 2
@@ -1710,17 +1712,12 @@ MonoBehaviour:
   - hazard: 3
     level: 0
   enemyStatLevels:
-  - enemy: 0
-    level: 0
   - enemy: 1
     level: 0
+  - enemy: 2
+    level: 0
   numOfDungeonRooms: 5
-  path:
-  - {fileID: 6254306470328373913, guid: 5a3664862d4e60f4b968a10d39e0c82e, type: 3}
-  - {fileID: 5179269232829181889, guid: 7493768a8f3e56a4597231dac6c35706, type: 3}
-  - {fileID: 4185438678166616129, guid: 022e6c26bc3410b44b7ac35fe957c456, type: 3}
-  - {fileID: 7596175056869841851, guid: f4455d2a7288d3c44a91e6f47a186143, type: 3}
-  - {fileID: 6212178899482229079, guid: 3a4348564b4e2f24096052dc2a42e810, type: 3}
+  path: []
 --- !u!4 &1589640427
 Transform:
   m_ObjectHideFlags: 0
