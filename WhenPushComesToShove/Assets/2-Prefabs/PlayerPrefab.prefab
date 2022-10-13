@@ -5314,6 +5314,11 @@ MonoBehaviour:
   dashSpeed: 10000
   dashTime: 0.75
   collider: {fileID: 7738541377467117733}
+  hurtboxHandler: {fileID: 4628197168754584658}
+  tagsToIgnoreDuringDash:
+  - Player
+  - Enemy
+  - Hazard
 --- !u!114 &1495853962286914703
 MonoBehaviour:
   m_ObjectHideFlags: 0
