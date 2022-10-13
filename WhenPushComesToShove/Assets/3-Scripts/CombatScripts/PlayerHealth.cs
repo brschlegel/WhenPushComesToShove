@@ -63,18 +63,24 @@ public class PlayerHealth : Health
 
         //Unassign Ghost Shove Tags
         KnockbackHitHandler kbReciever = transform.parent.GetComponentInChildren<KnockbackHitHandler>();
+        HitEventSplitter hitHandler = transform.parent.GetComponentInChildren<HitEventSplitter>();
         if (kbReciever.tagsToIgnore.Contains("GhostShove"))
         {
             kbReciever.tagsToIgnore.Remove("GhostShove");
             kbReciever.tagsToIgnore.Add("Shove");
+            hitHandler.tagsToIgnore.Add("Hazard");
         }
 
-        KnockbackAlongAxis kbHit = transform.parent.GetComponentInChildren<KnockbackAlongAxis>();
-        kbHit.gameObject.tag = "GhostShove";
+        KnockbackAlongAxis[] kbHit = transform.parent.GetComponentsInChildren<KnockbackAlongAxis>();
+        foreach (KnockbackAlongAxis kb in kbHit)
+        {
+            kb.gameObject.tag = "GhostShove";
+        }
 
         //Allow passage through players and enemies
         collider.tagsToIgnoreCollision.Add("Player");
         collider.tagsToIgnoreCollision.Add("Enemy");
+        collider.tagsToIgnoreCollision.Add("Hazard");
 
         onDeath?.Invoke();
     }
@@ -86,6 +92,7 @@ public class PlayerHealth : Health
         {
             collider.tagsToIgnoreCollision.Remove("Player");
             collider.tagsToIgnoreCollision.Remove("Enemy");
+            collider.tagsToIgnoreCollision.Remove("Hazard");
         }
 
         dead = false;
@@ -100,14 +107,19 @@ public class PlayerHealth : Health
 
         //Reassign Ghost Shove Tags
         KnockbackHitHandler kbReciever = transform.parent.GetComponentInChildren<KnockbackHitHandler>();
+        HitEventSplitter hitHandler = transform.parent.GetComponentInChildren<HitEventSplitter>();
         if (!kbReciever.tagsToIgnore.Contains("GhostShove"))
         {
             kbReciever.tagsToIgnore.Add("GhostShove");
             kbReciever.tagsToIgnore.Remove("Shove");
+            hitHandler.tagsToIgnore.Remove("Hazard");
         }
 
-        KnockbackAlongAxis kbHit = transform.parent.GetComponentInChildren<KnockbackAlongAxis>();
-        kbHit.gameObject.tag = "Shove";
+        KnockbackAlongAxis[] kbHit = transform.parent.GetComponentsInChildren<KnockbackAlongAxis>();
+        foreach (KnockbackAlongAxis kb in kbHit)
+        {
+            kb.gameObject.tag = "Shove";
+        }
     }
 
     private void Update()

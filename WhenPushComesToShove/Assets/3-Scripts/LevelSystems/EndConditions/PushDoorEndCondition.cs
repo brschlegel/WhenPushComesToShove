@@ -12,6 +12,9 @@ public class PushDoorEndCondition : BaseEndCondition
     protected override void TestCondition()
     {
 
+        //Ensure that players can join in the lobby
+        PlayerConfigManager.Instance.levelInitRef.UnlockPlayerSpawn();
+
         SetActiveLights();
 
         //Ensures the room doesn't transition if there isn't enough players
