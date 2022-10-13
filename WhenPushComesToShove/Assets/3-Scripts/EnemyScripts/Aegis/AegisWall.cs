@@ -6,8 +6,11 @@ public class AegisWall : MonoBehaviour
 {
     [HideInInspector]
     public Transform target;
+    [HideInInspector]
+    public bool stunned;
     public Transform wallTransform;
     public float offset;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +21,9 @@ public class AegisWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(target != null)
+        if(target != null && !stunned)
         {
-            transform.right = target.position - transform.position ;
+            transform.right = Vector3.Lerp(transform.right, target.position - transform.position, .7f) ;
         }
  
 

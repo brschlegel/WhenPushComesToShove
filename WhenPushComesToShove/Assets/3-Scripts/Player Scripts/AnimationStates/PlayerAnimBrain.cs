@@ -30,6 +30,9 @@ public class PlayerAnimBrain : StateBrain
     [SerializeField]
     private EventOnHit hitEvent;
 
+    private PlayerHeavyShoveScript heavyScript;
+    private PlayerLightShoveScript lightScript;
+
     private void Start()
     {
         if(idleState == null)
@@ -51,6 +54,8 @@ public class PlayerAnimBrain : StateBrain
         lightState = GetComponent<PlayerLightShoveState>();
         chargeState = GetComponent<PlayerChargeState>();
         heavyState = GetComponent<PlayerHeavyShoveState>();
+        heavyScript = playerInputHandler.GetComponent<PlayerHeavyShoveScript>();
+        lightScript = playerInputHandler.GetComponent<PlayerLightShoveScript>();
 
         PlayAnimState[] animStates = GetComponents<PlayAnimState>();
         foreach(PlayAnimState state in animStates)
@@ -82,7 +87,7 @@ public class PlayerAnimBrain : StateBrain
         hitState.anim = anim;
         hitState.pMode = pMode;
         hitEvent.onHit += OnHit;
-        hitEvent.onHit += playerInputHandler.GetComponent<PlayerHeavyShoveScript>().InterruptChargeOnHit;
+        //hitEvent.onHit += playerInputHandler.GetComponent<PlayerHeavyShoveScript>().InterruptChargeOnHit;
         hitState.onStateExit += OutHit;
 
         dashState.anim = anim;
@@ -91,14 +96,14 @@ public class PlayerAnimBrain : StateBrain
 
         lightState.anim = anim;
         lightState.shoveExclamation = shoveExclamation;
-        playerInputHandler.GetComponent<PlayerLightShoveScript>().onLightShove += OnLightShove;
+        lightScript.onLightShove += OnLightShove;
         playerInputHandler.onLightShoveComplete += OutShove;
 
         chargeState.anim = anim;
-        playerInputHandler.GetComponent<PlayerHeavyShoveScript>().onHeavyCharge += OnHeavyCharge;
+        heavyScript.onHeavyCharge += OnHeavyCharge;
 
         heavyState.anim = anim;
-        playerInputHandler.GetComponent<PlayerHeavyShoveScript>().onHeavyShove += OnHeavyShove;
+        heavyScript.onHeavyShove += OnHeavyShove;
         playerInputHandler.onHeavyShoveComplete += OutShove;
 
         deathState.anim = anim;
@@ -130,8 +135,16 @@ public class PlayerAnimBrain : StateBrain
     {
         if(success)
         {
+            if(heavyScript.heavyShoveIsCharging)
+            {
+                Debug.Log("ch");
+                ChangeState(chargeState);
+            }
+            else
+            {
             currentState = idleState;
             currentState.enabled = true;
+            }
         }
     }
 

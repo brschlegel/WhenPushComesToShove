@@ -7,7 +7,7 @@ public class AegisBrain : StateBrain
     AegisSetup setupState;
     AegisIdle idleState;
     AegisRun runState;
-    EnemyHit hitState;
+    AegisHit hitState;
     AegisAttack attackState;
     AegisBlock blockState;
     PlayAnimState deathState;
@@ -53,7 +53,7 @@ public class AegisBrain : StateBrain
         setupState = GetComponent<AegisSetup>();
         idleState = GetComponent<AegisIdle>();
         runState = GetComponent<AegisRun>();
-        hitState = GetComponent<EnemyHit>();
+        hitState = GetComponent<AegisHit>();
         attackState = GetComponent<AegisAttack>();
         blockState = GetComponent<AegisBlock>();
         deathState = GetComponent<PlayAnimState>();
@@ -72,6 +72,8 @@ public class AegisBrain : StateBrain
         hitEvent.onHit += OnHit;
         hitState.pMode = pMode;
         hitState.animName = "Base Layer.Enemy Hit";
+        hitState.wall = wall;
+        hitState.movement = chase;
         hitState.onStateExit += OutHit;
 
         attackState.anim = anim;
@@ -117,6 +119,7 @@ public class AegisBrain : StateBrain
     {
         if(success)
         {
+         
             runState.target = target;
             ChangeState(runState);
         }

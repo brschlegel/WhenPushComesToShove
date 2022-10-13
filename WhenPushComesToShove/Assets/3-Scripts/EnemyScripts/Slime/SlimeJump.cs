@@ -43,7 +43,7 @@ public class SlimeJump : State
             chase.LockMovement();
             yield return new WaitForSeconds(secondsStationary);
             targetLocation = target.position;
-            tween = transform.parent.DOMove((Vector3)targetLocation, jumpSpeed).SetSpeedBased().SetEase(Ease.InQuad);
+            tween = transform.parent.GetComponent<Rigidbody2D>().DOMove((Vector3)targetLocation, jumpSpeed).SetSpeedBased().SetEase(Ease.InQuad);
             yield return tween.WaitForCompletion();
             this.enabled = false;
             InvokeOnStateExit(true);

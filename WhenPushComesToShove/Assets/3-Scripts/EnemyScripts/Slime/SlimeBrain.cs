@@ -83,6 +83,7 @@ public class SlimeBrain : StateBrain
         hitState.anim = anim;
         hitState.animName = "Base.Slime_Hit";
         hitState.pMode = pMode;
+        hitState.movement = chase;
         hitEvent.onHit += OnHit; 
         hitState.onStateExit += OutHit;
         
