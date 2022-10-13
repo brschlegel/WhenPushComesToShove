@@ -10,16 +10,19 @@ public class EnemyHit : State
     public ProjectileMode pMode;
     [HideInInspector]
     public string animName;
+    [HideInInspector]
+    public MovementController movement;
     [SerializeField]
-    private float additionalStunTime = 0;
+    private float additionalStunTime;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         anim.Play(animName, 0);
         enumerator = CoroutineManager.StartGlobalCoroutine(Stun());
+        movement.LockMovement();
     }
 
-    private IEnumerator Stun()
+    protected IEnumerator Stun()
     {
         yield return new WaitUntil (()=>!pMode.enabled);
         yield return new WaitForSeconds(additionalStunTime);
@@ -27,8 +30,9 @@ public class EnemyHit : State
         InvokeOnStateExit(true);
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         CoroutineManager.StopGlobalCoroutine(enumerator);
+        movement.UnlockMovement();
     }
 }

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  stunned: 0
   wallTransform: {fileID: 0}
   offset: 0.3
 --- !u!61 &257953272
@@ -525,7 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 100
+  maxHealth: 80
   dead: 0
   rootObject: {fileID: 1691551635500606957}
   onDeath:
@@ -699,10 +700,10 @@ GameObject:
   - component: {fileID: 147463848239914791}
   - component: {fileID: 147463848239914790}
   - component: {fileID: 147463848239914789}
-  - component: {fileID: 1270113686}
   - component: {fileID: 1270113687}
   - component: {fileID: 1270113693}
   - component: {fileID: 1270113694}
+  - component: {fileID: 1904294050}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -783,6 +784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 0}
   target: {fileID: 0}
+  printInfo: 0
   wall: {fileID: 257953271}
   anim: {fileID: 1691551635828435706}
   chase: {fileID: 1691551637299122766}
@@ -791,23 +793,6 @@ MonoBehaviour:
   hitboxObject: {fileID: 6707052825704741241}
   wallFilter: {fileID: 2128939377}
   rootObject: {fileID: 1691551635500606957}
---- !u!114 &1270113686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919849883774698659}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c331290a929ea04a9d97ae37d01c585, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: hit
-  anim: {fileID: 0}
-  pMode: {fileID: 0}
-  animName: 
-  additionalStunTime: 0.2
 --- !u!114 &1270113687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,6 +843,25 @@ MonoBehaviour:
   id: death
   anim: {fileID: 0}
   animName: 
+--- !u!114 &1904294050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919849883774698659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a6fc190f0ac4a45aee770ffa6a3660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: hit
+  anim: {fileID: 0}
+  pMode: {fileID: 0}
+  animName: 
+  movement: {fileID: 0}
+  additionalStunTime: 0.2
+  wall: {fileID: 0}
 --- !u!1 &2180581936173478062
 GameObject:
   m_ObjectHideFlags: 0
