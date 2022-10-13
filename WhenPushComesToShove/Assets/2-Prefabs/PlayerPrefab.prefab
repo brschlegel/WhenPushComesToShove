@@ -5313,7 +5313,7 @@ MonoBehaviour:
   pMode: {fileID: 0}
   dashSpeed: 10000
   dashTime: 0.75
-  collider: {fileID: 7738541377467117733}
+  collider: {fileID: 820262909753106286}
   hurtboxHandler: {fileID: 4628197168754584658}
   tagsToIgnoreDuringDash:
   - Player
@@ -5461,10 +5461,9 @@ GameObject:
   m_Component:
   - component: {fileID: 251347762558918937}
   - component: {fileID: 8533760193708652413}
-  - component: {fileID: 6088014971122531299}
+  - component: {fileID: 5285296995414467751}
   - component: {fileID: 5467828016632480258}
   - component: {fileID: 6528506575909656404}
-  - component: {fileID: 7738541377467117733}
   - component: {fileID: 519120853313958755}
   - component: {fileID: 8174910203704807974}
   m_Layer: 0
@@ -5551,7 +5550,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6088014971122531299
+--- !u!61 &5285296995414467751
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5561,7 +5560,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -5613,20 +5612,6 @@ MonoBehaviour:
   isRightFlipped: 0
   vs: {fileID: 0}
   aimDirectionObject: {fileID: 559066407742172469}
---- !u!114 &7738541377467117733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6273220948599445249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 636ff58f50bc78e4ab5268bce2373741, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 5551845860662291163}
-  tagsToIgnoreCollision: []
 --- !u!114 &519120853313958755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5745,7 +5730,8 @@ MonoBehaviour:
   maxHealth: 100
   dead: 0
   playerInputRef: {fileID: 1870107280854562992}
-  collider: {fileID: 7738541377467117733}
+  collider: {fileID: 820262909753106286}
+  playerGroundUIRef: {fileID: 6065905207172843190}
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -5906,6 +5892,7 @@ GameObject:
   - component: {fileID: 7290621751986115199}
   - component: {fileID: 5762093389163932322}
   - component: {fileID: 5299094609722429894}
+  - component: {fileID: 820262909753106286}
   m_Layer: 10
   m_Name: FeetCollider
   m_TagString: Untagged
@@ -5970,6 +5957,20 @@ MonoBehaviour:
   priority: 0
   owner: {fileID: 6273220948599445249}
   ownersToIgnore: []
+--- !u!114 &820262909753106286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8409927300535844768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636ff58f50bc78e4ab5268bce2373741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 5551845860662291163}
+  tagsToIgnoreCollision: []
 --- !u!1 &8900911456471139540
 GameObject:
   m_ObjectHideFlags: 0

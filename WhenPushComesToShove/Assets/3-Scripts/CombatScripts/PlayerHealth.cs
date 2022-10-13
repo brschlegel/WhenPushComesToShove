@@ -7,6 +7,7 @@ public class PlayerHealth : Health
 {
     public PlayerInputHandler playerInputRef;
     [SerializeField] private PlayerCollisions collider;
+    [SerializeField] private Transform playerGroundUIRef;
     
     public UnityEvent onDeath;
     private Material playerMat;
@@ -53,6 +54,13 @@ public class PlayerHealth : Health
         dead = true;
         playerInputRef.playerConfig.IsDead = true;
 
+        //Fade Ground UI Too
+        foreach (SpriteRenderer sr in playerGroundUIRef.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, .5f);
+        }
+
+
         //Unassign Ghost Shove Tags
         KnockbackHitHandler kbReciever = transform.parent.GetComponentInChildren<KnockbackHitHandler>();
         if (kbReciever.tagsToIgnore.Contains("GhostShove"))
@@ -83,6 +91,12 @@ public class PlayerHealth : Health
         dead = false;
         currentHealth = maxHealth;
         playerInputRef.sr.color = new Color(playerInputRef.sr.color.r, playerInputRef.sr.color.g, playerInputRef.sr.color.b, 1f);
+
+        //Reset Ground UI Too
+        foreach (SpriteRenderer sr in playerGroundUIRef.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+        }
 
         //Reassign Ghost Shove Tags
         KnockbackHitHandler kbReciever = transform.parent.GetComponentInChildren<KnockbackHitHandler>();

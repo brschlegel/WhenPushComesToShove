@@ -21,6 +21,8 @@ public class PlayerMovementScript : Move
     private bool lockMovement = false;
     private Coroutine movementUnlockRoutine;
     private int forceMovementLocks = 0;
+    private int forceAimLocks = 0;
+    private Coroutine aimUnlockRoutine;
 
     #region Properties
     public Vector3 GetMoveDirection()
@@ -83,18 +85,21 @@ public class PlayerMovementScript : Move
     /// <param name="direction"></param>
     public void SetAimInputVector(Vector2 direction)
     {
-        //If not aiming, set vector to zero
-        if (direction == Vector2.zero)
+        if (forceAimLocks <= 0)
         {
-            aimInputVector = Vector2.zero;
-            return;
+            //If not aiming, set vector to zero
+            if (direction == Vector2.zero)
+            {
+                aimInputVector = Vector2.zero;
+                return;
+            }
+
+            aimInputVector = direction;
+
+            //Rotate player to that direction
+            player.right = aimInputVector.normalized;
+            aimTriangle.eulerAngles = new Vector3(fixedX, fixedY, player.transform.eulerAngles.z);
         }
-
-        aimInputVector = direction;
-
-        //Rotate player to that direction
-        player.right = aimInputVector.normalized;
-        aimTriangle.eulerAngles = new Vector3(fixedX, fixedY, player.transform.eulerAngles.z);
     }
 
     #region ChangingMoveSpeed
@@ -166,4 +171,51 @@ public class PlayerMovementScript : Move
         forceMovementLocks--;
     }
     #endregion
+    #region LockingAim
+    /// <summary>
+    /// Locks the player's movement for a period of time
+    /// </summary>
+    /// <param name="cooldown"></param>
+    public void LockAimForTime(float cooldown)
+    {
+        //lockMovement = true;
+        forceAimLocks++;
+        aimUnlockRoutine = StartCoroutine(MovementLockCooldown(cooldown));
+    }
+
+    /// <summary>
+    /// A function to unlock movement after a period of time
+    /// </summary>
+    /// <param name="cooldown"></param>
+    /// <returns></returns>
+    public IEnumerator AimLockCooldown(float cooldown)
+    {
+        yield return new WaitForSeconds(cooldown);
+        //lockMovement = false;
+        forceAimLocks--;
+    }
+
+    /// <summary>
+    /// Used to externally force the player's movement to lock
+    /// </summary>
+    public void ForceLockAim()
+    {
+        if (aimUnlockRoutine != null)
+        {
+            StopCoroutine(aimUnlockRoutine);
+        }
+
+        //lockMovement = true;
+        forceAimLocks++;
+    }
+
+    /// <summary>
+    /// Used to externally force the player's movement to unlock
+    /// </summary>
+    public void ForceUnlockAim()
+    {
+        //lockMovement = false;
+        forceAimLocks--;
+    }
+    #endregion 
 }
