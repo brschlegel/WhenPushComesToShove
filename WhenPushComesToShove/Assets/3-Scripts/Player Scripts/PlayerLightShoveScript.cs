@@ -56,6 +56,7 @@ public class PlayerLightShoveScript : MonoBehaviour
     {
         collider.enabled = true;
         sr.enabled = true;
+        mover.ForceLockAim();
         //hitbox.gameObject.SetActive(true);
         StartCoroutine(HitboxCooldown());
     }
@@ -69,6 +70,7 @@ public class PlayerLightShoveScript : MonoBehaviour
         yield return new WaitForSeconds(hitBoxCooldown);
         collider.enabled = false;
         sr.enabled = false;
+        mover.ForceUnlockAim();
     }
 
     public void EnableBaseLightShove()

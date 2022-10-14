@@ -7,6 +7,7 @@ public class PlayerHealth : Health
 {
     public PlayerInputHandler playerInputRef;
     [SerializeField] private PlayerCollisions collider;
+    [SerializeField] private Transform playerGroundUIRef;
     
     public UnityEvent onDeath;
     private Material playerMat;
@@ -53,20 +54,33 @@ public class PlayerHealth : Health
         dead = true;
         playerInputRef.playerConfig.IsDead = true;
 
+        //Fade Ground UI Too
+        foreach (SpriteRenderer sr in playerGroundUIRef.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, .5f);
+        }
+
+
         //Unassign Ghost Shove Tags
         KnockbackHitHandler kbReciever = transform.parent.GetComponentInChildren<KnockbackHitHandler>();
+        HitEventSplitter hitHandler = transform.parent.GetComponentInChildren<HitEventSplitter>();
         if (kbReciever.tagsToIgnore.Contains("GhostShove"))
         {
             kbReciever.tagsToIgnore.Remove("GhostShove");
             kbReciever.tagsToIgnore.Add("Shove");
+            hitHandler.tagsToIgnore.Add("Hazard");
         }
 
-        KnockbackAlongAxis kbHit = transform.parent.GetComponentInChildren<KnockbackAlongAxis>();
-        kbHit.gameObject.tag = "GhostShove";
+        KnockbackAlongAxis[] kbHit = transform.parent.GetComponentsInChildren<KnockbackAlongAxis>();
+        foreach (KnockbackAlongAxis kb in kbHit)
+        {
+            kb.gameObject.tag = "GhostShove";
+        }
 
         //Allow passage through players and enemies
         collider.tagsToIgnoreCollision.Add("Player");
         collider.tagsToIgnoreCollision.Add("Enemy");
+        collider.tagsToIgnoreCollision.Add("Hazard");
 
         onDeath?.Invoke();
     }
@@ -78,22 +92,34 @@ public class PlayerHealth : Health
         {
             collider.tagsToIgnoreCollision.Remove("Player");
             collider.tagsToIgnoreCollision.Remove("Enemy");
+            collider.tagsToIgnoreCollision.Remove("Hazard");
         }
 
         dead = false;
         currentHealth = maxHealth;
         playerInputRef.sr.color = new Color(playerInputRef.sr.color.r, playerInputRef.sr.color.g, playerInputRef.sr.color.b, 1f);
 
+        //Reset Ground UI Too
+        foreach (SpriteRenderer sr in playerGroundUIRef.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+        }
+
         //Reassign Ghost Shove Tags
         KnockbackHitHandler kbReciever = transform.parent.GetComponentInChildren<KnockbackHitHandler>();
+        HitEventSplitter hitHandler = transform.parent.GetComponentInChildren<HitEventSplitter>();
         if (!kbReciever.tagsToIgnore.Contains("GhostShove"))
         {
             kbReciever.tagsToIgnore.Add("GhostShove");
             kbReciever.tagsToIgnore.Remove("Shove");
+            hitHandler.tagsToIgnore.Remove("Hazard");
         }
 
-        KnockbackAlongAxis kbHit = transform.parent.GetComponentInChildren<KnockbackAlongAxis>();
-        kbHit.gameObject.tag = "Shove";
+        KnockbackAlongAxis[] kbHit = transform.parent.GetComponentsInChildren<KnockbackAlongAxis>();
+        foreach (KnockbackAlongAxis kb in kbHit)
+        {
+            kb.gameObject.tag = "Shove";
+        }
     }
 
     private void Update()

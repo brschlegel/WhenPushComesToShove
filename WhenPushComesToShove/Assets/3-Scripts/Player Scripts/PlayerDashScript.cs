@@ -18,6 +18,9 @@ public class PlayerDashScript : MonoBehaviour
     private PlayerInputHandler handler;
 
     [SerializeField] private PlayerCollisions collider;
+    [SerializeField] private HitHandler hurtboxHandler;
+
+    [SerializeField] private List<string> tagsToIgnoreDuringDash;
 
     public void Start()
     {
@@ -74,19 +77,29 @@ public class PlayerDashScript : MonoBehaviour
 
     private IEnumerator ColliderCooldown()
     {
-        collider.tagsToIgnoreCollision.Add("Player");
-        collider.tagsToIgnoreCollision.Add("Enemy");
+        foreach (string tag in tagsToIgnoreDuringDash)
+        {
+            collider.tagsToIgnoreCollision.Add(tag);
+            hurtboxHandler.tagsToIgnore.Add(tag);
+        }
+
+        //collider.tagsToIgnoreCollision.Add("Player");
+        //collider.tagsToIgnoreCollision.Add("Enemy");
+        //collider.tagsToIgnoreCollision.Add("Hazard");
 
         yield return new WaitForSeconds(dashTime);
 
-        if (collider.tagsToIgnoreCollision.Contains("Player"))
+        foreach (string tag in tagsToIgnoreDuringDash)
         {
-            collider.tagsToIgnoreCollision.Remove("Player");
-        }
+            if (collider.tagsToIgnoreCollision.Contains(tag))
+            {
+                collider.tagsToIgnoreCollision.Remove(tag);
+            }
 
-        if (collider.tagsToIgnoreCollision.Contains("Enemy"))
-        {
-            collider.tagsToIgnoreCollision.Remove("Enemy");
+            if (hurtboxHandler.tagsToIgnore.Contains(tag))
+            {
+                hurtboxHandler.tagsToIgnore.Remove(tag);
+            }
         }
     }
 }

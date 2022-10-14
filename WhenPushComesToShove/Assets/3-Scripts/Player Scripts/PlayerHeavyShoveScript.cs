@@ -106,12 +106,13 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     /// <returns></returns>
     public IEnumerator HitboxCooldown()
     {
-        
+        mover.ForceLockAim();
         collider.enabled = true;
         sr.enabled = true;
         yield return new WaitForSeconds(hitBoxCooldown);
         collider.enabled = false;
         sr.enabled = false;
+        mover.ForceUnlockAim();
     }
 
     /// <summary>
