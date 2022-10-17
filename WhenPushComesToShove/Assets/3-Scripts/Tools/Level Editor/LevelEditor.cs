@@ -149,7 +149,8 @@ public class LevelEditor : MonoBehaviour
     {
         if (EditorWindow.HasOpenInstances<ObjectSelectionWindow>())
         {
-            GameObject newObject = Instantiate(currentWindow.selectedObject, mousePos, Quaternion.identity);
+            GameObject newObject = (GameObject)PrefabUtility.InstantiatePrefab(currentWindow.selectedObject);
+            newObject.transform.position = mousePos;
             newObject.transform.parent = placeableLayer.transform;
         }         
     }
