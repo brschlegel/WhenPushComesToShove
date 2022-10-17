@@ -9,7 +9,12 @@ public class PlayerHeavyShoveScript : MonoBehaviour
 {
     [HideInInspector] public bool heavyShoveIsCharging = false;
     [HideInInspector] public float heavyShoveCharge = 0;
-    [SerializeField] public float heavyShoveChargeTime = 1;
+    [SerializeField] public float lowTierChargeTime = .3f;
+    [SerializeField] public float midTierChargeTime = .5f;
+    [SerializeField] public float highTierChargeTime = 1;
+
+    [HideInInspector]public int chargeLevel = 0;
+
 
     public float speedDecrease = .2f;
 
@@ -46,6 +51,25 @@ public class PlayerHeavyShoveScript : MonoBehaviour
         if (heavyShoveIsCharging)
         {
             heavyShoveCharge += Time.deltaTime;
+
+            if (heavyShoveCharge >= highTierChargeTime)
+            {
+                chargeLevel = 3;
+            }
+            else if (heavyShoveCharge >= midTierChargeTime)
+            {
+                chargeLevel = 2;
+            }
+            else if(heavyShoveCharge >= lowTierChargeTime)
+            {
+                chargeLevel = 1;
+            }
+            else
+            {
+                chargeLevel = 0;
+            }
+
+            Debug.Log(chargeLevel);
         }
     }
 
@@ -60,10 +84,11 @@ public class PlayerHeavyShoveScript : MonoBehaviour
             //Assign Release Method
             context.action.canceled += WaitForChargeRelease;
 
-            handler.rumble.RumbleLinear(0, .5f, 0, .5f, heavyShoveChargeTime, true);
+            handler.rumble.RumbleLinear(0, .5f, 0, .5f, highTierChargeTime, true);
 
             heavyShoveIsCharging = true;
             heavyShoveCharge = 0;
+            chargeLevel = 0;
             mover.ChangeMoveSpeed(speedDecrease);
             onHeavyCharge?.Invoke();
         }
@@ -78,7 +103,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
         mover.ResetMoveSpeed();
         heavyShoveIsCharging = false;
 
-        if (heavyShoveCharge >= heavyShoveChargeTime)
+        if (heavyShoveCharge >= lowTierChargeTime)
         {
             LoggingInfo.instance.heavyShoveUses[handler.playerConfig.PlayerIndex] += 1;
             handler.LockAction(cooldown, handler.onHeavyShoveComplete);
@@ -86,6 +111,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
         }
 
         heavyShoveCharge = 0;
+        chargeLevel = 0;
 
         handler.rumble.ForceStopRumble();
         StartCoroutine(ShoveRumbleDelay(.02f));
