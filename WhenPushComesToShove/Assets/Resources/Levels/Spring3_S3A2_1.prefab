@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 7004655548697237339}
   - component: {fileID: 7042541169334258288}
   - component: {fileID: 2849559746213616472}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: TriggerBox
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -379,9 +379,6 @@ MonoBehaviour:
   - enemy: 1
     spawnDelay: 3
     waveNum: 0
-  - enemy: 2
-    spawnDelay: 0
-    waveNum: 3
   currentWave: 0
   waveComplete: 0
 --- !u!1 &855647453796988429
@@ -684,6 +681,9 @@ MonoBehaviour:
   - enemy: 2
     spawnDelay: 0
     waveNum: 2
+  - enemy: 2
+    spawnDelay: 0
+    waveNum: 3
   currentWave: 0
   waveComplete: 0
 --- !u!1 &1202064162659048227
@@ -2672,7 +2672,7 @@ GameObject:
   - component: {fileID: 1296823772588943204}
   - component: {fileID: 5838803149923758119}
   - component: {fileID: 8702882597278288103}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: TriggerBox
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -3031,7 +3031,7 @@ GameObject:
   - component: {fileID: 5300683396593413142}
   - component: {fileID: 2357965139759330348}
   - component: {fileID: 241067579129831310}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: TriggerBox
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -3733,7 +3733,7 @@ GameObject:
   - component: {fileID: 6965443568604497464}
   - component: {fileID: 4729049309044943094}
   - component: {fileID: 5739080422438224502}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: TriggerBox
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -3878,9 +3878,6 @@ MonoBehaviour:
   - enemy: 1
     spawnDelay: 3
     waveNum: 0
-  - enemy: 2
-    spawnDelay: 0
-    waveNum: 3
   currentWave: 0
   waveComplete: 0
 --- !u!1 &3676633959613773033
@@ -7910,7 +7907,7 @@ GameObject:
   - component: {fileID: 495452875346714371}
   - component: {fileID: 3620166787679540807}
   - component: {fileID: 5239667991285240020}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: TriggerBox
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -10479,7 +10476,7 @@ GameObject:
   - component: {fileID: 1346726542535755056}
   - component: {fileID: 1735542672422161605}
   - component: {fileID: 1486778977629882555}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: TriggerBox
   m_TagString: Hazard
   m_Icon: {fileID: 0}
