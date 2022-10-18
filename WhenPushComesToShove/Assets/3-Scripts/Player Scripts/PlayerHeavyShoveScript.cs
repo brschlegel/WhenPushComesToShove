@@ -20,6 +20,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
 
     public Action onHeavyShove;
     public Action onHeavyCharge;
+    public Action onHeavyFail;
 
     public Hitbox hitbox;
     private Collider2D collider;
@@ -108,6 +109,10 @@ public class PlayerHeavyShoveScript : MonoBehaviour
             LoggingInfo.instance.heavyShoveUses[handler.playerConfig.PlayerIndex] += 1;
             handler.LockAction(cooldown, handler.onHeavyShoveComplete);
             onHeavyShove();
+        }
+        else
+        {
+            onHeavyFail();
         }
 
         heavyShoveCharge = 0;
