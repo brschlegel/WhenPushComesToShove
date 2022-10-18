@@ -92,28 +92,30 @@ public class LevelEditor : MonoBehaviour
             //Compares the first layer to see if it matches
             if (gameObject.transform.GetChild(0) != selectedLevelFirstChild)
             {
+                DeleteChildren(gameObject, gameObject.transform.childCount);
+
+                GameObject levelRoot = (GameObject)PrefabUtility.InstantiatePrefab(selectedLevel);
+                PrefabUtility.UnpackPrefabInstance(levelRoot, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
+
+
                 //Add the selected levels sprite layers to the editor
-                selectedLevelFirstChild = Instantiate(selectedLevel.transform.GetChild(0).gameObject);
-                selectedLevelFirstChild.name = selectedLevel.name + " Floor Tile Map";
+                selectedLevelFirstChild = levelRoot.transform.GetChild(0).gameObject;
                 selectedLevelFirstChild.transform.parent = transform;
                 floorLayer = selectedLevelFirstChild;
 
-                GameObject secondLayer = Instantiate(selectedLevel.transform.GetChild(1).gameObject);
-                secondLayer.name = selectedLevel.name + " Wall Tile Map";
+                GameObject secondLayer = levelRoot.transform.GetChild(0).gameObject;
                 secondLayer.transform.parent = transform;
                 wallLayer = secondLayer;
 
-                GameObject thirdLayer = Instantiate(selectedLevel.transform.GetChild(2).gameObject);
-                thirdLayer.name = selectedLevel.name + " Fadeable Object Tile Map";
-                thirdLayer.transform.parent = transform;
+                GameObject thirdLayer = levelRoot.transform.GetChild(0).gameObject;
+                thirdLayer.transform.parent = transform;   
                 fadeablelayer = thirdLayer;
 
-                GameObject fourthLayer = Instantiate(selectedLevel.transform.GetChild(3).gameObject);
-                fourthLayer.name = selectedLevel.name + " Placeable Objects";
+                GameObject fourthLayer = levelRoot.transform.GetChild(0).gameObject;
                 fourthLayer.transform.parent = transform;
                 placeableLayer = fourthLayer;
 
-                DeleteChildren(gameObject, gameObject.transform.childCount - 4);     
+                DestroyImmediate(levelRoot);
             }
                 
         }
@@ -249,20 +251,20 @@ public class CustomLevelEditor : Editor
             if(levelWaveManager.waveDelays.Count > 0)
                 rootWaveManager.waveDelays = levelWaveManager.waveDelays;
 
-            GameObject floorLayer = Instantiate(level.floorLayer);
-            floorLayer.name = level.levelName + " Floor Tile Map";
+            GameObject floorLayer = new GameObject(level.levelName + " Floor Tile Map");
+            floorLayer = level.floorLayer;
             floorLayer.transform.parent = root.transform;
 
-            GameObject wallLayer = Instantiate(level.wallLayer);
-            wallLayer.name = level.levelName + " Wall Tile Map";
+            GameObject wallLayer = new GameObject(level.levelName + " Wall Tile Map"); 
+            wallLayer = level.wallLayer;
             wallLayer.transform.parent = root.transform;
 
-            GameObject fadeLayer = Instantiate(level.fadeablelayer);
-            fadeLayer.name = level.levelName + " Fadeable Object Tile Map";
+            GameObject fadeLayer = new GameObject(level.levelName + " Fadeable Object Tile Map"); 
+            fadeLayer = level.fadeablelayer;
             fadeLayer.transform.parent = root.transform;
 
-            GameObject objLayer = Instantiate(level.placeableLayer);
-            objLayer.name = level.levelName + " Placeable Objects";
+            GameObject objLayer = new GameObject(level.levelName + " Placeable Objects"); 
+            objLayer = level.placeableLayer;
             objLayer.transform.parent = root.transform;
 
             //Check to make sure it has enough spawn points
