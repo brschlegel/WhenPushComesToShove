@@ -418,7 +418,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5068567735713508037, guid: aba33a8fe914191429b307b61790123b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5068567735713508037, guid: aba33a8fe914191429b307b61790123b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -592,63 +592,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elasticity: 0.75
   damageMultiplier: 0.6
---- !u!1001 &611045789
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1691551635500605971, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1691551635500605971, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.5455012
-      objectReference: {fileID: 0}
-    - target: {fileID: 1691551635500605971, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.1857154
-      objectReference: {fileID: 0}
-    - target: {fileID: 1691551635500605971, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1691551635500605971, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1691551635500605971, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1691551635500605971, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1691551635500605971, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1691551635500605971, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1691551635500605971, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1691551635500605971, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1691551635500606957, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
-      propertyPath: m_Name
-      value: Aegis
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
 --- !u!1 &747943603
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,7 +665,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1102380552
 GameObject:
@@ -766,7 +709,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111632795
 GameObject:
@@ -1012,6 +955,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elasticity: 1
   damageMultiplier: 0.6
+--- !u!1 &1335625845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1335625847}
+  - component: {fileID: 1335625846}
+  m_Layer: 0
+  m_Name: GameLogger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1335625846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335625845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60278dfbf59eacd48b24c0c9dd6a067d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDeaths:
+  - 
+  - 
+  - 
+  - 
+  heavyShoveUses: 00000000000000000000000000000000
+  heavyShoveInterrupts: 00000000000000000000000000000000
+  dashUses: 00000000000000000000000000000000
+  numOfRoomsTraveled: 0
+  numOfRunsFailed: 0
+  numOfRunsCompleted: 0
+  currentRoomName: 
+--- !u!4 &1335625847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335625845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.3093023, y: 3.0986733, z: -0.12259478}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1347505019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1199,7 @@ Transform:
   - {fileID: 121138607}
   - {fileID: 33616190}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1953411765
 GameObject:
@@ -1319,7 +1318,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1961304529
 GameObject:
@@ -1354,7 +1353,7 @@ Transform:
   - {fileID: 1425928412}
   - {fileID: 1172629962}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2092420325
 GameObject:
@@ -1434,7 +1433,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
