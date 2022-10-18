@@ -535,6 +535,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elasticity: 1
   damageMultiplier: 0.6
+--- !u!1 &568263437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 568263439}
+  - component: {fileID: 568263438}
+  m_Layer: 0
+  m_Name: GameLogger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &568263438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568263437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60278dfbf59eacd48b24c0c9dd6a067d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDeaths:
+  - 
+  - 
+  - 
+  - 
+  heavyShoveUses: 00000000000000000000000000000000
+  heavyShoveInterrupts: 00000000000000000000000000000000
+  dashUses: 00000000000000000000000000000000
+  numOfRoomsTraveled: 0
+  numOfRunsFailed: 0
+  numOfRunsCompleted: 0
+  currentRoomName: 
+--- !u!4 &568263439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568263437}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.3093023, y: 3.0986733, z: -0.12259478}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &747943603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,6 +1194,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: ab539ef0a976f894bae4a0f49f3d81ff, type: 2}
   - {fileID: 2100000, guid: 2e3e01834e43474408ae72d62e425d0d, type: 2}
   - {fileID: 2100000, guid: b3c1a3bf5cafd17449130a59eaef4f32, type: 2}
+  playerColorNames:
+  - 
+  - 
+  - 
+  - 
   playerOutlines:
   - {fileID: 2100000, guid: e2c460ab223a27c449e071b443963354, type: 2}
   - {fileID: 0}

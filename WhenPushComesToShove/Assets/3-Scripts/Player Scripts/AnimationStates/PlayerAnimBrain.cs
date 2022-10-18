@@ -103,6 +103,7 @@ public class PlayerAnimBrain : StateBrain
         heavyScript.onHeavyCharge += OnHeavyCharge;
 
         heavyState.anim = anim;
+        heavyState.heavyShoveScript = heavyScript;
         heavyScript.onHeavyShove += OnHeavyShove;
         playerInputHandler.onHeavyShoveComplete += OutShove;
 
