@@ -101,8 +101,10 @@ public class PlayerAnimBrain : StateBrain
 
         chargeState.anim = anim;
         heavyScript.onHeavyCharge += OnHeavyCharge;
+        heavyScript.onHeavyFail += OnHeavyFail;
 
         heavyState.anim = anim;
+        heavyState.heavyShoveScript = heavyScript;
         heavyScript.onHeavyShove += OnHeavyShove;
         playerInputHandler.onHeavyShoveComplete += OutShove;
 
@@ -203,6 +205,11 @@ public class PlayerAnimBrain : StateBrain
     public void OnDeath()
     {
         ChangeState(deathState);
+    }
+    
+    public void OnHeavyFail()
+    {
+        ChangeState(idleState);
     }
 
    
