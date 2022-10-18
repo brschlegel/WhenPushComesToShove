@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 0}
   target: {fileID: 0}
+  printInfo: 0
   anim: {fileID: 8174910203704807974}
   pMode: {fileID: 519120853313958755}
   dashScript: {fileID: 3186559500755933933}
@@ -149,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: heavy
   anim: {fileID: 0}
+  heavyShoveScript: {fileID: 0}
 --- !u!114 &2033113999610898427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5293,7 +5295,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heavyShoveIsCharging: 0
   heavyShoveCharge: 0
-  heavyShoveChargeTime: 1
+  lowTierChargeTime: 0.3
+  midTierChargeTime: 0.5
+  highTierChargeTime: 1
+  chargeLevel: 0
   speedDecrease: 0.2
   hitbox: {fileID: 5245641597600162962}
   cooldown: 0.35
@@ -6245,6 +6250,10 @@ PrefabInstance:
       propertyPath: owner
       value: 
       objectReference: {fileID: 6273220948599445249}
+    - target: {fileID: 6854435290789191521, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
+      propertyPath: handler
+      value: 
+      objectReference: {fileID: 7896129718564220858}
     - target: {fileID: 6854435290789191532, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_Color.b
       value: 0.7426162
@@ -6351,6 +6360,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+--- !u!114 &7896129718564220858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245641597600162963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7373120e58469145a57596344049d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore:
+  - GhostShove
 --- !u!4 &5245641597600162974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
@@ -6593,6 +6616,10 @@ PrefabInstance:
       propertyPath: owner
       value: 
       objectReference: {fileID: 6273220948599445249}
+    - target: {fileID: 6854435290789191521, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
+      propertyPath: handler
+      value: 
+      objectReference: {fileID: 6467932630811310649}
     - target: {fileID: 6854435290789191532, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_Color.b
       value: 0.9607843
@@ -6688,6 +6715,19 @@ MonoBehaviour:
   type: 0
   strength: 9000
   axis: 0
+--- !u!114 &6467932630811310649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763200320402767856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7373120e58469145a57596344049d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
 --- !u!114 &763200320402767857 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6854435290789191521, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}

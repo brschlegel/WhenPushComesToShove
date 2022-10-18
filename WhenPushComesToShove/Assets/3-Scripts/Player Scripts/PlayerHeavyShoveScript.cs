@@ -85,7 +85,10 @@ public class PlayerHeavyShoveScript : MonoBehaviour
             //Assign Release Method
             context.action.canceled += WaitForChargeRelease;
 
-            handler.rumble.RumbleLinear(0, .5f, 0, .5f, highTierChargeTime, true);
+            if (!handler.playerConfig.IsDead)
+            {
+                handler.rumble.RumbleLinear(0, .5f, 0, .5f, highTierChargeTime, true);
+            }
 
             heavyShoveIsCharging = true;
             heavyShoveCharge = 0;
@@ -184,6 +187,10 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     private IEnumerator ShoveRumbleDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        handler.rumble.RumbleConstant(1.7f, 2f, .4f);
+
+        if (!handler.playerConfig.IsDead)
+        {
+            handler.rumble.RumbleConstant(1.7f, 2f, .4f);
+        }
     }
 }
