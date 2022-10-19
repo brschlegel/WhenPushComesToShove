@@ -92,30 +92,31 @@ public class LevelEditor : MonoBehaviour
             //Compares the first layer to see if it matches
             if (gameObject.transform.GetChild(0) != selectedLevelFirstChild)
             {
-                DeleteChildren(gameObject, gameObject.transform.childCount);
+                UnpackLevel(selectedLevel);
+                //DeleteChildren(gameObject, gameObject.transform.childCount);
 
-                GameObject levelRoot = (GameObject)PrefabUtility.InstantiatePrefab(selectedLevel);
-                PrefabUtility.UnpackPrefabInstance(levelRoot, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
+                //GameObject levelRoot = (GameObject)PrefabUtility.InstantiatePrefab(selectedLevel);
+                //PrefabUtility.UnpackPrefabInstance(levelRoot, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
 
 
-                //Add the selected levels sprite layers to the editor
-                selectedLevelFirstChild = levelRoot.transform.GetChild(0).gameObject;
-                selectedLevelFirstChild.transform.parent = transform;
-                floorLayer = selectedLevelFirstChild;
+                ////Add the selected levels sprite layers to the editor
+                //selectedLevelFirstChild = levelRoot.transform.GetChild(0).gameObject;
+                //selectedLevelFirstChild.transform.parent = transform;
+                //floorLayer = selectedLevelFirstChild;
 
-                GameObject secondLayer = levelRoot.transform.GetChild(0).gameObject;
-                secondLayer.transform.parent = transform;
-                wallLayer = secondLayer;
+                //GameObject secondLayer = levelRoot.transform.GetChild(0).gameObject;
+                //secondLayer.transform.parent = transform;
+                //wallLayer = secondLayer;
 
-                GameObject thirdLayer = levelRoot.transform.GetChild(0).gameObject;
-                thirdLayer.transform.parent = transform;   
-                fadeablelayer = thirdLayer;
+                //GameObject thirdLayer = levelRoot.transform.GetChild(0).gameObject;
+                //thirdLayer.transform.parent = transform;   
+                //fadeablelayer = thirdLayer;
 
-                GameObject fourthLayer = levelRoot.transform.GetChild(0).gameObject;
-                fourthLayer.transform.parent = transform;
-                placeableLayer = fourthLayer;
+                //GameObject fourthLayer = levelRoot.transform.GetChild(0).gameObject;
+                //fourthLayer.transform.parent = transform;
+                //placeableLayer = fourthLayer;
 
-                DestroyImmediate(levelRoot);
+                //DestroyImmediate(levelRoot);
             }
                 
         }
@@ -149,6 +150,7 @@ public class LevelEditor : MonoBehaviour
     //Spawns the selected object at the current mouse position
     public void SpawnObject()
     {
+        //Will only spawn an object if the Object Selection Window is open
         if (EditorWindow.HasOpenInstances<ObjectSelectionWindow>())
         {
             GameObject newObject = (GameObject)PrefabUtility.InstantiatePrefab(currentWindow.selectedObject);
@@ -167,23 +169,54 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
-    public void SetActiveChildren(GameObject parent, bool active, int startingIndex = -1)
+    /// <summary>
+    /// Spawns a prefabed level, unpacks it, and assigns the appropriate layers into the level editor
+    /// </summary>
+    /// <param name="level">A prefabed level gameObject</param>
+    public void UnpackLevel(GameObject level)
     {
-        if (startingIndex == -1)
-            startingIndex = parent.transform.childCount;
-        for (int i = startingIndex - 1; i >= 0; i--)
+        if (!PrefabUtility.IsPartOfAnyPrefab(level))
         {
-            parent.transform.GetChild(i).gameObject.SetActive(active);
+            Debug.LogError("Object is not a prefab");
+            return;
         }
+
+        DeleteChildren(gameObject, gameObject.transform.childCount);
+
+        GameObject levelRoot = (GameObject)PrefabUtility.InstantiatePrefab(level);
+        PrefabUtility.UnpackPrefabInstance(levelRoot, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
+
+
+        //Add the selected levels sprite layers to the editor
+        selectedLevelFirstChild = levelRoot.transform.GetChild(0).gameObject;
+        selectedLevelFirstChild.transform.parent = transform;
+        floorLayer = selectedLevelFirstChild;
+
+        GameObject secondLayer = levelRoot.transform.GetChild(0).gameObject;
+        secondLayer.transform.parent = transform;
+        wallLayer = secondLayer;
+
+        GameObject thirdLayer = levelRoot.transform.GetChild(0).gameObject;
+        thirdLayer.transform.parent = transform;
+        fadeablelayer = thirdLayer;
+
+        GameObject fourthLayer = levelRoot.transform.GetChild(0).gameObject;
+        fourthLayer.transform.parent = transform;
+        placeableLayer = fourthLayer;
+
+        DestroyImmediate(levelRoot);
     }
 
+    /// <summary>
+    /// Resets the level editor to the default layers
+    /// </summary>
     public void Reset()
     {
         //Resets the editor if a level is loaded in
         if(gameObject.transform.childCount > 4)
         {
             DeleteChildren(gameObject, gameObject.transform.childCount, gameObject.transform.childCount - 4);
-            SetActiveChildren(gameObject, true, 4);
+            //SetActiveChildren(gameObject, true, 4);
 
             floorLayer = gameObject.transform.GetChild(0).gameObject;
             wallLayer = gameObject.transform.GetChild(1).gameObject;
@@ -251,32 +284,26 @@ public class CustomLevelEditor : Editor
             if(levelWaveManager.waveDelays.Count > 0)
                 rootWaveManager.waveDelays = levelWaveManager.waveDelays;
 
-            GameObject floorLayer = new GameObject(level.levelName + " Floor Tile Map");
-            floorLayer = level.floorLayer;
-            floorLayer.transform.parent = root.transform;
+            //GameObject floorLayer = new GameObject(level.levelName + " Floor Tile Map");
+            //floorLayer = level.floorLayer;
+            level.floorLayer.transform.parent = root.transform;
 
-            GameObject wallLayer = new GameObject(level.levelName + " Wall Tile Map"); 
-            wallLayer = level.wallLayer;
-            wallLayer.transform.parent = root.transform;
+            level.wallLayer.transform.parent = root.transform;
 
-            GameObject fadeLayer = new GameObject(level.levelName + " Fadeable Object Tile Map"); 
-            fadeLayer = level.fadeablelayer;
-            fadeLayer.transform.parent = root.transform;
+            level.fadeablelayer.transform.parent = root.transform;
 
-            GameObject objLayer = new GameObject(level.levelName + " Placeable Objects"); 
-            objLayer = level.placeableLayer;
-            objLayer.transform.parent = root.transform;
+            level.placeableLayer.transform.parent = root.transform;
 
             //Check to make sure it has enough spawn points
             int numOfPlayerSpawn = 0;
             List<GameObject> playerSpawns = new List<GameObject>();
 
-            for(int i = 0; i < objLayer.transform.childCount; i++)
+            for(int i = 0; i < level.placeableLayer.transform.childCount; i++)
             {
-                if (objLayer.transform.GetChild(i).CompareTag("PlayerSpawn"))
+                if (level.placeableLayer.transform.GetChild(i).CompareTag("PlayerSpawn"))
                 {
                     numOfPlayerSpawn++;
-                    playerSpawns.Add(objLayer.transform.GetChild(i).gameObject);
+                    playerSpawns.Add(level.placeableLayer.transform.GetChild(i).gameObject);
                 }
             }
 
@@ -301,10 +328,10 @@ public class CustomLevelEditor : Editor
             //Check to make sure there's at least one enemy spawn point
 
             List<GameObject> enemySpawns = new List<GameObject>();
-            for(int i = 0; i < objLayer.transform.childCount; i++)
+            for(int i = 0; i < level.placeableLayer.transform.childCount; i++)
             {
-                if (objLayer.transform.GetChild(i).CompareTag("EnemySpawn"))
-                    enemySpawns.Add(objLayer.transform.GetChild(i).gameObject);
+                if (level.placeableLayer.transform.GetChild(i).CompareTag("EnemySpawn"))
+                    enemySpawns.Add(level.placeableLayer.transform.GetChild(i).gameObject);
             }
 
             if(enemySpawns.Count <= 0)
@@ -365,7 +392,10 @@ public class CustomLevelEditor : Editor
                 return;
             }
 
-            PrefabUtility.SaveAsPrefabAsset(root, path);
+            GameObject savedLevel = PrefabUtility.SaveAsPrefabAsset(root, path);
+
+            //Resets the level editor layers with the current saved level
+            level.UnpackLevel(savedLevel);
 
             DestroyImmediate(root);
         }
