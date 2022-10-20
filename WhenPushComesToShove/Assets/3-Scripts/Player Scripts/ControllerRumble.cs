@@ -229,4 +229,12 @@ public class ControllerRumble : MonoBehaviour
 
         return gamepad;
     }
+
+    public void OnApplicationQuit()
+    {
+        foreach (Gamepad g in Gamepad.all)
+        {
+            g.SetMotorSpeeds(0, 0);
+        }
+    }
 }
