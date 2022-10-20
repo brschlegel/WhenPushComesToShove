@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 0}
   target: {fileID: 0}
+  printInfo: 0
   chase: {fileID: 999011920109504316}
   anim: {fileID: 999011919433777032}
   hitboxObject: {fileID: 5963588997929702906}
@@ -125,6 +126,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   pMode: {fileID: 0}
   animName: 
+  movement: {fileID: 0}
   additionalStunTime: 0
 --- !u!114 &881103320
 MonoBehaviour:
@@ -861,7 +863,6 @@ MonoBehaviour:
   - GhostShove
   outputs:
   - {fileID: 999011920278194450}
-  - {fileID: 999011920278194456}
   - {fileID: 2035447770}
 --- !u!114 &999011920278194456
 MonoBehaviour:

@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 9140009309393457803}
   - component: {fileID: 6240977951772545681}
   - component: {fileID: 5392324239625985224}
+  - component: {fileID: 104856298491915084}
   m_Layer: 9
   m_Name: Spring2_S2A1_1 Wall Tile Map
   m_TagString: Untagged
@@ -1550,6 +1551,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &104856298491915084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4834867313150495428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8868fc24decd05e40b88174ab164b657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elasticity: 0
+  damageMultiplier: 0
+  damage: 5
 --- !u!1 &4978261441989576483
 GameObject:
   m_ObjectHideFlags: 0

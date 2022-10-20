@@ -6,7 +6,7 @@ public class InvulnerabiltyOnHit : HitHandler
 {
     [SerializeField] private float timeForInvulnerability = .5f;
     [SerializeField] private GameObject hurtboxRef;
-    [SerializeField] private PlayerHealth health;
+    [SerializeField] private Health health;
 
     public override void ReceiveHit(HitEvent e)
     {

@@ -5804,7 +5804,6 @@ MonoBehaviour:
   tagsToIgnore: []
   outputs:
   - {fileID: 5050357902423793123}
-  - {fileID: 5928355534833855564}
   - {fileID: 1075145129282054902}
   - {fileID: 102798743431046658}
   - {fileID: 5021299487003338702}
@@ -6347,19 +6346,6 @@ MonoBehaviour:
   type: 0
   strength: 13500
   axis: 0
---- !u!114 &8959929956123766181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5245641597600162963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62293ab1ddc4be04db4db7a9db165809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
 --- !u!114 &7896129718564220858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6374,6 +6360,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToIgnore:
   - GhostShove
+--- !u!114 &8959929956123766181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245641597600162963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62293ab1ddc4be04db4db7a9db165809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
 --- !u!4 &5245641597600162974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
