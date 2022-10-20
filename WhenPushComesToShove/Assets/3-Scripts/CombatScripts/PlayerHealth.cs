@@ -31,7 +31,12 @@ public class PlayerHealth : Health
         playerMat = this.gameObject.GetComponentInParent<SpriteRenderer>().material;
         Debug.Log("turning white woo");
         playerMat.SetInt("_IsDamaged", 1);
-        playerInputRef.rumble.RumbleLinear(.4f, 0, .8f, 0, .2f, false);
+
+        if (!dead)
+        {
+            playerInputRef.rumble.RumbleLinear(.4f, 0, .8f, 0, .2f, false);
+        }
+
         StartCoroutine(DamageFlash());
     }
 

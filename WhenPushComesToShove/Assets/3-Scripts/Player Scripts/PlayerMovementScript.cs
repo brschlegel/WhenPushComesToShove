@@ -59,7 +59,7 @@ public class PlayerMovementScript : Move
         Vector2 unitMove = moveInputVector;
       
         //If moving but not aiming, default aim to move direction
-        if (aimInputVector == Vector2.zero && unitMove != Vector2.zero)
+        if (aimInputVector == Vector2.zero && unitMove != Vector2.zero && forceAimLocks <=  0)
         {
             player.right = unitMove.normalized;
             aimTriangle.eulerAngles = new Vector3(fixedX, fixedY, player.transform.eulerAngles.z);
@@ -155,6 +155,7 @@ public class PlayerMovementScript : Move
     {
         if (movementUnlockRoutine != null)
         {
+            forceMovementLocks--;
             StopCoroutine(movementUnlockRoutine);
         }
 

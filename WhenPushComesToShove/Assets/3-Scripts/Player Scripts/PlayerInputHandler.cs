@@ -108,7 +108,6 @@ public class PlayerInputHandler : MonoBehaviour
             if (!performingAction && !heavyShoveScript.heavyShoveIsCharging)
             {
                 lightShoveScript.OnLightShoveStart(obj);
-                rumble.RumbleConstant(.2f, .4f, .1f);
             }
             
         }
