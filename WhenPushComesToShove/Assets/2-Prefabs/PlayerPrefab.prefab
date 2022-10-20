@@ -5736,6 +5736,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 100
   dead: 0
+  invulnerable: 0
   playerInputRef: {fileID: 1870107280854562992}
   collider: {fileID: 820262909753106286}
   playerGroundUIRef: {fileID: 6065905207172843190}
@@ -5806,7 +5807,6 @@ MonoBehaviour:
   tagsToIgnore: []
   outputs:
   - {fileID: 5050357902423793123}
-  - {fileID: 5928355534833855564}
   - {fileID: 1075145129282054902}
   - {fileID: 102798743431046658}
   - {fileID: 5021299487003338702}
@@ -6222,6 +6222,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 785969333551660514, guid: 86b3ffbad70e63442ab800a21125f07b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 785969334226776665, guid: 86b3ffbad70e63442ab800a21125f07b, type: 3}
       propertyPath: horizontalOffset.y
       value: 0.2
@@ -6588,6 +6592,14 @@ PrefabInstance:
     - target: {fileID: 6854435290789191521, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: priority
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191532, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191532, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_RootOrder
