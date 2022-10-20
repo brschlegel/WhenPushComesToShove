@@ -5,11 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class WallData : MonoBehaviour
 {
-    [Tooltip("How much an object will bounce off of this wall (0 for no bounce, 1 for no speed lost")]
-    [Range(0,1)]
-    public float elasticity;
-    [Tooltip("How much to multiply the velocity-based damage multiplier")]
-    public float damageMultiplier;
+    //[Tooltip("How much an object will bounce off of this wall (0 for no bounce, 1 for no speed lost")]
+    //[Range(0,1)]
+    //public float elasticity;
+    //[Tooltip("How much to multiply the velocity-based damage multiplier")]
+    //public float damageMultiplier;
 
     public float damage = 5f;
     public float velocityDamageMultiplier = 1f;
