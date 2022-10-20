@@ -287,12 +287,16 @@ public class CustomLevelEditor : Editor
             //GameObject floorLayer = new GameObject(level.levelName + " Floor Tile Map");
             //floorLayer = level.floorLayer;
             level.floorLayer.transform.parent = root.transform;
+            level.floorLayer.name = level.levelName + " Floor Tile Map";
 
             level.wallLayer.transform.parent = root.transform;
+            level.wallLayer.name = level.levelName + " Wall Tile Map";
 
             level.fadeablelayer.transform.parent = root.transform;
+            level.fadeablelayer.name = level.levelName + " Fadeable Object Tile Map";
 
             level.placeableLayer.transform.parent = root.transform;
+            level.placeableLayer.name = level.levelName + " Placeable Objects";
 
             //Check to make sure it has enough spawn points
             int numOfPlayerSpawn = 0;

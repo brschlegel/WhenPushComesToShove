@@ -22,6 +22,8 @@ public class PlayerDashScript : MonoBehaviour
 
     [SerializeField] private List<string> tagsToIgnoreDuringDash;
 
+    [SerializeField] private ParticleSystem dashVFX;
+
     public void Start()
     {
         mover = GetComponent<PlayerMovementScript>();
@@ -42,7 +44,11 @@ public class PlayerDashScript : MonoBehaviour
     public void PerformDash(PlayerMovementScript mover)
     {
         Vector2 dashDirection = DetermineDashDirection(mover);
-
+        if (dashDirection.x > 0)
+            dashVFX.transform.localScale = new Vector3(1, 1, 1);
+        else if (dashDirection.x < 0)
+            dashVFX.transform.localScale = new Vector3(-1, 1, 1);
+        dashVFX.Play();
         if (pMode != null)
         {
             pMode.AddForce(dashDirection * dashSpeed);

@@ -64,7 +64,7 @@ public class PlayerAnimBrain : StateBrain
             {
                 case "dash":
                     dashState = state;
-                    dashState.animName = "Base Layer.AN_Player_Dead";
+                    dashState.animName = "Base Layer.AN_Player_Run";
                     break;
                 case "death":
                     deathState = state;
