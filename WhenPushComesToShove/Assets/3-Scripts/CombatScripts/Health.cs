@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     protected float currentHealth;
     public float maxHealth;
     [HideInInspector] public bool dead;
+    [HideInInspector] public bool invulnerable = false;
 
 
     public float CurrentHealth
@@ -38,5 +39,14 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
         dead = false;
+    }
+
+    public IEnumerator WallInvulnerabilityCooldown(float cooldown)
+    {
+        invulnerable = true;
+
+        yield return new WaitForSeconds(cooldown);
+
+        invulnerable = false;
     }
 }

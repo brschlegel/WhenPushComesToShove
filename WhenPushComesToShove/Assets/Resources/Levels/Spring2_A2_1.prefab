@@ -478,6 +478,23 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &5368406801322812147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552883678611428149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8868fc24decd05e40b88174ab164b657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elasticity: 0
+  damageMultiplier: 0
+  damage: 5
+  velocityDamageMultiplier: 1
+  invulnerabilityCooldown: 0.5
 --- !u!1 &2809193586344139202
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +605,7 @@ GameObject:
   - component: {fileID: 3483434752451528671}
   - component: {fileID: 3857791981492251971}
   - component: {fileID: 3441709215257092947}
+  - component: {fileID: 1208080329433220870}
   m_Layer: 9
   m_Name: Spring2_A2_1 Wall Tile Map
   m_TagString: Untagged
@@ -1618,6 +1636,23 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &1208080329433220870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801488687947163855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8868fc24decd05e40b88174ab164b657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elasticity: 0
+  damageMultiplier: 0
+  damage: 5
+  velocityDamageMultiplier: 1
+  invulnerabilityCooldown: 0.5
 --- !u!1 &6426573355860594507
 GameObject:
   m_ObjectHideFlags: 0
