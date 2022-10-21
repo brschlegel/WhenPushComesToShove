@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1447949663030998358}
   - component: {fileID: 7053930987660483297}
   - component: {fileID: 8135458713416601239}
+  - component: {fileID: 1435043008208320802}
   m_Layer: 9
   m_Name: Spring3_A3_1 Wall Tile Map
   m_TagString: Untagged
@@ -1048,6 +1049,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &1435043008208320802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853366872785907403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8868fc24decd05e40b88174ab164b657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  velocityDamageMultiplier: 1
+  invulnerabilityCooldown: 0.5
 --- !u!1 &2150903252198399710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,6 +1314,7 @@ GameObject:
   - component: {fileID: 2225311926336335621}
   - component: {fileID: 6784957320752495260}
   - component: {fileID: 3960935273321811960}
+  - component: {fileID: 4701186967088754309}
   m_Layer: 8
   m_Name: Spring3_A3_1 Fadeable Object Tile Map
   m_TagString: Untagged
@@ -1728,6 +1745,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &4701186967088754309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8064470781192247036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8868fc24decd05e40b88174ab164b657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  velocityDamageMultiplier: 1
+  invulnerabilityCooldown: 0.5
 --- !u!1 &9121285824463438242
 GameObject:
   m_ObjectHideFlags: 0
