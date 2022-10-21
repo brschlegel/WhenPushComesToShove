@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 1691551635500605974}
   - component: {fileID: 1691551635500605968}
   - component: {fileID: 4153954044386247525}
+  - component: {fileID: 3459914305538832937}
   m_Layer: 0
   m_Name: Aegis
   m_TagString: Enemy
@@ -359,6 +360,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3459914305538832937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691551635500606957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c180284298034c49970693e6b63e180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1691551635828435700
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,12 +673,14 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   pMode: {fileID: 0}
+  eventSplitter: {fileID: 3459914305538832937}
   target: {x: 0, y: 0}
   movementLocked: 0
   maxLookAhead: 10
   numSeeRays: 6
   raySeperation: 10
   collisionCorrectionScalar: 2
+  collisionCorrection: {x: 0, y: 0}
 --- !u!114 &1691551637299122766
 MonoBehaviour:
   m_ObjectHideFlags: 0

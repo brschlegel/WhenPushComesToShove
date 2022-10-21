@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Freya;
 
-public class MoveWithAvoidance : Move
+public class MoveWithAvoidance : Move, ICollisionListener
 {
 
+    [SerializeField]
+    private CollisionEventSplitter eventSplitter;
 
     [Header("Enemy")]
     public Vector2 target;
@@ -17,7 +19,20 @@ public class MoveWithAvoidance : Move
     public float raySeperation;
     public float collisionCorrectionScalar;
 
-    private Vector2 collisionCorrection;
+    public Vector2 collisionCorrection;
+
+    private void Start()
+    {
+        if (!eventSplitter.listeners.Contains(this))
+        {
+            Init();
+        }
+    }
+
+    public override void Init()
+    {
+        eventSplitter.listeners.Add(this);
+    }
 
     public Vector3 GetMovementDirection(Vector2 target)
     {
@@ -39,7 +54,8 @@ public class MoveWithAvoidance : Move
             float sign = (i % 2 == 0) ? -1 : 1;
             float delta = sign * ((i+1) / 2) * raySeperation;
             //If our velocity is zero, then use to target to try and move from
-            Vector2 baseVector = pMode.Velocity.sqrMagnitude >= .01f ? pMode.Velocity : toTarget;
+          //  Vector2 baseVector = pMode.Velocity.sqrMagnitude >= .01f ? pMode.Velocity : toTarget;
+          Vector2 baseVector = toTarget;
             Vector2 v  = MathfsExtensions.Rotate(baseVector, Freya.MathfsExtensions.DegToRad(delta));
             RaycastHit2D hit = Physics2D.Raycast(transform.position, v.normalized, maxLookAhead, 1 << LayerMask.NameToLayer("Obstacle"));
             Color c = Color.green;
@@ -52,7 +68,7 @@ public class MoveWithAvoidance : Move
                 Debug.DrawLine(transform.position, transform.position +  (Vector3)v.normalized * maxLookAhead,c );
                 return (collisionCorrection + v).normalized;
             }
-         
+              Debug.DrawLine(transform.position, transform.position +  (Vector3)v.normalized * maxLookAhead,c );
 
         }
         return new Vector2(-toTarget.y, toTarget.x).normalized;
@@ -76,6 +92,7 @@ public class MoveWithAvoidance : Move
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("called");
         collisionCorrection = collision.contacts[0].normal * collisionCorrectionScalar;
     }
 
