@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class EnemyPrefabReturn : MonoBehaviour
 {
-    [HideInInspector]static Object[] allEnemies;
-    //private void Awake()
-    //{
-    //    if(allEnemies == null)
-    //        allEnemies = Resources.LoadAll("Enemy"); 
-    //}
-    static public GameObject ReturnEnemyPrefab(EnemyTypes type)
+    public static EnemyPrefabReturn instance;
+    [SerializeField] GameObject[] allEnemies;
+
+    private void Awake()
+    {
+        if (!instance)
+            instance = this;
+    }
+
+    public GameObject ReturnEnemyPrefab(EnemyTypes type)
     {
         GameObject enemy = null;
 
@@ -27,15 +30,12 @@ public class EnemyPrefabReturn : MonoBehaviour
         return enemy;
     }
 
-    static GameObject FindEnemy(string name)
+    GameObject FindEnemy(string name)
     {
-        if (allEnemies == null)
-            allEnemies = Resources.LoadAll("Enemy");
-
-        foreach (Object obj in allEnemies)
+        foreach (GameObject obj in allEnemies)
         {
             if (obj.name == name)
-                return (GameObject)obj;
+                return obj;
         }
         return null;
     }

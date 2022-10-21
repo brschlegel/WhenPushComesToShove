@@ -39,7 +39,7 @@ public class EnemySpawnPoint : MonoBehaviour
          foreach(EnemyWaveSpawn.EnemyWaveStats stat in waves[waveNum])
         {
             yield return new WaitForSeconds(stat.spawnDelay);
-            GameObject obj = Instantiate(EnemyPrefabReturn.ReturnEnemyPrefab(stat.enemy), transform.position, Quaternion.identity);
+            GameObject obj = Instantiate(EnemyPrefabReturn.instance.ReturnEnemyPrefab(stat.enemy), transform.position, Quaternion.identity);
             obj.transform.parent = enemyPool.transform;
         }
 
