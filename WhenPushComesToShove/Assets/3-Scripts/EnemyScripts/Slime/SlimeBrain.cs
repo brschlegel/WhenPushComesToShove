@@ -11,6 +11,7 @@ public class SlimeBrain : StateBrain
     SlimeLand landState;
     EnemyHit hitState;
     PlayAnimState deathState;
+    EnemyStun stunState;
     //#endregion
 
 
@@ -26,6 +27,8 @@ public class SlimeBrain : StateBrain
     private ProjectileMode pMode;
     [SerializeField]
     private EventOnHit hitEvent;
+    [SerializeField]
+    private TagFilterHitHandler tagFilter;
 
 
     private void Start()
@@ -60,6 +63,7 @@ public class SlimeBrain : StateBrain
         landState = GetComponent<SlimeLand>();
         hitState = GetComponent<EnemyHit>();
         deathState = GetComponent<PlayAnimState>();
+        stunState = GetComponent<EnemyStun>();
 
         idleState.onStateExit += OutIdle;
 
@@ -86,6 +90,12 @@ public class SlimeBrain : StateBrain
         hitState.movement = chase;
         hitEvent.onHit += OnHit; 
         hitState.onStateExit += OutHit;
+
+        stunState.anim = anim;
+        stunState.animName = "Base.Slime_Hit";
+        stunState.movement = chase;
+        stunState.onStateExit += OutStun;
+        tagFilter.onHitWithTag += OnStun;
         
 
         currentState = idleState;
@@ -147,6 +157,14 @@ public class SlimeBrain : StateBrain
         }
     }
 
+    private void OutStun(bool success)
+    {
+        if(success)
+        {
+            ChangeState(runState);
+        }
+    }
+
     /// <summary>
     /// When slime gets hit, change to hit state
     /// </summary>
@@ -166,6 +184,11 @@ public class SlimeBrain : StateBrain
         currentState = deathState;
         deathState.enabled = true;
         chase.LockMovement();
+    }
+
+    public void OnStun(string tag)
+    {
+        ChangeState(stunState);
     }
 
 

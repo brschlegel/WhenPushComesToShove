@@ -2562,6 +2562,7 @@ GameObject:
   - component: {fileID: 6308681695778988076}
   - component: {fileID: 4137438006139791689}
   - component: {fileID: 4364489653437084809}
+  - component: {fileID: 3179529936506401575}
   m_Layer: 8
   m_Name: Lobby Fadeable Object Tile Map
   m_TagString: Untagged
@@ -2768,6 +2769,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &3179529936506401575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541427179584941931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8868fc24decd05e40b88174ab164b657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  velocityDamageMultiplier: 1
+  invulnerabilityCooldown: 0.5
 --- !u!1 &6254306470328373913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2886,6 +2902,7 @@ GameObject:
   - component: {fileID: 2157133409002224784}
   - component: {fileID: 1876146150487043769}
   - component: {fileID: 3358382345399363404}
+  - component: {fileID: 8166620459929720417}
   m_Layer: 9
   m_Name: Lobby Wall Tile Map
   m_TagString: Untagged
@@ -7357,6 +7374,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &8166620459929720417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6273454438970049299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8868fc24decd05e40b88174ab164b657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  velocityDamageMultiplier: 1
+  invulnerabilityCooldown: 0.5
 --- !u!1 &6555242785729572706
 GameObject:
   m_ObjectHideFlags: 0

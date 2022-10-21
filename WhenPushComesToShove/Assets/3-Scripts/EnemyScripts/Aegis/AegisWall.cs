@@ -8,7 +8,7 @@ public class AegisWall : MonoBehaviour
     private MoveWithAvoidance move;
     [HideInInspector]
     public Transform target;
-    [HideInInspector]
+    //[HideInInspector]
     public bool stunned;
     [HideInInspector]
     public Transform wallTransform;
