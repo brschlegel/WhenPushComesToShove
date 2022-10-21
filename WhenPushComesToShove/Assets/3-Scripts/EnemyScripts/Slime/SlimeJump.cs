@@ -18,6 +18,8 @@ public class SlimeJump : State
     private float secondsStationary;
     [SerializeField]
     private float jumpSpeed;
+    [SerializeField]
+    private float jumpOffset;
     private void OnEnable()
     {
         enumerator = CoroutineManager.StartGlobalCoroutine(AttackCoroutine(target));
@@ -42,8 +44,10 @@ public class SlimeJump : State
         {
             chase.LockMovement();
             yield return new WaitForSeconds(secondsStationary);
-            targetLocation = target.position;
+            targetLocation = Vector2.Lerp(transform.position, target.position, jumpOffset);
+            Debug.DrawLine(transform.position, targetLocation, Color.green, 1.0f);
             tween = transform.parent.GetComponent<Rigidbody2D>().DOMove((Vector3)targetLocation, jumpSpeed).SetSpeedBased().SetEase(Ease.InQuad);
+            tween.SetUpdate(UpdateType.Fixed);
             yield return tween.WaitForCompletion();
             this.enabled = false;
             InvokeOnStateExit(true);

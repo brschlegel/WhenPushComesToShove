@@ -11,6 +11,7 @@ public class AegisBrain : StateBrain
     AegisAttack attackState;
     AegisBlock blockState;
     PlayAnimState deathState;
+    AegisStun stunState;
 
     [SerializeField]
     AegisWall wall;
@@ -28,6 +29,8 @@ public class AegisBrain : StateBrain
     private WallFilterHitHandler wallFilter;
     [SerializeField]
     private GameObject rootObject;
+    [SerializeField]
+    private TagFilterHitHandler tagFilter;
     // Start is called before the first frame update
     void Start() 
     {
@@ -57,6 +60,7 @@ public class AegisBrain : StateBrain
         attackState = GetComponent<AegisAttack>();
         blockState = GetComponent<AegisBlock>();
         deathState = GetComponent<PlayAnimState>();
+        stunState = GetComponent<AegisStun>();
 
         setupState.anim = anim;
         setupState.onStateExit += OutSetup;
@@ -75,6 +79,14 @@ public class AegisBrain : StateBrain
         hitState.wall = wall;
         hitState.movement = chase;
         hitState.onStateExit += OutHit;
+
+        stunState.anim = anim;
+        stunState.animName = "Base Layer.Enemy Hit";
+        stunState.movement = chase;
+        stunState.wall = wall;
+        stunState.onStateExit += OutStun;
+        tagFilter.onHitWithTag += OnStun;
+
 
         attackState.anim = anim;
         attackState.wall = wall;
@@ -152,6 +164,14 @@ public class AegisBrain : StateBrain
         }
     }
 
+    private void OutStun(bool success)
+    {
+        if(success)
+        {
+            ChangeState(runState);
+        }
+    }
+
     public void OnHit(HitEvent e)
     {
 
@@ -174,5 +194,10 @@ public class AegisBrain : StateBrain
     {
         ChangeState(deathState);
         chase.LockMovement();
+    }
+
+    public void OnStun(string tag)
+    {
+        ChangeState(stunState);
     }
 }

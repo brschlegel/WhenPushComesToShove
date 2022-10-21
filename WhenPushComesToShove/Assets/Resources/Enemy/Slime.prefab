@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 881103315}
   - component: {fileID: 881103320}
   - component: {fileID: 6251813542473979276}
+  - component: {fileID: 8428468861632220656}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -52,12 +53,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 0}
   target: {fileID: 0}
+  printInfo: 0
   chase: {fileID: 999011920109504316}
   anim: {fileID: 999011919433777032}
   hitboxObject: {fileID: 5963588997929702906}
   rootObject: {fileID: 999011918721937567}
   pMode: {fileID: 2522405558536066583}
   hitEvent: {fileID: 2035447770}
+  tagFilter: {fileID: 3687027091507280030}
 --- !u!114 &881103318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +112,7 @@ MonoBehaviour:
   chase: {fileID: 0}
   secondsStationary: 0.2
   jumpSpeed: 5
+  jumpOffset: 0
 --- !u!114 &881103315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +129,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   pMode: {fileID: 0}
   animName: 
+  movement: {fileID: 0}
   additionalStunTime: 0
 --- !u!114 &881103320
 MonoBehaviour:
@@ -155,6 +160,23 @@ MonoBehaviour:
   id: Death
   anim: {fileID: 0}
   animName: Base.SpikedSlime_Death
+--- !u!114 &8428468861632220656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881103313}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdadefdf9ea4fcb4fbb209c810ddfa99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  anim: {fileID: 0}
+  movement: {fileID: 0}
+  animName: 
+  stunTime: 1
 --- !u!1 &999011918721937567
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +668,6 @@ GameObject:
   m_Component:
   - component: {fileID: 575259086140682081}
   - component: {fileID: 3299932415865420950}
-  - component: {fileID: 4283319809092758573}
   m_Layer: 10
   m_Name: FeetCollider
   m_TagString: Untagged
@@ -695,22 +716,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 0.05}
   m_EdgeRadius: 0
---- !u!114 &4283319809092758573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2456956712685644366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3f634404b37d04d88004afa5ddc04e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handler: {fileID: 999011920278194451}
-  priority: 0
-  owner: {fileID: 999011918721937567}
-  ownersToIgnore: []
 --- !u!1001 &999011918593432200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -725,7 +730,7 @@ PrefabInstance:
     - target: {fileID: 1864335183953101693, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: handler
       value: 
-      objectReference: {fileID: 999011920278194451}
+      objectReference: {fileID: 3687027091507280030}
     - target: {fileID: 7725880952350467008, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: m_Name
       value: Hurtbox
@@ -891,6 +896,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df9f769fc77c024eae2d36121e3ca8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3687027091507280030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415990179920017736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a8ae5949d520c4daa9d1f6a9620e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  tagsToFilter:
+  - GhostShove
+  fallbackHandler: {fileID: 999011920278194451}
 --- !u!1001 &999011919620934298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -928,19 +949,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2931
+      value: 0.45073885
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1568
+      value: 0.22437583
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.02
+      value: 0.0185
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.128
+      value: -0.0863
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_LocalPosition.z

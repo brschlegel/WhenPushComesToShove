@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AegisHit : EnemyHit
+public class AegisStun : EnemyStun
 {
+
     [HideInInspector]
     public AegisWall wall;
-    
-     protected override void OnEnable()
+    protected override void OnEnable()
     {
         base.OnEnable();
         wall.stunned = true;
