@@ -6,7 +6,7 @@ public class AegisWall : MonoBehaviour
 {
     [HideInInspector]
     public Transform target;
-    [HideInInspector]
+    //[HideInInspector]
     public bool stunned;
     public Transform wallTransform;
     public float offset;
