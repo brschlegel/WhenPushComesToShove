@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1040491658}
   - component: {fileID: 1040491660}
   - component: {fileID: 1040491659}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 1691551635500605974}
   - component: {fileID: 1691551635500605968}
   - component: {fileID: 4153954044386247525}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Aegis
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -705,6 +705,7 @@ GameObject:
   - component: {fileID: 1270113693}
   - component: {fileID: 1270113694}
   - component: {fileID: 1904294050}
+  - component: {fileID: 8831634698526633634}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -794,6 +795,7 @@ MonoBehaviour:
   hitboxObject: {fileID: 6707052825704741241}
   wallFilter: {fileID: 2128939377}
   rootObject: {fileID: 1691551635500606957}
+  tagFilter: {fileID: 3762424007631674673}
 --- !u!114 &1270113687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,7 +853,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919849883774698659}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2a6fc190f0ac4a45aee770ffa6a3660, type: 3}
   m_Name: 
@@ -862,6 +864,24 @@ MonoBehaviour:
   animName: 
   movement: {fileID: 0}
   additionalStunTime: 0.2
+  wall: {fileID: 0}
+--- !u!114 &8831634698526633634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919849883774698659}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530c20ee54ed5f344a178d883c16035b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: stun
+  anim: {fileID: 0}
+  movement: {fileID: 0}
+  animName: 
+  stunTime: 0.75
   wall: {fileID: 0}
 --- !u!1 &2180581936173478062
 GameObject:
@@ -947,6 +967,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 38688814338781123}
+  - component: {fileID: 3762424007631674673}
   - component: {fileID: 8272413682046276365}
   - component: {fileID: 8137188431937648754}
   - component: {fileID: 1130031589353500534}
@@ -974,6 +995,22 @@ Transform:
   m_Father: {fileID: 1691551635500605971}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3762424007631674673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3349595022122579812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a8ae5949d520c4daa9d1f6a9620e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  tagsToFilter:
+  - GhostShove
+  fallbackHandler: {fileID: 8272413682046276365}
 --- !u!114 &8272413682046276365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,6 +1104,10 @@ PrefabInstance:
     - target: {fileID: 6854435290789191520, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_Name
       value: Hitbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191520, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191520, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_IsActive
@@ -1269,7 +1310,7 @@ PrefabInstance:
     - target: {fileID: 1864335183953101693, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: handler
       value: 
-      objectReference: {fileID: 8272413682046276365}
+      objectReference: {fileID: 3762424007631674673}
     - target: {fileID: 7725880952350467008, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: m_Name
       value: Hurtbox
