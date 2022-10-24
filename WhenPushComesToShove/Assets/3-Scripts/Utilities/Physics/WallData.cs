@@ -25,13 +25,13 @@ public class WallData : MonoBehaviour
 
         if (health != null && pMode != null)
         {
-            if (pMode.enabled && !health.invulnerable)
+            if (pMode.enabled && !health.invulnerable && ShouldTakeDamage(pMode.sourceObject, collision.gameObject))
             {
                 Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
 
                 Debug.Log("Hit Wall");
                 health.WallInvulnerabilityCooldown(invulnerabilityCooldown);
-                health.TakeDamage(damage + (rb.velocity.magnitude * velocityDamageMultiplier), "Wall");
+                health.TakeDamage(damage + (rb.velocity.magnitude * velocityDamageMultiplier), pMode.sourceObject.name);
             }
         }
     }
@@ -40,6 +40,7 @@ public class WallData : MonoBehaviour
     {
         if (source.tag == collision.tag && GameState.currentRoomType != LevelType.Arena)//Except Pvp
         {
+            Debug.Log("No Damage");
             return false;
         }
         else if (source.tag == "Hazard")

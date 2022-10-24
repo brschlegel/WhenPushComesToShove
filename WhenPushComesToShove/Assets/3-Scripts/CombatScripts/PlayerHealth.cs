@@ -29,7 +29,7 @@ public class PlayerHealth : Health
     {
         base.TakeDamage(damage, source);
         playerMat = this.gameObject.GetComponentInParent<SpriteRenderer>().material;
-        Debug.Log("turning white woo");
+        //Debug.Log("turning white woo");
         playerMat.SetInt("_IsDamaged", 1);
 
         if (!dead)
