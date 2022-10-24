@@ -17,12 +17,12 @@ public abstract class Move : MonoBehaviour
     //Velocity that input wants to achieve
     protected Vector2 goalVel;
 
-    protected void Start()
+    private void Start()
     {
-      
+        
     }
 
-    public void Init()
+    public virtual void Init()
     {
        
     }
