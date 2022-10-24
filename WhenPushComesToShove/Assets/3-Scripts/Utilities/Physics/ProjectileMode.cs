@@ -32,6 +32,8 @@ public class ProjectileMode : MonoBehaviour
 
     private float frames;
 
+    public GameObject sourceObject;
+
     public void Init()
     {
         rb = GetComponent<Rigidbody2D>();

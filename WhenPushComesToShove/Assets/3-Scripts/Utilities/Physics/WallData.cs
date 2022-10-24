@@ -35,4 +35,18 @@ public class WallData : MonoBehaviour
             }
         }
     }
+
+    private bool ShouldTakeDamage(GameObject source, GameObject collision)
+    {
+        if (source.tag == collision.tag && GameState.currentRoomType != LevelType.Arena)//Except Pvp
+        {
+            return false;
+        }
+        else if (source.tag == "Hazard")
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

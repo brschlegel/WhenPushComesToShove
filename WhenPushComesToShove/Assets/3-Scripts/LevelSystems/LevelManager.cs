@@ -107,6 +107,8 @@ public class LevelManager : MonoBehaviour
 
         SetPlayerSpawns(room.GetComponent<LevelProperties>());
 
+        GameState.currentRoomType = levelProp.levelType;
+
         //Countdown
         if (newRoomCountdown != null && currentRoomIndex -1 > 0)
         {
