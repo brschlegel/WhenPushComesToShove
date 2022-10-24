@@ -25,7 +25,6 @@ public class ObjectSelectionWindow : EditorWindow
 
     static GUIStyle style;
 
-    [MenuItem("Window/Object Selection Window")]
     public static ObjectSelectionWindow ShowWindow(GUIStyle _style)
     {
         style = _style;
