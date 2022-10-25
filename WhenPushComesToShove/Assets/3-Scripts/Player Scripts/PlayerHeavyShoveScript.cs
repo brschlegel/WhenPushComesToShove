@@ -27,7 +27,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
 
     public float cooldown;
     public float hitBoxCooldown;
-    private SpriteRenderer sr;
+    //private SpriteRenderer sr;
 
     private PlayerInputHandler handler;
     private PlayerMovementScript mover;
@@ -36,8 +36,8 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     {
         collider = hitbox.gameObject.GetComponent<Collider2D>();
         collider.enabled = false;
-        sr = hitbox.gameObject.GetComponent<SpriteRenderer>();
-        sr.enabled = false;
+        //sr = hitbox.gameObject.GetComponent<SpriteRenderer>();
+        //sr.enabled = false;
 
         mover = GetComponent<PlayerMovementScript>();
         handler = GetComponent<PlayerInputHandler>();
@@ -142,10 +142,10 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     {
         mover.ForceLockAim();
         collider.enabled = true;
-        sr.enabled = true;
+        //sr.enabled = true;
         yield return new WaitForSeconds(hitBoxCooldown);
         collider.enabled = false;
-        sr.enabled = false;
+        //sr.enabled = false;
         mover.ForceUnlockAim();
     }
 

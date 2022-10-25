@@ -5368,7 +5368,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 251347762558918937}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &3279681431719615122
 BoxCollider2D:
@@ -5559,8 +5559,8 @@ Transform:
   - {fileID: 7290621751986115199}
   - {fileID: 1730071123781517556}
   - {fileID: 6065905207172843190}
-  - {fileID: 1546957831001400955}
   - {fileID: 2203685200128782608}
+  - {fileID: 1546957831001400955}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5726,6 +5726,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  sourceObject: {fileID: 0}
 --- !u!95 &8174910203704807974
 Animator:
   serializedVersion: 4
@@ -5867,6 +5868,7 @@ MonoBehaviour:
   outputs:
   - {fileID: 5050357902423793123}
   - {fileID: 1075145129282054902}
+  - {fileID: 5928355534833855564}
   - {fileID: 102798743431046658}
   - {fileID: 5021299487003338702}
 --- !u!114 &5928355534833855564
@@ -6402,17 +6404,21 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.31372544
       objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191532, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.5568499
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.597
+      value: 0.558
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6509,7 +6515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62293ab1ddc4be04db4db7a9db165809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 0
 --- !u!4 &5245641597600162974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
@@ -6776,17 +6782,21 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.8437711
       objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191532, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.5568499
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.597
+      value: 0.558
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6843,7 +6853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62293ab1ddc4be04db4db7a9db165809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 0
 --- !u!114 &5934036066957526007
 MonoBehaviour:
   m_ObjectHideFlags: 0
