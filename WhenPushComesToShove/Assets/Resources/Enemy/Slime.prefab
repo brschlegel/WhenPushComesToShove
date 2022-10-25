@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 999011918721939300}
   - component: {fileID: 999011918721939298}
   - component: {fileID: 2522405558536066583}
+  - component: {fileID: 2778115481428081380}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Enemy
@@ -330,7 +331,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  sourceObject: {fileID: 0}
+--- !u!114 &2778115481428081380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999011918721937567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c180284298034c49970693e6b63e180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &999011919433777030
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,12 +644,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   pMode: {fileID: 0}
+  eventSplitter: {fileID: 2778115481428081380}
   target: {x: 0, y: 0}
   movementLocked: 0
   maxLookAhead: 10
   numSeeRays: 6
   raySeperation: 10
-  collisionCorrectionScalar: 2
+  collisionCorrectionScalar: 1
 --- !u!114 &999011920109504316
 MonoBehaviour:
   m_ObjectHideFlags: 0

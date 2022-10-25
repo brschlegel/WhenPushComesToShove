@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class AegisWall : MonoBehaviour
 {
+    [SerializeField]
+    private MoveWithAvoidance move;
     [HideInInspector]
     public Transform target;
     //[HideInInspector]
     public bool stunned;
+    [HideInInspector]
     public Transform wallTransform;
     public float offset;
+ 
     
     // Start is called before the first frame update
     void Start()
     {
         wallTransform = transform.GetChild(0);
         ResetWallPosition();
+        GetComponent<CollisionEventSplitter>().listeners.Add(move);
     }
 
     // Update is called once per frame

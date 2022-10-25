@@ -13,6 +13,8 @@ public class InitLevel : MonoBehaviour
 
     [SerializeField] private bool spawnPlayerUI = false;
 
+    [SerializeField] private ParticleSystem[] playerSpawnAnim = new ParticleSystem[4];
+
     public GameObject[] playerUI= new GameObject[4];
     public Color[] playerHitboxColors = new Color[4];
 
@@ -37,6 +39,7 @@ public class InitLevel : MonoBehaviour
         GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
         GameState.players.Add(player.transform);
         player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
+        Instantiate(playerSpawnAnim[index], playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
 
         if (spawnPlayerUI)
         {
