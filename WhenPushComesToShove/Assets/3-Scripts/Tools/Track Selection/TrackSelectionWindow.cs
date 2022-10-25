@@ -14,19 +14,17 @@ public class TrackSelectionWindow : EditorWindow
     static public LevelTracks levelTracks;
 
     [MenuItem("Window/Track Selection Window")]
-    public static TrackSelectionWindow SelectionWindow()
+    public static void SelectionWindow()
     {
         //Make a new window if one isn't already being shown
-        if(levelTracks == null)
-            levelTracks = new LevelTracks();
-
         hazardList.Clear();
         foreach(HazardPathDetails haz in levelTracks.dungeonPaths)
         {
             hazardList.Add(SplitID(haz.hazard));
         }
 
-        return (TrackSelectionWindow)EditorWindow.GetWindow(typeof(TrackSelectionWindow));
+        TrackSelectionWindow trackWindow = (TrackSelectionWindow)EditorWindow.GetWindow(typeof(TrackSelectionWindow));
+        trackWindow.Show();
     }
 
     public void OnGUI()
@@ -56,7 +54,6 @@ public class TrackSelectionWindow : EditorWindow
                     EditorGUILayout.BeginVertical();
                     for (int j = 0; j < levelTracks.dungeonPaths[i].enemyTracks.Count; j++)
                     {
-                        Debug.Log(levelTracks.dungeonPaths[i].enemyTracks[j].enemies);
                         levelTracks.dungeonPaths[i].enemyTracks[j].selected = GUILayout.Toggle(levelTracks.dungeonPaths[i].enemyTracks[j].selected, SplitID(levelTracks.dungeonPaths[i].enemyTracks[j].enemies));
                     }
                     EditorGUILayout.EndVertical();

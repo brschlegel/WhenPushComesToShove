@@ -17,11 +17,39 @@ public class PathGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levels = Resources.LoadAll("Levels");
-        for(int i = 0; i < levels.Length; i++)
+        //levels = Resources.LoadAll("Levels");
+        //for(int i = 0; i < levels.Length; i++)
+        //{
+        //    GameObject obj = (GameObject)levels[i];
+        //    levelProps.Add(obj.GetComponent<LevelProperties>());
+        //}
+        
+        //Add all of the selected dungeons to the level pool
+        foreach(HazardPathDetails haz in TrackSelectionWindow.levelTracks.dungeonPaths)
         {
-            GameObject obj = (GameObject)levels[i];
-            levelProps.Add(obj.GetComponent<LevelProperties>());
+            foreach(EnemyPathDetails ene in haz.enemyTracks)
+            {
+                if (ene.selected)
+                {
+                    foreach(GameObject level in ene.levels)
+                    {
+                        Debug.Log(level.name);
+                        levelProps.Add(level.GetComponent<LevelProperties>());
+                    }
+                }
+            }
+        }
+
+        //Add all of the selected arenas to the level pool
+        foreach(ArenaDetails arena in TrackSelectionWindow.levelTracks.arenaPaths)
+        {
+            if (arena.selected)
+            {
+                foreach(GameObject level in arena.levels)
+                {
+                    levelProps.Add(level.GetComponent<LevelProperties>());
+                }
+            }
         }
 
         if(path.Count <= 0)
@@ -156,7 +184,6 @@ public class PathGenerator : MonoBehaviour
     LevelProperties[] ShuffleRooms()
     {
         LevelProperties[] shuffledProps = levelProps.ToArray();
-
         //https://answers.unity.com/questions/1189736/im-trying-to-shuffle-an-arrays-order.html by Loise-N-D
 
         for(int i = 0; i < shuffledProps.Length; i++)

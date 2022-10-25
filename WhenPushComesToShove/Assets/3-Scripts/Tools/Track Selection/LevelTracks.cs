@@ -21,6 +21,7 @@ public class ArenaDetails
     public List<GameObject> levels;
 }
 
+[ExecuteInEditMode]
 public class LevelTracks : MonoBehaviour
 {
     Object[] dungeons;
@@ -28,11 +29,21 @@ public class LevelTracks : MonoBehaviour
 
     public List<HazardPathDetails> dungeonPaths;
     public List<ArenaDetails> arenaPaths;
+    static public LevelTracks instance;
 
     public LevelTracks()
     {
-        
-        Init();
+              
+    }
+
+    private void Update()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            TrackSelectionWindow.levelTracks = instance;
+            instance.Init();
+        }
     }
 
     public void Init()
@@ -97,7 +108,7 @@ public class LevelTracks : MonoBehaviour
         HazardPathDetails newPath = new HazardPathDetails();
         newPath.hazard = hazardID;
         newPath.enemyTracks = new List<EnemyPathDetails>();
-        Debug.Log("Make new Path");
+        dungeonPaths.Add(newPath);
         return newPath;
     }
 
@@ -112,7 +123,6 @@ public class LevelTracks : MonoBehaviour
         //Add the designated dungeon to the enemy track
         foreach (EnemyPathDetails enm in enemyPaths)
         {
-            Debug.Log(enm.enemies);
             if (enm.enemies == enemyID)
             {
                 //Ensures the same level isn't being added twice
@@ -133,13 +143,10 @@ public class LevelTracks : MonoBehaviour
         newPath.enemies = enemyID;
         newPath.levels = new List<GameObject>();
         newPath.levels.Add(dungeon as GameObject);
-        Debug.Log("Getting here");
+        enemyPaths.Add(newPath);
     }
 
-    void CompareEnemies(string enemyID)
-    {
 
-    }
     //Add the designated arena to the arena track
 
     /// <summary>
