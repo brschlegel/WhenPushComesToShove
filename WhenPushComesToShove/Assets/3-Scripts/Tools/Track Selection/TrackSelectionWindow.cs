@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Text.RegularExpressions;
+using System.IO;
 
 public class TrackSelectionWindow : EditorWindow
 {
@@ -16,6 +17,20 @@ public class TrackSelectionWindow : EditorWindow
     [MenuItem("Window/Track Selection Window")]
     public static void SelectionWindow()
     {
+        //Tests if the LevelTrack json file exists
+        if(File.Exists(Application.dataPath + "/Resources/LevelTrack.json"))
+        {
+            //https://allison-liem.medium.com/unity-reading-external-json-files-878ed0978977
+            TextAsset textAsset = Resources.Load<TextAsset>("LevelTrack");
+            levelTracks = JsonUtility.FromJson<LevelTracks>(textAsset.text);
+        }
+        //Make a new LevelTracks if one doesn't exist
+        else
+        {
+            levelTracks = new LevelTracks();
+            levelTracks.Init();
+        }
+
         //Make a new window if one isn't already being shown
         hazardList.Clear();
         foreach(HazardPathDetails haz in levelTracks.dungeonPaths)
@@ -25,6 +40,15 @@ public class TrackSelectionWindow : EditorWindow
 
         TrackSelectionWindow trackWindow = (TrackSelectionWindow)EditorWindow.GetWindow(typeof(TrackSelectionWindow));
         trackWindow.Show();
+    }
+
+
+    private void OnDestroy()
+    {
+        //https://prasetion.medium.com/saving-data-as-json-in-unity-4419042d1334
+        string levelTrackString = JsonUtility.ToJson(levelTracks);
+        File.WriteAllText(Application.dataPath + "/Resources/LevelTrack.json", levelTrackString);
+        Debug.Log(Application.dataPath + "/Resources/LevelTrack.json");
     }
 
     public void OnGUI()

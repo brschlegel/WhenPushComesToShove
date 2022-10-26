@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text.RegularExpressions;
 
+[System.Serializable]
 public class HazardPathDetails
 {
     public string hazard;
     public List<EnemyPathDetails> enemyTracks;
 }
+[System.Serializable]
 public class EnemyPathDetails
 {
     public bool selected;
     public string enemies;
     public List<GameObject> levels;
 }
+[System.Serializable]
 public class ArenaDetails
 {
     public bool selected;
@@ -22,29 +25,14 @@ public class ArenaDetails
 }
 
 [ExecuteInEditMode]
-public class LevelTracks : MonoBehaviour
+[System.Serializable]
+public class LevelTracks
 {
     Object[] dungeons;
     Object[] arenas;
 
     public List<HazardPathDetails> dungeonPaths;
     public List<ArenaDetails> arenaPaths;
-    static public LevelTracks instance;
-
-    public LevelTracks()
-    {
-              
-    }
-
-    private void Update()
-    {
-        if(instance == null)
-        {
-            instance = this;
-            TrackSelectionWindow.levelTracks = instance;
-            instance.Init();
-        }
-    }
 
     public void Init()
     {
