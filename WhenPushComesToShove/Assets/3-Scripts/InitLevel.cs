@@ -64,6 +64,8 @@ public class InitLevel : MonoBehaviour
             sr.color = playerHitboxColors[index];
         }
 
+        player.GetComponentInChildren<PlayerMovementScript>().LockMovementForTime(.8f);
+
         playerConfigs[index].PlayerObject = player;
     }
 
