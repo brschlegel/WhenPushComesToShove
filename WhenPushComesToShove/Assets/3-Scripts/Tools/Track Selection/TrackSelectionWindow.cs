@@ -48,7 +48,6 @@ public class TrackSelectionWindow : EditorWindow
         //https://prasetion.medium.com/saving-data-as-json-in-unity-4419042d1334
         string levelTrackString = JsonUtility.ToJson(levelTracks);
         File.WriteAllText(Application.dataPath + "/Resources/LevelTrack.json", levelTrackString);
-        Debug.Log(Application.dataPath + "/Resources/LevelTrack.json");
     }
 
     public void OnGUI()
