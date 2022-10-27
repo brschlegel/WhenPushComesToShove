@@ -331,6 +331,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  sourceObject: {fileID: 0}
 --- !u!114 &2778115481428081380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,6 +652,7 @@ MonoBehaviour:
   numSeeRays: 6
   raySeperation: 10
   collisionCorrectionScalar: 1
+  collisionCorrection: {x: 0, y: 0}
 --- !u!114 &999011920109504316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,7 +938,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 11582261079953831, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: damage
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191520, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_Name
