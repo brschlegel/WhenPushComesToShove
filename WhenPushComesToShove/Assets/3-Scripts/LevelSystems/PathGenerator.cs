@@ -18,12 +18,6 @@ public class PathGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //levels = Resources.LoadAll("Levels");
-        //for(int i = 0; i < levels.Length; i++)
-        //{
-        //    GameObject obj = (GameObject)levels[i];
-        //    levelProps.Add(obj.GetComponent<LevelProperties>());
-        //}
         TextAsset textAsset = Resources.Load<TextAsset>("LevelTrack");
         levelTracks = JsonUtility.FromJson<LevelTracks>(textAsset.text);
 
