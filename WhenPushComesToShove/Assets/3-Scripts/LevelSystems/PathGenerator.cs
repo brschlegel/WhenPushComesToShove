@@ -19,35 +19,57 @@ public class PathGenerator : MonoBehaviour
     void Start()
     {
         TextAsset textAsset = Resources.Load<TextAsset>("LevelTrack");
-        levelTracks = JsonUtility.FromJson<LevelTracks>(textAsset.text);
 
-        //Add all of the selected dungeons to the level pool
-        foreach (HazardPathDetails haz in levelTracks.dungeonPaths)
+        if(textAsset != null)
         {
-            foreach(EnemyPathDetails ene in haz.enemyTracks)
+            levelTracks = JsonUtility.FromJson<LevelTracks>(textAsset.text);
+
+            //Add all of the selected dungeons to the level pool
+            foreach (HazardPathDetails haz in levelTracks.dungeonPaths)
             {
-                if (ene.selected)
+                foreach (EnemyPathDetails ene in haz.enemyTracks)
                 {
-                    foreach(GameObject level in ene.levels)
+                    if (ene.selected)
                     {
-                        Debug.Log(level.name);
+                        foreach (GameObject level in ene.levels)
+                        {
+                            Debug.Log(level.name);
+                            levelProps.Add(level.GetComponent<LevelProperties>());
+                        }
+                    }
+                }
+            }
+
+            //Add all of the selected arenas to the level pool
+            foreach (ArenaDetails arena in levelTracks.arenaPaths)
+            {
+                if (arena.selected)
+                {
+                    foreach (GameObject level in arena.levels)
+                    {
                         levelProps.Add(level.GetComponent<LevelProperties>());
                     }
                 }
             }
         }
-
-        //Add all of the selected arenas to the level pool
-        foreach(ArenaDetails arena in levelTracks.arenaPaths)
+        else
         {
-            if (arena.selected)
+            Object[] allDungeons = Resources.LoadAll<Object>("Dungeons/");
+            Object[] allArenas = Resources.LoadAll<Object>("Arenas/");
+
+            foreach(Object obj in allDungeons)
             {
-                foreach(GameObject level in arena.levels)
-                {
-                    levelProps.Add(level.GetComponent<LevelProperties>());
-                }
+                GameObject level = (GameObject)obj;
+                levelProps.Add(level.GetComponent<LevelProperties>());
+            }
+
+            foreach(Object obj in allArenas)
+            {
+                GameObject arena = (GameObject)obj;
+                levelProps.Add(arena.GetComponent<LevelProperties>());
             }
         }
+        
 
         if(path.Count <= 0)
             GeneratePath();

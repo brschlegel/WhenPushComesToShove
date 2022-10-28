@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9775d32b2b58346b555a1333ce0f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  move: {fileID: 0}
   target: {fileID: 0}
   stunned: 0
   wallTransform: {fileID: 0}
@@ -360,6 +361,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  sourceObject: {fileID: 0}
 --- !u!114 &3459914305538832937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,7 +1116,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 11582261079953831, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: damage
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191520, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_Name
