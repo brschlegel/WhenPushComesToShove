@@ -5,6 +5,7 @@ using UnityEditor;
 using System.Text.RegularExpressions;
 using System.IO;
 
+#if UNITY_EDITOR
 public class TrackSelectionWindow : EditorWindow
 {
     public LevelType levelType;
@@ -13,6 +14,7 @@ public class TrackSelectionWindow : EditorWindow
     int hazardIndex = 0;
     static List<string> hazardList = new List<string>();
     static public LevelTracks levelTracks;
+
 
     [MenuItem("Window/Track Selection Window")]
     public static void SelectionWindow()
@@ -100,4 +102,7 @@ public class TrackSelectionWindow : EditorWindow
 
         return newID;
     }
+
+
 }
+#endif

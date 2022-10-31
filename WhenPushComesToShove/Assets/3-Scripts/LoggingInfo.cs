@@ -38,11 +38,14 @@ public class LoggingInfo : MonoBehaviour
 
     private void Update()
     {
+
+#if UNITY_STANDALONE && !UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SendInfoToSurvey();
             Application.Quit();
         }
+#endif
     }
 
     public void AddPlayerDeath(int playerIndex, string causeOfDeath)
@@ -60,7 +63,7 @@ public class LoggingInfo : MonoBehaviour
         {
             if (playerDeaths[i] != "")
             {
-                fullURL += "&playerDeaths_" + (i + 1).ToString() + "=" + playerDeaths[i];
+                fullURL += "&playerDeaths_" + (i + 1).ToString() + "=" + playerDeaths[i] + "\n";
             }
         }
 
