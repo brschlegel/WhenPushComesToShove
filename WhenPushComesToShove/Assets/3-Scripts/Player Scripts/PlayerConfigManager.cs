@@ -60,6 +60,11 @@ public class PlayerConfigManager : MonoBehaviour
         return playerConfigs;
     }
 
+    public List<PlayerConfiguration> GetPlayerTeams()
+    {
+        return playerTeamOrder;
+    }
+
     public int GetMaxPlayers()
     {
         return maxPlayers;

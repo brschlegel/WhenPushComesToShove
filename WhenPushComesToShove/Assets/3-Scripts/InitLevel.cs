@@ -33,9 +33,9 @@ public class InitLevel : MonoBehaviour
     /// <summary>
     /// Used if players are not spawned on start
     /// </summary>
-    public void SpawnPlayer( int index )
+    public void SpawnPlayer(int index)
     {
-        PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
+        PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerTeams().ToArray();
         GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
         GameState.players.Add(player.transform);
         player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
