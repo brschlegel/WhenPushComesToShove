@@ -9,6 +9,8 @@ public class ProjectileHitbox : MonoBehaviour
     [HideInInspector]
     public ProjectileMode pMode;
     private Hitbox hitbox;
+    [SerializeField]
+    private float instanceDamageMultiplier = 1;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -28,7 +30,7 @@ public class ProjectileHitbox : MonoBehaviour
     void Update()
     {
 
-        data.damage = Mathf.Clamp(pMode.Mass * pMode.Velocity.magnitude * GlobalSettings.velocityDamageCoeff, 0, GlobalSettings.velocityDamageCap);
+        data.damage = Mathf.Clamp(pMode.Mass * pMode.Velocity.magnitude * GlobalSettings.velocityDamageCoeff * instanceDamageMultiplier, 0, GlobalSettings.velocityDamageCap);
     }
 
     public List<GameObject> OwnersToIgnore
