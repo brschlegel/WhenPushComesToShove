@@ -16,7 +16,7 @@ public class PlayerLightShoveScript : MonoBehaviour
     public float cooldown;
     public float hitBoxCooldown = .2f;
 
-    private SpriteRenderer sr;
+    //private SpriteRenderer sr;
 
     private PlayerMovementScript mover;
     private PlayerInputHandler handler;
@@ -25,8 +25,8 @@ public class PlayerLightShoveScript : MonoBehaviour
     {
         collider = hitbox.gameObject.GetComponent<Collider2D>();
         collider.enabled = false;
-        sr = hitbox.gameObject.GetComponent<SpriteRenderer>();
-        sr.enabled = false;
+        //sr = hitbox.gameObject.GetComponent<SpriteRenderer>();
+        //sr.enabled = false;
 
         mover = GetComponent<PlayerMovementScript>();
         handler = GetComponent<PlayerInputHandler>();
@@ -55,7 +55,7 @@ public class PlayerLightShoveScript : MonoBehaviour
     public void EnableShoveBaseHitbox()
     {
         collider.enabled = true;
-        sr.enabled = true;
+        //sr.enabled = true;
         mover.ForceLockAim();
         //hitbox.gameObject.SetActive(true);
         StartCoroutine(HitboxCooldown());
@@ -69,7 +69,7 @@ public class PlayerLightShoveScript : MonoBehaviour
     {
         yield return new WaitForSeconds(hitBoxCooldown);
         collider.enabled = false;
-        sr.enabled = false;
+        //sr.enabled = false;
         mover.ForceUnlockAim();
     }
 

@@ -21,6 +21,7 @@ public class KnockbackReciever : MonoBehaviour
     /// <param name="direction">Direction of vector</param>
     public void TakeKnockback(float force, Vector2 direction, GameObject instigator)
     {
+        pMode.sourceObject = instigator;
         pMode.enabled = true;
         pMode.AddForce(direction * force);
         //Tell the projectile mode hitbox to ignore whoever sent it into projectile mode

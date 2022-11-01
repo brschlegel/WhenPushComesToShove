@@ -6,23 +6,70 @@ public class PathGenerator : MonoBehaviour
 {
     [SerializeField] HazardDifficulty.HazardStats[] hazardLevels;
     [SerializeField] EnemyDifficulty.EnemyLevelStats[] enemyStatLevels;
-    Object[] levels;
+
     List<LevelProperties> levelProps = new List<LevelProperties>();
 
     [Header("Path properties")]
     [SerializeField] int numOfDungeonRooms;
     int currentPathNum = 0;
     public List<GameObject> path = new List<GameObject>();
+    LevelTracks levelTracks;
 
     // Start is called before the first frame update
     void Start()
     {
-        levels = Resources.LoadAll("Levels");
-        for(int i = 0; i < levels.Length; i++)
+        TextAsset textAsset = Resources.Load<TextAsset>("LevelTrack");
+
+        if(textAsset != null)
         {
-            GameObject obj = (GameObject)levels[i];
-            levelProps.Add(obj.GetComponent<LevelProperties>());
+            levelTracks = JsonUtility.FromJson<LevelTracks>(textAsset.text);
+
+            //Add all of the selected dungeons to the level pool
+            foreach (HazardPathDetails haz in levelTracks.dungeonPaths)
+            {
+                foreach (EnemyPathDetails ene in haz.enemyTracks)
+                {
+                    if (ene.selected)
+                    {
+                        foreach (GameObject level in ene.levels)
+                        {
+                            Debug.Log(level.name);
+                            levelProps.Add(level.GetComponent<LevelProperties>());
+                        }
+                    }
+                }
+            }
+
+            //Add all of the selected arenas to the level pool
+            foreach (ArenaDetails arena in levelTracks.arenaPaths)
+            {
+                if (arena.selected)
+                {
+                    foreach (GameObject level in arena.levels)
+                    {
+                        levelProps.Add(level.GetComponent<LevelProperties>());
+                    }
+                }
+            }
         }
+        else
+        {
+            Object[] allDungeons = Resources.LoadAll<Object>("Dungeons/");
+            Object[] allArenas = Resources.LoadAll<Object>("Arenas/");
+
+            foreach(Object obj in allDungeons)
+            {
+                GameObject level = (GameObject)obj;
+                levelProps.Add(level.GetComponent<LevelProperties>());
+            }
+
+            foreach(Object obj in allArenas)
+            {
+                GameObject arena = (GameObject)obj;
+                levelProps.Add(arena.GetComponent<LevelProperties>());
+            }
+        }
+        
 
         if(path.Count <= 0)
             GeneratePath();
@@ -38,48 +85,64 @@ public class PathGenerator : MonoBehaviour
 
         while(currentPathNum < numOfDungeonRooms)
         {
-            //Go through the rooms and see if the hazard levels match 
-            for (int i = 0; i < shuffledRooms.Length; i++)
+            if(currentPathNum == 0)
             {
-                if(shuffledRooms[i] != null)
+                path.Add(Resources.Load<GameObject>("Lobby"));
+                for (int i = 0; i < hazardLevels.Length; i++)
                 {
-                    if(IsCompatibleRoom(shuffledRooms[i]) && shuffledRooms[i].levelType == LevelType.Dungeon)
-                    {
-                        path.Add(shuffledRooms[i].gameObject);
-
-                        //Ups the levels this rooms hazards in the path
-                        foreach(HazardDifficulty.HazardStats stat in shuffledRooms[i].hazards)
-                        {
-                            for(int j = 0; j < hazardLevels.Length; j++)
-                            {
-                                if (stat.hazard == hazardLevels[j].hazard)
-                                    hazardLevels[j].level++;
-                            }
-                        }
-
-                        //Ups the enemy levels in the path
-                        foreach(EnemyDifficulty.EnemyLevelStats stat in shuffledRooms[i].enemyStats)
-                        {
-                            for(int j = 0; j < enemyStatLevels.Length; j++)
-                            {
-                                if (stat.enemy == enemyStatLevels[j].enemy)
-                                    enemyStatLevels[j].level++;
-                            }
-                        }
-
-                        //Ensures the same room ins't spawned twice
-                        shuffledRooms[i] = null;
-                        break;
-                    }
+                    hazardLevels[i].level++;
                 }
-
-                //Will stop the path generation if there aren't any rooms to add to the path
-                if(i == shuffledRooms.Length - 1)
+                for (int i = 0; i < enemyStatLevels.Length; i++)
                 {
-                    Debug.Log("No remaining rooms for this path");
-                    currentPathNum = numOfDungeonRooms;
+                    enemyStatLevels[i].level++;
                 }
             }
+            else
+            {
+                //Go through the rooms and see if the hazard levels match 
+                for (int i = 0; i < shuffledRooms.Length; i++)
+                {
+                    if (shuffledRooms[i] != null)
+                    {
+                        if (IsCompatibleRoom(shuffledRooms[i]) && shuffledRooms[i].levelType == LevelType.Dungeon)
+                        {
+                            path.Add(shuffledRooms[i].gameObject);
+
+                            //Ups the levels this rooms hazards in the path
+                            foreach (HazardDifficulty.HazardStats stat in shuffledRooms[i].hazards)
+                            {
+                                for (int j = 0; j < hazardLevels.Length; j++)
+                                {
+                                    if (stat.hazard == hazardLevels[j].hazard)
+                                        hazardLevels[j].level++;
+                                }
+                            }
+
+                            //Ups the enemy levels in the path
+                            foreach (EnemyDifficulty.EnemyLevelStats stat in shuffledRooms[i].enemyStats)
+                            {
+                                for (int j = 0; j < enemyStatLevels.Length; j++)
+                                {
+                                    if (stat.enemy == enemyStatLevels[j].enemy)
+                                        enemyStatLevels[j].level++;
+                                }
+                            }
+
+                            //Ensures the same room ins't spawned twice
+                            shuffledRooms[i] = null;
+                            break;
+                        }
+                    }
+
+                    //Will stop the path generation if there aren't any rooms to add to the path
+                    if (i == shuffledRooms.Length - 1)
+                    {
+                        Debug.Log("No remaining rooms for this path");
+                        currentPathNum = numOfDungeonRooms;
+                    }
+                }
+            }
+            
 
             currentPathNum++;
         }
@@ -105,7 +168,7 @@ public class PathGenerator : MonoBehaviour
         if (arena == null)
         {
             Debug.LogWarning("No arena available for this path. Loading in default arena");
-            path.Add(Resources.Load<GameObject>("Levels/Arenas/DefaultArena"));
+            path.Add(Resources.Load<GameObject>("DefaultArena"));
         }
             
     }
@@ -156,7 +219,6 @@ public class PathGenerator : MonoBehaviour
     LevelProperties[] ShuffleRooms()
     {
         LevelProperties[] shuffledProps = levelProps.ToArray();
-
         //https://answers.unity.com/questions/1189736/im-trying-to-shuffle-an-arrays-order.html by Loise-N-D
 
         for(int i = 0; i < shuffledProps.Length; i++)

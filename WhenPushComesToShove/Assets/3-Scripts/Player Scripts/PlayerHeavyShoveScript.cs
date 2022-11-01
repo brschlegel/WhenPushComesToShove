@@ -12,6 +12,9 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     [SerializeField] public float lowTierChargeTime = .3f;
     [SerializeField] public float midTierChargeTime = .5f;
     [SerializeField] public float highTierChargeTime = 1;
+    [SerializeField] public float lowTierChargeForce = 10000;
+    [SerializeField] public float midTierChargeForce = 13500;
+    [SerializeField] public float highTierChargeForce = 16000;
 
     [HideInInspector]public int chargeLevel = 0;
 
@@ -27,7 +30,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
 
     public float cooldown;
     public float hitBoxCooldown;
-    private SpriteRenderer sr;
+    //private SpriteRenderer sr;
 
     private PlayerInputHandler handler;
     private PlayerMovementScript mover;
@@ -36,8 +39,8 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     {
         collider = hitbox.gameObject.GetComponent<Collider2D>();
         collider.enabled = false;
-        sr = hitbox.gameObject.GetComponent<SpriteRenderer>();
-        sr.enabled = false;
+        //sr = hitbox.gameObject.GetComponent<SpriteRenderer>();
+        //sr.enabled = false;
 
         mover = GetComponent<PlayerMovementScript>();
         handler = GetComponent<PlayerInputHandler>();
@@ -56,14 +59,17 @@ public class PlayerHeavyShoveScript : MonoBehaviour
             if (heavyShoveCharge >= highTierChargeTime)
             {
                 chargeLevel = 3;
+                hitbox.knockbackData.strength = highTierChargeForce;
             }
             else if (heavyShoveCharge >= midTierChargeTime)
             {
                 chargeLevel = 2;
+                hitbox.knockbackData.strength = midTierChargeForce;
             }
             else if(heavyShoveCharge >= lowTierChargeTime)
             {
                 chargeLevel = 1;
+                hitbox.knockbackData.strength = lowTierChargeForce;
             }
             else
             {
@@ -142,10 +148,10 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     {
         mover.ForceLockAim();
         collider.enabled = true;
-        sr.enabled = true;
+        //sr.enabled = true;
         yield return new WaitForSeconds(hitBoxCooldown);
         collider.enabled = false;
-        sr.enabled = false;
+        //sr.enabled = false;
         mover.ForceUnlockAim();
     }
 

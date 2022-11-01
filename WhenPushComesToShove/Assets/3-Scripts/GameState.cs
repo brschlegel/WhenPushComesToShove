@@ -5,6 +5,8 @@ using UnityEngine;
 public static class GameState 
 {
    static public List<Transform> players = new List<Transform>();
+    public static LevelType currentRoomType;
+    public static bool damageEnabled = false;
 
     static public Transform GetNearestPlayer(Transform transform, bool onlyAlive = true)
     {

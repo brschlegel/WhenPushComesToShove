@@ -93,30 +93,6 @@ public class LevelEditor : MonoBehaviour
             if (gameObject.transform.GetChild(0) != selectedLevelFirstChild)
             {
                 UnpackLevel(selectedLevel);
-                //DeleteChildren(gameObject, gameObject.transform.childCount);
-
-                //GameObject levelRoot = (GameObject)PrefabUtility.InstantiatePrefab(selectedLevel);
-                //PrefabUtility.UnpackPrefabInstance(levelRoot, PrefabUnpackMode.OutermostRoot, InteractionMode.UserAction);
-
-
-                ////Add the selected levels sprite layers to the editor
-                //selectedLevelFirstChild = levelRoot.transform.GetChild(0).gameObject;
-                //selectedLevelFirstChild.transform.parent = transform;
-                //floorLayer = selectedLevelFirstChild;
-
-                //GameObject secondLayer = levelRoot.transform.GetChild(0).gameObject;
-                //secondLayer.transform.parent = transform;
-                //wallLayer = secondLayer;
-
-                //GameObject thirdLayer = levelRoot.transform.GetChild(0).gameObject;
-                //thirdLayer.transform.parent = transform;   
-                //fadeablelayer = thirdLayer;
-
-                //GameObject fourthLayer = levelRoot.transform.GetChild(0).gameObject;
-                //fourthLayer.transform.parent = transform;
-                //placeableLayer = fourthLayer;
-
-                //DestroyImmediate(levelRoot);
             }
                 
         }
@@ -378,12 +354,12 @@ public class CustomLevelEditor : Editor
             GameObject testObj = null;
             if (level.levelType == LevelType.Dungeon)
             {
-                path = "Assets/Resources/Levels/" + root.name + ".prefab";
+                path = "Assets/2-Prefabs/Levels/Resources/Dungeons/" + root.name + ".prefab";
                 testObj = Resources.Load<GameObject>("Levels/" + root.name);
             }              
             else if(level.levelType == LevelType.Arena)
             {
-                path = "Assets/Resources/Levels/Arenas/" + root.name + ".prefab";
+                path = "Assets/2-Prefabs/Levels/Resources/Arenas/" + root.name + ".prefab";
                 testObj = Resources.Load<GameObject>("Levels/Arenas/" + root.name);
             }
                 

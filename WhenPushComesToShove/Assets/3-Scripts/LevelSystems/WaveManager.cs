@@ -32,7 +32,6 @@ public class WaveManager : MonoBehaviour
             spawnPoints = new List<EnemySpawnPoint>(GetComponentsInChildren<EnemySpawnPoint>());
             enemyPool = GameObject.FindGameObjectWithTag("EnemyPool").transform;
             waveCount = waveDelays.Count + 1;
-            Debug.Log("Count: " + spawnPoints.Count);
             foreach (EnemySpawnPoint e in spawnPoints)
             {
                 e.Init(waveCount);
