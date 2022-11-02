@@ -61,6 +61,11 @@ public class PlayerConfigManager : MonoBehaviour
         return playerConfigs;
     }
 
+    public List<PlayerConfiguration> GetPlayerTeams()
+    {
+        return playerTeamOrder;
+    }
+
     public int GetMaxPlayers()
     {
         return maxPlayers;
@@ -130,6 +135,7 @@ public class PlayerConfigManager : MonoBehaviour
     public void RandomizeTeam()
     {
 
+        Debug.Log(GameState.currentRoomType);
         playerTeamOrder.Clear();
 
         for (int i = 0; i < playerConfigs.Count; i++)
@@ -150,7 +156,7 @@ public class PlayerConfigManager : MonoBehaviour
 
             foreach (PlayerConfiguration p in playerTeamOrder)
             {
-                Debug.Log(p.PlayerIndex);
+                //Debug.Log(p.PlayerIndex);
             }
         }
 
@@ -167,6 +173,7 @@ public class PlayerConfigManager : MonoBehaviour
                 }
                 break;
             case LevelType.TwoTwo:
+                Debug.Log("TwoTwo");
                 for (int i = 0; i < playerConfigs.Count; i++)
                 {
                     if (i<2)
