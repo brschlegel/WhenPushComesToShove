@@ -20,6 +20,7 @@ public class LastTeamStanding : BaseEndCondition
         }
 
         players = PlayerConfigManager.Instance.GetPlayerTeams();
+        
     }
 
     protected override void OnDisable()
@@ -42,6 +43,7 @@ public class LastTeamStanding : BaseEndCondition
 
         foreach(PlayerConfiguration player in playersToRemove)
         {
+            Debug.Log("Removing player");
             players.Remove(player);
         }
 
@@ -52,7 +54,13 @@ public class LastTeamStanding : BaseEndCondition
         {
             //Exit the code if there's still players of different teams
             if (players[i].TeamIndex != basePlayer.TeamIndex)
+            {
+                Debug.Log("Doesn't match");
                 return;
+            }
+
+            Debug.Log(players[i].TeamIndex);
+               
         }
 
         if (showWinnerText)

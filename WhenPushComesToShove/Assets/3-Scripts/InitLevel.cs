@@ -35,7 +35,7 @@ public class InitLevel : MonoBehaviour
     /// </summary>
     public void SpawnPlayer(int index)
     {
-        PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerTeams().ToArray();
+        PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
         GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
         GameState.players.Add(player.transform);
         player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
@@ -72,7 +72,8 @@ public class InitLevel : MonoBehaviour
     public void SpawnPlayersInLevel()
     {
         //Spawn the players in their set locations for the level.
-        PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
+        PlayerConfigManager.Instance.RandomizeTeam();
+        PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerTeams().ToArray();
         for (int i = 0; i < playerConfigs.Length; i++)
         {
             //GameObject player = Instantiate(playerPrefab, playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
