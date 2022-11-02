@@ -17,10 +17,13 @@ public class Health : MonoBehaviour
     }
     public virtual void TakeDamage(float damage, string source)
     {
-        currentHealth -= damage;
-        if(currentHealth <= 0)
+        if (!dead)
         {
-            Die(source);
+            currentHealth -= damage;
+            if (currentHealth <= 0)
+            {
+                Die(source);
+            }
         }
     }
 
