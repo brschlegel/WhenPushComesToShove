@@ -5975,7 +5975,6 @@ MonoBehaviour:
   - Shove
   - GhostShove
   health: {fileID: 5551845860662291163}
-  damageEnabled: 0
 --- !u!114 &1075145129282054902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6240,7 +6239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5823312676671009871, guid: eb4a84f9753ea2946ad89ad1f767d3aa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6340277271806498222, guid: eb4a84f9753ea2946ad89ad1f767d3aa, type: 3}
       propertyPath: m_RootOrder
@@ -7002,6 +7001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pMode: {fileID: 0}
+  instanceDamageMultiplier: 1
 --- !u!4 &1188731257406130572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
