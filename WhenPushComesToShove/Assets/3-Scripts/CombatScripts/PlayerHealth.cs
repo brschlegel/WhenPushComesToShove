@@ -27,15 +27,17 @@ public class PlayerHealth : Health
     //gets reference to player Material
     public override void TakeDamage(float damage, string source)
     {
+        if (dead)
+        {
+            return;
+        }
+
         base.TakeDamage(damage, source);
         playerMat = this.gameObject.GetComponentInParent<SpriteRenderer>().material;
         //Debug.Log("turning white woo");
         playerMat.SetInt("_IsDamaged", 1);
 
-        if (!dead)
-        {
-            playerInputRef.rumble.RumbleLinear(.4f, 0, .8f, 0, .2f, false);
-        }
+        playerInputRef.rumble.RumbleLinear(.4f, 0, .8f, 0, .2f, false);
 
         StartCoroutine(DamageFlash());
     }

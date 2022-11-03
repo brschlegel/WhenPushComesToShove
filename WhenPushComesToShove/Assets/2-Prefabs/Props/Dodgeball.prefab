@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7038911212868762905}
   m_Layer: 11
   m_Name: Dodgeball
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,7 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deafbcdcbff1f0a428ee561f1d1dc96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
   outputs:
   - {fileID: 7038911213132274032}
   - {fileID: 7038911213132274038}
