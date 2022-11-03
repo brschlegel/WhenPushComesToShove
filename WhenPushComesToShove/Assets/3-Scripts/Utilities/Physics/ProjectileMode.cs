@@ -14,6 +14,8 @@ public class ProjectileMode : MonoBehaviour
     private PhysicsMaterial2D pMaterial;
     [SerializeField]
     private float velocityThreshold;
+    [SerializeField]
+    private float hitboxVelocityThreshold;
     
     public ProjectileHitbox pHitbox;
 
@@ -62,6 +64,10 @@ public class ProjectileMode : MonoBehaviour
         {
             this.enabled = false;
         }
+        if(frames > 0 && Velocity.magnitude <= hitboxVelocityThreshold)
+        {
+            DisableHitbox();
+        }
         frames++;
 
         if(Velocity.magnitude > GlobalSettings.terminalVelocity)
@@ -74,8 +80,7 @@ public class ProjectileMode : MonoBehaviour
     {
         rb.drag = sDrag;
         rb.sharedMaterial = sMaterial;
-        pHitbox.gameObject.SetActive(false);
-        pHitbox.OwnersToIgnore.Clear();
+        DisableHitbox();
         onPModeExit?.Invoke();
     }
 
@@ -101,5 +106,10 @@ public class ProjectileMode : MonoBehaviour
         rb.AddForce(force);
     }
 
+    private void DisableHitbox()
+    {
+        pHitbox.gameObject.SetActive(false);
+        pHitbox.OwnersToIgnore.Clear();
+    }
 
 }

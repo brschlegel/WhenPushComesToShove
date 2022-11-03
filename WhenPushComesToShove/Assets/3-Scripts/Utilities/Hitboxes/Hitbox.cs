@@ -6,7 +6,15 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
     private BoxCollider2D collider;
-    public void Start()
+
+    private void Start()
+    {
+        if (ownersToIgnore == null)
+        {
+            Init();
+        }
+    }
+    public void Init()
     {
         if(HitboxManager.instance == null)
         {
@@ -29,12 +37,23 @@ public class Hitbox : MonoBehaviour
     public AttackData attackData;
     [HideInInspector]
     public KnockbackData knockbackData;
-    [HideInInspector]
-    public List<GameObject> ownersToIgnore;
+    private List<GameObject> ownersToIgnore;
 
     public Vector2 Center 
     {
         get {return collider.offset + (Vector2) transform.position;}
+    }
+
+    public List<GameObject> OwnersToIgnore
+    {
+        get
+        {
+            if(ownersToIgnore == null)
+            {
+                Init();
+            }
+            return ownersToIgnore;
+        }
     }
 
    

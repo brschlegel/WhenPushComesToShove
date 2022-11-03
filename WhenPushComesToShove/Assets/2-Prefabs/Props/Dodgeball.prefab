@@ -142,6 +142,7 @@ MonoBehaviour:
   pDrag: 3
   pMaterial: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
   velocityThreshold: 2
+  hitboxVelocityThreshold: 0
   pHitbox: {fileID: 7038911213533619616}
   sDrag: 40
   sMaterial: {fileID: 0}
@@ -388,6 +389,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7038911212868762883}
     - target: {fileID: 6854435290789191521, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: handler
+      value: 
+      objectReference: {fileID: 2818366698903327915}
+    - target: {fileID: 6854435290789191521, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: priority
       value: 10
       objectReference: {fileID: 0}
@@ -468,6 +473,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pMode: {fileID: 0}
   instanceDamageMultiplier: 2.5
+--- !u!114 &2818366698903327915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517362080655571653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2391d7e68071d048bb7f5f435609715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
 --- !u!4 &4517362080655571656 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
