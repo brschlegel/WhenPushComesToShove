@@ -55,7 +55,6 @@ public class LastTeamStanding : BaseEndCondition
             //Exit the code if there's still players of different teams
             if (players[i].TeamIndex != basePlayer.TeamIndex)
             {
-                Debug.Log("Doesn't match");
                 return;
             }
 

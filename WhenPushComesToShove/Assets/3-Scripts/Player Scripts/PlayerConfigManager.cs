@@ -135,7 +135,6 @@ public class PlayerConfigManager : MonoBehaviour
     public void RandomizeTeam()
     {
 
-        Debug.Log(GameState.currentRoomType);
         playerTeamOrder.Clear();
 
         for (int i = 0; i < playerConfigs.Count; i++)
