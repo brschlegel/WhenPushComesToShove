@@ -41,7 +41,7 @@ public class ProjectileHitbox : MonoBehaviour
             {
                 Init();
             }
-            return hitbox.ownersToIgnore;
+            return hitbox.OwnersToIgnore;
     
         }
     }

@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 276471235}
   - component: {fileID: 276471234}
   - component: {fileID: 276471236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 548193135}
   - component: {fileID: 548193134}
   - component: {fileID: 548193136}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1173,7 +1173,7 @@ GameObject:
   - component: {fileID: 1425928414}
   - component: {fileID: 1425928413}
   - component: {fileID: 1425928415}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1425,6 +1425,14 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2cb04c544315cda4a808c4ea729680b6, type: 2}
   - {fileID: 2100000, guid: 1e2f441b0a136374ab88f85b9b7ca1f6, type: 2}
   - {fileID: 2100000, guid: 3051778954a8e794ab3d79bdaa5e68f0, type: 2}
+  playerOutlineOriginalColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  teamSprites:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1953411768
 Transform:
   m_ObjectHideFlags: 0
@@ -1486,7 +1494,7 @@ GameObject:
   - component: {fileID: 2092420328}
   - component: {fileID: 2092420327}
   - component: {fileID: 2092420326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Layout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1614,6 +1622,10 @@ PrefabInstance:
     - target: {fileID: 7038911212868762904, guid: 2752a9f645f5cc64ca6af39debf601d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7038911212868762905, guid: 2752a9f645f5cc64ca6af39debf601d1, type: 3}
+      propertyPath: hitboxVelocityThreshold
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7038911213533619616, guid: 2752a9f645f5cc64ca6af39debf601d1, type: 3}
       propertyPath: instanceDamageMultiplier
