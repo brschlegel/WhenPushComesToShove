@@ -5939,6 +5939,7 @@ MonoBehaviour:
   - {fileID: 912632678044550766}
   levelType: 2
   waveManager: {fileID: 6905185167733970435}
+  teamLevel: 1
   enemySpawnProps: []
 --- !u!156049354 &4844155420199255257
 Grid:
@@ -6360,6 +6361,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1238909096}
     m_Modifications:
+    - target: {fileID: 2671478022329514512, guid: c218628b32a63554999f97617a7a681d, type: 3}
+      propertyPath: teamIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671478022329514512, guid: c218628b32a63554999f97617a7a681d, type: 3}
+      propertyPath: teamIindex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8318899946535896032, guid: c218628b32a63554999f97617a7a681d, type: 3}
       propertyPath: m_Name
       value: Player Spawn
@@ -6494,6 +6503,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1238909096}
     m_Modifications:
+    - target: {fileID: 2671478022329514512, guid: c218628b32a63554999f97617a7a681d, type: 3}
+      propertyPath: teamIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671478022329514512, guid: c218628b32a63554999f97617a7a681d, type: 3}
+      propertyPath: teamIindex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8318899946535896032, guid: c218628b32a63554999f97617a7a681d, type: 3}
       propertyPath: m_Name
       value: Player Spawn
