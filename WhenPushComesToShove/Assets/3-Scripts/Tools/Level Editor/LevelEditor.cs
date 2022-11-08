@@ -57,6 +57,13 @@ public class LevelEditor : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
+        //Hide the default layers in the hierarchy
+        //https://www.youtube.com/watch?v=Hdlq5P2KqqE
+        defaultFloorLayer.hideFlags = HideFlags.HideInHierarchy;
+        defaultWallLayer.hideFlags = HideFlags.HideInHierarchy;
+        defaultFadeableLayer.hideFlags = HideFlags.HideInHierarchy;
+        defaultPlaceableLayer.hideFlags = HideFlags.HideInHierarchy;
+
         //Closes the Object Slection Window if the Level Editor is deselected
         if (!Selection.Contains(gameObject))
         {
