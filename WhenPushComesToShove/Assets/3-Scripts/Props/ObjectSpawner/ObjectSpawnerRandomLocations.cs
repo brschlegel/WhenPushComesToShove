@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectSpawnerLocations : ObjectSpawner
+public class ObjectSpawnerRandomLocations : SingleObjectSpawner
 {
 
     //Children are the list of locations

@@ -6,9 +6,9 @@ public delegate void ObjectSpawned(Transform t);
 public abstract class ObjectSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject objectToSpawn;
+    protected GameObject objectToSpawn;
     [SerializeField]
-    private Transform spawnedObjectParent;
+    protected Transform spawnedObjectParent;
     [SerializeField]
     private bool repeating;
 
@@ -19,18 +19,17 @@ public abstract class ObjectSpawner : MonoBehaviour
         
     }
 
-    public abstract Vector2 GetSpawnLocation();
-
-    public void SpawnObject()
+    public void InvokeOnObjectSpawned(Transform t)
     {
-        Transform t = Instantiate(objectToSpawn, GetSpawnLocation(), Quaternion.identity, spawnedObjectParent).transform;
         onObjectSpawned?.Invoke(t);
     }
+
+    public abstract void Spawn(); 
 
     private IEnumerator CoroutineSpawnWithDelay()
     {
         yield return new WaitForSeconds(spawnDelay);
-        SpawnObject();
+        Spawn();
         if(repeating)
         {
             SpawnWithDelay();
@@ -45,7 +44,7 @@ public abstract class ObjectSpawner : MonoBehaviour
 
     public void SpawnWithoutDelay()
     {
-        SpawnObject();
+        Spawn();
     }
 
     public GameObject ObjectToSpawn
@@ -58,7 +57,7 @@ public abstract class ObjectSpawner : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.G))
         {
-            SpawnObject();
+            Spawn();
         }
     }
 }

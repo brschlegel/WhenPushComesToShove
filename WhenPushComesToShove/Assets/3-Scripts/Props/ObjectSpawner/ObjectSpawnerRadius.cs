@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectSpawnerRadius : ObjectSpawner
+public class ObjectSpawnerRadius : SingleObjectSpawner
 {
     public float radius;
     public override Vector2 GetSpawnLocation()
