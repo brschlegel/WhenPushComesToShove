@@ -55,7 +55,7 @@ MonoBehaviour:
   currentState: {fileID: 0}
   target: {fileID: 0}
   printInfo: 0
-  anim: {fileID: 8174910203704807974}
+  anim: {fileID: 0}
   pMode: {fileID: 519120853313958755}
   dashScript: {fileID: 3186559500755933933}
   playerInputHandler: {fileID: 1870107280854562992}
@@ -5532,7 +5532,7 @@ GameObject:
   - component: {fileID: 5467828016632480258}
   - component: {fileID: 6528506575909656404}
   - component: {fileID: 519120853313958755}
-  - component: {fileID: 8174910203704807974}
+  - component: {fileID: 6500313041786800345}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -5697,6 +5697,7 @@ MonoBehaviour:
   pDrag: 2
   pMaterial: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
   velocityThreshold: 0.1
+  hitboxVelocityThreshold: 0
   pHitbox: {fileID: 5380527800048694876}
   sDrag: 2
   sMaterial: {fileID: 0}
@@ -5731,7 +5732,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   sourceObject: {fileID: 0}
---- !u!95 &8174910203704807974
+--- !u!95 &6500313041786800345
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -6111,7 +6112,6 @@ MonoBehaviour:
   handler: {fileID: 4628197168754584658}
   priority: 0
   owner: {fileID: 6273220948599445249}
-  ownersToIgnore: []
 --- !u!114 &820262909753106286
 MonoBehaviour:
   m_ObjectHideFlags: 0
