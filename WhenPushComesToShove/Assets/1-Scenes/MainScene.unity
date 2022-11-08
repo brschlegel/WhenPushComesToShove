@@ -1366,8 +1366,6 @@ MonoBehaviour:
     Right Trigger -
     Heavy Shove
 
-    A - Swap Item
-
     B - Dash'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1771,7 +1769,7 @@ MonoBehaviour:
   numOfDungeonRooms: 5
   path:
   - {fileID: 6254306470328373913, guid: 5a3664862d4e60f4b968a10d39e0c82e, type: 3}
-  - {fileID: 6212178899482229079, guid: 3a4348564b4e2f24096052dc2a42e810, type: 3}
+  - {fileID: 3115093129980057568, guid: 61fe25780f07d9f4aa926341a47a7277, type: 3}
 --- !u!4 &1589640427
 Transform:
   m_ObjectHideFlags: 0
@@ -2464,7 +2462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a440aa253be8382438c2bf471903de62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPlayers: 1
+  minPlayers: 2
   maxPlayers: 4
   levelInitRef: {fileID: 0}
   defaultColors:
@@ -2487,9 +2485,9 @@ MonoBehaviour:
   - {r: 0, g: 0.84313726, b: 0.99607843, a: 1}
   - {r: 0, g: 0.8627451, b: 0.09019608, a: 1}
   - {r: 0.99607843, g: 0.8117647, b: 0, a: 1}
-  teamOutlineColors:
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 0, b: 0.009220123, a: 1}
+  teamSprites:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &2086439675
 Transform:
   m_ObjectHideFlags: 0

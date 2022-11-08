@@ -91,7 +91,7 @@ public class LevelManager : MonoBehaviour
         GameObject room = path[currentRoomIndex];
         room.SetActive(true);
 
-        //Grab the enemy spawn points
+        //Grab the properties for this level
         LevelProperties levelProp = room.GetComponent<LevelProperties>();
 
         if(levelProp.levelType == LevelType.Arena)
@@ -105,9 +105,8 @@ public class LevelManager : MonoBehaviour
        
         currentRoomIndex++;
 
-        SetPlayerSpawns(room.GetComponent<LevelProperties>());
-
         GameState.currentRoomType = levelProp.levelType;
+        SetPlayerSpawns(levelProp);   
 
         //Countdown
         if (newRoomCountdown != null && currentRoomIndex -1 > 0)
@@ -169,10 +168,10 @@ public class LevelManager : MonoBehaviour
     /// <param name="levelProps">Properties of the current room</param>
     void SetPlayerSpawns(LevelProperties levelProps)
     {
-        InitLevel init = PlayerConfigManager.Instance.levelInitRef;
-
         //Convert the gameobjects into transforms
+        InitLevel init = PlayerConfigManager.Instance.levelInitRef;       
         Transform[] levelPlayerSpawn = new Transform[init.playerSpawns.Length];
+
         for (int i = 0; i < levelPlayerSpawn.Length; i++)
         {
             levelPlayerSpawn[i] = levelProps.playerSpawns[i].transform;
@@ -183,6 +182,6 @@ public class LevelManager : MonoBehaviour
 
         //Debug.Log(init.lockPlayerSpawn);
         if(init.lockPlayerSpawn)
-            init.SpawnPlayersInLevel();
+            init.SpawnPlayersInLevel(levelProps);
     }
 }

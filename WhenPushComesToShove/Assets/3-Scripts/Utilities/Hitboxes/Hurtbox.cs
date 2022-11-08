@@ -6,7 +6,15 @@ using UnityEngine;
 public class Hurtbox : MonoBehaviour
 {
     private new BoxCollider2D collider;
-    public void Start()
+
+    private void Start()
+    {
+        if (ownersToIgnore == null)
+        {
+            Init();
+        }
+    }
+    public void Init()
     {
         if(HitboxManager.instance == null)
         {
@@ -23,8 +31,7 @@ public class Hurtbox : MonoBehaviour
     [Tooltip("Hitboxes will not collide with hurtboxes who have the same owner")]
     public GameObject owner;
 
-    [HideInInspector]
-    public List<GameObject> ownersToIgnore;
+    private List<GameObject> ownersToIgnore;
 
 
     public void OnTriggerEnter2D(Collider2D collider)
@@ -41,5 +48,17 @@ public class Hurtbox : MonoBehaviour
     {
         get {return collider.offset + (Vector2) transform.position;}
     }
-    
+
+    public List<GameObject> OwnersToIgnore
+    {
+        get
+        {
+            if(ownersToIgnore == null)
+            {
+                Init();
+            }
+            return ownersToIgnore;
+        }
+    }
+
 }

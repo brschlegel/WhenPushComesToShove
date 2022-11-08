@@ -30,7 +30,7 @@ public class ProjectileHitbox : MonoBehaviour
     void Update()
     {
 
-        data.damage = Mathf.Clamp(pMode.Mass * pMode.Velocity.magnitude * GlobalSettings.velocityDamageCoeff * instanceDamageMultiplier, 0, GlobalSettings.velocityDamageCap);
+        data.damage = instanceDamageMultiplier * Mathf.Clamp(pMode.Mass * pMode.Velocity.magnitude * GlobalSettings.velocityDamageCoeff , 0, GlobalSettings.velocityDamageCap);
     }
 
     public List<GameObject> OwnersToIgnore
@@ -41,7 +41,7 @@ public class ProjectileHitbox : MonoBehaviour
             {
                 Init();
             }
-            return hitbox.ownersToIgnore;
+            return hitbox.OwnersToIgnore;
     
         }
     }

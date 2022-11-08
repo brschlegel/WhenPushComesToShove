@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7038911212868762904}
   - component: {fileID: 7038911212868762911}
   - component: {fileID: 7038911212868762910}
-  - component: {fileID: 7038911212868762909}
   - component: {fileID: 7038911212868762908}
   - component: {fileID: 7038911212868762905}
+  - component: {fileID: 7647606645070754888}
   m_Layer: 11
   m_Name: Dodgeball
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.5471698, g: 0.31837147, b: 0.1522784, a: 1}
+  m_Color: {r: 0.54901963, g: 0.29617566, b: 0.15294118, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,41 +104,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 7
+  m_Mass: 5
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &7038911212868762909
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7038911212868762883}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &7038911212868762908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,9 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72bbad3808e30042b498502a8076ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pDrag: 5
+  pDrag: 3
   pMaterial: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
-  velocityThreshold: 0.1
+  velocityThreshold: 2
+  hitboxVelocityThreshold: 0
   pHitbox: {fileID: 7038911213533619616}
   sDrag: 40
   sMaterial: {fileID: 0}
@@ -178,6 +153,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   sourceObject: {fileID: 0}
+--- !u!58 &7647606645070754888
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038911212868762883}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &7038911213132274036
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deafbcdcbff1f0a428ee561f1d1dc96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagsToIgnore: []
+  tagsToIgnore:
+  - GhostShove
   outputs:
   - {fileID: 7038911213132274032}
   - {fileID: 7038911213132274038}
@@ -335,14 +327,44 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7725880952350467023, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
+      propertyPath: m_Size.x
+      value: 0.84628904
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725880952350467023, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0014501065
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 98020525822575043, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
+    - {fileID: 7725880952350467023, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
 --- !u!4 &763619340441473206 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7725880952350467021, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
   m_PrefabInstance: {fileID: 7038911213252621179}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &763619340441473211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7725880952350467008, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
+  m_PrefabInstance: {fileID: 7038911213252621179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &3043842098546364044
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763619340441473211}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.45
 --- !u!1001 &7038911213533619621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,9 +389,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7038911212868762883}
     - target: {fileID: 6854435290789191521, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: handler
+      value: 
+      objectReference: {fileID: 2818366698903327915}
+    - target: {fileID: 6854435290789191521, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: priority
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191532, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -442,7 +472,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pMode: {fileID: 0}
-  instanceDamageMultiplier: 2
+  instanceDamageMultiplier: 2.5
+--- !u!114 &2818366698903327915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517362080655571653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2391d7e68071d048bb7f5f435609715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
 --- !u!4 &4517362080655571656 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}

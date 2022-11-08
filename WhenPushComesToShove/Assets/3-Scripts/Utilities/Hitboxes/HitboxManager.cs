@@ -52,7 +52,7 @@ public class HitboxManager : MonoBehaviour
                         continue;
                     }
 
-                    if(e.hitbox.ownersToIgnore.Contains(e.hurtbox.owner) || e.hurtbox.ownersToIgnore.Contains(e.hitbox.owner))
+                    if(e.hitbox.OwnersToIgnore.Contains(e.hurtbox.owner) || e.hurtbox.OwnersToIgnore.Contains(e.hitbox.owner))
                     {
                         continue;
                     }

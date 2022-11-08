@@ -5,6 +5,7 @@ using UnityEditor;
 using System.Text.RegularExpressions;
 using System.IO;
 
+#if UNITY_EDITOR
 public class TrackSelectionWindow : EditorWindow
 {
     public LevelType levelType;
@@ -101,3 +102,4 @@ public class TrackSelectionWindow : EditorWindow
         return newID;
     }
 }
+#endif

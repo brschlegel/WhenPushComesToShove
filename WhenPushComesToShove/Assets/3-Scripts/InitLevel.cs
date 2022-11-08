@@ -33,7 +33,7 @@ public class InitLevel : MonoBehaviour
     /// <summary>
     /// Used if players are not spawned on start
     /// </summary>
-    public void SpawnPlayer( int index )
+    public void SpawnPlayer(int index)
     {
         PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
         GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
@@ -69,22 +69,51 @@ public class InitLevel : MonoBehaviour
         playerConfigs[index].PlayerObject = player;
     }
 
-    public void SpawnPlayersInLevel()
+    public void SpawnPlayersInLevel(LevelProperties levelProps)
     {
         //Spawn the players in their set locations for the level.
-        PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
+        PlayerConfigManager.Instance.RandomizeTeam();
+        PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerTeams().ToArray();
+
+        PlayerSpawnProps[] spawnProps = new PlayerSpawnProps[4];
+        for(int i = 0; i < spawnProps.Length; i++)
+        {
+            spawnProps[i] = new PlayerSpawnProps();
+            spawnProps[i].transform = playerSpawns[i].transform;
+            spawnProps[i].teamIndex = playerSpawns[i].transform.GetComponent<PlayerSpawnPoint>().teamIndex;
+            Debug.Log(spawnProps[i].teamIndex);
+            spawnProps[i].filled = false;
+        }
+        
         for (int i = 0; i < playerConfigs.Length; i++)
         {
-            //GameObject player = Instantiate(playerPrefab, playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
-            //player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
+
             if (playerConfigs[i].IsDead)
             {
                 playerConfigs[i].PlayerObject.GetComponentInChildren<PlayerHealth>().ResetHealth();
                 playerConfigs[i].IsDead = false;
             }
 
-            playerConfigs[i].PlayerObject.transform.position = playerSpawns[i].transform.position;
+            //If a team level, will arrange the players to spawn in the correct team spawn points without spawning on top of each other
+            if (levelProps.teamLevel)
+            {
+                for(int j = 0; j < spawnProps.Length; j++)
+                {
+                    Debug.Log("Spawn Index: " + spawnProps[j].teamIndex + " Player Index: " + playerConfigs[i].TeamIndex);
+                    if(spawnProps[j].filled == false && spawnProps[j].teamIndex == playerConfigs[i].TeamIndex)
+                    {
+                        spawnProps[j].filled = true;
+                        playerConfigs[i].PlayerObject.transform.position = spawnProps[j].transform.position;
+                        break;
+                    }
+                }
+                
+            }
+            else
+                playerConfigs[i].PlayerObject.transform.position = playerSpawns[i].transform.position;
         }
+
+        spawnProps = null;
     }
 
     /// <summary>

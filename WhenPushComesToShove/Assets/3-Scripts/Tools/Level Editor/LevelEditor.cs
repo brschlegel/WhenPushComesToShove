@@ -314,35 +314,17 @@ public class CustomLevelEditor : Editor
                     enemySpawns.Add(level.placeableLayer.transform.GetChild(i).gameObject);
             }
 
-            if(enemySpawns.Count <= 0)
-            {
-                Debug.LogError("There must be at least 1 enemy spawn point");
-                return;
-            }
-            else
-            {
-                levelProp.enemySpawns = enemySpawns.ToArray();
-                enemySpawns.Clear();
-            }
+            levelProp.enemySpawns = enemySpawns.ToArray();
+            enemySpawns.Clear();
 
             //Check to make sure that there's at least one hazard stat
-            if (level.hazardStats.Length <= 0)
-            {
-                Debug.LogError("There needs to be at least 1 hazard stat.");
-                return;
-            }
-            else
-                levelProp.hazards = level.hazardStats;
+            levelProp.hazards = level.hazardStats;
 
-            if (level.enemyStats.Length <= 0)
-            {
-                Debug.LogError("There needs to be at least 1 enemy stat.");
-                return;
-            }
-            else
-                levelProp.enemyStats = level.enemyStats;
 
-            if(root.name == "")
+            levelProp.enemyStats = level.enemyStats;
+
+
+            if (root.name == "")
             {
                 Debug.LogError("Level name can't be blank.");
                 return;
@@ -361,6 +343,11 @@ public class CustomLevelEditor : Editor
             {
                 path = "Assets/2-Prefabs/Levels/Resources/Arenas/" + root.name + ".prefab";
                 testObj = Resources.Load<GameObject>("Levels/Arenas/" + root.name);
+            }
+            else
+            {
+                path = "Assets/2-Prefabs/Levels/Resources/" + root.name + ".prefab";
+                testObj = Resources.Load<GameObject>(root.name);
             }
                 
 
