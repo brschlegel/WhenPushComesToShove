@@ -6058,6 +6058,7 @@ GameObject:
   - component: {fileID: 4504170673408540922}
   - component: {fileID: 4844155420199255257}
   - component: {fileID: 6905185167733970435}
+  - component: {fileID: 5257571771034410391}
   m_Layer: 0
   m_Name: DodgeballGame
   m_TagString: Untagged
@@ -6143,6 +6144,22 @@ MonoBehaviour:
   currentWave: -1
   complete: 0
   delayAllWaveTime: 0
+--- !u!114 &5257571771034410391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3115093129980057568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11132f21757c12a4da6d3af80c72a36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingUIDisplay: {fileID: 0}
+  endingUIDisplay: {fileID: 0}
+  dodgeballSpawner: {fileID: 0}
+  endCondition: {fileID: 0}
 --- !u!1 &5905240200813682517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6898,6 +6915,10 @@ PrefabInstance:
     - target: {fileID: 3637928662977029668, guid: 03f276c5d045b6d4086567e209bc7706, type: 3}
       propertyPath: m_Name
       value: ExplanationCountdown
+      objectReference: {fileID: 0}
+    - target: {fileID: 7393666075904888087, guid: 03f276c5d045b6d4086567e209bc7706, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03f276c5d045b6d4086567e209bc7706, type: 3}

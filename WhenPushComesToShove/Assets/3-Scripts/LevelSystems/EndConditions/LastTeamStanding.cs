@@ -13,12 +13,7 @@ public class LastTeamStanding : BaseEndCondition
 
     protected void OnEnable()
     {
-        if(winnerText == null)
-        {
-            winnerText = UIManager.instance.victoryText;
-            winnerText.gameObject.SetActive(false);
-        }
-
+    
         players = PlayerConfigManager.Instance.GetPlayerTeams();
         
     }
