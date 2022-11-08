@@ -260,19 +260,7 @@ public class CustomLevelEditor : Editor
             if(levelWaveManager.waveDelays.Count > 0)
                 rootWaveManager.waveDelays = levelWaveManager.waveDelays;
 
-            //GameObject floorLayer = new GameObject(level.levelName + " Floor Tile Map");
-            //floorLayer = level.floorLayer;
-            level.floorLayer.transform.parent = root.transform;
-            level.floorLayer.name = level.levelName + " Floor Tile Map";
-
-            level.wallLayer.transform.parent = root.transform;
-            level.wallLayer.name = level.levelName + " Wall Tile Map";
-
-            level.fadeablelayer.transform.parent = root.transform;
-            level.fadeablelayer.name = level.levelName + " Fadeable Object Tile Map";
-
-            level.placeableLayer.transform.parent = root.transform;
-            level.placeableLayer.name = level.levelName + " Placeable Objects";
+            
 
             //Check to make sure it has enough spawn points
             int numOfPlayerSpawn = 0;
@@ -291,12 +279,14 @@ public class CustomLevelEditor : Editor
             {
                 Debug.LogError("Not enough player spawn positions. 4 are required.");
                 playerSpawns.Clear();
+                DestroyImmediate(root);
                 return;
             }
             else if(numOfPlayerSpawn > 4)
             {
                 Debug.LogError("Too many player spawn positions. 4 are required.");
                 playerSpawns.Clear();
+                DestroyImmediate(root);
                 return;
             }
             else
@@ -327,10 +317,25 @@ public class CustomLevelEditor : Editor
             if (root.name == "")
             {
                 Debug.LogError("Level name can't be blank.");
+                DestroyImmediate(root);
                 return;
             }
 
             levelProp.levelType = level.levelType;
+
+            //GameObject floorLayer = new GameObject(level.levelName + " Floor Tile Map");
+            //floorLayer = level.floorLayer;
+            level.floorLayer.transform.parent = root.transform;
+            level.floorLayer.name = level.levelName + " Floor Tile Map";
+
+            level.wallLayer.transform.parent = root.transform;
+            level.wallLayer.name = level.levelName + " Wall Tile Map";
+
+            level.fadeablelayer.transform.parent = root.transform;
+            level.fadeablelayer.name = level.levelName + " Fadeable Object Tile Map";
+
+            level.placeableLayer.transform.parent = root.transform;
+            level.placeableLayer.name = level.levelName + " Placeable Objects";
 
             string path = "";
             GameObject testObj = null;
