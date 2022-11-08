@@ -17,11 +17,16 @@ public class LevelProperties : MonoBehaviour
     public LevelType levelType;
     public WaveManager waveManager;
 
+    [HideInInspector] public bool teamLevel;
+
     [HideInInspector] public List<EnemySpawnPoint> enemySpawnProps = new List<EnemySpawnPoint>();
 
     private void OnEnable()
     {
-       
+        if (levelType == LevelType.TwoTwo || levelType == LevelType.ThreeOne)
+            teamLevel = true;
+        else
+            teamLevel = false;
     }
 
     private void OnDisable()

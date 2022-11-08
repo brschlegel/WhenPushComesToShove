@@ -135,7 +135,6 @@ public class PlayerConfigManager : MonoBehaviour
     public void RandomizeTeam()
     {
 
-        Debug.Log(GameState.currentRoomType);
         playerTeamOrder.Clear();
 
         for (int i = 0; i < playerConfigs.Count; i++)
@@ -176,7 +175,7 @@ public class PlayerConfigManager : MonoBehaviour
                 Debug.Log("TwoTwo");
                 for (int i = 0; i < playerConfigs.Count; i++)
                 {
-                    if (i<2)
+                    if (i%2 == 0)
                     {
                         playerConfigs[playerTeamOrder[i].PlayerIndex].TeamIndex = 0;
                         playerTeamOrder[i].TeamIndex = 0;
@@ -191,7 +190,7 @@ public class PlayerConfigManager : MonoBehaviour
             case LevelType.ThreeOne:
                 for (int i = 0; i < playerConfigs.Count; i++)
                 {
-                    if (i < 3)
+                    if (i != 1)
                     {
                         playerConfigs[playerTeamOrder[i].PlayerIndex].TeamIndex = 0;
                         playerTeamOrder[i].TeamIndex = 0;
