@@ -113,7 +113,7 @@ public class LevelManager : MonoBehaviour
         {
             newRoomCountdown.gameObject.SetActive(true);
             room.GetComponent<WaveManager>().delayAllWaveTime = newRoomCountdown.countdownTime;
-            newRoomCountdown.roomText.text = room.GetComponentInChildren<BaseEndCondition>().roomExplanation;
+           
 
             //Lock Player Input
             foreach (Transform player in GameState.players)
