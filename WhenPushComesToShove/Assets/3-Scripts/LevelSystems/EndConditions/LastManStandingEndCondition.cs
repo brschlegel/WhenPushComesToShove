@@ -15,23 +15,16 @@ public class LastManStandingEndCondition : BaseEndCondition
     [SerializeField] private bool showWinnerText = true;
     private TextMeshProUGUI winnerText;
 
-    protected override void Start()
+    protected  void Start()
     {
         if (testForAllPlayersDead)
             minPlayers = 0;
         else
             minPlayers = 1;
-
-        base.Start();
     }
 
     protected void OnEnable()
     {
-        if (winnerText == null)
-        {
-            winnerText = UIManager.instance.victoryText;
-            winnerText.gameObject.SetActive(false);
-        }
 
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
@@ -41,59 +34,16 @@ public class LastManStandingEndCondition : BaseEndCondition
         }
     }
 
-    protected override void OnDisable()
+    protected override bool TestCondition()
     {
-        base.OnDisable();
-
-        winnerText.gameObject.SetActive(false);
-        playerHealth.Clear();
-        playersToRemove.Clear();
-    }
-
-    protected override void TestCondition()
-    {
-        foreach(Health player in playerHealth)
+        
+        foreach(Transform player in GameState.players)
         {
-            if (player.dead)
+            if (!player.dead)
                 playersToRemove.Add(player);
         }
 
-        foreach(Health player in playersToRemove)
-        {
-            playerHealth.Remove(player);
-        }
-
-        if(playerHealth.Count <= minPlayers)
-        {
-            //If winner text exists, display winner
-            if (minPlayers == 1 && showWinnerText)
-            {
-                DisplayWinner(playerHealth[0].transform.parent.GetComponentInChildren<PlayerInputHandler>().playerConfig.PlayerColorName);
-            }
-
-            //Update Logging
-            if (testForAllPlayersDead)
-            {
-                LoggingInfo.instance.numOfRunsFailed++;
-            }
-            else
-            {
-                LoggingInfo.instance.numOfRunsCompleted++;
-            }
-
-            base.TestCondition();
-        }
+      
     }
 
-    protected override IEnumerator TransitionRooms()
-    {
-        yield return delay;
-        LevelManager.onEndGame.Invoke();
-    }
-
-    private void DisplayWinner(string playerName)
-    {
-        winnerText.gameObject.SetActive(true);
-        winnerText.text = playerName + " Player Won!";
-    }
 }

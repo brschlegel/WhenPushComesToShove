@@ -7,28 +7,20 @@ public class LastTeamStanding : BaseEndCondition
 {
     List<PlayerConfiguration> players = new List<PlayerConfiguration>();
     List<PlayerConfiguration> playersToRemove = new List<PlayerConfiguration>();
-
-    [SerializeField] private bool showWinnerText = true;
-    private TextMeshProUGUI winnerText;
+    [HideInInspector]
+    public int winningTeamNum;
 
     protected void OnEnable()
     {
     
         players = PlayerConfigManager.Instance.GetPlayerTeams();
+        winningTeamNum = -1;
         
     }
 
-    protected override void OnDisable()
-    {
-        base.OnDisable();
 
-        winnerText.gameObject.SetActive(false);
-        players.Clear();
-        playersToRemove.Clear();
 
-    }
-
-    protected override void TestCondition()
+    public override bool TestCondition()
     {
         foreach(PlayerConfiguration player in players)
         {
@@ -50,22 +42,14 @@ public class LastTeamStanding : BaseEndCondition
             //Exit the code if there's still players of different teams
             if (players[i].TeamIndex != basePlayer.TeamIndex)
             {
-                return;
+                return false;
             }
 
             Debug.Log(players[i].TeamIndex);
                
         }
-
-        if (showWinnerText)
-            DisplayWinner(players[0].TeamIndex + 1);
-
-        base.TestCondition();
-    }
-
-    private void DisplayWinner(int teamNum)
-    {
-        winnerText.gameObject.SetActive(true);
-        winnerText.text = "Team " + teamNum + " Won!";
+        winningTeamNum = players[0].TeamIndex;
+        return true;
+        //base.TestCondition();
     }
 }
