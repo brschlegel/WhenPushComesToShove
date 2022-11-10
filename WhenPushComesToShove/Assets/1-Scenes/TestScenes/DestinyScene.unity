@@ -2259,7 +2259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownTime: 3
-  roomText: {fileID: 933870540}
 --- !u!1 &1895630048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2304,8 +2303,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repeatPath: 1
-  newRoomCountdown: {fileID: 1892721583}
-  uiRef: {fileID: 2013026632}
   lootArenaEquip: {fileID: 347616166255666306, guid: 261b47bf1ce5aa94185670685bd134ca, type: 3}
 --- !u!114 &1895630051
 MonoBehaviour:
@@ -2319,22 +2316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca82af0d42a3e544281e55a9430ac860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazardLevels:
-  - hazard: 1
-    level: 0
-  - hazard: 2
-    level: 0
-  - hazard: 3
-    level: 0
-  enemyStatLevels:
-  - enemy: 1
-    level: 0
-  - enemy: 2
-    level: 0
   numOfDungeonRooms: 5
   path:
   - {fileID: 6254306470328373913, guid: 5a3664862d4e60f4b968a10d39e0c82e, type: 3}
-  - {fileID: 7256899143342224382, guid: d19f09519bc9ce24fbe27335c40c7444, type: 3}
+  - {fileID: 8829601026546890495, guid: 90aae7df3f630b249aa117a0dd17fc96, type: 3}
 --- !u!4 &1895630052
 Transform:
   m_ObjectHideFlags: 0

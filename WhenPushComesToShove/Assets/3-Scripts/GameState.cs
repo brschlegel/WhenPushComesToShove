@@ -7,6 +7,7 @@ public static class GameState
    static public List<Transform> players = new List<Transform>();
     public static LevelType currentRoomType;
     public static bool damageEnabled = true;
+    public static int[] playerScores = new int[4];
 
     static public Transform GetNearestPlayer(Transform transform, bool onlyAlive = true)
     {
