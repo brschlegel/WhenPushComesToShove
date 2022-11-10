@@ -9,6 +9,8 @@ public class TransitionOnEndCondition : MonoBehaviour
     private float delay = 1;
     private BaseEndCondition endCondition; 
 
+    private bool transitioning;
+
 
     private void OnEnable()
     {
@@ -17,10 +19,11 @@ public class TransitionOnEndCondition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(endCondition.TestCondition())
+        if(endCondition.TestCondition() && !transitioning)
         {
             CoroutineManager.StartGlobalCoroutine(TransitionToLevel());
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            transitioning = true;
         }
     }
 
@@ -28,5 +31,6 @@ public class TransitionOnEndCondition : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         LevelManager.onNewRoom.Invoke();
+        transitioning = false;
     }
 }

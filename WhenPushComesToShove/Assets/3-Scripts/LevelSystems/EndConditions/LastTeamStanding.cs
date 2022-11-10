@@ -10,15 +10,12 @@ public class LastTeamStanding : BaseEndCondition
     [HideInInspector]
     public int winningTeamNum;
 
-    protected void OnEnable()
+    public override void Init()
     {
-    
         players = PlayerConfigManager.Instance.GetPlayerTeams();
         winningTeamNum = -1;
-        
+        playersToRemove = new List<PlayerConfiguration>();
     }
-
-
 
     public override bool TestCondition()
     {

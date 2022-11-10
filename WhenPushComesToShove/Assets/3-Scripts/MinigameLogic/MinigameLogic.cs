@@ -2,38 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LevelProperties))]
 public abstract class MinigameLogic : MonoBehaviour
 {
-    private List<BaseEndCondition> endConditions;
+    [SerializeField]
+    protected UIDisplay startingUIDisplay;
+    [SerializeField]
+    protected UIDisplay endingUIDisplay;
 
     [SerializeField]
-    private UIDisplay startingUIDisplay;
-    [SerializeField]
-    private UIDisplay endingUIDisplay;
-    private void OnEnable()
-    {
-        if(endConditions == null)
-        {
-           Init();
-        }
-    } 
+    protected BaseEndCondition endCondition;
+    protected bool gameRunning;
+
 
     public virtual void Init()
     {
-        endConditions = new List<BaseEndCondition>(GetComponentsInChildren<BaseEndCondition>());
         startingUIDisplay.ShowDisplay();
         CoroutineManager.StartGlobalCoroutine(WaitToStartGame());
     }
     
-    public abstract void StartGame();
+    public virtual void StartGame()
+    {
+        gameRunning = true;
+        endCondition.Init();
+    }
     public virtual void EndGame()
     {
+        gameRunning = false;
         endingUIDisplay.ShowDisplay();
         CoroutineManager.StartGlobalCoroutine(WaitToCleanUp());
     }
     public virtual void CleanUp()
     {
-
+        endingUIDisplay.HideDisplay();
+        LevelManager.onNewRoom.Invoke();
     }
 
     protected IEnumerator WaitToStartGame()

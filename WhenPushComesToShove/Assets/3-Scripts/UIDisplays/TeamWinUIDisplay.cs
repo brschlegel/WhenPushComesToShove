@@ -11,7 +11,7 @@ public class TeamWinUIDisplay : UIDisplay
     [SerializeField]
     private TextMeshProUGUI victoryText;
     [SerializeField]
-    private float delay;
+    private float delay = 1;
 
     public override void ShowDisplay()
     {

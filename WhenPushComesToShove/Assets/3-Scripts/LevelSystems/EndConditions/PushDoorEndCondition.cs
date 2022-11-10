@@ -9,6 +9,8 @@ public class PushDoorEndCondition : BaseEndCondition
     List<GameObject> lightsToTurnOff = new List<GameObject>();
     List<GameObject> playersInTrigger = new List<GameObject>();
 
+    //dont need to init
+    public override void Init() {}
     public override bool TestCondition()
     {
 

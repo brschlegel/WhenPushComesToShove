@@ -15,17 +15,14 @@ public class LastManStandingEndCondition : BaseEndCondition
     [HideInInspector]
     public Transform winner;
 
-    protected  void Start()
+
+    public override void Init()
     {
-        if (testForAllPlayersDead)
+         winner = null;
+           if (testForAllPlayersDead)
             minPlayers = 0;
         else
             minPlayers = 1;
-    }
-
-    protected void OnEnable()
-    {
-        winner = null;
     }
 
     public override bool TestCondition()

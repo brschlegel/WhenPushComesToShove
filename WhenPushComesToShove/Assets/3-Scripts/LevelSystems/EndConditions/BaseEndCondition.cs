@@ -6,4 +6,6 @@ using TMPro;
 public abstract class BaseEndCondition : MonoBehaviour
 {
     public abstract bool TestCondition();
+
+    public abstract void Init();
 }

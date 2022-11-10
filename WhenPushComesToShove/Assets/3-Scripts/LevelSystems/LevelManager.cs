@@ -102,7 +102,10 @@ public class LevelManager : MonoBehaviour
         GameState.currentRoomType = levelProp.levelType;
         SetPlayerSpawns(levelProp);   
 
-      
+        if(levelProp.TryGetComponent<MinigameLogic>(out MinigameLogic logic))
+        {
+            logic.Init();
+        }
 
         //Update Logging
         LoggingInfo.instance.currentRoomName = room.name;
