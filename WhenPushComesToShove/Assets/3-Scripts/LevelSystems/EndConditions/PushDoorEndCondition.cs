@@ -9,9 +9,9 @@ public class PushDoorEndCondition : BaseEndCondition
     List<GameObject> lightsToTurnOff = new List<GameObject>();
     List<GameObject> playersInTrigger = new List<GameObject>();
 
-    
-
-    protected override void TestCondition()
+    //dont need to init
+    public override void Init() {}
+    public override bool TestCondition()
     {
 
         //Ensure that players can join in the lobby
@@ -21,17 +21,16 @@ public class PushDoorEndCondition : BaseEndCondition
 
         //Ensures the room doesn't transition if there isn't enough players
         if (PlayerConfigManager.Instance.GetPlayerConfigs().Count < PlayerConfigManager.Instance.GetMinPlayer())
-        {
-            
-            return;
-        }
+            return false;
+
         //Tests if the number of players in the trigger box matches the number of players in the game
         if(numOfPlayersInTrigger == PlayerConfigManager.Instance.GetPlayerConfigs().Count)
         {
             PlayerConfigManager.Instance.levelInitRef.lockPlayerSpawn = true;
-            this.GetComponent<Animator>().SetTrigger("Opened");            
-            base.TestCondition();
+            return true;
         }
+
+        return false;
             
     }
 
@@ -75,7 +74,6 @@ public class PushDoorEndCondition : BaseEndCondition
     {
         if (collision.tag == "Player")
         {
-            this.GetComponent<Animator>().SetTrigger("Locked");
             numOfPlayersInTrigger++;
             playersInTrigger.Add(collision.gameObject);
         }
