@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PathGenerator : MonoBehaviour
 {
-    [SerializeField] HazardDifficulty.HazardStats[] hazardLevels;
-    [SerializeField] EnemyDifficulty.EnemyLevelStats[] enemyStatLevels;
+    HazardDifficulty.HazardStats[] hazardLevels;
+    EnemyDifficulty.EnemyLevelStats[] enemyStatLevels;
 
     List<LevelProperties> levelProps = new List<LevelProperties>();
 
@@ -18,60 +18,67 @@ public class PathGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TextAsset textAsset = Resources.Load<TextAsset>("LevelTrack");
+        Object[] allMinigames = Resources.LoadAll<Object>("Minigames/");
 
-        if(textAsset != null)
+        foreach(Object obj in allMinigames)
         {
-            levelTracks = JsonUtility.FromJson<LevelTracks>(textAsset.text);
-
-            //Add all of the selected dungeons to the level pool
-            foreach (HazardPathDetails haz in levelTracks.dungeonPaths)
-            {
-                foreach (EnemyPathDetails ene in haz.enemyTracks)
-                {
-                    if (ene.selected)
-                    {
-                        foreach (GameObject level in ene.levels)
-                        {
-                            Debug.Log(level.name);
-                            levelProps.Add(level.GetComponent<LevelProperties>());
-                        }
-                    }
-                }
-            }
-
-            //Add all of the selected arenas to the level pool
-            foreach (ArenaDetails arena in levelTracks.arenaPaths)
-            {
-                if (arena.selected)
-                {
-                    foreach (GameObject level in arena.levels)
-                    {
-                        levelProps.Add(level.GetComponent<LevelProperties>());
-                    }
-                }
-            }
+            GameObject level = (GameObject)obj;
+            levelProps.Add(level.GetComponent<LevelProperties>());
         }
-        else
-        {
-            Object[] allDungeons = Resources.LoadAll<Object>("Dungeons/");
-            Object[] allArenas = Resources.LoadAll<Object>("Arenas/");
+        //TextAsset textAsset = Resources.Load<TextAsset>("LevelTrack");
 
-            foreach(Object obj in allDungeons)
-            {
-                GameObject level = (GameObject)obj;
-                levelProps.Add(level.GetComponent<LevelProperties>());
-            }
+        //if(textAsset != null)
+        //{
+        //    levelTracks = JsonUtility.FromJson<LevelTracks>(textAsset.text);
 
-            foreach(Object obj in allArenas)
-            {
-                GameObject arena = (GameObject)obj;
-                levelProps.Add(arena.GetComponent<LevelProperties>());
-            }
-        }
-        
+        //    //Add all of the selected dungeons to the level pool
+        //    foreach (HazardPathDetails haz in levelTracks.dungeonPaths)
+        //    {
+        //        foreach (EnemyPathDetails ene in haz.enemyTracks)
+        //        {
+        //            if (ene.selected)
+        //            {
+        //                foreach (GameObject level in ene.levels)
+        //                {
+        //                    Debug.Log(level.name);
+        //                    levelProps.Add(level.GetComponent<LevelProperties>());
+        //                }
+        //            }
+        //        }
+        //    }
 
-        if(path.Count <= 0)
+        //    //Add all of the selected arenas to the level pool
+        //    foreach (ArenaDetails arena in levelTracks.arenaPaths)
+        //    {
+        //        if (arena.selected)
+        //        {
+        //            foreach (GameObject level in arena.levels)
+        //            {
+        //                levelProps.Add(level.GetComponent<LevelProperties>());
+        //            }
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    Object[] allDungeons = Resources.LoadAll<Object>("Dungeons/");
+        //    Object[] allArenas = Resources.LoadAll<Object>("Arenas/");
+
+        //    foreach(Object obj in allDungeons)
+        //    {
+        //        GameObject level = (GameObject)obj;
+        //        levelProps.Add(level.GetComponent<LevelProperties>());
+        //    }
+
+        //    foreach(Object obj in allArenas)
+        //    {
+        //        GameObject arena = (GameObject)obj;
+        //        levelProps.Add(arena.GetComponent<LevelProperties>());
+        //    }
+        //}
+
+
+        if (path.Count <= 0)
             GeneratePath();
 
         InstantiatePathRooms();
@@ -88,51 +95,54 @@ public class PathGenerator : MonoBehaviour
             if(currentPathNum == 0)
             {
                 path.Add(Resources.Load<GameObject>("Lobby"));
-                for (int i = 0; i < hazardLevels.Length; i++)
-                {
-                    hazardLevels[i].level++;
-                }
-                for (int i = 0; i < enemyStatLevels.Length; i++)
-                {
-                    enemyStatLevels[i].level++;
-                }
+                //for (int i = 0; i < hazardLevels.Length; i++)
+                //{
+                //    hazardLevels[i].level++;
+                //}
+                //for (int i = 0; i < enemyStatLevels.Length; i++)
+                //{
+                //    enemyStatLevels[i].level++;
+                //}
             }
             else
             {
                 //Go through the rooms and see if the hazard levels match 
                 for (int i = 0; i < shuffledRooms.Length; i++)
                 {
-                    if (shuffledRooms[i] != null)
-                    {
-                        if (IsCompatibleRoom(shuffledRooms[i]) && shuffledRooms[i].levelType == LevelType.Dungeon)
-                        {
-                            path.Add(shuffledRooms[i].gameObject);
+                    path.Add(shuffledRooms[i].gameObject);
+                    Debug.Log(path.Count);
+                    //if (shuffledRooms[i] != null)
+                    //{
+                        
+                    //    if (IsCompatibleRoom(shuffledRooms[i]) && shuffledRooms[i].levelType == LevelType.Dungeon)
+                    //    {
+                    //        path.Add(shuffledRooms[i].gameObject);
 
-                            //Ups the levels this rooms hazards in the path
-                            foreach (HazardDifficulty.HazardStats stat in shuffledRooms[i].hazards)
-                            {
-                                for (int j = 0; j < hazardLevels.Length; j++)
-                                {
-                                    if (stat.hazard == hazardLevels[j].hazard)
-                                        hazardLevels[j].level++;
-                                }
-                            }
+                    //        //Ups the levels this rooms hazards in the path
+                    //        foreach (HazardDifficulty.HazardStats stat in shuffledRooms[i].hazards)
+                    //        {
+                    //            for (int j = 0; j < hazardLevels.Length; j++)
+                    //            {
+                    //                if (stat.hazard == hazardLevels[j].hazard)
+                    //                    hazardLevels[j].level++;
+                    //            }
+                    //        }
 
-                            //Ups the enemy levels in the path
-                            foreach (EnemyDifficulty.EnemyLevelStats stat in shuffledRooms[i].enemyStats)
-                            {
-                                for (int j = 0; j < enemyStatLevels.Length; j++)
-                                {
-                                    if (stat.enemy == enemyStatLevels[j].enemy)
-                                        enemyStatLevels[j].level++;
-                                }
-                            }
+                    //        //Ups the enemy levels in the path
+                    //        foreach (EnemyDifficulty.EnemyLevelStats stat in shuffledRooms[i].enemyStats)
+                    //        {
+                    //            for (int j = 0; j < enemyStatLevels.Length; j++)
+                    //            {
+                    //                if (stat.enemy == enemyStatLevels[j].enemy)
+                    //                    enemyStatLevels[j].level++;
+                    //            }
+                    //        }
 
-                            //Ensures the same room ins't spawned twice
-                            shuffledRooms[i] = null;
-                            break;
-                        }
-                    }
+                    //        //Ensures the same room ins't spawned twice
+                    //        shuffledRooms[i] = null;
+                    //        break;
+                    //    }
+                    //}
 
                     //Will stop the path generation if there aren't any rooms to add to the path
                     if (i == shuffledRooms.Length - 1)
@@ -148,28 +158,28 @@ public class PathGenerator : MonoBehaviour
         }
 
         //Spawn Arena Room
-        LevelProperties arena = null;
-        for (int i = 0; i < shuffledRooms.Length; i++)
-        {
-            if (shuffledRooms[i] != null)
-            {
-                if(shuffledRooms[i].levelType == LevelType.Arena)
-                {
-                    if (IsCompatibleRoom(shuffledRooms[i], true))
-                    {
-                        arena = shuffledRooms[i];
-                        path.Add(arena.gameObject);
-                    }                       
-                    break;
-                }
-            }
-        }
+        //LevelProperties arena = null;
+        //for (int i = 0; i < shuffledRooms.Length; i++)
+        //{
+        //    if (shuffledRooms[i] != null)
+        //    {
+        //        if(shuffledRooms[i].levelType == LevelType.Arena)
+        //        {
+        //            if (IsCompatibleRoom(shuffledRooms[i], true))
+        //            {
+        //                arena = shuffledRooms[i];
+        //                path.Add(arena.gameObject);
+        //            }                       
+        //            break;
+        //        }
+        //    }
+        //}
 
-        if (arena == null)
-        {
-            Debug.LogWarning("No arena available for this path. Loading in default arena");
-            path.Add(Resources.Load<GameObject>("DefaultArena"));
-        }
+        //if (arena == null)
+        //{
+        //    Debug.LogWarning("No arena available for this path. Loading in default arena");
+        //    path.Add(Resources.Load<GameObject>("DefaultArena"));
+        //}
             
     }
 
@@ -184,15 +194,15 @@ public class PathGenerator : MonoBehaviour
         }
 
         //Reset levels for hazards and enemies
-        for(int i = 0; i < hazardLevels.Length; i++)
-        {
-            hazardLevels[i].level = 0;
-        }
+        //for(int i = 0; i < hazardLevels.Length; i++)
+        //{
+        //    hazardLevels[i].level = 0;
+        //}
 
-        for(int i = 0; i < enemyStatLevels.Length; i++)
-        {
-            enemyStatLevels[i].level = 0;
-        }
+        //for(int i = 0; i < enemyStatLevels.Length; i++)
+        //{
+        //    enemyStatLevels[i].level = 0;
+        //}
 
         //Generate and spawn new path
         GeneratePath();
