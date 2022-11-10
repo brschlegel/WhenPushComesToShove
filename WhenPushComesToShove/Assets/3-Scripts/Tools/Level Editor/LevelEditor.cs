@@ -351,11 +351,6 @@ public class CustomLevelEditor : Editor
                 path = "Assets/2-Prefabs/Levels/Resources/Dungeons/" + root.name + ".prefab";
                 testObj = Resources.Load<GameObject>("Levels/" + root.name);
             }              
-            else if(level.levelType == LevelType.Arena)
-            {
-                path = "Assets/2-Prefabs/Levels/Resources/Arenas/" + root.name + ".prefab";
-                testObj = Resources.Load<GameObject>("Levels/Arenas/" + root.name);
-            }
             else if(level.levelType == LevelType.Lobby)
             {
                 path = "Assets/2-Prefabs/Levels/Resources/" + root.name + ".prefab";
