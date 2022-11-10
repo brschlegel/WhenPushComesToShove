@@ -191,7 +191,16 @@ public class LevelEditor : MonoBehaviour
         fourthLayer.transform.parent = transform;
         placeableLayer = fourthLayer;
 
-        GameObject canvasLayer = levelRoot.transform.GetChild(0).gameObject;
+        GameObject canvasLayer = null;
+        if(levelRoot.transform.childCount >= 1)
+        {
+            canvasLayer = levelRoot.transform.GetChild(0).gameObject;      
+        }
+        else
+        {
+            canvasLayer = Instantiate(defaultCanvas);           
+        }
+
         canvasLayer.transform.parent = transform;
         canvas = canvasLayer;
 
