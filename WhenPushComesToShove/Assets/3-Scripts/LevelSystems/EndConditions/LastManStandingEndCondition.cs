@@ -12,8 +12,8 @@ public class LastManStandingEndCondition : BaseEndCondition
     [SerializeField] bool testForAllPlayersDead;
     int minPlayers;
 
-    [SerializeField] private bool showWinnerText = true;
-    private TextMeshProUGUI winnerText;
+    [HideInInspector]
+    public Transform winner;
 
     protected  void Start()
     {
@@ -25,23 +25,30 @@ public class LastManStandingEndCondition : BaseEndCondition
 
     protected void OnEnable()
     {
-
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach (GameObject obj in players)
-        {
-            playerHealth.Add(obj.GetComponentInChildren<Health>());
-        }
+        winner = null;
     }
 
-    protected override bool TestCondition()
+    public override bool TestCondition()
     {
-        
+        Transform alivePlayer = null;
         foreach(Transform player in GameState.players)
         {
-            if (!player.dead)
-                playersToRemove.Add(player);
+            PlayerHealth health = player.GetComponentInChildren<PlayerHealth>();
+            if (!health.dead)
+            {
+                if(alivePlayer != null)
+                {
+                    return false;
+                }
+                alivePlayer = player;
+            }
+
+            winner = alivePlayer;
+            return true;
         }
+
+        Debug.LogError("NO PLAYERS?");
+        return false;
 
       
     }

@@ -21,6 +21,7 @@ public abstract class MinigameLogic : MonoBehaviour
     public virtual void Init()
     {
         endConditions = new List<BaseEndCondition>(GetComponentsInChildren<BaseEndCondition>());
+        startingUIDisplay.ShowDisplay();
         CoroutineManager.StartGlobalCoroutine(WaitToStartGame());
     }
     

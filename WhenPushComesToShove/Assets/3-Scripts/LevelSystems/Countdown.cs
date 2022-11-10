@@ -22,16 +22,9 @@ public class Countdown : MonoBehaviour
 
     private void OnEnable()
     {
-        if (text != null)
-        {
-            text.color = new Color(text.color.r, text.color.g, text.color.b, 1f);
-            timer = countdownTime;
-        }
-        else
-        {
-            text = GetComponentInChildren<TextMeshProUGUI>();
-            gameObject.SetActive(false);
-        }
+        text = GetComponentInChildren<TextMeshProUGUI>();
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 1f);
+        timer = countdownTime;
     }
 
     // Update is called once per frame
