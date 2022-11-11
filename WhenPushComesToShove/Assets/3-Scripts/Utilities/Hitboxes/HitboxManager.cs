@@ -57,7 +57,7 @@ public class HitboxManager : MonoBehaviour
                         continue;
                     }
                     //Check priority
-                    if(currentEvent == null || currentEvent.hurtbox.priority <= e.hurtbox.priority)
+                    if(currentEvent == null || currentEvent.hurtbox.priority < e.hurtbox.priority)
                     {
                         currentEvent = e;
                     }

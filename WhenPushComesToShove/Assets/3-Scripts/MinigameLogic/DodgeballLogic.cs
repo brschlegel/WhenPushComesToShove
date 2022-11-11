@@ -6,10 +6,6 @@ public class DodgeballLogic : MinigameLogic
 {
     [SerializeField]
     private BatchObjectSpawnerLocations dodgeballSpawner;
-    [SerializeField]
-    private Transform dodgeballParent;
-
-
 
     private void Update()
     {
@@ -27,12 +23,8 @@ public class DodgeballLogic : MinigameLogic
 
     public override void CleanUp()
     {
-        for(int i = dodgeballParent.childCount - 1; i >= 0; i--)
-        {
-            Destroy(dodgeballParent.GetChild(i).gameObject);
-        }
+        dodgeballSpawner.CleanUpSpawnedObjects();
         base.CleanUp();
-
     }
 
     public override void StartGame()

@@ -40,12 +40,10 @@ public class LastManStandingEndCondition : BaseEndCondition
                 alivePlayer = player;
             }
 
-            winner = alivePlayer;
-            return true;
+          
         }
-
-        Debug.LogError("NO PLAYERS?");
-        return false;
+        winner = alivePlayer;
+        return true;
 
       
     }

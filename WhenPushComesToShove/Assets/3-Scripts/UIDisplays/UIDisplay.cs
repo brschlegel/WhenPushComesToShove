@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class UIDisplay : MonoBehaviour
 {
+    [HideInInspector]
     public bool isDone;
 
     public abstract void ShowDisplay();
