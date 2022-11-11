@@ -277,19 +277,22 @@ public class CustomLevelEditor : Editor
         if (GUILayout.Button("Save Level"))
         {
             //Spawn the object
-            GameObject root = new GameObject(level.levelName);
-            LevelProperties levelProp = root.AddComponent<LevelProperties>();
-            root.AddComponent<Grid>();
+            GameObject root = null;
+            LevelProperties levelProp = null;
 
-            WaveManager rootWaveManager = root.AddComponent<WaveManager>();
-            WaveManager levelWaveManager = level.GetComponent<WaveManager>();
-            levelProp.waveManager = rootWaveManager;
-
-            //Will only add the WaveManager if there's delays set
-            if(levelWaveManager.waveDelays.Count > 0)
-                rootWaveManager.waveDelays = levelWaveManager.waveDelays;
-
-            
+            if(level.selectedLevel == null)
+            {
+                root = new GameObject(level.levelName);
+                levelProp = root.AddComponent<LevelProperties>();
+                root.AddComponent<Grid>();
+            }
+            else
+            {
+                root = Instantiate(level.selectedLevel);
+                root.name = level.selectedLevel.name;
+                levelProp = root.GetComponent<LevelProperties>();
+                level.DeleteChildren(root, root.transform.childCount);
+            }
 
             //Check to make sure it has enough spawn points
             int numOfPlayerSpawn = 0;
@@ -395,6 +398,7 @@ public class CustomLevelEditor : Editor
                 DestroyImmediate(root);
                 return;
             }
+
 
             GameObject savedLevel = PrefabUtility.SaveAsPrefabAsset(root, path);
 
