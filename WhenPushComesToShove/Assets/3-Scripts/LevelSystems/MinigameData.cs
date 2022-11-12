@@ -1,19 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MinigameData : MonoBehaviour
 {
     public int[] scores = new int[4];
+    public static Action<int, int> onScoreAdded;
 
     public void AddScoreForTeam(int teamIndex, int scoreToAdd)
     {
         scores[teamIndex] += scoreToAdd;
-
-        foreach (int s in scores)
-        {
-            Debug.Log(s);
-        }
+        onScoreAdded.Invoke(teamIndex, scores[teamIndex]);
     }
 
     public void OnMinigameEnd()
