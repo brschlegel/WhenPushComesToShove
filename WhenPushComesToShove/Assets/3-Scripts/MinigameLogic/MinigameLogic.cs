@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LevelProperties))]
+//[RequireComponent(typeof(LevelProperties))]
 public abstract class MinigameLogic : MonoBehaviour
 {
     [SerializeField]

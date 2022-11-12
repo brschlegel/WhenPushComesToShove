@@ -15,6 +15,7 @@ public class LevelEditor : MonoBehaviour
     public GameObject wallLayer;
     public GameObject fadeablelayer;
     public GameObject placeableLayer;
+    public GameObject canvas;
 
     //Default Layers
     [Header("Default Layers - DO NOT EDIT")]
@@ -22,6 +23,7 @@ public class LevelEditor : MonoBehaviour
     [SerializeField] GameObject defaultWallLayer;
     [SerializeField] GameObject defaultFadeableLayer;
     [SerializeField] GameObject defaultPlaceableLayer;
+    [SerializeField] GameObject defaultCanvas;
 
     //Placeable Objects
     [Header("Placeable Objects - DO NOT EDIT")]
@@ -63,6 +65,7 @@ public class LevelEditor : MonoBehaviour
         defaultWallLayer.hideFlags = HideFlags.HideInHierarchy;
         defaultFadeableLayer.hideFlags = HideFlags.HideInHierarchy;
         defaultPlaceableLayer.hideFlags = HideFlags.HideInHierarchy;
+        defaultCanvas.hideFlags = HideFlags.HideInHierarchy;
 
         //Closes the Object Slection Window if the Level Editor is deselected
         if (!Selection.Contains(gameObject))
@@ -103,6 +106,7 @@ public class LevelEditor : MonoBehaviour
             }
                 
         }
+
         previousSelectedLevel = selectedLevel;
     }
 
@@ -187,6 +191,19 @@ public class LevelEditor : MonoBehaviour
         fourthLayer.transform.parent = transform;
         placeableLayer = fourthLayer;
 
+        GameObject canvasLayer = null;
+        if(levelRoot.transform.childCount >= 1)
+        {
+            canvasLayer = levelRoot.transform.GetChild(0).gameObject;      
+        }
+        else
+        {
+            canvasLayer = Instantiate(defaultCanvas);           
+        }
+
+        canvasLayer.transform.parent = transform;
+        canvas = canvasLayer;
+
         DestroyImmediate(levelRoot);
     }
 
@@ -196,15 +213,16 @@ public class LevelEditor : MonoBehaviour
     public void Reset()
     {
         //Resets the editor if a level is loaded in
-        if(gameObject.transform.childCount > 4)
+        if(gameObject.transform.childCount > 5)
         {
-            DeleteChildren(gameObject, gameObject.transform.childCount, gameObject.transform.childCount - 4);
-            //SetActiveChildren(gameObject, true, 4);
+            DeleteChildren(gameObject, gameObject.transform.childCount, gameObject.transform.childCount - 5);
 
             floorLayer = gameObject.transform.GetChild(0).gameObject;
             wallLayer = gameObject.transform.GetChild(1).gameObject;
             fadeablelayer = gameObject.transform.GetChild(2).gameObject;
             placeableLayer = gameObject.transform.GetChild(3).gameObject;
+            canvas = gameObject.transform.GetChild(4).gameObject;
+
         }
         //Resets the editor from scrath
         else
@@ -226,6 +244,10 @@ public class LevelEditor : MonoBehaviour
             placeableLayer = Instantiate(defaultPlaceableLayer);
             placeableLayer.transform.parent = transform;
             placeableLayer.name = "Placeable Objects";
+
+            canvas = Instantiate(defaultCanvas);
+            canvas.transform.parent = transform;
+            canvas.name = "Canvas";
         }
 
         levelName = "";
@@ -344,6 +366,9 @@ public class CustomLevelEditor : Editor
             level.placeableLayer.transform.parent = root.transform;
             level.placeableLayer.name = level.levelName + " Placeable Objects";
 
+            level.canvas.transform.parent = root.transform;
+            level.canvas.name = level.levelName + " Canvas";
+
             string path = "";
             GameObject testObj = null;
             if (level.levelType == LevelType.Dungeon)
@@ -351,11 +376,6 @@ public class CustomLevelEditor : Editor
                 path = "Assets/2-Prefabs/Levels/Resources/Dungeons/" + root.name + ".prefab";
                 testObj = Resources.Load<GameObject>("Levels/" + root.name);
             }              
-            else if(level.levelType == LevelType.Arena)
-            {
-                path = "Assets/2-Prefabs/Levels/Resources/Arenas/" + root.name + ".prefab";
-                testObj = Resources.Load<GameObject>("Levels/Arenas/" + root.name);
-            }
             else if(level.levelType == LevelType.Lobby)
             {
                 path = "Assets/2-Prefabs/Levels/Resources/" + root.name + ".prefab";
