@@ -9,8 +9,8 @@ public class Explosion : MonoBehaviour
     private GameObject rootObject;
     [SerializeField]
     private SpriteRenderer rootSprite;
-    [SerializeField]
-    private float explosionDuration;
+    
+    public float explosionDuration;
     private List<Hitbox> explosionHitboxes;
     [SerializeField]
     private GameObject vfxPrefab;
