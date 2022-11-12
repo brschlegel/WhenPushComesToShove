@@ -12,6 +12,7 @@ public class ExplanationCountdownUIDisplay : UIDisplay
 
     public override void ShowDisplay()
     {
+        isDone = false;
         gameObject.SetActive(true);
        countdown.gameObject.SetActive(true);
        explanationText.gameObject.SetActive(true);
