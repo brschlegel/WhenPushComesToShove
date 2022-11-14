@@ -16,7 +16,7 @@ public abstract class ObjectSpawner : MonoBehaviour
     public float spawnDelay;
     void Start()
     {
-        
+
     }
 
     public void InvokeOnObjectSpawned(Transform t)
@@ -24,13 +24,13 @@ public abstract class ObjectSpawner : MonoBehaviour
         onObjectSpawned?.Invoke(t);
     }
 
-    public abstract void Spawn(); 
+    public abstract void Spawn();
 
     private IEnumerator CoroutineSpawnWithDelay()
     {
         yield return new WaitForSeconds(spawnDelay);
         Spawn();
-        if(repeating)
+        if (repeating)
         {
             SpawnWithDelay();
         }
@@ -49,15 +49,23 @@ public abstract class ObjectSpawner : MonoBehaviour
 
     public GameObject ObjectToSpawn
     {
-        get {return objectToSpawn;}
-        set {objectToSpawn = value;}
+        get { return objectToSpawn; }
+        set { objectToSpawn = value; }
     }
-    
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             Spawn();
+        }
+    }
+
+    public void CleanUpSpawnedObjects()
+    {
+        for (int i = spawnedObjectParent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(spawnedObjectParent.GetChild(i).gameObject);
         }
     }
 }

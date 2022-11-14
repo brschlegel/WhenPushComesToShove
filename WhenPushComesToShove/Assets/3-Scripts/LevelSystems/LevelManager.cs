@@ -10,11 +10,9 @@ public class LevelManager : MonoBehaviour
     List<GameObject> path;
     [Tooltip("Debug Variable. Will cause the path to cycle to the beginning.")]
     [SerializeField] bool repeatPath;
-    [SerializeField] GameObject lootArenaEquip;
     private DamageEnabler damageEnabler;
     public static Action onNewRoom;
     public static Action onEndGame;
-    EnemySpawnPoint[] enemySpawns;
 
     private void OnEnable()
     {
@@ -46,15 +44,12 @@ public class LevelManager : MonoBehaviour
         //Temp code to test if the room transitions work
         if (Input.GetKeyDown(KeyCode.E))
         {
-            ClearEnemies();
-
             onNewRoom();
         }
 
         //Temp code to reset the game fully
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            ClearEnemies();
             onEndGame();
         }
     }
@@ -87,15 +82,6 @@ public class LevelManager : MonoBehaviour
 
         //Grab the properties for this level
         LevelProperties levelProp = room.GetComponent<LevelProperties>();
-
-        if(levelProp.levelType == LevelType.Arena)
-        {
-            foreach(Transform player in GameState.players)
-            {
-                LootData loot = Instantiate(lootArenaEquip, transform).GetComponent<LootData>();
-                player.GetComponentInChildren<PlayerInventory>().EquipItem(loot);
-            }
-        }
        
         currentRoomIndex++;
 
@@ -118,8 +104,6 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Reset");
         //Temp code - Will just put everyone back into the lobby
 
-        ClearEnemies();
-
         pathGen.ResetPath();
 
         currentRoomIndex = path.Count;
@@ -137,14 +121,6 @@ public class LevelManager : MonoBehaviour
         //Should remake the path
     }
 
-    public void ClearEnemies()
-    {
-        GameObject enemyPool = GameObject.FindGameObjectWithTag("EnemyPool");
-        for (int i = enemyPool.transform.childCount - 1; i >= 0; i--)
-        {
-            Destroy(enemyPool.transform.GetChild(i).gameObject);
-        }
-    }
     /// <summary>
     /// Sets all of the players to their respective spawn points
     /// </summary>

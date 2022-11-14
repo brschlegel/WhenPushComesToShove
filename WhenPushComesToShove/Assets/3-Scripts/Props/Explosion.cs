@@ -9,10 +9,9 @@ public class Explosion : MonoBehaviour
     private GameObject rootObject;
     [SerializeField]
     private SpriteRenderer rootSprite;
-    [SerializeField]
-    private float explosionDuration;
-    [SerializeField]
-    private Hitbox explosionHitbox;
+    
+    public float explosionDuration;
+    private List<Hitbox> explosionHitboxes;
     [SerializeField]
     private GameObject vfxPrefab;
 
@@ -21,7 +20,12 @@ public class Explosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        explosionHitbox.owner = rootObject;
+        explosionHitboxes = new List<Hitbox>(GetComponentsInChildren<Hitbox>(true));
+        
+        foreach(Hitbox h in explosionHitboxes)
+        {
+            h.owner = rootObject;
+        }
     }
 
     // Update is called once per frame
@@ -37,7 +41,10 @@ public class Explosion : MonoBehaviour
     {
         Instantiate(vfxPrefab, transform.position, Quaternion.identity);
         rootSprite.enabled = false;
-        explosionHitbox.gameObject.SetActive(true);
+        foreach(Hitbox h in explosionHitboxes)
+        {
+            h.gameObject.SetActive(true);
+        }
         CoroutineManager.StartGlobalCoroutine(WaitToDestroy());
         rootObject.GetComponentInChildren<Rigidbody2D>().velocity = Vector2.zero;
         onExplode?.Invoke();

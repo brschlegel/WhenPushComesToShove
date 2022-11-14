@@ -8,8 +8,7 @@ public class CountdownProp : MonoBehaviour
 {
     private TextMeshProUGUI text;
     public UnityEvent onFinished;
-    [SerializeField]
-    private float startingValue;
+    public float startingValue;
 
     private float currentValue;
 
