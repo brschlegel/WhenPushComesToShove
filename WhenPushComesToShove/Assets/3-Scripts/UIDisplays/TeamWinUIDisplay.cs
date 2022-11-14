@@ -17,7 +17,16 @@ public class TeamWinUIDisplay : UIDisplay
     {
         isDone = false;
         victoryText.gameObject.SetActive(true);
-        victoryText.text = "Team " + winningTeamNum + " Won!";
+
+        if (winningTeamNum == -1)
+        {
+            victoryText.text = "Tie!";
+        }
+        else
+        {
+            victoryText.text = "Team " + winningTeamNum + " Won!";
+        }
+ 
         CoroutineManager.StartGlobalCoroutine(WaitToFinish());
     }
 

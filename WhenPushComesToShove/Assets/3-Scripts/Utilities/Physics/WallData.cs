@@ -38,16 +38,18 @@ public class WallData : MonoBehaviour
 
     private bool ShouldTakeDamage(GameObject source, GameObject collision)
     {
-        if (GameState.currentRoomType != LevelType.Arena)//Except Pvp
-        {
-            Debug.Log("No Damage");
-            return false;
-        }
-        else if (source.tag == "Hazard")
-        {
-            return false;
-        }
+        //if (GameState.currentRoomType != LevelType.Arena)//Except Pvp
+        //{
+        //    Debug.Log("No Damage");
+        //    return false;
+        //}
+        //else if (source.tag == "Hazard")
+        //{
+        //    return false;
+        //}
+        //
+        //return true;
 
-        return true;
+        return false;
     }
 }
