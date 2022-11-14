@@ -89,12 +89,6 @@ public class LevelEditor : MonoBehaviour
             //Enemy stats
             enemyStats = selectedProps.enemyStats;
 
-            //Wave Manager
-            WaveManager selectedWaveManager = selectedLevel.GetComponent<WaveManager>();
-
-            if(selectedWaveManager != null)
-                GetComponent<WaveManager>().waveDelays = selectedWaveManager.waveDelays;
-
             levelType = selectedProps.levelType;
 
             //Update the sprite layers to match the selected Level
@@ -250,6 +244,12 @@ public class LevelEditor : MonoBehaviour
             canvas.name = "Canvas";
         }
 
+        MinigameLogic[] logics = GetComponents<MinigameLogic>();
+        for(int i = logics.Length - 1; i >= 0; i--)
+        {
+            Destroy(logics[i]);
+        }
+
         levelName = "";
         selectedLevel = null;
         hazardStats = null;
@@ -355,21 +355,16 @@ public class CustomLevelEditor : Editor
 
             levelProp.levelType = level.levelType;
 
-            //GameObject floorLayer = new GameObject(level.levelName + " Floor Tile Map");
-            //floorLayer = level.floorLayer;
             level.floorLayer.transform.parent = root.transform;
-            level.floorLayer.name = level.levelName + " Floor Tile Map";
-
             level.wallLayer.transform.parent = root.transform;
-            level.wallLayer.name = level.levelName + " Wall Tile Map";
-
             level.fadeablelayer.transform.parent = root.transform;
-            level.fadeablelayer.name = level.levelName + " Fadeable Object Tile Map";
-
             level.placeableLayer.transform.parent = root.transform;
-            level.placeableLayer.name = level.levelName + " Placeable Objects";
-
             level.canvas.transform.parent = root.transform;
+        
+            level.floorLayer.name = level.levelName + " Floor Tile Map";       
+            level.wallLayer.name = level.levelName + " Wall Tile Map";         
+            level.fadeablelayer.name = level.levelName + " Fadeable Object Tile Map";       
+            level.placeableLayer.name = level.levelName + " Placeable Objects";         
             level.canvas.name = level.levelName + " Canvas";
 
             string path = "";
@@ -398,7 +393,6 @@ public class CustomLevelEditor : Editor
                 DestroyImmediate(root);
                 return;
             }
-
 
             GameObject savedLevel = PrefabUtility.SaveAsPrefabAsset(root, path);
 
