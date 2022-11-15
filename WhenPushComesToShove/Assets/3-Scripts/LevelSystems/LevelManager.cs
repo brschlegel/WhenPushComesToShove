@@ -86,11 +86,22 @@ public class LevelManager : MonoBehaviour
         currentRoomIndex++;
 
         GameState.currentRoomType = levelProp.levelType;
-        SetPlayerSpawns(levelProp);   
+        SetPlayerSpawns(levelProp);
 
-        if(levelProp.TryGetComponent<MinigameLogic>(out MinigameLogic logic))
+        
+
+        if (levelProp.TryGetComponent<MinigameLogic>(out MinigameLogic logic))
         {
             logic.Init();
+        }
+        else
+        {
+            MinigameLogic gameLogic = levelProp.GetComponentInChildren<MinigameLogic>();
+
+            if (gameLogic != null)
+            {
+                gameLogic.Init();
+            }
         }
 
         //Update Logging
