@@ -6959,6 +6959,7 @@ GameObject:
   - component: {fileID: 8082681146408211673}
   - component: {fileID: 7778475532935669128}
   - component: {fileID: 5885948976961785816}
+  - component: {fileID: 7110929528203038258}
   m_Layer: 0
   m_Name: SoccerGame
   m_TagString: Untagged
@@ -7043,6 +7044,22 @@ MonoBehaviour:
   currentWave: -1
   complete: 0
   delayAllWaveTime: 0
+--- !u!114 &7110929528203038258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829601026546890495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef198b6515a265b44a500b790c5d9ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingUIDisplay: {fileID: 4062458952345354480}
+  endingUIDisplay: {fileID: 3756309527545034960}
+  endCondition: {fileID: 5271440420602589667}
+  data: {fileID: 6902546494219460757}
 --- !u!1001 &1685600213
 PrefabInstance:
   m_ObjectHideFlags: 0

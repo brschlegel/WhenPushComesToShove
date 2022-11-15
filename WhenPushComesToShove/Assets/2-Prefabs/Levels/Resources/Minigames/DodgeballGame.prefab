@@ -245,6 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1238909096}
+  - component: {fileID: 4424292928600187485}
   m_Layer: 0
   m_Name: DodgeballGame Placeable Objects
   m_TagString: Untagged
@@ -272,9 +273,26 @@ Transform:
   - {fileID: 4923592176076372516}
   - {fileID: 1166168430224176444}
   - {fileID: 8761897426696150610}
+  - {fileID: 4959068659617782587}
   m_Father: {fileID: 5810466408425846982}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4424292928600187485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238909095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11132f21757c12a4da6d3af80c72a36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingUIDisplay: {fileID: 5744249217520132199}
+  endingUIDisplay: {fileID: 3176881279464190267}
+  endCondition: {fileID: 6634862556189966687}
+  dodgeballSpawner: {fileID: 3580809651167699746}
 --- !u!1 &1805791060
 GameObject:
   m_ObjectHideFlags: 0
@@ -5901,8 +5919,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5810466408425846982}
-  m_RootOrder: 4
+  m_Father: {fileID: 1238909096}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2633459624891341190
 GameObject:
@@ -6058,7 +6076,6 @@ GameObject:
   - component: {fileID: 4504170673408540922}
   - component: {fileID: 4844155420199255257}
   - component: {fileID: 6905185167733970435}
-  - component: {fileID: 5257571771034410391}
   m_Layer: 0
   m_Name: DodgeballGame
   m_TagString: Untagged
@@ -6082,7 +6099,6 @@ Transform:
   - {fileID: 1805791067}
   - {fileID: 1228175339}
   - {fileID: 1238909096}
-  - {fileID: 4959068659617782587}
   - {fileID: 2498661160902753613}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -6144,23 +6160,6 @@ MonoBehaviour:
   currentWave: -1
   complete: 0
   delayAllWaveTime: 0
---- !u!114 &5257571771034410391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3115093129980057568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11132f21757c12a4da6d3af80c72a36b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingUIDisplay: {fileID: 5744249217520132199}
-  endingUIDisplay: {fileID: 3176881279464190267}
-  dodgeballSpawner: {fileID: 3580809651167699746}
-  endCondition: {fileID: 6634862556189966687}
-  dodgeballParent: {fileID: 4959068659617782587}
 --- !u!1 &5905240200813682517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6311,7 +6310,7 @@ RectTransform:
   - {fileID: 5459710583601271909}
   - {fileID: 6860645041779930789}
   m_Father: {fileID: 5810466408425846982}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
