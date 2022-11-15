@@ -803,7 +803,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numOfDungeonRooms: 5
-  path: []
+  path:
+  - {fileID: 6254306470328373913, guid: 5a3664862d4e60f4b968a10d39e0c82e, type: 3}
+  - {fileID: 805013608764250822, guid: d33d8fc8c691af7419205acae4faa370, type: 3}
 --- !u!4 &1589640427
 Transform:
   m_ObjectHideFlags: 0
@@ -831,7 +833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bde7e046bfa914e86bd85c8345584a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repeatPath: 1
+  repeatPath: 0
 --- !u!114 &1589640429
 MonoBehaviour:
   m_ObjectHideFlags: 0
