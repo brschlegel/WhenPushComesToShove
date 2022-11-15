@@ -225,7 +225,7 @@ public class PlayerConfigManager : MonoBehaviour
         //}
 
         //Assign Number Symbols
-        if (GameState.currentRoomType != LevelType.Arena)
+        if (GameState.currentRoomType != LevelType.Arena || GameState.currentRoomType != LevelType.Lobby)
         {
             foreach (PlayerConfiguration p in playerConfigs)
             {

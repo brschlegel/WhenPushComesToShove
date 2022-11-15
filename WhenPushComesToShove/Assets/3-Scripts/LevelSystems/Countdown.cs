@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 using DG.Tweening;
 
@@ -9,7 +10,8 @@ public class Countdown : MonoBehaviour
     public float countdownTime = 3;
     private float timer = 0;
     private TextMeshProUGUI text;
-    public TextMeshProUGUI roomText;
+
+    public UnityAction onCountdownEnded;
 
     private Material mat;
 
@@ -20,17 +22,9 @@ public class Countdown : MonoBehaviour
 
     private void OnEnable()
     {
-        if (text != null)
-        {
-            text.color = new Color(text.color.r, text.color.g, text.color.b, 1f);
-            roomText.color = new Color(roomText.color.r, roomText.color.g, roomText.color.b, 1f);
-            timer = countdownTime;
-        }
-        else
-        {
-            text = GetComponentInChildren<TextMeshProUGUI>();
-            gameObject.SetActive(false);
-        }
+        text = GetComponentInChildren<TextMeshProUGUI>();
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 1f);
+        timer = countdownTime;
     }
 
     // Update is called once per frame
@@ -41,7 +35,6 @@ public class Countdown : MonoBehaviour
 
         if (timer <= 0)
         {
-            roomText.DOFade(0, .4f);
             text.DOFade(0, .4f).OnComplete(OnFadeComplete);
         }
     }
@@ -49,6 +42,7 @@ public class Countdown : MonoBehaviour
     private void OnFadeComplete()
     {
         gameObject.SetActive(false);
+        onCountdownEnded?.Invoke();
     }
 
 

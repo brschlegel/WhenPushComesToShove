@@ -12,88 +12,40 @@ public class LastManStandingEndCondition : BaseEndCondition
     [SerializeField] bool testForAllPlayersDead;
     int minPlayers;
 
-    [SerializeField] private bool showWinnerText = true;
-    private TextMeshProUGUI winnerText;
+    [HideInInspector]
+    public Transform winner;
 
-    protected override void Start()
+
+    public override void Init()
     {
-        if (testForAllPlayersDead)
+         winner = null;
+           if (testForAllPlayersDead)
             minPlayers = 0;
         else
             minPlayers = 1;
-
-        base.Start();
     }
 
-    protected void OnEnable()
+    public override bool TestCondition()
     {
-        if (winnerText == null)
+        Transform alivePlayer = null;
+        foreach(Transform player in GameState.players)
         {
-            winnerText = UIManager.instance.victoryText;
-            winnerText.gameObject.SetActive(false);
-        }
-
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach (GameObject obj in players)
-        {
-            playerHealth.Add(obj.GetComponentInChildren<Health>());
-        }
-    }
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-
-        winnerText.gameObject.SetActive(false);
-        playerHealth.Clear();
-        playersToRemove.Clear();
-    }
-
-    protected override void TestCondition()
-    {
-        foreach(Health player in playerHealth)
-        {
-            if (player.dead)
-                playersToRemove.Add(player);
-        }
-
-        foreach(Health player in playersToRemove)
-        {
-            playerHealth.Remove(player);
-        }
-
-        if(playerHealth.Count <= minPlayers)
-        {
-            //If winner text exists, display winner
-            if (minPlayers == 1 && showWinnerText)
+            PlayerHealth health = player.GetComponentInChildren<PlayerHealth>();
+            if (!health.dead)
             {
-                DisplayWinner(playerHealth[0].transform.parent.GetComponentInChildren<PlayerInputHandler>().playerConfig.PlayerColorName);
+                if(alivePlayer != null)
+                {
+                    return false;
+                }
+                alivePlayer = player;
             }
 
-            //Update Logging
-            if (testForAllPlayersDead)
-            {
-                LoggingInfo.instance.numOfRunsFailed++;
-            }
-            else
-            {
-                LoggingInfo.instance.numOfRunsCompleted++;
-            }
-
-            base.TestCondition();
+          
         }
+        winner = alivePlayer;
+        return true;
+
+      
     }
 
-    protected override IEnumerator TransitionRooms()
-    {
-        yield return delay;
-        LevelManager.onEndGame.Invoke();
-    }
-
-    private void DisplayWinner(string playerName)
-    {
-        winnerText.gameObject.SetActive(true);
-        winnerText.text = playerName + " Player Won!";
-    }
 }

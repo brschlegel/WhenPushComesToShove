@@ -15,8 +15,11 @@ public class DamageHitHandler : HitHandler
             AttackData data = e.hitbox.attackData;
             if (data != null)
             {
-                 Debug.Log("damge: " + data.damage);
-                health.TakeDamage(data.damage, e.hitbox.owner.name);
+                if (data.damage > 0)
+                {
+                    Debug.Log("damge: " + data.damage);
+                    health.TakeDamage(data.damage, e.hitbox.owner.name);
+                }
             }
         }
     
