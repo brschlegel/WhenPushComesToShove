@@ -14,10 +14,18 @@ public abstract class MinigameLogic : MonoBehaviour
     protected BaseEndCondition endCondition;
     protected bool gameRunning;
 
+    [SerializeField] protected bool canPlayersTakeDamage = true;
+
 
     public virtual void Init()
     {
         startingUIDisplay.ShowDisplay();
+
+        if (!canPlayersTakeDamage)
+        {
+            UpdatePlayerInvulnurability(false);
+        }
+
         CoroutineManager.StartGlobalCoroutine(WaitToStartGame());
     }
     
@@ -34,6 +42,11 @@ public abstract class MinigameLogic : MonoBehaviour
     }
     public virtual void CleanUp()
     {
+        if (!canPlayersTakeDamage)
+        {
+            UpdatePlayerInvulnurability(true);
+        }
+
         endingUIDisplay.HideDisplay();
         LevelManager.onNewRoom.Invoke();
     }
@@ -54,5 +67,15 @@ public abstract class MinigameLogic : MonoBehaviour
             yield return new WaitUntil(() => endingUIDisplay.isDone);
         }
         CleanUp();
+    }
+
+    protected void UpdatePlayerInvulnurability( bool enabled)
+    {
+        GameState.damageEnabled = enabled;
+
+        foreach (Transform p in GameState.players)
+        {
+            p.GetComponentInChildren<HealthBar>().gameObject.SetActive(enabled);
+        }
     }
 }
