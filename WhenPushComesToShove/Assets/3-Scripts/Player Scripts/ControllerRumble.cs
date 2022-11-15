@@ -96,6 +96,7 @@ public class ControllerRumble : MonoBehaviour
     /// <param name="duration">Time For Rumble</param>
     public void RumbleConstant(float low, float high, float duration)
     {
+        #if UNITY_STANDALONE && !UNITY_EDITOR
         currentRumbleType = RumbleType.Constant;
         lowFreq = low;
         highFreq = high;
@@ -109,6 +110,7 @@ public class ControllerRumble : MonoBehaviour
         gamepad.SetMotorSpeeds(lowFreq, highFreq);
 
         stopRoutine = StartCoroutine(StopRumbleOverTime(duration));
+        #endif
     }
 
     /// <summary>
@@ -120,6 +122,7 @@ public class ControllerRumble : MonoBehaviour
     /// <param name="duration">Time For Rumble</param>
     public void RumblePulse(float low, float high, float burstTime, float duration)
     {
+#if UNITY_STANDALONE && !UNITY_EDITOR
         currentRumbleType = RumbleType.Pulse;
         lowFreq = low;
         highFreq = high;
@@ -136,6 +139,7 @@ public class ControllerRumble : MonoBehaviour
         gamepad.SetMotorSpeeds(lowFreq, highFreq);
 
         stopRoutine = StartCoroutine(StopRumbleOverTime(duration));
+#endif
     }
 
     /// <summary>
@@ -146,6 +150,7 @@ public class ControllerRumble : MonoBehaviour
     /// <param name="duration">Time For Rumble</param>
     public void RumbleLinear(float lowStart, float lowEnd, float highStart, float highEnd, float duration, bool stayConstantAfter)
     {
+#if UNITY_STANDALONE && !UNITY_EDITOR
         currentRumbleType = RumbleType.Linear;
         lowFreq = lowStart;
         highFreq = highStart;
@@ -166,8 +171,9 @@ public class ControllerRumble : MonoBehaviour
         //gamepad.SetMotorSpeeds(lowFreq, highFreq);
 
         stopRoutine = StartCoroutine(StopRumbleOverTime(duration, stayConstantAfter));
+#endif
     }
-    #endregion
+#endregion
 
     /// <summary>
     /// Stops the rumble after a set time
@@ -198,7 +204,11 @@ public class ControllerRumble : MonoBehaviour
     /// </summary>
     public void ForceStopRumble()
     {
-        StopCoroutine(stopRoutine);
+        if (stopRoutine != null)
+        {
+            StopCoroutine(stopRoutine);
+        }
+
         gamepad.SetMotorSpeeds(0, 0);
         stopRoutine = null;
     }
