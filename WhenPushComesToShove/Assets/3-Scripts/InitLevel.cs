@@ -74,7 +74,7 @@ public class InitLevel : MonoBehaviour
         //Spawn the players in their set locations for the level.
 
         //Spawn Players for team games
-        if(levelProps.levelType != LevelType.Arena)
+        if(levelProps.levelType != LevelType.Arena && levelProps.levelType != LevelType.Lobby)
         {
             PlayerConfigManager.Instance.RandomizeTeam();
             PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerTeams().ToArray();
