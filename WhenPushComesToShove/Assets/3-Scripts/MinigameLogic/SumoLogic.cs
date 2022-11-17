@@ -28,11 +28,14 @@ public class SumoLogic : MinigameLogic
     // Update is called once per frame
     void Update()
     {
-        if(endCondition.TestCondition())
+        if (gameRunning)
         {
-            Transform winner = ((LastManStandingEndCondition)endCondition).winner;
-            ((PlayerWinUIDisplay)endingUIDisplay).winnerName = winner.gameObject.name;
-            EndGame();
+            if (endCondition.TestCondition())
+            {
+                Transform winner = ((LastManStandingEndCondition)endCondition).winner;
+                ((PlayerWinUIDisplay)endingUIDisplay).winnerName = winner.gameObject.name;
+                EndGame();
+            }
         }
     }
 
