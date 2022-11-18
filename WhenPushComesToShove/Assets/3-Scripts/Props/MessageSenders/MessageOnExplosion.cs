@@ -14,6 +14,6 @@ public class MessageOnExplosion : MonoBehaviour
 
     private void OnExplosion()
     {
-        Messenger.SendEvent("BombExploded", new MessageArgs(objectArg: exp, vectorArg: exp.gameObject.transform.position));
+        Messenger.SendEvent("BombExploded", new MessageArgs(objectArg: exp.gameObject, vectorArg: exp.gameObject.transform.position));
     }
 }

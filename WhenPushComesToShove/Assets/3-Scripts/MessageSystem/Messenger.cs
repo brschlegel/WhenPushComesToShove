@@ -19,14 +19,30 @@ public static class Messenger
 {
     private static uint idCount = 0;
     private  static Dictionary<string, List<Message>> messages = new Dictionary<string, List<Message>>();
+
+    /// <summary>
+    /// Registers a delegate to be called when send event is called with the same key
+    /// </summary>
+    /// <param name="key">Key to have the delegate associated with </param>
+    /// <param name="del">Delegate to be called</param>
+    /// <returns>Unique ID associated with delegate</returns>
     public static uint RegisterEvent(string key, MessageDel del)
     {        
         idCount++;
+        if(!messages.ContainsKey(key))
+        {
+            messages.Add(key, new List<Message>());
+        }
         messages[key].Add(new Message(del, idCount));
         return idCount;
     }
 
-    public static void DeregisterEvent(string key, uint id)
+    /// <summary>
+    /// Unregisters a delegate, unassociating it with its key. Quicker than calling with just ID
+    /// </summary>
+    /// <param name="key">Key delegate is listed under</param>
+    /// <param name="id">Unique ID, returned by Register Event</param>
+    public static void UnregisterEvent(string key, uint id)
     {
         for(int i = 0; i < messages[key].Count; i++)
         {
@@ -38,6 +54,25 @@ public static class Messenger
         }
     }
 
+    public static void UnregisterEvent(uint id)
+    {
+        foreach(List<Message> list in messages.Values)
+        {
+            for(int i = 0; i < list.Count; i++)
+            {
+                if(list[i].uID == id)
+                {
+                    list.RemoveAt(i);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Calls all delegates associated with key, with the given arguments
+    /// </summary>
+    /// <param name="key">Key to call delegates associated with it</param>
+    /// <param name="args">Arguments to supply to the delegate</param>
     public static void SendEvent(string key, MessageArgs args)
     {
         foreach(Message m in messages[key])

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class MinigameList
+public class ModifierSettings
 {
     public GameObject modifierPrefab;
     public List<Minigame> minigamesAffected;
@@ -24,5 +24,5 @@ public class MinigameList
 [CreateAssetMenu(menuName = "Modifiers/Modifier List")]
 public class ModifierList : ScriptableObject
 {
-    public List<MinigameList> modifiers;
+    public List<ModifierSettings> modifiers;
 }

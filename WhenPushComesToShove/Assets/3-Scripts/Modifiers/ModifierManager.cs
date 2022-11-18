@@ -7,8 +7,10 @@ public class ModifierManager : MonoBehaviour
 
     private List<BaseModifier> modifiers;
     
-    public void AddModifier(GameObject prefab)
+    public void AddModifier(ModifierSettings settings)
     {
+        GameObject prefab = settings.modifierPrefab;
+
         Instantiate(prefab, this.transform);
         BaseModifier mod = prefab.GetComponent<BaseModifier>();
         if(mod == null)
@@ -16,6 +18,7 @@ public class ModifierManager : MonoBehaviour
 
         modifiers.Add(mod);
         mod.Init();
+        mod.minigamesAffected = settings.minigamesAffected;
     }
 
     public void RemoveAllModifiers()

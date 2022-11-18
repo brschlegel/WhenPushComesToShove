@@ -18,7 +18,7 @@ public class ClusterBombs : BaseModifier
 
     public override void CleanUp()
     {
-        Messenger.DeregisterEvent("BombExploded", eventID);
+        Messenger.UnregisterEvent("BombExploded", eventID);
     }
 
 }
