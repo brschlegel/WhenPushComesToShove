@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class ClusterBombs : BaseModifier
 {
+    uint eventID;
     // Start is called before the first frame update
     void Start()
     {
-        
+        eventID = Messenger.RegisterEvent("BombExploded", OnBombExplode);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnBombExplode(MessageArgs args)
     {
-        
+        Debug.Log("Bomb " + ((GameObject)args.objectArg).name + " has exploded at " + args.vectorArg);
     }
+
+    public override void CleanUp()
+    {
+        Messenger.DeregisterEvent("BombExploded", eventID);
+    }
+
 }
