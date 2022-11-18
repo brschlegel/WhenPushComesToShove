@@ -177,7 +177,7 @@ MonoBehaviour:
   endingUIDisplay: {fileID: 4724190567949761556}
   endCondition: {fileID: 6580719124436952548}
   spawner: {fileID: 5482981596809396173}
-  startBombSpawnInterval: 10
+  startBombSpawnInterval: 6
   endBombSpawnInterval: 4
   bombSpawnIncrement: -1
 --- !u!1 &2983523698952658965
@@ -4387,18 +4387,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6252565211999221766, guid: 6db05752049893e4eb40a52fe05c01f7, type: 3}
   m_PrefabInstance: {fileID: 5794801585358284254}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6625582574373514630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481559396439760344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d60e675ca0db141ad12aab40746bd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4800214858499969657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4413,6 +4401,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 2
   max: 8
+--- !u!114 &6625582574373514630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481559396439760344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d60e675ca0db141ad12aab40746bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3813048131823325037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7242331652283525811, guid: 6db05752049893e4eb40a52fe05c01f7, type: 3}

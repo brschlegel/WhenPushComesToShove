@@ -11,10 +11,10 @@ public class RandomizeCountdownOnSpawn : SpawnerAttachment
     protected override void OnSpawn(Transform t)
     {
         int rand = Random.Range(min, max);
-        CountdownProp countdown = t.GetComponentInChildren<CountdownProp>();
-        if(countdown != null)
+        ExplosionTimerFlash flash = t.GetComponentInChildren<ExplosionTimerFlash>();
+        if(flash != null)
         {
-            countdown.startingValue = rand;
+            flash.maxTime = rand;
         }
 
     }
