@@ -15,6 +15,11 @@ struct Message
     }
 }
 
+//These are like events in that they contain lists of delegates. Instead of being defined and differentiated by their return types and arguments however,
+//they are defined by a string key, and they all have the same very general arguments. When you register an event, you are telling the messenger system 
+//"Hey, whenever someone tells you that this key has happened, call this delegate". When you send an event, you are telling the system "This key has just happened,
+//call all the delegates associated with this key". Typically higher-level objects, like modifiers, register to events, and low-level objects, like props, send events.
+// https://en.wikipedia.org/wiki/Messaging_pattern (This is a decent description of whats happening here, but my implementation is a lot less OOP, instead letting anyone send or register to events)
 public static class Messenger 
 {
     private static uint idCount = 0;
@@ -54,6 +59,10 @@ public static class Messenger
         }
     }
 
+    /// <summary>
+    /// Unregisters a delegate, unassociating it with its key. 
+    /// </summary>
+    /// <param name="id">Unique ID, returned by Register Event</param>
     public static void UnregisterEvent(uint id)
     {
         foreach(List<Message> list in messages.Values)

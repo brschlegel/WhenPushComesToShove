@@ -20,7 +20,7 @@ public class ModifierManager : MonoBehaviour
         mod.Init();
         mod.minigamesAffected = settings.minigamesAffected;
     }
-
+ 
     public void RemoveAllModifiers()
     {
         foreach(BaseModifier mod in modifiers)
