@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7038911212868762908}
   - component: {fileID: 7038911212868762905}
   - component: {fileID: 7647606645070754888}
+  - component: {fileID: 2944712560177511130}
+  - component: {fileID: 8465598850251042872}
   m_Layer: 11
   m_Name: SoccerBall
   m_TagString: Hazard
@@ -169,6 +171,35 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2944712560177511130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038911212868762883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9572752efe4afdf40ab6db4c6f4a16c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsToGain: 1
+  hasGivenPoints: 0
+--- !u!114 &8465598850251042872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038911212868762883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7091f71d41fda48ad7f5f7dd5c99e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceForChange: 10
+  newPointValue: 3
+  newColor: {r: 0.9433962, g: 0.80478495, b: 0.14595935, a: 1}
 --- !u!1 &7038911213132274036
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +390,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -450,6 +481,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191535, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

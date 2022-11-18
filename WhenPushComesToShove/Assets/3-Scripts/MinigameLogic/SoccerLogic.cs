@@ -6,16 +6,6 @@ public class SoccerLogic : MinigameLogic
 {
     [SerializeField] private MinigameData data;
 
-    private void OnEnable()
-    {
-        GameState.damageEnabled = false;
-    }
-
-    private void OnDisable()
-    {
-        GameState.damageEnabled = true;
-    }
-
     private void Update()
     {
         if (gameRunning)
