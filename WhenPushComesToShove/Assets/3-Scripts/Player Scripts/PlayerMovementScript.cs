@@ -66,7 +66,7 @@ public class PlayerMovementScript : Move
         }
       
         //Apply the force
-        pMode.AddForce(GetForce(unitMove * slowAmount));
+        pMode.AddForce(GetForce(unitMove * slowAmount * GameState.playerSpeedModifier, GameState.playerAccelModifier));
 
     }
 

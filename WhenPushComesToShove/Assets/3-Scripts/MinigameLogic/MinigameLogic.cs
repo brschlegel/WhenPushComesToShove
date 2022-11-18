@@ -17,6 +17,8 @@ public abstract class MinigameLogic : MonoBehaviour
     protected BaseEndCondition endCondition;
     protected bool gameRunning;
 
+    public event emptyDelegate onGameStart;
+
 
     public virtual void Init()
     {
@@ -27,6 +29,7 @@ public abstract class MinigameLogic : MonoBehaviour
     public virtual void StartGame()
     {
         gameRunning = true;
+        onGameStart?.Invoke();
         endCondition.Init();
     }
     public virtual void EndGame()

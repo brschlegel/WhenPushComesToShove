@@ -4,10 +4,15 @@ using UnityEngine;
 
 public static class GameState 
 {
-   static public List<Transform> players = new List<Transform>();
+    static public List<Transform> players = new List<Transform>();
     public static LevelType currentRoomType;
     public static bool damageEnabled = true;
     public static int[] playerScores = new int[4];
+
+    //Modifiers
+    public static float playerSpeedModifier = 1;
+    public static float playerAccelModifier = 1;
+
 
     static public Transform GetNearestPlayer(Transform transform, bool onlyAlive = true)
     {

@@ -6,6 +6,21 @@ public class ModifierManager : MonoBehaviour
 {
 
     private List<BaseModifier> modifiers;
+
+    [Tooltip("Any modifiers put in here will be added on start")]
+    public ModifierList debugList;
+
+    void Start()
+    {
+        modifiers = new List<BaseModifier>();
+        if(debugList != null)
+        {
+       foreach(ModifierSettings m in debugList.modifiers)
+       {
+            AddModifier(m);
+       }
+        }
+    }
     
     public void AddModifier(ModifierSettings settings)
     {
