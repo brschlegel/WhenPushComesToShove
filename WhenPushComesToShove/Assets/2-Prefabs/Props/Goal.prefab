@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 8531564496285256831}
   - component: {fileID: 6666704608307868526}
   - component: {fileID: 6579291423660891421}
+  - component: {fileID: 4489110745142482294}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Untagged
@@ -403,7 +404,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.20409751, y: -0.095682025}
@@ -419,6 +420,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.46046555, y: 0.54391575}
   m_EdgeRadius: 0
+--- !u!50 &4489110745142482294
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6136480458289595296}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7166720267097402709
 GameObject:
   m_ObjectHideFlags: 0
