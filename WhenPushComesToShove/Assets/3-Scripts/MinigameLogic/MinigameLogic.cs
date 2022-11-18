@@ -17,6 +17,7 @@ public abstract class MinigameLogic : MonoBehaviour
 
     public virtual void Init()
     {
+        Debug.Log("Init");
         startingUIDisplay.ShowDisplay();
         CoroutineManager.StartGlobalCoroutine(WaitToStartGame());
     }

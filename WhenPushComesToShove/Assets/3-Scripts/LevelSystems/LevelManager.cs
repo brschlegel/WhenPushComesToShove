@@ -57,32 +57,39 @@ public class LevelManager : MonoBehaviour
     //Will ensure that only the current room on the path will show up
     void ShowRoom()
     {
-        if (path == null)
-            path = pathGen.path;
-
-        if (currentRoomIndex >= path.Count && repeatPath == false)
-            return;
-        else if (currentRoomIndex >= path.Count && repeatPath == true)
+        //Resets to the beginnig if there's no more available games or if its reached the max number of rooms
+        if(currentRoomIndex >= pathGen.numOfDungeonRooms || pathGen.availableLevels.Count <= 0)
         {
-            currentRoomIndex = 0;
-        }  
+            ResetPath();
+            return;
+        }
 
         damageEnabler.EnableDamage(currentRoomIndex > 0);
-        
-        //Hide the previous room
-        for (int i = 0; i < path.Count; i++)
+
+        //Clears previous level
+        if(pathGen.transform.childCount > 0)
         {
-            if (path[i].activeInHierarchy)
-                path[i].SetActive(false);
+            Destroy(pathGen.transform.GetChild(0).gameObject);
         }
 
         //Show the new room
-        GameObject room = path[currentRoomIndex];
-        room.SetActive(true);
+        GameObject room = null;
+
+        if (currentRoomIndex == 0)
+        {
+            room = pathGen.lobby;
+        }
+        else
+        {
+            room = pathGen.AssignLevel().gameObject;
+        }
+
+        GameObject newRoom = pathGen.SpawnRoom(room);
 
         //Grab the properties for this level
-        LevelProperties levelProp = room.GetComponent<LevelProperties>();
-       
+        LevelProperties levelProp = newRoom.GetComponent<LevelProperties>();
+        Debug.Log(newRoom.name);
+
         currentRoomIndex++;
 
         GameState.currentRoomType = levelProp.levelType;
@@ -94,22 +101,22 @@ public class LevelManager : MonoBehaviour
         }
 
         //Update Logging
-        LoggingInfo.instance.currentRoomName = room.name;
+        LoggingInfo.instance.currentRoomName = newRoom.name;
         LoggingInfo.instance.numOfRoomsTraveled++;
     }
 
     
     public void ResetPath()
     {
-        Debug.Log("Reset");
         //Temp code - Will just put everyone back into the lobby
 
-        pathGen.ResetPath();
+      
 
-        currentRoomIndex = path.Count;
-        repeatPath = true;
-        ShowRoom();     
-        repeatPath = false;
+        currentRoomIndex = 0;
+        //currentRoomIndex = path.Count;
+        //repeatPath = true;
+        //ShowRoom();     
+        //repeatPath = false;
 
         //Resets any players who died
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -118,6 +125,8 @@ public class LevelManager : MonoBehaviour
         {
             obj.GetComponentInChildren<Health>().dead = false;
         }
+
+        pathGen.ResetPath();
         //Should remake the path
     }
 
@@ -125,7 +134,7 @@ public class LevelManager : MonoBehaviour
     /// Sets all of the players to their respective spawn points
     /// </summary>
     /// <param name="levelProps">Properties of the current room</param>
-    void SetPlayerSpawns(LevelProperties levelProps)
+    public void SetPlayerSpawns(LevelProperties levelProps)
     {
         //Convert the gameobjects into transforms
         InitLevel init = PlayerConfigManager.Instance.levelInitRef;       

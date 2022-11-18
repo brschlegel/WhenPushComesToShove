@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class PathGenerator : MonoBehaviour
 {
-    HazardDifficulty.HazardStats[] hazardLevels;
-    EnemyDifficulty.EnemyLevelStats[] enemyStatLevels;
 
-    List<LevelProperties> levelProps = new List<LevelProperties>();
+    public GameObject lobby;
+
+    //All possible minigames
+    List<LevelProperties> allLevels = new List<LevelProperties>();
+
+    //All available levels based on modifers
+    public List<LevelProperties> availableLevels = new List<LevelProperties>();
+
+    //Any games that have already been played that can be filter out of the available levels
+    List<LevelProperties> playedLevels = new List<LevelProperties>();
 
     [Header("Path properties")]
-    [SerializeField] int numOfDungeonRooms;
+    public int numOfDungeonRooms;
     int currentPathNum = 0;
     public List<GameObject> path = new List<GameObject>();
-    LevelTracks levelTracks;
 
     // Start is called before the first frame update
     void Start()
@@ -23,67 +29,37 @@ public class PathGenerator : MonoBehaviour
         foreach(Object obj in allMinigames)
         {
             GameObject level = (GameObject)obj;
-            levelProps.Add(level.GetComponent<LevelProperties>());
+            LevelProperties prop = level.GetComponent<LevelProperties>();
+            allLevels.Add(prop);
+            availableLevels.Add(prop);
         }
-        //TextAsset textAsset = Resources.Load<TextAsset>("LevelTrack");
 
-        //if(textAsset != null)
-        //{
-        //    levelTracks = JsonUtility.FromJson<LevelTracks>(textAsset.text);
-
-        //    //Add all of the selected dungeons to the level pool
-        //    foreach (HazardPathDetails haz in levelTracks.dungeonPaths)
-        //    {
-        //        foreach (EnemyPathDetails ene in haz.enemyTracks)
-        //        {
-        //            if (ene.selected)
-        //            {
-        //                foreach (GameObject level in ene.levels)
-        //                {
-        //                    Debug.Log(level.name);
-        //                    levelProps.Add(level.GetComponent<LevelProperties>());
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    //Add all of the selected arenas to the level pool
-        //    foreach (ArenaDetails arena in levelTracks.arenaPaths)
-        //    {
-        //        if (arena.selected)
-        //        {
-        //            foreach (GameObject level in arena.levels)
-        //            {
-        //                levelProps.Add(level.GetComponent<LevelProperties>());
-        //            }
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    Object[] allDungeons = Resources.LoadAll<Object>("Dungeons/");
-        //    Object[] allArenas = Resources.LoadAll<Object>("Arenas/");
-
-        //    foreach(Object obj in allDungeons)
-        //    {
-        //        GameObject level = (GameObject)obj;
-        //        levelProps.Add(level.GetComponent<LevelProperties>());
-        //    }
-
-        //    foreach(Object obj in allArenas)
-        //    {
-        //        GameObject arena = (GameObject)obj;
-        //        levelProps.Add(arena.GetComponent<LevelProperties>());
-        //    }
-        //}
-
-
-        if (path.Count <= 0)
-            GeneratePath();
-
-        InstantiatePathRooms();
-
+        SpawnRoom(lobby);
         LevelManager.onNewRoom.Invoke();
+    }
+    
+    public LevelProperties AssignLevel()
+    {
+        //Remove any levels already played
+        foreach(LevelProperties level in playedLevels)
+        {
+            availableLevels.Remove(level);
+        }
+
+        //Grab a random level from the avaiable levels
+        int rng = Random.Range(0, availableLevels.Count);
+        LevelProperties newLevel = availableLevels[rng];
+
+
+        playedLevels.Add(newLevel);
+        return newLevel;
+    }
+
+    public GameObject SpawnRoom(GameObject level)
+    {
+        GameObject newLevel = Instantiate(level);
+        newLevel.transform.parent = transform;
+        return newLevel;
     }
 
     void GeneratePath()
@@ -156,30 +132,6 @@ public class PathGenerator : MonoBehaviour
 
             currentPathNum++;
         }
-
-        //Spawn Arena Room
-        //LevelProperties arena = null;
-        //for (int i = 0; i < shuffledRooms.Length; i++)
-        //{
-        //    if (shuffledRooms[i] != null)
-        //    {
-        //        if(shuffledRooms[i].levelType == LevelType.Arena)
-        //        {
-        //            if (IsCompatibleRoom(shuffledRooms[i], true))
-        //            {
-        //                arena = shuffledRooms[i];
-        //                path.Add(arena.gameObject);
-        //            }                       
-        //            break;
-        //        }
-        //    }
-        //}
-
-        //if (arena == null)
-        //{
-        //    Debug.LogWarning("No arena available for this path. Loading in default arena");
-        //    path.Add(Resources.Load<GameObject>("DefaultArena"));
-        //}
             
     }
 
@@ -187,26 +139,21 @@ public class PathGenerator : MonoBehaviour
     {
         //Clean out the current path
         currentPathNum = 0;
-        path.Clear();
-        foreach(Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
-
-        //Reset levels for hazards and enemies
-        //for(int i = 0; i < hazardLevels.Length; i++)
-        //{
-        //    hazardLevels[i].level = 0;
-        //}
-
-        //for(int i = 0; i < enemyStatLevels.Length; i++)
-        //{
-        //    enemyStatLevels[i].level = 0;
-        //}
+        //path.Clear();
+        Destroy(transform.GetChild(0).gameObject);
 
         //Generate and spawn new path
-        GeneratePath();
-        InstantiatePathRooms();
+        //GeneratePath();
+        //InstantiatePathRooms();
+        availableLevels.Clear();
+        playedLevels.Clear();
+
+        foreach(LevelProperties level in allLevels)
+        {
+            availableLevels.Add(level);
+        }
+
+        LevelManager.onNewRoom.Invoke();
     }
 
     void InstantiatePathRooms()
@@ -228,7 +175,7 @@ public class PathGenerator : MonoBehaviour
     /// <returns></returns>
     LevelProperties[] ShuffleRooms()
     {
-        LevelProperties[] shuffledProps = levelProps.ToArray();
+        LevelProperties[] shuffledProps = allLevels.ToArray();
         //https://answers.unity.com/questions/1189736/im-trying-to-shuffle-an-arrays-order.html by Loise-N-D
 
         for(int i = 0; i < shuffledProps.Length; i++)
@@ -243,41 +190,41 @@ public class PathGenerator : MonoBehaviour
     }
 
     //Tests to see if a room's hazards are the correct difficulty
-    bool IsCompatibleRoom(LevelProperties prop, bool onlyHazards = false)
-    {
-        //Check if the level's hazards match the path's
-        foreach (HazardDifficulty.HazardStats haz in prop.hazards)
-        {
-            foreach(HazardDifficulty.HazardStats hazLevel in hazardLevels)
-            {
-                //Makes sure that the same hazards are being compared
-                if(haz.hazard == hazLevel.hazard)
-                {
-                    //Make sure that hazards are the same level
-                    if (haz.level != hazLevel.level)
-                        return false;
-                }
-            }
-        }
+    //bool IsCompatibleRoom(LevelProperties prop, bool onlyHazards = false)
+    //{
+    //    //Check if the level's hazards match the path's
+    //    foreach (HazardDifficulty.HazardStats haz in prop.hazards)
+    //    {
+    //        foreach(HazardDifficulty.HazardStats hazLevel in hazardLevels)
+    //        {
+    //            //Makes sure that the same hazards are being compared
+    //            if(haz.hazard == hazLevel.hazard)
+    //            {
+    //                //Make sure that hazards are the same level
+    //                if (haz.level != hazLevel.level)
+    //                    return false;
+    //            }
+    //        }
+    //    }
 
-        if (!onlyHazards)
-        {
-            //Check if the level's enemies match the path's
-            foreach (EnemyDifficulty.EnemyLevelStats enm in prop.enemyStats)
-            {
-                foreach (EnemyDifficulty.EnemyLevelStats enmLevel in enemyStatLevels)
-                {
-                    //Makes sure that the same enemies are being compared
-                    if (enm.enemy == enmLevel.enemy)
-                    {
-                        //Make sure that enemies are the same level
-                        if (enm.level != enmLevel.level)
-                            return false;
-                    }
-                }
-            }
-        }
+    //    if (!onlyHazards)
+    //    {
+    //        //Check if the level's enemies match the path's
+    //        foreach (EnemyDifficulty.EnemyLevelStats enm in prop.enemyStats)
+    //        {
+    //            foreach (EnemyDifficulty.EnemyLevelStats enmLevel in enemyStatLevels)
+    //            {
+    //                //Makes sure that the same enemies are being compared
+    //                if (enm.enemy == enmLevel.enemy)
+    //                {
+    //                    //Make sure that enemies are the same level
+    //                    if (enm.level != enmLevel.level)
+    //                        return false;
+    //                }
+    //            }
+    //        }
+    //    }
         
-        return true;
-    }
+    //    return true;
+    //}
 }
