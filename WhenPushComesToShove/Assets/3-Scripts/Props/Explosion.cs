@@ -14,6 +14,8 @@ public class Explosion : MonoBehaviour
     private List<Hitbox> explosionHitboxes;
     [SerializeField]
     private GameObject vfxPrefab;
+    [SerializeField]
+    private float vfxScale = 1;
 
     public event emptyDelegate onExplode;
 
@@ -39,7 +41,8 @@ public class Explosion : MonoBehaviour
 
     public void Explode()
     {
-        Instantiate(vfxPrefab, transform.position, Quaternion.identity);
+        GameObject g = Instantiate(vfxPrefab, transform.position, Quaternion.identity);
+        g.transform.localScale = new Vector3(vfxScale, vfxScale, vfxScale);
         rootSprite.enabled = false;
         foreach(Hitbox h in explosionHitboxes)
         {
