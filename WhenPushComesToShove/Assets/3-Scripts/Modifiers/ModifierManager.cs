@@ -33,7 +33,6 @@ public class ModifierManager : MonoBehaviour
 
         modifiers.Add(mod);
         mod.Init();
-        mod.minigamesAffected = settings.minigamesAffected;
     }
  
     public void RemoveAllModifiers()

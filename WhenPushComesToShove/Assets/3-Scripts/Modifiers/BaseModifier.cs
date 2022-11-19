@@ -7,7 +7,7 @@ public abstract class BaseModifier : MonoBehaviour
     [HideInInspector]
     public Transform currentGameRoot;
 
-    [HideInInspector]
+    
     public List<Minigame> minigamesAffected;
 
     //These aren't abstract so that you don't  have to include them
