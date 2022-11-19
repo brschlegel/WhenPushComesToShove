@@ -84,9 +84,12 @@ public static class Messenger
     /// <param name="args">Arguments to supply to the delegate</param>
     public static void SendEvent(string key, MessageArgs args)
     {
-        foreach(Message m in messages[key])
+        if (messages.ContainsKey(key))
         {
-            m.del(args);
+            foreach (Message m in messages[key])
+            {
+                m.del(args);
+            }
         }
     }
 

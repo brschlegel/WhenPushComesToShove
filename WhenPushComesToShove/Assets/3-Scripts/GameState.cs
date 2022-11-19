@@ -10,9 +10,11 @@ public static class GameState
     public static int[] playerScores = new int[4];
 
     //Modifiers
+
+    //Player modifiers
     public static float playerSpeedModifier = 1;
     public static float playerAccelModifier = 1;
-
+    public static float playerChargeModifier = 1;
 
     static public Transform GetNearestPlayer(Transform transform, bool onlyAlive = true)
     {
