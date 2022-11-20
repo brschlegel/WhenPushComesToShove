@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClusterBombs : BaseModifier
+public class ClusterBombs : EventModifier
 {
-    uint eventID;
+
+  
 
     [SerializeField]
     private GameObject clusterBomb;
@@ -16,14 +17,13 @@ public class ClusterBombs : BaseModifier
     [SerializeField]
     private float timeToExplode;
 
-
-    // Start is called before the first frame update
-    void Start()
+    public override void Init()
     {
-        eventID = Messenger.RegisterEvent("BombExploded", OnBombExplode);
+        key = "BombExploded";
+        base.Init();
     }
 
-    private void OnBombExplode(MessageArgs args)
+    protected override void OnEvent(MessageArgs args)
     {
         List<Vector2> points = BenMath.GetEquidistantPoints((Vector2)args.vectorArg, 10, numberOfBombs, Mathf.PI / 2);
         for(int i = 0; i < numberOfBombs;  i++)
@@ -39,9 +39,6 @@ public class ClusterBombs : BaseModifier
         }
     }
 
-    public override void CleanUp()
-    {
-        Messenger.UnregisterEvent("BombExploded", eventID);
-    }
+
 
 }

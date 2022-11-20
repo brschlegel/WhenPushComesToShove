@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EqualOpposite : BaseModifier
+public class EqualOpposite : EventModifier
 {
-    private uint eventID;
+  
     public override void Init()
     {
-        eventID = Messenger.RegisterEvent("Shove_Hit", OnHit);
+        key = "Shove_Hit";
+        base.Init();
     }
 
     //Called from the MessageOnHit script
-    private void OnHit(MessageArgs args)
+    protected override void OnEvent(MessageArgs args)
     {
         HitEvent e = (HitEvent)args.objectArg;
         if(e != null)
@@ -22,8 +23,5 @@ public class EqualOpposite : BaseModifier
         }
     }
 
-    public override void CleanUp()
-    {
-        Messenger.UnregisterEvent("Shove_Hit", eventID);
-    }
+  
 }
