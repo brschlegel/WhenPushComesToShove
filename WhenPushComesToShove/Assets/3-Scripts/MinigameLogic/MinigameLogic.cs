@@ -24,6 +24,12 @@ public abstract class MinigameLogic : MonoBehaviour
     {
         startingUIDisplay.ShowDisplay();
 
+        //Lock Player Movement
+        foreach (Transform p in GameState.players)
+        {
+            p.GetComponentInChildren<PlayerMovementScript>().ChangeMoveSpeed(0);
+        }
+
         if (!canPlayersTakeDamage)
         {
             UpdatePlayerInvulnurability(false);
@@ -34,6 +40,12 @@ public abstract class MinigameLogic : MonoBehaviour
 
     public virtual void StartGame()
     {
+        //Unlock Player Movement
+        foreach (Transform p in GameState.players)
+        {
+            p.GetComponentInChildren<PlayerMovementScript>().ResetMoveSpeed();
+        }
+
         gameRunning = true;
         endCondition.Init();
     }
