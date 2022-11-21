@@ -5,7 +5,19 @@ using UnityEngine;
 public class SoccerLogic : MinigameLogic
 {
     [SerializeField] private MinigameData data;
+    [SerializeField] private List<ObjectSpawner> spawners;
+    [SerializeField] private List<Goal> goals;
 
+
+    public override void Init()
+    {
+        foreach(Goal g in goals)
+        {
+            g.goalScored += OnGoalScored;
+        }
+ 
+        base.Init();
+    }
     private void Update()
     {
         if (gameRunning)
@@ -30,6 +42,12 @@ public class SoccerLogic : MinigameLogic
             }
         }
 
+    }
+
+    private void OnGoalScored()
+    {
+        ObjectSpawner spawner = spawners.GetRandomElement<ObjectSpawner>();
+        spawner.Spawn();
     }
 
 }

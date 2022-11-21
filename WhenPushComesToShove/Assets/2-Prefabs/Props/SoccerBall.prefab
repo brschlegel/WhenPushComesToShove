@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 7038911213132274039}
   - component: {fileID: 7038911213132274038}
   - component: {fileID: 7038911213132274032}
+  - component: {fileID: 1720282055757688289}
   m_Layer: 0
   m_Name: HitHandlers
   m_TagString: Untagged
@@ -251,6 +252,7 @@ MonoBehaviour:
   outputs:
   - {fileID: 7038911213132274032}
   - {fileID: 7038911213132274038}
+  - {fileID: 1720282055757688289}
 --- !u!114 &7038911213132274038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +281,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToIgnore: []
   myPMode: {fileID: 7038911212868762905}
+--- !u!114 &1720282055757688289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038911213132274036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e6de3349a70114d98fadd047a51478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  keyStart: Ball
 --- !u!1001 &7038911213252621179
 PrefabInstance:
   m_ObjectHideFlags: 0

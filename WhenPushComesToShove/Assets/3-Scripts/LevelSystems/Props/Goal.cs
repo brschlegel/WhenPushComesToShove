@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Goal : MonoBehaviour
 {
     //[SerializeField] private ObjectSpawner spawner;
     [SerializeField] private MinigameData data;
     [SerializeField] private int teamIndex = 0;
+
+    public UnityAction goalScored;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,9 +20,7 @@ public class Goal : MonoBehaviour
             collision.transform.parent.gameObject.SetActive(false);
             Destroy(collision.transform.parent.gameObject);
 
-            //Trigger new ball spawn
-            ObjectSpawner spawner = collision.transform.parent.GetComponentInParent<ObjectSpawner>();
-            spawner.Spawn();
+           goalScored?.Invoke();
         }
     }
 

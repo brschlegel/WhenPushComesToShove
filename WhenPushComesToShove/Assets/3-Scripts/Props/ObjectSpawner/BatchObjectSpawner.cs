@@ -6,11 +6,14 @@ public abstract class BatchObjectSpawner : ObjectSpawner
 {
     public override void Spawn()
     {
-        List<Vector2> locations = GetBatchSpawnLocations();
-        foreach (Vector2 v in locations)
+        if (spawnedObjectParent.childCount <= numSpawnedLimit)
         {
-            Transform t = Instantiate(objectToSpawn, v, Quaternion.identity, spawnedObjectParent).transform;
-            InvokeOnObjectSpawned(t);
+            List<Vector2> locations = GetBatchSpawnLocations();
+            foreach (Vector2 v in locations)
+            {
+                Transform t = Instantiate(objectToSpawn, v, Quaternion.identity, spawnedObjectParent).transform;
+                InvokeOnObjectSpawned(t);
+            }
         }
     }
 

@@ -11,6 +11,8 @@ public abstract class ObjectSpawner : MonoBehaviour
     protected Transform spawnedObjectParent;
     [SerializeField]
     private bool repeating;
+    [SerializeField]
+    protected int numSpawnedLimit = 100;
 
     public event ObjectSpawned onObjectSpawned;
     public float spawnDelay;
