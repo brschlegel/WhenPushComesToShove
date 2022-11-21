@@ -17,6 +17,7 @@ public abstract class MinigameLogic : MonoBehaviour
     protected BaseEndCondition endCondition;
     protected bool gameRunning;
 
+    public event emptyDelegate onGameStart;
     [SerializeField] protected bool canPlayersTakeDamage = true;
 
 
@@ -47,6 +48,7 @@ public abstract class MinigameLogic : MonoBehaviour
         }
 
         gameRunning = true;
+        onGameStart?.Invoke();
         endCondition.Init();
     }
     public virtual void EndGame()

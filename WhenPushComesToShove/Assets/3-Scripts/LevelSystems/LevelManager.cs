@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
     private DamageEnabler damageEnabler;
     public static Action onNewRoom;
     public static Action onEndGame;
+    [SerializeField]
+    private ModifierManager modifierManager;
 
     private void OnEnable()
     {
@@ -91,6 +93,7 @@ public class LevelManager : MonoBehaviour
         if(levelProp.transform.GetChild(3).TryGetComponent<MinigameLogic>(out MinigameLogic logic))
         {
             logic.Init();
+
         }
 
         //Update Logging

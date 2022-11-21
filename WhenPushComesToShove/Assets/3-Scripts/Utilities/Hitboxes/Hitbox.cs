@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Hitbox : MonoBehaviour
 {
-    private BoxCollider2D collider;
+    private Collider2D collider;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class Hitbox : MonoBehaviour
         attackData = GetComponent<AttackData>();
         knockbackData = GetComponent<KnockbackData>();
         ownersToIgnore = new List<GameObject>();
-        collider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<Collider2D>();
     }
 
     [Tooltip("Hit Handler for hitbox, OPTIONAL")]

@@ -54,14 +54,14 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     {
         if (heavyShoveIsCharging)
         {
-            heavyShoveCharge += Time.deltaTime;
+            heavyShoveCharge += Time.deltaTime * GameState.playerChargeModifier;
 
             if (heavyShoveCharge >= highTierChargeTime)
             {
                 chargeLevel = 3;
                 hitbox.knockbackData.strength = highTierChargeForce;
             }
-            else if (heavyShoveCharge >= midTierChargeTime)
+            else if (heavyShoveCharge >= midTierChargeTime )
             {
                 chargeLevel = 2;
                 hitbox.knockbackData.strength = midTierChargeForce;
