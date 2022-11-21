@@ -66,7 +66,7 @@ public class Mitosis : EventModifier
         GameObject left = Instantiate(e.hurtbox.owner, e.hurtbox.owner.transform.position, Quaternion.identity, parent);
         GameObject right  = Instantiate(e.hurtbox.owner, e.hurtbox.owner.transform.position, Quaternion.identity, parent);
         Vector2 dir;
-        float force = splitForce;
+        float force = 0;
         if(e.hitbox.knockbackData != null)
         {
             dir = e.hitbox.knockbackData.GetDirection(e);
@@ -74,6 +74,7 @@ public class Mitosis : EventModifier
         }
         else
         {
+            force += splitForce;
             dir = (e.hurtbox.transform.position - e.hitbox.transform.position).normalized;
         }
 
