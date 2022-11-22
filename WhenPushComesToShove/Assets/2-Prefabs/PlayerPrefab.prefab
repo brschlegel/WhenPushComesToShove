@@ -5658,7 +5658,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 7
-  m_LinearDrag: 3
+  m_LinearDrag: 20
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -6759,6 +6759,36 @@ MonoBehaviour:
   type: 0
   strength: 13500
   axis: 0
+--- !u!114 &1786025188379285724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245641597600162963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e6de3349a70114d98fadd047a51478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  keyStart: Shove
+--- !u!114 &3400574022922358288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245641597600162963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deafbcdcbff1f0a428ee561f1d1dc96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  outputs:
+  - {fileID: 7896129718564220858}
+  - {fileID: 1786025188379285724}
 --- !u!114 &7896129718564220858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6786,36 +6816,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
---- !u!114 &3400574022922358288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5245641597600162963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deafbcdcbff1f0a428ee561f1d1dc96f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagsToIgnore: []
-  outputs:
-  - {fileID: 7896129718564220858}
-  - {fileID: 1786025188379285724}
---- !u!114 &1786025188379285724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5245641597600162963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25e6de3349a70114d98fadd047a51478, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagsToIgnore: []
-  keyStart: Shove
 --- !u!4 &5245641597600162974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
@@ -7142,6 +7142,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6854435290789191520, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
   m_PrefabInstance: {fileID: 6163376413596852368}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1840172362576745073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763200320402767856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e6de3349a70114d98fadd047a51478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  keyStart: Shove
 --- !u!114 &5307571948319187696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7170,19 +7184,6 @@ MonoBehaviour:
   type: 0
   strength: 5000
   axis: 0
---- !u!114 &6467932630811310649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763200320402767856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7373120e58469145a57596344049d18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagsToIgnore: []
 --- !u!114 &6077192093453596328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7199,7 +7200,7 @@ MonoBehaviour:
   outputs:
   - {fileID: 6467932630811310649}
   - {fileID: 1840172362576745073}
---- !u!114 &1840172362576745073
+--- !u!114 &6467932630811310649
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7208,11 +7209,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 763200320402767856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25e6de3349a70114d98fadd047a51478, type: 3}
+  m_Script: {fileID: 11500000, guid: d7373120e58469145a57596344049d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tagsToIgnore: []
-  keyStart: Shove
 --- !u!114 &763200320402767857 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6854435290789191521, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
