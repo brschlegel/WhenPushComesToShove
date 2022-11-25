@@ -1043,6 +1043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2086439675}
   - component: {fileID: 2086439674}
+  - component: {fileID: 2086439676}
   - component: {fileID: 2086439673}
   m_Layer: 0
   m_Name: Player Config Manager
@@ -1150,9 +1151,6 @@ MonoBehaviour:
   - {r: 0, g: 0.84313726, b: 0.99607843, a: 1}
   - {r: 0, g: 0.8627451, b: 0.09019608, a: 1}
   - {r: 0.99607843, g: 0.8117647, b: 0, a: 1}
-  teamSprites:
-  - {fileID: 21300000, guid: 3761eb0b08fa2ba4ca8e488badd09078, type: 3}
-  - {fileID: 21300000, guid: 4cee1458bbddae9418c3bf59117a05ed, type: 3}
 --- !u!4 &2086439675
 Transform:
   m_ObjectHideFlags: 0
@@ -1168,3 +1166,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2086439676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086439672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97719b6d59edf9844ad5b4b8db6254fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamSprites:
+  - {fileID: 21300000, guid: 3761eb0b08fa2ba4ca8e488badd09078, type: 3}
+  - {fileID: 21300000, guid: 4cee1458bbddae9418c3bf59117a05ed, type: 3}

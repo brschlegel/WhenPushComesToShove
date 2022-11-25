@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 public class PlayerConfigManager : MonoBehaviour
 {
     private List<PlayerConfiguration> playerConfigs;
-    public List<PlayerConfiguration> playerTeamOrder;
 
     [SerializeField] private int minPlayers = 2;
     [SerializeField] private int maxPlayers = 2;
@@ -21,8 +20,6 @@ public class PlayerConfigManager : MonoBehaviour
     [SerializeField] private string[] playerColorNames = new string[4];
     public Material[] playerOutlines = new Material[4];
     public Color[] playerOutlineOriginalColors = new Color[4];
-    //public Color[] teamOutlineColors = new Color[2];
-    public Sprite[] teamSprites = new Sprite[2];
 
     public void Awake()
     {
@@ -40,15 +37,6 @@ public class PlayerConfigManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(Instance);
             playerConfigs = new List<PlayerConfiguration>();
-            playerTeamOrder = new List<PlayerConfiguration>();
-        }
-    }
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RandomizeTeam();
         }
     }
 
@@ -59,11 +47,6 @@ public class PlayerConfigManager : MonoBehaviour
     public List<PlayerConfiguration> GetPlayerConfigs()
     {
         return playerConfigs;
-    }
-
-    public List<PlayerConfiguration> GetPlayerTeams()
-    {
-        return playerTeamOrder;
     }
 
     public int GetMaxPlayers()
@@ -130,118 +113,6 @@ public class PlayerConfigManager : MonoBehaviour
         }
 
         return true;
-    }
-
-    public void RandomizeTeam()
-    {
-
-        playerTeamOrder.Clear();
-
-        for (int i = 0; i < playerConfigs.Count; i++)
-        {
-            playerTeamOrder.Add(playerConfigs[i]);
-        }
-
-        //Shuffle List if Teams
-        if (GameState.currentRoomType != LevelType.Arena)
-        {
-            for (int i = 0; i < playerTeamOrder.Count; i++)
-            {
-                PlayerConfiguration temp = playerTeamOrder[i];
-                int index = Random.Range(i, playerTeamOrder.Count);
-                playerTeamOrder[i] = playerTeamOrder[index];
-                playerTeamOrder[index] = temp;
-            }
-
-            foreach (PlayerConfiguration p in playerTeamOrder)
-            {
-                //Debug.Log(p.PlayerIndex);
-            }
-        }
-
-        //Assign Teams
-        switch (GameState.currentRoomType)
-        {
-            case LevelType.Dungeon:
-                break;
-            case LevelType.Arena:
-                for (int i = 0; i < playerConfigs.Count; i++)
-                {
-                    playerConfigs[playerTeamOrder[i].PlayerIndex].TeamIndex = i;
-                    playerTeamOrder[i].TeamIndex = i;
-                }
-                break;
-            case LevelType.TwoTwo:
-                Debug.Log("TwoTwo");
-                for (int i = 0; i < playerConfigs.Count; i++)
-                {
-                    if (i%2 == 0)
-                    {
-                        playerConfigs[playerTeamOrder[i].PlayerIndex].TeamIndex = 0;
-                        playerTeamOrder[i].TeamIndex = 0;
-                    }
-                    else
-                    {
-                        playerConfigs[playerTeamOrder[i].PlayerIndex].TeamIndex = 1;
-                        playerTeamOrder[i].TeamIndex = 1;
-                    }
-                }
-                break;
-            case LevelType.ThreeOne:
-                for (int i = 0; i < playerConfigs.Count; i++)
-                {
-                    if (i != 1)
-                    {
-                        playerConfigs[playerTeamOrder[i].PlayerIndex].TeamIndex = 0;
-                        playerTeamOrder[i].TeamIndex = 0;
-                    }
-                    else
-                    {
-                        playerConfigs[playerTeamOrder[i].PlayerIndex].TeamIndex = 1;
-                        playerTeamOrder[i].TeamIndex = 1;
-                    }
-                }
-                break;
-            default:
-                break;
-        }
-
-        //Assign Outlines
-        //if (GameState.currentRoomType != LevelType.Arena)
-        //{
-        //    foreach (PlayerConfiguration p in playerConfigs)
-        //    {
-        //        p.Outline.SetColor("_PlayerColor", teamOutlineColors[p.TeamIndex]);
-        //        p.PlayerObject.GetComponent<SpriteRenderer>().material = p.Outline;
-        //    }
-        //}
-        //else
-        //{
-        //    foreach (PlayerConfiguration p in playerConfigs)
-        //    {
-        //        p.Outline.SetColor("_PlayerColor", playerOutlineOriginalColors[p.PlayerIndex]);
-        //        p.PlayerObject.GetComponent<SpriteRenderer>().material = p.Outline;
-        //    }
-        //}
-
-        //Assign Number Symbols
-        if (GameState.currentRoomType != LevelType.Arena || GameState.currentRoomType != LevelType.Lobby)
-        {
-            foreach (PlayerConfiguration p in playerConfigs)
-            {
-                SpriteRenderer sr = p.PlayerObject.transform.GetChild(12).GetComponent<SpriteRenderer>();
-                sr.sprite = teamSprites[p.TeamIndex];
-            }
-        }
-        else
-        {
-            foreach (PlayerConfiguration p in playerConfigs)
-            {
-                SpriteRenderer sr = p.PlayerObject.transform.GetChild(12).GetComponent<SpriteRenderer>();
-                sr.sprite = null;
-            }
-        }
-
     }
 }
 
