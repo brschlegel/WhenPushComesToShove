@@ -5,6 +5,7 @@ using UnityEngine;
 public static class GameState 
 {
     static public List<Transform> players = new List<Transform>();
+    static public List<HealthBar> playerHealthBars = new List<HealthBar>();
     public static LevelType currentRoomType;
     public static bool damageEnabled = true;
     public static int[] playerScores = new int[4];
