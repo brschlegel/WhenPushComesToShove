@@ -12,7 +12,7 @@ public class LastTeamStanding : BaseEndCondition
 
     public override void Init()
     {
-        players = PlayerConfigManager.Instance.GetPlayerTeams();
+        players = PlayerTeamFormations.instance.GetPlayerTeams();
         winningTeamNum = -1;
         playersToRemove = new List<PlayerConfiguration>();
     }

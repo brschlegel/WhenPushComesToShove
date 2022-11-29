@@ -27,13 +27,13 @@ public abstract class Move : MonoBehaviour
        
     }
 
-    public Vector2 GetForce(Vector2 unitMove)
+        public Vector2 GetForce(Vector2 unitMove, float accelScale = 1)
     {
         //When turning 180 degrees, it takes twice as long to slow down to zero, and then speed back up in the other direction
         // when compared to running from a standstill
         //The animation curve scales the acceleration from 1-2 based on the dot product (how far away the current velocity is from the desired velocity)
         float velDot = Vector2.Dot(unitMove, goalVel.normalized);
-        float accel = acceleration * accelerationFactorFromDot.Evaluate(velDot);
+        float accel = acceleration * accelerationFactorFromDot.Evaluate(velDot) * accelScale;
         
         //When we input a vector, that is our target velocity
         Vector2 desiredVel = unitMove * maxSpeed;

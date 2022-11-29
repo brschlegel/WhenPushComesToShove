@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Goal : MonoBehaviour
 {
-    [SerializeField] private ObjectSpawner spawner;
+    //[SerializeField] private ObjectSpawner spawner;
     [SerializeField] private MinigameData data;
     [SerializeField] private int teamIndex = 0;
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public UnityAction goalScored;
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Hazard")
+        if (collision.transform.parent.TryGetComponent<PointData>(out PointData points))
         {
-            Destroy(collision.gameObject);
+            data.AddScoreForTeam(teamIndex, points.pointsToGain);
 
-            data.AddScoreForTeam(teamIndex, 1);
+            collision.transform.parent.gameObject.SetActive(false);
+            Destroy(collision.transform.parent.gameObject);
 
-            //Trigger new ball spawn
-            spawner.Spawn();
+           goalScored?.Invoke();
         }
     }
+
 }

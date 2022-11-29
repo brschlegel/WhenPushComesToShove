@@ -122,8 +122,13 @@ public class PlayerInputHandler : MonoBehaviour
         //Dash
         else if (obj.action.name == controls.PlayerMovement.Dash.name)
         {
-            if (!performingAction && !heavyShoveScript.heavyShoveIsCharging)
+            if (!performingAction)
             {
+                if (heavyShoveScript.heavyShoveIsCharging)
+                {
+                    heavyShoveScript.InterruptCharge();
+                }
+
                 dashScript.OnDash(obj);
             }
         }

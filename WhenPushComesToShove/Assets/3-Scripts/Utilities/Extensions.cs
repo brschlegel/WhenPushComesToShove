@@ -6,6 +6,12 @@ using System.Reflection;
 
 public static class Extensions
 {
+
+    public static T GetRandomElement<T>(this List<T> list)
+    {
+        return list[UnityEngine.Random.Range(0, list.Count)];
+    }
+
     /// <summary>
     /// Clamps a given vector to a maximum magnitude
     /// </summary>

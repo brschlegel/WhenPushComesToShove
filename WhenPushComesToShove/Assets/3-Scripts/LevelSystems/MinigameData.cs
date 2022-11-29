@@ -28,7 +28,7 @@ public class MinigameData : MonoBehaviour
         }
 
         //Update Gamestate with winners
-        List<PlayerConfiguration> players = PlayerConfigManager.Instance.GetPlayerTeams();
+        List<PlayerConfiguration> players = PlayerTeamFormations.instance.GetPlayerTeams();
         for (int i = 0; i < players.Count; i++)
         {
             if (players[i].TeamIndex == highestScoreIndex)

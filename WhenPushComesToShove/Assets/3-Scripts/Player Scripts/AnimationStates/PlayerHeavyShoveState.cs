@@ -6,6 +6,7 @@ public class PlayerHeavyShoveState : State
 {
     [HideInInspector]
     public PlayerHeavyShoveScript heavyShoveScript;
+
     private void OnEnable()
     {
         //Play animation here 

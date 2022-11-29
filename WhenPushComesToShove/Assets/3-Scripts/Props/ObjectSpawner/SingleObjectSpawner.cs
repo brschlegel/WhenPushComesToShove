@@ -20,7 +20,10 @@ public abstract class SingleObjectSpawner : ObjectSpawner
 
     public override void Spawn()
     {
-        Transform t = Instantiate(objectToSpawn, GetSpawnLocation(), Quaternion.identity, spawnedObjectParent).transform;
-        InvokeOnObjectSpawned(t);
+        if (spawnedObjectParent.childCount <= numSpawnedLimit)
+        {
+            Transform t = Instantiate(objectToSpawn, GetSpawnLocation(), Quaternion.identity, spawnedObjectParent).transform;
+            InvokeOnObjectSpawned(t);
+        }
     }
 }

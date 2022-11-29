@@ -5326,7 +5326,6 @@ MonoBehaviour:
   tagsToIgnoreDuringDash:
   - Player
   - Enemy
-  - Hazard
   dashVFX: {fileID: 2203685200128782609}
 --- !u!114 &1495853962286914703
 MonoBehaviour:
@@ -6662,7 +6661,7 @@ PrefabInstance:
     - target: {fileID: 6854435290789191521, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: handler
       value: 
-      objectReference: {fileID: 7896129718564220858}
+      objectReference: {fileID: 3400574022922358288}
     - target: {fileID: 6854435290789191532, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_Color.b
       value: 0.7426162
@@ -6787,6 +6786,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+--- !u!114 &3400574022922358288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245641597600162963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deafbcdcbff1f0a428ee561f1d1dc96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  outputs:
+  - {fileID: 7896129718564220858}
+  - {fileID: 1786025188379285724}
+--- !u!114 &1786025188379285724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245641597600162963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e6de3349a70114d98fadd047a51478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  keyStart: Shove
 --- !u!4 &5245641597600162974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6854435290789191533, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
@@ -7041,7 +7070,7 @@ PrefabInstance:
     - target: {fileID: 6854435290789191521, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: handler
       value: 
-      objectReference: {fileID: 6467932630811310649}
+      objectReference: {fileID: 6077192093453596328}
     - target: {fileID: 6854435290789191532, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}
       propertyPath: m_Color.b
       value: 0.9607843
@@ -7154,6 +7183,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagsToIgnore: []
+--- !u!114 &6077192093453596328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763200320402767856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deafbcdcbff1f0a428ee561f1d1dc96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  outputs:
+  - {fileID: 6467932630811310649}
+  - {fileID: 1840172362576745073}
+--- !u!114 &1840172362576745073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763200320402767856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e6de3349a70114d98fadd047a51478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
+  keyStart: Shove
 --- !u!114 &763200320402767857 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6854435290789191521, guid: 820ac65343dbbf3479089caf2d85396b, type: 3}

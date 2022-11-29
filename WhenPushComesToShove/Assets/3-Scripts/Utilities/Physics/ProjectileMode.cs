@@ -46,7 +46,7 @@ public class ProjectileMode : MonoBehaviour
         if(rb == null)
             Init();
 
-        rb.drag = pDrag;
+        rb.drag = pDrag * GameState.dragModifier;
         rb.sharedMaterial = pMaterial;
         pHitbox.gameObject.SetActive(true);
         frames = 0;
@@ -78,7 +78,7 @@ public class ProjectileMode : MonoBehaviour
 
     void OnDisable()
     {
-        rb.drag = sDrag;
+        rb.drag = sDrag * GameState.dragModifier;
         rb.sharedMaterial = sMaterial;
         DisableHitbox();
         onPModeExit?.Invoke();
@@ -87,6 +87,7 @@ public class ProjectileMode : MonoBehaviour
     public float Mass
     {
         get { return rb.mass; }
+        set {rb.mass = value;}
     }
 
     public Vector2 Velocity
