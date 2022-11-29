@@ -75,8 +75,6 @@ public class PlayerHeavyShoveScript : MonoBehaviour
             {
                 chargeLevel = 0;
             }
-
-            Debug.Log(chargeLevel);
         }
     }
 
