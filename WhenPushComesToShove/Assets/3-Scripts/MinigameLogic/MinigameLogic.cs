@@ -91,9 +91,9 @@ public abstract class MinigameLogic : MonoBehaviour
     {
         GameState.damageEnabled = enabled;
 
-        foreach (Transform p in GameState.players)
+        foreach (HealthBar b in GameState.playerHealthBars)
         {
-            p.GetComponentInChildren<HealthBar>().gameObject.SetActive(enabled);
+            b.gameObject.SetActive(enabled);
         }
     }
 }
