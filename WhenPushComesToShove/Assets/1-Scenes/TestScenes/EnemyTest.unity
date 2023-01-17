@@ -1525,6 +1525,7 @@ MonoBehaviour:
   objectToSpawn: {fileID: 867218227133338284, guid: 04b8a7e2035d89e4a94de97f111b7712, type: 3}
   spawnedObjectParent: {fileID: 0}
   repeating: 0
+  numSpawnedLimit: 100
   spawnDelay: 1
   radius: 0.5
 --- !u!4 &1938847593
@@ -1651,9 +1652,6 @@ MonoBehaviour:
   - {r: 0, g: 0, b: 0, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
-  teamSprites:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1953411768
 Transform:
   m_ObjectHideFlags: 0
