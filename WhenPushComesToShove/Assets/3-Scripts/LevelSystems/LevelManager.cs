@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] bool repeatPath;
     private DamageEnabler damageEnabler;
     public static Action onNewRoom;
+    public static Action onModifierRoom;
     public static Action onEndGame;
     [SerializeField]
     private ModifierManager modifierManager;
@@ -19,12 +20,14 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         onNewRoom += ShowRoom;
+        onModifierRoom += ShowModifierRoom;
         onEndGame += ResetPath;
     }
 
     private void OnDisable()
     {
         onNewRoom -= ShowRoom;
+        onModifierRoom -= ShowModifierRoom;
         onEndGame -= ResetPath;
     }
 
@@ -60,11 +63,11 @@ public class LevelManager : MonoBehaviour
     void ShowRoom()
     {
         //Resets to the beginnig if there's no more available games or if its reached the max number of rooms
-        if(currentRoomIndex >= pathGen.numOfDungeonRooms || pathGen.availableLevels.Count <= 0)
-        {
-            ResetPath();
-            return;
-        }
+        //if(currentRoomIndex > pathGen.numOfDungeonRooms || pathGen.availableLevels.Count <= 0)
+        //{
+        //    ResetPath();
+        //    return;
+        //}
 
         damageEnabler.EnableDamage(currentRoomIndex > 0);
 
@@ -90,7 +93,6 @@ public class LevelManager : MonoBehaviour
 
         //Grab the properties for this level
         LevelProperties levelProp = newRoom.GetComponent<LevelProperties>();
-        Debug.Log(newRoom.name);
 
         currentRoomIndex++;
 
@@ -108,7 +110,31 @@ public class LevelManager : MonoBehaviour
         LoggingInfo.instance.numOfRoomsTraveled++;
     }
 
-    
+    void ShowModifierRoom()
+    {
+        // Resets to the beginnig if there's no more available games or if its reached the max number of rooms
+        if (currentRoomIndex > pathGen.numOfDungeonRooms || pathGen.availableLevels.Count <= 0)
+        {
+            ResetPath();
+            return;
+        }
+
+        //Clears previous level
+        if (pathGen.transform.childCount > 0)
+        {
+            Destroy(pathGen.transform.GetChild(0).gameObject);
+        }
+
+        GameObject room = pathGen.modifierRoom;
+
+        GameObject newRoom = pathGen.SpawnRoom(room);
+
+        //Grab the properties for this level
+        LevelProperties levelProp = newRoom.GetComponent<LevelProperties>();
+
+        GameState.currentRoomType = levelProp.levelType;
+        SetPlayerSpawns(levelProp);
+    }
     public void ResetPath()
     {
         //Temp code - Will just put everyone back into the lobby
