@@ -20,9 +20,10 @@ public class PlayerMovementScript : Move
 
     private bool lockMovement = false;
     private Coroutine movementUnlockRoutine;
-    private int forceMovementLocks = 0;
+    public int forceMovementLocks = 0;
     private int forceAimLocks = 0;
     private Coroutine aimUnlockRoutine;
+    private bool moveSpeedLocked;
 
     #region Properties
     public Vector3 GetMoveDirection()
@@ -107,21 +108,26 @@ public class PlayerMovementScript : Move
     //Helper Functions for Modifying Move Speed
     public void ChangeMoveSpeed(float newSpeed)
     {
+        moveSpeedLocked = true;
         slowAmount = newSpeed;
     }
 
     public void ResetMoveSpeed()
     {
+        moveSpeedLocked = false;
         slowAmount = 1f;
     }
 
     public IEnumerator ChangeMoveSpeedForTime(float newSpeed, float time)
     {
-        slowAmount = newSpeed;
+        if (!moveSpeedLocked)
+        {
+            slowAmount = newSpeed;
 
-        yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(time);
 
-        slowAmount = 1f;
+            slowAmount = 1f;
+        }
     }
     #endregion
     #region LockingMovement
