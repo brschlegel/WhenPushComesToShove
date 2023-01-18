@@ -8,7 +8,7 @@ public class PlayerHealth : Health
     public PlayerInputHandler playerInputRef;
     [SerializeField] private PlayerCollisions collider;
     [SerializeField] private Transform playerGroundUIRef;
-    
+
     public UnityEvent onDeath;
     private Material playerMat;
 
@@ -27,12 +27,7 @@ public class PlayerHealth : Health
     //gets reference to player Material
     public override void TakeDamage(float damage, string source)
     {
-        if (source == "PlayerPrefab(Clone)")
-        {
-            return;
-        }
-
-        if (dead)
+        if (source == "PlayerPrefab(Clone)" || dead || GameState.currentRoomType != LevelType.Lobby)
         {
             return;
         }
