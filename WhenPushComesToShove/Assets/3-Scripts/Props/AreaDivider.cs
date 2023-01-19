@@ -3,19 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //TODO move icon to center of each box
-public class RectAreaSpinner : MonoBehaviour
+public class AreaDivider : MonoBehaviour
 {
+    [Header("Values")]
     public float width;
     public float height;
+    private float iconWidthThreshold = 2;
+
+    [Header("Prefabs")]
+    [SerializeField]
+    private Transform areaPrefab;
+    [SerializeField]
+    private Transform iconPrefab;
+
+    [Header("Parts")]
     public List<Transform> dividers;
     [SerializeField]
     private Transform areaParent;
     [SerializeField]
-    private Transform areaPrefab;
-    [SerializeField]
-    private List<Transform> areas;
+    private Transform iconParent;
+    [HideInInspector]
+    public List<Transform> areas;
+    public List<Sprite> icons;
     [SerializeField]
     private List<Color> colors;
+
+    private List<Transform> iconObjects;
 
     public void Start()
     {
@@ -25,12 +38,19 @@ public class RectAreaSpinner : MonoBehaviour
             t.GetComponent<SpriteRenderer>().color = colors[i];
             areas.Add(t);
         }
-        UpdateSpinner();
+        iconObjects = new List<Transform>();
+        for(int i = 0; i < icons.Count; i++)
+        {
+            Transform t = Instantiate(iconPrefab, areas[i].position, Quaternion.identity, iconParent).transform;
+            t.GetComponent<SpriteRenderer>().sprite = icons[i];
+            iconObjects.Add(t);
+        }
+        UpdateAreas();
     }
 
     private void Update()
     {
-        UpdateSpinner();
+        UpdateAreas();
         ClampDividers();
     }
 
@@ -42,13 +62,15 @@ public class RectAreaSpinner : MonoBehaviour
         }
     }
 
-    private void UpdateSpinner()
+    private void UpdateAreas()
     {
         Vector2 prevPoint;
         Vector2 point;
 
+       
         for (int i = 0; i < areas.Count; i++)
         {
+             //Move and scale the areas
             if (i == 0)
             {
                 prevPoint = (Vector2)transform.position - new Vector2(width / 2, 0);
@@ -67,14 +89,20 @@ public class RectAreaSpinner : MonoBehaviour
             }
 
             areas[i].position = new Vector2(BenMath.Midpoint(point, prevPoint).x, 0);
-            
-            areas[i].localScale = new Vector3(point.x - prevPoint.x,height, areas[i].localScale.z);
+
+            areas[i].localScale = new Vector3(point.x - prevPoint.x, height, areas[i].localScale.z);
+
+            if (icons.Count == areas.Count)
+            {
+                iconObjects[i].gameObject.SetActive(areas[i].localScale.x >= iconWidthThreshold);
+                iconObjects[i].position = areas[i].position;
+            }
 
         }
-        foreach(Transform t in dividers)
-        {
-            Vector2 pointPos = t.position;
-        }
+
+
+
+
     }
 
 }
