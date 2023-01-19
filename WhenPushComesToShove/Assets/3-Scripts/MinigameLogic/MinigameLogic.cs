@@ -66,7 +66,7 @@ public abstract class MinigameLogic : MonoBehaviour
         }
 
         endingUIDisplay.HideDisplay();
-        LevelManager.onNewRoom.Invoke();
+        LevelManager.onModifierRoom.Invoke();
     }
 
     protected IEnumerator WaitToStartGame()
