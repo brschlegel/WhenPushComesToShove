@@ -27,7 +27,7 @@ public class PlayerHealth : Health
     //gets reference to player Material
     public override void TakeDamage(float damage, string source)
     {
-        if (source == "PlayerPrefab(Clone)" || dead || GameState.currentRoomType != LevelType.Lobby)
+        if (source == "PlayerPrefab(Clone)" || dead || GameState.currentRoomType == LevelType.Lobby)
         {
             return;
         }
