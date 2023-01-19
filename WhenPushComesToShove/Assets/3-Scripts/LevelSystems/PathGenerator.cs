@@ -47,9 +47,20 @@ public class PathGenerator : MonoBehaviour
             availableLevels.Remove(level);
         }
 
-        //Grab a random level from the avaiable levels
-        int rng = Random.Range(0, availableLevels.Count);
-        LevelProperties newLevel = availableLevels[rng];
+        LevelProperties newLevel = null;
+
+        //Grab a random level from the avaiable levels if there ins't a set path
+        if(path.Count <= 0 || currentPathNum >= path.Count)
+        {
+            int rng = Random.Range(0, availableLevels.Count);
+            newLevel = availableLevels[rng];
+        }
+        else
+        {
+            newLevel = path[currentPathNum].GetComponent<LevelProperties>();
+            currentPathNum++;
+        }
+        
 
 
         playedLevels.Add(newLevel);
