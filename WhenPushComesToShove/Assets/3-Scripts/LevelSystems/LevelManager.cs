@@ -49,7 +49,12 @@ public class LevelManager : MonoBehaviour
         //Temp code to test if the room transitions work
         if (Input.GetKeyDown(KeyCode.E))
         {
-            onNewRoom();
+            //Will transition to a new game
+            if (GameState.currentRoomType == LevelType.Modifier)
+                onNewRoom();
+            //Will transition to a modifier room
+            else if (GameState.currentRoomType != LevelType.Lobby && GameState.currentRoomType != LevelType.Modifier)
+                onModifierRoom();
         }
 
         //Temp code to reset the game fully
