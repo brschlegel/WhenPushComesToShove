@@ -79,7 +79,7 @@ public class PathGenerator : MonoBehaviour
     {
         //Clean out the current path
         currentPathNum = 0;
-        //path.Clear();
+        
         Destroy(transform.GetChild(0).gameObject);
 
         //Generate and spawn new path
