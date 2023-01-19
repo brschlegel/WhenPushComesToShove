@@ -2205,6 +2205,7 @@ MonoBehaviour:
   numOfRunsFailed: 0
   numOfRunsCompleted: 0
   currentRoomName: 
+  enableLogging: 0
 --- !u!4 &1787772876
 Transform:
   m_ObjectHideFlags: 0
@@ -2330,11 +2331,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lobby: {fileID: 6254306470328373913, guid: 5a3664862d4e60f4b968a10d39e0c82e, type: 3}
+  modifierRoom: {fileID: 1291077549052866675, guid: 5c7a81353b8a4874e9731fc4aaf1bfb5, type: 3}
   availableLevels: []
   numOfDungeonRooms: 5
-  path:
-  - {fileID: 6254306470328373913, guid: 5a3664862d4e60f4b968a10d39e0c82e, type: 3}
-  - {fileID: 805013608764250822, guid: d33d8fc8c691af7419205acae4faa370, type: 3}
+  path: []
 --- !u!4 &1895630052
 Transform:
   m_ObjectHideFlags: 0
