@@ -19,6 +19,8 @@ public class LoggingInfo : MonoBehaviour
 
     [HideInInspector] public string currentRoomName = "";
 
+    public bool enableLogging = false;
+
     private void Awake()
     {
         Init();
@@ -39,7 +41,7 @@ public class LoggingInfo : MonoBehaviour
     private void Update()
     {
         #if UNITY_STANDALONE && !UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && enableLogging)
         {
             SendInfoToSurvey();
             Application.Quit();
