@@ -273,7 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   picker: {fileID: 833450275}
-  forceAmount: 1000
+  forceAmount: 2000
+  stopThreshold: 2
 --- !u!1 &276471232
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +827,7 @@ GameObject:
   - component: {fileID: 833450275}
   m_Layer: 0
   m_Name: Picker
-  m_TagString: Untagged
+  m_TagString: Picker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1265,7 +1266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 16
   height: 9
-  areaPrefab: {fileID: 267475878739664623, guid: 750d881c68c46e94fb7d7bce60cdefef, type: 3}
+  areaPrefab: {fileID: 2441165968346909421, guid: 38404c655b6a11f488480b73331aeb4a, type: 3}
   iconPrefab: {fileID: 3023681209421239314, guid: fa1dd2f06533a5f40a1aabf219892e0a, type: 3}
   dividers:
   - {fileID: 654855572}

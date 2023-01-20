@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 514692958}
   m_Layer: 0
   m_Name: Modifiers
-  m_TagString: Untagged
+  m_TagString: ModifierManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,7 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6609a40c71c85a54ebcede2d70b2ff42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugList: {fileID: 11400000, guid: 67f770b2453a3b64fb7ee84a08e9ff22, type: 2}
+  modifierPool: {fileID: 11400000, guid: caf1f156d9cc7cf45b64304a625d617c, type: 2}
+  debugList: {fileID: 0}
 --- !u!4 &514692959
 Transform:
   m_ObjectHideFlags: 0

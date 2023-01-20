@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO: Stopping threshold, listen to selection in modifierselection logic script
+public delegate void RetrieveIndex(int index);
 public class AreaSelector : MonoBehaviour
 {
-    private AreaDivider areaDivider;
+    [HideInInspector]
+    public AreaDivider areaDivider;
     [SerializeField]
     private Rigidbody2D picker;
+    public event RetrieveIndex onSelection;
     [SerializeField]
     private float forceAmount;
+    [SerializeField]
+    private float stopThreshold;
+
+    private int runningFrames;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,20 +32,55 @@ public class AreaSelector : MonoBehaviour
         {
             picker.position = new Vector2 (PickerBounds.x, picker.position.y);
         }
+
+        //Have to use a count otherwise the velocity will be zero on the first frame after beginning selection
+        if(runningFrames > 10)
+        {
+            if(Mathf.Abs(picker.velocity.x) <= stopThreshold)
+            {
+               MakeSelection();
+            }
+        }
         if(Input.GetKeyDown(KeyCode.B))
         {
             BeginSelection();
         }
+
+        if(runningFrames > 0)
+        {
+            runningFrames++;
+        }
+
     }
 
     public void Init()
     {
         areaDivider = GetComponentInChildren<AreaDivider>();
+        picker.position = new Vector2(picker.position.x, areaDivider.transform.position.y - areaDivider.height/2 + 1);
+        runningFrames = 0;
     }
 
     public void BeginSelection()
     {
         picker.AddForce(new Vector2(forceAmount, 0));
+        runningFrames = 1;
+    }
+
+    private void MakeSelection()
+    {
+        //Stop the picker and make a selection
+        picker.velocity = Vector2.zero;
+        for (int i = 0; i < areaDivider.areas.Count; i++)
+        {
+            //If the picker is in this area
+            if (areaDivider.areas[i].GetComponent<Area>().objectsInArea.Contains(picker.transform))
+            {
+                onSelection?.Invoke(i);
+             //   Debug.Log("im da biggest bird " + i);
+                runningFrames = 0;
+                return;
+            }
+        }
     }
 
     public Vector2 PickerBounds
