@@ -38,7 +38,11 @@ public class InitLevel : MonoBehaviour
         PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
         GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
         GameState.players.Add(player.transform);
-        GameState.playerHealthBars.Add(player.GetComponentInChildren<HealthBar>());
+
+        HealthBar bar = player.GetComponentInChildren<HealthBar>();
+        GameState.playerHealthBars.Add(bar);
+        bar.gameObject.SetActive(false);
+
         player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
         Instantiate(playerSpawnAnim[index], playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
 
@@ -74,10 +78,12 @@ public class InitLevel : MonoBehaviour
     {
         //Spawn the players in their set locations for the level.
 
+        //Handle team formation based on room type
+        PlayerTeamFormations.instance.RandomizeTeam();
+
         //Spawn Players for team games
-        if(levelProps.levelType != LevelType.Arena && levelProps.levelType != LevelType.Lobby)
+        if (levelProps.levelType != LevelType.Arena && levelProps.levelType != LevelType.Lobby)
         {
-            PlayerTeamFormations.instance.RandomizeTeam();
             PlayerConfiguration[] playerConfigs = PlayerTeamFormations.instance.GetPlayerTeams().ToArray();
 
             PlayerSpawnProps[] spawnProps = new PlayerSpawnProps[4];

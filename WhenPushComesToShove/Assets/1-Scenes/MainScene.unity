@@ -258,7 +258,8 @@ PrefabInstance:
       propertyPath: m_RefResolutionY
       value: 360
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6203429871819391875, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
 --- !u!1 &387535392
 GameObject:
@@ -307,7 +308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &514692958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,6 +754,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1510046248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6203429871819391874, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
+  m_PrefabInstance: {fileID: 73192400}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1510046249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510046248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1226844360
+      Data2: 1089812684
+      Data3: -1291670882
+      Data4: -1940044594
+    Path: event:/Music/BGM
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1546254781
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,11 +885,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lobby: {fileID: 6254306470328373913, guid: 5a3664862d4e60f4b968a10d39e0c82e, type: 3}
+  modifierRoom: {fileID: 1291077549052866675, guid: 5c7a81353b8a4874e9731fc4aaf1bfb5, type: 3}
   availableLevels: []
-  numOfDungeonRooms: 5
+  numOfDungeonRooms: 4
   path:
-  - {fileID: 6254306470328373913, guid: 5a3664862d4e60f4b968a10d39e0c82e, type: 3}
-  - {fileID: 8829601026546890495, guid: 90aae7df3f630b249aa117a0dd17fc96, type: 3}
+  - {fileID: 805013608764250822, guid: d33d8fc8c691af7419205acae4faa370, type: 3}
+  - {fileID: 3115093129980057568, guid: 6bccba0fd624cfc439a516d624666280, type: 3}
 --- !u!4 &1589640427
 Transform:
   m_ObjectHideFlags: 0

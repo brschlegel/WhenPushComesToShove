@@ -6,6 +6,7 @@ public class PathGenerator : MonoBehaviour
 {
 
     public GameObject lobby;
+    public GameObject modifierRoom;
 
     //All possible minigames
     List<LevelProperties> allLevels = new List<LevelProperties>();
@@ -46,9 +47,20 @@ public class PathGenerator : MonoBehaviour
             availableLevels.Remove(level);
         }
 
-        //Grab a random level from the avaiable levels
-        int rng = Random.Range(0, availableLevels.Count);
-        LevelProperties newLevel = availableLevels[rng];
+        LevelProperties newLevel = null;
+
+        //Grab a random level from the avaiable levels if there ins't a set path
+        if(path.Count <= 0 || currentPathNum >= path.Count)
+        {
+            int rng = Random.Range(0, availableLevels.Count);
+            newLevel = availableLevels[rng];
+        }
+        else
+        {
+            newLevel = path[currentPathNum].GetComponent<LevelProperties>();
+            currentPathNum++;
+        }
+        
 
 
         playedLevels.Add(newLevel);
@@ -62,84 +74,12 @@ public class PathGenerator : MonoBehaviour
         return newLevel;
     }
 
-    void GeneratePath()
-    {
-        LevelProperties[] shuffledRooms = ShuffleRooms();
-
-        while(currentPathNum < numOfDungeonRooms)
-        {
-            if(currentPathNum == 0)
-            {
-                path.Add(Resources.Load<GameObject>("Lobby"));
-                //for (int i = 0; i < hazardLevels.Length; i++)
-                //{
-                //    hazardLevels[i].level++;
-                //}
-                //for (int i = 0; i < enemyStatLevels.Length; i++)
-                //{
-                //    enemyStatLevels[i].level++;
-                //}
-            }
-            else
-            {
-                //Go through the rooms and see if the hazard levels match 
-                for (int i = 0; i < shuffledRooms.Length; i++)
-                {
-                    path.Add(shuffledRooms[i].gameObject);
-                    Debug.Log(path.Count);
-                    //if (shuffledRooms[i] != null)
-                    //{
-                        
-                    //    if (IsCompatibleRoom(shuffledRooms[i]) && shuffledRooms[i].levelType == LevelType.Dungeon)
-                    //    {
-                    //        path.Add(shuffledRooms[i].gameObject);
-
-                    //        //Ups the levels this rooms hazards in the path
-                    //        foreach (HazardDifficulty.HazardStats stat in shuffledRooms[i].hazards)
-                    //        {
-                    //            for (int j = 0; j < hazardLevels.Length; j++)
-                    //            {
-                    //                if (stat.hazard == hazardLevels[j].hazard)
-                    //                    hazardLevels[j].level++;
-                    //            }
-                    //        }
-
-                    //        //Ups the enemy levels in the path
-                    //        foreach (EnemyDifficulty.EnemyLevelStats stat in shuffledRooms[i].enemyStats)
-                    //        {
-                    //            for (int j = 0; j < enemyStatLevels.Length; j++)
-                    //            {
-                    //                if (stat.enemy == enemyStatLevels[j].enemy)
-                    //                    enemyStatLevels[j].level++;
-                    //            }
-                    //        }
-
-                    //        //Ensures the same room ins't spawned twice
-                    //        shuffledRooms[i] = null;
-                    //        break;
-                    //    }
-                    //}
-
-                    //Will stop the path generation if there aren't any rooms to add to the path
-                    if (i == shuffledRooms.Length - 1)
-                    {
-                        Debug.Log("No remaining rooms for this path");
-                        currentPathNum = numOfDungeonRooms;
-                    }
-                }
-            }
-            
-
-            currentPathNum++;
-        }
-            
-    }
 
     public void ResetPath()
     {
         //Clean out the current path
         currentPathNum = 0;
-        //path.Clear();
+        
         Destroy(transform.GetChild(0).gameObject);
 
         //Generate and spawn new path

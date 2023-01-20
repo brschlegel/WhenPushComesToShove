@@ -14,17 +14,25 @@ public class ExplanationCountdownUIDisplay : UIDisplay
     {
         isDone = false;
         gameObject.SetActive(true);
-       countdown.gameObject.SetActive(true);
-       explanationText.gameObject.SetActive(true);
-       countdown.onCountdownEnded += HideDisplay;
+        explanationText.gameObject.SetActive(true);
+
+        if (countdown != null)
+        {
+            countdown.gameObject.SetActive(true);
+            countdown.onCountdownEnded += HideDisplay;
+        }
     }
 
     public override void HideDisplay()
     {
         isDone = true;
-        countdown.gameObject.SetActive(false);
         explanationText.gameObject.SetActive(false);
         gameObject.SetActive(false);
+
+        if (countdown != null)
+        {
+            countdown.gameObject.SetActive(false);
+        }
     }
 
 }
