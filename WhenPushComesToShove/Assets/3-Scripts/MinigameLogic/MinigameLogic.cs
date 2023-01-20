@@ -17,6 +17,8 @@ public abstract class MinigameLogic : MonoBehaviour
     protected BaseEndCondition endCondition;
     protected bool gameRunning;
 
+    [SerializeField] protected MinigameData data;
+
     public event emptyDelegate onGameStart;
     [SerializeField] protected bool canPlayersTakeDamage = true;
 
@@ -53,6 +55,12 @@ public abstract class MinigameLogic : MonoBehaviour
     {
         gameRunning = false;
         endingUIDisplay.ShowDisplay();
+
+        if (data != null)
+        {
+            data.OnMinigameEnd();
+        }
+
         CoroutineManager.StartGlobalCoroutine(WaitToCleanUp());
     }
     public virtual void CleanUp()

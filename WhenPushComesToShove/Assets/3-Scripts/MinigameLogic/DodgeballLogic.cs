@@ -14,6 +14,9 @@ public class DodgeballLogic : MinigameLogic
             if(endCondition.TestCondition())
             {
                 int winningTeamIndex = ((LastTeamStanding)endCondition).winningTeamNum;
+
+                data.AddScoreForTeam(winningTeamIndex, 1);
+
                 ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = winningTeamIndex;
                 EndGame();
             }

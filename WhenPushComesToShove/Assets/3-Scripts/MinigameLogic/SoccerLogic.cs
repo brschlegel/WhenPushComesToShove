@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SoccerLogic : MinigameLogic
 {
-    [SerializeField] private MinigameData data;
     [SerializeField] private List<ObjectSpawner> spawners;
     [SerializeField] private List<Goal> goals;
 
