@@ -32,6 +32,14 @@ public class AreaDivider : MonoBehaviour
 
     public void Start()
     {
+        if(iconObjects == null)
+        {
+            Init();
+        }
+    }
+
+    public void Init()
+    {
         for(int i = 0; i < dividers.Count + 1; i++)
         {
             Transform t = Instantiate(areaPrefab, areaParent).transform;
@@ -58,7 +66,7 @@ public class AreaDivider : MonoBehaviour
     {   
         for(int i = 0; i < dividers.Count; i++)
         {
-            dividers[i].position = new Vector2(Mathf.Clamp(dividers[i].position.x, transform.position.x - width /2, transform.position.x + width / 2), dividers[i].position.y);
+            dividers[i].position = new Vector2(Mathf.Clamp(dividers[i].position.x, transform.position.x - width /2, transform.position.x + width / 2), transform.position.y + height/ 2);
         }
     }
 

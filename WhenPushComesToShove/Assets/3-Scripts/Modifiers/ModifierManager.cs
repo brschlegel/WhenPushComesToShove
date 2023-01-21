@@ -71,7 +71,9 @@ public class ModifierManager : MonoBehaviour
 
         for(int i = 0; i < num; i++)
         {
-            r.Add(copy.GetRandomElement());
+            ModifierSettings random = copy.GetRandomElement();
+            r.Add(random);
+            copy.Remove(random);
         }
         return r;
     }
