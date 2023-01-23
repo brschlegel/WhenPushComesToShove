@@ -27,6 +27,7 @@ public class ModifierSelectionLogic : MinigameLogic
         selector.Init();
         modifierManager = GameObject.FindGameObjectWithTag("ModifierManager").GetComponent<ModifierManager>();
         modifiers = modifierManager.GetRandomModifiers(numberOfModifiers);
+        selector.onSelection += OnSelectionFinished;
         for(int i = 0; i < numberOfModifiers; i++)
         {
             selector.areaDivider.icons[i] = modifiers[i].modifierPrefab.GetComponent<BaseModifier>().icon;
@@ -46,5 +47,6 @@ public class ModifierSelectionLogic : MinigameLogic
         selectedModifier = modifiers[index];
         modifierManager.AddModifier(modifiers[index]);
         modifierManager.RemoveModifierFromPool(modifiers[index]);
+        
     }
 }
