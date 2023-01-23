@@ -26,7 +26,10 @@ public abstract class MinigameLogic : MonoBehaviour
     public virtual void Init()
     {
         Debug.Log("Init");
-        startingUIDisplay.ShowDisplay();
+        if (startingUIDisplay != null)
+        {
+            startingUIDisplay.ShowDisplay();
+        }
 
         //Lock Player Movement
         foreach (Transform p in GameState.players)
@@ -54,7 +57,11 @@ public abstract class MinigameLogic : MonoBehaviour
     public virtual void EndGame()
     {
         gameRunning = false;
-        endingUIDisplay.ShowDisplay();
+
+        if (endingUIDisplay != null)
+        {
+            endingUIDisplay.ShowDisplay();
+        }
 
         if (data != null)
         {
@@ -70,7 +77,11 @@ public abstract class MinigameLogic : MonoBehaviour
             UpdatePlayerInvulnurability(true);
         }
 
-        endingUIDisplay.HideDisplay();
+        if (endingUIDisplay)
+        {
+            endingUIDisplay.HideDisplay();
+        }
+
         LevelManager.onModifierRoom.Invoke();
     }
 

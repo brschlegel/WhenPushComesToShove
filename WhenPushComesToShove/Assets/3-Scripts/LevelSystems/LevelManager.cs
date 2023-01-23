@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     public static Action onEndGame;
     [SerializeField]
     private ModifierManager modifierManager;
+    private bool endRoomSpawned = false;
 
     private void OnEnable()
     {
@@ -120,7 +121,8 @@ public class LevelManager : MonoBehaviour
         // Resets to the beginnig if there's no more available games or if its reached the max number of rooms
         if (currentRoomIndex > pathGen.numOfDungeonRooms || pathGen.availableLevels.Count <= 0)
         {
-            ResetPath();
+            SpawnEndRoom();
+            //ResetPath();
             return;
         }
 
@@ -162,6 +164,41 @@ public class LevelManager : MonoBehaviour
 
         pathGen.ResetPath();
         //Should remake the path
+    }
+
+    public void SpawnEndRoom()
+    {
+
+        if (endRoomSpawned)
+        {
+            ResetPath();
+        }
+        else
+        {
+            //Clears previous level
+            if (pathGen.transform.childCount > 0)
+            {
+                Destroy(pathGen.transform.GetChild(0).gameObject);
+            }
+
+            //Reset Players Health
+            foreach (Transform p in GameState.players)
+            {
+                p.GetComponentInChildren<PlayerHealth>().ResetHealth();
+            }
+
+            GameObject room = pathGen.victoryRoom;
+
+            GameObject newRoom = pathGen.SpawnRoom(room);
+
+            //Grab the properties for this level
+            LevelProperties levelProp = newRoom.GetComponent<LevelProperties>();
+
+            GameState.currentRoomType = levelProp.levelType;
+            SetPlayerSpawns(levelProp);
+
+            endRoomSpawned = true;
+        }
     }
 
     /// <summary>
