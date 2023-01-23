@@ -105,6 +105,13 @@ public class PlayerTeamFormations : MonoBehaviour
                 }
                 break;
             default:
+                {
+                    for (int i = 0; i < playerConfigs.Count; i++)
+                    {
+                        playerConfigs[playerTeamOrder[i].PlayerIndex].TeamIndex = i;
+                        playerTeamOrder[i].TeamIndex = i;
+                    }
+                }
                 break;
         }
 
@@ -127,7 +134,7 @@ public class PlayerTeamFormations : MonoBehaviour
         //}
 
         //Assign Number Symbols
-        if (GameState.currentRoomType != LevelType.Arena && GameState.currentRoomType != LevelType.Lobby)
+        if (GameState.currentRoomType != LevelType.Arena && GameState.currentRoomType != LevelType.Lobby && GameState.currentRoomType != LevelType.Modifier)
         {
             foreach (PlayerConfiguration p in playerConfigs)
             {

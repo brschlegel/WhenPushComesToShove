@@ -115,39 +115,8 @@ public class PathGenerator : MonoBehaviour
         LevelManager.onNewRoom.Invoke();
     }
 
-    void InstantiatePathRooms()
-    {
-        for (int i = 0; i < path.Count; i++)
-        {
-            GameObject room = Instantiate(path[i]);
-            room.transform.parent = transform;
-            room.SetActive(false);
-            path[i] = room;
-        }
-    }
 
     //Helper Functions
-
-    /// <summary>
-    /// Puts the rooms in a random order
-    /// </summary>
-    /// <returns></returns>
-    LevelProperties[] ShuffleRooms()
-    {
-        LevelProperties[] shuffledProps = allLevels.ToArray();
-        //https://answers.unity.com/questions/1189736/im-trying-to-shuffle-an-arrays-order.html by Loise-N-D
-
-        for(int i = 0; i < shuffledProps.Length; i++)
-        {
-            int rnd = Random.Range(i, shuffledProps.Length);
-            LevelProperties prop = shuffledProps[rnd];
-            shuffledProps[rnd] = shuffledProps[i];
-            shuffledProps[i] = prop;
-        }
-
-        return shuffledProps;
-    }
-
     //Tests to see if a room's hazards are the correct difficulty
     //bool IsCompatibleRoom(LevelProperties prop, bool onlyHazards = false)
     //{
