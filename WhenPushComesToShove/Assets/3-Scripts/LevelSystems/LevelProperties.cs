@@ -5,7 +5,7 @@ using UnityEngine;
 public enum Hazards { None, Spikes, Spring, Fire };
 public enum EnemyTypes { General, Slimes, Aegis};
 
-public enum LevelType { Lobby, Dungeon, Arena, TwoTwo, ThreeOne};
+public enum LevelType { Lobby, Dungeon, Arena, TwoTwo, ThreeOne, Modifier};
 
 public class LevelProperties : MonoBehaviour
 {

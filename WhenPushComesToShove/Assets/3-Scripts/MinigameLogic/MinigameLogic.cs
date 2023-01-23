@@ -32,10 +32,7 @@ public abstract class MinigameLogic : MonoBehaviour
             p.GetComponentInChildren<PlayerMovementScript>().ChangeMoveSpeed(0);
         }
 
-        if (!canPlayersTakeDamage)
-        {
-            UpdatePlayerInvulnurability(false);
-        }
+        UpdatePlayerInvulnurability(canPlayersTakeDamage);
 
         CoroutineManager.StartGlobalCoroutine(WaitToStartGame());
     }
@@ -66,7 +63,7 @@ public abstract class MinigameLogic : MonoBehaviour
         }
 
         endingUIDisplay.HideDisplay();
-        LevelManager.onNewRoom.Invoke();
+        LevelManager.onModifierRoom.Invoke();
     }
 
     protected IEnumerator WaitToStartGame()

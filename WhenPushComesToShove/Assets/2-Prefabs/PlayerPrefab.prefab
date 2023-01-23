@@ -5265,6 +5265,7 @@ MonoBehaviour:
   slowAmount: 1
   player: {fileID: 0}
   aimTriangle: {fileID: 5837535310150144549}
+  forceMovementLocks: 0
 --- !u!114 &8683604864337146482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5295,9 +5296,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heavyShoveIsCharging: 0
   heavyShoveCharge: 0
-  lowTierChargeTime: 0.3
-  midTierChargeTime: 0.5
-  highTierChargeTime: 1
+  lowTierChargeTime: 0.2
+  midTierChargeTime: 0.4
+  highTierChargeTime: 0.8
   lowTierChargeForce: 10000
   midTierChargeForce: 13500
   highTierChargeForce: 16000

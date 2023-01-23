@@ -19,7 +19,8 @@ public class HotPotatoLogic : MinigameLogic
 
     public override void StartGame()
     {
-        numBombs = 1;
+        numBombs = 2;
+        spawner.SpawnWithDelay();
         spawner.SpawnWithDelay();
         StartCoroutine(SpawnAdditionalBomb());
         base.StartGame();

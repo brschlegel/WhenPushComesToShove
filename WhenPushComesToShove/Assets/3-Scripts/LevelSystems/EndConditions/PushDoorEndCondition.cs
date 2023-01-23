@@ -27,6 +27,8 @@ public class PushDoorEndCondition : BaseEndCondition
         if(numOfPlayersInTrigger == PlayerConfigManager.Instance.GetPlayerConfigs().Count)
         {
             PlayerConfigManager.Instance.levelInitRef.lockPlayerSpawn = true;
+            this.GetComponent<Animator>().SetTrigger("Opened");
+            Debug.Log("Opened!");
             return true;
         }
 
@@ -40,10 +42,11 @@ public class PushDoorEndCondition : BaseEndCondition
     private void SetActiveLights()
     {
         playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs();
+        Transform lightParent = transform.GetChild(0);
         //Populates the list with the lights
-        for(int i = 0; i < transform.childCount; i++)
+        for(int i = 0; i < lightParent.childCount; i++)
         {
-            lightsToTurnOff.Add(transform.GetChild(i).gameObject);
+            lightsToTurnOff.Add(lightParent.GetChild(i).gameObject);
         }
 
         //Removes an turned on lights from the list
@@ -54,8 +57,8 @@ public class PushDoorEndCondition : BaseEndCondition
             {
                 if(config.PlayerObject == player)
                 {
-                    transform.GetChild(config.PlayerIndex).gameObject.SetActive(true);
-                    lightsToTurnOff.Remove(transform.GetChild(config.PlayerIndex).gameObject);
+                    lightParent.GetChild(config.PlayerIndex).gameObject.SetActive(true);
+                    lightsToTurnOff.Remove(lightParent.GetChild(config.PlayerIndex).gameObject);
                 }
             }          
         }
@@ -74,6 +77,8 @@ public class PushDoorEndCondition : BaseEndCondition
     {
         if (collision.tag == "Player")
         {
+            this.GetComponent<Animator>().SetTrigger("Locked");
+            Debug.Log("Locked!");
             numOfPlayersInTrigger++;
             playersInTrigger.Add(collision.gameObject);
         }
