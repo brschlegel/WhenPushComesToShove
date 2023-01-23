@@ -9,6 +9,7 @@ public static class GameState
     public static LevelType currentRoomType;
     public static bool damageEnabled = true;
     public static int[] playerScores = new int[4];
+    public static PathGenerator pathGenerator;
 
     //Global Modifiers
     public static float dragModifier = 1;

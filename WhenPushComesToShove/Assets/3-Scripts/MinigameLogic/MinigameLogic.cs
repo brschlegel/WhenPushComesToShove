@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Minigame {Dodgeball, Soccer, HotPotato, Sumo, All};
+public enum Minigame {Dodgeball, Soccer, HotPotato, Sumo, Pinball, All};
 
 //[RequireComponent(typeof(LevelProperties))]
 public abstract class MinigameLogic : MonoBehaviour

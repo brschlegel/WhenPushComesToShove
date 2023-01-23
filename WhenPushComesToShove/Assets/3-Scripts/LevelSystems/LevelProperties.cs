@@ -15,6 +15,7 @@ public class LevelProperties : MonoBehaviour
     public GameObject[] playerSpawns;
     public GameObject[] enemySpawns;
     public LevelType levelType;
+    public Minigame game;
     public WaveManager waveManager;
 
     [HideInInspector] public bool teamLevel;
