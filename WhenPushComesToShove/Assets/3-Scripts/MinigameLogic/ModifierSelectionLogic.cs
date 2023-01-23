@@ -47,6 +47,7 @@ public class ModifierSelectionLogic : MinigameLogic
         selectedModifier = modifiers[index];
         modifierManager.AddModifier(modifiers[index]);
         modifierManager.RemoveModifierFromPool(modifiers[index]);
+        GameState.pathGenerator.PopulateAvailableLevels(selectedModifier.modifierPrefab.GetComponent<BaseModifier>().minigamesAffected);
         
     }
 }

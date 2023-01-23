@@ -45,6 +45,12 @@ public class PathGenerator : MonoBehaviour
     {
         availableLevels.Clear();
 
+        if(games.Count == 1 && games[0] == Minigame.All)
+        {
+            availableLevels = new List<LevelProperties>(allLevels);
+            return;
+        }
+
         foreach(Minigame type in games)
         {
             foreach(LevelProperties prop in allLevels)
