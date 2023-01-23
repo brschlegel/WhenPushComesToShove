@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9207903607628849705
+--- !u!114 &-1808526897751299166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,15 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: Z:/IGMProfile/Desktop/FMOD Studio/When Push Comes To Shove/PushShoveAudio/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 638095613818178097
+  Path: ./Assets/FMOD Banks/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638100760579818192
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-1468950982031199481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ./Assets/FMOD Banks/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638100760579838140
   FileSizes:
-  - Name: Desktop
-    Value: 3410720
+  - Name: 
+    Value: 908
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -33,38 +51,18 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 6753826607422179984}
-  - {fileID: 1956391848183450354}
-  - {fileID: -9207903607628849705}
+  - {fileID: -1468950982031199481}
+  - {fileID: -1808526897751299166}
+  - {fileID: 2507822565420921494}
   EditorEvents:
   - {fileID: 2291896933958292084}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 1956391848183450354}
+  - {fileID: -1808526897751299166}
   StringsBanks:
-  - {fileID: 6753826607422179984}
-  cacheTime: 638095613818178097
+  - {fileID: -1468950982031199481}
+  cacheTime: 638100760584743510
   cacheVersion: 131601
---- !u!114 &1956391848183450354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Z:/IGMProfile/Desktop/FMOD Studio/When Push Comes To Shove/PushShoveAudio/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638095613753344108
-  FileSizes:
-  - Name: Desktop
-    Value: 1486
-  Exists: 1
 --- !u!114 &2291896933958292084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,7 +82,7 @@ MonoBehaviour:
     Data3: -1291670882
     Data4: -1940044594
   Banks:
-  - {fileID: -9207903607628849705}
+  - {fileID: 2507822565420921494}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -92,7 +90,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 225880
---- !u!114 &6753826607422179984
+--- !u!114 &2507822565420921494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,13 +100,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Name: bank:/Music.bank
   m_EditorClassIdentifier: 
-  Path: Z:/IGMProfile/Desktop/FMOD Studio/When Push Comes To Shove/PushShoveAudio/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638095613754653984
-  FileSizes:
-  - Name: Desktop
-    Value: 908
+  Path: ./Assets/FMOD Banks/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 638100760584743510
+  FileSizes: []
   Exists: 1
