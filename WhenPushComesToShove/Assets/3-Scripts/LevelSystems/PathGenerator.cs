@@ -7,6 +7,7 @@ public class PathGenerator : MonoBehaviour
 
     public GameObject lobby;
     public GameObject modifierRoom;
+    public GameObject victoryRoom;
 
     //All possible minigames
     List<LevelProperties> allLevels = new List<LevelProperties>();
