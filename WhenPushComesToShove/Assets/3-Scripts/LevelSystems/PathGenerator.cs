@@ -26,6 +26,8 @@ public class PathGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameState.pathGenerator = this;
+
         Object[] allMinigames = Resources.LoadAll<Object>("Minigames/");
 
         foreach(Object obj in allMinigames)
@@ -40,6 +42,23 @@ public class PathGenerator : MonoBehaviour
         LevelManager.onNewRoom.Invoke();
     }
     
+    public void PopulateAvailableLevels(List<Minigame> games)
+    {
+        availableLevels.Clear();
+
+        foreach(Minigame type in games)
+        {
+            foreach(LevelProperties prop in allLevels)
+            {
+                if(prop.game == type)
+                {
+                    availableLevels.Add(prop);
+                    break;
+                }
+            }
+        }
+    }
+
     public LevelProperties AssignLevel()
     {
         //Remove any levels already played

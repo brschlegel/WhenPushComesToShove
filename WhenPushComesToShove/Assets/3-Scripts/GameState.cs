@@ -10,6 +10,7 @@ public static class GameState
     public static bool damageEnabled = true;
     public static int[] playerScores = new int[4];
     public static string[] playerNames = new string[] { "Red", "Blue", "Green", "Yellow" };
+    public static PathGenerator pathGenerator;
 
     //Global Modifiers
     public static float dragModifier = 1;
