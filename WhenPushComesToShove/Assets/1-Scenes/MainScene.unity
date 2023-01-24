@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6609a40c71c85a54ebcede2d70b2ff42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierPool: {fileID: 11400000, guid: caf1f156d9cc7cf45b64304a625d617c, type: 2}
+  modifierPoolSO: {fileID: 11400000, guid: caf1f156d9cc7cf45b64304a625d617c, type: 2}
   debugList: {fileID: 0}
 --- !u!4 &514692959
 Transform:
@@ -888,9 +888,8 @@ MonoBehaviour:
   lobby: {fileID: 6254306470328373913, guid: 5a3664862d4e60f4b968a10d39e0c82e, type: 3}
   modifierRoom: {fileID: 1291077549052866675, guid: 5c7a81353b8a4874e9731fc4aaf1bfb5, type: 3}
   availableLevels: []
-  numOfDungeonRooms: 4
-  path:
-  - {fileID: 1291077549052866675, guid: 5c7a81353b8a4874e9731fc4aaf1bfb5, type: 3}
+  numOfDungeonRooms: 2
+  path: []
 --- !u!4 &1589640427
 Transform:
   m_ObjectHideFlags: 0

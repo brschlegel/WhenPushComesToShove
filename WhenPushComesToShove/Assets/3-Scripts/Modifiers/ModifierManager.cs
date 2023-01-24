@@ -8,9 +8,11 @@ public class ModifierManager : MonoBehaviour
     private List<BaseModifier> modifiers;
 
     [Tooltip("Base List of modifiers to choose from")]
-    public ModifierList modifierPool;
+    public ModifierList modifierPoolSO;
     [Tooltip("Any modifiers put in here will be added on start")]
     public ModifierList debugList;
+
+    private List<ModifierSettings> modifierPool;
 
     void Start()
     {
@@ -22,6 +24,9 @@ public class ModifierManager : MonoBehaviour
                 AddModifier(m);
             }
         }
+
+        //Copy into modifier pool, so we aren't editting actual scriptable object
+        modifierPool = new List<ModifierSettings>(modifierPoolSO.modifiers);
     }
     
     public void AddModifier(ModifierSettings settings)
@@ -66,7 +71,7 @@ public class ModifierManager : MonoBehaviour
 
     public List<ModifierSettings> GetRandomModifiers(int num)
     {
-        List<ModifierSettings> copy = new List<ModifierSettings>(modifierPool.modifiers);
+        List<ModifierSettings> copy = new List<ModifierSettings>(modifierPool);
         List<ModifierSettings> r = new List<ModifierSettings>();
 
         for(int i = 0; i < num; i++)
@@ -80,6 +85,6 @@ public class ModifierManager : MonoBehaviour
 
     public void RemoveModifierFromPool(ModifierSettings settings)
     {
-        modifierPool.modifiers.Remove(settings);
+        modifierPool.Remove(settings);
     }
 }

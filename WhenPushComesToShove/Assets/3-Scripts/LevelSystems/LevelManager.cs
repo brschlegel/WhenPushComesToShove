@@ -136,6 +136,12 @@ public class LevelManager : MonoBehaviour
 
         //Grab the properties for this level
         LevelProperties levelProp = newRoom.GetComponent<LevelProperties>();
+        if (levelProp.transform.GetChild(3).TryGetComponent<MinigameLogic>(out MinigameLogic logic))
+        {
+            logic.Init();
+
+        }
+
 
         GameState.currentRoomType = levelProp.levelType;
         SetPlayerSpawns(levelProp);
