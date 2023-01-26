@@ -24,7 +24,26 @@ public class TeamWinUIDisplay : UIDisplay
         }
         else
         {
-            victoryText.text = "Team " + winningTeamNum + " Won!";
+            //Find All Winning Players and Add them to the Text
+            string winningPlayers = "";
+
+            foreach (Transform p in GameState.players)
+            {
+                PlayerConfiguration config = p.GetComponentInChildren<PlayerInputHandler>().playerConfig;
+                if (config.TeamIndex == winningTeamNum)
+                {
+                    if (winningPlayers == "")
+                    {
+                        winningPlayers += GameState.playerNames[config.PlayerIndex];
+                    }
+                    else
+                    {
+                        winningPlayers += " and " + GameState.playerNames[config.PlayerIndex];
+                    }
+                }
+            }
+
+            victoryText.text = winningPlayers + " players won!";
         }
  
         CoroutineManager.StartGlobalCoroutine(WaitToFinish());

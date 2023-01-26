@@ -11,7 +11,11 @@ public class MinigameData : MonoBehaviour
     public void AddScoreForTeam(int teamIndex, int scoreToAdd)
     {
         scores[teamIndex] += scoreToAdd;
-        onScoreAdded.Invoke(teamIndex, scores[teamIndex]);
+
+        if (onScoreAdded != null)
+        {
+            onScoreAdded.Invoke(teamIndex, scores[teamIndex]);
+        }
     }
 
     public void OnMinigameEnd()
@@ -36,6 +40,8 @@ public class MinigameData : MonoBehaviour
                 GameState.playerScores[players[i].PlayerIndex] += 1;
             }
         }
+
+        Debug.Log(GameState.playerScores);
 
         //Cleanup just in case
         scores = new int[4];

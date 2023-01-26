@@ -33,7 +33,12 @@ public class SumoLogic : MinigameLogic
             if (endCondition.TestCondition())
             {
                 Transform winner = ((LastManStandingEndCondition)endCondition).winner;
-                ((PlayerWinUIDisplay)endingUIDisplay).winnerName = winner.gameObject.name;
+
+                PlayerConfiguration config = winner.GetComponentInChildren<PlayerInputHandler>().playerConfig;
+                //Assign Point
+                data.AddScoreForTeam(config.TeamIndex, 1);
+
+                ((PlayerWinUIDisplay)endingUIDisplay).winnerName = GameState.playerNames[config.PlayerIndex];
                 EndGame();
             }
         }

@@ -7,6 +7,7 @@ public class PathGenerator : MonoBehaviour
 
     public GameObject lobby;
     public GameObject modifierRoom;
+    public GameObject victoryRoom;
 
     //All possible minigames
     List<LevelProperties> allLevels = new List<LevelProperties>();
@@ -18,7 +19,8 @@ public class PathGenerator : MonoBehaviour
     List<LevelProperties> playedLevels = new List<LevelProperties>();
 
     [Header("Path properties")]
-    public int numOfDungeonRooms;
+    [SerializeField] private int numOfGames;
+    [HideInInspector] public int numOfRooms;
     int currentPathNum = 0;
     public List<GameObject> path = new List<GameObject>();
 
@@ -26,6 +28,7 @@ public class PathGenerator : MonoBehaviour
     void Start()
     {
         GameState.pathGenerator = this;
+        numOfRooms = (numOfGames * 2) - 1;
 
         Object[] allMinigames = Resources.LoadAll<Object>("Minigames/");
 
@@ -121,39 +124,8 @@ public class PathGenerator : MonoBehaviour
         LevelManager.onNewRoom.Invoke();
     }
 
-    void InstantiatePathRooms()
-    {
-        for (int i = 0; i < path.Count; i++)
-        {
-            GameObject room = Instantiate(path[i]);
-            room.transform.parent = transform;
-            room.SetActive(false);
-            path[i] = room;
-        }
-    }
 
     //Helper Functions
-
-    /// <summary>
-    /// Puts the rooms in a random order
-    /// </summary>
-    /// <returns></returns>
-    LevelProperties[] ShuffleRooms()
-    {
-        LevelProperties[] shuffledProps = allLevels.ToArray();
-        //https://answers.unity.com/questions/1189736/im-trying-to-shuffle-an-arrays-order.html by Loise-N-D
-
-        for(int i = 0; i < shuffledProps.Length; i++)
-        {
-            int rnd = Random.Range(i, shuffledProps.Length);
-            LevelProperties prop = shuffledProps[rnd];
-            shuffledProps[rnd] = shuffledProps[i];
-            shuffledProps[i] = prop;
-        }
-
-        return shuffledProps;
-    }
-
     //Tests to see if a room's hazards are the correct difficulty
     //bool IsCompatibleRoom(LevelProperties prop, bool onlyHazards = false)
     //{

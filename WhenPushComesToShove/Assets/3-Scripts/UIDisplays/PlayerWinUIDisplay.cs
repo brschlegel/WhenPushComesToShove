@@ -15,7 +15,7 @@ public class PlayerWinUIDisplay : UIDisplay
 
     public override void ShowDisplay()
     {
-        text.text = winnerName + " is the winner!";
+        text.text = winnerName + " player is the winner!";
         text.gameObject.SetActive(true);
         isDone = false;
         CoroutineManager.StartGlobalCoroutine(WaitToFinish());
