@@ -16,10 +16,10 @@ public class PlayerConfigManager : MonoBehaviour
     public static PlayerConfigManager Instance { get; private set; }
 
     [HideInInspector] public InitLevel levelInitRef;
-    [SerializeField] private RuntimeAnimatorController[] defaultColors = new RuntimeAnimatorController[4];
+    [SerializeField] private RuntimeAnimatorController defaultColor;
     [SerializeField] private string[] playerColorNames = new string[4];
     public Material[] playerOutlines = new Material[4];
-    public Color[] playerOutlineOriginalColors = new Color[4];
+    //public Color[] playerOutlineOriginalColors = new Color[4];
 
     public void Awake()
     {
@@ -67,7 +67,7 @@ public class PlayerConfigManager : MonoBehaviour
     public void SetPlayerColor(int index, RuntimeAnimatorController color, Material mat, string name)
     {
         playerConfigs[index].PlayerAnimations = color;
-        mat.SetColor("_PlayerColor", playerOutlineOriginalColors[index]);
+        //mat.SetColor("_PlayerColor", playerOutlineOriginalColors[index]);
         playerConfigs[index].Outline = mat;
         playerConfigs[index].PlayerColorName = name;
     }
@@ -95,7 +95,7 @@ public class PlayerConfigManager : MonoBehaviour
         if (levelInitRef != null)
         {
             //Set to a default color
-            SetPlayerColor(input.playerIndex, defaultColors[input.playerIndex], playerOutlines[input.playerIndex], playerColorNames[input.playerIndex]);
+            SetPlayerColor(input.playerIndex, defaultColor, playerOutlines[input.playerIndex], playerColorNames[input.playerIndex]);
             //playerOutlineOriginalColors[input.playerIndex] = playerOutlines[input.playerIndex].GetColor("_PlayerColor");
 
             levelInitRef.SpawnPlayer(input.playerIndex);

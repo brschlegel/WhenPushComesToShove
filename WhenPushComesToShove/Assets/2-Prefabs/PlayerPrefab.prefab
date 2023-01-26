@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 8184684198277851572}
   - component: {fileID: 6403724034090220453}
   - component: {fileID: 9061896472865154378}
-  - component: {fileID: 4260169592841271269}
   - component: {fileID: 278065994103786336}
   - component: {fileID: 274202108947305611}
   - component: {fileID: 2033113999610898427}
   - component: {fileID: 6359499471603373907}
+  - component: {fileID: 8675750944055887378}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -107,21 +107,6 @@ MonoBehaviour:
   id: hit
   anim: {fileID: 0}
   pMode: {fileID: 0}
---- !u!114 &4260169592841271269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624796887541275756}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8003f96ea6028b349ac1d11106238c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: light
-  anim: {fileID: 0}
-  shoveExclamation: {fileID: 0}
 --- !u!114 &278065994103786336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +166,21 @@ MonoBehaviour:
   id: dash
   anim: {fileID: 0}
   animName: Base Layer.AN_Player_Dead
+--- !u!114 &8675750944055887378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624796887541275756}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e1fd3a5989bcc4994342a825a24cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: light
+  anim: {fileID: 0}
+  animName: 
 --- !u!1 &910752576094783432
 GameObject:
   m_ObjectHideFlags: 0

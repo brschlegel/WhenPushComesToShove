@@ -9,7 +9,7 @@ public class PlayerAnimBrain : StateBrain
     PlayerRunState runState;
     PlayerHitState hitState;
     PlayAnimState dashState;
-    PlayerLightShoveState lightState;
+    PlayAnimState lightState;
     PlayerChargeState chargeState;
     PlayerHeavyShoveState heavyState;
     PlayAnimState deathState;
@@ -51,7 +51,7 @@ public class PlayerAnimBrain : StateBrain
         idleState = GetComponent<PlayerIdleState>();
         runState = GetComponent<PlayerRunState>();
         hitState = GetComponent<PlayerHitState>();
-        lightState = GetComponent<PlayerLightShoveState>();
+       // lightState = GetComponent<PlayerLightShoveState>();
         chargeState = GetComponent<PlayerChargeState>();
         heavyState = GetComponent<PlayerHeavyShoveState>();
         heavyScript = playerInputHandler.GetComponent<PlayerHeavyShoveScript>();
@@ -69,6 +69,10 @@ public class PlayerAnimBrain : StateBrain
                 case "death":
                     deathState = state;
                     deathState.animName = "Base Layer.AN_Player_Dead";
+                    break;
+                case "light":
+                    lightState = state;
+                    lightState.animName = "Base Layer.AN_Player_LightShove";
                     break;
                 default:
                     Debug.LogError("UNKNOWN ANIM STATE ID: " + state.id);
@@ -95,9 +99,9 @@ public class PlayerAnimBrain : StateBrain
         dashState.onStateExit += OutDash;
 
         lightState.anim = anim;
-        lightState.shoveExclamation = shoveExclamation;
         lightScript.onLightShove += OnLightShove;
-        playerInputHandler.onLightShoveComplete += OutShove;
+        //playerInputHandler.onLightShoveComplete += OutShove;
+        lightState.onStateExit += OutLight;
 
         chargeState.anim = anim;
         heavyScript.onHeavyCharge += OnHeavyCharge;
@@ -169,6 +173,11 @@ public class PlayerAnimBrain : StateBrain
     }
 
     private void OutShove()
+    {
+        ChangeState(idleState);
+    }
+
+    private void OutLight(bool success)
     {
         ChangeState(idleState);
     }
