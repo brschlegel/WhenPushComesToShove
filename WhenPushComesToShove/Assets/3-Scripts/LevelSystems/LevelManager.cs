@@ -21,14 +21,12 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         onNewRoom += ShowRoom;
-        onModifierRoom += ShowModifierRoom;
         onEndGame += ResetPath;
     }
 
     private void OnDisable()
     {
         onNewRoom -= ShowRoom;
-        onModifierRoom -= ShowModifierRoom;
         onEndGame -= ResetPath;
     }
 
@@ -50,12 +48,7 @@ public class LevelManager : MonoBehaviour
         //Temp code to test if the room transitions work
         if (Input.GetKeyDown(KeyCode.E))
         {
-            //Will transition to a new game
-            if (GameState.currentRoomType == LevelType.Modifier)
-                onNewRoom();
-            //Will transition to a modifier room
-            else if (GameState.currentRoomType != LevelType.Lobby && GameState.currentRoomType != LevelType.Modifier)
-                onModifierRoom();
+            onNewRoom();
         }
 
         //Temp code to reset the game fully
@@ -68,12 +61,13 @@ public class LevelManager : MonoBehaviour
     //Will ensure that only the current room on the path will show up
     void ShowRoom()
     {
-        //Resets to the beginnig if there's no more available games or if its reached the max number of rooms
-        //if(currentRoomIndex > pathGen.numOfDungeonRooms || pathGen.availableLevels.Count <= 0)
-        //{
-        //    ResetPath();
-        //    return;
-        //}
+
+        //Spawn the end room if at the end of the path or if there's no avaiable minigames
+        if (currentRoomIndex > pathGen.numOfRooms || pathGen.availableLevels.Count <= 0)
+        {
+            SpawnEndRoom();
+            return;
+        }
 
         damageEnabler.EnableDamage(currentRoomIndex > 0);
 
@@ -86,13 +80,20 @@ public class LevelManager : MonoBehaviour
         //Show the new room
         GameObject room = null;
 
+        //Spawns the lobby
         if (currentRoomIndex == 0)
         {
             room = pathGen.lobby;
         }
-        else
+        //Spawns a minigame
+        else if(currentRoomIndex > 0 && currentRoomIndex % 2 == 1)
         {
             room = pathGen.AssignLevel().gameObject;
+        }
+        //Spawns a modifier room
+        else if(currentRoomIndex > 0 && currentRoomIndex % 2 == 0)
+        {
+            room = pathGen.modifierRoom;
         }
 
         GameObject newRoom = pathGen.SpawnRoom(room);
@@ -116,32 +117,6 @@ public class LevelManager : MonoBehaviour
         LoggingInfo.instance.numOfRoomsTraveled++;
     }
 
-    void ShowModifierRoom()
-    {
-        // Resets to the beginnig if there's no more available games or if its reached the max number of rooms
-        if (currentRoomIndex > pathGen.numOfDungeonRooms || pathGen.availableLevels.Count <= 0)
-        {
-            SpawnEndRoom();
-            //ResetPath();
-            return;
-        }
-
-        //Clears previous level
-        if (pathGen.transform.childCount > 0)
-        {
-            Destroy(pathGen.transform.GetChild(0).gameObject);
-        }
-
-        GameObject room = pathGen.modifierRoom;
-
-        GameObject newRoom = pathGen.SpawnRoom(room);
-
-        //Grab the properties for this level
-        LevelProperties levelProp = newRoom.GetComponent<LevelProperties>();
-
-        GameState.currentRoomType = levelProp.levelType;
-        SetPlayerSpawns(levelProp);
-    }
     public void ResetPath()
     {
         //Temp code - Will just put everyone back into the lobby

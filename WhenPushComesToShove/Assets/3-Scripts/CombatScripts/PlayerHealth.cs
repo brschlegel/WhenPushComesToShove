@@ -15,14 +15,12 @@ public class PlayerHealth : Health
     private void OnEnable()
     {
         LevelManager.onNewRoom += ResetHealth;
-        LevelManager.onModifierRoom += ResetHealth;
         LevelManager.onEndGame += ResetHealth;
     }
 
     private void OnDisable()
     {
         LevelManager.onNewRoom -= ResetHealth;
-        LevelManager.onModifierRoom -= ResetHealth;
         LevelManager.onEndGame -= ResetHealth;
     }
 
