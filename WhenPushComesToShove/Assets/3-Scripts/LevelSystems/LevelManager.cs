@@ -117,39 +117,6 @@ public class LevelManager : MonoBehaviour
         LoggingInfo.instance.numOfRoomsTraveled++;
     }
 
-
-    void ShowModifierRoom()
-    {
-        // Resets to the beginnig if there's no more available games or if its reached the max number of rooms
-        if (currentRoomIndex > pathGen.numOfDungeonRooms || pathGen.availableLevels.Count <= 0)
-        {
-            ResetPath();
-            return;
-        }
-
-        //Clears previous level
-        if (pathGen.transform.childCount > 0)
-        {
-            Destroy(pathGen.transform.GetChild(0).gameObject);
-        }
-
-        GameObject room = pathGen.modifierRoom;
-
-        GameObject newRoom = pathGen.SpawnRoom(room);
-
-        //Grab the properties for this level
-        LevelProperties levelProp = newRoom.GetComponent<LevelProperties>();
-        if (levelProp.transform.GetChild(3).TryGetComponent<MinigameLogic>(out MinigameLogic logic))
-        {
-            logic.Init();
-
-        }
-
-
-        GameState.currentRoomType = levelProp.levelType;
-        SetPlayerSpawns(levelProp);
-    }
-
     public void ResetPath()
     {
         //Temp code - Will just put everyone back into the lobby
