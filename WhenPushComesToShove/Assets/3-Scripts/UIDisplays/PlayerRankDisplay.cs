@@ -8,6 +8,7 @@ public class PlayerRankDisplay : UIDisplay
 {
     [SerializeField] private TextMeshProUGUI winnerText;
     [SerializeField] private TextMeshProUGUI rankText;
+    [HideInInspector] public int[] playerRankOrder;
 
     public override void HideDisplay()
     {
@@ -16,13 +17,29 @@ public class PlayerRankDisplay : UIDisplay
 
     public override void ShowDisplay()
     {
-        int[] playerOrder = GetRankOrder();
+        playerRankOrder = GetRankOrder();
 
-        winnerText.text = GameState.playerNames[playerOrder[0]] + " player won!";
+        winnerText.text = GameState.playerNames[playerRankOrder[0]] + " player won!";
 
-        rankText.text = "2nd: " + GameState.playerNames[playerOrder[1]] + 
-            "\n3rd: " + GameState.playerNames[playerOrder[2]] + 
-            "\n4th: " + GameState.playerNames[playerOrder[3]];
+        int numOfPlayers = GameState.players.Count;
+        string text = "";
+
+        if (numOfPlayers >= 2)
+        {
+            text += "2nd: " + GameState.playerNames[playerRankOrder[1]];
+        }
+
+        if (numOfPlayers >= 3)
+        {
+            text += "\n3rd: " + GameState.playerNames[playerRankOrder[2]];
+        }
+
+        if (numOfPlayers >= 4)
+        {
+            text += "\n4th: " + GameState.playerNames[playerRankOrder[3]];
+        }
+
+        rankText.text = text;
 
         gameObject.SetActive(true);
     }
