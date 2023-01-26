@@ -15,6 +15,8 @@ public class PinballLogic :MinigameLogic
         spawner.SpawnWithDelay();
         StartCoroutine(SpawnAdditionalBalls());
         base.StartGame();
+
+        
     }
 
     private void Update()
