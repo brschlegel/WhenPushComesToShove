@@ -19,7 +19,8 @@ public class PathGenerator : MonoBehaviour
     List<LevelProperties> playedLevels = new List<LevelProperties>();
 
     [Header("Path properties")]
-    public int numOfDungeonRooms;
+    [SerializeField] private int numOfGames;
+    [HideInInspector] public int numOfRooms;
     int currentPathNum = 0;
     public List<GameObject> path = new List<GameObject>();
 
@@ -27,6 +28,7 @@ public class PathGenerator : MonoBehaviour
     void Start()
     {
         GameState.pathGenerator = this;
+        numOfRooms = (numOfGames * 2) - 1;
 
         Object[] allMinigames = Resources.LoadAll<Object>("Minigames/");
 

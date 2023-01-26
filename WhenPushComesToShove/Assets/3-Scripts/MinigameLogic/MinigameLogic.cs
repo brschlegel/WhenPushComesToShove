@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Minigame {Dodgeball, Soccer, HotPotato, Sumo, Pinball, All};
+public enum Minigame {Dodgeball, Soccer, HotPotato, Sumo, All};
 
 //[RequireComponent(typeof(LevelProperties))]
 public abstract class MinigameLogic : MonoBehaviour
@@ -82,7 +82,7 @@ public abstract class MinigameLogic : MonoBehaviour
             endingUIDisplay.HideDisplay();
         }
 
-        LevelManager.onModifierRoom.Invoke();
+        LevelManager.onNewRoom.Invoke();
     }
 
     protected IEnumerator WaitToStartGame()
