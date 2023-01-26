@@ -5,7 +5,7 @@ using TMPro;
 
 public class TimedExplanationDisplay :  UIDisplay
 {
-    [SerializeField] private TextMeshProUGUI explanationText;
+    public TextMeshProUGUI explanationText;
     [SerializeField] private float timeToDisplay = 3;
 
     public override void ShowDisplay()

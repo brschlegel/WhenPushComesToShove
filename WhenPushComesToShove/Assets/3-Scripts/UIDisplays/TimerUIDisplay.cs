@@ -32,6 +32,15 @@ public class TimerUIDisplay : UIDisplay
 
     public void UpdateTimerText()
     {
+        if (timerText == null)
+        {
+            if (timer <= 0)
+            {
+                timeOut = true;
+            }
+            return;
+        }
+
         int min = Mathf.FloorToInt(timer / 60);
         int sec = Mathf.FloorToInt(timer % 60);
 

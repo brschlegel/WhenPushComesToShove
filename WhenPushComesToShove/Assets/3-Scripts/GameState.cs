@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GameState 
+public static class GameState
 {
     static public List<Transform> players = new List<Transform>();
     static public List<HealthBar> playerHealthBars = new List<HealthBar>();
     public static LevelType currentRoomType;
     public static bool damageEnabled = true;
     public static int[] playerScores = new int[4];
+    public static string[] playerNames = new string[] { "Red", "Blue", "Green", "Yellow" };
     public static PathGenerator pathGenerator;
 
     //Global Modifiers

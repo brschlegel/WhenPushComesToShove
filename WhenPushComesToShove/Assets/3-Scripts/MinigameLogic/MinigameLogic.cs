@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Minigame {Dodgeball, Soccer, HotPotato, Sumo, Pinball, All};
+public enum Minigame {Dodgeball, Soccer, HotPotato, Sumo, All};
 
 //[RequireComponent(typeof(LevelProperties))]
 public abstract class MinigameLogic : MonoBehaviour
@@ -17,6 +17,8 @@ public abstract class MinigameLogic : MonoBehaviour
     protected BaseEndCondition endCondition;
     protected bool gameRunning;
 
+    [SerializeField] protected MinigameData data;
+
     public event emptyDelegate onGameStart;
     [SerializeField] protected bool canPlayersTakeDamage = true;
 
@@ -24,7 +26,10 @@ public abstract class MinigameLogic : MonoBehaviour
     public virtual void Init()
     {
         Debug.Log("Init");
-        startingUIDisplay.ShowDisplay();
+        if (startingUIDisplay != null)
+        {
+            startingUIDisplay.ShowDisplay();
+        }
 
         //Lock Player Movement
         foreach (Transform p in GameState.players)
@@ -52,7 +57,17 @@ public abstract class MinigameLogic : MonoBehaviour
     public virtual void EndGame()
     {
         gameRunning = false;
-        endingUIDisplay.ShowDisplay();
+
+        if (endingUIDisplay != null)
+        {
+            endingUIDisplay.ShowDisplay();
+        }
+
+        if (data != null)
+        {
+            data.OnMinigameEnd();
+        }
+
         CoroutineManager.StartGlobalCoroutine(WaitToCleanUp());
     }
     public virtual void CleanUp()
@@ -62,7 +77,11 @@ public abstract class MinigameLogic : MonoBehaviour
             UpdatePlayerInvulnurability(true);
         }
 
-        endingUIDisplay.HideDisplay();
+        if (endingUIDisplay)
+        {
+            endingUIDisplay.HideDisplay();
+        }
+
         LevelManager.onNewRoom.Invoke();
     }
 
