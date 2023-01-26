@@ -71,16 +71,62 @@ public class ModifierManager : MonoBehaviour
 
     public List<ModifierSettings> GetRandomModifiers(int num)
     {
+         foreach (LevelProperties p in GameState.pathGenerator.playedLevels)
+                {
+                    Debug.Log("played: " + p.game);
+                }
         List<ModifierSettings> copy = new List<ModifierSettings>(modifierPool);
         List<ModifierSettings> r = new List<ModifierSettings>();
+        copy.Shuffle();
 
-        for(int i = 0; i < num; i++)
+        while(r.Count < num)
         {
-            ModifierSettings random = copy.GetRandomElement();
-            r.Add(random);
-            copy.Remove(random);
+            if(copy.Count == 0)
+            {
+                Debug.LogError("No more valid modifiers");
+            }
+            ModifierSettings chosen = CheckModifier(copy);
+            copy.RemoveAt(0);
+            if(chosen != null)
+            { 
+                r.Add(chosen);
+            }
         }
+
         return r;
+
+    }
+
+    //Checks modifier, returns if should be added. In its own method so i can return out of it easy
+    public ModifierSettings CheckModifier(List<ModifierSettings> copy)
+    {
+        ModifierSettings candidate = copy[0];
+        List<Minigame> affected = candidate.modifierPrefab.GetComponent<BaseModifier>().minigamesAffected;
+        if (affected.Contains(Minigame.All))
+        {
+            return candidate;
+        }
+        else
+        {
+
+            foreach (Minigame m in affected)
+            {
+                bool contains = false;
+                foreach (LevelProperties p in GameState.pathGenerator.playedLevels)
+                {
+                    if(p.game == m)
+                    {
+                       contains = true;
+                    }
+                }
+                //If we go through the whole played level list and it does not contain one of the minigames affected, then we can select that modifier
+                if(!contains)
+                {
+                    return candidate;
+                }
+            }
+                return null;
+        }
     }
 
     public void RemoveModifierFromPool(ModifierSettings settings)

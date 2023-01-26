@@ -16,7 +16,7 @@ public class PathGenerator : MonoBehaviour
     public List<LevelProperties> availableLevels = new List<LevelProperties>();
 
     //Any games that have already been played that can be filter out of the available levels
-    List<LevelProperties> playedLevels = new List<LevelProperties>();
+    [HideInInspector] public List<LevelProperties> playedLevels = new List<LevelProperties>();
 
     [Header("Path properties")]
     [SerializeField] private int numOfGames;
