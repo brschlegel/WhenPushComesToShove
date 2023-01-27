@@ -1217,6 +1217,7 @@ MonoBehaviour:
   numOfRunsFailed: 0
   numOfRunsCompleted: 0
   currentRoomName: 
+  enableLogging: 0
 --- !u!4 &1335625847
 Transform:
   m_ObjectHideFlags: 0
@@ -1525,6 +1526,7 @@ MonoBehaviour:
   objectToSpawn: {fileID: 867218227133338284, guid: 04b8a7e2035d89e4a94de97f111b7712, type: 3}
   spawnedObjectParent: {fileID: 0}
   repeating: 0
+  numSpawnedLimit: 100
   spawnDelay: 1
   radius: 0.5
 --- !u!4 &1938847593
@@ -1631,11 +1633,7 @@ MonoBehaviour:
   minPlayers: 2
   maxPlayers: 4
   levelInitRef: {fileID: 0}
-  defaultColors:
-  - {fileID: 9100000, guid: 65da5288a1fc01b4f8f7b09075193de4, type: 2}
-  - {fileID: 9100000, guid: 893785c89d1660b4d8f6467b92ba1e33, type: 2}
-  - {fileID: 9100000, guid: f3491e98635ceb842bef8571558dcb79, type: 2}
-  - {fileID: 9100000, guid: 6eb688f05c581a246ac731e968b13fad, type: 2}
+  defaultColor: {fileID: 0}
   playerColorNames:
   - 
   - 
@@ -1646,14 +1644,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2cb04c544315cda4a808c4ea729680b6, type: 2}
   - {fileID: 2100000, guid: 1e2f441b0a136374ab88f85b9b7ca1f6, type: 2}
   - {fileID: 2100000, guid: 3051778954a8e794ab3d79bdaa5e68f0, type: 2}
-  playerOutlineOriginalColors:
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  teamSprites:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1953411768
 Transform:
   m_ObjectHideFlags: 0
@@ -1780,7 +1770,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2092420328}
-  - component: {fileID: 2092420327}
   - component: {fileID: 2092420326}
   m_Layer: 8
   m_Name: Main Layout
@@ -1810,32 +1799,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &2092420327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092420325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
-  m_ReverseArrangement: 0
 --- !u!224 &2092420328
 RectTransform:
   m_ObjectHideFlags: 0

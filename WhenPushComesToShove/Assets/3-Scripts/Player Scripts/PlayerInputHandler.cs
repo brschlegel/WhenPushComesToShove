@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 using System;
 
+public delegate void PlayerEvent(int index);
 //Script to take in player input and trigger the necessary actions
 public class PlayerInputHandler : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private PlayerControls controls;
 
-    public Action onSelect;
+    public event PlayerEvent onSelect;
 
     // Start is called before the first frame update
     void Awake()
@@ -99,7 +100,7 @@ public class PlayerInputHandler : MonoBehaviour
             if (onSelect != null && !performingAction && !heavyShoveScript.heavyShoveIsCharging)
             {
                 LockAction(selectActionCooldown, null);
-                onSelect();
+                onSelect.Invoke(playerConfig.PlayerIndex);
             }
         }
         //Light Shove
