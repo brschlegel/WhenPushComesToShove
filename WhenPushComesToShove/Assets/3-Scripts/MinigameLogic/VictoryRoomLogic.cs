@@ -29,14 +29,14 @@ public class VictoryRoomLogic : MinigameLogic
 
         winningPlayer = GameState.players[rankDisplay.playerRankOrder[0]];
 
-        winningPlayer.GetChild(13).gameObject.SetActive(true);
+        winningPlayer.GetComponent<PlayerInputHandler>().crownBox.SetActive(true);
 
         base.Init();
     }
 
     public override void CleanUp()
     {
-        winningPlayer.GetChild(13).gameObject.SetActive(false);
+        winningPlayer.GetComponent<PlayerInputHandler>().crownBox.SetActive(false);
 
         base.CleanUp();
     }
