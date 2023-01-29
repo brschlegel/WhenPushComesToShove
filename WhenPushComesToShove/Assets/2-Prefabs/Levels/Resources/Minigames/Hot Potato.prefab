@@ -60,7 +60,7 @@ MonoBehaviour:
   - {fileID: 3914091400734571669}
   enemySpawns: []
   levelType: 2
-  game: 0
+  game: 2
   waveManager: {fileID: 805013608764250823}
   teamLevel: 0
   enemySpawnProps: []
@@ -5237,6 +5237,10 @@ PrefabInstance:
       propertyPath: objectToSpawn
       value: 
       objectReference: {fileID: 867218227133338284, guid: 04b8a7e2035d89e4a94de97f111b7712, type: 3}
+    - target: {fileID: 2052572570107337235, guid: 6db05752049893e4eb40a52fe05c01f7, type: 3}
+      propertyPath: numSpawnedLimit
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2052572570107337235, guid: 6db05752049893e4eb40a52fe05c01f7, type: 3}
       propertyPath: spawnedObjectParent
       value: 

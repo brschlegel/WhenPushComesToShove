@@ -6,7 +6,6 @@ using UnityEngine;
 public class ModifierSettings
 {
     public GameObject modifierPrefab;
-   
 }
 
 [CreateAssetMenu(menuName = "Modifiers/Modifier List")]

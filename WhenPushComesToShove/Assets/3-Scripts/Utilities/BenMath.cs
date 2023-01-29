@@ -24,4 +24,9 @@ public static class BenMath
 
         return list;
     }
+
+    public static Vector2 Midpoint(Vector2 a, Vector2 b)
+    {
+        return ((b - a) / 2) + a;
+    }
 }
