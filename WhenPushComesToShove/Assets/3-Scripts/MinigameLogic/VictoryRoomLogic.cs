@@ -35,7 +35,7 @@ public class VictoryRoomLogic : MinigameLogic
 
     public override void CleanUp()
     {
-        winningPlayer.GetComponent<PlayerInputHandler>().crownBox.SetActive(false);
+        winningPlayer.GetComponentInChildren<PlayerInputHandler>().crownBox.SetActive(false);
 
         base.CleanUp();
     }
