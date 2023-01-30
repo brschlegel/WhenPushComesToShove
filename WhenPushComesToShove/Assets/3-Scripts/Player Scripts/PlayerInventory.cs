@@ -71,7 +71,7 @@ public class PlayerInventory : MonoBehaviour
                 {
                     inputHandler.ClearSelectAction();
                     inRangeLoot.Add(loot);
-                    inputHandler.onSelect += TradeLoot;
+                   // inputHandler.onSelect += TradeLoot;
                 }
                 break;
             case LootData.LootType.Heavy:
@@ -98,7 +98,7 @@ public class PlayerInventory : MonoBehaviour
                 {
                     inputHandler.ClearSelectAction();
                     inRangeLoot.Add(loot);
-                    inputHandler.onSelect += TradeLoot;
+                    //inputHandler.onSelect += TradeLoot;
                 }
                 break;
             case LootData.LootType.Passive:
