@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class PinballLogic :MinigameLogic
 {
-    [SerializeField] private ObjectSpawnerRandomLocations spawner;
+    [SerializeField] private ObjectSpawnerRandomLocations[] spawners;
     [SerializeField] private float spawnInterval;
+    [SerializeField] private Goal dangerZone;
 
     private int numBalls;
 
+    public override void Init()
+    {
+        dangerZone.goalScored += OnGoalScored;
+        base.Init();
+    }
     public override void StartGame()
     {
         numBalls = 1;
-        spawner.SpawnWithDelay();
-        StartCoroutine(SpawnAdditionalBalls());
+        
+        foreach(ObjectSpawnerRandomLocations spawner in spawners)
+        {
+            spawner.SpawnWithDelay();
+        }
+        //StartCoroutine(SpawnAdditionalBalls());
         base.StartGame();
 
         
@@ -34,15 +44,32 @@ public class PinballLogic :MinigameLogic
 
     public override void CleanUp()
     {
-        spawner.CleanUpSpawnedObjects();
+        dangerZone.goalScored -= OnGoalScored;
+        foreach (ObjectSpawnerRandomLocations spawner in spawners)
+        {
+            spawner.CleanUpSpawnedObjects();
+        }
         base.CleanUp();
     }
 
     public IEnumerator SpawnAdditionalBalls()
     {
         yield return new WaitForSeconds(spawnInterval);
-        spawner.SpawnWithoutDelay();
+        
+        foreach (ObjectSpawnerRandomLocations spawner in spawners)
+        {
+            spawner.SpawnWithoutDelay();
+        }
         numBalls++;
         StartCoroutine(SpawnAdditionalBalls());
+    }
+
+    public void OnGoalScored()
+    {
+        foreach(ObjectSpawnerRandomLocations spawner in spawners)
+        {
+            if (spawner.spawnedObjectParent.childCount <= 0)
+                spawner.Spawn();
+        }
     }
 }
