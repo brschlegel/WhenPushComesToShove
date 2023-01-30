@@ -6,6 +6,9 @@ using TMPro;
 public class VictoryRoomLogic : MinigameLogic
 {
     public TextMeshProUGUI winnerText;
+    public PlayerRankDisplay rankDisplay;
+    public Sprite playerCrown;
+    Transform winningPlayer;
 
     public void OnEnable()
     {
@@ -22,20 +25,19 @@ public class VictoryRoomLogic : MinigameLogic
 
     public override void Init()
     {
-        int highestScoreIndex = 0;
+        rankDisplay.ShowDisplay();
 
-        //Find Winning Team
-        for (int i = 1; i < GameState.playerScores.Length; i++)
-        {
-            if (GameState.playerScores[i] > GameState.playerScores[highestScoreIndex])
-            {
-                highestScoreIndex = i;
-            }
-        }
+        winningPlayer = GameState.players[rankDisplay.playerRankOrder[0]];
 
-        PlayerConfiguration winningPlayer = GameState.players[highestScoreIndex].GetComponentInChildren<PlayerInputHandler>().playerConfig;        
-        winnerText.text = GameState.playerNames[winningPlayer.PlayerIndex] + " player won!";
+        winningPlayer.GetComponent<PlayerInputHandler>().crownBox.SetActive(true);
 
         base.Init();
+    }
+
+    public override void CleanUp()
+    {
+        winningPlayer.GetComponent<PlayerInputHandler>().crownBox.SetActive(false);
+
+        base.CleanUp();
     }
 }

@@ -39,6 +39,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public event PlayerEvent onSelect;
 
+    public GameObject crownBox;
+
     // Start is called before the first frame update
     void Awake()
     {
