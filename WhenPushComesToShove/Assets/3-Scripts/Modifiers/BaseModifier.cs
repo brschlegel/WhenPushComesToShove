@@ -9,6 +9,8 @@ public abstract class BaseModifier : MonoBehaviour
 
     
     public List<Minigame> minigamesAffected;
+    public Sprite icon;
+    public string name;
 
     //These aren't abstract so that you don't  have to include them
     public virtual void GameInit() {}
