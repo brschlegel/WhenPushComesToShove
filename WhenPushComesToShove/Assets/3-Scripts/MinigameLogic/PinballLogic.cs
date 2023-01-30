@@ -6,7 +6,7 @@ public class PinballLogic :MinigameLogic
 {
     [SerializeField] private ObjectSpawnerRandomLocations[] spawners;
     [SerializeField] private float spawnInterval;
-    [SerializeField] private Goal dangerZone;
+    //[SerializeField] private Goal dangerZone;
     
             
 
@@ -14,7 +14,7 @@ public class PinballLogic :MinigameLogic
 
     public override void Init()
     {
-            dangerZone.goalScored += OnGoalScored;
+            //dangerZone.goalScored += OnGoalScored;
         base.Init();
     }
     public override void StartGame()
@@ -70,7 +70,7 @@ public class PinballLogic :MinigameLogic
 
     public override void CleanUp()
     {
-        dangerZone.goalScored -= OnGoalScored;
+        //dangerZone.goalScored -= OnGoalScored;
         foreach (ObjectSpawnerRandomLocations spawner in spawners)
         {
             spawner.CleanUpSpawnedObjects();
