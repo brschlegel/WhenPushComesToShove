@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 7271153603707632135}
   - component: {fileID: 2841823981927121585}
   - component: {fileID: 959250071373744686}
+  - component: {fileID: 1408832973582987115}
   m_Layer: 8
-  m_Name: Pinball
+  m_Name: Red Pinball
   m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.54901963, g: 0.29617566, b: 0.15294118, a: 1}
+  m_Color: {r: 0.8679245, g: 0.036609046, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -195,6 +196,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   sourceObject: {fileID: 0}
+--- !u!114 &1408832973582987115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145829430888888005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55216d2c312e24458046efd9d13a55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsToGain: -1
+  hasGivenPoints: 0
+  teamIndex: 0
 --- !u!1 &3264206594547449318
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +221,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4928005419989530202}
   - component: {fileID: 2041756758219818438}
-  - component: {fileID: 1127004518372712102}
   - component: {fileID: 3732548647889808473}
   - component: {fileID: 6592753385418884158}
   - component: {fileID: 8382019287044337761}
@@ -247,20 +262,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &1127004518372712102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3264206594547449318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10ce7cee342d7574a81144724b54f679, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  strength: 16000
 --- !u!114 &3732548647889808473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToIgnore:
   - GhostShove
-  - Shove
   outputs:
   - {fileID: 2187131038723601455}
   - {fileID: 8835698142749515605}
