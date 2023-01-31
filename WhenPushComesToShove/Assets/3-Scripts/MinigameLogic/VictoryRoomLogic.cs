@@ -7,7 +7,6 @@ public class VictoryRoomLogic : MinigameLogic
 {
     public TextMeshProUGUI winnerText;
     public PlayerRankDisplay rankDisplay;
-    public Sprite playerCrown;
     Transform winningPlayer;
 
     public void OnEnable()
@@ -29,14 +28,14 @@ public class VictoryRoomLogic : MinigameLogic
 
         winningPlayer = GameState.players[rankDisplay.playerRankOrder[0]];
 
-        winningPlayer.GetComponent<PlayerInputHandler>().crownBox.SetActive(true);
+        winningPlayer.GetComponentInChildren<PlayerInputHandler>().crownBox.SetActive(true);
 
         base.Init();
     }
 
     public override void CleanUp()
     {
-        winningPlayer.GetComponent<PlayerInputHandler>().crownBox.SetActive(false);
+        winningPlayer.GetComponentInChildren<PlayerInputHandler>().crownBox.SetActive(false);
 
         base.CleanUp();
     }

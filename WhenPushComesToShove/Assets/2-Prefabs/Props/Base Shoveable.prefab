@@ -142,7 +142,7 @@ MonoBehaviour:
   pDrag: 3
   pMaterial: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
   velocityThreshold: 2
-  hitboxVelocityThreshold: 0
+  hitboxVelocityThreshold: 2
   pHitbox: {fileID: 406501625902475273}
   sDrag: 40
   sMaterial: {fileID: 0}
@@ -490,19 +490,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6854435290789191520, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
   m_PrefabInstance: {fileID: 406501625902475276}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4834555873291016450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6538091445799958380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2391d7e68071d048bb7f5f435609715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagsToIgnore: []
 --- !u!114 &406501625902475273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,6 +504,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pMode: {fileID: 0}
   instanceDamageMultiplier: 2.5
+--- !u!114 &4834555873291016450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6538091445799958380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2391d7e68071d048bb7f5f435609715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
 --- !u!1001 &1102394421245822490
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Minigame {Dodgeball, Soccer, HotPotato, Sumo, All};
+public enum Minigame {All, Dodgeball, Soccer, HotPotato, Sumo, Pinball};
 
 //[RequireComponent(typeof(LevelProperties))]
 public abstract class MinigameLogic : MonoBehaviour
@@ -29,12 +29,13 @@ public abstract class MinigameLogic : MonoBehaviour
         if (startingUIDisplay != null)
         {
             startingUIDisplay.ShowDisplay();
-        }
 
-        //Lock Player Movement
-        foreach (Transform p in GameState.players)
-        {
-            p.GetComponentInChildren<PlayerMovementScript>().ChangeMoveSpeed(0);
+            //Lock Player Movement
+            foreach (Transform p in GameState.players)
+            {
+                //p.GetComponentInChildren<PlayerMovementScript>().ChangeMoveSpeed(0);
+                p.GetComponentInChildren<PlayerInputHandler>().movementPaused = true;
+            }
         }
 
         UpdatePlayerInvulnurability(canPlayersTakeDamage);
@@ -47,7 +48,8 @@ public abstract class MinigameLogic : MonoBehaviour
         //Unlock Player Movement
         foreach (Transform p in GameState.players)
         {
-            p.GetComponentInChildren<PlayerMovementScript>().ResetMoveSpeed();
+            //p.GetComponentInChildren<PlayerMovementScript>().ResetMoveSpeed();
+            p.GetComponentInChildren<PlayerInputHandler>().movementPaused = false;
         }
 
         gameRunning = true;

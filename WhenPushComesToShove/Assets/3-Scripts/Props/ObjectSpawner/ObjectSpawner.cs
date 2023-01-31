@@ -7,8 +7,7 @@ public abstract class ObjectSpawner : MonoBehaviour
 {
     [SerializeField]
     protected GameObject objectToSpawn;
-    [SerializeField]
-    protected Transform spawnedObjectParent;
+    public Transform spawnedObjectParent;
     [SerializeField]
     private bool repeating;
     [SerializeField]
