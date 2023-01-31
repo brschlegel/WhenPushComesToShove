@@ -23,6 +23,7 @@ public class PinballLogic :MinigameLogic
         
         foreach(ObjectSpawnerRandomLocations spawner in spawners)
         {
+            spawner.SpawnWithoutDelay();
             spawner.SpawnWithDelay();
         }
         //StartCoroutine(SpawnAdditionalBalls());

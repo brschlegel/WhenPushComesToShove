@@ -13,7 +13,7 @@ public class MoveBetweenPoints : MonoBehaviour
     Vector3 initialPos;
 
     [SerializeField]
-    private float speed;
+    private float duration;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +25,8 @@ public class MoveBetweenPoints : MonoBehaviour
     {
         initialPos = transform.position;
         Sequence seq = DOTween.Sequence();
-
-        seq.Join(transform.DOMove(initialPos + (Vector3)firstPoint, speed)).SetSpeedBased().Join(transform.DOMove(initialPos + (Vector3)secondPoint, speed)).SetSpeedBased().SetLoops(-1, LoopType.Restart);
+        seq.SetSpeedBased();
+        seq.Join(transform.DOMove(initialPos + (Vector3)firstPoint, duration)).SetSpeedBased().Append(transform.DOMove(initialPos + (Vector3)secondPoint, duration)).SetLoops(-1, LoopType.Restart);
     }
     // Update is called once per frame
     private void OnDrawGizmos()
