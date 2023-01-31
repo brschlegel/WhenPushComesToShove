@@ -24,7 +24,10 @@ public class AreaDivider : MonoBehaviour
     private Transform iconParent;
     [HideInInspector]
     public List<Transform> areas;
-    public List<Sprite> icons;
+    [HideInInspector]
+    public List<RuntimeAnimatorController> iconAnimations;
+    [HideInInspector]
+    public List<Sprite> iconSprites;
     [SerializeField]
     private List<Color> colors;
 
@@ -47,11 +50,13 @@ public class AreaDivider : MonoBehaviour
             areas.Add(t);
         }
         iconObjects = new List<Transform>();
-        for(int i = 0; i < icons.Count; i++)
+        for(int i = 0; i < iconAnimations.Count; i++)
         {
             Transform t = Instantiate(iconPrefab, areas[i].position, Quaternion.identity, iconParent).transform;
-            t.GetComponent<SpriteRenderer>().sprite = icons[i];
+            t.GetComponent<Animator>().runtimeAnimatorController = iconAnimations[i];
+            t.GetComponent<SpriteRenderer>().sprite = iconSprites[i];
             iconObjects.Add(t);
+            
         }
         UpdateAreas();
     }
@@ -100,7 +105,7 @@ public class AreaDivider : MonoBehaviour
 
             areas[i].localScale = new Vector3(point.x - prevPoint.x, height, areas[i].localScale.z);
 
-            if (icons.Count == areas.Count)
+            if (iconAnimations.Count == areas.Count)
             {
                 iconObjects[i].gameObject.SetActive(areas[i].localScale.x >= iconWidthThreshold);
                 iconObjects[i].position = areas[i].position;
