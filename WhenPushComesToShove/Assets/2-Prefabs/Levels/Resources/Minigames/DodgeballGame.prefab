@@ -6850,6 +6850,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2285341654239814028}
     m_Modifications:
+    - target: {fileID: 2317813831546196073, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
+      propertyPath: crown
+      value: 
+      objectReference: {fileID: 4764672300703951934}
     - target: {fileID: 2367497930329622847, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6986,6 +6990,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6016210733039343417, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
+      propertyPath: m_fontSize
+      value: 71.15
+      objectReference: {fileID: 0}
     - target: {fileID: 6075843762753115292, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_Name
       value: Ready Up Base
@@ -7086,6 +7094,11 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!224 &4764672300703951934 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9089003456616578182, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
+  m_PrefabInstance: {fileID: 4340665517904203960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8853908245073756196 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5107718499760967836, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}

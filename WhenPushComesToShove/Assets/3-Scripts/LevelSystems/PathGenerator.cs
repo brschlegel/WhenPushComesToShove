@@ -107,6 +107,8 @@ public class PathGenerator : MonoBehaviour
     {
         //Clean out the current path
         currentPathNum = 0;
+
+        GameState.playerScores = new int[4] { 0, 0, 0, 0 };
         
         Destroy(transform.GetChild(0).gameObject);
 
