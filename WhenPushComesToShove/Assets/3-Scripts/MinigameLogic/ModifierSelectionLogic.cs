@@ -23,14 +23,17 @@ public class ModifierSelectionLogic : MinigameLogic
     {
         ((ModifierSelectionCondition)endCondition).logic = this;
         selectedModifier = null;
-
+        selector.areaDivider.iconAnimations = new List<RuntimeAnimatorController>();
+        selector.areaDivider.iconSprites = new List<Sprite>();
+        
         selector.Init();
         modifierManager = GameObject.FindGameObjectWithTag("ModifierManager").GetComponent<ModifierManager>();
         modifiers = modifierManager.GetRandomModifiers(numberOfModifiers);
         selector.onSelection += OnSelectionFinished;
         for(int i = 0; i < numberOfModifiers; i++)
         {
-            selector.areaDivider.icons[i] = modifiers[i].modifierPrefab.GetComponent<BaseModifier>().icon;
+            selector.areaDivider.iconSprites.Add(modifiers[i].modifierPrefab.GetComponent<BaseModifier>().icon);
+            selector.areaDivider.iconAnimations.Add(modifiers[i].modifierPrefab.GetComponent<BaseModifier>().iconAnimator);
         }
         
         base.Init();

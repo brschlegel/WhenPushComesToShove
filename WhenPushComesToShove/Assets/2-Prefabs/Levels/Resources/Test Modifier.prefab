@@ -3968,6 +3968,7 @@ MonoBehaviour:
   startingUIDisplay: {fileID: 4355133446215664633}
   endingUIDisplay: {fileID: 2301861188712490231}
   endCondition: {fileID: 7317408706276825956}
+  data: {fileID: 0}
   canPlayersTakeDamage: 0
   selector: {fileID: 6820646142924140255}
   selectedModifier:
@@ -4252,6 +4253,10 @@ PrefabInstance:
     - target: {fileID: 8400829242466403566, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
       propertyPath: height
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400829242466403566, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: iconSprites.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8400829242559552108, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
       propertyPath: m_UsedByEffector
