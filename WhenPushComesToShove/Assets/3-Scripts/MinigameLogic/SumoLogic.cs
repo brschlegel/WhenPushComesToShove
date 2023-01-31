@@ -7,6 +7,8 @@ public class SumoLogic : MinigameLogic
     [SerializeField]
     private List<SpikeGroup> spikeGroups;
     [SerializeField]
+    private Respawner respawner;
+    [SerializeField]
     private float timeToThreaten;
     [SerializeField]
     private float timeToActivateFromThreaten;
@@ -21,6 +23,7 @@ public class SumoLogic : MinigameLogic
     public override void StartGame()
     {
         nextGroupIndex = 1;
+        respawner.onDetectDeath += OnDeath;
         StartCoroutine(ActivateSpikeGroup());
         base.StartGame();
     }
@@ -51,10 +54,22 @@ public class SumoLogic : MinigameLogic
         yield return new WaitForSeconds(timeToActivateFromThreaten);
         spikeGroups[nextGroupIndex].Activate();
         nextGroupIndex++;
-        if(nextGroupIndex < spikeGroups.Count)
+        if (nextGroupIndex < spikeGroups.Count)
         {
             StartCoroutine(ActivateSpikeGroup());
         }
+    }
+
+    public void OnDeath(int index)
+    {
+        GameObject deadPlayer = PlayerConfigManager.Instance.GetPlayerConfigs()[index].PlayerObject;
+        GameObject killer = deadPlayer.GetComponentInChildren<ProjectileMode>().sourceObject;
+        if (killer != null)
+        {
+            int killerIndex = killer.GetComponentInChildren<PlayerInputHandler>().playerConfig.PlayerIndex;
+            Debug.Log(killerIndex);
+        }
+
     }
 
     public override void CleanUp()

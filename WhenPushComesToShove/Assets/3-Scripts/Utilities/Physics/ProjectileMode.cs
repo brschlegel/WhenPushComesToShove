@@ -45,7 +45,7 @@ public class ProjectileMode : MonoBehaviour
     {
         if(rb == null)
             Init();
-
+        sourceObject = null;
         rb.drag = pDrag * GameState.dragModifier;
         rb.sharedMaterial = pMaterial;
         pHitbox.gameObject.SetActive(true);
