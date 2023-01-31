@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 145829430888888007}
   - component: {fileID: 7582361505273487913}
   - component: {fileID: 1090322928683178425}
-  - component: {fileID: 7271153603707632135}
   - component: {fileID: 2841823981927121585}
   - component: {fileID: 959250071373744686}
   - component: {fileID: 1408832973582987115}
+  - component: {fileID: 3685012280808431522}
   m_Layer: 8
-  m_Name: Red Pinball
+  m_Name: Pinball
   m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8679245, g: 0.036609046, b: 0, a: 1}
+  m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -143,19 +143,6 @@ ConstantForce2D:
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: 0, y: 0}
   m_Torque: 0
---- !u!114 &7271153603707632135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 145829430888888005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306108bccd34e67458d566427024f645, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delayDestroy: 1
 --- !u!114 &2841823981927121585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,9 +195,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55216d2c312e24458046efd9d13a55e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsToGain: -1
+  pointsToGain: 0
   hasGivenPoints: 0
-  teamIndex: 0
+  teamIndex: 4
+  colors:
+  - serializedVersion: 2
+    rgba: 4278192605
+  - serializedVersion: 2
+    rgba: 4294915072
+  - serializedVersion: 2
+    rgba: 4278255405
+  - serializedVersion: 2
+    rgba: 4278252031
+  - serializedVersion: 2
+    rgba: 4287401100
+--- !u!114 &3685012280808431522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145829430888888005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306108bccd34e67458d566427024f645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayDestroy: 0
 --- !u!1 &3264206594547449318
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagsToIgnore: []
-  keyStart: Ball
+  keyStart: Pinball
 --- !u!114 &866209117094147939
 MonoBehaviour:
   m_ObjectHideFlags: 0
