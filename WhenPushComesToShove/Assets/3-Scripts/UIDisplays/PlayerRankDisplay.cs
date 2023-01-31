@@ -9,6 +9,7 @@ public class PlayerRankDisplay : UIDisplay
     [SerializeField] private TextMeshProUGUI winnerText;
     [SerializeField] private TextMeshProUGUI rankText;
     [HideInInspector] public int[] playerRankOrder;
+    [HideInInspector] public int[] scoresInOrder;
 
     public override void HideDisplay()
     {
@@ -19,24 +20,24 @@ public class PlayerRankDisplay : UIDisplay
     {
         playerRankOrder = GetRankOrder();
 
-        winnerText.text = GameState.playerNames[playerRankOrder[0]] + " player won!";
+        winnerText.text = GameState.playerNames[playerRankOrder[0]] + " player won! - " + scoresInOrder[0];
 
         int numOfPlayers = GameState.players.Count;
         string text = "";
 
         if (numOfPlayers >= 2)
         {
-            text += "2nd: " + GameState.playerNames[playerRankOrder[1]];
+            text += "2nd: " + GameState.playerNames[playerRankOrder[1]] + " - " + scoresInOrder[1];
         }
 
         if (numOfPlayers >= 3)
         {
-            text += "\n3rd: " + GameState.playerNames[playerRankOrder[2]];
+            text += "\n3rd: " + GameState.playerNames[playerRankOrder[2]] + " - " + scoresInOrder[2];
         }
 
         if (numOfPlayers >= 4)
         {
-            text += "\n4th: " + GameState.playerNames[playerRankOrder[3]];
+            text += "\n4th: " + GameState.playerNames[playerRankOrder[3]] + " - " + scoresInOrder[3];
         }
 
         rankText.text = text;
@@ -67,11 +68,16 @@ public class PlayerRankDisplay : UIDisplay
                 //If the scores match and that index is not already recorded
                 if (sortedScoreArray[i] == GameState.playerScores[j] && !Array.Exists(playerIndexOrder, s => s == j))
                 {
-                    playerIndexOrder[i] = j;
-                    break;
+                    if (j < GameState.players.Count)
+                    {
+                        playerIndexOrder[i] = j;
+                        break;
+                    }
                 }
             }
         }
+
+        scoresInOrder = sortedScoreArray;
 
         foreach  (int p in playerIndexOrder)
         {
