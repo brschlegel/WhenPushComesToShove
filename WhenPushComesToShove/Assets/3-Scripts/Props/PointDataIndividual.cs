@@ -20,12 +20,13 @@ public class PointDataIndividual : PointData
         sprite = transform.GetComponent<SpriteRenderer>();
         sprite.color = colors[4];
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+ 
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        for(int i = 0; i < GameState.players.Count; i++)
+        //Detects who shoved the ball and changes the color accordingly
+        for (int i = 0; i < GameState.players.Count; i++)
         {
-            Debug.Log(GameState.players[i] + " " + collision.transform);
-            if(GameState.players[i] == collision.transform)
+            if (collision.transform.parent.IsChildOf(GameState.players[i]) && collision.tag == "Shove")
             {
                 teamIndex = i;
                 sprite.color = colors[i];
