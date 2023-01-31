@@ -30,7 +30,6 @@ public class PlayerInputHandler : MonoBehaviour
     public Action onHeavyShoveComplete;
     public Action onHeavyShoveCharge;
 
-    [HideInInspector] public bool dead = false;
 
     [HideInInspector] public SpriteRenderer sr;
     private Animator anim;
