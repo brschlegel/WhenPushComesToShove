@@ -32,7 +32,7 @@ public class AreaSelector : MonoBehaviour
         if( picker.position.x >= PickerBounds.y)
         {
             //picker.position = new Vector2 (PickerBounds.x, picker.position.y);
-            picker.position = new Vector2 (PickerBounds.x, areaDivider.transform.position.y - areaDivider.height/2 + 1);
+            picker.position = new Vector2 (PickerBounds.x, areaDivider.transform.position.y - areaDivider.height/3);
         }
 
         //Have to use a count otherwise the velocity will be zero on the first frame after beginning selection
@@ -58,7 +58,8 @@ public class AreaSelector : MonoBehaviour
     public void Init()
     {
         areaDivider = GetComponentInChildren<AreaDivider>();
-        picker.position = new Vector2(picker.position.x, areaDivider.transform.position.y - areaDivider.height/2 + 1);
+        Debug.Log("Area Divider Y Pos: " + areaDivider.transform.position.y + " Area Divider Half Height: " + areaDivider.height / 2);
+        picker.position = new Vector2(picker.position.x, areaDivider.transform.position.y - areaDivider.height/3);
         runningFrames = 0;
     }
 
