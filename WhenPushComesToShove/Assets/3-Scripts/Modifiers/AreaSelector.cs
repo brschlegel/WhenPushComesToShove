@@ -11,7 +11,9 @@ public class AreaSelector : MonoBehaviour
     private Rigidbody2D picker;
     public event RetrieveIndex onSelection;
     [SerializeField]
-    private float forceAmount;
+    private float forceMin;
+    [SerializeField]
+    private float forceMax;
     [SerializeField]
     private float stopThreshold;
 
@@ -28,7 +30,6 @@ public class AreaSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("x pos: " + picker.position.x + " bounds: " + PickerBounds.y);
         if( picker.position.x >= PickerBounds.y)
         {
             //picker.position = new Vector2 (PickerBounds.x, picker.position.y);
@@ -65,7 +66,7 @@ public class AreaSelector : MonoBehaviour
 
     public void BeginSelection()
     {
-        picker.AddForce(new Vector2(forceAmount, 0));
+        picker.AddForce(new Vector2(Random.Range(forceMin, forceMax), 0));
         runningFrames = 1;
     }
 
