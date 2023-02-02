@@ -72,7 +72,7 @@ public class AreaDivider : MonoBehaviour
     {   
         for(int i = 0; i < dividers.Count; i++)
         {
-            dividers[i].position = new Vector2(Mathf.Clamp(dividers[i].position.x, transform.position.x - width /2, transform.position.x + width / 2), transform.position.y + height/ 2 - .5f);
+            dividers[i].position = new Vector2(Mathf.Clamp(dividers[i].position.x, transform.position.x - width /2, transform.position.x + width / 2), transform.position.y - .5f);
         }
     }
 

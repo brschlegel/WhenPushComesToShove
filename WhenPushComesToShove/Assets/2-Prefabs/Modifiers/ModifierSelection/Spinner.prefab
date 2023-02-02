@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8400829241685298243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1606114291e73ac4eaf7c47b1cef0753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 16
+  width: 18
   height: 9
   areaPrefab: {fileID: 2441165968346909421, guid: 38404c655b6a11f488480b73331aeb4a, type: 3}
   iconPrefab: {fileID: 3023681209421239314, guid: fa1dd2f06533a5f40a1aabf219892e0a, type: 3}
@@ -181,10 +181,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   iconSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -219,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8400829242559552082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0025842162}
+  m_LocalPosition: {x: 0, y: -2.5, z: -0.0025842162}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -318,7 +314,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.5
+  m_LinearDrag: 0.4
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -438,7 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaDivider: {fileID: 0}
   picker: {fileID: 8400829242559552110}
-  forceAmount: 2000
+  forceAmount: 2500
   stopThreshold: 2
 --- !u!1001 &8400829241632996719
 PrefabInstance:
