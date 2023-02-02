@@ -27,7 +27,6 @@ public abstract class MinigameLogic : MonoBehaviour
 
     public virtual void Init()
     {
-        Debug.Log("Init");
         if (startingUIDisplay != null)
         {
             startingUIDisplay.ShowDisplay();

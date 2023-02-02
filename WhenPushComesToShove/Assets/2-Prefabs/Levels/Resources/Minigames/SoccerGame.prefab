@@ -6886,6 +6886,7 @@ MonoBehaviour:
   endCondition: {fileID: 5271440420602589667}
   data: {fileID: 6902546494219460757}
   canPlayersTakeDamage: 0
+  pauseMovementAtStart: 1
   spawners:
   - {fileID: 4345814049978032579}
   - {fileID: 8313736132268171606}
@@ -6989,6 +6990,7 @@ GameObject:
   - component: {fileID: 4638104243973936553}
   - component: {fileID: 5032888275331423845}
   - component: {fileID: 3888523278610792131}
+  - component: {fileID: 5975064837358588530}
   m_Layer: 5
   m_Name: FlagCanvas
   m_TagString: Untagged
@@ -7079,6 +7081,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5975064837358588530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304973983900073969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f70a1dc1aad8614a96ea5d08969a098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDone: 0
+  scores:
+  - {fileID: 1129511610}
+  - {fileID: 4373464138709694131}
 --- !u!1 &4531263171802839209
 GameObject:
   m_ObjectHideFlags: 0
