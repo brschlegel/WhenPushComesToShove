@@ -63,7 +63,17 @@ public class PlayerMovementScript : Move
         if (aimInputVector == Vector2.zero && unitMove != Vector2.zero && forceAimLocks <=  0)
         {
             player.right = unitMove.normalized;
-            aimTriangle.eulerAngles = new Vector3(fixedX, fixedY, player.transform.eulerAngles.z);
+            if (player.right != new Vector3(-1, 0, 0))
+            {
+                aimTriangle.eulerAngles = new Vector3(fixedX, fixedY, player.transform.eulerAngles.z);
+
+            }
+            //Hard set left D-pad input
+            else
+            {
+                aimTriangle.eulerAngles = new Vector3(fixedX, fixedY, 180);
+
+            }
         }
       
         //Apply the force
