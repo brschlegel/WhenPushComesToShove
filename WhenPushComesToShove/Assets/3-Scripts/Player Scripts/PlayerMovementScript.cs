@@ -52,6 +52,9 @@ public class PlayerMovementScript : Move
     //https://www.youtube.com/watch?v=qdskE8PJy6Q&ab_channel=ToyfulGames
     private void FixedUpdate()
     {
+        //Allows us to overwrite move input vector
+        Messenger.SendEvent("MoveInputRequested", new MessageArgs(objectArg: this, vectorArg: moveInputVector ));
+
         if (forceMovementLocks > 0)
         {
             SetMoveInputVector(Vector2.zero);
@@ -88,6 +91,11 @@ public class PlayerMovementScript : Move
     public void SetMoveInputVector(Vector2 direction)
     {
         moveInputVector = direction;
+    }
+
+    public Vector2 GetMoveInputVector()
+    {
+        return moveInputVector;
     }
 
     /// <summary>
