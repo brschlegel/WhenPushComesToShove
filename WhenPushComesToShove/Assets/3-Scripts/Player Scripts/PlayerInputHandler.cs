@@ -17,6 +17,8 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField]
     private ProjectileMode pMode;
 
+    public bool movementPaused = false;
+
     private PlayerMovementScript mover;
     private PlayerLightShoveScript lightShoveScript;
     private PlayerHeavyShoveScript heavyShoveScript;
@@ -92,7 +94,14 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (mover != null)
             {
-                mover.SetMoveInputVector(obj.ReadValue<Vector2>());
+                if (movementPaused)
+                {
+                    mover.SetMoveInputVector(new Vector2(0,0));
+                }
+                else
+                {
+                    mover.SetMoveInputVector(obj.ReadValue<Vector2>());
+                }
             }
         }
         //Select
@@ -107,7 +116,7 @@ public class PlayerInputHandler : MonoBehaviour
         //Light Shove
         else if (obj.action.name == controls.PlayerMovement.LightShove.name)
         {
-            if (!performingAction && !heavyShoveScript.heavyShoveIsCharging)
+            if (!performingAction && !heavyShoveScript.heavyShoveIsCharging && !movementPaused)
             {
                 lightShoveScript.OnLightShoveStart(obj);
             }
@@ -116,13 +125,13 @@ public class PlayerInputHandler : MonoBehaviour
         //Heavy Shove Charge
         else if (obj.action.name == controls.PlayerMovement.HeavyShove.name)
         {
-            if (!performingAction)
+            if (!performingAction && !movementPaused)
             {
                 heavyShoveScript.OnHeavyShoveStart(obj);
             }
         }
         //Dash
-        else if (obj.action.name == controls.PlayerMovement.Dash.name)
+        else if (obj.action.name == controls.PlayerMovement.Dash.name && !movementPaused)
         {
             if (!performingAction)
             {

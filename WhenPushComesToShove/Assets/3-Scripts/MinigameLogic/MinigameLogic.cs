@@ -22,18 +22,24 @@ public abstract class MinigameLogic : MonoBehaviour
     public event emptyDelegate onGameStart;
     [SerializeField] protected bool canPlayersTakeDamage = true;
 
+    public bool pauseMovementAtStart = true;
+
 
     public virtual void Init()
     {
         if (startingUIDisplay != null)
         {
             startingUIDisplay.ShowDisplay();
-        }
 
-        //Lock Player Movement
-        foreach (Transform p in GameState.players)
-        {
-            p.GetComponentInChildren<PlayerMovementScript>().ChangeMoveSpeed(0);
+            //Lock Player Movement
+            if (pauseMovementAtStart)
+            {
+                foreach (Transform p in GameState.players)
+                {
+                    //p.GetComponentInChildren<PlayerMovementScript>().ChangeMoveSpeed(0);
+                    p.GetComponentInChildren<PlayerInputHandler>().movementPaused = true;
+                }
+            }
         }
 
         UpdatePlayerInvulnurability(canPlayersTakeDamage);
@@ -44,9 +50,13 @@ public abstract class MinigameLogic : MonoBehaviour
     public virtual void StartGame()
     {
         //Unlock Player Movement
-        foreach (Transform p in GameState.players)
+        if (pauseMovementAtStart)
         {
-            p.GetComponentInChildren<PlayerMovementScript>().ResetMoveSpeed();
+            foreach (Transform p in GameState.players)
+            {
+                //p.GetComponentInChildren<PlayerMovementScript>().ResetMoveSpeed();
+                p.GetComponentInChildren<PlayerInputHandler>().movementPaused = false;
+            }
         }
 
         gameRunning = true;
