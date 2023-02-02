@@ -12,18 +12,10 @@ public class PlayerWinUIDisplay : UIDisplay
     private float delay;
     [SerializeField]
     private TextMeshProUGUI text;
-    [HideInInspector]
-    public bool tie = false;
 
     public override void ShowDisplay()
     {
-        if(tie == false)
-            text.text = winnerName + " player is the winner!";
-        else
-        {
-            text.text = "Tie between " + winnerName;
-        }
-
+        text.text = winnerName + " player is the winner!";
         text.gameObject.SetActive(true);
         isDone = false;
         CoroutineManager.StartGlobalCoroutine(WaitToFinish());

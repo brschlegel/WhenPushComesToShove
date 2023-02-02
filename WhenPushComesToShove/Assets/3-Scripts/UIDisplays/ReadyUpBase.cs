@@ -26,38 +26,10 @@ public class ReadyUpBase : UIDisplay
         portraits = new List<PlayerPortrait>();
         gameObject.SetActive(true);
         isDone = false;
-
-        //Find highest ranking player
-        int highestScoreIndex = 0;
-
-        List<int> tiedIndexes = new List<int>();
-
-        //Find Winning Team
-        for (int i = 1; i < GameState.playerScores.Length; i++)
-        {
-            if (GameState.playerScores[i] > GameState.playerScores[highestScoreIndex])
-            {
-                highestScoreIndex = i;
-                tiedIndexes.Clear();
-            }
-            else if (GameState.playerScores[i] == GameState.playerScores[highestScoreIndex])
-            {
-                tiedIndexes.Add(i);
-            }
-        }
-
-        for (int i = 0; i < 4; i++)
+        for(int i = 0; i < 4; i++)
         {
             portraits.Add(portraitParent.GetChild(i).GetComponent<PlayerPortrait>());
             portraits[i].Visible = i < numPlayers;
-
-            if (portraits[i].Visible && (i == highestScoreIndex || tiedIndexes.Contains(i)))
-            {
-                if (GameState.playerScores[highestScoreIndex] > 0)
-                {
-                    portraits[i].DisplayCrown();
-                }
-            }
             
         }
         //use game state

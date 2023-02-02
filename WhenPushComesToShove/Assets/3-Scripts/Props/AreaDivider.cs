@@ -40,7 +40,6 @@ public class AreaDivider : MonoBehaviour
 
     public void Init()
     {
-        Debug.Log("Area Divider: " + gameObject.transform.position.y);
         for(int i = 0; i < dividers.Count + 1; i++)
         {
             Transform t = Instantiate(areaPrefab, areaParent).transform;
@@ -67,7 +66,7 @@ public class AreaDivider : MonoBehaviour
     {   
         for(int i = 0; i < dividers.Count; i++)
         {
-            dividers[i].position = new Vector2(Mathf.Clamp(dividers[i].position.x, transform.position.x - width /2, transform.position.x + width / 2), transform.position.y + height/ 2 - .5f);
+            dividers[i].position = new Vector2(Mathf.Clamp(dividers[i].position.x, transform.position.x - width /2, transform.position.x + width / 2), transform.position.y + height/ 2);
         }
     }
 
@@ -97,7 +96,7 @@ public class AreaDivider : MonoBehaviour
                 point = dividers[i].position;
             }
 
-            areas[i].position = new Vector2(BenMath.Midpoint(point, prevPoint).x, -.5f);
+            areas[i].position = new Vector2(BenMath.Midpoint(point, prevPoint).x, 0);
 
             areas[i].localScale = new Vector3(point.x - prevPoint.x, height, areas[i].localScale.z);
 

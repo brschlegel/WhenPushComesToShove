@@ -13,21 +13,13 @@ public class PointsOnHit : MonoBehaviour
     {
         if (collision.transform.parent.TryGetComponent<PointDataIndividual>(out PointDataIndividual pointsInd))
         {
-            if(data.scores.Length > pointsInd.teamIndex)
-            {
-                data.AddScoreForTeam(pointsInd.teamIndex, pointData.pointsToGain);
-            }
-            
+            data.AddScoreForTeam(pointsInd.teamIndex, pointData.pointsToGain);
             return;
         }
 
         if (collision.transform.parent.TryGetComponent<PointData>(out PointData points))
         {
-            if (data.scores.Length > pointsInd.teamIndex)
-            {
-                data.AddScoreForTeam(teamIndex, pointData.pointsToGain);
-            }
-                
+            data.AddScoreForTeam(teamIndex, pointData.pointsToGain);
         }
     }
 }

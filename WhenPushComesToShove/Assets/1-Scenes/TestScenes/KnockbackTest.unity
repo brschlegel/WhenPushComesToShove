@@ -1199,7 +1199,11 @@ MonoBehaviour:
   minPlayers: 2
   maxPlayers: 2
   levelInitRef: {fileID: 0}
-  defaultColor: {fileID: 0}
+  defaultColors:
+  - {fileID: 2100000, guid: a52898b823077c341884b14800e0feea, type: 2}
+  - {fileID: 2100000, guid: ab539ef0a976f894bae4a0f49f3d81ff, type: 2}
+  - {fileID: 2100000, guid: 2e3e01834e43474408ae72d62e425d0d, type: 2}
+  - {fileID: 2100000, guid: b3c1a3bf5cafd17449130a59eaef4f32, type: 2}
   playerColorNames:
   - 
   - 
@@ -1210,6 +1214,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  playerOutlineOriginalColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1953411768
 Transform:
   m_ObjectHideFlags: 0
@@ -1409,38 +1418,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8400829242559552108, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
-      propertyPath: m_Size.x
-      value: 0.05079053
-      objectReference: {fileID: 0}
-    - target: {fileID: 8400829242559552108, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8400829242559552108, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.96875
-      objectReference: {fileID: 0}
-    - target: {fileID: 8400829242559552108, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8400829242559552109, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8400829242559552109, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8400829242559552109, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8400829242559552109, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8400829243468253490, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
       propertyPath: m_Name
       value: Spinner

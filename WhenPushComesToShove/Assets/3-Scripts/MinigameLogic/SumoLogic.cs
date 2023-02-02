@@ -12,6 +12,8 @@ public class SumoLogic : MinigameLogic
     private float timeToThreaten;
     [SerializeField]
     private float timeToActivateFromThreaten;
+    [SerializeField]
+    private MinigameData data;
 
     private int nextGroupIndex;
     // Start is called before the first frame update
