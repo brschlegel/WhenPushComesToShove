@@ -12,6 +12,8 @@ public class SumoLogic : MinigameLogic
     private float timeToThreaten;
     [SerializeField]
     private float timeToActivateFromThreaten;
+    [SerializeField]
+    private MinigameData data;
 
     private int nextGroupIndex;
     // Start is called before the first frame update
@@ -67,7 +69,11 @@ public class SumoLogic : MinigameLogic
         if (killer != null)
         {
             int killerIndex = killer.GetComponentInChildren<PlayerInputHandler>().playerConfig.PlayerIndex;
-            Debug.Log(killerIndex);
+            data.AddScoreForTeam(killerIndex, 1);
+        }
+        else
+        {
+            data.AddScoreForTeam(index, -1);
         }
 
     }
