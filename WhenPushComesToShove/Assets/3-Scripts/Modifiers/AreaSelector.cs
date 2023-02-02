@@ -28,7 +28,7 @@ public class AreaSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("x pos: " + picker.position.x + " bounds: " + PickerBounds.y);
+        //Debug.Log("x pos: " + picker.position.x + " bounds: " + PickerBounds.y);
         if( picker.position.x >= PickerBounds.y)
         {
             //picker.position = new Vector2 (PickerBounds.x, picker.position.y);

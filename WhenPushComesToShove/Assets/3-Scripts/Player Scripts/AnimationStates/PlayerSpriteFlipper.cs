@@ -13,7 +13,7 @@ public class PlayerSpriteFlipper : MonoBehaviour
     [SerializeField]
     private Transform aimDirectionObject;
     private SpriteRenderer sr;
-    public SpriteRenderer crown;
+    public SpriteRenderer[] additionalSprites;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,21 @@ public class PlayerSpriteFlipper : MonoBehaviour
         bool isXPositive = aimDirectionObject.right.x >= 0;
         // (isRightFlipped && isXPositive) || (!isRightFlipped && !isXPositive);
         sr.flipX = isRightFlipped == isXPositive;
-        crown.flipX = isRightFlipped == isXPositive;
+
+        foreach(SpriteRenderer sprite in additionalSprites)
+        {
+            sprite.flipX = isRightFlipped == isXPositive;
+
+            Vector3 pos = sprite.gameObject.transform.localPosition;
+            if (!sprite.flipX)
+            {
+                sprite.gameObject.transform.localPosition = new Vector3(Mathf.Abs(pos.x), pos.y, pos.z);
+            }
+            else
+            {
+                sprite.gameObject.transform.localPosition = new Vector3(Mathf.Abs(pos.x) * -1, pos.y, pos.z);
+            }
+        }
 
         //velocity based
         // if(vs.QuerySource("playerDash", out Vector2 dash))
