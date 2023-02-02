@@ -71,10 +71,6 @@ public class ModifierManager : MonoBehaviour
 
     public List<ModifierSettings> GetRandomModifiers(int num)
     {
-         foreach (LevelProperties p in GameState.pathGenerator.playedLevels)
-                {
-                    Debug.Log("played: " + p.game);
-                }
         List<ModifierSettings> copy = new List<ModifierSettings>(modifierPool);
         List<ModifierSettings> r = new List<ModifierSettings>();
         copy.Shuffle();

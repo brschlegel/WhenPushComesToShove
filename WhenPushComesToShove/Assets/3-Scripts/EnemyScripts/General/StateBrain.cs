@@ -19,4 +19,9 @@ public class StateBrain : MonoBehaviour
         currentState.enabled = true;
     }
 
+    public State CurrentState
+    {
+        get{ return currentState;}
+    }
+
 }
