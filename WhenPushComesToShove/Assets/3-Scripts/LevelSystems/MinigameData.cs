@@ -20,16 +20,7 @@ public class MinigameData : MonoBehaviour
 
     public void OnMinigameEnd()
     {
-        int highestScoreIndex = 0;
-
-        //Find Winning Team
-        for (int i = 1; i < scores.Length; i++)
-        {
-            if (scores[i] > scores[highestScoreIndex])
-            {
-                highestScoreIndex = i;
-            }
-        }
+        int highestScoreIndex = GetHighestScoreIndex();
 
         //Update Gamestate with winners
         List<PlayerConfiguration> players = PlayerTeamFormations.instance.GetPlayerTeams();
@@ -45,5 +36,19 @@ public class MinigameData : MonoBehaviour
 
         //Cleanup just in case
         scores = new int[4];
+    }
+
+    public int GetHighestScoreIndex()
+    {
+        int highestScoreIndex = 0;
+        //Find Winning Team
+        for (int i = 1; i < scores.Length; i++)
+        {
+            if (scores[i] > scores[highestScoreIndex])
+            {
+                highestScoreIndex = i;
+            }
+        }
+        return highestScoreIndex;
     }
 }

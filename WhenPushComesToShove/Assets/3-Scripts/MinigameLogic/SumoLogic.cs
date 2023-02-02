@@ -12,8 +12,6 @@ public class SumoLogic : MinigameLogic
     private float timeToThreaten;
     [SerializeField]
     private float timeToActivateFromThreaten;
-    [SerializeField]
-    private MinigameData data;
 
     private int nextGroupIndex;
     // Start is called before the first frame update
@@ -37,13 +35,8 @@ public class SumoLogic : MinigameLogic
         {
             if (endCondition.TestCondition())
             {
-                Transform winner = ((LastManStandingEndCondition)endCondition).winner;
-
-                PlayerConfiguration config = winner.GetComponentInChildren<PlayerInputHandler>().playerConfig;
-                //Assign Point
-                data.AddScoreForTeam(config.TeamIndex, 1);
-
-                ((PlayerWinUIDisplay)endingUIDisplay).winnerName = GameState.playerNames[config.PlayerIndex];
+                int winnerIndex = data.GetHighestScoreIndex();
+                ((PlayerWinUIDisplay)endingUIDisplay).winnerName = GameState.playerNames[winnerIndex];
                 EndGame();
             }
         }
