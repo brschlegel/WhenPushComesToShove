@@ -7,9 +7,15 @@ public class MinigameData : MonoBehaviour
 {
     public int[] scores = new int[4];
     public static Action<int, int> onScoreAdded;
+    private bool canUpdateScore = true;
 
     public void AddScoreForTeam(int teamIndex, int scoreToAdd)
     {
+        if (!canUpdateScore)
+        {
+            return;
+        }
+
         scores[teamIndex] += scoreToAdd;
 
         if (onScoreAdded != null)
@@ -20,6 +26,8 @@ public class MinigameData : MonoBehaviour
 
     public void OnMinigameEnd()
     {
+        canUpdateScore = false;
+
         int highestScoreIndex = GetHighestScoreIndex();
 
         //Update Gamestate with winners

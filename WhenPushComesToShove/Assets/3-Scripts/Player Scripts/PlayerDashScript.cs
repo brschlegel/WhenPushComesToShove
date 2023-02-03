@@ -28,6 +28,8 @@ public class PlayerDashScript : MonoBehaviour
     {
         mover = GetComponent<PlayerMovementScript>();
         handler = GetComponent<PlayerInputHandler>();
+        LevelManager.onNewRoom += pMode.StopForce;
+        LevelManager.onModifierRoom += pMode.StopForce;
     }
 
     public void OnDash(CallbackContext context)
