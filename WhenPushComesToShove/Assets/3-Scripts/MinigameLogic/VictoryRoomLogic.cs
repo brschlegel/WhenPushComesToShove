@@ -36,7 +36,7 @@ public class VictoryRoomLogic : MinigameLogic
     public override void CleanUp()
     {
         winningPlayer.GetComponentInChildren<PlayerInputHandler>().crownBox.SetActive(false);
-
+        GameObject.FindWithTag("ModifierManager").GetComponent<ModifierManager>().RemoveAllModifiers();
         base.CleanUp();
     }
 }
