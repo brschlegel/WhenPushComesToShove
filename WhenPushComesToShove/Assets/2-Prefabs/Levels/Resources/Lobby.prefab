@@ -498,7 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1945476568013832356}
-  - component: {fileID: 1182549186621670932}
+  - component: {fileID: 7280444393838052147}
   m_Layer: 5
   m_Name: StartingUI
   m_TagString: Untagged
@@ -527,7 +527,7 @@ RectTransform:
   m_AnchoredPosition: {x: -44, y: 232}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1182549186621670932
+--- !u!114 &7280444393838052147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -536,12 +536,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4636223892044884368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dcae984babac0948825e4f57223196f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a90c997fa8041441ae6bc4235d155f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isDone: 0
   explanationText: {fileID: 8569882453311885095}
-  timeToDisplay: 3
 --- !u!1 &4653975739979171356
 GameObject:
   m_ObjectHideFlags: 0
@@ -7967,7 +7966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac669f0f2d48a844b8b49c46292e9fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingUIDisplay: {fileID: 1182549186621670932}
+  startingUIDisplay: {fileID: 7280444393838052147}
   endingUIDisplay: {fileID: 0}
   endCondition: {fileID: 1675178777259868433}
   data: {fileID: 0}
