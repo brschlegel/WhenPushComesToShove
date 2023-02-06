@@ -11,7 +11,7 @@ public class VictoryButtonMashUI : UIDisplay
     private List<int> tiedIndexes = new List<int>();
     private List<PlayerInputHandler> tiedPlayers = new List<PlayerInputHandler>();
     [SerializeField] private Transform[] tiedPlayerDisplays = new Transform[4];
-    [SerializeField] private Sprite[] playerPortraitSprites = new Sprite[4];
+    //[SerializeField] private Sprite[] playerPortraitSprites = new Sprite[4];
 
     public override void HideDisplay()
     {
@@ -30,7 +30,7 @@ public class VictoryButtonMashUI : UIDisplay
 
         for (int i = 0; i < portraits.Length; i++)
         {
-            portraits[i].sprite = playerPortraitSprites[tiedIndexes[i]];
+            portraits[i].sprite = PlayerConfigManager.Instance.playerPortraits[tiedIndexes[i]];
         }
 
         //Enable each players button mashing
