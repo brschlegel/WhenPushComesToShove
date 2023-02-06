@@ -10,17 +10,13 @@ public enum LevelType { Lobby, Dungeon, Arena, TwoTwo, ThreeOne, Modifier};
 public class LevelProperties : MonoBehaviour
 {
     //Properties needed for the level editor
-    public HazardDifficulty.HazardStats[] hazards;
-    public EnemyDifficulty.EnemyLevelStats[] enemyStats;
     public GameObject[] playerSpawns;
     public GameObject[] enemySpawns;
     public LevelType levelType;
     public Minigame game;
-    public WaveManager waveManager;
 
     [HideInInspector] public bool teamLevel;
 
-    [HideInInspector] public List<EnemySpawnPoint> enemySpawnProps = new List<EnemySpawnPoint>();
 
     private void OnEnable()
     {

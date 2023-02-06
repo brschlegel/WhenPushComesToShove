@@ -124,6 +124,7 @@ public class LevelManager : MonoBehaviour
       
 
         currentRoomIndex = 0;
+        endRoomSpawned = false;
         //currentRoomIndex = path.Count;
         //repeatPath = true;
         //ShowRoom();     

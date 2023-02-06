@@ -8832,7 +8832,6 @@ GameObject:
   - component: {fileID: 4804693292107850613}
   - component: {fileID: 8082681146408211673}
   - component: {fileID: 7778475532935669128}
-  - component: {fileID: 5885948976961785816}
   m_Layer: 0
   m_Name: SoccerGame
   m_TagString: Untagged
@@ -8872,12 +8871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5119f601983714e8664f9b2847511c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazards:
-  - hazard: 0
-    level: 0
-  enemyStats:
-  - enemy: 0
-    level: 0
   playerSpawns:
   - {fileID: 6075558046354513601}
   - {fileID: 856199516552640701}
@@ -8886,9 +8879,7 @@ MonoBehaviour:
   enemySpawns: []
   levelType: 3
   game: 1
-  waveManager: {fileID: 5885948976961785816}
   teamLevel: 0
-  enemySpawnProps: []
 --- !u!156049354 &7778475532935669128
 Grid:
   m_ObjectHideFlags: 0
@@ -8901,22 +8892,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &5885948976961785816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8829601026546890495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00ca3362c77c0f6408f6ac92a2695cd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveDelays: []
-  currentWave: -1
-  complete: 0
-  delayAllWaveTime: 0
 --- !u!1 &9181059686184593228
 GameObject:
   m_ObjectHideFlags: 0

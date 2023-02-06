@@ -315,7 +315,6 @@ MonoBehaviour:
   respawner: {fileID: 182331866953112179}
   timeToThreaten: 4
   timeToActivateFromThreaten: 2
-  data: {fileID: 709529347168073206}
 --- !u!1 &1805791060
 GameObject:
   m_ObjectHideFlags: 0
@@ -6222,7 +6221,6 @@ GameObject:
   - component: {fileID: 5810466408425846982}
   - component: {fileID: 4504170673408540922}
   - component: {fileID: 4844155420199255257}
-  - component: {fileID: 6905185167733970435}
   m_Layer: 0
   m_Name: SumoGame
   m_TagString: Untagged
@@ -6262,12 +6260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5119f601983714e8664f9b2847511c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazards:
-  - hazard: 0
-    level: 0
-  enemyStats:
-  - enemy: 0
-    level: 0
   playerSpawns:
   - {fileID: 8463615690127265867}
   - {fileID: 6306462121216221137}
@@ -6276,9 +6268,7 @@ MonoBehaviour:
   enemySpawns: []
   levelType: 2
   game: 4
-  waveManager: {fileID: 6905185167733970435}
   teamLevel: 0
-  enemySpawnProps: []
 --- !u!156049354 &4844155420199255257
 Grid:
   m_ObjectHideFlags: 0
@@ -6291,22 +6281,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &6905185167733970435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3115093129980057568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00ca3362c77c0f6408f6ac92a2695cd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveDelays: []
-  currentWave: -1
-  complete: 0
-  delayAllWaveTime: 0
 --- !u!1 &3323974005192675966
 GameObject:
   m_ObjectHideFlags: 0
