@@ -24,7 +24,15 @@ public class ModifierManager : MonoBehaviour
                 AddModifier(m);
             }
         }
+        if (modifierPool == null)
+        {
+            Init();
+        }
+       
+    }
 
+    public void Init()
+    {
         //Copy into modifier pool, so we aren't editting actual scriptable object
         modifierPool = new List<ModifierSettings>(modifierPoolSO.modifiers);
     }
@@ -46,15 +54,14 @@ public class ModifierManager : MonoBehaviour
     {
         foreach(Transform child in transform)
         {
-            //This makes no fucking sense
             BaseModifier mod = child.GetComponent<BaseModifier>();
             mod.CleanUp();
             Destroy(mod.gameObject);
 
         }
         modifiers.Clear();
-        //Copy into modifier pool, so we aren't editting actual scriptable object
-        modifierPool = new List<ModifierSettings>(modifierPoolSO.modifiers);
+        //ReInit to restart game
+        Init();
     }
 
     public void InitMinigame(Transform minigameRoot)
