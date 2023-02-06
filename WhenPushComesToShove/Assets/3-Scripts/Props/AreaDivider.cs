@@ -15,6 +15,8 @@ public class AreaDivider : MonoBehaviour
     private Transform areaPrefab;
     [SerializeField]
     private Transform iconPrefab;
+    [SerializeField]
+    private Transform spacerPrefab;
 
     [Header("Parts")]
     public List<Transform> dividers;
@@ -32,6 +34,7 @@ public class AreaDivider : MonoBehaviour
     private List<Color> colors;
 
     private List<Transform> iconObjects;
+    private float barrelYOffset = -.5f;
 
     public void Start()
     {
@@ -43,7 +46,6 @@ public class AreaDivider : MonoBehaviour
 
     public void Init()
     {
-        Debug.Log("Area Divider: " + gameObject.transform.position.y);
         for(int i = 0; i < dividers.Count + 1; i++)
         {
             Transform t = Instantiate(areaPrefab, areaParent).transform;
@@ -59,6 +61,14 @@ public class AreaDivider : MonoBehaviour
             iconObjects.Add(t);
             
         }
+
+        //Place spacers
+        Debug.Log(transform.position);
+        Transform left = Instantiate(spacerPrefab, new Vector2(transform.position.x + (width / 2.0f), transform.position.y + barrelYOffset), Quaternion.identity, transform);
+        left.position = new Vector2(transform.position.x + (width / 2.0f), transform.position.y + barrelYOffset);
+        Transform right = Instantiate(spacerPrefab, new Vector2(transform.position.x - (width / 2.0f), transform.position.y + barrelYOffset), Quaternion.identity, transform);
+        right.position = new Vector2(transform.position.x - (width / 2.0f), transform.position.y + barrelYOffset);
+
         UpdateAreas();
     }
 
@@ -72,7 +82,7 @@ public class AreaDivider : MonoBehaviour
     {   
         for(int i = 0; i < dividers.Count; i++)
         {
-            dividers[i].position = new Vector2(Mathf.Clamp(dividers[i].position.x, transform.position.x - width /2, transform.position.x + width / 2), transform.position.y - .5f);
+            dividers[i].position = new Vector2(Mathf.Clamp(dividers[i].position.x, transform.position.x - width /2, transform.position.x + width / 2), transform.position.y + barrelYOffset);
         }
     }
 
