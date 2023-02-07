@@ -33,4 +33,21 @@ public class PointDataIndividual : PointData
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+        //Only triggers if the object is neutral
+        if(teamIndex == 4)
+        {
+            if(collision.transform.TryGetComponent<PointDataIndividual>(out PointDataIndividual pointData))
+            {
+                teamIndex = pointData.teamIndex;
+                sprite.color = colors[teamIndex];
+            }
+            
+        }
+    }
+
+
 }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 805013608764250826}
   - component: {fileID: 805013608764250821}
   - component: {fileID: 805013608764250820}
-  - component: {fileID: 805013608764250823}
   m_Layer: 0
   m_Name: Hot Potato
   m_TagString: Untagged
@@ -51,8 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5119f601983714e8664f9b2847511c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazards: []
-  enemyStats: []
   playerSpawns:
   - {fileID: 4719234336218113262}
   - {fileID: 7720546851137592959}
@@ -61,9 +58,7 @@ MonoBehaviour:
   enemySpawns: []
   levelType: 2
   game: 3
-  waveManager: {fileID: 805013608764250823}
   teamLevel: 0
-  enemySpawnProps: []
 --- !u!156049354 &805013608764250820
 Grid:
   m_ObjectHideFlags: 0
@@ -76,22 +71,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &805013608764250823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805013608764250822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00ca3362c77c0f6408f6ac92a2695cd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveDelays: []
-  currentWave: -1
-  complete: 0
-  delayAllWaveTime: 0
 --- !u!1 &2767432924756996349
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +159,7 @@ MonoBehaviour:
   endCondition: {fileID: 6580719124436952548}
   data: {fileID: 6523163525860134486}
   canPlayersTakeDamage: 1
+  pauseMovementAtStart: 1
   spawner: {fileID: 5482981596809396173}
   startBombSpawnInterval: 5
   endBombSpawnInterval: 3

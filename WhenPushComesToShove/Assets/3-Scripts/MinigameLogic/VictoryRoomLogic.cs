@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class VictoryRoomLogic : MinigameLogic
 {
@@ -36,7 +37,7 @@ public class VictoryRoomLogic : MinigameLogic
     public override void CleanUp()
     {
         winningPlayer.GetComponentInChildren<PlayerInputHandler>().crownBox.SetActive(false);
-
+        GameObject.FindWithTag("ModifierManager").GetComponent<ModifierManager>().RemoveAllModifiers();
         base.CleanUp();
     }
 }

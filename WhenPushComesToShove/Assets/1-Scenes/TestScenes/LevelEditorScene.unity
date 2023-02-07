@@ -1393,7 +1393,6 @@ GameObject:
   - component: {fileID: 1161639663}
   - component: {fileID: 1161639665}
   - component: {fileID: 1161639666}
-  - component: {fileID: 1161639667}
   m_Layer: 0
   m_Name: Level Editor
   m_TagString: Untagged
@@ -1567,22 +1566,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allEnemies: []
---- !u!114 &1161639667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161639660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00ca3362c77c0f6408f6ac92a2695cd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveDelays: []
-  currentWave: -1
-  complete: 0
-  delayAllWaveTime: 0
 --- !u!1 &1317946488
 GameObject:
   m_ObjectHideFlags: 0
