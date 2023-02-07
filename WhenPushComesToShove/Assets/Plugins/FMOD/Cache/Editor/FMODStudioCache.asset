@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: ./Assets/FMOD Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638107621163752848
+  lastModified: 638100763444622632
   FileSizes: []
   Exists: 1
 --- !u!114 &-1468950982031199481
@@ -33,7 +33,7 @@ MonoBehaviour:
   Path: ./Assets/FMOD Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638107621163772853
+  lastModified: 638100763444632604
   FileSizes:
   - Name: 
     Value: 908
@@ -52,35 +52,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -2994990521748011872}
-  - {fileID: 33444882273787952}
   - {fileID: 334929478233726724}
   EditorEvents:
   - {fileID: 6580755882717612183}
   EditorParameters: []
-  MasterBanks:
-  - {fileID: 33444882273787952}
+  MasterBanks: []
   StringsBanks:
   - {fileID: -1468950982031199481}
-  cacheTime: 638107621163982908
+  cacheTime: 638100763444852016
   cacheVersion: 131601
---- !u!114 &33444882273787952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ./Assets/FMOD Banks/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638100763444622632
-  FileSizes: []
-  Exists: 1
 --- !u!114 &334929478233726724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +76,7 @@ MonoBehaviour:
   Path: ./Assets/FMOD Banks/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638107621163982908
+  lastModified: 638100763444852016
   FileSizes: []
   Exists: 1
 --- !u!114 &6580755882717612183
