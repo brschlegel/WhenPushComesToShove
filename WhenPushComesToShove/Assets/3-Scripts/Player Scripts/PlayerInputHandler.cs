@@ -42,6 +42,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     public GameObject crownBox;
 
+    private bool buttonMashing = false;
+    private int buttonMashedNum = 0;
+
     // Start is called before the first frame update
     void Awake()
     {
