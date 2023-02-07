@@ -35,6 +35,7 @@ public class LevelManager : MonoBehaviour
    
         pathGen = GetComponent<PathGenerator>();
         damageEnabler = GetComponent<DamageEnabler>();
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -109,7 +110,7 @@ public class LevelManager : MonoBehaviour
         if(levelProp.transform.GetChild(3).TryGetComponent<MinigameLogic>(out MinigameLogic logic))
         {
             logic.Init();
-
+            GameState.ModifierManager.InitMinigame(levelProp.transform);
         }
 
         //Update Logging

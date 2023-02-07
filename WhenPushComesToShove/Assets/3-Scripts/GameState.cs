@@ -4,13 +4,30 @@ using UnityEngine;
 
 public static class GameState
 {
-    static public List<Transform> players = new List<Transform>();
-    static public List<HealthBar> playerHealthBars = new List<HealthBar>();
+    public static List<Transform> players = new List<Transform>();
+    public static List<HealthBar> playerHealthBars = new List<HealthBar>();
     public static LevelType currentRoomType;
     public static bool damageEnabled = true;
     public static int[] playerScores = new int[4];
     public static string[] playerNames = new string[] { "Red", "Blue", "Green", "Yellow" };
     public static PathGenerator pathGenerator;
+
+    private static ModifierManager modifierManager;
+
+    //Properties
+    public static ModifierManager ModifierManager
+    {
+        get
+        {
+            if(modifierManager == null)
+            {
+                //This is safe because we never change scenes
+                modifierManager = GameObject.FindGameObjectWithTag("ModifierManager").GetComponent<ModifierManager>();
+            }
+            return modifierManager;
+        }
+    }
+
 
     //Global Modifiers
     public static float dragModifier = 1;
