@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerRankDisplay : UIDisplay
 {
     [SerializeField] private TextMeshProUGUI winnerText;
-    [SerializeField] private TextMeshProUGUI rankText;
     [HideInInspector] public int[] playerRankOrder;
     [HideInInspector] public int[] scoresInOrder;
+    [SerializeField] private Image winnerPortrait;
+    [SerializeField] private Transform[] rankUIs = new Transform[3];
 
     public override void HideDisplay()
     {
@@ -21,26 +23,18 @@ public class PlayerRankDisplay : UIDisplay
         playerRankOrder = GetRankOrder();
 
         winnerText.text = GameState.playerNames[playerRankOrder[0]] + " player won! - " + scoresInOrder[0];
+        winnerPortrait.sprite = PlayerConfigManager.Instance.playerPortraits[playerRankOrder[0]];
 
         int numOfPlayers = GameState.players.Count;
-        string text = "";
 
-        if (numOfPlayers >= 2)
+        for (int i = 1; i < numOfPlayers; i++)
         {
-            text += "2nd: " + GameState.playerNames[playerRankOrder[1]] + " - " + scoresInOrder[1];
-        }
+            rankUIs[i - 1].gameObject.SetActive(true);
 
-        if (numOfPlayers >= 3)
-        {
-            text += "\n3rd: " + GameState.playerNames[playerRankOrder[2]] + " - " + scoresInOrder[2];
+            TextMeshProUGUI text = rankUIs[i - 1].GetComponentInChildren<TextMeshProUGUI>();
+            text.text = scoresInOrder[i].ToString();
+            rankUIs[i - 1].GetComponentInChildren<Image>().sprite = PlayerConfigManager.Instance.playerPortraits[playerRankOrder[i]];
         }
-
-        if (numOfPlayers >= 4)
-        {
-            text += "\n4th: " + GameState.playerNames[playerRankOrder[3]] + " - " + scoresInOrder[3];
-        }
-
-        rankText.text = text;
 
         gameObject.SetActive(true);
     }

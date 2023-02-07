@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerPortrait : MonoBehaviour
 {
-   public RawImage portrait;
+   public Image portrait;
    public RawImage checkmark;
    private bool ready = false;
    private bool visible = false;

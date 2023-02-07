@@ -3364,7 +3364,6 @@ GameObject:
   - component: {fileID: 1755209493023897844}
   - component: {fileID: 775442832769645502}
   - component: {fileID: 1750519237089320605}
-  - component: {fileID: 7362869894602280755}
   m_Layer: 0
   m_Name: Lobby
   m_TagString: Untagged
@@ -3404,22 +3403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5119f601983714e8664f9b2847511c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazards:
-  - hazard: 0
-    level: 0
-  - hazard: 2
-    level: 0
-  - hazard: 1
-    level: 0
-  - hazard: 3
-    level: 0
-  enemyStats:
-  - enemy: 0
-    level: 0
-  - enemy: 1
-    level: 0
-  - enemy: 2
-    level: 0
   playerSpawns:
   - {fileID: 8318899948142839505}
   - {fileID: 1982447994706698772}
@@ -3428,9 +3411,7 @@ MonoBehaviour:
   enemySpawns: []
   levelType: 0
   game: 0
-  waveManager: {fileID: 7362869894602280755}
   teamLevel: 0
-  enemySpawnProps: []
 --- !u!156049354 &1750519237089320605
 Grid:
   m_ObjectHideFlags: 0
@@ -3443,22 +3424,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &7362869894602280755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6254306470328373913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00ca3362c77c0f6408f6ac92a2695cd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveDelays: []
-  currentWave: -1
-  complete: 0
-  delayAllWaveTime: 0
 --- !u!1 &6273454438970049299
 GameObject:
   m_ObjectHideFlags: 0

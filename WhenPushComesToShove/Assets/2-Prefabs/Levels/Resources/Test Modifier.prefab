@@ -50,8 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5119f601983714e8664f9b2847511c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazards: []
-  enemyStats: []
   playerSpawns:
   - {fileID: 6848333989236931222}
   - {fileID: 4925292869602320948}
@@ -60,9 +58,7 @@ MonoBehaviour:
   enemySpawns: []
   levelType: 5
   game: 0
-  waveManager: {fileID: 0}
   teamLevel: 0
-  enemySpawnProps: []
 --- !u!156049354 &673863612841343772
 Grid:
   m_ObjectHideFlags: 0
@@ -5711,6 +5707,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3204451975313605344}
     m_Modifications:
+    - target: {fileID: 8400829242466403566, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: spacerPrefab
+      value: 
+      objectReference: {fileID: 406501625493467313, guid: 4f5b1502bfad06f41aeca3f97d9e6bf3, type: 3}
     - target: {fileID: 8400829242559552110, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
       propertyPath: m_LinearDrag
       value: 0.5
@@ -6080,13 +6080,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1129392132328581015, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 1293430685113543156, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1722123069306328372, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 771
+      objectReference: {fileID: 0}
     - target: {fileID: 3087208448451141693, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893170316837849113, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524729441807816535, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -337
       objectReference: {fileID: 0}
     - target: {fileID: 6955386475419053365, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
       propertyPath: m_Color.a
@@ -6096,6 +6112,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7577337160814658290, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
+      propertyPath: modifierDescription
+      value: 
+      objectReference: {fileID: 881491883427916845}
     - target: {fileID: 8746399878660044528, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6182,6 +6202,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
+--- !u!114 &881491883427916845 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8854770371062303272, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
+  m_PrefabInstance: {fileID: 8564094481736852997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1132851943203655925 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8746399878660044528, guid: 2c6343f9d97ba174487b0ac6e5e83699, type: 3}
