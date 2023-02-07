@@ -26,7 +26,7 @@ public class ModifierSelectionLogic : MinigameLogic
 
         
         selector.Init();
-        modifierManager = GameObject.FindGameObjectWithTag("ModifierManager").GetComponent<ModifierManager>();
+        modifierManager = GameState.ModifierManager;
         modifiers = modifierManager.GetRandomModifiers(numberOfModifiers);
         selector.onSelection += OnSelectionFinished;
 
