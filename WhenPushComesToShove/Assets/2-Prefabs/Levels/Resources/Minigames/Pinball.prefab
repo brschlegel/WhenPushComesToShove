@@ -262,6 +262,7 @@ MonoBehaviour:
   endCondition: {fileID: 9204035307898263628}
   data: {fileID: 6255664125825064475}
   canPlayersTakeDamage: 1
+  pauseMovementAtStart: 1
   spawners:
   - {fileID: 652426295647075861}
   spawnInterval: 2
@@ -6533,8 +6534,48 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerScores
       objectReference: {fileID: 0}
+    - target: {fileID: 8765346622776103473, guid: c1e5521258a76ba469b7ab7261060fa1, type: 3}
+      propertyPath: scoreUIs.Array.data[0]
+      value: 
+      objectReference: {fileID: 829638814773857145}
+    - target: {fileID: 8765346622776103473, guid: c1e5521258a76ba469b7ab7261060fa1, type: 3}
+      propertyPath: scoreUIs.Array.data[1]
+      value: 
+      objectReference: {fileID: 5881834946163210547}
+    - target: {fileID: 8765346622776103473, guid: c1e5521258a76ba469b7ab7261060fa1, type: 3}
+      propertyPath: scoreUIs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1259509074893438175}
+    - target: {fileID: 8765346622776103473, guid: c1e5521258a76ba469b7ab7261060fa1, type: 3}
+      propertyPath: scoreUIs.Array.data[3]
+      value: 
+      objectReference: {fileID: 4302372161362936312}
+    - target: {fileID: 8765346622776103473, guid: c1e5521258a76ba469b7ab7261060fa1, type: 3}
+      propertyPath: displayBasedOnPlayerNum
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1e5521258a76ba469b7ab7261060fa1, type: 3}
+--- !u!224 &829638814773857145 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3590923585686635958, guid: c1e5521258a76ba469b7ab7261060fa1, type: 3}
+  m_PrefabInstance: {fileID: 4203826453497007823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1259509074893438175 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3110950736627970576, guid: c1e5521258a76ba469b7ab7261060fa1, type: 3}
+  m_PrefabInstance: {fileID: 4203826453497007823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4302372161362936312 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 136204534430371639, guid: c1e5521258a76ba469b7ab7261060fa1, type: 3}
+  m_PrefabInstance: {fileID: 4203826453497007823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5881834946163210547 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7779550931021805564, guid: c1e5521258a76ba469b7ab7261060fa1, type: 3}
+  m_PrefabInstance: {fileID: 4203826453497007823}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8035780744691068782 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6184051288807334305, guid: c1e5521258a76ba469b7ab7261060fa1, type: 3}

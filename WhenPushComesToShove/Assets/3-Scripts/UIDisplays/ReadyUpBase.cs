@@ -15,6 +15,11 @@ public class ReadyUpBase : UIDisplay
     [SerializeField]
     private Countdown countdown;
 
+    [SerializeField]
+    private TextMeshProUGUI vs2v2;
+    [SerializeField]
+    private TextMeshProUGUI vs1v3;
+
     private int numPlayers;
     private List<PlayerPortrait> portraits;
     private float delay = 1;
@@ -22,6 +27,8 @@ public class ReadyUpBase : UIDisplay
 
     public override void ShowDisplay()
     {
+        ShowBasedOnTeams();
+
         numPlayers = GameState.players.Count;
         portraits = new List<PlayerPortrait>();
         gameObject.SetActive(true);
@@ -112,5 +119,67 @@ public class ReadyUpBase : UIDisplay
         countdown.countdownTime = countdownTime;
         countdown.gameObject.SetActive(true);
         countdown.onCountdownEnded += HideDisplay;
+    }
+
+    private void ShowBasedOnTeams()
+    {
+
+        switch (GameState.currentRoomType)
+        {
+            case LevelType.Lobby:
+                break;
+            case LevelType.Dungeon:
+                break;
+            case LevelType.Arena:
+                break;
+            case LevelType.TwoTwo:
+                int leftSideCount = 0;
+                int rightSideCount = 0;
+
+                for (int i = 0; i < GameState.players.Count; i++)
+                {
+                    PlayerInputHandler handler = GameState.players[i].GetComponentInChildren<PlayerInputHandler>();
+                    if (handler.playerConfig.TeamIndex < 1)
+                    {
+                        PlayerPortrait portrait = portraitParent.GetChild(0 + leftSideCount).GetComponent<PlayerPortrait>();
+                        portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
+                        leftSideCount++;
+                    }
+                    else
+                    {
+                        PlayerPortrait portrait = portraitParent.GetChild(2 + rightSideCount).GetComponent<PlayerPortrait>();
+                        portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
+                        rightSideCount++;
+                    }
+                }
+
+                vs2v2.gameObject.SetActive(true);             
+                break;
+            case LevelType.ThreeOne:
+                int teamSideCount = 0;
+
+                for (int i = 0; i < GameState.players.Count; i++)
+                {
+                    PlayerInputHandler handler = GameState.players[i].GetComponentInChildren<PlayerInputHandler>();
+                    if (handler.playerConfig.TeamIndex < 1)
+                    {
+                        PlayerPortrait portrait = portraitParent.GetChild(0 + teamSideCount).GetComponent<PlayerPortrait>();
+                        portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
+                        teamSideCount++;
+                    }
+                    else
+                    {
+                        PlayerPortrait portrait = portraitParent.GetChild(3).GetComponent<PlayerPortrait>();
+                        portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
+                    }
+                }
+
+                vs1v3.gameObject.SetActive(true);
+                break;
+            case LevelType.Modifier:
+                break;
+            default:
+                break;
+        }
     }
 }
