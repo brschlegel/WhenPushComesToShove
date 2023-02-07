@@ -27,7 +27,6 @@ public class ReadyUpBase : UIDisplay
 
     public override void ShowDisplay()
     {
-        ShowBasedOnTeams();
 
         numPlayers = GameState.players.Count;
         portraits = new List<PlayerPortrait>();
@@ -56,7 +55,7 @@ public class ReadyUpBase : UIDisplay
         for (int i = 0; i < 4; i++)
         {
             portraits.Add(portraitParent.GetChild(i).GetComponent<PlayerPortrait>());
-            portraits[i].Visible = i < numPlayers;
+            //portraits[i].Visible = i < numPlayers;
 
             if (portraits[i].Visible && (i == highestScoreIndex || tiedIndexes.Contains(i)))
             {
@@ -69,7 +68,9 @@ public class ReadyUpBase : UIDisplay
         }
         //use game state
 
-        foreach(Transform p in GameState.players)
+        ShowBasedOnTeams();
+
+        foreach (Transform p in GameState.players)
         {
             p.GetComponentInChildren<PlayerInputHandler>().onSelect += ReadyUp;
         }
@@ -131,10 +132,19 @@ public class ReadyUpBase : UIDisplay
             case LevelType.Dungeon:
                 break;
             case LevelType.Arena:
+                for (int i = 0; i < portraits.Count; i++)
+                {
+                    portraits[i].Visible = i < numPlayers;
+                }
                 break;
             case LevelType.TwoTwo:
                 int leftSideCount = 0;
                 int rightSideCount = 0;
+
+                foreach (PlayerPortrait p in portraits)
+                {
+                    p.Visible = false;
+                }
 
                 for (int i = 0; i < GameState.players.Count; i++)
                 {
@@ -143,12 +153,14 @@ public class ReadyUpBase : UIDisplay
                     {
                         PlayerPortrait portrait = portraitParent.GetChild(0 + leftSideCount).GetComponent<PlayerPortrait>();
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
+                        portrait.Visible = true;
                         leftSideCount++;
                     }
                     else
                     {
                         PlayerPortrait portrait = portraitParent.GetChild(2 + rightSideCount).GetComponent<PlayerPortrait>();
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
+                        portrait.Visible = true;
                         rightSideCount++;
                     }
                 }
@@ -158,6 +170,11 @@ public class ReadyUpBase : UIDisplay
             case LevelType.ThreeOne:
                 int teamSideCount = 0;
 
+                foreach (PlayerPortrait p in portraits)
+                {
+                    p.Visible = false;
+                }
+
                 for (int i = 0; i < GameState.players.Count; i++)
                 {
                     PlayerInputHandler handler = GameState.players[i].GetComponentInChildren<PlayerInputHandler>();
@@ -165,12 +182,14 @@ public class ReadyUpBase : UIDisplay
                     {
                         PlayerPortrait portrait = portraitParent.GetChild(0 + teamSideCount).GetComponent<PlayerPortrait>();
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
+                        portrait.Visible = true;
                         teamSideCount++;
                     }
                     else
                     {
                         PlayerPortrait portrait = portraitParent.GetChild(3).GetComponent<PlayerPortrait>();
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
+                        portrait.Visible = true;
                     }
                 }
 
