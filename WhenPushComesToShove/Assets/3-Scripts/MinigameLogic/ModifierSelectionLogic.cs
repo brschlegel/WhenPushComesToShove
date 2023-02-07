@@ -13,9 +13,15 @@ public class ModifierSelectionLogic : MinigameLogic
     [HideInInspector]
     public ModifierSettings selectedModifier;
     private int numberOfModifiers = 3;
+
+    //Parts
+    private List<Transform> areas;
+    private List<Transform> barrels;
+    private Transform picker;
+
     public override void StartGame()
     {
-        selector.BeginSelection();
+        StartCoroutine(Introduction());
         base.StartGame();
     }
 
@@ -40,6 +46,18 @@ public class ModifierSelectionLogic : MinigameLogic
         }
         selector.areaDivider.Init();
 
+        //Set parts and disable them for introduction
+        areas = selector.areaDivider.areas;
+        foreach(Transform area in areas)
+        {
+            area.gameObject.SetActive(false);
+        }
+
+        barrels = new List<Transform>(selector.areaDivider.dividers);
+
+
+        
+
         base.Init();
     }
 
@@ -59,5 +77,19 @@ public class ModifierSelectionLogic : MinigameLogic
         ((ModifierSelectedUIDisplay)endingUIDisplay).modifier = modifierScript;
         selector.gameObject.SetActive(false);
         EndGame();
+    }
+
+    public IEnumerator Introduction()
+    {
+        //Areas
+        yield return new WaitForSeconds(.5f);
+        //Barrels
+
+        yield return new WaitForSeconds(.5f);
+        //Picker
+
+        yield return new WaitForSeconds(.5f);
+        //Make Selection
+        selector.BeginSelection();
     }
 }

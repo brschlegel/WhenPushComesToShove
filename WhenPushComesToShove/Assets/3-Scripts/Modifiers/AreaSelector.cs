@@ -59,7 +59,6 @@ public class AreaSelector : MonoBehaviour
     public void Init()
     {
         areaDivider = GetComponentInChildren<AreaDivider>();
-        Debug.Log("Area Divider Y Pos: " + areaDivider.transform.position.y + " Area Divider Half Height: " + areaDivider.height / 2);
         picker.position = new Vector2(picker.position.x, areaDivider.transform.position.y - areaDivider.height/3);
         runningFrames = 0;
     }

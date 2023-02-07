@@ -24,6 +24,8 @@ public class AreaDivider : MonoBehaviour
     private Transform areaParent;
     [SerializeField]
     private Transform iconParent;
+    [SerializeField]
+    private Transform spacerParent;
     [HideInInspector]
     public List<Transform> areas;
     [HideInInspector]

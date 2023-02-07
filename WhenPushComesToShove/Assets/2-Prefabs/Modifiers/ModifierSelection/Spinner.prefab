@@ -84,6 +84,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7781429387962980144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1709960766202348695}
+  m_Layer: 0
+  m_Name: SpacerParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1709960766202348695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7781429387962980144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8400829242466403561}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8400829241685298243
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +178,7 @@ Transform:
   - {fileID: 8400829242875751095}
   - {fileID: 8400829241685298242}
   - {fileID: 8400829242864845040}
+  - {fileID: 1709960766202348695}
   m_Father: {fileID: 8400829243468253645}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -166,6 +198,7 @@ MonoBehaviour:
   height: 9
   areaPrefab: {fileID: 2441165968346909421, guid: 38404c655b6a11f488480b73331aeb4a, type: 3}
   iconPrefab: {fileID: 3023681209421239314, guid: fa1dd2f06533a5f40a1aabf219892e0a, type: 3}
+  spacerPrefab: {fileID: 1709960766202348695}
   dividers:
   - {fileID: 8156461740441636379}
   - {fileID: 8156461738747203038}
@@ -434,7 +467,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaDivider: {fileID: 0}
   picker: {fileID: 8400829242559552110}
-  forceAmount: 2500
+  forceMin: 0
+  forceMax: 0
   stopThreshold: 2
 --- !u!1001 &8400829241632996719
 PrefabInstance:
