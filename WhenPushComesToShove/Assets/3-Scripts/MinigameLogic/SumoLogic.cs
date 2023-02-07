@@ -20,6 +20,15 @@ public class SumoLogic : MinigameLogic
         
     }
 
+    public override void Init()
+    {
+        base.Init();
+
+        foreach (HealthBar b in GameState.playerHealthBars)
+        {
+            b.gameObject.SetActive(false);
+        }
+    }
     public override void StartGame()
     {
         nextGroupIndex = 1;
