@@ -17,9 +17,13 @@ public class EqualOpposite : EventModifier
         HitEvent e = (HitEvent)args.objectArg;
         if(e != null)
         {
+            
             KnockbackData data = e.hitbox.knockbackData;
             KnockbackReciever kbReciever = e.hitbox.owner.GetComponentInChildren<KnockbackReciever>();
-            kbReciever.TakeKnockback(data.strength, -data.GetDirection(e), e.hitbox.owner);
+            if (kbReciever != null && data != null)
+            {
+                kbReciever.TakeKnockback(data.strength, -data.GetDirection(e), e.hitbox.owner);
+            }
         }
     }
 

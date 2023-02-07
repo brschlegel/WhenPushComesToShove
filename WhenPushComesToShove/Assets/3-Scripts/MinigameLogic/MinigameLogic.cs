@@ -58,7 +58,7 @@ public abstract class MinigameLogic : MonoBehaviour
                 p.GetComponentInChildren<PlayerInputHandler>().movementPaused = false;
             }
         }
-
+        GameState.ModifierManager.StartMinigame();
         gameRunning = true;
         onGameStart?.Invoke();
         endCondition.Init();

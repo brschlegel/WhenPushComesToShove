@@ -108,6 +108,11 @@ public class ProjectileMode : MonoBehaviour
         rb.AddForce(force);
     }
 
+    public void StopForce()
+    {
+        rb.velocity = Vector2.zero;
+    }
+
     private void DisableHitbox()
     {
         pHitbox.gameObject.SetActive(false);

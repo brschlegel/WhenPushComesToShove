@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class EventModifier : BaseModifier
 {
+    [SerializeField]
     protected uint eventID;
+    [SerializeField]
     protected string key;
 
     public override void Init()
