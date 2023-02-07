@@ -80,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""EmoteDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c9de9dc-50de-47d9-aec4-bc6d2efa6ed4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -95,64 +104,31 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""0f8c85fd-0d05-46b9-a5af-8ce2151b4e34"",
-                    ""path"": ""2DVector"",
+                    ""name"": """",
+                    ""id"": ""8b31462c-1034-4996-bb04-68aa55d5c26f"",
+                    ""path"": ""<DualShockGamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""bae6ce3f-9376-4e5b-bb88-ce4fc67c8790"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Xbox Controller Scheme"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""a10909ee-b659-4ed9-ab7c-b6019d88a348"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Xbox Controller Scheme"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""6eed7d99-513d-4100-8eed-0488792bcc79"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Xbox Controller Scheme"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""c2f7c745-21f2-4836-a15e-cbf084a94912"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Xbox Controller Scheme"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
                     ""id"": ""2b895834-6540-4ef0-9f42-b5e59842c99b"",
                     ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ef7012d-7c13-44eb-9745-7acc3f6adfaa"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -173,11 +149,33 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""51c87f3d-186f-4b9b-91b0-75b7e86a0819"",
+                    ""path"": ""<DualShockGamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightShove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""8ed3f68e-4ca7-4d45-a9fa-57caa2b7ed3c"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox Controller Scheme"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""332990ea-76f8-458a-8bf2-d1d885605a38"",
+                    ""path"": ""<DualShockGamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -195,12 +193,56 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""3e2e0be4-add5-4b33-a984-b28dfe25ae25"",
+                    ""path"": ""<DualShockGamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a4028490-84d2-4288-bd39-f48f08757c39"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""HeavyShove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da816f36-5621-4518-a6cb-f09bb465ea23"",
+                    ""path"": ""<DualShockGamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyShove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ade57e2-7cb6-4aae-a712-2ba595dbfe4a"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EmoteDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94525ef8-f749-4526-aa14-db8fe67aa634"",
+                    ""path"": ""<DualShockGamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EmoteDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -229,6 +271,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_HeavyShove = m_PlayerMovement.FindAction("HeavyShove", throwIfNotFound: true);
         m_PlayerMovement_Dash = m_PlayerMovement.FindAction("Dash", throwIfNotFound: true);
         m_PlayerMovement_Aim = m_PlayerMovement.FindAction("Aim", throwIfNotFound: true);
+        m_PlayerMovement_EmoteDown = m_PlayerMovement.FindAction("EmoteDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -294,6 +337,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_HeavyShove;
     private readonly InputAction m_PlayerMovement_Dash;
     private readonly InputAction m_PlayerMovement_Aim;
+    private readonly InputAction m_PlayerMovement_EmoteDown;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -304,6 +348,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @HeavyShove => m_Wrapper.m_PlayerMovement_HeavyShove;
         public InputAction @Dash => m_Wrapper.m_PlayerMovement_Dash;
         public InputAction @Aim => m_Wrapper.m_PlayerMovement_Aim;
+        public InputAction @EmoteDown => m_Wrapper.m_PlayerMovement_EmoteDown;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -331,6 +376,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Aim.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
+                @EmoteDown.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteDown;
+                @EmoteDown.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteDown;
+                @EmoteDown.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteDown;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -353,6 +401,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
+                @EmoteDown.started += instance.OnEmoteDown;
+                @EmoteDown.performed += instance.OnEmoteDown;
+                @EmoteDown.canceled += instance.OnEmoteDown;
             }
         }
     }
@@ -374,5 +425,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnHeavyShove(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnEmoteDown(InputAction.CallbackContext context);
     }
 }

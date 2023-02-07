@@ -15,6 +15,8 @@ public class InitLevel : MonoBehaviour
 
     [SerializeField] private ParticleSystem[] playerSpawnAnim = new ParticleSystem[4];
 
+    [SerializeField] private Color[] playerCircleVFXColors = new Color[4];
+
     public GameObject[] playerUI= new GameObject[4];
     public Color[] playerHitboxColors = new Color[4];
 
@@ -43,7 +45,10 @@ public class InitLevel : MonoBehaviour
         GameState.playerHealthBars.Add(bar);
         bar.gameObject.SetActive(false);
 
-        player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
+        PlayerInputHandler handler = player.GetComponentInChildren<PlayerInputHandler>();
+        handler.InitializePlayer(playerConfigs[index]);
+        var main = handler.circleVFX.main;
+        main.startColor = playerCircleVFXColors[index];
         Instantiate(playerSpawnAnim[index], playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
 
         if (spawnPlayerUI)

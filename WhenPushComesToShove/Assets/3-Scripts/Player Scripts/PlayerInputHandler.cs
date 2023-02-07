@@ -45,6 +45,8 @@ public class PlayerInputHandler : MonoBehaviour
     private bool buttonMashing = false;
     private int buttonMashedNum = 0;
 
+    public ParticleSystem circleVFX;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -152,6 +154,14 @@ public class PlayerInputHandler : MonoBehaviour
             if (mover != null)
             {
                 mover.SetAimInputVector(obj.ReadValue<Vector2>());
+            }
+        }
+        //Emotes
+        else if (obj.action.name == controls.PlayerMovement.EmoteDown.name)
+        {
+            if (circleVFX != null)
+            {
+                circleVFX.gameObject.SetActive(true);
             }
         }
     }
