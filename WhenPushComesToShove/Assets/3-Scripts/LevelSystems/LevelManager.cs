@@ -14,8 +14,6 @@ public class LevelManager : MonoBehaviour
     public static Action onNewRoom;
     public static Action onModifierRoom;
     public static Action onEndGame;
-    [SerializeField]
-    private ModifierManager modifierManager;
     private bool endRoomSpawned = false;
 
     private void OnEnable()
