@@ -12,6 +12,8 @@ public class ModifierSelectedUIDisplay : UIDisplay
     private Image modifierImage;
     [SerializeField]
     private TextMeshProUGUI modifierName;
+    [SerializeField]
+    private TextMeshProUGUI modifierDescription;
 
     [SerializeField]
     private float delay;
@@ -20,8 +22,10 @@ public class ModifierSelectedUIDisplay : UIDisplay
     {
         modifierImage.sprite = modifier.icon;
         modifierName.text = modifier.name;
+        modifierDescription.text = modifier.description;
         modifierImage.gameObject.SetActive(true);
         modifierName.gameObject.SetActive(true);
+        modifierDescription.gameObject.SetActive(true);
         isDone = false;
         CoroutineManager.StartGlobalCoroutine(WaitToFinish());
     }
@@ -30,6 +34,7 @@ public class ModifierSelectedUIDisplay : UIDisplay
     {
         modifierImage.gameObject.SetActive(false);
         modifierName.gameObject.SetActive(false);
+        modifierDescription.gameObject.SetActive(false);
     }
 
     private IEnumerator WaitToFinish()
