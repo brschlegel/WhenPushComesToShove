@@ -11,6 +11,8 @@ public class VictoryButtonMashUI : UIDisplay
     private List<int> tiedIndexes = new List<int>();
     private List<PlayerInputHandler> tiedPlayers = new List<PlayerInputHandler>();
     [SerializeField] private Transform[] tiedPlayerDisplays = new Transform[4];
+    [SerializeField] private Image sword;
+    [SerializeField] private Color[] playerColors = new Color[4];
     //[SerializeField] private Sprite[] playerPortraitSprites = new Sprite[4];
 
     public override void HideDisplay()
@@ -42,6 +44,7 @@ public class VictoryButtonMashUI : UIDisplay
             tiedPlayers.Add(handler);
         }
 
+        MinigameData.onScoreAdded += ChangeSwordColor;
         gameObject.SetActive(true);
         StartCoroutine(WaitForTimeEnd());
     }
@@ -80,6 +83,8 @@ public class VictoryButtonMashUI : UIDisplay
             handler.onSelect -= ButtonMashed;
         }
 
+        MinigameData.onScoreAdded -= ChangeSwordColor;
+
         data.OnMinigameEnd(false);
         HideDisplay();
     }
@@ -87,5 +92,11 @@ public class VictoryButtonMashUI : UIDisplay
     private void ButtonMashed(int playerIndex)
     {
         data.AddScoreForTeam(playerIndex, 1);
+    }
+
+    private void ChangeSwordColor(int teamIndex, int scoreToSetAs)
+    {
+        int index = data.GetHighestScoreIndex();
+        sword.color = playerColors[index];
     }
 }
