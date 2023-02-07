@@ -89,6 +89,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EmoteLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""07ee5515-018a-438a-bc40-f0e2aac10424"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -245,6 +254,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""EmoteDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3edf23da-308f-4d43-bdbf-e245bd812bd5"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EmoteLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""000e584a-aeb3-42c5-8753-9ad57485d2a4"",
+                    ""path"": ""<DualShockGamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EmoteLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -272,6 +303,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Dash = m_PlayerMovement.FindAction("Dash", throwIfNotFound: true);
         m_PlayerMovement_Aim = m_PlayerMovement.FindAction("Aim", throwIfNotFound: true);
         m_PlayerMovement_EmoteDown = m_PlayerMovement.FindAction("EmoteDown", throwIfNotFound: true);
+        m_PlayerMovement_EmoteLeft = m_PlayerMovement.FindAction("EmoteLeft", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -338,6 +370,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Dash;
     private readonly InputAction m_PlayerMovement_Aim;
     private readonly InputAction m_PlayerMovement_EmoteDown;
+    private readonly InputAction m_PlayerMovement_EmoteLeft;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -349,6 +382,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_PlayerMovement_Dash;
         public InputAction @Aim => m_Wrapper.m_PlayerMovement_Aim;
         public InputAction @EmoteDown => m_Wrapper.m_PlayerMovement_EmoteDown;
+        public InputAction @EmoteLeft => m_Wrapper.m_PlayerMovement_EmoteLeft;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -379,6 +413,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @EmoteDown.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteDown;
                 @EmoteDown.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteDown;
                 @EmoteDown.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteDown;
+                @EmoteLeft.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteLeft;
+                @EmoteLeft.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteLeft;
+                @EmoteLeft.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteLeft;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -404,6 +441,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @EmoteDown.started += instance.OnEmoteDown;
                 @EmoteDown.performed += instance.OnEmoteDown;
                 @EmoteDown.canceled += instance.OnEmoteDown;
+                @EmoteLeft.started += instance.OnEmoteLeft;
+                @EmoteLeft.performed += instance.OnEmoteLeft;
+                @EmoteLeft.canceled += instance.OnEmoteLeft;
             }
         }
     }
@@ -426,5 +466,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnEmoteDown(InputAction.CallbackContext context);
+        void OnEmoteLeft(InputAction.CallbackContext context);
     }
 }

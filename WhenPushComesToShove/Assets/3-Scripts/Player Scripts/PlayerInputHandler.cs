@@ -47,6 +47,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public ParticleSystem circleVFX;
 
+    private bool emotesRunning = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -88,6 +90,14 @@ public class PlayerInputHandler : MonoBehaviour
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
     }
 
+    private void Update()
+    {
+        if (emotesRunning)
+        {
+            PlayChargeAnimation();
+        }
+    }
+
     /// <summary>
     /// Checks the input used and calls the nessecary functions
     /// </summary>
@@ -114,6 +124,12 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (onSelect != null && !performingAction && !heavyShoveScript.heavyShoveIsCharging)
             {
+                if (emotesRunning)
+                {
+                    emotesRunning = false;
+                    anim.StopPlayback();
+                }
+
                 LockAction(selectActionCooldown, null);
                 onSelect.Invoke(playerConfig.PlayerIndex);
             }
@@ -123,6 +139,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && !heavyShoveScript.heavyShoveIsCharging && !movementPaused)
             {
+                emotesRunning = false;
                 lightShoveScript.OnLightShoveStart(obj);
             }
             
@@ -132,6 +149,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && !movementPaused)
             {
+                emotesRunning = false;
                 heavyShoveScript.OnHeavyShoveStart(obj);
             }
         }
@@ -140,6 +158,12 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction)
             {
+                if (emotesRunning)
+                {
+                    emotesRunning = false;
+                    anim.StopPlayback();
+                }
+
                 if (heavyShoveScript.heavyShoveIsCharging)
                 {
                     heavyShoveScript.InterruptCharge();
@@ -164,6 +188,25 @@ public class PlayerInputHandler : MonoBehaviour
                 circleVFX.gameObject.SetActive(true);
             }
         }
+        else if (obj.action.name == controls.PlayerMovement.EmoteLeft.name)
+        {
+            if (!performingAction)
+            {
+                if (emotesRunning)
+                {
+                    anim.Play("Base Layer.AN_Player_Idle", -1);
+                    emotesRunning = false;
+
+                }
+                else
+                {
+                    anim.Play("Base Layer.AN_Player_ChestHuff", -1);
+                    emotesRunning = true;
+                }
+
+                LockAction(selectActionCooldown, null);
+            }
+        }
     }
 
     /// <summary>
@@ -172,6 +215,11 @@ public class PlayerInputHandler : MonoBehaviour
     public void ClearSelectAction()
     {
         onSelect = null;
+    }
+
+    private void PlayChargeAnimation()
+    {
+        anim.Play("Base Layer.AN_Player_ChestHuff", -1);
     }
 
     #region LockActions
