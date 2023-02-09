@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Explosion))]
 public class ExplosionTimerFlash : MonoBehaviour
 {
-
     public float maxTime = 5;
     [SerializeField]
     private SpriteRenderer render;
@@ -32,6 +31,7 @@ public class ExplosionTimerFlash : MonoBehaviour
         if (!hasExploded)
         {
             timer += Time.deltaTime;
+            //Two seperate curves: One to slowly ramp up, and one to quickly blink into explosion
             if (timer <= maxTime - transitionToExplosionOffset)
             {
                 render.material.SetFloat("_FlashTime", buildUpCurve.Evaluate(timer / maxTime - transitionToExplosionOffset));

@@ -12,6 +12,7 @@ public class SpriteFlipper : MonoBehaviour
     private StateBrain brain;
     [SerializeField]
     private Rigidbody2D rb;
+    
     private SpriteRenderer sr;
     // Start is called before the first frame update
     void Start()
@@ -26,13 +27,13 @@ public class SpriteFlipper : MonoBehaviour
         {
             Vector2 toTarget = brain.target.position - brain.transform.position;
             bool isXPositive = toTarget.x >= 0;
-            // (isRightFlipped && isXPositive) || (!isRightFlipped && !isXPositive);
+            // same as: (isRightFlipped && isXPositive) || (!isRightFlipped && !isXPositive);
             sr.flipX = isRightFlipped == isXPositive;
         }
         else if(rb.velocity.magnitude >= .001f)
         {
             bool isXPositive = rb.velocity.x >= 0;
-            // (isRightFlipped && isXPositive) || (!isRightFlipped && !isXPositive);
+            // same as: (isRightFlipped && isXPositive) || (!isRightFlipped && !isXPositive);
             sr.flipX = isRightFlipped == isXPositive;
         }
     }

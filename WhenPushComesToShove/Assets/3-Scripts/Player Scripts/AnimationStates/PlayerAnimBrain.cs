@@ -42,17 +42,11 @@ public class PlayerAnimBrain : StateBrain
         }
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void Init()
     {
         idleState = GetComponent<PlayerIdleState>();
         runState = GetComponent<PlayerRunState>();
         hitState = GetComponent<PlayerHitState>();
-       // lightState = GetComponent<PlayerLightShoveState>();
         chargeState = GetComponent<PlayerChargeState>();
         heavyState = GetComponent<PlayerHeavyShoveState>();
         heavyScript = playerInputHandler.GetComponent<PlayerHeavyShoveScript>();

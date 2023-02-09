@@ -17,7 +17,7 @@ public class PlayAnimState : State
     public IEnumerator PlayAnimation(string animName)
     {
         anim.Play(animName, 0);
-        yield return new WaitForSeconds( anim.GetCurrentClipLength());
+        yield return new WaitForSeconds(anim.GetCurrentClipLength());
         InvokeOnStateExit(true);
         this.enabled = false;
     }

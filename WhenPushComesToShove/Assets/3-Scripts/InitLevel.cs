@@ -51,13 +51,6 @@ public class InitLevel : MonoBehaviour
         main.startColor = playerCircleVFXColors[index];
         Instantiate(playerSpawnAnim[index], playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
 
-        if (spawnPlayerUI)
-        {
-            //Assign and enable UI
-            GameObject UI = player.GetComponentInChildren<PlayerInventory>().UIRef = playerUI[index];
-            UI.SetActive(true);
-        }
-
         //Assign Hitbox Colors
         Hitbox[] hitboxes = player.GetComponentsInChildren<Hitbox>();
 
