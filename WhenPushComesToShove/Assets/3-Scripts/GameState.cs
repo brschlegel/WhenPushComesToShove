@@ -11,6 +11,7 @@ public static class GameState
     public static int[] playerScores = new int[4];
     public static string[] playerNames = new string[] { "Red", "Blue", "Green", "Yellow" };
     public static PathGenerator pathGenerator;
+    public static int lastGameWinnerIndex;
 
     private static ModifierManager modifierManager;
 
