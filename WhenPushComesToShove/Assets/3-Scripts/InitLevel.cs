@@ -46,6 +46,13 @@ public class InitLevel : MonoBehaviour
         player.GetComponentInChildren<PlayerInputHandler>().InitializePlayer(playerConfigs[index]);
         Instantiate(playerSpawnAnim[index], playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
 
+        if (spawnPlayerUI)
+        {
+            //Assign and enable UI
+            GameObject UI = player.GetComponentInChildren<PlayerInventory>().UIRef = playerUI[index];
+            UI.SetActive(true);
+        }
+
         //Assign Hitbox Colors
         Hitbox[] hitboxes = player.GetComponentsInChildren<Hitbox>();
 
