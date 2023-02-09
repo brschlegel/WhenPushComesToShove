@@ -34,15 +34,16 @@ public class EnemySpawnPoint : MonoBehaviour
 
     public IEnumerator SpawnWave(int waveNum)
     {
-;       waveComplete = false;
-         foreach(EnemyWaveSpawn.EnemyWaveStats stat in waves[waveNum])
-        {
-            yield return new WaitForSeconds(stat.spawnDelay);
-            GameObject obj = Instantiate(EnemyPrefabReturn.instance.ReturnEnemyPrefab(stat.enemy), transform.position, Quaternion.identity);
-            obj.transform.parent = enemyPool.transform;
-        }
+// ;       waveComplete = false;
+//          foreach(EnemyWaveSpawn.EnemyWaveStats stat in waves[waveNum])
+//         {
+//             yield return new WaitForSeconds(stat.spawnDelay);
+//             GameObject obj = Instantiate(EnemyPrefabReturn.instance.ReturnEnemyPrefab(stat.enemy), transform.position, Quaternion.identity);
+//             obj.transform.parent = enemyPool.transform;
+//         }
 
-        waveComplete = true;
+//         waveComplete = true;
+        yield return new WaitForSeconds(1);
     }
 
 

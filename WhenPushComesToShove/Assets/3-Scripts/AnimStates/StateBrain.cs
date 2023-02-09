@@ -12,6 +12,9 @@ public class StateBrain : MonoBehaviour
     protected State currentState;
     [SerializeField]
     private bool printInfo;
+    //Target, useful for flipping the sprite to face something
+    [HideInInspector]
+    public Transform target;
 
     protected void ChangeState(State newState)
     {
