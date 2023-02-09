@@ -16,7 +16,7 @@ public class PathGenerator : MonoBehaviour
     public List<LevelProperties> availableLevels = new List<LevelProperties>();
 
     //Any games that have already been played that can be filter out of the available levels
-    [HideInInspector] public List<LevelProperties> playedLevels = new List<LevelProperties>();
+    public List<LevelProperties> playedLevels = new List<LevelProperties>();
 
     [Header("Path properties")]
     [SerializeField] private int numOfGames;
@@ -51,6 +51,12 @@ public class PathGenerator : MonoBehaviour
         if(games.Count == 1 && games[0] == Minigame.All)
         {
             availableLevels = new List<LevelProperties>(allLevels);
+
+            foreach(LevelProperties prop in playedLevels)
+            {
+                availableLevels.Remove(prop);
+            }
+
             return;
         }
 
@@ -60,6 +66,10 @@ public class PathGenerator : MonoBehaviour
             {
                 if(prop.game == type)
                 {
+                    //Don't add to available list if game has been played
+                    if (playedLevels.Contains(prop))
+                        break;
+
                     availableLevels.Add(prop);
                     break;
                 }
@@ -107,6 +117,8 @@ public class PathGenerator : MonoBehaviour
     {
         //Clean out the current path
         currentPathNum = 0;
+
+        GameState.playerScores = new int[4] { 0, 0, 0, 0 };
         
         Destroy(transform.GetChild(0).gameObject);
 

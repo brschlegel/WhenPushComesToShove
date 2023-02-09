@@ -19,6 +19,7 @@ public class PlayerConfigManager : MonoBehaviour
     [SerializeField] private RuntimeAnimatorController defaultColor;
     [SerializeField] private string[] playerColorNames = new string[4];
     public Material[] playerOutlines = new Material[4];
+    public Sprite[] playerPortraits = new Sprite[4];
     //public Color[] playerOutlineOriginalColors = new Color[4];
 
     public void Awake()

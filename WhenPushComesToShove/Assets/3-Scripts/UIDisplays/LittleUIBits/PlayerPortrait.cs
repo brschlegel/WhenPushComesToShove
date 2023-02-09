@@ -5,11 +5,18 @@ using UnityEngine.UI;
 
 public class PlayerPortrait : MonoBehaviour
 {
-   public RawImage portrait;
+   public Image portrait;
    public RawImage checkmark;
    private bool ready = false;
    private bool visible = false;
-   public bool Ready
+    [SerializeField] private Transform crown;
+
+    public void OnDisable()
+    {
+        crown.gameObject.SetActive(false);
+    }
+
+    public bool Ready
    {
         get {return ready;}
         set
@@ -27,6 +34,11 @@ public class PlayerPortrait : MonoBehaviour
             visible = value;
             portrait.gameObject.SetActive(visible);
         }
+    }
+
+    public void DisplayCrown()
+    {
+        crown.gameObject.SetActive(true);
     }
 
 }

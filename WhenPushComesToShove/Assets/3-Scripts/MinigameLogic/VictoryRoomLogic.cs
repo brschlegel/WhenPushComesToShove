@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class VictoryRoomLogic : MinigameLogic
 {
     public TextMeshProUGUI winnerText;
     public PlayerRankDisplay rankDisplay;
+
     Transform winningPlayer;
 
-    public void OnEnable()
+    private void OnEnable()
     {
-        Init();
+        startingUIDisplay.ShowDisplay();
     }
 
     public void Update()
@@ -24,11 +26,11 @@ public class VictoryRoomLogic : MinigameLogic
 
     public override void Init()
     {
-        rankDisplay.ShowDisplay();
+        //rankDisplay.ShowDisplay();
 
-        winningPlayer = GameState.players[rankDisplay.playerRankOrder[0]];
+        //winningPlayer = GameState.players[rankDisplay.playerRankOrder[0]];
 
-        winningPlayer.GetComponentInChildren<PlayerInputHandler>().crownBox.SetActive(true);
+        //winningPlayer.GetComponentInChildren<PlayerInputHandler>().crownBox.SetActive(true);
 
         base.Init();
     }
@@ -36,7 +38,8 @@ public class VictoryRoomLogic : MinigameLogic
     public override void CleanUp()
     {
         winningPlayer.GetComponentInChildren<PlayerInputHandler>().crownBox.SetActive(false);
-
+        GameState.ModifierManager.RemoveAllModifiers();
+        GameObject.FindWithTag("ModifierManager").GetComponent<ModifierManager>().RemoveAllModifiers();
         base.CleanUp();
     }
 }

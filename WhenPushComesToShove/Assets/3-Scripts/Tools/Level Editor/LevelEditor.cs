@@ -83,12 +83,6 @@ public class LevelEditor : MonoBehaviour
             //Update stats
             LevelProperties selectedProps = selectedLevel.GetComponent<LevelProperties>();
 
-            //Hazard stats
-            hazardStats = selectedProps.hazards;
-
-            //Enemy stats
-            enemyStats = selectedProps.enemyStats;
-
             levelType = selectedProps.levelType;
 
             //Update the sprite layers to match the selected Level
@@ -338,12 +332,6 @@ public class CustomLevelEditor : Editor
 
             levelProp.enemySpawns = enemySpawns.ToArray();
             enemySpawns.Clear();
-
-            //Check to make sure that there's at least one hazard stat
-            levelProp.hazards = level.hazardStats;
-
-
-            levelProp.enemyStats = level.enemyStats;
 
 
             if (root.name == "")

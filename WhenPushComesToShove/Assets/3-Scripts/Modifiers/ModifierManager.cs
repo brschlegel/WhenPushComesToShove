@@ -24,7 +24,15 @@ public class ModifierManager : MonoBehaviour
                 AddModifier(m);
             }
         }
+        if (modifierPool == null)
+        {
+            Init();
+        }
+       
+    }
 
+    public void Init()
+    {
         //Copy into modifier pool, so we aren't editting actual scriptable object
         modifierPool = new List<ModifierSettings>(modifierPoolSO.modifiers);
     }
@@ -44,12 +52,16 @@ public class ModifierManager : MonoBehaviour
  
     public void RemoveAllModifiers()
     {
-        foreach(BaseModifier mod in modifiers)
+        foreach(Transform child in transform)
         {
+            BaseModifier mod = child.GetComponent<BaseModifier>();
             mod.CleanUp();
             Destroy(mod.gameObject);
 
         }
+        modifiers.Clear();
+        //ReInit to restart game
+        Init();
     }
 
     public void InitMinigame(Transform minigameRoot)
@@ -71,10 +83,6 @@ public class ModifierManager : MonoBehaviour
 
     public List<ModifierSettings> GetRandomModifiers(int num)
     {
-         foreach (LevelProperties p in GameState.pathGenerator.playedLevels)
-                {
-                    Debug.Log("played: " + p.game);
-                }
         List<ModifierSettings> copy = new List<ModifierSettings>(modifierPool);
         List<ModifierSettings> r = new List<ModifierSettings>();
         copy.Shuffle();

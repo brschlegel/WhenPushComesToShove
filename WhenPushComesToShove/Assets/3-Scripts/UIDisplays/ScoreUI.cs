@@ -6,6 +6,8 @@ using TMPro;
 public class ScoreUI : UIDisplay
 {
     public TextMeshProUGUI[] scores = new TextMeshProUGUI[4];
+    public bool displayBasedOnPlayerNum = false;
+    [SerializeField] private Transform[] scoreUIs = new Transform[4];
 
     public void OnEnable()
     {
@@ -14,6 +16,14 @@ public class ScoreUI : UIDisplay
 
     public void Init()
     {
+        if (displayBasedOnPlayerNum)
+        {
+            for (int i = GameState.players.Count; i < PlayerConfigManager.Instance.GetMaxPlayers(); i++)
+            {
+                scoreUIs[i].gameObject.SetActive(false);
+            }
+        }
+
         MinigameData.onScoreAdded += UpdateScore;
     }
 

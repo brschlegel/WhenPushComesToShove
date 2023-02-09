@@ -52,6 +52,9 @@ public class PlayerMovementScript : Move
     //https://www.youtube.com/watch?v=qdskE8PJy6Q&ab_channel=ToyfulGames
     private void FixedUpdate()
     {
+        //Allows us to overwrite move input vector
+        Messenger.SendEvent("MoveInputRequested", new MessageArgs(objectArg: this, vectorArg: moveInputVector ));
+
         if (forceMovementLocks > 0)
         {
             SetMoveInputVector(Vector2.zero);
@@ -63,7 +66,17 @@ public class PlayerMovementScript : Move
         if (aimInputVector == Vector2.zero && unitMove != Vector2.zero && forceAimLocks <=  0)
         {
             player.right = unitMove.normalized;
-            aimTriangle.eulerAngles = new Vector3(fixedX, fixedY, player.transform.eulerAngles.z);
+            if (player.right != new Vector3(-1, 0, 0))
+            {
+                aimTriangle.eulerAngles = new Vector3(fixedX, fixedY, player.transform.eulerAngles.z);
+
+            }
+            //Hard set left D-pad input
+            else
+            {
+                aimTriangle.eulerAngles = new Vector3(fixedX, fixedY, 180);
+
+            }
         }
       
         //Apply the force
@@ -78,6 +91,11 @@ public class PlayerMovementScript : Move
     public void SetMoveInputVector(Vector2 direction)
     {
         moveInputVector = direction;
+    }
+
+    public Vector2 GetMoveInputVector()
+    {
+        return moveInputVector;
     }
 
     /// <summary>

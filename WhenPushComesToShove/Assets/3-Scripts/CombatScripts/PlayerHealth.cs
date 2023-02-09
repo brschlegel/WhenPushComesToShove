@@ -9,6 +9,8 @@ public class PlayerHealth : Health
     [SerializeField] private PlayerCollisions collider;
     [SerializeField] private Transform playerGroundUIRef;
 
+    [SerializeField] private Transform halo;
+
     public UnityEvent onDeath;
     private Material playerMat;
 
@@ -89,11 +91,17 @@ public class PlayerHealth : Health
         collider.tagsToIgnoreCollision.Add("Enemy");
         collider.tagsToIgnoreCollision.Add("Hazard");
 
+        //Enable Halo
+        halo.gameObject.SetActive(true);
+
         onDeath?.Invoke();
     }
 
     public void ResetHealth()
     {
+        //Disable Halo
+        halo.gameObject.SetActive(false);
+
         //Prevent passage through players and enemies
         if (dead)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InvulnerabiltyOnHit : HitHandler
 {
-    [SerializeField] private float timeForInvulnerability = .5f;
+    [SerializeField] private float timeForInvulnerability = .05f;
     [SerializeField] private GameObject hurtboxRef;
     [SerializeField] private Health health;
 

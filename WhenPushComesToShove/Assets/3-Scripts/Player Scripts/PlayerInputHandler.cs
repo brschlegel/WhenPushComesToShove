@@ -32,7 +32,6 @@ public class PlayerInputHandler : MonoBehaviour
     public Action onHeavyShoveComplete;
     public Action onHeavyShoveCharge;
 
-    [HideInInspector] public bool dead = false;
 
     [HideInInspector] public SpriteRenderer sr;
     private Animator anim;
@@ -42,6 +41,9 @@ public class PlayerInputHandler : MonoBehaviour
     public event PlayerEvent onSelect;
 
     public GameObject crownBox;
+
+    private bool buttonMashing = false;
+    private int buttonMashedNum = 0;
 
     // Start is called before the first frame update
     void Awake()

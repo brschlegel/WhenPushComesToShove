@@ -4,7 +4,12 @@ using UnityEngine;
 
 public abstract class EventModifier : BaseModifier
 {
+    //Serializing these values are required to allow the modifiers to be cleaned up
+    [SerializeField]
+    [HideInInspector]
     protected uint eventID;
+    [SerializeField]
+    [HideInInspector]
     protected string key;
 
     public override void Init()

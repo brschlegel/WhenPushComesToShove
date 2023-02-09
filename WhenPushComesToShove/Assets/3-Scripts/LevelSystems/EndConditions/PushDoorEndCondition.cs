@@ -28,7 +28,6 @@ public class PushDoorEndCondition : BaseEndCondition
         {
             PlayerConfigManager.Instance.levelInitRef.lockPlayerSpawn = true;
             this.GetComponent<Animator>().SetTrigger("Opened");
-            Debug.Log("Opened!");
             return true;
         }
 
@@ -78,7 +77,7 @@ public class PushDoorEndCondition : BaseEndCondition
         if (collision.tag == "Player")
         {
             this.GetComponent<Animator>().SetTrigger("Locked");
-            Debug.Log("Locked!");
+
             numOfPlayersInTrigger++;
             playersInTrigger.Add(collision.gameObject);
         }

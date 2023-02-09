@@ -15,6 +15,8 @@ public class AreaDivider : MonoBehaviour
     private Transform areaPrefab;
     [SerializeField]
     private Transform iconPrefab;
+    [SerializeField]
+    private Transform spacerPrefab;
 
     [Header("Parts")]
     public List<Transform> dividers;
@@ -32,6 +34,7 @@ public class AreaDivider : MonoBehaviour
     private List<Color> colors;
 
     private List<Transform> iconObjects;
+    private float barrelYOffset = -.5f;
 
     public void Start()
     {
@@ -58,6 +61,14 @@ public class AreaDivider : MonoBehaviour
             iconObjects.Add(t);
             
         }
+
+        //Place spacers
+        Debug.Log(transform.position);
+        Transform left = Instantiate(spacerPrefab, new Vector2(transform.position.x + (width / 2.0f), transform.position.y + barrelYOffset), Quaternion.identity, transform);
+        left.position = new Vector2(transform.position.x + (width / 2.0f), transform.position.y + barrelYOffset);
+        Transform right = Instantiate(spacerPrefab, new Vector2(transform.position.x - (width / 2.0f), transform.position.y + barrelYOffset), Quaternion.identity, transform);
+        right.position = new Vector2(transform.position.x - (width / 2.0f), transform.position.y + barrelYOffset);
+
         UpdateAreas();
     }
 
@@ -71,7 +82,7 @@ public class AreaDivider : MonoBehaviour
     {   
         for(int i = 0; i < dividers.Count; i++)
         {
-            dividers[i].position = new Vector2(Mathf.Clamp(dividers[i].position.x, transform.position.x - width /2, transform.position.x + width / 2), transform.position.y + height/ 2);
+            dividers[i].position = new Vector2(Mathf.Clamp(dividers[i].position.x, transform.position.x - width /2, transform.position.x + width / 2), transform.position.y + barrelYOffset);
         }
     }
 
@@ -101,7 +112,7 @@ public class AreaDivider : MonoBehaviour
                 point = dividers[i].position;
             }
 
-            areas[i].position = new Vector2(BenMath.Midpoint(point, prevPoint).x, 0);
+            areas[i].position = new Vector2(BenMath.Midpoint(point, prevPoint).x, -.5f);
 
             areas[i].localScale = new Vector3(point.x - prevPoint.x, height, areas[i].localScale.z);
 

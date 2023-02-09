@@ -45,7 +45,7 @@ public class ProjectileMode : MonoBehaviour
     {
         if(rb == null)
             Init();
-
+     
         rb.drag = pDrag * GameState.dragModifier;
         rb.sharedMaterial = pMaterial;
         pHitbox.gameObject.SetActive(true);
@@ -81,6 +81,7 @@ public class ProjectileMode : MonoBehaviour
         rb.drag = sDrag * GameState.dragModifier;
         rb.sharedMaterial = sMaterial;
         DisableHitbox();
+        sourceObject = null;
         onPModeExit?.Invoke();
     }
 
@@ -105,6 +106,11 @@ public class ProjectileMode : MonoBehaviour
     public void AddForce(Vector2 force)
     {
         rb.AddForce(force);
+    }
+
+    public void StopForce()
+    {
+        rb.velocity = Vector2.zero;
     }
 
     private void DisableHitbox()
