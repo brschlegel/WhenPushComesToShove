@@ -13,6 +13,7 @@ public class PlayerAnimBrain : StateBrain
     PlayerChargeState chargeState;
     PlayerHeavyShoveState heavyState;
     PlayAnimState deathState;
+    PlayAnimState leftEmoteState;
     //#endregion
 
     [SerializeField]
@@ -74,6 +75,10 @@ public class PlayerAnimBrain : StateBrain
                     lightState = state;
                     lightState.animName = "Base Layer.AN_Player_LightShove";
                     break;
+                case "leftEmote":
+                    leftEmoteState = state;
+                    leftEmoteState.animName = "Base Layer.AN_Player_ChestHuff";
+                    break;
                 default:
                     Debug.LogError("UNKNOWN ANIM STATE ID: " + state.id);
                     break;
@@ -114,6 +119,10 @@ public class PlayerAnimBrain : StateBrain
 
         deathState.anim = anim;
         deathState.onStateExit += OutDeath;
+
+        leftEmoteState.anim = anim;
+        playerInputHandler.onLeftEmote += OnLeftEmote;
+        playerInputHandler.onLeftEmoteEnd += OutLeftEmote;
 
         currentState = idleState;
         currentState.enabled = true;
@@ -182,6 +191,11 @@ public class PlayerAnimBrain : StateBrain
         ChangeState(idleState);
     }
 
+    private void OutLeftEmote()
+    {
+        ChangeState(idleState);
+    }
+
 
     public void OnHit(HitEvent e)
     {
@@ -219,6 +233,11 @@ public class PlayerAnimBrain : StateBrain
     public void OnHeavyFail()
     {
         ChangeState(idleState);
+    }
+
+    public void OnLeftEmote()
+    {
+        ChangeState(leftEmoteState);
     }
 
    

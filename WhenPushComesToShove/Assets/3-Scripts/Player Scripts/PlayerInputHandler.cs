@@ -31,6 +31,8 @@ public class PlayerInputHandler : MonoBehaviour
     public Action onLightShoveComplete;
     public Action onHeavyShoveComplete;
     public Action onHeavyShoveCharge;
+    public Action onLeftEmote;
+    public Action onLeftEmoteEnd;
 
 
     [HideInInspector] public SpriteRenderer sr;
@@ -44,6 +46,10 @@ public class PlayerInputHandler : MonoBehaviour
 
     private bool buttonMashing = false;
     private int buttonMashedNum = 0;
+
+    public ParticleSystem circleVFX;
+
+    private bool emotesRunning = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -112,6 +118,12 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (onSelect != null && !performingAction && !heavyShoveScript.heavyShoveIsCharging)
             {
+                if (emotesRunning)
+                {
+                    emotesRunning = false;
+                    anim.StopPlayback();
+                }
+
                 LockAction(selectActionCooldown, null);
                 onSelect.Invoke(playerConfig.PlayerIndex);
             }
@@ -121,6 +133,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && !heavyShoveScript.heavyShoveIsCharging && !movementPaused)
             {
+                emotesRunning = false;
                 lightShoveScript.OnLightShoveStart(obj);
             }
             
@@ -130,6 +143,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && !movementPaused)
             {
+                emotesRunning = false;
                 heavyShoveScript.OnHeavyShoveStart(obj);
             }
         }
@@ -138,6 +152,12 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction)
             {
+                if (emotesRunning)
+                {
+                    emotesRunning = false;
+                    anim.StopPlayback();
+                }
+
                 if (heavyShoveScript.heavyShoveIsCharging)
                 {
                     heavyShoveScript.InterruptCharge();
@@ -152,6 +172,39 @@ public class PlayerInputHandler : MonoBehaviour
             if (mover != null)
             {
                 mover.SetAimInputVector(obj.ReadValue<Vector2>());
+            }
+        }
+        //Emotes
+        else if (obj.action.name == controls.PlayerMovement.EmoteDown.name)
+        {
+            if (circleVFX != null)
+            {
+                circleVFX.gameObject.SetActive(true);
+            }
+        }
+        else if (obj.action.name == controls.PlayerMovement.EmoteLeft.name)
+        {
+            if (!performingAction)
+            {
+                if (emotesRunning)
+                {
+                    if (onLeftEmoteEnd != null)
+                    {
+                        onLeftEmoteEnd.Invoke();
+                        emotesRunning = false;
+                    }
+
+                }
+                else
+                {
+                    if (onLeftEmote != null)
+                    {
+                        onLeftEmote.Invoke();
+                        emotesRunning = true;
+                    }
+                }
+
+                LockAction(selectActionCooldown, null);
             }
         }
     }
