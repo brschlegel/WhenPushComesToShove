@@ -9,11 +9,10 @@ public class MoveBetweenPoints : MonoBehaviour
     private Vector2 firstPoint;
     [SerializeField]
     private Vector2 secondPoint;
-
-    Vector3 initialPos;
-
     [SerializeField]
     private float duration;
+
+    private Vector3 initialPos;
 
     // Start is called before the first frame update
     void Start()

@@ -8,6 +8,7 @@ public class TagFilterHitHandler : HitHandler
     public List<string> tagsToFilter;
     public event OnHitWithTag onHitWithTag;
     public HitHandler fallbackHandler;
+    
     public override void ReceiveHit(HitEvent e)
     {
         foreach (string s in tagsToFilter)

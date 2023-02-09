@@ -5,53 +5,61 @@ using UnityEngine;
 public delegate void ObjectSpawned(Transform t);
 public abstract class ObjectSpawner : MonoBehaviour
 {
-    [SerializeField]
-    protected GameObject objectToSpawn;
     public Transform spawnedObjectParent;
-    [SerializeField]
-    private bool repeating;
-    [SerializeField]
-    protected int numSpawnedLimit = 100;
-
     public event ObjectSpawned onObjectSpawned;
     public float spawnDelay;
-    void Start()
-    {
+       
+    [SerializeField]
+    protected int numSpawnedLimit = 100;
+    [SerializeField]
+    protected GameObject objectToSpawn;
 
-    }
-
-    public void InvokeOnObjectSpawned(Transform t)
-    {
-        onObjectSpawned?.Invoke(t);
-    }
-
-    public abstract void Spawn();
-
-    private IEnumerator CoroutineSpawnWithDelay()
-    {
-        yield return new WaitForSeconds(spawnDelay);
-        Spawn();
-        if (repeating)
-        {
-            SpawnWithDelay();
-        }
-
-    }
-
-    public void SpawnWithDelay()
-    {
-        CoroutineManager.StartGlobalCoroutine(CoroutineSpawnWithDelay());
-    }
-
-    public void SpawnWithoutDelay()
-    {
-        Spawn();
-    }
+    [SerializeField]
+    private bool repeating;
 
     public GameObject ObjectToSpawn
     {
         get { return objectToSpawn; }
         set { objectToSpawn = value; }
+    }
+
+
+    public abstract void Spawn();
+
+    /// <summary>
+    /// Invokes the onObjectSpawned event (Children cannot directly invoke the event)
+    /// </summary>
+    /// <param name="t">Transform</param>
+    protected void InvokeOnObjectSpawned(Transform t)
+    {
+        onObjectSpawned?.Invoke(t);
+    }
+
+    /// <summary>
+    /// Calls the spawn method with the spawn delay variable
+    /// </summary>
+    public void SpawnWithDelay()
+    {
+        CoroutineManager.StartGlobalCoroutine(CoroutineSpawnWithDelay());
+    }
+
+    /// <summary>
+    /// Calls the spawn method without any delay
+    /// </summary>
+    public void SpawnWithoutDelay()
+    {
+        Spawn();
+    }
+
+    /// <summary>
+    /// Deletes all spawned objects
+    /// </summary>
+    public void CleanUpSpawnedObjects()
+    {
+        for (int i = spawnedObjectParent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(spawnedObjectParent.GetChild(i).gameObject);
+        }
     }
 
     private void Update()
@@ -62,11 +70,14 @@ public abstract class ObjectSpawner : MonoBehaviour
         }
     }
 
-    public void CleanUpSpawnedObjects()
+    private IEnumerator CoroutineSpawnWithDelay()
     {
-        for (int i = spawnedObjectParent.childCount - 1; i >= 0; i--)
+        yield return new WaitForSeconds(spawnDelay);
+        Spawn();
+        if (repeating)
         {
-            Destroy(spawnedObjectParent.GetChild(i).gameObject);
+            SpawnWithDelay();
         }
+
     }
 }
