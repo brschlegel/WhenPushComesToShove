@@ -102,7 +102,7 @@ MonoBehaviour:
   endingUIDisplay: {fileID: 6112167871609704733}
   endCondition: {fileID: 9204035307898263628}
   data: {fileID: 6255664125825064475}
-  canPlayersTakeDamage: 1
+  canPlayersTakeDamage: 0
   pauseMovementAtStart: 1
   spawners:
   - {fileID: 652426295647075861}
@@ -4817,8 +4817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5119f601983714e8664f9b2847511c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazards: []
-  enemyStats: []
   playerSpawns:
   - {fileID: 7350854049534786834}
   - {fileID: 2902739378067525107}
@@ -4827,9 +4825,7 @@ MonoBehaviour:
   enemySpawns: []
   levelType: 2
   game: 5
-  waveManager: {fileID: 0}
   teamLevel: 0
-  enemySpawnProps: []
 --- !u!156049354 &932582951808698557
 Grid:
   m_ObjectHideFlags: 0
