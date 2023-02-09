@@ -21,7 +21,7 @@ public class ModifierSelectionLogic : MinigameLogic
 
     public override void StartGame()
     {
-        StartCoroutine(Introduction());
+        StartCoroutine(selector.Introduction());
         base.StartGame();
     }
 
@@ -29,35 +29,21 @@ public class ModifierSelectionLogic : MinigameLogic
     {
         ((ModifierSelectionCondition)endCondition).logic = this;
         selectedModifier = null;
-
-        
-        selector.Init();
         modifierManager = GameState.ModifierManager;
         modifiers = modifierManager.GetRandomModifiers(numberOfModifiers);
-        selector.onSelection += OnSelectionFinished;
 
-        //Setting up divider
-        selector.areaDivider.iconAnimations = new List<RuntimeAnimatorController>();
-        selector.areaDivider.iconSprites = new List<Sprite>();
+        //Getting icons and animations for the areas
+        List<Sprite> modifierSprites = new List<Sprite>();
+        List<RuntimeAnimatorController> modifierAnimations = new List<RuntimeAnimatorController>();
         for (int i = 0; i < numberOfModifiers; i++)
         {
-            selector.areaDivider.iconSprites.Add(modifiers[i].modifierPrefab.GetComponent<BaseModifier>().icon);
-            selector.areaDivider.iconAnimations.Add(modifiers[i].modifierPrefab.GetComponent<BaseModifier>().iconAnimator);
-        }
-        selector.areaDivider.Init();
-
-        //Set parts and disable them for introduction
-        areas = selector.areaDivider.areas;
-        foreach(Transform area in areas)
-        {
-            area.gameObject.SetActive(false);
+            BaseModifier mod = modifiers[i].modifierPrefab.GetComponent<BaseModifier>();
+            modifierSprites.Add(modifiers[i].modifierPrefab.GetComponent<BaseModifier>().icon);
+            modifierAnimations.Add(modifiers[i].modifierPrefab.GetComponent<BaseModifier>().iconAnimator);
         }
 
-        barrels = new List<Transform>(selector.areaDivider.dividers);
-
-
-        
-
+        selector.Init(modifierSprites, modifierAnimations);
+        selector.onSelection += OnSelectionFinished;
         base.Init();
     }
 
@@ -79,17 +65,4 @@ public class ModifierSelectionLogic : MinigameLogic
         EndGame();
     }
 
-    public IEnumerator Introduction()
-    {
-        //Areas
-        yield return new WaitForSeconds(.5f);
-        //Barrels
-
-        yield return new WaitForSeconds(.5f);
-        //Picker
-
-        yield return new WaitForSeconds(.5f);
-        //Make Selection
-        selector.BeginSelection();
-    }
 }
