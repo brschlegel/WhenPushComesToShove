@@ -31,6 +31,8 @@ public class PlayerInputHandler : MonoBehaviour
     public Action onLightShoveComplete;
     public Action onHeavyShoveComplete;
     public Action onHeavyShoveCharge;
+    public Action onLeftEmote;
+    public Action onLeftEmoteEnd;
 
 
     [HideInInspector] public SpriteRenderer sr;
@@ -88,14 +90,6 @@ public class PlayerInputHandler : MonoBehaviour
         anim.runtimeAnimatorController = config.PlayerAnimations;
         sr.material = config.Outline;
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
-    }
-
-    private void Update()
-    {
-        if (emotesRunning)
-        {
-            PlayChargeAnimation();
-        }
     }
 
     /// <summary>
@@ -194,14 +188,20 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 if (emotesRunning)
                 {
-                    anim.Play("Base Layer.AN_Player_Idle", -1);
-                    emotesRunning = false;
+                    if (onLeftEmoteEnd != null)
+                    {
+                        onLeftEmoteEnd.Invoke();
+                        emotesRunning = false;
+                    }
 
                 }
                 else
                 {
-                    anim.Play("Base Layer.AN_Player_ChestHuff", -1);
-                    emotesRunning = true;
+                    if (onLeftEmote != null)
+                    {
+                        onLeftEmote.Invoke();
+                        emotesRunning = true;
+                    }
                 }
 
                 LockAction(selectActionCooldown, null);
@@ -215,11 +215,6 @@ public class PlayerInputHandler : MonoBehaviour
     public void ClearSelectAction()
     {
         onSelect = null;
-    }
-
-    private void PlayChargeAnimation()
-    {
-        anim.Play("Base Layer.AN_Player_ChestHuff", -1);
     }
 
     #region LockActions

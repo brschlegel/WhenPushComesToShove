@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2033113999610898427}
   - component: {fileID: 6359499471603373907}
   - component: {fileID: 8675750944055887378}
+  - component: {fileID: 3324250806599403714}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -179,6 +180,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: light
+  anim: {fileID: 0}
+  animName: 
+--- !u!114 &3324250806599403714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624796887541275756}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e1fd3a5989bcc4994342a825a24cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: leftEmote
   anim: {fileID: 0}
   animName: 
 --- !u!1 &910752576094783432
