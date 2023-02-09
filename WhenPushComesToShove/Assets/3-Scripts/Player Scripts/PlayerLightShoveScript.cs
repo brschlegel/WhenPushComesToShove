@@ -5,19 +5,16 @@ using System;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
+//Handles the light shove action
 public class PlayerLightShoveScript : MonoBehaviour
 {
     public Action onLightShove;
-
     public float speedDecrease = .5f;
-
     public Hitbox hitbox;
-    private Collider2D collider;
     public float cooldown;
     public float hitBoxCooldown = .2f;
 
-    //private SpriteRenderer sr;
-
+    private Collider2D collider;
     private PlayerMovementScript mover;
     private PlayerInputHandler handler;
 
@@ -25,8 +22,6 @@ public class PlayerLightShoveScript : MonoBehaviour
     {
         collider = hitbox.gameObject.GetComponent<Collider2D>();
         collider.enabled = false;
-        //sr = hitbox.gameObject.GetComponent<SpriteRenderer>();
-        //sr.enabled = false;
 
         mover = GetComponent<PlayerMovementScript>();
         handler = GetComponent<PlayerInputHandler>();
