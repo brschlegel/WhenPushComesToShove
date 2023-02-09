@@ -248,7 +248,6 @@ public class LevelEditor : MonoBehaviour
         selectedLevel = null;
         hazardStats = null;
         enemyStats = null;
-        GetComponent<WaveManager>().waveDelays.Clear();
 
     }
 }
