@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SpikeGroup : MonoBehaviour
 {
-    private List<Spikes> spikes;
-    
     [HideInInspector]
     public SpikeState groupState;
+
+    private List<Spikes> spikes;
     // Start is called before the first frame update
     void Start()
     {

@@ -5,19 +5,20 @@ using UnityEngine;
 public delegate void emptyDelegate();
 public class Explosion : MonoBehaviour
 {
+    public event emptyDelegate onExplode;
+    public float explosionDuration;
+
+    [Tooltip("Top level object to actually be exploded")]
     [SerializeField]
     private GameObject rootObject;
     [SerializeField]
     private SpriteRenderer rootSprite;
-    
-    public float explosionDuration;
-    private List<Hitbox> explosionHitboxes;
     [SerializeField]
     private GameObject vfxPrefab;
     [SerializeField]
     private float vfxScale = 1;
 
-    public event emptyDelegate onExplode;
+    private List<Hitbox> explosionHitboxes;
 
     // Start is called before the first frame update
     void Start()

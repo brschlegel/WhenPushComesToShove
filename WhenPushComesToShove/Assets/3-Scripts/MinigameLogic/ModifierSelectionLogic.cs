@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class ModifierSelectionLogic : MinigameLogic
 {
-    [SerializeField]
-    private AreaSelector selector;
-
-    private ModifierManager modifierManager;
-    private List<ModifierSettings> modifiers;
-    
     [HideInInspector]
     public ModifierSettings selectedModifier;
+
+    [SerializeField]
+    private AreaSelector selector;
+    private ModifierManager modifierManager;
+    private List<ModifierSettings> modifiers;
     private int numberOfModifiers = 3;
 
     //Parts
@@ -30,6 +29,8 @@ public class ModifierSelectionLogic : MinigameLogic
         ((ModifierSelectionCondition)endCondition).logic = this;
         selectedModifier = null;
         modifierManager = GameState.ModifierManager;
+
+        //Grab potential modifiers
         modifiers = modifierManager.GetRandomModifiers(numberOfModifiers);
 
         //Getting icons and animations for the areas
@@ -56,10 +57,13 @@ public class ModifierSelectionLogic : MinigameLogic
     private void OnSelectionFinished(int index)
     {
         selectedModifier = modifiers[index];
+        //Update ModifierManager
         modifierManager.AddModifier(modifiers[index]);
         modifierManager.RemoveModifierFromPool(modifiers[index]);
+        //Update Path
         BaseModifier modifierScript = selectedModifier.modifierPrefab.GetComponent<BaseModifier>();
         GameState.pathGenerator.PopulateAvailableLevels(modifierScript.minigamesAffected);
+        //Update UI
         ((ModifierSelectedUIDisplay)endingUIDisplay).modifier = modifierScript;
         selector.gameObject.SetActive(false);
         EndGame();

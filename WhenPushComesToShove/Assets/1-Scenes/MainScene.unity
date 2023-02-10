@@ -322,8 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6609a40c71c85a54ebcede2d70b2ff42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierPoolSO: {fileID: 11400000, guid: caf1f156d9cc7cf45b64304a625d617c, type: 2}
-  debugList: {fileID: 11400000, guid: 67f770b2453a3b64fb7ee84a08e9ff22, type: 2}
+  modifierPoolSO: {fileID: 11400000, guid: 261eae8a30d0b0241870090feb9319ba, type: 2}
+  debugList: {fileID: 0}
 --- !u!4 &514692959
 Transform:
   m_ObjectHideFlags: 0
@@ -397,6 +397,11 @@ MonoBehaviour:
   - {fileID: 4203862929834135654, guid: 6e97d548ff092234ebcd26b5356f39f6, type: 3}
   - {fileID: 4203862929834135654, guid: e259840063dbe294cbdeafdefa7dfedd, type: 3}
   - {fileID: 4203862929834135654, guid: 8ed459300609d9440bf87bcf536468a9, type: 3}
+  playerCircleVFXColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
   playerUI:
   - {fileID: 0}
   - {fileID: 0}
@@ -892,8 +897,7 @@ MonoBehaviour:
   playedLevels: []
   numOfGames: 4
   numOfRooms: 0
-  path:
-  - {fileID: 805013608764250822, guid: d33d8fc8c691af7419205acae4faa370, type: 3}
+  path: []
 --- !u!4 &1589640427
 Transform:
   m_ObjectHideFlags: 0
@@ -1189,6 +1193,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1a9a5e8ecb55b414fa099ccd81324e5e, type: 3}
   - {fileID: 21300000, guid: abdeea497bd1c8d42813950b8f80c3db, type: 3}
   - {fileID: 21300000, guid: bef3a75adbdd8e94cab298bb0ead4e35, type: 3}
+  playerColors:
+  - {r: 1, g: 0.09411765, b: 0, a: 1}
+  - {r: 0, g: 0.91764706, b: 1, a: 1}
+  - {r: 0.07058824, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.92156863, b: 0, a: 1}
 --- !u!4 &2086439675
 Transform:
   m_ObjectHideFlags: 0

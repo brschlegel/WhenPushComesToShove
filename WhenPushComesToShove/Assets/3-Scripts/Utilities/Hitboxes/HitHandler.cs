@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//Right now we are passing around the entire event as its likely we will want data from both the hitbox and the hurtbox when determining what to do with the data in the handler. 
-//If we decide this is too bloated to pass around we can look at slimming it down
+//RProcesses HitEvents for either a hitbox or a hurtbox
+//Technically only one per hurtbox/hitbox, but HitEventSplitter can get around that
 public abstract class HitHandler : MonoBehaviour 
 {
     public abstract void ReceiveHit(HitEvent e);
