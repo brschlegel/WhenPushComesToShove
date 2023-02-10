@@ -5,12 +5,11 @@ using UnityEngine;
 public enum SpikeState {Off, Threatening, On}
 public class Spikes : MonoBehaviour
 {
-
     public bool startOn = false;
     [HideInInspector]
     public SpikeState state;
+  
     private Animator anim;
-
     private Hitbox hitbox;
     // Start is called before the first frame update
     void Start()

@@ -43,6 +43,7 @@ public class PlayerInputHandler : MonoBehaviour
     public event PlayerEvent onSelect;
 
     public GameObject crownBox;
+    public Transform sword;
 
     private bool buttonMashing = false;
     private int buttonMashedNum = 0;

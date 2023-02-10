@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Coroutines will stop execution if the monobehaviour it was started on is destroyed OR disabled
+//The CoroutineManager singleton allows us to create global coroutines from any monobehaviour
 public class CoroutineManager : MonoBehaviour
 {
 

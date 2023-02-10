@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class HitEvent
 {
     public Hitbox hitbox;
@@ -14,6 +15,9 @@ public class HitEvent
 
 }
 
+//Singleton to handle all hitbox hurtbox overlaps
+//Banks every hit event, then at end of frame send events out based on ownership and priority
+//Hurtbox must have a hithandler to process a hit event, a hitbox optionally can have one
 public class HitboxManager : MonoBehaviour
 {
     static public HitboxManager instance;
@@ -46,30 +50,32 @@ public class HitboxManager : MonoBehaviour
                 HitEvent currentEvent = null;
                 foreach(HitEvent e in hitEvents[owner])
                 {
-                    //Check ownership
+                    //If hurtbox and hitbox have same owner, do not send event
                     if(e.hurtbox.owner != null && e.hurtbox.owner == e.hitbox.owner)
                     {
                         continue;
                     }
-
+                    //If the hitbox or hurtbox ignores the other's owner, do not send event
                     if(e.hitbox.OwnersToIgnore.Contains(e.hurtbox.owner) || e.hurtbox.OwnersToIgnore.Contains(e.hitbox.owner))
                     {
                         continue;
                     }
-                    //Check priority
+                    //Check hurtbox priority
                     if(currentEvent == null || currentEvent.hurtbox.priority < e.hurtbox.priority)
                     {
                         currentEvent = e;
                     }
 
-                    //Check hitbox priority
+                    //Check hitbox priority, only relevant if current best event and event being checked have same hurtbox
                     if(currentEvent.hurtbox == e.hurtbox && e.hitbox.priority > currentEvent.hitbox.priority)
                     {
                         currentEvent = e;
                     }
                 }
+                //If we have an event to send...
                 if(currentEvent != null)
                 {
+                    //Send it
                     currentEvent.hurtbox.handler.ProcessHit(currentEvent);
                     if(currentEvent.hitbox.handler != null)
                     {
