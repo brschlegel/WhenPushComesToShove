@@ -301,12 +301,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f380cdea368fd4cad71e12a71ef5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMovementAtStart: 1
   startingUIDisplay: {fileID: 4831185173743466446}
   endingUIDisplay: {fileID: 5031969165885728834}
   endCondition: {fileID: 2171664408987911969}
   data: {fileID: 709529347168073206}
   canPlayersTakeDamage: 1
-  pauseMovementAtStart: 1
   spikeGroups:
   - {fileID: 453466666918981274}
   - {fileID: 766934434941344144}
@@ -316,6 +316,39 @@ MonoBehaviour:
   respawner: {fileID: 182331866953112179}
   timeToThreaten: 4
   timeToActivateFromThreaten: 2
+  respawnerDelayByTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1.7061977
+      inSlope: -0.1621062
+      outSlope: -0.1621062
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.09544909
+    - serializedVersion: 3
+      time: 1
+      value: 0.5
+      inSlope: 0.19501726
+      outSlope: 0.19501726
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.17580867
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1805791060
 GameObject:
   m_ObjectHideFlags: 0
