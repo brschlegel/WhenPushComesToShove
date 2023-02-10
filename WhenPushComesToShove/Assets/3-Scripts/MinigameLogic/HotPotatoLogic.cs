@@ -6,7 +6,6 @@ public class HotPotatoLogic : MinigameLogic
 {
     [SerializeField]
     private ObjectSpawnerRandomLocations spawner;
-
     [Header("RampSettings")]
     [SerializeField]
     private float startBombSpawnInterval;
@@ -35,7 +34,7 @@ public class HotPotatoLogic : MinigameLogic
                 Transform winner = ((LastManStandingEndCondition)endCondition).winner;
 
                 PlayerConfiguration config = winner.GetComponentInChildren<PlayerInputHandler>().playerConfig;
-                //Assign Point
+                //Assign point to let the system know who won
                 data.AddScoreForTeam(config.TeamIndex, 1);
 
                 ((PlayerWinUIDisplay)endingUIDisplay).winnerName = GameState.playerNames[config.PlayerIndex];

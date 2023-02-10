@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Respawner : MonoBehaviour
 {
-
     public float spawnDelay = 1.0f;
-    private Dictionary<Transform, bool> respawning;
     public event PlayerEvent onDetectDeath;
     public event PlayerEvent onRespawn;
+
+    private Dictionary<Transform, bool> respawning;
 
     // Start is called before the first frame update
     void Start()

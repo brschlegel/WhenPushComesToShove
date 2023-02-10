@@ -14,6 +14,7 @@ public class VictoryRoomLogic : MinigameLogic
     private void OnEnable()
     {
         startingUIDisplay.ShowDisplay();
+        endCondition.Init();
     }
 
     public void Update()
@@ -37,6 +38,8 @@ public class VictoryRoomLogic : MinigameLogic
 
     public override void CleanUp()
     {
+        GameState.lastGameWinnerIndex = rankDisplay.playerRankOrder[0];
+        winningPlayer = GameState.players[rankDisplay.playerRankOrder[0]];
         winningPlayer.GetComponentInChildren<PlayerInputHandler>().crownBox.SetActive(false);
         GameState.ModifierManager.RemoveAllModifiers();
         GameObject.FindWithTag("ModifierManager").GetComponent<ModifierManager>().RemoveAllModifiers();

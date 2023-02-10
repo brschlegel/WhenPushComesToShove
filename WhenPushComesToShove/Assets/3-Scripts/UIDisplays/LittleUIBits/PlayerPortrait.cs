@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerPortrait : MonoBehaviour
 {
-   public Image portrait;
-   public RawImage checkmark;
-   private bool ready = false;
-   private bool visible = false;
+    public Image portrait;
+    public RawImage checkmark;
+    public int playerIndex = -1;
+    private bool ready = false;
+    private bool visible = false;
     [SerializeField] private Transform crown;
 
     public void OnDisable()
