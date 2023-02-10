@@ -5,11 +5,9 @@ using UnityEngine;
 public delegate void RetrieveIndex(int index);
 public class AreaSelector : MonoBehaviour
 {
-    [HideInInspector]
-    public AreaDivider areaDivider;
+    public event RetrieveIndex onSelection;
     [SerializeField]
     private Rigidbody2D picker;
-    public event RetrieveIndex onSelection;
     [SerializeField]
     private float forceMin;
     [SerializeField]
@@ -18,15 +16,25 @@ public class AreaSelector : MonoBehaviour
     private float stopThreshold;
 
     private int runningFrames;
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (areaDivider == null)
-        {
-            Init();
-        }
-    }
+    private AreaDivider areaDivider;
+    private DividerParents dividerParents;
 
+    private float elementIntroDelay = 1;
+
+    public void Init(List<Sprite> iconSprites, List<RuntimeAnimatorController> controllers)
+    {
+        areaDivider = GetComponentInChildren<AreaDivider>();
+        areaDivider.Init(iconSprites, controllers);
+        dividerParents = areaDivider.Parts;
+        //Set all parts disabled for introduction
+        dividerParents.areaParent.gameObject.SetActive(false);
+        dividerParents.barrelParent.gameObject.SetActive(false);
+        dividerParents.iconParent.gameObject.SetActive(false);
+        picker.gameObject.SetActive(false);
+
+        picker.position = new Vector2(picker.position.x, areaDivider.transform.position.y - areaDivider.height/3);
+        runningFrames = 0;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -56,18 +64,31 @@ public class AreaSelector : MonoBehaviour
 
     }
 
-    public void Init()
-    {
-        areaDivider = GetComponentInChildren<AreaDivider>();
-        Debug.Log("Area Divider Y Pos: " + areaDivider.transform.position.y + " Area Divider Half Height: " + areaDivider.height / 2);
-        picker.position = new Vector2(picker.position.x, areaDivider.transform.position.y - areaDivider.height/3);
-        runningFrames = 0;
-    }
-
     public void BeginSelection()
     {
         picker.AddForce(new Vector2(Random.Range(forceMin, forceMax), 0));
         runningFrames = 1;
+    }
+
+    public IEnumerator Introduction()
+    {
+        yield return new WaitForSeconds(elementIntroDelay);
+
+        //Areas and icons
+        dividerParents.areaParent.gameObject.SetActive(true);
+        dividerParents.iconParent.gameObject.SetActive(true);
+        yield return new WaitForSeconds(elementIntroDelay);
+
+        //Barrels
+        dividerParents.barrelParent.gameObject.SetActive(true);
+        yield return new WaitForSeconds(elementIntroDelay);
+
+        //Picker
+        picker.gameObject.SetActive(true);
+        yield return new WaitForSeconds(elementIntroDelay);
+        
+        //Make Selection
+        BeginSelection();
     }
 
     private void MakeSelection()
