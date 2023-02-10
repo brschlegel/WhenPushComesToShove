@@ -485,11 +485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59acb9c8c33a95d4fa4b0a419f666bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootToSpawn: {fileID: 11400000, guid: 6c6d38d5595cbaf40930c35ca4371a69, type: 2}
-  avaliableLoot: []
-  droppedLoot: []
-  lootRadius: 5
-  timeBetweenSpawns: 6
 --- !u!4 &860583491
 Transform:
   m_ObjectHideFlags: 0
@@ -698,9 +693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dc335f19c71104cb256f6bae959eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allEnemies:
-  - {fileID: 999011918721937567, guid: 6f6bae884535d794987296190dee6baa, type: 3}
-  - {fileID: 1691551635500606957, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
 --- !u!4 &1206950099
 Transform:
   m_ObjectHideFlags: 0
@@ -895,9 +887,9 @@ MonoBehaviour:
   victoryRoom: {fileID: 6254306470328373913, guid: d7ab7802ad9eb7b40bbe132402cfe546, type: 3}
   availableLevels: []
   playedLevels: []
-  numOfGames: 4
-  numOfRooms: 0
   path: []
+  numOfRooms: 0
+  numOfGames: 4
 --- !u!4 &1589640427
 Transform:
   m_ObjectHideFlags: 0
