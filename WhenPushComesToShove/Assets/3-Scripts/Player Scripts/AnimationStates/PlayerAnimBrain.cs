@@ -196,6 +196,7 @@ public class PlayerAnimBrain : StateBrain
         if (currentState != deathState)
         {
             ChangeState(hitState);
+            playerInputHandler.onLeftEmoteEnd.Invoke();
         }
     }
 

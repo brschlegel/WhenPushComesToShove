@@ -12,6 +12,7 @@ public class PlayerConfigManager : MonoBehaviour
     public Material[] playerOutlines = new Material[4];
     public Sprite[] playerPortraits = new Sprite[4];
     public Color[] playerColors = new Color[4];
+    public Color[] playerCircleVFXColors = new Color[4];
 
     [HideInInspector] public InitLevel levelInitRef;
 

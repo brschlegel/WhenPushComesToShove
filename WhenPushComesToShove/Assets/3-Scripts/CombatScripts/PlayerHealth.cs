@@ -56,6 +56,9 @@ public class PlayerHealth : Health
         //Log death
         LoggingInfo.instance.AddPlayerDeath(playerInputRef.playerConfig.PlayerIndex, source);
 
+        //Interrupt Charge
+        playerInputRef.heavyShoveScript.InterruptCharge();
+
         playerInputRef.sr.color = new Color(playerInputRef.sr.color.r, playerInputRef.sr.color.g, playerInputRef.sr.color.b, .3f);
 
         dead = true;

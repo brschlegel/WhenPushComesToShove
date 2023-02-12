@@ -18,6 +18,8 @@ public class LobbyLogic : MinigameLogic
 
     public override void Init()
     {
+        startingUIDisplay.ShowDisplay();
+
         if (GameState.players.Count > 0 && GameState.lastGameWinnerIndex != -1)
         {
             PlayerComponentReferences references = GameState.players[GameState.lastGameWinnerIndex].GetComponent<PlayerComponentReferences>();

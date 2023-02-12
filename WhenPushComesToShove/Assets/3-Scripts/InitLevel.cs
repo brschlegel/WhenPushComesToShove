@@ -15,7 +15,7 @@ public class InitLevel : MonoBehaviour
     [SerializeField] private bool initOnStart = true;
     [SerializeField] private bool spawnPlayerUI = false;
     [SerializeField] private ParticleSystem[] playerSpawnAnim = new ParticleSystem[4];
-    [SerializeField] private Color[] playerCircleVFXColors = new Color[4];
+    //[SerializeField] private Color[] playerCircleVFXColors = new Color[4];
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +49,8 @@ public class InitLevel : MonoBehaviour
 
         //Intialize Player and Circle VFX
         handler.InitializePlayer(playerConfigs[index]);
-        var main = references.circleVFX.main;
-        main.startColor = playerCircleVFXColors[index];
+        //var main = references.circleVFX.main;
+        //main.startColor = playerCircleVFXColors[index];
         Instantiate(playerSpawnAnim[index], playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
 
         //Assign Ground UI Colors

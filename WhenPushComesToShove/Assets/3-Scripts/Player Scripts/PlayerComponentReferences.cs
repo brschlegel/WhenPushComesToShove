@@ -12,5 +12,5 @@ public class PlayerComponentReferences : MonoBehaviour
 
     public Transform GroundUIRef;
 
-    public ParticleSystem circleVFX;
+    public GameObject circleVFX;
 }
