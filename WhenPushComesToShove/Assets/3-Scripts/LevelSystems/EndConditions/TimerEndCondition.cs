@@ -19,4 +19,14 @@ public class TimerEndCondition : BaseEndCondition
     {
         return timerDisplay.timeOut;
     }
+
+    public float MaxTime
+    {
+        get{return timeBeforeEnd;}
+    }
+
+    public float CurrentTimeLeft
+    {
+        get{return timerDisplay.timer;}
+    }
 }

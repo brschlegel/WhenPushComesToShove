@@ -6,19 +6,16 @@ using UnityEngine;
 public class InitLevel : MonoBehaviour
 {
     public Transform[] playerSpawns;
-    [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private bool initOnStart = true;
+    public GameObject[] playerUI = new GameObject[4];
+    public Color[] playerHitboxColors = new Color[4];
 
     [HideInInspector] public bool lockPlayerSpawn = false;
 
+    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private bool initOnStart = true;
     [SerializeField] private bool spawnPlayerUI = false;
-
     [SerializeField] private ParticleSystem[] playerSpawnAnim = new ParticleSystem[4];
-
-    [SerializeField] private Color[] playerCircleVFXColors = new Color[4];
-
-    public GameObject[] playerUI= new GameObject[4];
-    public Color[] playerHitboxColors = new Color[4];
+    //[SerializeField] private Color[] playerCircleVFXColors = new Color[4];
 
     // Start is called before the first frame update
     void Start()
@@ -37,30 +34,27 @@ public class InitLevel : MonoBehaviour
     /// </summary>
     public void SpawnPlayer(int index)
     {
+        //Create Player
         PlayerConfiguration[] playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs().ToArray();
         GameObject player = Instantiate(playerPrefab, playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
         GameState.players.Add(player.transform);
 
+        //Find health bar and add it to GameState
         HealthBar bar = player.GetComponentInChildren<HealthBar>();
         GameState.playerHealthBars.Add(bar);
         bar.gameObject.SetActive(false);
 
+        PlayerComponentReferences references = player.GetComponent<PlayerComponentReferences>();
         PlayerInputHandler handler = player.GetComponentInChildren<PlayerInputHandler>();
+
+        //Intialize Player and Circle VFX
         handler.InitializePlayer(playerConfigs[index]);
-        var main = handler.circleVFX.main;
-        main.startColor = playerCircleVFXColors[index];
+        //var main = references.circleVFX.main;
+        //main.startColor = playerCircleVFXColors[index];
         Instantiate(playerSpawnAnim[index], playerSpawns[index].position, playerSpawns[index].rotation, gameObject.transform);
 
-        //Assign Hitbox Colors
-        Hitbox[] hitboxes = player.GetComponentsInChildren<Hitbox>();
-
-        foreach (Hitbox h in hitboxes)
-        {
-            h.gameObject.GetComponent<SpriteRenderer>().color = playerHitboxColors[index];
-        }
-
         //Assign Ground UI Colors
-        SpriteRenderer[] srs = player.transform.GetChild(9).GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer[] srs = references.GroundUIRef.GetComponentsInChildren<SpriteRenderer>();
 
         foreach (SpriteRenderer sr in srs)
         {

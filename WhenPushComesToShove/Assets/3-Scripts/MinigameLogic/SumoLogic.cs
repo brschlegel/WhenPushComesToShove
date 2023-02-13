@@ -12,6 +12,8 @@ public class SumoLogic : MinigameLogic
     private float timeToThreaten;
     [SerializeField]
     private float timeToActivateFromThreaten;
+    [SerializeField]
+    private AnimationCurve respawnerDelayByTime;
 
     private int nextGroupIndex;
     // Start is called before the first frame update
@@ -42,6 +44,8 @@ public class SumoLogic : MinigameLogic
     {
         if (gameRunning)
         {
+            TimerEndCondition timer = (TimerEndCondition)endCondition;
+            respawner.spawnDelay = respawnerDelayByTime.Evaluate(1 - (timer.CurrentTimeLeft / timer.MaxTime));
             if (endCondition.TestCondition())
             {
                 int winnerIndex = data.GetHighestScoreIndex();

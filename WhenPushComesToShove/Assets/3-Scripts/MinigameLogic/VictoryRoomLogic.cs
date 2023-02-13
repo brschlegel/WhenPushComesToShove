@@ -31,7 +31,7 @@ public class VictoryRoomLogic : MinigameLogic
 
         //winningPlayer = GameState.players[rankDisplay.playerRankOrder[0]];
 
-        //winningPlayer.GetComponentInChildren<PlayerInputHandler>().crownBox.SetActive(true);
+        //winningPlayer.GetComponent<PlayerComponentReferences>().crownIcon.gameObject.SetActive(true);
 
         base.Init();
     }
@@ -40,7 +40,7 @@ public class VictoryRoomLogic : MinigameLogic
     {
         GameState.lastGameWinnerIndex = rankDisplay.playerRankOrder[0];
         winningPlayer = GameState.players[rankDisplay.playerRankOrder[0]];
-        winningPlayer.GetComponentInChildren<PlayerInputHandler>().crownBox.SetActive(false);
+        //winningPlayer.GetComponent<PlayerComponentReferences>().crownIcon.gameObject.SetActive(false);
         GameState.ModifierManager.RemoveAllModifiers();
         GameObject.FindWithTag("ModifierManager").GetComponent<ModifierManager>().RemoveAllModifiers();
         base.CleanUp();

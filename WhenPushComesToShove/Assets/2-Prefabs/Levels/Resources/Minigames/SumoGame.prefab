@@ -301,12 +301,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f380cdea368fd4cad71e12a71ef5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMovementAtStart: 1
   startingUIDisplay: {fileID: 4831185173743466446}
   endingUIDisplay: {fileID: 5031969165885728834}
   endCondition: {fileID: 2171664408987911969}
   data: {fileID: 709529347168073206}
   canPlayersTakeDamage: 1
-  pauseMovementAtStart: 1
   spikeGroups:
   - {fileID: 453466666918981274}
   - {fileID: 766934434941344144}
@@ -316,6 +316,39 @@ MonoBehaviour:
   respawner: {fileID: 182331866953112179}
   timeToThreaten: 4
   timeToActivateFromThreaten: 2
+  respawnerDelayByTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1.7061977
+      inSlope: -0.1621062
+      outSlope: -0.1621062
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.09544909
+    - serializedVersion: 3
+      time: 1
+      value: 0.5
+      inSlope: 0.19501726
+      outSlope: 0.19501726
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.17580867
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1805791060
 GameObject:
   m_ObjectHideFlags: 0
@@ -6768,10 +6801,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8174837283353057143, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
 --- !u!224 &7282250066945619301 stripped
@@ -6994,7 +7023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7392229194253305427, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_text
-      value: SUMO
+      value: Sumo
       objectReference: {fileID: 0}
     - target: {fileID: 8231731457231639593, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9820,10 +9849,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7382942305849096375, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8174837283353057143, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

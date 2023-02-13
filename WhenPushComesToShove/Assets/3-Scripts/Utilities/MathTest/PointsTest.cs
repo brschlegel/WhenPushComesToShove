@@ -22,31 +22,34 @@ public class PointsTest : MonoBehaviour
             this.color = Color.blue;
         }
     }
-   
-    List<TestPoint> points;
+    
 
-    [SerializeField]
-    private Vector2 center;
-    [SerializeField]
-    private float radius;
     [SerializeField]
     private int numPoints;
     [SerializeField]
     private float pointRadius;
+    [SerializeField]
+    private Transform prefabToSpawn;
+
+    List<TestPoint> points;
     // Start is called before the first frame update
     void Start()
     {
+        points = new List<TestPoint>();
+
+        List<Vector2> p = BenMath.GetEquidistantPointsOnLine(new Vector2(10,10), new Vector2(-10,-10), numPoints );
+        foreach(Vector2 v in p)
+        {
+            points.Add(new TestPoint(v));
+            Instantiate(prefabToSpawn, v, Quaternion.identity);
+        }
+
+
     }
 
     void Update()
     {
-        points = new List<TestPoint>();
-
-        List<Vector2> p = BenMath.GetEquidistantPoints(center, radius, numPoints );
-        foreach(Vector2 v in p)
-        {
-            points.Add(new TestPoint(v));
-        }
+  
     }
 
     void OnDrawGizmos()
