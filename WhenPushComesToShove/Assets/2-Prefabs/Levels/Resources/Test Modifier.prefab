@@ -5437,15 +5437,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb57a5076de86ff41b3410c6cfe77384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMovementAtStart: 1
   startingUIDisplay: {fileID: 4355133446215664633}
   endingUIDisplay: {fileID: 2301861188712490231}
   endCondition: {fileID: 7317408706276825956}
   data: {fileID: 0}
   canPlayersTakeDamage: 0
-  pauseMovementAtStart: 1
-  selector: {fileID: 6820646142924140255}
   selectedModifier:
     modifierPrefab: {fileID: 0}
+  selector: {fileID: 6820646142924140255}
 --- !u!114 &7317408706276825956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5666,7 +5666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6014340538453473493, guid: 03f276c5d045b6d4086567e209bc7706, type: 3}
       propertyPath: m_text
-      value: 'Modifier Selection TIme!
+      value: 'Modifier Incoming
 
 '
       objectReference: {fileID: 0}
