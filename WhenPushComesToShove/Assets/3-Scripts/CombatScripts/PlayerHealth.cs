@@ -9,7 +9,7 @@ public class PlayerHealth : Health
     [SerializeField] private PlayerCollisions collider;
     [SerializeField] private Transform playerGroundUIRef;
 
-    public UnityEvent onDeath;
+    public RetrieveIndex onDeath;
     private Material playerMat;
 
     private void OnEnable()
@@ -95,7 +95,7 @@ public class PlayerHealth : Health
         //Enable Halo
         transform.GetComponentInParent<PlayerComponentReferences>().haloIcon.gameObject.SetActive(true);
 
-        onDeath?.Invoke();
+        onDeath?.Invoke(playerInputRef.playerConfig.PlayerIndex);
     }
 
     public void ResetHealth()

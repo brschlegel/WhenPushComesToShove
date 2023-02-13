@@ -289,12 +289,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11132f21757c12a4da6d3af80c72a36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMovementAtStart: 1
   startingUIDisplay: {fileID: 8853908245073756196}
   endingUIDisplay: {fileID: 7795469177529441022}
   endCondition: {fileID: 6634862556189966687}
   data: {fileID: 7285882888532369635}
   canPlayersTakeDamage: 1
-  pauseMovementAtStart: 1
   dodgeballSpawner: {fileID: 3580809651167699746}
 --- !u!1 &1805791060
 GameObject:
@@ -6181,7 +6181,7 @@ GameObject:
   - component: {fileID: 243245912905318719}
   m_Layer: 14
   m_Name: Barrier
-  m_TagString: Untagged
+  m_TagString: ChalkLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6564,11 +6564,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351a4fc16dfb42e49a0e28ad0ebb78be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 7038911212868762883, guid: 2752a9f645f5cc64ca6af39debf601d1, type: 3}
   spawnedObjectParent: {fileID: 4959068659617782587}
-  repeating: 0
-  numSpawnedLimit: 100
   spawnDelay: 0
+  numSpawnedLimit: 100
+  objectToSpawn: {fileID: 7038911212868762883, guid: 2752a9f645f5cc64ca6af39debf601d1, type: 3}
+  repeating: 0
 --- !u!1 &8178052615217852258
 GameObject:
   m_ObjectHideFlags: 0

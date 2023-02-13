@@ -16,6 +16,7 @@ public class PlayerAnimBrain : StateBrain
     PlayAnimState leftEmoteState;
     //#endregion
 
+    //Necessary references
     [SerializeField]
     private Animator anim;
     [SerializeField]
@@ -30,6 +31,8 @@ public class PlayerAnimBrain : StateBrain
     private ParticleSystem shoveExclamation;
     [SerializeField]
     private EventOnHit hitEvent;
+    [SerializeField]
+    private PlayerHealth health;
 
     private PlayerHeavyShoveScript heavyScript;
     private PlayerLightShoveScript lightScript;
@@ -113,6 +116,7 @@ public class PlayerAnimBrain : StateBrain
 
         deathState.anim = anim;
         deathState.onStateExit += OutDeath;
+        health.onDeath += OnDeath;
 
         leftEmoteState.anim = anim;
         playerInputHandler.onLeftEmote += OnLeftEmote;
@@ -220,7 +224,8 @@ public class PlayerAnimBrain : StateBrain
         ChangeState(chargeState);
     }
 
-    public void OnDeath()
+    //Index not neccessary here as this event is hooked up in the inpsector
+    public void OnDeath(int playerIndex)
     {
         ChangeState(deathState);
     }
