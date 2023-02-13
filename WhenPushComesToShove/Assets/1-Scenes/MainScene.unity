@@ -384,24 +384,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpawns:
-  - {fileID: 1864724960}
-  - {fileID: 1546254782}
-  - {fileID: 1144692873}
-  - {fileID: 881617128}
-  playerPrefab: {fileID: 6273220948599445249, guid: 06a8200273c476048a5a1372f2ec0988, type: 3}
-  initOnStart: 0
-  lockPlayerSpawn: 0
-  spawnPlayerUI: 0
-  playerSpawnAnim:
-  - {fileID: 4203862929834135654, guid: 6fa5f104b928e4444bcd40bf4c77f7f8, type: 3}
-  - {fileID: 4203862929834135654, guid: 6e97d548ff092234ebcd26b5356f39f6, type: 3}
-  - {fileID: 4203862929834135654, guid: e259840063dbe294cbdeafdefa7dfedd, type: 3}
-  - {fileID: 4203862929834135654, guid: 8ed459300609d9440bf87bcf536468a9, type: 3}
-  playerCircleVFXColors:
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   playerUI:
   - {fileID: 0}
   - {fileID: 0}
@@ -412,6 +398,15 @@ MonoBehaviour:
   - {r: 0, g: 0.8431373, b: 0.9960785, a: 1}
   - {r: 0, g: 0.86274517, b: 0.09019608, a: 1}
   - {r: 0.9960785, g: 0.8117648, b: 0, a: 1}
+  lockPlayerSpawn: 0
+  playerPrefab: {fileID: 6273220948599445249, guid: 06a8200273c476048a5a1372f2ec0988, type: 3}
+  initOnStart: 0
+  spawnPlayerUI: 0
+  playerSpawnAnim:
+  - {fileID: 4203862929834135654, guid: 6fa5f104b928e4444bcd40bf4c77f7f8, type: 3}
+  - {fileID: 4203862929834135654, guid: 6e97d548ff092234ebcd26b5356f39f6, type: 3}
+  - {fileID: 4203862929834135654, guid: e259840063dbe294cbdeafdefa7dfedd, type: 3}
+  - {fileID: 4203862929834135654, guid: 8ed459300609d9440bf87bcf536468a9, type: 3}
 --- !u!1 &702363033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,15 +1161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a440aa253be8382438c2bf471903de62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPlayers: 1
-  maxPlayers: 4
-  levelInitRef: {fileID: 0}
-  defaultColor: {fileID: 9100000, guid: 6eb688f05c581a246ac731e968b13fad, type: 2}
-  playerColorNames:
-  - Red
-  - Blue
-  - Green
-  - Yellow
   playerOutlines:
   - {fileID: 2100000, guid: 94d58e58c8e8db24f9efd0fce43c036b, type: 2}
   - {fileID: 2100000, guid: 8ec0b368fde332544a0656675b2b4047, type: 2}
@@ -1190,6 +1176,20 @@ MonoBehaviour:
   - {r: 0, g: 0.91764706, b: 1, a: 1}
   - {r: 0.07058824, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.92156863, b: 0, a: 1}
+  playerCircleVFXColors:
+  - {r: 1, g: 0.09411765, b: 0, a: 1}
+  - {r: 0, g: 0.91764706, b: 1, a: 1}
+  - {r: 0.07058824, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.92156863, b: 0, a: 1}
+  levelInitRef: {fileID: 0}
+  minPlayers: 1
+  maxPlayers: 4
+  defaultColor: {fileID: 9100000, guid: 6eb688f05c581a246ac731e968b13fad, type: 2}
+  playerColorNames:
+  - Red
+  - Blue
+  - Green
+  - Yellow
 --- !u!4 &2086439675
 Transform:
   m_ObjectHideFlags: 0

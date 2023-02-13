@@ -7,50 +7,37 @@ using static UnityEngine.InputSystem.InputAction;
 using System;
 
 public delegate void PlayerEvent(int index);
+
+
 //Script to take in player input and trigger the necessary actions
 public class PlayerInputHandler : MonoBehaviour
 {
-    [SerializeField] private float selectActionCooldown = .5f;
-
-    [HideInInspector] public PlayerConfiguration playerConfig;
-
-    [SerializeField]
-    private ProjectileMode pMode;
-
-    public bool movementPaused = false;
-
-    private PlayerMovementScript mover;
-    private PlayerLightShoveScript lightShoveScript;
-    private PlayerHeavyShoveScript heavyShoveScript;
-    private PlayerDashScript dashScript;
-
-    [HideInInspector] public ControllerRumble rumble;
-
-    [HideInInspector] public bool performingAction = false;
-
+    public event PlayerEvent onSelect;
     public Action onLightShoveComplete;
     public Action onHeavyShoveComplete;
     public Action onHeavyShoveCharge;
     public Action onLeftEmote;
     public Action onLeftEmoteEnd;
+    public bool movementPaused = false;
+    public PlayerHeavyShoveScript heavyShoveScript;
 
-
+    [HideInInspector] public PlayerConfiguration playerConfig;
+    [HideInInspector] public ControllerRumble rumble;
+    [HideInInspector] public bool performingAction = false;
     [HideInInspector] public SpriteRenderer sr;
+
+    [SerializeField] private float selectActionCooldown = .5f;
+    [SerializeField] private ProjectileMode pMode;
+    [SerializeField] private PlayerComponentReferences references;
+    [SerializeField] private PlayerAnimBrain animBrain;
+
+    private PlayerMovementScript mover;
+    private PlayerLightShoveScript lightShoveScript;
+    private PlayerDashScript dashScript;
     private Animator anim;
-
     private PlayerControls controls;
-
-    public event PlayerEvent onSelect;
-
-    public GameObject crownBox;
-    public Transform sword;
-
     private bool buttonMashing = false;
     private int buttonMashedNum = 0;
-
-    public ParticleSystem circleVFX;
-
-    private bool emotesRunning = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -119,11 +106,6 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (onSelect != null && !performingAction && !heavyShoveScript.heavyShoveIsCharging)
             {
-                if (emotesRunning)
-                {
-                    emotesRunning = false;
-                    anim.StopPlayback();
-                }
 
                 LockAction(selectActionCooldown, null);
                 onSelect.Invoke(playerConfig.PlayerIndex);
@@ -134,7 +116,6 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && !heavyShoveScript.heavyShoveIsCharging && !movementPaused)
             {
-                emotesRunning = false;
                 lightShoveScript.OnLightShoveStart(obj);
             }
             
@@ -144,7 +125,6 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && !movementPaused)
             {
-                emotesRunning = false;
                 heavyShoveScript.OnHeavyShoveStart(obj);
             }
         }
@@ -153,11 +133,6 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction)
             {
-                if (emotesRunning)
-                {
-                    emotesRunning = false;
-                    anim.StopPlayback();
-                }
 
                 if (heavyShoveScript.heavyShoveIsCharging)
                 {
@@ -178,21 +153,24 @@ public class PlayerInputHandler : MonoBehaviour
         //Emotes
         else if (obj.action.name == controls.PlayerMovement.EmoteDown.name)
         {
-            if (circleVFX != null)
+            if (references.circleVFX != null && !performingAction)
             {
-                circleVFX.gameObject.SetActive(true);
+                GameObject vfx = Instantiate(references.circleVFX, transform);
+                var main = vfx.GetComponent<ParticleSystem>().main;
+                main.startColor = PlayerConfigManager.Instance.playerCircleVFXColors[playerConfig.PlayerIndex];
+
+                LockAction(selectActionCooldown, null);
             }
         }
         else if (obj.action.name == controls.PlayerMovement.EmoteLeft.name)
         {
             if (!performingAction)
             {
-                if (emotesRunning)
+                if (animBrain.CurrentState.id == "leftEmote")
                 {
                     if (onLeftEmoteEnd != null)
                     {
                         onLeftEmoteEnd.Invoke();
-                        emotesRunning = false;
                     }
 
                 }
@@ -201,11 +179,10 @@ public class PlayerInputHandler : MonoBehaviour
                     if (onLeftEmote != null)
                     {
                         onLeftEmote.Invoke();
-                        emotesRunning = true;
                     }
                 }
 
-                LockAction(selectActionCooldown, null);
+                LockAction(.2f, null);
             }
         }
     }

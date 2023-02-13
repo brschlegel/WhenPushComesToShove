@@ -7,8 +7,18 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerHeavyShoveScript : MonoBehaviour
 {
+    public float speedDecrease = .2f;
+    public Action onHeavyShove;
+    public Action onHeavyCharge;
+    public Action onHeavyFail;
+    public Hitbox hitbox;
+    public float cooldown;
+    public float hitBoxCooldown;
+
     [HideInInspector] public bool heavyShoveIsCharging = false;
     [HideInInspector] public float heavyShoveCharge = 0;
+    [HideInInspector] public int chargeLevel = 0;
+
     [SerializeField] public float lowTierChargeTime = .3f;
     [SerializeField] public float midTierChargeTime = .5f;
     [SerializeField] public float highTierChargeTime = 1;
@@ -16,22 +26,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     [SerializeField] public float midTierChargeForce = 13500;
     [SerializeField] public float highTierChargeForce = 16000;
 
-    [HideInInspector]public int chargeLevel = 0;
-
-
-    public float speedDecrease = .2f;
-
-    public Action onHeavyShove;
-    public Action onHeavyCharge;
-    public Action onHeavyFail;
-
-    public Hitbox hitbox;
     private Collider2D collider;
-
-    public float cooldown;
-    public float hitBoxCooldown;
-    //private SpriteRenderer sr;
-
     private PlayerInputHandler handler;
     private PlayerMovementScript mover;
 
@@ -39,8 +34,6 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     {
         collider = hitbox.gameObject.GetComponent<Collider2D>();
         collider.enabled = false;
-        //sr = hitbox.gameObject.GetComponent<SpriteRenderer>();
-        //sr.enabled = false;
 
         mover = GetComponent<PlayerMovementScript>();
         handler = GetComponent<PlayerInputHandler>();
