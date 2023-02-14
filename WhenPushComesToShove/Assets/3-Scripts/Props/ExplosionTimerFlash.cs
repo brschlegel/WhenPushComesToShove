@@ -36,6 +36,8 @@ public class ExplosionTimerFlash : MonoBehaviour
             {
                 render.material.SetFloat("_FlashTime", buildUpCurve.Evaluate(timer / maxTime - transitionToExplosionOffset));
             }
+            //Sean: this is what i was talking about, the transitionToExplosion offset is always a fixed time. 
+            //You could have the animation start here, the first time this else is called. Message me if you have any q's about it
             else
             {
                 timer += Time.deltaTime;
