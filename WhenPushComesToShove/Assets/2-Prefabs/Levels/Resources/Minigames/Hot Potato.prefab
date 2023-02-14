@@ -154,12 +154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ec070d9534f854a973422bc2b36e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMovementAtStart: 1
   startingUIDisplay: {fileID: 5365016004018382576}
   endingUIDisplay: {fileID: 4724190567949761556}
   endCondition: {fileID: 6580719124436952548}
   data: {fileID: 6523163525860134486}
   canPlayersTakeDamage: 1
-  pauseMovementAtStart: 1
   spawner: {fileID: 5482981596809396173}
   startBombSpawnInterval: 5
   endBombSpawnInterval: 3
@@ -4869,6 +4869,10 @@ PrefabInstance:
     - target: {fileID: 3523064034067738362, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305533319564387442, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
+      propertyPath: m_text
+      value: Don't get blown up
       objectReference: {fileID: 0}
     - target: {fileID: 4656455663879853219, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_AnchorMax.y

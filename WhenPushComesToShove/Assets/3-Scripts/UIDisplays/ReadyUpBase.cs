@@ -9,6 +9,8 @@ public class ReadyUpBase : UIDisplay
     [SerializeField]
     private TextMeshProUGUI gameNameText;
     [SerializeField]
+    private TextMeshProUGUI gameDescriptionText;
+    [SerializeField]
     private Transform portraitParent;
     [SerializeField]
     private Transform readyParent;
