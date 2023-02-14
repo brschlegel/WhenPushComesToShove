@@ -7015,12 +7015,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef198b6515a265b44a500b790c5d9ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMovementAtStart: 1
   startingUIDisplay: {fileID: 7830843099413714825}
   endingUIDisplay: {fileID: 5775406903411787472}
   endCondition: {fileID: 5271440420602589667}
   data: {fileID: 6902546494219460757}
   canPlayersTakeDamage: 0
-  pauseMovementAtStart: 1
   spawners:
   - {fileID: 4345814049978032579}
   - {fileID: 8313736132268171606}
@@ -8741,6 +8741,10 @@ PrefabInstance:
     - target: {fileID: 3523064034067738362, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305533319564387442, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
+      propertyPath: m_text
+      value: Score in the opposite net
       objectReference: {fileID: 0}
     - target: {fileID: 4656455663879853219, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_AnchorMax.y

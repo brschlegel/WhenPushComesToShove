@@ -31,6 +31,14 @@ public class ModifierManager : MonoBehaviour
        
     }
 
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            RemoveAllModifiers();
+        }
+    }
+
     public void Init()
     {
         //Copy into modifier pool, so we aren't editting actual scriptable object
@@ -41,8 +49,8 @@ public class ModifierManager : MonoBehaviour
     {
         GameObject prefab = settings.modifierPrefab;
 
-        Instantiate(prefab, this.transform);
-        BaseModifier mod = prefab.GetComponent<BaseModifier>();
+        GameObject instance = Instantiate(prefab, this.transform);
+        BaseModifier mod = instance.GetComponent<BaseModifier>();
         if(mod == null)
             Debug.LogError("Can't find modifier to add!");
 

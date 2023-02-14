@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6609a40c71c85a54ebcede2d70b2ff42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierPoolSO: {fileID: 11400000, guid: 261eae8a30d0b0241870090feb9319ba, type: 2}
+  modifierPoolSO: {fileID: 11400000, guid: caf1f156d9cc7cf45b64304a625d617c, type: 2}
   debugList: {fileID: 0}
 --- !u!4 &514692959
 Transform:
@@ -560,6 +560,52 @@ Transform:
   - {fileID: 881617128}
   m_Father: {fileID: 1553855564}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1070556302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070556304}
+  - component: {fileID: 1070556303}
+  m_Layer: 0
+  m_Name: PhysicsMaterialPreserver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1070556303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070556302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4bcca32f0163d4aaa244f1f9afc800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 6200000, guid: d66bebb4d232811408e0d3d17d0522f6, type: 2}
+  usedMaterial: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
+--- !u!4 &1070556304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070556302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.8861878, y: -1.7972945, z: 0.09294142}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1092695187
 GameObject:
