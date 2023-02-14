@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2880705282912346408}
   - component: {fileID: 4525520321750199077}
   - component: {fileID: 3328526531904002038}
+  - component: {fileID: -7718981143665275533}
   m_Layer: 0
   m_Name: TeamVictoryText
   m_TagString: Untagged
@@ -77,6 +78,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-7718981143665275533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118932967942675168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d5c2b5e67c5fd468d9119b81084f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDone: 0
+  winningTeamNum: 0
+  victoryText: {fileID: 1711488180142120857}
+  delay: 1
 --- !u!1 &4958348275847573552
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +162,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Team _ is Victorious!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 18f81292fc2f41445ab8821d42b9ed44, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -209,6 +226,6 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}

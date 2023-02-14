@@ -13,8 +13,10 @@ public class PlayerAnimBrain : StateBrain
     PlayerChargeState chargeState;
     PlayerHeavyShoveState heavyState;
     PlayAnimState deathState;
+    PlayAnimState leftEmoteState;
     //#endregion
 
+    //Necessary references
     [SerializeField]
     private Animator anim;
     [SerializeField]
@@ -29,6 +31,8 @@ public class PlayerAnimBrain : StateBrain
     private ParticleSystem shoveExclamation;
     [SerializeField]
     private EventOnHit hitEvent;
+    [SerializeField]
+    private PlayerHealth health;
 
     private PlayerHeavyShoveScript heavyScript;
     private PlayerLightShoveScript lightScript;
@@ -41,17 +45,11 @@ public class PlayerAnimBrain : StateBrain
         }
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void Init()
     {
         idleState = GetComponent<PlayerIdleState>();
         runState = GetComponent<PlayerRunState>();
         hitState = GetComponent<PlayerHitState>();
-       // lightState = GetComponent<PlayerLightShoveState>();
         chargeState = GetComponent<PlayerChargeState>();
         heavyState = GetComponent<PlayerHeavyShoveState>();
         heavyScript = playerInputHandler.GetComponent<PlayerHeavyShoveScript>();
@@ -73,6 +71,10 @@ public class PlayerAnimBrain : StateBrain
                 case "light":
                     lightState = state;
                     lightState.animName = "Base Layer.AN_Player_LightShove";
+                    break;
+                case "leftEmote":
+                    leftEmoteState = state;
+                    leftEmoteState.animName = "Base Layer.AN_Player_ChestHuff";
                     break;
                 default:
                     Debug.LogError("UNKNOWN ANIM STATE ID: " + state.id);
@@ -114,6 +116,11 @@ public class PlayerAnimBrain : StateBrain
 
         deathState.anim = anim;
         deathState.onStateExit += OutDeath;
+        health.onDeath += OnDeath;
+
+        leftEmoteState.anim = anim;
+        playerInputHandler.onLeftEmote += OnLeftEmote;
+        playerInputHandler.onLeftEmoteEnd += OutLeftEmote;
 
         currentState = idleState;
         currentState.enabled = true;
@@ -182,12 +189,18 @@ public class PlayerAnimBrain : StateBrain
         ChangeState(idleState);
     }
 
+    private void OutLeftEmote()
+    {
+        ChangeState(idleState);
+    }
+
 
     public void OnHit(HitEvent e)
     {
         if (currentState != deathState)
         {
             ChangeState(hitState);
+            playerInputHandler.onLeftEmoteEnd.Invoke();
         }
     }
 
@@ -211,7 +224,8 @@ public class PlayerAnimBrain : StateBrain
         ChangeState(chargeState);
     }
 
-    public void OnDeath()
+    //Index not neccessary here as this event is hooked up in the inpsector
+    public void OnDeath(int playerIndex)
     {
         ChangeState(deathState);
     }
@@ -219,6 +233,11 @@ public class PlayerAnimBrain : StateBrain
     public void OnHeavyFail()
     {
         ChangeState(idleState);
+    }
+
+    public void OnLeftEmote()
+    {
+        ChangeState(leftEmoteState);
     }
 
    

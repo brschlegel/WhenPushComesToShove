@@ -7,20 +7,19 @@ using UnityEngine;
 public class PlayerMovementScript : Move
 {
     public float slowAmount = 1f;
+    public int forceMovementLocks = 0;
 
-    private Vector3 moveDirection = Vector3.zero;
-    private Vector2 moveInputVector = Vector2.zero;
-    private Vector2 aimInputVector = Vector2.zero;
     [HideInInspector] public Transform player;
 
     [SerializeField] private Transform aimTriangle;
 
+    private Vector3 moveDirection = Vector3.zero;
+    private Vector2 moveInputVector = Vector2.zero;
+    private Vector2 aimInputVector = Vector2.zero;
     private float fixedX;
     private float fixedY;
-
     private bool lockMovement = false;
     private Coroutine movementUnlockRoutine;
-    public int forceMovementLocks = 0;
     private int forceAimLocks = 0;
     private Coroutine aimUnlockRoutine;
     private bool moveSpeedLocked;

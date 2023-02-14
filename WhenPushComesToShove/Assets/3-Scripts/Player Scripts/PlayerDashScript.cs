@@ -8,21 +8,19 @@ using static UnityEngine.InputSystem.InputAction;
 public delegate void DashEvent (Vector3 v);
 public class PlayerDashScript : MonoBehaviour
 {
+    public event DashEvent onDashStart;
+
     [HideInInspector] public ProjectileMode pMode;
+
     [SerializeField] private float dashSpeed = 15;
     [SerializeField] private float dashTime = 1;
-
-    public event DashEvent onDashStart;
+    [SerializeField] private PlayerCollisions collider;
+    [SerializeField] private HitHandler hurtboxHandler;
+    [SerializeField] private List<string> tagsToIgnoreDuringDash;
+    [SerializeField] private ParticleSystem dashVFX;
 
     private PlayerMovementScript mover;
     private PlayerInputHandler handler;
-
-    [SerializeField] private PlayerCollisions collider;
-    [SerializeField] private HitHandler hurtboxHandler;
-
-    [SerializeField] private List<string> tagsToIgnoreDuringDash;
-
-    [SerializeField] private ParticleSystem dashVFX;
 
     public void Start()
     {

@@ -14,6 +14,7 @@ public enum RumbleType
 public class ControllerRumble : MonoBehaviour
 {
     [SerializeField] private PlayerInputHandler input;
+
     private RumbleType currentRumbleType;
     private float rumbleTime;
     private float pulseTime;
@@ -23,7 +24,6 @@ public class ControllerRumble : MonoBehaviour
     private bool isMotorActive = false;
     private Coroutine stopRoutine;
     private Gamepad gamepad;
-
     private float lowEndFreq;
     private float highEndFreq;
     private float lowStep;

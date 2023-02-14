@@ -138,7 +138,8 @@ public class PlayerTeamFormations : MonoBehaviour
         {
             foreach (PlayerConfiguration p in playerConfigs)
             {
-                SpriteRenderer sr = p.PlayerObject.transform.GetChild(12).GetComponent<SpriteRenderer>();
+                PlayerComponentReferences references = p.PlayerObject.GetComponent<PlayerComponentReferences>();
+                SpriteRenderer sr = references.teamIcon.GetComponent<SpriteRenderer>();
                 sr.sprite = teamSprites[p.TeamIndex];
             }
         }
@@ -146,7 +147,8 @@ public class PlayerTeamFormations : MonoBehaviour
         {
             foreach (PlayerConfiguration p in playerConfigs)
             {
-                SpriteRenderer sr = p.PlayerObject.transform.GetChild(12).GetComponent<SpriteRenderer>();
+                PlayerComponentReferences references = p.PlayerObject.GetComponent<PlayerComponentReferences>();
+                SpriteRenderer sr = references.teamIcon.GetComponent<SpriteRenderer>();
                 sr.sprite = null;
             }
         }

@@ -8,19 +8,20 @@ using UnityEngine.SceneManagement;
 //A manager that track general information about the player group and each player's individual configurations
 public class PlayerConfigManager : MonoBehaviour
 {
-    private List<PlayerConfiguration> playerConfigs;
+    public static PlayerConfigManager Instance { get; private set; }
+    public Material[] playerOutlines = new Material[4];
+    public Sprite[] playerPortraits = new Sprite[4];
+    public Color[] playerColors = new Color[4];
+    public Color[] playerCircleVFXColors = new Color[4];
+
+    [HideInInspector] public InitLevel levelInitRef;
 
     [SerializeField] private int minPlayers = 2;
     [SerializeField] private int maxPlayers = 2;
-
-    public static PlayerConfigManager Instance { get; private set; }
-
-    [HideInInspector] public InitLevel levelInitRef;
     [SerializeField] private RuntimeAnimatorController defaultColor;
     [SerializeField] private string[] playerColorNames = new string[4];
-    public Material[] playerOutlines = new Material[4];
-    public Sprite[] playerPortraits = new Sprite[4];
-    //public Color[] playerOutlineOriginalColors = new Color[4];
+
+    private List<PlayerConfiguration> playerConfigs;
 
     public void Awake()
     {
@@ -103,6 +104,10 @@ public class PlayerConfigManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Helper Function to Check If All Players are Dead
+    /// </summary>
+    /// <returns></returns>
     public bool CheckAllPlayerDeath()
     {
         foreach (PlayerConfiguration config in playerConfigs)

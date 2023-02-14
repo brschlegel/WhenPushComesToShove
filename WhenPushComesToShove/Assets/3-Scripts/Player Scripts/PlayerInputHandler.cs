@@ -7,41 +7,35 @@ using static UnityEngine.InputSystem.InputAction;
 using System;
 
 public delegate void PlayerEvent(int index);
+
+
 //Script to take in player input and trigger the necessary actions
 public class PlayerInputHandler : MonoBehaviour
 {
-    [SerializeField] private float selectActionCooldown = .5f;
-
-    [HideInInspector] public PlayerConfiguration playerConfig;
-
-    [SerializeField]
-    private ProjectileMode pMode;
-
-    public bool movementPaused = false;
-
-    private PlayerMovementScript mover;
-    private PlayerLightShoveScript lightShoveScript;
-    private PlayerHeavyShoveScript heavyShoveScript;
-    private PlayerDashScript dashScript;
-
-    [HideInInspector] public ControllerRumble rumble;
-
-    [HideInInspector] public bool performingAction = false;
-
+    public event PlayerEvent onSelect;
     public Action onLightShoveComplete;
     public Action onHeavyShoveComplete;
     public Action onHeavyShoveCharge;
+    public Action onLeftEmote;
+    public Action onLeftEmoteEnd;
+    public bool movementPaused = false;
+    public PlayerHeavyShoveScript heavyShoveScript;
 
-
+    [HideInInspector] public PlayerConfiguration playerConfig;
+    [HideInInspector] public ControllerRumble rumble;
+    [HideInInspector] public bool performingAction = false;
     [HideInInspector] public SpriteRenderer sr;
+
+    [SerializeField] private float selectActionCooldown = .5f;
+    [SerializeField] private ProjectileMode pMode;
+    [SerializeField] private PlayerComponentReferences references;
+    [SerializeField] private PlayerAnimBrain animBrain;
+
+    private PlayerMovementScript mover;
+    private PlayerLightShoveScript lightShoveScript;
+    private PlayerDashScript dashScript;
     private Animator anim;
-
     private PlayerControls controls;
-
-    public event PlayerEvent onSelect;
-
-    public GameObject crownBox;
-
     private bool buttonMashing = false;
     private int buttonMashedNum = 0;
 
@@ -112,6 +106,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (onSelect != null && !performingAction && !heavyShoveScript.heavyShoveIsCharging)
             {
+
                 LockAction(selectActionCooldown, null);
                 onSelect.Invoke(playerConfig.PlayerIndex);
             }
@@ -138,6 +133,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction)
             {
+
                 if (heavyShoveScript.heavyShoveIsCharging)
                 {
                     heavyShoveScript.InterruptCharge();
@@ -152,6 +148,41 @@ public class PlayerInputHandler : MonoBehaviour
             if (mover != null)
             {
                 mover.SetAimInputVector(obj.ReadValue<Vector2>());
+            }
+        }
+        //Emotes
+        else if (obj.action.name == controls.PlayerMovement.EmoteDown.name)
+        {
+            if (references.circleVFX != null && !performingAction)
+            {
+                GameObject vfx = Instantiate(references.circleVFX, transform);
+                var main = vfx.GetComponent<ParticleSystem>().main;
+                main.startColor = PlayerConfigManager.Instance.playerCircleVFXColors[playerConfig.PlayerIndex];
+
+                LockAction(selectActionCooldown, null);
+            }
+        }
+        else if (obj.action.name == controls.PlayerMovement.EmoteLeft.name)
+        {
+            if (!performingAction)
+            {
+                if (animBrain.CurrentState.id == "leftEmote")
+                {
+                    if (onLeftEmoteEnd != null)
+                    {
+                        onLeftEmoteEnd.Invoke();
+                    }
+
+                }
+                else
+                {
+                    if (onLeftEmote != null)
+                    {
+                        onLeftEmote.Invoke();
+                    }
+                }
+
+                LockAction(.2f, null);
             }
         }
     }

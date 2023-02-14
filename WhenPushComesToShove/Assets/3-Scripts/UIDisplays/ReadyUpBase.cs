@@ -9,6 +9,8 @@ public class ReadyUpBase : UIDisplay
     [SerializeField]
     private TextMeshProUGUI gameNameText;
     [SerializeField]
+    private TextMeshProUGUI gameDescriptionText;
+    [SerializeField]
     private Transform portraitParent;
     [SerializeField]
     private Transform readyParent;
@@ -78,7 +80,15 @@ public class ReadyUpBase : UIDisplay
 
     public void ReadyUp(int index)
     {
-        portraits[index].Ready = true;
+        foreach (PlayerPortrait p in portraits)
+        {
+            if (p.playerIndex == index)
+            {
+                p.Ready = true;
+            }
+        }
+
+        //portraits[index].Ready = true;
         if (CheckIsAllReady())
         {
             StartCoroutine(WaitToCount());
@@ -135,6 +145,7 @@ public class ReadyUpBase : UIDisplay
                 for (int i = 0; i < portraits.Count; i++)
                 {
                     portraits[i].Visible = i < numPlayers;
+                    portraits[i].playerIndex = i;
                 }
                 break;
             case LevelType.TwoTwo:
@@ -154,6 +165,7 @@ public class ReadyUpBase : UIDisplay
                         PlayerPortrait portrait = portraitParent.GetChild(0 + leftSideCount).GetComponent<PlayerPortrait>();
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
+                        portrait.playerIndex = i;
                         leftSideCount++;
                     }
                     else
@@ -161,6 +173,7 @@ public class ReadyUpBase : UIDisplay
                         PlayerPortrait portrait = portraitParent.GetChild(2 + rightSideCount).GetComponent<PlayerPortrait>();
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
+                        portrait.playerIndex = i;
                         rightSideCount++;
                     }
                 }
@@ -183,6 +196,7 @@ public class ReadyUpBase : UIDisplay
                         PlayerPortrait portrait = portraitParent.GetChild(0 + teamSideCount).GetComponent<PlayerPortrait>();
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
+                        portrait.playerIndex = i;
                         teamSideCount++;
                     }
                     else
@@ -190,6 +204,7 @@ public class ReadyUpBase : UIDisplay
                         PlayerPortrait portrait = portraitParent.GetChild(3).GetComponent<PlayerPortrait>();
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
+                        portrait.playerIndex = i;
                     }
                 }
 

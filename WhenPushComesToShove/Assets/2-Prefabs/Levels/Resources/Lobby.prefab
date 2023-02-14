@@ -73,7 +73,9 @@ MonoBehaviour:
     Right Trigger -
     Heavy Shove
 
-    B - Dash'
+    B - Dash
+
+    D-Pad Down and D-Pad Left to Emote'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18f81292fc2f41445ab8821d42b9ed44, type: 2}
   m_sharedMaterial: {fileID: 8443043151899357301, guid: 18f81292fc2f41445ab8821d42b9ed44, type: 2}
@@ -136,7 +138,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -137.98535, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -177,7 +179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42, y: -21}
+  m_AnchoredPosition: {x: -115, y: -40}
   m_SizeDelta: {x: 629.938, y: 157.4845}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4290846948752730591
@@ -208,7 +210,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lobby
+  m_text: 'Lobby
+
+    Press A to Join'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d739625331e8e204fbe5d4845f5bfd73, type: 2}
   m_sharedMaterial: {fileID: 1309633790889704389, guid: d739625331e8e204fbe5d4845f5bfd73, type: 2}
@@ -271,7 +275,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -257.32397, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7931,12 +7935,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac669f0f2d48a844b8b49c46292e9fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMovementAtStart: 0
   startingUIDisplay: {fileID: 7280444393838052147}
   endingUIDisplay: {fileID: 0}
   endCondition: {fileID: 1675178777259868433}
   data: {fileID: 0}
   canPlayersTakeDamage: 0
-  pauseMovementAtStart: 0
+  swordSprite: {fileID: 21300000, guid: a2ddc0bc7726c9a41adcc50c1a7dd82d, type: 3}
 --- !u!1 &6814540723697403482
 GameObject:
   m_ObjectHideFlags: 0

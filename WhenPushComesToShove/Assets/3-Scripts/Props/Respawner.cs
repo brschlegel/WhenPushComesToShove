@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Respawner : MonoBehaviour
 {
-
     public float spawnDelay = 1.0f;
-    private Dictionary<Transform, bool> respawning;
     public event PlayerEvent onDetectDeath;
     public event PlayerEvent onRespawn;
 
+    private Dictionary<Transform, bool> respawning;
+    private float randomOffsetRadius = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,11 +44,9 @@ public class Respawner : MonoBehaviour
 
         //Wait until animation has stopped playing
         yield return new WaitUntil(() => anim.CurrentState.id != "death");
-        player.position = transform.position;
-        movement.ForceLockMovement();
         yield return new WaitForSeconds(spawnDelay);
+        player.position = transform.position + (Vector3)Random.insideUnitCircle * randomOffsetRadius;
         health.ResetHealth();
-        movement.ForceUnlockMovement();
         respawning[player] = false;
         onRespawn?.Invoke(input.playerConfig.PlayerIndex);
    }

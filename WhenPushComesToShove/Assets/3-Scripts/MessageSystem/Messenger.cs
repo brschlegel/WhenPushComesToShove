@@ -23,7 +23,7 @@ struct Message
 public static class Messenger 
 {
     private static uint idCount = 0;
-    private  static Dictionary<string, List<Message>> messages = new Dictionary<string, List<Message>>();
+    private static Dictionary<string, List<Message>> messages = new Dictionary<string, List<Message>>();
 
     /// <summary>
     /// Registers a delegate to be called when send event is called with the same key

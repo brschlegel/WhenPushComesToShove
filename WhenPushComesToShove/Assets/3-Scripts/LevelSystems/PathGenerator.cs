@@ -9,20 +9,19 @@ public class PathGenerator : MonoBehaviour
     public GameObject modifierRoom;
     public GameObject victoryRoom;
 
-    //All possible minigames
-    List<LevelProperties> allLevels = new List<LevelProperties>();
-
     //All available levels based on modifers
     public List<LevelProperties> availableLevels = new List<LevelProperties>();
-
     //Any games that have already been played that can be filter out of the available levels
     public List<LevelProperties> playedLevels = new List<LevelProperties>();
 
-    [Header("Path properties")]
-    [SerializeField] private int numOfGames;
-    [HideInInspector] public int numOfRooms;
-    int currentPathNum = 0;
     public List<GameObject> path = new List<GameObject>();
+
+    [HideInInspector] public int numOfRooms;
+
+    [SerializeField] private int numOfGames;
+    //All possible minigames
+    private List<LevelProperties> allLevels = new List<LevelProperties>();
+    private int currentPathNum = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -44,47 +43,50 @@ public class PathGenerator : MonoBehaviour
         LevelManager.onNewRoom.Invoke();
     }
     
+    /// <summary>
+    /// Populates the avaiable levels list with a modifier's games and filters out any that have been played
+    /// </summary>
+    /// <param name="games">Modifier's list of games it can effect</param>
     public void PopulateAvailableLevels(List<Minigame> games)
     {
         availableLevels.Clear();
 
+        //Adds all minigames to the avaialble list
         if(games.Count == 1 && games[0] == Minigame.All)
         {
             availableLevels = new List<LevelProperties>(allLevels);
-
-            foreach(LevelProperties prop in playedLevels)
-            {
-                availableLevels.Remove(prop);
-            }
-
-            return;
         }
-
-        foreach(Minigame type in games)
-        {
-            foreach(LevelProperties prop in allLevels)
+        //If "All Minigames" hasn't been selected, then add the rest of the list
+        else
+        {          
+            foreach (Minigame type in games)
             {
-                if(prop.game == type)
+                foreach (LevelProperties prop in allLevels)
                 {
-                    //Don't add to available list if game has been played
-                    if (playedLevels.Contains(prop))
+                    if (prop.game == type)
+                    {
+                        availableLevels.Add(prop);
                         break;
-
-                    availableLevels.Add(prop);
-                    break;
+                    }
                 }
             }
+        }
+
+        RemovePlayedGames();
+
+    }
+
+    //Helper function to clear out any played games from the possible available levels
+    private void RemovePlayedGames()
+    {
+        foreach (LevelProperties prop in playedLevels)
+        {
+            availableLevels.Remove(prop);
         }
     }
 
     public LevelProperties AssignLevel()
     {
-        //Remove any levels already played
-        foreach(LevelProperties level in playedLevels)
-        {
-            availableLevels.Remove(level);
-        }
-
         LevelProperties newLevel = null;
 
         //Grab a random level from the avaiable levels if there ins't a set path
@@ -93,18 +95,19 @@ public class PathGenerator : MonoBehaviour
             int rng = Random.Range(0, availableLevels.Count);
             newLevel = availableLevels[rng];
         }
+        //Otherwisses, go through the premade path until it runs out of games
         else
         {
             newLevel = path[currentPathNum].GetComponent<LevelProperties>();
             currentPathNum++;
         }
         
-
-
+        //Add the selected game to the played levels list
         playedLevels.Add(newLevel);
         return newLevel;
     }
 
+    //Instantaites the selected room
     public GameObject SpawnRoom(GameObject level)
     {
         GameObject newLevel = Instantiate(level);
@@ -112,19 +115,15 @@ public class PathGenerator : MonoBehaviour
         return newLevel;
     }
 
-
+    //Resets the current path to the beginning
     public void ResetPath()
     {
-        //Clean out the current path
         currentPathNum = 0;
 
         GameState.playerScores = new int[4] { 0, 0, 0, 0 };
         
         Destroy(transform.GetChild(0).gameObject);
 
-        //Generate and spawn new path
-        //GeneratePath();
-        //InstantiatePathRooms();
         availableLevels.Clear();
         playedLevels.Clear();
 
@@ -135,45 +134,4 @@ public class PathGenerator : MonoBehaviour
 
         LevelManager.onNewRoom.Invoke();
     }
-
-
-    //Helper Functions
-    //Tests to see if a room's hazards are the correct difficulty
-    //bool IsCompatibleRoom(LevelProperties prop, bool onlyHazards = false)
-    //{
-    //    //Check if the level's hazards match the path's
-    //    foreach (HazardDifficulty.HazardStats haz in prop.hazards)
-    //    {
-    //        foreach(HazardDifficulty.HazardStats hazLevel in hazardLevels)
-    //        {
-    //            //Makes sure that the same hazards are being compared
-    //            if(haz.hazard == hazLevel.hazard)
-    //            {
-    //                //Make sure that hazards are the same level
-    //                if (haz.level != hazLevel.level)
-    //                    return false;
-    //            }
-    //        }
-    //    }
-
-    //    if (!onlyHazards)
-    //    {
-    //        //Check if the level's enemies match the path's
-    //        foreach (EnemyDifficulty.EnemyLevelStats enm in prop.enemyStats)
-    //        {
-    //            foreach (EnemyDifficulty.EnemyLevelStats enmLevel in enemyStatLevels)
-    //            {
-    //                //Makes sure that the same enemies are being compared
-    //                if (enm.enemy == enmLevel.enemy)
-    //                {
-    //                    //Make sure that enemies are the same level
-    //                    if (enm.level != enmLevel.level)
-    //                        return false;
-    //                }
-    //            }
-    //        }
-    //    }
-        
-    //    return true;
-    //}
 }

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
-    [SerializeField] private Health playerHealth;
-    private Collider2D collider;
     public List<string> tagsToIgnoreCollision = new List<string>();
+
+    [SerializeField] private Health playerHealth;
+
+    private Collider2D collider;
 
     private void Awake()
     {

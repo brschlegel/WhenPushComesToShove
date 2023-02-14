@@ -14,6 +14,8 @@ public class PlayerSpriteFlipper : MonoBehaviour
     private Transform aimDirectionObject;
     private SpriteRenderer sr;
     public SpriteRenderer crown;
+    public SpriteRenderer halo;
+    public SpriteRenderer sword;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,18 @@ public class PlayerSpriteFlipper : MonoBehaviour
         // (isRightFlipped && isXPositive) || (!isRightFlipped && !isXPositive);
         sr.flipX = isRightFlipped == isXPositive;
         crown.flipX = isRightFlipped == isXPositive;
+        sword.flipX = isRightFlipped == isXPositive;
+
+        if (isXPositive)
+        {
+            sword.transform.localPosition = new Vector3(-1.016f, sword.transform.localPosition.y, sword.transform.localPosition.z);
+            halo.transform.localPosition = new Vector3(.165f, halo.transform.localPosition.y, halo.transform.localPosition.z);
+        }
+        else
+        {
+            sword.transform.localPosition = new Vector3(1.016f, sword.transform.localPosition.y, sword.transform.localPosition.z);
+            halo.transform.localPosition = new Vector3(-.165f, halo.transform.localPosition.y, halo.transform.localPosition.z);
+        }
 
         //velocity based
         // if(vs.QuerySource("playerDash", out Vector2 dash))

@@ -5,25 +5,30 @@ using UnityEngine;
 
 public enum Minigame {All, Dodgeball, Soccer, HotPotato, Sumo, Pinball};
 
-//[RequireComponent(typeof(LevelProperties))]
+//All minigames flow through these methods and can override to add functionality at any step
+//Init -> StartGame -> EndGame -> CleanUp
+//Children logic scripts only worry about calling EndGame
 public abstract class MinigameLogic : MonoBehaviour
 {
+    public event emptyDelegate onGameStart;
+    public bool pauseMovementAtStart = true;
+
+    [Header("UI Displays")]
     [SerializeField]
     protected UIDisplay startingUIDisplay;
     [SerializeField]
     protected UIDisplay endingUIDisplay;
 
+    //Assigned in inspector
     [SerializeField]
     protected BaseEndCondition endCondition;
+    [SerializeField] 
+    protected MinigameData data;
+
+    [SerializeField] 
+    protected bool canPlayersTakeDamage = true;
+
     protected bool gameRunning;
-
-    [SerializeField] protected MinigameData data;
-
-    public event emptyDelegate onGameStart;
-    [SerializeField] protected bool canPlayersTakeDamage = true;
-
-    public bool pauseMovementAtStart = true;
-
 
     public virtual void Init()
     {
@@ -38,6 +43,7 @@ public abstract class MinigameLogic : MonoBehaviour
                 {
                     //p.GetComponentInChildren<PlayerMovementScript>().ChangeMoveSpeed(0);
                     p.GetComponentInChildren<PlayerInputHandler>().movementPaused = true;
+                    p.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                 }
             }
         }
@@ -56,6 +62,7 @@ public abstract class MinigameLogic : MonoBehaviour
             {
                 //p.GetComponentInChildren<PlayerMovementScript>().ResetMoveSpeed();
                 p.GetComponentInChildren<PlayerInputHandler>().movementPaused = false;
+                p.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
             }
         }
         GameState.ModifierManager.StartMinigame();
@@ -79,6 +86,7 @@ public abstract class MinigameLogic : MonoBehaviour
 
         CoroutineManager.StartGlobalCoroutine(WaitToCleanUp());
     }
+    
     public virtual void CleanUp()
     {
         if (!canPlayersTakeDamage)
@@ -94,6 +102,17 @@ public abstract class MinigameLogic : MonoBehaviour
         LevelManager.onNewRoom.Invoke();
     }
 
+    protected void UpdatePlayerInvulnurability(bool enabled)
+    {
+        GameState.damageEnabled = enabled;
+
+        foreach (HealthBar b in GameState.playerHealthBars)
+        {
+            b.gameObject.SetActive(enabled);
+        }
+    }
+
+    //Enumerators to handle transitions from UIDisplays
     protected IEnumerator WaitToStartGame()
     {
         if (startingUIDisplay != null)
@@ -112,13 +131,5 @@ public abstract class MinigameLogic : MonoBehaviour
         CleanUp();
     }
 
-    protected void UpdatePlayerInvulnurability(bool enabled)
-    {
-        GameState.damageEnabled = enabled;
-
-        foreach (HealthBar b in GameState.playerHealthBars)
-        {
-            b.gameObject.SetActive(enabled);
-        }
-    }
+    
 }

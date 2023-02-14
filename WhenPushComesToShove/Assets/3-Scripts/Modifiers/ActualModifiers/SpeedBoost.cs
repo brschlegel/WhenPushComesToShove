@@ -14,4 +14,10 @@ public class SpeedBoost : BaseModifier
         GameState.playerSpeedModifier = boostSpeedAmount;
         GameState.playerAccelModifier = boostAccelAmount;
     }
+
+    public override void CleanUp()
+    {
+        GameState.playerSpeedModifier = 1;
+        GameState.playerAccelModifier = 1;
+    }
 }
