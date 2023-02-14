@@ -19,13 +19,13 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         onNewRoom += ShowRoom;
-        onEndGame += ResetPath;
+        onEndGame += ResetGame;
     }
 
     private void OnDisable()
     {
         onNewRoom -= ShowRoom;
-        onEndGame -= ResetPath;
+        onEndGame -= ResetGame;
     }
 
     private void Awake()
@@ -116,11 +116,11 @@ public class LevelManager : MonoBehaviour
         LoggingInfo.instance.numOfRoomsTraveled++;
     }
 
-    public void ResetPath()
+    public void ResetGame()
     {
         //Temp code - Will just put everyone back into the lobby
 
-      
+        GameState.ModifierManager.RemoveAllModifiers();
 
         currentRoomIndex = 0;
         endRoomSpawned = false;
@@ -135,6 +135,7 @@ public class LevelManager : MonoBehaviour
         foreach (GameObject obj in players)
         {
             obj.GetComponentInChildren<Health>().dead = false;
+            obj.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
         }
 
         pathGen.ResetPath();
@@ -146,7 +147,7 @@ public class LevelManager : MonoBehaviour
 
         if (endRoomSpawned)
         {
-            ResetPath();
+            ResetGame();
         }
         else
         {
