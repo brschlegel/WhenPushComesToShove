@@ -63,6 +63,7 @@ MonoBehaviour:
   mover: {fileID: 7604760025507816548}
   shoveExclamation: {fileID: 0}
   hitEvent: {fileID: 102798743431046658}
+  health: {fileID: 5551845860662291163}
 --- !u!114 &8184684198277851572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5999,21 +6000,6 @@ MonoBehaviour:
   playerInputRef: {fileID: 1870107280854562992}
   collider: {fileID: 820262909753106286}
   playerGroundUIRef: {fileID: 6065905207172843190}
-  onDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3467010525216778814}
-        m_TargetAssemblyTypeName: PlayerAnimBrain, Assembly-CSharp
-        m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &6770348261060822066
 GameObject:
   m_ObjectHideFlags: 0
