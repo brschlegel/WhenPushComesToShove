@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//Code from: https://www.youtube.com/watch?v=AuZNU7JTeWQ
 public class ScrollingText : MonoBehaviour
 {
     public TextMeshProUGUI tmp;
