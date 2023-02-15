@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,10 +92,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8763150778294439321}
     m_Modifications:
+    - target: {fileID: 7153672637239067238, guid: ed4dd0b64652da145a8e59b7293e51e5, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153672637239067238, guid: ed4dd0b64652da145a8e59b7293e51e5, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.53976583
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153672637239067239, guid: ed4dd0b64652da145a8e59b7293e51e5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 7153672637706679178, guid: ed4dd0b64652da145a8e59b7293e51e5, type: 3}
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7153672637706679178, guid: ed4dd0b64652da145a8e59b7293e51e5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 7153672637706679179, guid: ed4dd0b64652da145a8e59b7293e51e5, type: 3}
       propertyPath: m_Name
       value: PS_Effect_Fire_Green
