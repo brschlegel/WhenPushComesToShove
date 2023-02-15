@@ -45,7 +45,7 @@ public class PushDoorEndCondition : BaseEndCondition
         //Populates the list with the lights
         for(int i = 0; i < lightParent.childCount; i++)
         {
-            lightsToTurnOff.Add(lightParent.GetChild(i).gameObject);
+            lightsToTurnOff.Add(lightParent.GetChild(i).transform.GetChild(0).gameObject);
         }
 
         //Removes an turned on lights from the list
@@ -56,8 +56,8 @@ public class PushDoorEndCondition : BaseEndCondition
             {
                 if(config.PlayerObject == player)
                 {
-                    lightParent.GetChild(config.PlayerIndex).gameObject.SetActive(true);
-                    lightsToTurnOff.Remove(lightParent.GetChild(config.PlayerIndex).gameObject);
+                    lightParent.GetChild(config.PlayerIndex).transform.GetChild(0).gameObject.SetActive(true);
+                    lightsToTurnOff.Remove(lightParent.GetChild(config.PlayerIndex).transform.GetChild(0).gameObject);
                 }
             }          
         }
