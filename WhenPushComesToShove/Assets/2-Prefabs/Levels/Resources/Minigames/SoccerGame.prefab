@@ -7028,6 +7028,37 @@ MonoBehaviour:
   goals:
   - {fileID: 2569268350544439842}
   - {fileID: 5726370501480948735}
+--- !u!1 &4816988660047003793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6233284168547692684}
+  m_Layer: 0
+  m_Name: ConfettiTransformBottom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6233284168547692684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4816988660047003793}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7321436349117013230}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5104244492107518769
 GameObject:
   m_ObjectHideFlags: 0
@@ -7064,6 +7095,8 @@ Transform:
   - {fileID: 123423390812003098}
   - {fileID: 2376632833670697362}
   - {fileID: 4027735066827069846}
+  - {fileID: 9089175836449473757}
+  - {fileID: 6233284168547692684}
   m_Father: {fileID: 2388168370871012898}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7081,6 +7114,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 6902546494219460757}
   teamIndex: 0
+  confetti: {fileID: 8946640581007675338, guid: 3c4fd6bb0d1146b4ea3acb4d070f1c76, type: 3}
+  confettiTransforms:
+  - {fileID: 9089175836449473757}
+  - {fileID: 6233284168547692684}
 --- !u!61 &5238413781028998540
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7840,6 +7877,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8727534066819615820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9089175836449473757}
+  m_Layer: 0
+  m_Name: ConfettiTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9089175836449473757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8727534066819615820}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7321436349117013230}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8774201502326041534
 GameObject:
   m_ObjectHideFlags: 0
@@ -9281,6 +9349,10 @@ PrefabInstance:
       propertyPath: data
       value: 
       objectReference: {fileID: 6902546494219460757}
+    - target: {fileID: 6109279782501500422, guid: 49e817a371bbf1c4c943686856fdce22, type: 3}
+      propertyPath: confetti
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: a3ffb84c2f358db4681a16f076f53192, type: 3}
     - target: {fileID: 6729865945753745096, guid: 49e817a371bbf1c4c943686856fdce22, type: 3}
       propertyPath: m_Name
       value: Orange Goal

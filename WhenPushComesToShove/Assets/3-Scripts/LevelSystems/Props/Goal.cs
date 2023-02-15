@@ -8,8 +8,20 @@ public class Goal : MonoBehaviour
     //[SerializeField] private ObjectSpawner spawner;
     [SerializeField] private MinigameData data;
     [SerializeField] private int teamIndex = 0;
+    [SerializeField] private GameObject confetti;
+    [SerializeField] private List<Transform> confettiTransforms = new List<Transform>();
 
     public UnityAction goalScored;
+
+    private void OnEnable()
+    {
+        goalScored += SpawnConfetti;
+    }
+
+    private void OnDisable()
+    {
+        goalScored -= SpawnConfetti;
+    }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,6 +44,14 @@ public class Goal : MonoBehaviour
             Destroy(collision.transform.parent.gameObject);
 
            goalScored?.Invoke();
+        }
+    }
+
+    public void SpawnConfetti()
+    {
+        foreach (Transform t in confettiTransforms)
+        {
+            Instantiate(confetti, t);
         }
     }
 
