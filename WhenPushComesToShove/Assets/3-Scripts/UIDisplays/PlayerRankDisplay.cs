@@ -12,6 +12,7 @@ public class PlayerRankDisplay : UIDisplay
     [HideInInspector] public int[] scoresInOrder;
     [SerializeField] private Image winnerPortrait;
     [SerializeField] private Transform[] rankUIs = new Transform[3];
+    [SerializeField] private TimerEndCondition timer;
 
     public override void HideDisplay()
     {
@@ -20,6 +21,7 @@ public class PlayerRankDisplay : UIDisplay
 
     public override void ShowDisplay()
     {
+        timer.Init();
         playerRankOrder = GetRankOrder();
 
         winnerText.text = GameState.playerNames[playerRankOrder[0]] + " player won! - " + scoresInOrder[0];
