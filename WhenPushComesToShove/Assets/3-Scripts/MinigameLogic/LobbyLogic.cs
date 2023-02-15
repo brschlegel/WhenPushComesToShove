@@ -6,6 +6,11 @@ public class LobbyLogic : MinigameLogic
 {
     [SerializeField] private Sprite swordSprite;
 
+    public void OnEnable()
+    {
+        Init();
+    }
+
     public void OnDisable()
     {
         if (GameState.players.Count > 0 && GameState.lastGameWinnerIndex != -1)
