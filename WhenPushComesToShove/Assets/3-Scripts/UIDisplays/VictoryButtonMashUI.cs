@@ -11,7 +11,7 @@ public class VictoryButtonMashUI : UIDisplay
     private List<int> tiedIndexes = new List<int>();
     private List<PlayerInputHandler> tiedPlayers = new List<PlayerInputHandler>();
     [SerializeField] private Transform[] tiedPlayerDisplays = new Transform[4];
-    [SerializeField] private Image sword;
+    [SerializeField] private RawImage sword;
     [SerializeField] private Color[] playerColors = new Color[4];
     //[SerializeField] private Sprite[] playerPortraitSprites = new Sprite[4];
 
@@ -28,11 +28,12 @@ public class VictoryButtonMashUI : UIDisplay
         //Display UI based on team size 
         tiedPlayerDisplays[tiedIndexes.Count - 1].gameObject.SetActive(true);
 
-        Image[] portraits = tiedPlayerDisplays[tiedIndexes.Count - 1].GetComponentsInChildren<Image>();
+        RawImage[] portraits = tiedPlayerDisplays[tiedIndexes.Count - 1].transform.GetChild(1).GetComponentsInChildren<RawImage>();
 
         for (int i = 0; i < portraits.Length; i++)
         {
-            portraits[i].sprite = PlayerConfigManager.Instance.playerPortraits[tiedIndexes[i]];
+            //portraits[i].sprite = PlayerConfigManager.Instance.playerPortraits[tiedIndexes[i]];
+            portraits[i].material = PlayerConfigManager.Instance.playerOutlines[tiedIndexes[i]];
         }
 
         //Enable each players button mashing
@@ -97,6 +98,6 @@ public class VictoryButtonMashUI : UIDisplay
     private void ChangeSwordColor(int teamIndex, int scoreToSetAs)
     {
         int index = data.GetHighestScoreIndex();
-        sword.color = playerColors[index];
+        sword.material = PlayerConfigManager.Instance.playerOutlines[index];
     }
 }
