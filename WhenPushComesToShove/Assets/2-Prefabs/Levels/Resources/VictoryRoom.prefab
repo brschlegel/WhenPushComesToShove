@@ -7680,6 +7680,7 @@ GameObject:
   - component: {fileID: 8572635842715500536}
   - component: {fileID: 5970915034131835719}
   - component: {fileID: 378043979523069514}
+  - component: {fileID: 856953355214772480}
   m_Layer: 5
   m_Name: VictoryRoom Canvas
   m_TagString: Untagged
@@ -7719,7 +7720,7 @@ Canvas:
   m_GameObject: {fileID: 5435923617940531092}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -7729,7 +7730,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &5970915034131835719
 MonoBehaviour:
@@ -7771,6 +7772,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &856953355214772480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435923617940531092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91ba74c93e271d45bd94f0a8457e856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5541257639707061424
 GameObject:
   m_ObjectHideFlags: 0
