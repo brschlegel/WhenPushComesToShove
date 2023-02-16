@@ -116,6 +116,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (!performingAction && !heavyShoveScript.heavyShoveIsCharging && !movementPaused)
             {
+               // Debug.Log("Yo he pressed me at this time specifically: " + Time.timeSinceLevelLoad);
                 lightShoveScript.OnLightShoveStart(obj);
             }
             

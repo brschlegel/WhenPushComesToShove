@@ -37,11 +37,11 @@ public class Hurtbox : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collider)
     {
         Hitbox hitbox = collider.GetComponent<Hitbox>();
-        if(hitbox != null)
+        if (hitbox != null)
         {
             HitboxManager.instance.RegisterHit(hitbox, this);
-
         }
+
     }
 
     public Vector2 Center 

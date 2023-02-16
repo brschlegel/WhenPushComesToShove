@@ -26,8 +26,6 @@ public class KnockbackReciever : MonoBehaviour
         //Tell the projectile mode hitbox to ignore whoever sent it into projectile mode
         pMode.pHitbox.OwnersToIgnore.Add(instigator);
         pMode.AddForce(direction * force);
-
-
         //VFX
         vfx.Play(force, direction);
   
