@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagsToIgnore: []
-  keyStart: Ball
+  keyStart: Barrel
 --- !u!1 &654282583921665019
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.1875, y: 0, z: 0.15625, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
@@ -512,6 +512,14 @@ PrefabInstance:
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191535, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0.1875
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191535, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0.15625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}

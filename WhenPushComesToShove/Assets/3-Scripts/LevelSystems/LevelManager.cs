@@ -68,6 +68,7 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
+        //Is this valid anymore?
         damageEnabler.EnableDamage(currentRoomIndex > 0);
 
         //Clears previous level

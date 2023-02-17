@@ -15,6 +15,10 @@ public class BigDawgStatus : BaseModifier
             {
                 d.strength *= 2;
             }
+            PlayerHeavyShoveScript heavy = t.GetComponentInChildren<PlayerHeavyShoveScript>();
+            heavy.forceMultiplier *= 2;
+            PlayerHealth health = t.GetComponentInChildren<PlayerHealth>();
+            health.maxHealth *= 2;
         }
         
         base.Init();
@@ -31,6 +35,10 @@ public class BigDawgStatus : BaseModifier
             {
                 d.strength /= 2;
             }
+            PlayerHeavyShoveScript heavy = t.GetComponentInChildren<PlayerHeavyShoveScript>();
+            heavy.forceMultiplier /= 2;
+            PlayerHealth health = t.GetComponentInChildren<PlayerHealth>();
+            health.maxHealth /= 2;
         }
         base.CleanUp();
     }
