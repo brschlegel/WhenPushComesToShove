@@ -63,6 +63,7 @@ public abstract class MinigameLogic : MonoBehaviour
                 //p.GetComponentInChildren<PlayerMovementScript>().ResetMoveSpeed();
                 p.GetComponentInChildren<PlayerInputHandler>().movementPaused = false;
                 p.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+                p.GetComponentInChildren<PositionFreezer>().UnlockPosition();
             }
         }
         GameState.ModifierManager.StartMinigame();

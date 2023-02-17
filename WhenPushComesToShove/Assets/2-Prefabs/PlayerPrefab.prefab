@@ -5706,6 +5706,7 @@ GameObject:
   - component: {fileID: 519120853313958755}
   - component: {fileID: 6500313041786800345}
   - component: {fileID: 6129605687711617601}
+  - component: {fileID: 8530073919738186900}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -5947,6 +5948,18 @@ MonoBehaviour:
   sword: {fileID: 2454240910266447379}
   GroundUIRef: {fileID: 6065905207172843190}
   circleVFX: {fileID: 1993825675800139713, guid: 3c76fb265400cbe47a401c8c938bd591, type: 3}
+--- !u!114 &8530073919738186900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6273220948599445249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a049d4909d29746ab0e399a4bd3925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6737187360258442515
 GameObject:
   m_ObjectHideFlags: 0
