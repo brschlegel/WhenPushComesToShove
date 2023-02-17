@@ -17,13 +17,13 @@ public class ModifierManager : MonoBehaviour
     void Start()
     {
         modifiers = new List<BaseModifier>();
-        if (debugList != null)
-        {
-            foreach (ModifierSettings m in debugList.modifiers)
-            {
-                AddModifier(m);
-            }
-        }
+        // if (debugList != null)
+        // {
+        //     foreach (ModifierSettings m in debugList.modifiers)
+        //     {
+        //         AddModifier(m);
+        //     }
+        // }
         if (modifierPool == null)
         {
             Init();
@@ -36,6 +36,17 @@ public class ModifierManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W))
         {
             RemoveAllModifiers();
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (debugList != null)
+            {
+                foreach (ModifierSettings m in debugList.modifiers)
+                {
+                    AddModifier(m);
+                }
+            }
         }
     }
 
