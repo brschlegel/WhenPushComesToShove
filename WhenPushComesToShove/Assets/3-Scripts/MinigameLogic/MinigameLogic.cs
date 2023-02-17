@@ -44,6 +44,7 @@ public abstract class MinigameLogic : MonoBehaviour
                     //p.GetComponentInChildren<PlayerMovementScript>().ChangeMoveSpeed(0);
                     p.GetComponentInChildren<PlayerInputHandler>().movementPaused = true;
                     p.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+                    p.GetComponentInChildren<PositionFreezer>().LockPosition(p.position);
                 }
             }
         }
@@ -63,6 +64,7 @@ public abstract class MinigameLogic : MonoBehaviour
                 //p.GetComponentInChildren<PlayerMovementScript>().ResetMoveSpeed();
                 p.GetComponentInChildren<PlayerInputHandler>().movementPaused = false;
                 p.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+                p.GetComponentInChildren<PositionFreezer>().UnlockPosition();
             }
         }
         GameState.ModifierManager.StartMinigame();
