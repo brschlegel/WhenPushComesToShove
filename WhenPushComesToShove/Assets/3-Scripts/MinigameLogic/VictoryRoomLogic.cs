@@ -14,7 +14,6 @@ public class VictoryRoomLogic : MinigameLogic
     private void OnEnable()
     {
         startingUIDisplay.ShowDisplay();
-        endCondition.Init();
     }
 
     public void Update()
