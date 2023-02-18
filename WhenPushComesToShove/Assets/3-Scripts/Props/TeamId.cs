@@ -17,4 +17,9 @@ public class TeamId : MonoBehaviour
             return team == Team.Orange ? Team.Purple : Team.Orange;
         }
    }
+
+   public int TeamIndex
+   {
+    get { return (int)team - 1;}
+   }
 }

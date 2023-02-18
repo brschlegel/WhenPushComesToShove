@@ -88,9 +88,37 @@ public class BreakAwayLogic : MinigameLogic
         base.StartGame();
     }
 
+    private void Update()
+    {
+          if (gameRunning)
+        {
+            if (endCondition.TestCondition())
+            {
+                if (data.scores[0] > data.scores[1])
+                {
+                    ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = 0;
+                }
+                else if (data.scores[1] > data.scores[0])
+                {
+                    ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = 1;
+                }
+                else
+                {
+                    ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = -1;
+                }
+                //int winningTeamIndex = ((LastTeamStanding)endCondition).winningTeamNum;
+                //((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = winningTeamIndex;
+                EndGame();
+            }
+        }
+
+    }
+
     private void ScoreBasket(GameObject barrel)
     {
-        SpawnBarrel(barrel.GetComponent<TeamId>().team);
+        TeamId scorerId = barrel.GetComponent<TeamId>();
+        data.AddScoreForTeam(scorerId.TeamIndex,1);
+        SpawnBarrel(scorerId.team);
         Destroy(barrel);
     }
 
@@ -152,7 +180,7 @@ public class BreakAwayLogic : MinigameLogic
         }
     }
 
-    //Ramping Coroutines!
+    //#region Ramping Coroutines!
     private IEnumerator ActivateSpikes()
     {
         yield return new WaitForSeconds(spikeActivationTime);
