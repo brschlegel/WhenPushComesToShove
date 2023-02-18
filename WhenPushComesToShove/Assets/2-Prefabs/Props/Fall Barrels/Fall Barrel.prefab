@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 2213797646885342770}
   - component: {fileID: 9158000912857972266}
   - component: {fileID: 3441607028626156767}
+  - component: {fileID: 7849604760279341411}
+  - component: {fileID: -7555942446512539442}
   m_Layer: 11
   m_Name: Fall Barrel
   m_TagString: FallingBarrel
@@ -191,6 +193,31 @@ ConstantForce2D:
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: 0, y: 0}
   m_Torque: 0
+--- !u!114 &7849604760279341411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2213797646885342760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313b314fa5786d040b0995343596a42f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+--- !u!114 &-7555942446512539442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2213797646885342760}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a049d4909d29746ab0e399a4bd3925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2213797647704091231
 GameObject:
   m_ObjectHideFlags: 0
