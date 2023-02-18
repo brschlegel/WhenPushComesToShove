@@ -15,6 +15,9 @@ public class SlimeRancherLogic : MinigameLogic
     private float slimeSpawnIncrement = -1;
 
     private int numSlimes;
+    [SerializeField] private bool scoreOnlyBiggestSlime = false;
+    [SerializeField] private Transform slimesParent;
+    private bool isTie = false;
 
     public override void StartGame()
     {
@@ -31,13 +34,57 @@ public class SlimeRancherLogic : MinigameLogic
         {
             if (endCondition.TestCondition())
             {
-                //Transform winner = ((LastManStandingEndCondition)endCondition).winner;
+                //Find biggest slime
+                if (scoreOnlyBiggestSlime)
+                {
+                    Slime largestSlime = GetLargestSlime();
 
-                //PlayerConfiguration config = winner.GetComponentInChildren<PlayerInputHandler>().playerConfig;
-                //Assign point to let the system know who won
-                //data.AddScoreForTeam(config.PlayerIndex, 1);
+                    if (isTie || largestSlime.slimeTeamIndex == -1)
+                    {
+                        ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = -1;
+                    }
+                    else
+                    {
+                        data.scores[largestSlime.slimeTeamIndex] += 1;
 
-                //((PlayerWinUIDisplay)endingUIDisplay).winnerName = GameState.playerNames[config.PlayerIndex];
+                        if (data.scores[0] > data.scores[1])
+                        {
+                            ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = 0;
+                        }
+                        else if (data.scores[1] > data.scores[0])
+                        {
+                            ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = 1;
+                        }
+                    }
+                }
+                //Assign points for slimes based on size
+                else
+                {
+                    Slime[] allSlimes = slimesParent.GetComponentsInChildren<Slime>();
+
+                    foreach (Slime s in allSlimes)
+                    {
+                        if (s.slimeTeamIndex != -1)
+                        {
+                            data.AddScoreForTeam(s.slimeTeamIndex, s.pointWorth);
+                        }
+                    }
+
+                    //Decide Winner
+                    if (data.scores[0] > data.scores[1])
+                    {
+                        ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = 0;
+                    }
+                    else if (data.scores[1] > data.scores[0])
+                    {
+                        ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = 1;
+                    }
+                    else
+                    {
+                        ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = -1;
+                    }
+                }
+
                 EndGame();
             }
         }
@@ -60,5 +107,34 @@ public class SlimeRancherLogic : MinigameLogic
     public float SpawnInterval
     {
         get { return Mathf.Clamp((numSlimes - 1) * slimeSpawnIncrement + startSlimeSpawnInterval, endSlimeSpawnInterval, startSlimeSpawnInterval); }
+    }
+
+    public Slime GetLargestSlime()
+    {
+        Slime[] allSlimes = slimesParent.GetComponentsInChildren<Slime>();
+        int largestSlimeIndex = 0;
+        isTie = false;
+
+        //Find Winning Team
+        for (int i = 1; i < allSlimes.Length; i++)
+        {
+            if (allSlimes[i].slimeTeamIndex != -1)
+            {
+                if (allSlimes[i].slimeSize > allSlimes[largestSlimeIndex].slimeSize)
+                {
+                    largestSlimeIndex = i;
+                    isTie = false;
+                }
+                else if (allSlimes[i].slimeSize == allSlimes[largestSlimeIndex].slimeSize)
+                {
+                    if (allSlimes[i].slimeTeamIndex != allSlimes[largestSlimeIndex].slimeTeamIndex)
+                    {
+                        isTie = true;
+                    }
+                }
+            }
+        }
+
+        return allSlimes[largestSlimeIndex];
     }
 }

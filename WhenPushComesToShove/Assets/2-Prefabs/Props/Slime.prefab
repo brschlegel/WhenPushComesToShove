@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 7038911212868762908}
   - component: {fileID: 7038911212868762905}
   - component: {fileID: 7647606645070754888}
-  - component: {fileID: 2944712560177511130}
   - component: {fileID: 1089027928374096492}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Slime
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -137,7 +136,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7038911212868762883}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f72bbad3808e30042b498502a8076ba8, type: 3}
   m_Name: 
@@ -172,20 +171,6 @@ CircleCollider2D:
   m_Offset: {x: -0.013493031, y: -0.09445125}
   serializedVersion: 2
   m_Radius: 0.09520894
---- !u!114 &2944712560177511130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7038911212868762883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9572752efe4afdf40ab6db4c6f4a16c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointsToGain: 1
-  hasGivenPoints: 0
 --- !u!114 &1089027928374096492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +184,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlimePrefab: {fileID: 7038911212868762883}
+  pointText: {fileID: 8396056806307835653}
+  slimeSizeThreshold: 5
+  timeBetweenMovements: 2
+  pMode: {fileID: 7038911212868762905}
+  movementForce: 10000
   slimeSize: 1
+  pointWorth: 1
   slimeTeamIndex: -1
 --- !u!1 &7038911213132274036
 GameObject:
@@ -329,12 +320,12 @@ GameObject:
   - component: {fileID: 3843748472701791022}
   - component: {fileID: 8396056806307835653}
   m_Layer: 11
-  m_Name: 3x Text
+  m_Name: PointText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3784758719857757972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -352,7 +343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.021, y: 0.03}
+  m_AnchoredPosition: {x: 0.195, y: -0.045}
   m_SizeDelta: {x: 0.6826, y: 0.6094}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &3843748472701791022
@@ -417,7 +408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3x
+  m_text: 1 pt
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -444,15 +435,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 2
+  m_fontSizeBase: 2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -480,7 +471,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.3562734, y: 0, z: 0.07474232, w: 0.40859333}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0

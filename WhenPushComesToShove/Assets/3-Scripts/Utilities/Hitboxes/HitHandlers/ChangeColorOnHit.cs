@@ -16,7 +16,26 @@ public class ChangeColorOnHit : HitHandler
         {
             if (slime.slimeSize > 1)
             {
-                slime.SplitSlime();
+                if (e.hitbox.TryGetComponent<KnockbackData>(out KnockbackData data))
+                {
+                    //Pass in num of slimes to split based on Force
+                    if (data.strength < handler.heavyShoveScript.lowTierChargeForce)
+                    {
+                        slime.SplitSlime(1);
+                    }
+                    else if (data.strength < handler.heavyShoveScript.midTierChargeForce)
+                    {
+                        slime.SplitSlime(2);
+                    }
+                    else if (data.strength < handler.heavyShoveScript.highTierChargeForce)
+                    {
+                        slime.SplitSlime(3);
+                    }
+                    else if (data.strength >= handler.heavyShoveScript.highTierChargeForce)
+                    {
+                        slime.SplitSlime(4);
+                    }
+                }
             }
         }
 
