@@ -74,7 +74,6 @@ public class PlayerTeamFormations : MonoBehaviour
                 }
                 break;
             case LevelType.TwoTwo:
-                Debug.Log("TwoTwo");
                 for (int i = 0; i < playerConfigs.Count; i++)
                 {
                     if (i % 2 == 0)
