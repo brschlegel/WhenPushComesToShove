@@ -10,7 +10,7 @@ public class PositionFreezer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.enabled = false;
+       // this.enabled = false;
     }
 
     public void LockPosition(Vector2 position)
