@@ -5281,7 +5281,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxAccelerationForce: 135
+  maxAccelerationForce: 50
   maxAccelerationForceFactorFromDot:
     serializedVersion: 2
     m_Curve:
@@ -5361,6 +5361,7 @@ MonoBehaviour:
   lowTierChargeForce: 10000
   midTierChargeForce: 13500
   highTierChargeForce: 16000
+  forceMultiplier: 1
 --- !u!114 &3186559500755933933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5706,6 +5707,7 @@ GameObject:
   - component: {fileID: 519120853313958755}
   - component: {fileID: 6500313041786800345}
   - component: {fileID: 6129605687711617601}
+  - component: {fileID: 8530073919738186900}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -5947,6 +5949,18 @@ MonoBehaviour:
   sword: {fileID: 2454240910266447379}
   GroundUIRef: {fileID: 6065905207172843190}
   circleVFX: {fileID: 1993825675800139713, guid: 3c76fb265400cbe47a401c8c938bd591, type: 3}
+--- !u!114 &8530073919738186900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6273220948599445249}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a049d4909d29746ab0e399a4bd3925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6737187360258442515
 GameObject:
   m_ObjectHideFlags: 0
@@ -6240,7 +6254,7 @@ Transform:
   m_GameObject: {fileID: 7031547588185146585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.8, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4922170843139066406}
@@ -6312,7 +6326,6 @@ GameObject:
   - component: {fileID: 1075145129282054902}
   - component: {fileID: 102798743431046658}
   - component: {fileID: 5050357902423793123}
-  - component: {fileID: 5021299487003338702}
   m_Layer: 0
   m_Name: HitHandlers
   m_TagString: Untagged
@@ -6353,7 +6366,6 @@ MonoBehaviour:
   - {fileID: 1075145129282054902}
   - {fileID: 5928355534833855564}
   - {fileID: 102798743431046658}
-  - {fileID: 5021299487003338702}
 --- !u!114 &5928355534833855564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6414,23 +6426,6 @@ MonoBehaviour:
   tagsToIgnore:
   - GhostShove
   myPMode: {fileID: 519120853313958755}
---- !u!114 &5021299487003338702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7232917086713832237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 706ffe37b2a5fe141978808b99901efa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagsToIgnore:
-  - GhostShove
-  timeForInvulnerability: 0.05
-  hurtboxRef: {fileID: 3632258541538756751}
-  health: {fileID: 5551845860662291163}
 --- !u!1 &8153573459636761399
 GameObject:
   m_ObjectHideFlags: 0

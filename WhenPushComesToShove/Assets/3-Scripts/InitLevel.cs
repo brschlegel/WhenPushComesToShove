@@ -84,7 +84,6 @@ public class InitLevel : MonoBehaviour
                 spawnProps[i] = new PlayerSpawnProps();
                 spawnProps[i].transform = playerSpawns[i].transform;
                 spawnProps[i].teamIndex = playerSpawns[i].transform.GetComponent<PlayerSpawnPoint>().teamIndex;
-                Debug.Log(spawnProps[i].teamIndex);
                 spawnProps[i].filled = false;
             }
 
@@ -102,7 +101,7 @@ public class InitLevel : MonoBehaviour
                 {
                     for (int j = 0; j < spawnProps.Length; j++)
                     {
-                        Debug.Log("Spawn Index: " + spawnProps[j].teamIndex + " Player Index: " + playerConfigs[i].TeamIndex);
+
                         if (spawnProps[j].filled == false && spawnProps[j].teamIndex == playerConfigs[i].TeamIndex)
                         {
                             spawnProps[j].filled = true;
