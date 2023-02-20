@@ -5281,7 +5281,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxAccelerationForce: 135
+  maxAccelerationForce: 50
   maxAccelerationForceFactorFromDot:
     serializedVersion: 2
     m_Curve:
@@ -5361,6 +5361,7 @@ MonoBehaviour:
   lowTierChargeForce: 10000
   midTierChargeForce: 13500
   highTierChargeForce: 16000
+  forceMultiplier: 1
 --- !u!114 &3186559500755933933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6253,7 +6254,7 @@ Transform:
   m_GameObject: {fileID: 7031547588185146585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.8, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4922170843139066406}

@@ -1566,7 +1566,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6265375536633025131}
-  - {fileID: 4638795070760585299}
   - {fileID: 2804175238229100804}
   m_Father: {fileID: 1645614143117000174}
   m_RootOrder: 4
@@ -4381,7 +4380,7 @@ MonoBehaviour:
   - {fileID: 187946272928474617}
   enemySpawns: []
   levelType: 2
-  game: 5
+  game: 6
   teamLevel: 0
 --- !u!156049354 &932582951808698557
 Grid:
@@ -5179,7 +5178,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1545246644397455085}
+    m_TransformParent: {fileID: 6265375536633025131}
     m_Modifications:
     - target: {fileID: 5776881627466679216, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
       propertyPath: m_Name
@@ -5199,7 +5198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7382942305849096375, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7382942305849096375, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5243,15 +5242,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7382942305849096375, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7382942305849096375, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7382942305849096375, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7382942305849096375, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -5275,11 +5274,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
---- !u!224 &4638795070760585299 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7382942305849096375, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
-  m_PrefabInstance: {fileID: 2744158248273850596}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6112167871609704733 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8270857591362953721, guid: 81857a5b5c71d324190ff8661b22bab7, type: 3}
@@ -5451,7 +5445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1224345344539793787, guid: 7f95b4c1349e2474288a3caecb4d7c5b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1224345344539793787, guid: 7f95b4c1349e2474288a3caecb4d7c5b, type: 3}
       propertyPath: m_AnchorMax.x

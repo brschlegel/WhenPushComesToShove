@@ -7,14 +7,26 @@ public class Respawner : MonoBehaviour
     public float spawnDelay = 1.0f;
     public event PlayerEvent onDetectDeath;
     public event PlayerEvent onRespawn;
+    public float randomOffsetRadius = 3;
+
+    [HideInInspector]
+    public List<int> indicesToIgnore;
 
     private Dictionary<Transform, bool> respawning;
-    private float randomOffsetRadius = 3;
     // Start is called before the first frame update
     void Start()
     {
+        if(respawning == null)
+        {
+            Init();
+        }
+    }
+
+    public void Init()
+    {
         respawning = new Dictionary<Transform, bool>();
-        foreach(Transform t in GameState.players)
+        indicesToIgnore = new List<int>();
+        foreach (Transform t in GameState.players)
         {
             respawning.Add(t, false);
         }
@@ -24,19 +36,23 @@ public class Respawner : MonoBehaviour
     void Update()
     {
         List<Transform> players = GameState.players;
-        foreach(Transform t in players)
+        foreach (Transform t in players)
         {
-            if(t.GetComponentInChildren<PlayerHealth>().dead && !respawning[t])
+            if (t.GetComponentInChildren<PlayerHealth>().dead && !respawning[t])
             {
-                onDetectDeath?.Invoke(t.GetComponentInChildren<PlayerInputHandler>().playerConfig.PlayerIndex);
-                StartCoroutine(RespawnPlayer(t));
+                int index = t.GetComponentInChildren<PlayerInputHandler>().playerConfig.PlayerIndex;
+                if (!indicesToIgnore.Contains(index))
+                {
+                    onDetectDeath?.Invoke(index);
+                    StartCoroutine(RespawnPlayer(t));
+                }
             }
         }
     }
 
-   private IEnumerator RespawnPlayer(Transform player)
-   {
-        respawning[player] =true;
+    private IEnumerator RespawnPlayer(Transform player)
+    {
+        respawning[player] = true;
         PlayerMovementScript movement = player.GetComponentInChildren<PlayerMovementScript>();
         PlayerHealth health = player.GetComponentInChildren<PlayerHealth>();
         PlayerAnimBrain anim = player.GetComponentInChildren<PlayerAnimBrain>();
@@ -49,6 +65,6 @@ public class Respawner : MonoBehaviour
         health.ResetHealth();
         respawning[player] = false;
         onRespawn?.Invoke(input.playerConfig.PlayerIndex);
-   }
+    }
 
 }

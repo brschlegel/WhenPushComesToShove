@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(ObjectSpawner))]
 public class SpawnWithVelocity : SpawnerAttachment
 {
-    [SerializeField] Vector2 velocityDirection;
-    [SerializeField] float initialForce;
+    public Vector2 velocityDirection;
+    public float initialForce;
 
     protected override void OnSpawn(Transform t)
     {
