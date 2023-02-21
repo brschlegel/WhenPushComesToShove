@@ -96,7 +96,7 @@ public class VictoryButtonMashUI : UIDisplay
         data.AddScoreForTeam(playerIndex, 1);
     }
 
-    private void ChangeSwordColor(int teamIndex, int scoreToSetAs)
+    private void ChangeSwordColor(int teamIndex, float scoreToSetAs)
     {
         int index = data.GetHighestScoreIndex();
         sword.material = PlayerConfigManager.Instance.playerOutlines[index];

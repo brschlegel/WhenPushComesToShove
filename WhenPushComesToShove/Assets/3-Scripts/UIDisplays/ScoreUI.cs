@@ -37,7 +37,7 @@ public class ScoreUI : UIDisplay
         gameObject.SetActive(true);
     }
 
-    public void UpdateScore(int index, int scoreToSetAs)
+    public void UpdateScore(int index, float scoreToSetAs)
     {
         if (scores[index] == null)
         {
