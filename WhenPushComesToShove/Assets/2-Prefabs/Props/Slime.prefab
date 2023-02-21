@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7038911212868762905}
   - component: {fileID: 7647606645070754888}
   - component: {fileID: 1089027928374096492}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Slime
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7038911212868762883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.61, y: -0.78048, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7038911213132274037}
@@ -62,7 +62,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8a93e22b3a8718a41bc2e1b51fc02331, type: 2}
+  - {fileID: 2100000, guid: 7e9b8289869f9904980af6b11b47f78d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168,9 +168,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.013493031, y: -0.09445125}
+  m_Offset: {x: -0.013493031, y: -0.22621244}
   serializedVersion: 2
-  m_Radius: 0.09520894
+  m_Radius: 0.29676646
 --- !u!114 &1089027928374096492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,10 +185,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlimePrefab: {fileID: 7038911212868762883}
   pointText: {fileID: 8396056806307835653}
-  slimeSizeThreshold: 5
+  slimeSizeThreshold: 7
   timeBetweenMovements: 2
   pMode: {fileID: 7038911212868762905}
   movementForce: 10000
+  slimeDefaultMat: {fileID: 2100000, guid: 7e9b8289869f9904980af6b11b47f78d, type: 2}
+  logic: {fileID: 0}
   slimeSize: 1
   pointWorth: 1
   slimeTeamIndex: -1
@@ -304,8 +306,8 @@ MonoBehaviour:
   tagsToIgnore:
   - GhostShove
   colorsToChangeBasedOnIndex:
-  - {r: 0.972549, g: 0.5921569, b: 0.14901961, a: 1}
-  - {r: 0.8901961, g: 0.46666667, b: 0.99607843, a: 1}
+  - {fileID: 2100000, guid: d3dbf017074ca35498ade99fd3246093, type: 2}
+  - {fileID: 2100000, guid: 8a93e22b3a8718a41bc2e1b51fc02331, type: 2}
   spriteToChange: {fileID: 7038911212868762911}
   slime: {fileID: 1089027928374096492}
 --- !u!1 &8625068154720632223
@@ -325,7 +327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3784758719857757972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -594,9 +596,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0053740786, y: -0.06059633}
+  m_Offset: {x: -0.005374104, y: -0.21721348}
   serializedVersion: 2
-  m_Radius: 0.109949976
+  m_Radius: 0.36565098
 --- !u!1001 &7038911213533619621
 PrefabInstance:
   m_ObjectHideFlags: 0
