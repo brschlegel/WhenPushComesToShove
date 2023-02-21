@@ -4,24 +4,36 @@ using UnityEngine;
 
 public class TagLogic : MinigameLogic
 {
-    private List<PlayerConfiguration> playerConfigs;
-    private List<ProjectileHitbox> pHitBoxes;
-    private GameObject taggedPlayer;
-    private float currentTime;
-
     [SerializeField] private Sprite tagIcon;
     [SerializeField] private float timeScoreIncrement;
+    [SerializeField] private float gracePeriod;
+    [SerializeField] private float speeOfTagged;
+
+    private List<PlayerConfiguration> playerConfigs;
+    private List<ProjectileHitbox> pHitBoxes;
+    private List<PlayerMovementScript> pMovement;
+    private GameObject taggedPlayer;
+    private float initialSpeed;
+    //private float initialAcceleration;
+    private float currentTime;
+
+    
 
 
     public override void Init()
     {
         playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs();
         pHitBoxes = new List<ProjectileHitbox>();
+        pMovement = new List<PlayerMovementScript>();
 
         for(int i = 0; i < playerConfigs.Count; i++)
         {
             pHitBoxes.Add(playerConfigs[i].PlayerObject.GetComponentInChildren<ProjectileHitbox>(true));
+            pMovement.Add(playerConfigs[i].PlayerObject.GetComponentInChildren<PlayerMovementScript>(true));
         }
+
+        initialSpeed = pMovement[0].maxSpeed;
+        //initialAcceleration = pMovement[0].acceleration;
 
         UpdateTaggedPlayer(Random.Range(0, playerConfigs.Count));
 
@@ -113,10 +125,14 @@ public class TagLogic : MinigameLogic
             {
                 taggedPlayer = playerConfigs[i].PlayerObject;
                 sr.sprite = tagIcon;
+                pMovement[i].maxSpeed = speeOfTagged;
+                //pMovement[i].acceleration = speeOfTagged * 10;
             }
             else
             {
                 sr.sprite = null;
+                pMovement[i].maxSpeed = initialSpeed;
+                //pMovement[i].acceleration = initialAcceleration;
             }
         }
     }
