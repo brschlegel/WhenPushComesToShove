@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Slime_Purple
-  m_Shader: {fileID: -6465566751694194690, guid: 437ef3b691f2dce45abccdc6ca569813, type: 3}
+  m_Name: M_TieScreen_Red
+  m_Shader: {fileID: -6465566751694194690, guid: a848021c692f8dd478010bc7a00ca795, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -25,7 +25,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: da050a4766d0e0747b85c210dd8a1bb4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 14f2780e2a96b4a41a85af95981d865f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -51,12 +51,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
+    - _OutlineThickness: 1
     m_Colors:
+    - _ArmorColor: {r: 0.3215686, g: 0.2666667, b: 0.2666667, a: 0}
+    - _ArmorHighlightColor: {r: 0.4392157, g: 0.3490196, b: 0.3490196, a: 0}
+    - _ArmorShadowColor: {r: 0.227451, g: 0.1843137, b: 0.1843137, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color_1: {r: 0.7254902, g: 0.20392159, b: 0.86274517, a: 1}
-    - _Color_2: {r: 0.8235295, g: 0.3372549, b: 0.9490197, a: 1}
-    - _Color_3: {r: 0.89019614, g: 0.4666667, b: 1, a: 1}
-    - _Color_4: {r: 0.95294124, g: 0.72156864, b: 1, a: 1}
+    - _EyeColor: {r: 0.1882353, g: 0.1411765, b: 0.1294118, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _PlayerColor: {r: 0.9019608, g: 0.07450981, b: 0.023529412, a: 1}
+    - _PlayerShadowColor: {r: 0.7411765, g: 0, b: 0.16078432, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -469,17 +469,17 @@ RectTransform:
   m_GameObject: {fileID: 4069856624998947994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4069856626195096599}
   m_Father: {fileID: 4069856625713062148}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 640, y: 360}
+  m_SizeDelta: {x: 0, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4069856624998947993
 CanvasRenderer:
@@ -1286,10 +1286,11 @@ MonoBehaviour:
   - {fileID: 4069856626357865507}
   sword: {fileID: 4069856625504111382}
   playerColors:
-  - {r: 0.9019608, g: 0.07450981, b: 0.023529412, a: 1}
-  - {r: 0, g: 0.7607843, b: 0.9019608, a: 1}
-  - {r: 0.28627452, g: 0.9019608, b: 0, a: 1}
-  - {r: 0.9019608, g: 0.9019608, b: 0, a: 1}
+  - {fileID: 2100000, guid: e97afeea533ca7949806333bc0b6ebae, type: 2}
+  - {fileID: 2100000, guid: a7de920b0b65b4540986b4d5e4ad3a6e, type: 2}
+  - {fileID: 2100000, guid: ca93262461769e6459dcabcd673bda6c, type: 2}
+  - {fileID: 2100000, guid: 8dee9569e92e2d24d9c4858cb0b59927, type: 2}
+  threshold: {fileID: 0}
 --- !u!1 &4069856625833966434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,9 +1466,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4069856626195096598}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4069856624998947995}
@@ -1475,7 +1476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3.9723918}
+  m_AnchoredPosition: {x: 0, y: 3.4}
   m_SizeDelta: {x: 0, y: 32.1126}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4069856626195096587
@@ -1754,7 +1755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4069856626357865507
 RectTransform:
   m_ObjectHideFlags: 0

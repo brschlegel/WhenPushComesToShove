@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4751705008388524014
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7728,6 +7728,7 @@ GameObject:
   - component: {fileID: 8572635842715500536}
   - component: {fileID: 5970915034131835719}
   - component: {fileID: 378043979523069514}
+  - component: {fileID: 856953355214772480}
   m_Layer: 5
   m_Name: VictoryRoom Canvas
   m_TagString: Untagged
@@ -7767,7 +7768,7 @@ Canvas:
   m_GameObject: {fileID: 5435923617940531092}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -7777,7 +7778,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &5970915034131835719
 MonoBehaviour:
@@ -7819,6 +7820,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &856953355214772480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435923617940531092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91ba74c93e271d45bd94f0a8457e856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5541257639707061424
 GameObject:
   m_ObjectHideFlags: 0
@@ -8903,13 +8916,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: TieScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 4069856625713062151, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4069856626154375434, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4069856626195096599, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1015.19
       objectReference: {fileID: 0}
     - target: {fileID: 4069856626290081040, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
       propertyPath: m_IsActive
