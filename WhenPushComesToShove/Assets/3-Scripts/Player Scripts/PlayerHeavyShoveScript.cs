@@ -14,6 +14,9 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     public Hitbox hitbox;
     public float cooldown;
     public float hitBoxCooldown;
+    public float lowTierChargeForce = 10000;
+    public float midTierChargeForce = 13500;
+    public float highTierChargeForce = 16000;
 
     [HideInInspector] public bool heavyShoveIsCharging = false;
     [HideInInspector] public float heavyShoveCharge = 0;
@@ -22,9 +25,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     [SerializeField] public float lowTierChargeTime = .3f;
     [SerializeField] public float midTierChargeTime = .5f;
     [SerializeField] public float highTierChargeTime = 1;
-    [SerializeField] public float lowTierChargeForce = 10000;
-    [SerializeField] public float midTierChargeForce = 13500;
-    [SerializeField] public float highTierChargeForce = 16000;
+    [HideInInspector] public float forceMultiplier = 1.0f;
 
     private Collider2D collider;
     private PlayerInputHandler handler;
@@ -52,17 +53,17 @@ public class PlayerHeavyShoveScript : MonoBehaviour
             if (heavyShoveCharge >= highTierChargeTime)
             {
                 chargeLevel = 3;
-                hitbox.knockbackData.strength = highTierChargeForce;
+                hitbox.knockbackData.strength = highTierChargeForce * forceMultiplier;
             }
             else if (heavyShoveCharge >= midTierChargeTime )
             {
                 chargeLevel = 2;
-                hitbox.knockbackData.strength = midTierChargeForce;
+                hitbox.knockbackData.strength = midTierChargeForce * forceMultiplier;
             }
             else if(heavyShoveCharge >= lowTierChargeTime)
             {
                 chargeLevel = 1;
-                hitbox.knockbackData.strength = lowTierChargeForce;
+                hitbox.knockbackData.strength = lowTierChargeForce * forceMultiplier;
             }
             else
             {

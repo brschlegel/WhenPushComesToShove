@@ -63,6 +63,7 @@ MonoBehaviour:
   - {fileID: 2003781600066648342}
   - {fileID: 310251762476939777}
   - {fileID: 3629747966695617601}
+  timer: {fileID: 7782802920676206988}
 --- !u!1 &1583396911032515744
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +310,7 @@ Transform:
   - {fileID: 3900880145494013246}
   - {fileID: 7587297489444208835}
   - {fileID: 8799306040999579891}
+  - {fileID: 6871043647192057927}
   m_Father: {fileID: 1755209493023897844}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7537,6 +7539,52 @@ MonoBehaviour:
   damage: 5
   velocityDamageMultiplier: 1
   invulnerabilityCooldown: 0.5
+--- !u!1 &4020386706973273851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6871043647192057927}
+  - component: {fileID: 6934575359607745733}
+  m_Layer: 0
+  m_Name: ThresholdEndCondition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6871043647192057927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020386706973273851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5898001814830339181}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6934575359607745733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020386706973273851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859e3cc9b2158f34abdf4c976914a5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 4482299919862746241}
+  threshold: 15
 --- !u!1 &4665305586583472838
 GameObject:
   m_ObjectHideFlags: 0
@@ -8632,6 +8680,10 @@ PrefabInstance:
       propertyPath: tieSword
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1550415445739497573, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: threshold
+      value: 
+      objectReference: {fileID: 6934575359607745733}
     - target: {fileID: 1550415445739497573, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
       propertyPath: rankingDisplay
       value: 

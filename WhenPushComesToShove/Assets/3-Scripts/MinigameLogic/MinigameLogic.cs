@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Minigame {All, Dodgeball, Soccer, HotPotato, Sumo, Pinball};
+public enum Minigame {All, Dodgeball, Soccer, HotPotato, Sumo, Tag, Pinball, BreakAway, SlimeRancher};
 
 //All minigames flow through these methods and can override to add functionality at any step
 //Init -> StartGame -> EndGame -> CleanUp
@@ -44,6 +44,7 @@ public abstract class MinigameLogic : MonoBehaviour
                     //p.GetComponentInChildren<PlayerMovementScript>().ChangeMoveSpeed(0);
                     p.GetComponentInChildren<PlayerInputHandler>().movementPaused = true;
                     p.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+                    p.GetComponentInChildren<PositionFreezer>().LockPosition(p.position);
                 }
             }
         }
@@ -63,6 +64,7 @@ public abstract class MinigameLogic : MonoBehaviour
                 //p.GetComponentInChildren<PlayerMovementScript>().ResetMoveSpeed();
                 p.GetComponentInChildren<PlayerInputHandler>().movementPaused = false;
                 p.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+                p.GetComponentInChildren<PositionFreezer>().UnlockPosition();
             }
         }
         GameState.ModifierManager.StartMinigame();

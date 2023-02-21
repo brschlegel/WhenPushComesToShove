@@ -50,7 +50,7 @@ public class PlayerLightShoveScript : MonoBehaviour
     public void EnableShoveBaseHitbox()
     {
         collider.enabled = true;
-        //sr.enabled = true;
+        
         mover.ForceLockAim();
         //hitbox.gameObject.SetActive(true);
         StartCoroutine(HitboxCooldown());

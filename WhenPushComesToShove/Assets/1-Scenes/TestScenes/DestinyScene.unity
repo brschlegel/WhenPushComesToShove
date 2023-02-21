@@ -359,10 +359,10 @@ MonoBehaviour:
   victoryRoom: {fileID: 6254306470328373913, guid: d7ab7802ad9eb7b40bbe132402cfe546, type: 3}
   availableLevels: []
   playedLevels: []
-  numOfGames: 1
-  numOfRooms: 0
   path:
-  - {fileID: 8829601026546890495, guid: 90aae7df3f630b249aa117a0dd17fc96, type: 3}
+  - {fileID: 805013608764250822, guid: b2768d6020722344f8608baec13eac11, type: 3}
+  numOfRooms: 0
+  numOfGames: 1
 --- !u!4 &538013873
 Transform:
   m_ObjectHideFlags: 0
@@ -438,9 +438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dc335f19c71104cb256f6bae959eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allEnemies:
-  - {fileID: 999011918721937567, guid: 6f6bae884535d794987296190dee6baa, type: 3}
-  - {fileID: 1691551635500606957, guid: 13a8f95c9a71d6447882d3500179eb28, type: 3}
 --- !u!4 &997571378
 Transform:
   m_ObjectHideFlags: 0
@@ -623,15 +620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a440aa253be8382438c2bf471903de62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPlayers: 1
-  maxPlayers: 4
-  levelInitRef: {fileID: 0}
-  defaultColor: {fileID: 9100000, guid: 6eb688f05c581a246ac731e968b13fad, type: 2}
-  playerColorNames:
-  - Red
-  - Blue
-  - Green
-  - Yellow
   playerOutlines:
   - {fileID: 2100000, guid: 94d58e58c8e8db24f9efd0fce43c036b, type: 2}
   - {fileID: 2100000, guid: 8ec0b368fde332544a0656675b2b4047, type: 2}
@@ -647,6 +635,20 @@ MonoBehaviour:
   - {r: 0, g: 0.91764706, b: 1, a: 1}
   - {r: 0.07058824, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.92156863, b: 0, a: 1}
+  playerCircleVFXColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  levelInitRef: {fileID: 0}
+  minPlayers: 1
+  maxPlayers: 4
+  defaultColor: {fileID: 9100000, guid: 6eb688f05c581a246ac731e968b13fad, type: 2}
+  playerColorNames:
+  - Red
+  - Blue
+  - Green
+  - Yellow
 --- !u!4 &1248797219
 Transform:
   m_ObjectHideFlags: 0
@@ -894,20 +896,6 @@ MonoBehaviour:
   - {fileID: 430531874}
   - {fileID: 711312809}
   - {fileID: 115607681}
-  playerPrefab: {fileID: 6273220948599445249, guid: 06a8200273c476048a5a1372f2ec0988, type: 3}
-  initOnStart: 0
-  lockPlayerSpawn: 0
-  spawnPlayerUI: 0
-  playerSpawnAnim:
-  - {fileID: 4203862929834135654, guid: 6fa5f104b928e4444bcd40bf4c77f7f8, type: 3}
-  - {fileID: 4203862929834135654, guid: 6e97d548ff092234ebcd26b5356f39f6, type: 3}
-  - {fileID: 4203862929834135654, guid: e259840063dbe294cbdeafdefa7dfedd, type: 3}
-  - {fileID: 4203862929834135654, guid: 8ed459300609d9440bf87bcf536468a9, type: 3}
-  playerCircleVFXColors:
-  - {r: 1, g: 0.09411765, b: 0, a: 1}
-  - {r: 0, g: 0.91764706, b: 1, a: 1}
-  - {r: 0.07058824, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.92156863, b: 0, a: 1}
   playerUI:
   - {fileID: 0}
   - {fileID: 0}
@@ -918,6 +906,15 @@ MonoBehaviour:
   - {r: 0, g: 0.8431373, b: 0.9960785, a: 1}
   - {r: 0, g: 0.86274517, b: 0.09019608, a: 1}
   - {r: 0.9960785, g: 0.8117648, b: 0, a: 1}
+  lockPlayerSpawn: 0
+  playerPrefab: {fileID: 6273220948599445249, guid: 06a8200273c476048a5a1372f2ec0988, type: 3}
+  initOnStart: 0
+  spawnPlayerUI: 0
+  playerSpawnAnim:
+  - {fileID: 4203862929834135654, guid: 6fa5f104b928e4444bcd40bf4c77f7f8, type: 3}
+  - {fileID: 4203862929834135654, guid: 6e97d548ff092234ebcd26b5356f39f6, type: 3}
+  - {fileID: 4203862929834135654, guid: e259840063dbe294cbdeafdefa7dfedd, type: 3}
+  - {fileID: 4203862929834135654, guid: 8ed459300609d9440bf87bcf536468a9, type: 3}
 --- !u!1 &1641068519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,11 +1065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59acb9c8c33a95d4fa4b0a419f666bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootToSpawn: {fileID: 11400000, guid: 6c6d38d5595cbaf40930c35ca4371a69, type: 2}
-  avaliableLoot: []
-  droppedLoot: []
-  lootRadius: 5
-  timeBetweenSpawns: 6
 --- !u!4 &1997674543
 Transform:
   m_ObjectHideFlags: 0

@@ -24,24 +24,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4169555780486531670, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
-      propertyPath: buildUpCurve.m_PostInfinity
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: render
+      value: 
+      objectReference: {fileID: 867218227133338288}
     - target: {fileID: 4169555780486531670, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
-      propertyPath: buildUpCurve.m_Curve.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169555780486531670, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
-      propertyPath: explodeCurve.m_Curve.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169555780486531670, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
-      propertyPath: explodeCurve.m_Curve.Array.data[1].time
-      value: 0.9916382
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169555780486531670, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
-      propertyPath: explodeCurve.m_Curve.Array.data[1].value
-      value: 9.501541
+      propertyPath: maxTime
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6831874707499840841, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
       propertyPath: m_RootOrder
@@ -117,3 +105,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
+--- !u!212 &867218227133338288 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6831874707499840846, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
+  m_PrefabInstance: {fileID: 5964819500179531774}
+  m_PrefabAsset: {fileID: 0}

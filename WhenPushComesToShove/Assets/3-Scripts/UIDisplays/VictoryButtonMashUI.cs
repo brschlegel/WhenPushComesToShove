@@ -13,6 +13,7 @@ public class VictoryButtonMashUI : UIDisplay
     [SerializeField] private Transform[] tiedPlayerDisplays = new Transform[4];
     [SerializeField] private RawImage sword;
     [SerializeField] private Material[] playerColors = new Material[4];
+    [SerializeField] private ThresholdEndCondition threshold;
     //[SerializeField] private Sprite[] playerPortraitSprites = new Sprite[4];
 
     public override void HideDisplay()
@@ -75,7 +76,7 @@ public class VictoryButtonMashUI : UIDisplay
 
     private IEnumerator WaitForTimeEnd()
     {
-        yield return new WaitForSeconds(timeForMashing);
+        yield return new WaitUntil(() => threshold.TestCondition());
 
         //Enable each players button mashing
         foreach (PlayerInputHandler handler in tiedPlayers)

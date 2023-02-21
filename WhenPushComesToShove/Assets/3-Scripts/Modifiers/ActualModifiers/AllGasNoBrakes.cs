@@ -23,7 +23,7 @@ public class AllGasNoBrakes : EventModifier
         {
             oldInput = inputs[movement];
         }
-        //If we don't record this input
+        //If we don't, record this input
         else
         {
             inputs.Add(movement, providedInput); 
@@ -42,9 +42,5 @@ public class AllGasNoBrakes : EventModifier
 
         movement.SetMoveInputVector(inputs[movement]);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
