@@ -60,15 +60,15 @@ public class SlimeRancherLogic : MinigameLogic
                 //Assign points for slimes based on size
                 else
                 {
-                    Slime[] allSlimes = slimesParent.GetComponentsInChildren<Slime>();
-
-                    foreach (Slime s in allSlimes)
-                    {
-                        if (s.slimeTeamIndex != -1)
-                        {
-                            data.AddScoreForTeam(s.slimeTeamIndex, s.pointWorth);
-                        }
-                    }
+                    //Slime[] allSlimes = slimesParent.GetComponentsInChildren<Slime>();
+                    //
+                    //foreach (Slime s in allSlimes)
+                    //{
+                    //    if (s.slimeTeamIndex != -1)
+                    //    {
+                    //        data.AddScoreForTeam(s.slimeTeamIndex, s.pointWorth);
+                    //    }
+                    //}
 
                     //Decide Winner
                     if (data.scores[0] > data.scores[1])
@@ -136,5 +136,17 @@ public class SlimeRancherLogic : MinigameLogic
         }
 
         return allSlimes[largestSlimeIndex];
+    }
+
+    public void UpdateTeamScore(int teamIndex, int score, bool addScore)
+    {
+        if (addScore)
+        {
+            data.AddScoreForTeam(teamIndex, score);
+        }
+        else
+        {
+            data.RemoveScoreForTeam(teamIndex, score);
+        }
     }
 }
