@@ -62,7 +62,7 @@ public class TagLogic : MinigameLogic
             }
             if (endCondition.TestCondition())
             {
-                int max = Mathf.Max(data.scores);
+                float max = Mathf.Max(data.scores);
                 int numOfWinners = 0;
                 string winnerName = "";
                 PlayerWinUIDisplay winDisplay = ((PlayerWinUIDisplay)endingUIDisplay);
