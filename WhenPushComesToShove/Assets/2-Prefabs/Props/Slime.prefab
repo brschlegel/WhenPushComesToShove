@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7038911212868762905}
   - component: {fileID: 7647606645070754888}
   - component: {fileID: 1089027928374096492}
+  - component: {fileID: 5606197860713896155}
   m_Layer: 11
   m_Name: Slime
   m_TagString: Hazard
@@ -190,10 +191,27 @@ MonoBehaviour:
   pMode: {fileID: 7038911212868762905}
   movementForce: 10000
   slimeDefaultMat: {fileID: 2100000, guid: 7e9b8289869f9904980af6b11b47f78d, type: 2}
+  consumed: 0
   logic: {fileID: 0}
   slimeSize: 1
   pointWorth: 1
   slimeTeamIndex: -1
+  pointData: {fileID: 5606197860713896155}
+--- !u!114 &5606197860713896155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038911212868762883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9572752efe4afdf40ab6db4c6f4a16c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsToGain: 1
+  teamIndex: -1
+  hasGivenPoints: 0
 --- !u!1 &7038911213132274036
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +652,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+    - target: {fileID: 6854435290789191532, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -795,6 +817,10 @@ PrefabInstance:
     - target: {fileID: 785969334226776667, guid: 86b3ffbad70e63442ab800a21125f07b, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 785969334226776667, guid: 86b3ffbad70e63442ab800a21125f07b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2845902824238207980, guid: 86b3ffbad70e63442ab800a21125f07b, type: 3}
       propertyPath: m_Layer

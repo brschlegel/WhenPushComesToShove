@@ -19,6 +19,7 @@ public class Slime : MonoBehaviour
     public int slimeSize = 1;
     public int pointWorth = 1;
     public int slimeTeamIndex = -1;
+    public PointData pointData;
 
     public void OnEnable()
     {
@@ -52,8 +53,8 @@ public class Slime : MonoBehaviour
         if (slimeTeamIndex == slimeToConsume.slimeTeamIndex)
         {
             //Remove existing scores
-            logic.UpdateTeamScore(slimeTeamIndex, pointWorth, false);
-            logic.UpdateTeamScore(slimeToConsume.slimeTeamIndex, slimeToConsume.pointWorth, false);
+            //logic.UpdateTeamScore(slimeTeamIndex, pointWorth, false);
+            //logic.UpdateTeamScore(slimeToConsume.slimeTeamIndex, slimeToConsume.pointWorth, false);
 
             if (slimeSize >= slimeToConsume.slimeSize)
             {
@@ -62,7 +63,7 @@ public class Slime : MonoBehaviour
 
                 UpdatePointText();
                 //Add new score
-                logic.UpdateTeamScore(slimeTeamIndex, pointWorth, true);
+                //logic.UpdateTeamScore(slimeTeamIndex, pointWorth, true);
                 slimeToConsume.consumed = true;
 
                 Destroy(slimeToConsume.gameObject);
@@ -74,7 +75,7 @@ public class Slime : MonoBehaviour
 
                 slimeToConsume.UpdatePointText();
                 //Add new score
-                slimeToConsume.logic.UpdateTeamScore(slimeToConsume.slimeTeamIndex, slimeToConsume.pointWorth, true);
+                //slimeToConsume.logic.UpdateTeamScore(slimeToConsume.slimeTeamIndex, slimeToConsume.pointWorth, true);
                 consumed = true;
 
                 Destroy(gameObject);
@@ -85,7 +86,7 @@ public class Slime : MonoBehaviour
     public void SplitSlime(int numOfSplits)
     {
         //Remove existing score
-        logic.UpdateTeamScore(slimeTeamIndex, pointWorth, false);
+        //logic.UpdateTeamScore(slimeTeamIndex, pointWorth, false);
 
         if (numOfSplits >= slimeSize)
         {
@@ -97,7 +98,7 @@ public class Slime : MonoBehaviour
         UpdatePointText();
 
         //Add new score
-        logic.UpdateTeamScore(slimeTeamIndex, pointWorth, true);
+        //logic.UpdateTeamScore(slimeTeamIndex, pointWorth, true);
 
         for (int i = 0; i < numOfSplits; i++)
         {
@@ -108,6 +109,7 @@ public class Slime : MonoBehaviour
 
             newSlime.slimeSize = 1;
             newSlime.slimeTeamIndex = -1;
+            newSlime.pointData.teamIndex = -1;
             newSlime.GetComponent<SpriteRenderer>().material = slimeDefaultMat;
             newSlime.transform.localScale = new Vector3(1, 1, 1);
             newSlime.UpdatePointText();
@@ -118,6 +120,7 @@ public class Slime : MonoBehaviour
     public void UpdatePointText()
     {
         pointWorth = Mathf.FloorToInt(Mathf.Pow(slimeSize, 2));
+        pointData.pointsToGain = pointWorth;
 
         if (pointText != null && pointText.gameObject.activeSelf)
         {
