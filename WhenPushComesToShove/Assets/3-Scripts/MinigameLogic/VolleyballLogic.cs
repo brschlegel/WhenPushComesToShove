@@ -6,30 +6,70 @@ using UnityEngine;
 //Set up launching of bomb on spawn
 //Set up ramping variables/controls
 
+struct RampingSideParts
+{
+    public ObjectSpawner spawner;
+    public Transform chalkLineParent;
+    public Transform bumperParent;
+}
 public class VolleyballLogic : MinigameLogic
 {
+    [Header("Parameters")]
+    [SerializeField]
+    private float launchMin;
+    [SerializeField]
+    private float launchMax;
    [Header("Parts")]
    [SerializeField]
    private ObjectSpawner middleSpawner;
    [SerializeField]
    private Transform bombParent;
+   [Header("Ramping")]
+   [Header("Left")]
+   [SerializeField]
+   private Transform leftChalkLineParent;
+   [SerializeField]
+   private Transform leftBumperParent;
+   [SerializeField]
+    private ObjectSpawner leftSpawner;
+    [Header("Left")]
+    [SerializeField]
+    private Transform rightChalkLineParent;
+    [SerializeField]
+    private Transform rightBumperParent;
+    [SerializeField]
+    private ObjectSpawner rightSpawner;
 
+    private RampingSideParts leftParts;
+    private RampingSideParts rightParts;
    private uint bombMessageId;
    private uint clusterMessageId;
    bool spawning = false;
+   private AddForceOnSpawn forceAttachment;
 
     public override void Init()
     {
-        bombMessageId = Messenger.RegisterEvent("BombExplode", OnBombExplode);
+        bombMessageId = Messenger.RegisterEvent("BombExploded", OnBombExplode);
         clusterMessageId = Messenger.RegisterEvent("ClusterExplode", OnClusterExplode);
 
         //Ooooo fancy lambdas :) just tells the minigame that we have actually spawned the object
         middleSpawner.onObjectSpawned += (Transform t) => {spawning = false;};
+        forceAttachment = middleSpawner.GetComponent<AddForceOnSpawn>();
+
+        //Ramping struct
+        leftParts.spawner = leftSpawner;
+        leftParts.chalkLineParent = leftChalkLineParent;
+        leftParts.bumperParent = leftBumperParent;
+
+        rightParts.spawner = rightSpawner;
+        rightParts.chalkLineParent = rightChalkLineParent;
+        rightParts.bumperParent = rightBumperParent;
         base.Init();
     }
 
     public override void StartGame()
     {
+        forceAttachment.force = Random.insideUnitCircle.normalized * Random.Range(launchMin, launchMax);
         middleSpawner.SpawnWithoutDelay();
         base.StartGame();
     }
@@ -40,6 +80,7 @@ public class VolleyballLogic : MinigameLogic
         //Don't try to spawn a new bomb if there aren't any around but we are just waiting on the spawner
         if(gameRunning && !spawning && bombParent.childCount == 0)
         {
+            forceAttachment.force = Random.insideUnitCircle.normalized * Random.Range(launchMin, launchMax);
             middleSpawner.SpawnWithDelay();
             spawning = true;
         }
@@ -47,6 +88,7 @@ public class VolleyballLogic : MinigameLogic
 
     private void OnBombExplode(MessageArgs args)
     {
+        Debug.Log("gib scor");
         AddScore(1, (Vector2)args.vectorArg);
     }
 
@@ -61,11 +103,18 @@ public class VolleyballLogic : MinigameLogic
         if(position.x <= 0)
         {
             data.AddScoreForTeam(1, amount);
+            RampSide(rightParts, data.scores[1]);
         }
         //if on the right, give score to left team
         else
         {
             data.AddScoreForTeam(0, amount);
+            RampSide(leftParts, data.scores[0]);
+        }
+
+        if(data.scores[0] >= 7 || data.scores[1] >= 7)
+        {
+            EndGame();
         }
     }
 
@@ -74,6 +123,22 @@ public class VolleyballLogic : MinigameLogic
         Messenger.UnregisterEvent("BombExplode", bombMessageId);
         Messenger.UnregisterEvent("ClusterExplode", clusterMessageId);
         base.CleanUp();
+    }
+
+    private void RampSide(RampingSideParts parts, float score)
+    {
+        switch(score)
+        {
+            case 2: 
+            parts.chalkLineParent.gameObject.SetActive(true);
+            break;
+            case 4:
+            parts.bumperParent.gameObject.SetActive(true);
+            break;
+            case 6:
+            middleSpawner.onObjectSpawned += (Transform t) => parts.spawner.Spawn();
+            break;
+        }
     }
    
 }
