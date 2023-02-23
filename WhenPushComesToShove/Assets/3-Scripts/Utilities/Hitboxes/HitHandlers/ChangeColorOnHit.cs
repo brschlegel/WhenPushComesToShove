@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeColorOnHit : HitHandler
 {
-    [SerializeField] private List<Color> colorsToChangeBasedOnIndex = new List<Color>();
+    [SerializeField] private List<Material> colorsToChangeBasedOnIndex = new List<Material>();
     [SerializeField] private SpriteRenderer spriteToChange;
     [SerializeField] private Slime slime;
     public override void ReceiveHit(HitEvent e)
@@ -37,9 +37,22 @@ public class ChangeColorOnHit : HitHandler
                     }
                 }
             }
+            else
+            {
+                //slime.logic.UpdateTeamScore(slime.slimeTeamIndex, slime.pointWorth, false);
+                spriteToChange.material = colorsToChangeBasedOnIndex[handler.playerConfig.TeamIndex];
+                slime.slimeTeamIndex = handler.playerConfig.TeamIndex;
+                slime.pointData.teamIndex = handler.playerConfig.TeamIndex;
+                //slime.logic.UpdateTeamScore(slime.slimeTeamIndex, slime.pointWorth, true);
+            }
+        }
+        else if (slime.slimeTeamIndex == -1)
+        {
+            spriteToChange.material = colorsToChangeBasedOnIndex[handler.playerConfig.TeamIndex];
+            slime.slimeTeamIndex = handler.playerConfig.TeamIndex;
+            slime.pointData.teamIndex = handler.playerConfig.TeamIndex;
+            //slime.logic.UpdateTeamScore(slime.slimeTeamIndex, slime.pointWorth, true);
         }
 
-        spriteToChange.color = colorsToChangeBasedOnIndex[handler.playerConfig.TeamIndex];
-        slime.slimeTeamIndex = handler.playerConfig.TeamIndex;
     }
 }
