@@ -36,7 +36,7 @@ public class PlayerRankDisplay : UIDisplay
 
             TextMeshProUGUI text = rankUIs[i - 1].GetComponentInChildren<TextMeshProUGUI>();
             text.text = scoresInOrder[i].ToString();
-            rankUIs[i - 1].GetComponent<RawImage>().material = playerColors[playerRankOrder[i]];
+            rankUIs[i - 1].GetComponent<Image>().material = playerColors[playerRankOrder[i]];
         }
 
         gameObject.SetActive(true);

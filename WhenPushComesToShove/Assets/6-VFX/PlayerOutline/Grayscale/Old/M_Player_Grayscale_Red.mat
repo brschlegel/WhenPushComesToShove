@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Player_Grayscale_Green
+  m_Name: M_Player_Grayscale_Red
   m_Shader: {fileID: -6465566751694194690, guid: 609fa891fb5dce347856441bdbf236e9, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -52,17 +52,17 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _IsDamaged: 0
-    - _OutlineThickness: 0
+    - _OutlineThickness: 1
     m_Colors:
-    - _ArmorColor: {r: 0.17983103, g: 0.6, b: 0.10980392, a: 1}
-    - _ArmorHighlightColor: {r: 0.29462406, g: 0.83699995, b: 0.22431599, a: 1}
-    - _ArmorShadowColor: {r: 0.019377632, g: 0.4862745, b: 0, a: 1}
+    - _ArmorColor: {r: 0.3215686, g: 0.2666667, b: 0.2666667, a: 0}
+    - _ArmorHighlightColor: {r: 0.4392157, g: 0.3490196, b: 0.3490196, a: 0}
+    - _ArmorShadowColor: {r: 0.227451, g: 0.1843137, b: 0.1843137, a: 0}
     - _BurnColor: {r: 2.670157, g: 2.670157, b: 2.670157, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EyeColor: {r: 0.1882353, g: 0.1411765, b: 0.1294118, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _PlayerColor: {r: 0.7491948, g: 1, b: 0.70980394, a: 1}
-    - _PlayerOutlineColor: {r: 0, g: 0.8627451, b: 0.09019608, a: 1}
-    - _PlayerShadowColor: {r: 0.49374795, g: 0.76862746, b: 0.45882353, a: 1}
+    - _PlayerColor: {r: 0.9, g: 0.07309646, b: 0.022842657, a: 1}
+    - _PlayerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
+    - _PlayerShadowColor: {r: 0.74, g: 0, b: 0.16163188, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

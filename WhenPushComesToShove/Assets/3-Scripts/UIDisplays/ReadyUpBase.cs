@@ -146,6 +146,8 @@ public class ReadyUpBase : UIDisplay
                 {
                     portraits[i].Visible = i < numPlayers;
                     portraits[i].playerIndex = i;
+                    Debug.Log("here part 2");
+                    portraits[i].PlayerColor = PlayerConfigManager.Instance.playerOutlines[i];
                 }
                 break;
             case LevelType.TwoTwo:
@@ -166,6 +168,8 @@ public class ReadyUpBase : UIDisplay
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
                         portrait.playerIndex = i;
+                        Debug.Log("here");
+                        portrait.PlayerColor = PlayerConfigManager.Instance.playerOutlines[i];
                         leftSideCount++;
                     }
                     else
@@ -174,6 +178,7 @@ public class ReadyUpBase : UIDisplay
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
                         portrait.playerIndex = i;
+                        portrait.PlayerColor = PlayerConfigManager.Instance.playerOutlines[i];
                         rightSideCount++;
                     }
                 }
@@ -197,6 +202,7 @@ public class ReadyUpBase : UIDisplay
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
                         portrait.playerIndex = i;
+                        portrait.PlayerColor = PlayerConfigManager.Instance.playerOutlines[i];
                         teamSideCount++;
                     }
                     else
@@ -205,6 +211,7 @@ public class ReadyUpBase : UIDisplay
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
                         portrait.playerIndex = i;
+                        portrait.PlayerColor = PlayerConfigManager.Instance.playerOutlines[i];
                     }
                 }
 

@@ -11,6 +11,7 @@ public class PlayerPortrait : MonoBehaviour
     private bool ready = false;
     private bool visible = false;
     [SerializeField] private Transform crown;
+    public Material playerColor;
 
     public void OnDisable()
     {
@@ -34,6 +35,17 @@ public class PlayerPortrait : MonoBehaviour
         {
             visible = value;
             portrait.gameObject.SetActive(visible);
+        }
+    }
+
+    public Material PlayerColor
+    {
+        get { return playerColor; }
+        set 
+        {
+            Debug.Log("SETTING PLAYER COLOR");
+            playerColor = value;
+            portrait.GetComponent<Image>().material = playerColor;
         }
     }
 
