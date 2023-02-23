@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PointDataIndividual : PointData
 {
-    public int teamIndex;
+   
 
     [SerializeField]
     private Color32[] colors;

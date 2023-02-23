@@ -107,7 +107,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": ""StickDeadzone"",
-                    ""groups"": ""Xbox Controller Scheme"",
+                    ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -118,7 +118,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<DualShockGamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Playstationo"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -140,7 +140,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<DualShockGamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Playstationo"",
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -162,7 +162,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<DualShockGamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Playstationo"",
                     ""action"": ""LightShove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -173,7 +173,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Xbox Controller Scheme"",
+                    ""groups"": """",
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -184,7 +184,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<DualShockGamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Playstationo"",
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -195,7 +195,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": ""StickDeadzone"",
-                    ""groups"": ""Xbox Controller Scheme"",
+                    ""groups"": """",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -206,7 +206,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<DualShockGamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Playstationo"",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -228,7 +228,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<DualShockGamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Playstationo"",
                     ""action"": ""HeavyShove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -250,7 +250,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<DualShockGamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Playstationo"",
                     ""action"": ""EmoteDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -272,7 +272,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<DualShockGamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Playstationo"",
                     ""action"": ""EmoteLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -287,6 +287,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""devices"": [
                 {
                     ""devicePath"": ""<XInputController>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Playstationo"",
+            ""bindingGroup"": ""Playstationo"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<DualSenseGamepadHID>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -455,6 +466,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         {
             if (m_XboxControllerSchemeSchemeIndex == -1) m_XboxControllerSchemeSchemeIndex = asset.FindControlSchemeIndex("Xbox Controller Scheme");
             return asset.controlSchemes[m_XboxControllerSchemeSchemeIndex];
+        }
+    }
+    private int m_PlaystationoSchemeIndex = -1;
+    public InputControlScheme PlaystationoScheme
+    {
+        get
+        {
+            if (m_PlaystationoSchemeIndex == -1) m_PlaystationoSchemeIndex = asset.FindControlSchemeIndex("Playstationo");
+            return asset.controlSchemes[m_PlaystationoSchemeIndex];
         }
     }
     public interface IPlayerMovementActions

@@ -80,6 +80,7 @@ public class PlayerConfigManager : MonoBehaviour
     /// <param name="input">The input to assign to the player</param>
     public void HandlePlayerJoin(PlayerInput input)
     {
+        Debug.Log("gpt jere");
         if (levelInitRef.lockPlayerSpawn)
         {
             return;

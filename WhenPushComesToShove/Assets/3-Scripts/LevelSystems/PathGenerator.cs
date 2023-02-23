@@ -29,7 +29,7 @@ public class PathGenerator : MonoBehaviour
         GameState.pathGenerator = this;
         numOfRooms = (numOfGames * 2) - 1;
 
-        Object[] allMinigames = Resources.LoadAll<Object>("Minigames/");
+       Object[] allMinigames = Resources.LoadAll<Object>("Minigames/");
 
         foreach(Object obj in allMinigames)
         {
