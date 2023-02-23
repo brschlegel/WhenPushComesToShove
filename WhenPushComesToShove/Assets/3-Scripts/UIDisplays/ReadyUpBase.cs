@@ -16,11 +16,11 @@ public class ReadyUpBase : UIDisplay
     private Transform readyParent;
     [SerializeField]
     private Countdown countdown;
-
     [SerializeField]
     private TextMeshProUGUI vs2v2;
     [SerializeField]
     private TextMeshProUGUI vs1v3;
+    [SerializeField] private Sprite[] teamIcons = new Sprite[2];
 
     private int numPlayers;
     private List<PlayerPortrait> portraits;
@@ -165,6 +165,8 @@ public class ReadyUpBase : UIDisplay
                         PlayerPortrait portrait = portraitParent.GetChild(0 + leftSideCount).GetComponent<PlayerPortrait>();
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
+                        portrait.teamIcon.gameObject.SetActive(true);
+                        portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
                         portrait.playerIndex = i;
                         leftSideCount++;
                     }
@@ -173,6 +175,8 @@ public class ReadyUpBase : UIDisplay
                         PlayerPortrait portrait = portraitParent.GetChild(2 + rightSideCount).GetComponent<PlayerPortrait>();
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
+                        portrait.teamIcon.gameObject.SetActive(true);
+                        portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
                         portrait.playerIndex = i;
                         rightSideCount++;
                     }
@@ -197,6 +201,8 @@ public class ReadyUpBase : UIDisplay
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
                         portrait.playerIndex = i;
+                        portrait.teamIcon.gameObject.SetActive(true);
+                        portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
                         teamSideCount++;
                     }
                     else
@@ -205,6 +211,8 @@ public class ReadyUpBase : UIDisplay
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
                         portrait.playerIndex = i;
+                        portrait.teamIcon.gameObject.SetActive(true);
+                        portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
                     }
                 }
 

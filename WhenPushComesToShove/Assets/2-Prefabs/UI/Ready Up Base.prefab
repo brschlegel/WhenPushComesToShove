@@ -152,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5513356745797520050
 RectTransform:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_text: VS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18f81292fc2f41445ab8821d42b9ed44, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 8443043151899357301, guid: 18f81292fc2f41445ab8821d42b9ed44, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3358187765965541988
@@ -506,6 +506,9 @@ MonoBehaviour:
   countdown: {fileID: 5148506372952595616}
   vs2v2: {fileID: 5788751881933980104}
   vs1v3: {fileID: 1746349112054944419}
+  teamIcons:
+  - {fileID: 21300000, guid: 361c802034899134f8331a1498bc269b, type: 3}
+  - {fileID: 21300000, guid: d29a0a5961e30da4cadc33ae48a3bcc4, type: 3}
 --- !u!1 &6588424366383018966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portrait: {fileID: 3664391421360862132}
   checkmark: {fileID: 9190762724350489547}
+  teamIcon: {fileID: 8377383480949437322}
   playerIndex: -1
   crown: {fileID: 5512777133072907276}
 --- !u!224 &8231731457231639593 stripped
@@ -1099,6 +1103,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8286743465873551187, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
   m_PrefabInstance: {fileID: 89105948749986682}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8377383480949437322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8466451221667547376, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
+  m_PrefabInstance: {fileID: 89105948749986682}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &9190762724350489547 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9128998083216148657, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
@@ -1238,6 +1253,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 804788768415061827, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7059514253188946366, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
       propertyPath: m_Name
       value: Player Portrait
@@ -1338,6 +1357,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8286743465873551187, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
   m_PrefabInstance: {fileID: 3719797953016413168}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5107504193366536960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8466451221667547376, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
+  m_PrefabInstance: {fileID: 3719797953016413168}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5561901439222461249 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9128998083216148657, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
@@ -1368,6 +1398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portrait: {fileID: 1577710768979252324}
   checkmark: {fileID: 5561901439222461249}
+  teamIcon: {fileID: 5107504193366536960}
   playerIndex: -1
   crown: {fileID: 9089003456616578182}
 --- !u!1 &7322089420210822696 stripped
@@ -1531,6 +1562,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5408142214668129880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8466451221667547376, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
+  m_PrefabInstance: {fileID: 4500068235327839912}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5580832337497862651 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8286743465873551187, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
@@ -1555,6 +1597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portrait: {fileID: 4108357323977538559}
   checkmark: {fileID: 4666788404815336985}
+  teamIcon: {fileID: 5408142214668129880}
   playerIndex: -1
   crown: {fileID: 8344805951715744222}
 --- !u!1 &7525898949680921456 stripped
@@ -1766,6 +1809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portrait: {fileID: 60413939300394082}
   checkmark: {fileID: 4419344291767470360}
+  teamIcon: {fileID: 3934736308148881753}
   playerIndex: -1
   crown: {fileID: 1034101333340735199}
 --- !u!224 &3523064034067738362 stripped
@@ -1773,6 +1817,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8286743465873551187, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
   m_PrefabInstance: {fileID: 4892067343382954409}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3934736308148881753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8466451221667547376, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
+  m_PrefabInstance: {fileID: 4892067343382954409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4419344291767470360 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9128998083216148657, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}

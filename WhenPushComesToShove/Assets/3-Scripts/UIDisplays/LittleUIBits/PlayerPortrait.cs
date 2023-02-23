@@ -7,6 +7,7 @@ public class PlayerPortrait : MonoBehaviour
 {
     public Image portrait;
     public RawImage checkmark;
+    public Image teamIcon;
     public int playerIndex = -1;
     private bool ready = false;
     private bool visible = false;
