@@ -22,6 +22,7 @@ public class ReadyUpBase : UIDisplay
     private TextMeshProUGUI vs1v3;
     [SerializeField] private Sprite[] teamIcons = new Sprite[2];
     [SerializeField] private Material[] flagMaterials = new Material[4];
+    [SerializeField] private Image[] modifierImages = new Image[4];
 
     private int numPlayers;
     private List<PlayerPortrait> portraits;
@@ -30,7 +31,6 @@ public class ReadyUpBase : UIDisplay
 
     public override void ShowDisplay()
     {
-
         numPlayers = GameState.players.Count;
         portraits = new List<PlayerPortrait>();
         gameObject.SetActive(true);
@@ -72,6 +72,13 @@ public class ReadyUpBase : UIDisplay
         //use game state
 
         ShowBasedOnTeams();
+
+        //Update Modifier Images
+        for (int i = 0; i < GameState.ModifierManager.modifiers.Count; i++)
+        {
+            modifierImages[i].gameObject.SetActive(true);
+            modifierImages[i].transform.GetChild(0).GetComponent<Image>().sprite = GameState.ModifierManager.modifiers[i].icon;
+        }
 
         foreach (Transform p in GameState.players)
         {
