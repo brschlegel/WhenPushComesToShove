@@ -12,9 +12,12 @@ public class TagLogic : MinigameLogic
     private List<PlayerConfiguration> playerConfigs;
     private List<ProjectileHitbox> pHitBoxes;
     private List<PlayerMovementScript> pMovement;
+
+    private bool gracePeriodEnded;
+
     private GameObject taggedPlayer;
     private float initialSpeed;
-    //private float initialAcceleration;
+
     private float currentTime;
 
     
@@ -37,29 +40,39 @@ public class TagLogic : MinigameLogic
 
         UpdateTaggedPlayer(Random.Range(0, playerConfigs.Count));
 
+        gracePeriodEnded = false;
         currentTime = 0.0f;
 
         base.Init();
     }
+
+    public override void StartGame()
+    {
+        base.StartGame();
+        StartCoroutine(StartGracePeriod());
+    }
+
     // Update is called once per frame
     void Update()
     {
 
         if (gameRunning)
         {
-            currentTime += Time.deltaTime;
-            if(currentTime >= timeScoreIncrement)
+            if (gracePeriodEnded)
             {
-                currentTime -= timeScoreIncrement;
-
-                for (int i = 0; i < playerConfigs.Count; i++)
+                currentTime += Time.deltaTime;
+                if (currentTime >= timeScoreIncrement)
                 {
-                    if (playerConfigs[i].PlayerObject != taggedPlayer)
-                        data.AddScoreForTeam(i, 1);
+                    currentTime -= timeScoreIncrement;
+
+                    for (int i = 0; i < playerConfigs.Count; i++)
+                    {
+                        if (playerConfigs[i].PlayerObject != taggedPlayer)
+                            data.AddScoreForTeam(i, 1);
+                    }
                 }
             }
-
-
+          
             //Update who's tagged
             for (int i = 0; i < playerConfigs.Count; i++)
             {
@@ -135,5 +148,11 @@ public class TagLogic : MinigameLogic
                 //pMovement[i].acceleration = initialAcceleration;
             }
         }
+    }
+
+    private IEnumerator StartGracePeriod()
+    {
+        yield return new WaitForSeconds(gracePeriod);
+        gracePeriodEnded = true;
     }
 }
