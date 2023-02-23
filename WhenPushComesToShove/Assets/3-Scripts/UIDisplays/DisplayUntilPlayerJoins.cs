@@ -6,6 +6,7 @@ using TMPro;
 public class DisplayUntilPlayerJoins : UIDisplay
 {
     public TextMeshProUGUI explanationText;
+    public TextMeshProUGUI textToDisplayUntilAllPlayersJoined;
 
     public override void ShowDisplay()
     {
@@ -19,12 +20,24 @@ public class DisplayUntilPlayerJoins : UIDisplay
     {
         isDone = true;
         explanationText.gameObject.SetActive(false);
+        if (textToDisplayUntilAllPlayersJoined != null)
+        {
+            textToDisplayUntilAllPlayersJoined.gameObject.SetActive(false);
+        }
         gameObject.SetActive(false);
     }
 
     private IEnumerator Delay()
     {
         yield return new WaitUntil(() => PlayerConfigManager.Instance.GetPlayerConfigs().Count > 0);
+
+        explanationText.gameObject.SetActive(false);
+
+        if (textToDisplayUntilAllPlayersJoined != null)
+        {
+            yield return new WaitUntil(() => PlayerConfigManager.Instance.GetPlayerConfigs().Count >= PlayerConfigManager.Instance.GetMaxPlayers());
+        }
+
         HideDisplay();
     }
 }
