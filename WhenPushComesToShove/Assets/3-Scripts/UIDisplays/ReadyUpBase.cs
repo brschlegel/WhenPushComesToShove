@@ -21,6 +21,7 @@ public class ReadyUpBase : UIDisplay
     [SerializeField]
     private TextMeshProUGUI vs1v3;
     [SerializeField] private Sprite[] teamIcons = new Sprite[2];
+    [SerializeField] private Material[] flagMaterials = new Material[4];
 
     private int numPlayers;
     private List<PlayerPortrait> portraits;
@@ -146,6 +147,7 @@ public class ReadyUpBase : UIDisplay
                 {
                     portraits[i].Visible = i < numPlayers;
                     portraits[i].playerIndex = i;
+                    portraits[i].SetUpScoreFlag(GameState.playerScores[i], flagMaterials[i]);
                 }
                 break;
             case LevelType.TwoTwo:
@@ -168,6 +170,7 @@ public class ReadyUpBase : UIDisplay
                         portrait.teamIcon.gameObject.SetActive(true);
                         portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
                         portrait.playerIndex = i;
+                        portrait.SetUpScoreFlag(GameState.playerScores[i], flagMaterials[i]);
                         leftSideCount++;
                     }
                     else
@@ -178,6 +181,7 @@ public class ReadyUpBase : UIDisplay
                         portrait.teamIcon.gameObject.SetActive(true);
                         portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
                         portrait.playerIndex = i;
+                        portrait.SetUpScoreFlag(GameState.playerScores[i], flagMaterials[i]);
                         rightSideCount++;
                     }
                 }
@@ -203,6 +207,7 @@ public class ReadyUpBase : UIDisplay
                         portrait.playerIndex = i;
                         portrait.teamIcon.gameObject.SetActive(true);
                         portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
+                        portrait.SetUpScoreFlag(GameState.playerScores[i], flagMaterials[i]);
                         teamSideCount++;
                     }
                     else
@@ -213,6 +218,7 @@ public class ReadyUpBase : UIDisplay
                         portrait.playerIndex = i;
                         portrait.teamIcon.gameObject.SetActive(true);
                         portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
+                        portrait.SetUpScoreFlag(GameState.playerScores[i], flagMaterials[i]);
                     }
                 }
 

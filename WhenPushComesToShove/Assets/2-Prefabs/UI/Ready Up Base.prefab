@@ -152,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5513356745797520050
 RectTransform:
   m_ObjectHideFlags: 0
@@ -509,6 +509,11 @@ MonoBehaviour:
   teamIcons:
   - {fileID: 21300000, guid: 361c802034899134f8331a1498bc269b, type: 3}
   - {fileID: 21300000, guid: d29a0a5961e30da4cadc33ae48a3bcc4, type: 3}
+  flagMaterials:
+  - {fileID: 2100000, guid: 9155fd40a3af0a5418002b506f3a68a1, type: 2}
+  - {fileID: 2100000, guid: 907c08b689e893846a341db00b7ab879, type: 2}
+  - {fileID: 2100000, guid: b3423a0e6c14fb04f82062c0b8732e28, type: 2}
+  - {fileID: 2100000, guid: 385a323104bd7e44f93eb6c4867ee9f6, type: 2}
 --- !u!1 &6588424366383018966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,6 +1081,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6480873434356998588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6398525928250579654, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
+  m_PrefabInstance: {fileID: 89105948749986682}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6972979237590377156 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7059514253188946366, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
@@ -1098,6 +1114,7 @@ MonoBehaviour:
   teamIcon: {fileID: 8377383480949437322}
   playerIndex: -1
   crown: {fileID: 5512777133072907276}
+  flag: {fileID: 6480873434356998588}
 --- !u!224 &8231731457231639593 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8286743465873551187, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
@@ -1401,6 +1418,7 @@ MonoBehaviour:
   teamIcon: {fileID: 5107504193366536960}
   playerIndex: -1
   crown: {fileID: 9089003456616578182}
+  flag: {fileID: 7733597457971683638}
 --- !u!1 &7322089420210822696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6197561182430914008, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
@@ -1436,6 +1454,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7733597457971683638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6398525928250579654, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
+  m_PrefabInstance: {fileID: 3719797953016413168}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &9089003456616578182 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5601845697132955510, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
@@ -1600,6 +1629,18 @@ MonoBehaviour:
   teamIcon: {fileID: 5408142214668129880}
   playerIndex: -1
   crown: {fileID: 8344805951715744222}
+  flag: {fileID: 7403730157325550702}
+--- !u!114 &7403730157325550702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6398525928250579654, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
+  m_PrefabInstance: {fileID: 4500068235327839912}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7525898949680921456 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6197561182430914008, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
@@ -1790,6 +1831,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1956880258236013423 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6398525928250579654, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
+  m_PrefabInstance: {fileID: 4892067343382954409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2457966606991693847 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7059514253188946366, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
@@ -1812,6 +1864,7 @@ MonoBehaviour:
   teamIcon: {fileID: 3934736308148881753}
   playerIndex: -1
   crown: {fileID: 1034101333340735199}
+  flag: {fileID: 1956880258236013423}
 --- !u!224 &3523064034067738362 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8286743465873551187, guid: d01990a06101b8844b87dc3f3709d45e, type: 3}
