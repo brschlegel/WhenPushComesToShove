@@ -29,6 +29,12 @@ public class InitLevel : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        //Keep Cursor disabled
+        Cursor.visible = false;
+    }
+
     /// <summary>
     /// Used if players are not spawned on start
     /// </summary>

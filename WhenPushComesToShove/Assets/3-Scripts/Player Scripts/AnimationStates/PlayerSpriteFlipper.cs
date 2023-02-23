@@ -16,6 +16,7 @@ public class PlayerSpriteFlipper : MonoBehaviour
     public SpriteRenderer crown;
     public SpriteRenderer halo;
     public SpriteRenderer sword;
+    public SpriteRenderer swordGlow;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class PlayerSpriteFlipper : MonoBehaviour
         sr.flipX = isRightFlipped == isXPositive;
         crown.flipX = isRightFlipped == isXPositive;
         sword.flipX = isRightFlipped == isXPositive;
+        swordGlow.flipX = isRightFlipped == isXPositive;
 
         if (isXPositive)
         {
