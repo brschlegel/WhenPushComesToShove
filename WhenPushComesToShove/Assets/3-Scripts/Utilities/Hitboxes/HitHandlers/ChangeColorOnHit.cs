@@ -37,12 +37,21 @@ public class ChangeColorOnHit : HitHandler
                     }
                 }
             }
+            else
+            {
+                //slime.logic.UpdateTeamScore(slime.slimeTeamIndex, slime.pointWorth, false);
+                spriteToChange.material = colorsToChangeBasedOnIndex[handler.playerConfig.TeamIndex];
+                slime.slimeTeamIndex = handler.playerConfig.TeamIndex;
+                slime.pointData.teamIndex = handler.playerConfig.TeamIndex;
+                //slime.logic.UpdateTeamScore(slime.slimeTeamIndex, slime.pointWorth, true);
+            }
         }
         else if (slime.slimeTeamIndex == -1)
         {
             spriteToChange.material = colorsToChangeBasedOnIndex[handler.playerConfig.TeamIndex];
             slime.slimeTeamIndex = handler.playerConfig.TeamIndex;
-            slime.logic.UpdateTeamScore(slime.slimeTeamIndex, slime.pointWorth, true);
+            slime.pointData.teamIndex = handler.playerConfig.TeamIndex;
+            //slime.logic.UpdateTeamScore(slime.slimeTeamIndex, slime.pointWorth, true);
         }
 
     }
