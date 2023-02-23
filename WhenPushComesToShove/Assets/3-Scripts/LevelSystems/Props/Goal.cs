@@ -10,6 +10,7 @@ public class Goal : MonoBehaviour
     [SerializeField] private int teamIndex = 0;
     [SerializeField] private GameObject confetti;
     [SerializeField] private List<Transform> confettiTransforms = new List<Transform>();
+    [SerializeField] private bool objectsUseTeamIndex = false;
 
     public UnityAction goalScored;
 
@@ -25,6 +26,7 @@ public class Goal : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+
         if(collision.transform.parent.TryGetComponent<PointDataIndividual>(out PointDataIndividual pointsInd))
         {
             data.AddScoreForTeam(pointsInd.teamIndex, pointsInd.pointsToGain);
@@ -38,6 +40,11 @@ public class Goal : MonoBehaviour
 
         if (collision.transform.parent.TryGetComponent<PointData>(out PointData points))
         {
+            if (objectsUseTeamIndex && points.teamIndex != teamIndex)
+            {
+                return;
+            }
+
             data.AddScoreForTeam(teamIndex, points.pointsToGain);
 
             collision.transform.parent.gameObject.SetActive(false);

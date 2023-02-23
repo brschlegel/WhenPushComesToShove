@@ -25,7 +25,7 @@ public class PlayerRankDisplay : UIDisplay
         timer.Init();
         playerRankOrder = GetRankOrder();
 
-        winnerText.text = GameState.playerNames[playerRankOrder[0]] + " player won! - " + scoresInOrder[0];
+        winnerText.text = GameState.playerNames[playerRankOrder[0]] + " player won! " + scoresInOrder[0];
         playerPortraits[0].material = playerColors[playerRankOrder[0]];
 
         int numOfPlayers = GameState.players.Count;
