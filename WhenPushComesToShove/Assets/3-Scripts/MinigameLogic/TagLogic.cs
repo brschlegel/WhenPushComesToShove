@@ -7,8 +7,9 @@ public class TagLogic : MinigameLogic
     [SerializeField] private Sprite tagIcon;
     [SerializeField] private float timeScoreIncrement;
     [SerializeField] private float gracePeriod;
-    [SerializeField] private float speeOfTagged;
-
+    [SerializeField] private float speedOfTagged;
+    [SerializeField] private float damagePerSecond;
+ 
     private List<PlayerConfiguration> playerConfigs;
     private List<PlayerConfiguration> deadPlayers;
     private List<ProjectileHitbox> pHitBoxes;
@@ -47,7 +48,7 @@ public class TagLogic : MinigameLogic
 
         for (int i = 0; i < playerConfigs.Count; i++)
         {
-            data.AddScoreForTeam(i, 10);
+            //data.AddScoreForTeam(i, 10);
         }
         base.Init();
     }
@@ -64,6 +65,7 @@ public class TagLogic : MinigameLogic
 
         if (gameRunning)
         {
+            //Prevents tagged player from taking damage at the very beginning of the game
             if (gracePeriodEnded)
             {
                 currentTime += Time.deltaTime;
@@ -74,7 +76,12 @@ public class TagLogic : MinigameLogic
                     for (int i = 0; i < playerConfigs.Count; i++)
                     {
                         if (playerConfigs[i].PlayerObject == taggedPlayer)
-                            data.AddScoreForTeam(i, -1);
+                        {
+                            taggedPlayer.GetComponentInChildren<PlayerHealth>().TakeDamage(damagePerSecond, "Tagged");
+                            //If the tagged player dies, find a new player
+                            if(playerConfigs[i].IsDead)
+                                UpdateTaggedPlayer(Random.Range(0, playerConfigs.Count));
+                        }
                     }
                 }
             }
@@ -91,30 +98,19 @@ public class TagLogic : MinigameLogic
                         break;
                     }
                 }
-
-                //Kill any player that reaches 0 points
-                if(data.scores[i] <= 0)
-                {
-                    playerConfigs[i].PlayerObject.GetComponentInChildren<PlayerHealth>().Die("Lost at Tag");
-                    deadPlayers.Add(playerConfigs[i]);
-                    UpdateTaggedPlayer(Random.Range(0, playerConfigs.Count));
-                }
-            }
-
-            //Cleans out any dead players from the config list
-            foreach(PlayerConfiguration dead in deadPlayers)
-            {
-                playerConfigs.Remove(dead);
             }
 
 
             if (endCondition.TestCondition())
             {
+                //Plugging in 4 will ensure the index is out of range and clean up all icons and speed values
+                UpdateTaggedPlayer(4);
+
                 Transform winner = ((LastManStandingEndCondition)endCondition).winner;
 
                 PlayerConfiguration config = winner.GetComponentInChildren<PlayerInputHandler>().playerConfig;
                 //Assign point to let the system know who won
-                //data.AddScoreForTeam(config.PlayerIndex, 1);
+                data.AddScoreForTeam(config.PlayerIndex, 1);
 
                 ((PlayerWinUIDisplay)endingUIDisplay).winnerName = GameState.playerNames[config.PlayerIndex];
                 EndGame();
@@ -123,22 +119,19 @@ public class TagLogic : MinigameLogic
        
     }
 
-    public override void CleanUp()
-    {
-        //Plugging in 4 will ensure the index is out of range and clean up all icons
-        UpdateTaggedPlayer(4);
-        base.CleanUp();
-    }
     void UpdateTaggedPlayer(int tagIndex)
     {
         if(tagIndex < playerConfigs.Count)
         {
-            if (deadPlayers.Contains(playerConfigs[tagIndex]))
+            //Keeping looping until a non dead player is found
+            if(playerConfigs[tagIndex].IsDead)
             {
                 UpdateTaggedPlayer(Random.Range(0, playerConfigs.Count));
+                return;
             }
         }
         
+        //Updated variables for tagged and non-tagged players
         for(int i = 0; i < playerConfigs.Count; i++)
         {
             PlayerComponentReferences references = playerConfigs[i].PlayerObject.GetComponent<PlayerComponentReferences>();
@@ -148,7 +141,7 @@ public class TagLogic : MinigameLogic
             {
                 taggedPlayer = playerConfigs[i].PlayerObject;
                 sr.sprite = tagIcon;
-                pMovement[i].maxSpeed = speeOfTagged;
+                pMovement[i].maxSpeed = speedOfTagged;
             }
             else
             {
