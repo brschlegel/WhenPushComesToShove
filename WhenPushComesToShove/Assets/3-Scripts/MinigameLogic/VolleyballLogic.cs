@@ -59,6 +59,8 @@ public class VolleyballLogic : MinigameLogic
         middleSpawner.onObjectSpawned += (Transform t) => {spawning = false;};
         forceAttachment = middleSpawner.GetComponent<AddForceOnSpawn>();
         middleSpawner.GetComponent<SetExplodeTimeOnSpawn>().time = bombTime;
+        leftSpawner.GetComponent<SetExplodeTimeOnSpawn>().time = bombTime;
+        rightSpawner.GetComponent<SetExplodeTimeOnSpawn>().time = bombTime;
 
         //Ramping struct
         leftParts.spawner = leftSpawner;
@@ -92,7 +94,6 @@ public class VolleyballLogic : MinigameLogic
 
     private void OnBombExplode(MessageArgs args)
     {
-        Debug.Log("gib scor");
         AddScore(1, (Vector2)args.vectorArg);
     }
 
@@ -116,7 +117,7 @@ public class VolleyballLogic : MinigameLogic
             RampSide(leftParts, data.scores[0]);
         }
 
-        if(data.scores[0] >= 7 || data.scores[1] >= 7)
+        if(endCondition.TestCondition() && gameRunning)
         {
             EndGame();
         }
