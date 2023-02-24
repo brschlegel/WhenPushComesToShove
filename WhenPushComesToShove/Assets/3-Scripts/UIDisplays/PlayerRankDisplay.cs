@@ -10,7 +10,8 @@ public class PlayerRankDisplay : UIDisplay
     [SerializeField] private TextMeshProUGUI winnerText;
     [HideInInspector] public int[] playerRankOrder;
     [HideInInspector] public int[] scoresInOrder;
-    [SerializeField] private Image winnerPortrait;
+    [SerializeField] private Image[] playerPortraits;
+    [SerializeField] private Material[] playerColors = new Material[4];
     [SerializeField] private Transform[] rankUIs = new Transform[3];
     [SerializeField] private TimerEndCondition timer;
 
@@ -25,7 +26,7 @@ public class PlayerRankDisplay : UIDisplay
         playerRankOrder = GetRankOrder();
 
         winnerText.text = GameState.playerNames[playerRankOrder[0]] + " player won! " + scoresInOrder[0];
-        winnerPortrait.sprite = PlayerConfigManager.Instance.playerPortraits[playerRankOrder[0]];
+        playerPortraits[0].material = playerColors[playerRankOrder[0]];
 
         int numOfPlayers = GameState.players.Count;
 
@@ -35,7 +36,7 @@ public class PlayerRankDisplay : UIDisplay
 
             TextMeshProUGUI text = rankUIs[i - 1].GetComponentInChildren<TextMeshProUGUI>();
             text.text = scoresInOrder[i].ToString();
-            rankUIs[i - 1].GetComponentInChildren<Image>().sprite = PlayerConfigManager.Instance.playerPortraits[playerRankOrder[i]];
+            rankUIs[i - 1].GetComponent<Image>().material = playerColors[playerRankOrder[i]];
         }
 
         gameObject.SetActive(true);

@@ -154,6 +154,7 @@ public class ReadyUpBase : UIDisplay
                 {
                     portraits[i].Visible = i < numPlayers;
                     portraits[i].playerIndex = i;
+                    portraits[i].PlayerColor = PlayerConfigManager.Instance.playerOutlines[i];
                     portraits[i].SetUpScoreFlag(GameState.playerScores[i], flagMaterials[i]);
                 }
                 break;
@@ -177,6 +178,7 @@ public class ReadyUpBase : UIDisplay
                         portrait.teamIcon.gameObject.SetActive(true);
                         portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
                         portrait.playerIndex = i;
+                        portrait.PlayerColor = PlayerConfigManager.Instance.playerOutlines[i];
                         portrait.SetUpScoreFlag(GameState.playerScores[i], flagMaterials[i]);
                         leftSideCount++;
                     }
@@ -188,6 +190,7 @@ public class ReadyUpBase : UIDisplay
                         portrait.teamIcon.gameObject.SetActive(true);
                         portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
                         portrait.playerIndex = i;
+                        portrait.PlayerColor = PlayerConfigManager.Instance.playerOutlines[i];
                         portrait.SetUpScoreFlag(GameState.playerScores[i], flagMaterials[i]);
                         rightSideCount++;
                     }
@@ -212,6 +215,7 @@ public class ReadyUpBase : UIDisplay
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
                         portrait.playerIndex = i;
+                        portrait.PlayerColor = PlayerConfigManager.Instance.playerOutlines[i];
                         portrait.teamIcon.gameObject.SetActive(true);
                         portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
                         portrait.SetUpScoreFlag(GameState.playerScores[i], flagMaterials[i]);
@@ -223,6 +227,7 @@ public class ReadyUpBase : UIDisplay
                         portrait.portrait.sprite = PlayerConfigManager.Instance.playerPortraits[i];
                         portrait.Visible = true;
                         portrait.playerIndex = i;
+                        portrait.PlayerColor = PlayerConfigManager.Instance.playerOutlines[i];
                         portrait.teamIcon.gameObject.SetActive(true);
                         portrait.teamIcon.sprite = teamIcons[handler.playerConfig.TeamIndex];
                         portrait.SetUpScoreFlag(GameState.playerScores[i], flagMaterials[i]);
