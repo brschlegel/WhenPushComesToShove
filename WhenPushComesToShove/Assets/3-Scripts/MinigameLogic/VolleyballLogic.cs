@@ -19,18 +19,20 @@ public class VolleyballLogic : MinigameLogic
     private float launchMin;
     [SerializeField]
     private float launchMax;
-   [Header("Parts")]
-   [SerializeField]
-   private ObjectSpawner middleSpawner;
-   [SerializeField]
-   private Transform bombParent;
-   [Header("Ramping")]
-   [Header("Left")]
-   [SerializeField]
-   private Transform leftChalkLineParent;
-   [SerializeField]
-   private Transform leftBumperParent;
-   [SerializeField]
+    [SerializeField]
+    private float bombTime;
+    [Header("Parts")]
+    [SerializeField]
+    private ObjectSpawner middleSpawner;
+    [SerializeField]
+    private Transform bombParent;
+    [Header("Ramping")]
+    [Header("Left")]
+    [SerializeField]
+    private Transform leftChalkLineParent;
+    [SerializeField]
+    private Transform leftBumperParent;
+    [SerializeField]
     private ObjectSpawner leftSpawner;
     [Header("Left")]
     [SerializeField]
@@ -42,10 +44,11 @@ public class VolleyballLogic : MinigameLogic
 
     private RampingSideParts leftParts;
     private RampingSideParts rightParts;
-   private uint bombMessageId;
-   private uint clusterMessageId;
-   bool spawning = false;
-   private AddForceOnSpawn forceAttachment;
+    private uint bombMessageId;
+    private uint clusterMessageId;
+    bool spawning = false;
+    private AddForceOnSpawn forceAttachment;
+    
 
     public override void Init()
     {
@@ -55,6 +58,7 @@ public class VolleyballLogic : MinigameLogic
         //Ooooo fancy lambdas :) just tells the minigame that we have actually spawned the object
         middleSpawner.onObjectSpawned += (Transform t) => {spawning = false;};
         forceAttachment = middleSpawner.GetComponent<AddForceOnSpawn>();
+        middleSpawner.GetComponent<SetExplodeTimeOnSpawn>().time = bombTime;
 
         //Ramping struct
         leftParts.spawner = leftSpawner;
