@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6037736, g: 0.48700607, b: 0.5926362, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -139,13 +139,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72bbad3808e30042b498502a8076ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pDrag: 3
+  pDrag: 20
   pMaterial: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
   velocityThreshold: 2
   hitboxVelocityThreshold: 2
   pHitbox: {fileID: 406501625902475273}
   sDrag: 1000000
-  sMaterial: {fileID: 0}
+  sMaterial: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
   onPModeEnter:
     m_PersistentCalls:
       m_Calls: []
