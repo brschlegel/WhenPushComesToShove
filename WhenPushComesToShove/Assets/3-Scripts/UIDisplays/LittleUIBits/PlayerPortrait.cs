@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerPortrait : MonoBehaviour
 {
     public Image portrait;
     public RawImage checkmark;
+    public Image teamIcon;
     public int playerIndex = -1;
     private bool ready = false;
     private bool visible = false;
     [SerializeField] private Transform crown;
     public Material playerColor;
+    [SerializeField] private Image flag;
 
     public void OnDisable()
     {
@@ -35,6 +38,7 @@ public class PlayerPortrait : MonoBehaviour
         {
             visible = value;
             portrait.gameObject.SetActive(visible);
+            flag.gameObject.SetActive(visible);
         }
     }
 
@@ -52,6 +56,13 @@ public class PlayerPortrait : MonoBehaviour
     public void DisplayCrown()
     {
         crown.gameObject.SetActive(true);
+    }
+
+    public void SetUpScoreFlag(int score, Material color)
+    {
+        flag.material = color;
+        TextMeshProUGUI scoretext = flag.GetComponentInChildren<TextMeshProUGUI>();
+        scoretext.text = score.ToString();
     }
 
 }
