@@ -33,11 +33,6 @@ public class MinigameData : MonoBehaviour
         }
 
         scores[teamIndex] -= scoreToRemove;
-
-        if (onScoreRemoved != null)
-        {
-            onScoreRemoved.Invoke(teamIndex, scores[teamIndex]);
-        }
     }
 
     public void OnMinigameEnd(bool useTeamIndex = true)

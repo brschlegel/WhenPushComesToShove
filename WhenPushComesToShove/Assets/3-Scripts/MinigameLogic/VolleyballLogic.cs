@@ -107,14 +107,14 @@ public class VolleyballLogic : MinigameLogic
         //If on the left, give score to right team
         if(position.x <= 0)
         {
-            data.AddScoreForTeam(1, amount);
-            RampSide(rightParts, data.scores[1]);
+            data.AddScoreForTeam(0, amount);
+            RampSide(rightParts, data.scores[0]);
         }
         //if on the right, give score to left team
         else
         {
-            data.AddScoreForTeam(0, amount);
-            RampSide(leftParts, data.scores[0]);
+            data.AddScoreForTeam(1, amount);
+            RampSide(leftParts, data.scores[1]);
         }
 
         if(endCondition.TestCondition() && gameRunning)
@@ -125,7 +125,7 @@ public class VolleyballLogic : MinigameLogic
 
     public override void CleanUp()
     {
-        Messenger.UnregisterEvent("BombExplode", bombMessageId);
+        Messenger.UnregisterEvent("BombExploded", bombMessageId);
         Messenger.UnregisterEvent("ClusterExplode", clusterMessageId);
         base.CleanUp();
     }
