@@ -27,9 +27,12 @@ public class AreaSelector : MonoBehaviour
         areaDivider.Init(iconSprites, controllers);
         dividerParents = areaDivider.Parts;
         //Set all parts disabled for introduction
-        dividerParents.areaParent.gameObject.SetActive(false);
+        for(int i = 0; i < dividerParents.iconParent.childCount; i++ )
+        {
+            dividerParents.iconParent.GetChild(i).gameObject.SetActive(false);
+            dividerParents.areaParent.GetChild(i).gameObject.SetActive(false);
+        }
         dividerParents.barrelParent.gameObject.SetActive(false);
-        dividerParents.iconParent.gameObject.SetActive(false);
         picker.gameObject.SetActive(false);
 
         picker.position = new Vector2(picker.position.x, areaDivider.transform.position.y - areaDivider.height/3);
@@ -75,9 +78,13 @@ public class AreaSelector : MonoBehaviour
         yield return new WaitForSeconds(elementIntroDelay);
 
         //Areas and icons
-        dividerParents.areaParent.gameObject.SetActive(true);
-        dividerParents.iconParent.gameObject.SetActive(true);
-        yield return new WaitForSeconds(elementIntroDelay);
+
+        for(int i = 0; i < dividerParents.iconParent.childCount; i++ )
+        {
+            dividerParents.iconParent.GetChild(i).gameObject.SetActive(true);
+            dividerParents.areaParent.GetChild(i).gameObject.SetActive(true);
+            yield return new WaitForSeconds(2 *elementIntroDelay / dividerParents.iconParent.childCount);
+        }
 
         //Barrels
         dividerParents.barrelParent.gameObject.SetActive(true);
@@ -90,6 +97,7 @@ public class AreaSelector : MonoBehaviour
         //Make Selection
         BeginSelection();
     }
+
 
     private void MakeSelection()
     {

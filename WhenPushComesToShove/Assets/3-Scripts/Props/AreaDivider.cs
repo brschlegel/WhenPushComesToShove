@@ -151,7 +151,7 @@ public class AreaDivider : MonoBehaviour
 
             if (iconAnimations.Count == areas.Count)
             {
-                iconObjects[i].gameObject.SetActive(areas[i].localScale.x >= iconWidthThreshold);
+                //iconObjects[i].gameObject.SetActive(areas[i].localScale.x >= iconWidthThreshold);
                 iconObjects[i].position = areas[i].position;
             }
 
