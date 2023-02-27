@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3125353624767484787}
   - component: {fileID: 3125353624767484784}
+  - component: {fileID: 7897231138683242354}
   m_Layer: 0
   m_Name: PlayerConfiguration
   m_TagString: Untagged
@@ -62,7 +63,19 @@ MonoBehaviour:
     m_ActionId: d41afcae-c781-49f7-8164-6d78af2538cd
     m_ActionName: PlayerMovement/Movement[/XInputControllerWindows/leftStick,/XInputControllerWindows1/leftStick]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Xbox Controller Scheme
+  m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7897231138683242354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3125353624767484785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 240ec032922317c45a17dfbf9cbe5a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
