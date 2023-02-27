@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 5908273013285252433}
   - component: {fileID: 3254022910031018108}
   - component: {fileID: 4108701743649187427}
+  - component: {fileID: 1934988500303532034}
   m_Layer: 5
   m_Name: SoccerGame Canvas
   m_TagString: Untagged
@@ -495,7 +496,7 @@ Canvas:
   m_GameObject: {fileID: 898010393115554613}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -547,6 +548,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1934988500303532034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898010393115554613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91ba74c93e271d45bd94f0a8457e856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &990297282017604290
 GameObject:
   m_ObjectHideFlags: 0
@@ -7981,7 +7994,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: aaae3a73d5f5e6447ab5daedfdceac9c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cc50196bb3ac884d813a02823cf1d71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8242,7 +8255,7 @@ PrefabInstance:
       objectReference: {fileID: 4400912137607741547}
     - target: {fileID: 5271440421912720393, guid: b7307b61d7d333f4b92d2e6e14149b82, type: 3}
       propertyPath: timeBeforeEnd
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5507488898222136646, guid: b7307b61d7d333f4b92d2e6e14149b82, type: 3}
       propertyPath: m_RootOrder

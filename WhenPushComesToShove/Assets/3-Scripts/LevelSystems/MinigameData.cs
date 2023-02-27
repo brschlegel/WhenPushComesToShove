@@ -7,6 +7,7 @@ public class MinigameData : MonoBehaviour
 {
     public float[] scores = new float[4];
     public static Action<int, float> onScoreAdded;
+
     private bool canUpdateScore = true;
 
     public void AddScoreForTeam(int teamIndex, float scoreToAdd)
@@ -21,6 +22,21 @@ public class MinigameData : MonoBehaviour
         if (onScoreAdded != null)
         {
             onScoreAdded.Invoke(teamIndex, scores[teamIndex]);
+        }
+    }
+
+    public void RemoveScoreForTeam(int teamIndex, int scoreToRemove)
+    {
+        if (!canUpdateScore)
+        {
+            return;
+        }
+
+        scores[teamIndex] -= scoreToRemove;
+
+        if (onScoreRemoved != null)
+        {
+            onScoreRemoved.Invoke(teamIndex, scores[teamIndex]);
         }
     }
 

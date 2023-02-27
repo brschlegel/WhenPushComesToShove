@@ -1546,6 +1546,7 @@ GameObject:
   - component: {fileID: 1545246644397455082}
   - component: {fileID: 1545246644397455083}
   - component: {fileID: 1545246644397455080}
+  - component: {fileID: 3100271603753051379}
   m_Layer: 5
   m_Name: Pinball Canvas
   m_TagString: Untagged
@@ -1584,7 +1585,7 @@ Canvas:
   m_GameObject: {fileID: 1545246644397455081}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1636,6 +1637,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3100271603753051379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545246644397455081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91ba74c93e271d45bd94f0a8457e856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1545246644916049903
 GameObject:
   m_ObjectHideFlags: 0

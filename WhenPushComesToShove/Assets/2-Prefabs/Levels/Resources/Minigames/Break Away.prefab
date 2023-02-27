@@ -6728,6 +6728,7 @@ GameObject:
   - component: {fileID: 2970340000828531505}
   - component: {fileID: 4193970322776771459}
   - component: {fileID: 549558725593787536}
+  - component: {fileID: 5000655646205049135}
   m_Layer: 0
   m_Name: DodgeballGame Canvas
   m_TagString: Untagged
@@ -6767,7 +6768,7 @@ Canvas:
   m_GameObject: {fileID: 5809279988283899252}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -6819,6 +6820,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5000655646205049135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809279988283899252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91ba74c93e271d45bd94f0a8457e856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6393146970416343547
 GameObject:
   m_ObjectHideFlags: 0
@@ -8632,7 +8645,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2671478022329514512, guid: c218628b32a63554999f97617a7a681d, type: 3}
       propertyPath: teamIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8318899946535896032, guid: c218628b32a63554999f97617a7a681d, type: 3}
       propertyPath: m_Name
@@ -8703,7 +8716,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2671478022329514512, guid: c218628b32a63554999f97617a7a681d, type: 3}
       propertyPath: teamIndex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8318899946535896032, guid: c218628b32a63554999f97617a7a681d, type: 3}
       propertyPath: m_Name

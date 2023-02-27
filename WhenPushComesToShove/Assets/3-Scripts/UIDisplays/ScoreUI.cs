@@ -25,6 +25,7 @@ public class ScoreUI : UIDisplay
         }
 
         MinigameData.onScoreAdded += UpdateScore;
+        MinigameData.onScoreRemoved += UpdateScore;
     }
 
     public override void HideDisplay()
@@ -50,5 +51,6 @@ public class ScoreUI : UIDisplay
     public void OnDisable()
     {
         MinigameData.onScoreAdded -= UpdateScore;
+        MinigameData.onScoreRemoved -= UpdateScore;
     }
 }

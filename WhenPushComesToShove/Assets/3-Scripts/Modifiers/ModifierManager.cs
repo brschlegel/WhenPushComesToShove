@@ -5,7 +5,7 @@ using UnityEngine;
 public class ModifierManager : MonoBehaviour
 {
 
-    private List<BaseModifier> modifiers;
+    [HideInInspector] public List<BaseModifier> modifiers;
 
     [Tooltip("Base List of modifiers to choose from")]
     public ModifierList modifierPoolSO;

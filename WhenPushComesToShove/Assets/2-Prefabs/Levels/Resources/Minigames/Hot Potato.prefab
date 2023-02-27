@@ -4482,6 +4482,7 @@ GameObject:
   - component: {fileID: 8184760429239412006}
   - component: {fileID: 2049526009138008452}
   - component: {fileID: 6515841284478774381}
+  - component: {fileID: 7864330339395627792}
   m_Layer: 0
   m_Name: Hot Potato Canvas
   m_TagString: Untagged
@@ -4520,7 +4521,7 @@ Canvas:
   m_GameObject: {fileID: 4710386239431317175}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -4572,6 +4573,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7864330339395627792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4710386239431317175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91ba74c93e271d45bd94f0a8457e856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5382073798198259129
 GameObject:
   m_ObjectHideFlags: 0
