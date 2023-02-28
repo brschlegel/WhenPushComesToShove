@@ -5,11 +5,12 @@ using UnityEngine;
 public class TagLogic : MinigameLogic
 {
     [SerializeField] private Sprite tagIcon;
-    [SerializeField] private float timeScoreIncrement;
     [SerializeField] private float gracePeriod;
-    [SerializeField] private float speeOfTagged;
-
+    [SerializeField] private float speedOfTagged;
+    [SerializeField] private float damagePerSecond;
+ 
     private List<PlayerConfiguration> playerConfigs;
+    private List<PlayerConfiguration> deadPlayers;
     private List<ProjectileHitbox> pHitBoxes;
     private List<PlayerMovementScript> pMovement;
 
@@ -26,6 +27,7 @@ public class TagLogic : MinigameLogic
     public override void Init()
     {
         playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs();
+        deadPlayers = new List<PlayerConfiguration>();
         pHitBoxes = new List<ProjectileHitbox>();
         pMovement = new List<PlayerMovementScript>();
 
@@ -43,6 +45,10 @@ public class TagLogic : MinigameLogic
         gracePeriodEnded = false;
         currentTime = 0.0f;
 
+        for (int i = 0; i < playerConfigs.Count; i++)
+        {
+            //data.AddScoreForTeam(i, 10);
+        }
         base.Init();
     }
 
@@ -58,24 +64,31 @@ public class TagLogic : MinigameLogic
 
         if (gameRunning)
         {
+            //Prevents tagged player from taking damage at the very beginning of the game
             if (gracePeriodEnded)
             {
                 currentTime += Time.deltaTime;
-                if (currentTime >= timeScoreIncrement)
+                if (currentTime >= 1.0f)
                 {
-                    currentTime -= timeScoreIncrement;
+                    currentTime -= 1.0f;
 
                     for (int i = 0; i < playerConfigs.Count; i++)
                     {
-                        if (playerConfigs[i].PlayerObject != taggedPlayer)
-                            data.AddScoreForTeam(i, 1);
+                        if (playerConfigs[i].PlayerObject == taggedPlayer)
+                        {
+                            taggedPlayer.GetComponentInChildren<PlayerHealth>().TakeDamage(damagePerSecond, "Tagged");
+                            //If the tagged player dies, find a new player
+                            if(playerConfigs[i].IsDead)
+                                UpdateTaggedPlayer(Random.Range(0, playerConfigs.Count));
+                        }
                     }
                 }
             }
           
-            //Update who's tagged
+            
             for (int i = 0; i < playerConfigs.Count; i++)
             {
+                //Update who's tagged
                 foreach (GameObject owner in pHitBoxes[i].OwnersToIgnore)
                 {
                     if (owner == taggedPlayer)
@@ -85,50 +98,39 @@ public class TagLogic : MinigameLogic
                     }
                 }
             }
+
+
             if (endCondition.TestCondition())
             {
-                int max = Mathf.Max(data.scores);
-                int numOfWinners = 0;
-                string winnerName = "";
-                PlayerWinUIDisplay winDisplay = ((PlayerWinUIDisplay)endingUIDisplay);
+                //Plugging in 4 will ensure the index is out of range and clean up all icons and speed values
+                UpdateTaggedPlayer(4);
 
-                for (int i = 0; i < data.scores.Length; i++)
-                {
-                    if (max == data.scores[i])
-                    {
-                        numOfWinners++;
+                Transform winner = ((LastManStandingEndCondition)endCondition).winner;
 
-                        if (numOfWinners == 1)
-                        {
-                            winnerName = GameState.playerNames[i];
-                        }
-                        else
-                        {
-                            winDisplay.tie = true;
-                            winnerName += " player and " + GameState.playerNames[i];
-                        }
+                PlayerConfiguration config = winner.GetComponentInChildren<PlayerInputHandler>().playerConfig;
+                //Assign point to let the system know who won
+                data.AddScoreForTeam(config.PlayerIndex, 1);
 
-                    }
-                }
-
-                //Transform winner = ((TimerEndCondition)endCondition).winner;
-                winDisplay.winnerName = winnerName;
+                ((PlayerWinUIDisplay)endingUIDisplay).winnerName = GameState.playerNames[config.PlayerIndex];
                 EndGame();
             }
-
         }
        
     }
 
-    public override void CleanUp()
-    {
-        //Plugging in 4 will ensure the index is out of range and clean up all icons
-        UpdateTaggedPlayer(4);
-        base.CleanUp();
-    }
     void UpdateTaggedPlayer(int tagIndex)
     {
-
+        if(tagIndex < playerConfigs.Count)
+        {
+            //Keeping looping until a non dead player is found
+            if(playerConfigs[tagIndex].IsDead)
+            {
+                UpdateTaggedPlayer(Random.Range(0, playerConfigs.Count));
+                return;
+            }
+        }
+        
+        //Updated variables for tagged and non-tagged players
         for(int i = 0; i < playerConfigs.Count; i++)
         {
             PlayerComponentReferences references = playerConfigs[i].PlayerObject.GetComponent<PlayerComponentReferences>();
@@ -138,14 +140,12 @@ public class TagLogic : MinigameLogic
             {
                 taggedPlayer = playerConfigs[i].PlayerObject;
                 sr.sprite = tagIcon;
-                pMovement[i].maxSpeed = speeOfTagged;
-                //pMovement[i].acceleration = speeOfTagged * 10;
+                pMovement[i].maxSpeed = speedOfTagged;
             }
             else
             {
                 sr.sprite = null;
                 pMovement[i].maxSpeed = initialSpeed;
-                //pMovement[i].acceleration = initialAcceleration;
             }
         }
     }
