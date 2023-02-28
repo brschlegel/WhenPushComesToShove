@@ -25,7 +25,6 @@ public class ScoreUI : UIDisplay
         }
 
         MinigameData.onScoreAdded += UpdateScore;
-        MinigameData.onScoreRemoved += UpdateScore;
     }
 
     public override void HideDisplay()
@@ -38,7 +37,7 @@ public class ScoreUI : UIDisplay
         gameObject.SetActive(true);
     }
 
-    public void UpdateScore(int index, int scoreToSetAs)
+    public void UpdateScore(int index, float scoreToSetAs)
     {
         if (scores[index] == null)
         {
@@ -51,6 +50,5 @@ public class ScoreUI : UIDisplay
     public void OnDisable()
     {
         MinigameData.onScoreAdded -= UpdateScore;
-        MinigameData.onScoreRemoved -= UpdateScore;
     }
 }

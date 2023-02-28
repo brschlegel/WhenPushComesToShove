@@ -9,8 +9,7 @@ public class Explosion : MonoBehaviour
     public float explosionDuration;
 
     [Tooltip("Top level object to actually be exploded")]
-    [SerializeField]
-    private GameObject rootObject;
+    public GameObject rootObject;
     [SerializeField]
     private SpriteRenderer rootSprite;
     [SerializeField]
