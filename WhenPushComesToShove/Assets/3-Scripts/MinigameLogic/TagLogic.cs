@@ -5,7 +5,6 @@ using UnityEngine;
 public class TagLogic : MinigameLogic
 {
     [SerializeField] private Sprite tagIcon;
-    [SerializeField] private float timeScoreIncrement;
     [SerializeField] private float gracePeriod;
     [SerializeField] private float speedOfTagged;
     [SerializeField] private float damagePerSecond;
@@ -69,9 +68,9 @@ public class TagLogic : MinigameLogic
             if (gracePeriodEnded)
             {
                 currentTime += Time.deltaTime;
-                if (currentTime >= timeScoreIncrement)
+                if (currentTime >= 1.0f)
                 {
-                    currentTime -= timeScoreIncrement;
+                    currentTime -= 1.0f;
 
                     for (int i = 0; i < playerConfigs.Count; i++)
                     {
