@@ -163,6 +163,17 @@ public class PlayerInputHandler : MonoBehaviour
                 LockAction(selectActionCooldown, null);
             }
         }
+        else if (obj.action.name == controls.PlayerMovement.EmoteUp.name)
+        {
+            if (references.confettiVFX != null && !performingAction)
+            {
+                GameObject vfx = Instantiate(references.confettiVFX, playerConfig.PlayerObject.transform);
+                //var main = vfx.GetComponent<ParticleSystem>().main;
+                //main.startColor = PlayerConfigManager.Instance.playerCircleVFXColors[playerConfig.PlayerIndex];
+
+                LockAction(selectActionCooldown, null);
+            }
+        }
         else if (obj.action.name == controls.PlayerMovement.EmoteLeft.name)
         {
             if (!performingAction)

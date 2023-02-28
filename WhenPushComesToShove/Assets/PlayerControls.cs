@@ -107,6 +107,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EmoteUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""dffb8c4b-669a-40d5-bdd1-9548dcba1d9d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -208,6 +217,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""EmoteRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3a70ce4-4445-488c-82e3-717fe004da7e"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EmoteUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +268,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_EmoteDown = m_PlayerMovement.FindAction("EmoteDown", throwIfNotFound: true);
         m_PlayerMovement_EmoteLeft = m_PlayerMovement.FindAction("EmoteLeft", throwIfNotFound: true);
         m_PlayerMovement_EmoteRight = m_PlayerMovement.FindAction("EmoteRight", throwIfNotFound: true);
+        m_PlayerMovement_EmoteUp = m_PlayerMovement.FindAction("EmoteUp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -316,6 +337,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_EmoteDown;
     private readonly InputAction m_PlayerMovement_EmoteLeft;
     private readonly InputAction m_PlayerMovement_EmoteRight;
+    private readonly InputAction m_PlayerMovement_EmoteUp;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -329,6 +351,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @EmoteDown => m_Wrapper.m_PlayerMovement_EmoteDown;
         public InputAction @EmoteLeft => m_Wrapper.m_PlayerMovement_EmoteLeft;
         public InputAction @EmoteRight => m_Wrapper.m_PlayerMovement_EmoteRight;
+        public InputAction @EmoteUp => m_Wrapper.m_PlayerMovement_EmoteUp;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -365,6 +388,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @EmoteRight.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteRight;
                 @EmoteRight.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteRight;
                 @EmoteRight.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteRight;
+                @EmoteUp.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteUp;
+                @EmoteUp.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteUp;
+                @EmoteUp.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteUp;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -396,6 +422,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @EmoteRight.started += instance.OnEmoteRight;
                 @EmoteRight.performed += instance.OnEmoteRight;
                 @EmoteRight.canceled += instance.OnEmoteRight;
+                @EmoteUp.started += instance.OnEmoteUp;
+                @EmoteUp.performed += instance.OnEmoteUp;
+                @EmoteUp.canceled += instance.OnEmoteUp;
             }
         }
     }
@@ -429,5 +458,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnEmoteDown(InputAction.CallbackContext context);
         void OnEmoteLeft(InputAction.CallbackContext context);
         void OnEmoteRight(InputAction.CallbackContext context);
+        void OnEmoteUp(InputAction.CallbackContext context);
     }
 }
