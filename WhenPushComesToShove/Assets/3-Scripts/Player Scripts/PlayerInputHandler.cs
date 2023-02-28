@@ -186,6 +186,22 @@ public class PlayerInputHandler : MonoBehaviour
                 LockAction(.2f, null);
             }
         }
+        else if (obj.action.name == controls.PlayerMovement.EmoteRight.name)
+        {
+            if (!performingAction)
+            {
+                if (animBrain.CurrentState.id == "death")
+                {
+                    animBrain.OutDeath(true);
+                }
+                else
+                {
+                    animBrain.OnRightEmote();
+                }
+
+                LockAction(selectActionCooldown, null);
+            }
+        } 
     }
 
     /// <summary>
