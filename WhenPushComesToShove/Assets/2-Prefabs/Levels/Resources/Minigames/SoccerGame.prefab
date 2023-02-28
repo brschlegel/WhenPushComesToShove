@@ -7131,6 +7131,7 @@ MonoBehaviour:
   confettiTransforms:
   - {fileID: 9089175836449473757}
   - {fileID: 6233284168547692684}
+  objectsUseTeamIndex: 0
 --- !u!61 &5238413781028998540
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8489,7 +8490,7 @@ PrefabInstance:
     - target: {fileID: 6039087861289989648, guid: 52975bb7d5309c547b551760ecea5054, type: 3}
       propertyPath: spawnedObjectParent
       value: 
-      objectReference: {fileID: 6943375545145802283}
+      objectReference: {fileID: 8313736132268171607}
     - target: {fileID: 6039087861289989649, guid: 52975bb7d5309c547b551760ecea5054, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -8582,7 +8583,7 @@ PrefabInstance:
     - target: {fileID: 6039087861289989648, guid: 52975bb7d5309c547b551760ecea5054, type: 3}
       propertyPath: spawnedObjectParent
       value: 
-      objectReference: {fileID: 6943375545145802283}
+      objectReference: {fileID: 8159682521233583303}
     - target: {fileID: 6039087861289989649, guid: 52975bb7d5309c547b551760ecea5054, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -9013,6 +9014,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1979710940634848150, guid: a33bbcddbeb9b0a44aaade4c404fb07c, type: 3}
+      propertyPath: scores.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8719659385494174375, guid: a33bbcddbeb9b0a44aaade4c404fb07c, type: 3}
       propertyPath: m_Name
       value: MinigameData
@@ -9284,7 +9289,7 @@ PrefabInstance:
     - target: {fileID: 6039087861289989648, guid: 52975bb7d5309c547b551760ecea5054, type: 3}
       propertyPath: spawnedObjectParent
       value: 
-      objectReference: {fileID: 6943375545145802283}
+      objectReference: {fileID: 4345814049978032578}
     - target: {fileID: 6039087861289989649, guid: 52975bb7d5309c547b551760ecea5054, type: 3}
       propertyPath: m_RootOrder
       value: 6
