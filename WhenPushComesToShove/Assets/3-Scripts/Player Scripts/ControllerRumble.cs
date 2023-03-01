@@ -138,7 +138,7 @@ public class ControllerRumble : MonoBehaviour
     {
 #if UNITY_STANDALONE && !UNITY_EDITOR
     if(!CanRumble)
-        return 
+        return;
         currentRumbleType = RumbleType.Pulse;
         lowFreq = low;
         highFreq = high;
