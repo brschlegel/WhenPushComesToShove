@@ -494,7 +494,7 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: Z:/IGMProfile/Desktop/FMOD Studio/When Push Comes To Shove/PushShoveAudio/PushShoveAudio.fspro
-  sourceBankPath: .\Assets\FMOD Banks\Desktop
+  sourceBankPath: Assets/FMOD Banks/Desktop
   sourceBankPathUnformatted: 
   BankRefreshCooldown: -2
   ShowBankRefreshWindow: 0
@@ -517,7 +517,10 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
+  - Desktop/Master
   Banks:
+  - Desktop/Music
+  - Desktop/SFX
   - Music
   BanksToLoad: []
   LiveUpdatePort: 9264
