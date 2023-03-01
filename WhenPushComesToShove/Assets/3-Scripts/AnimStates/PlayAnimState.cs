@@ -9,6 +9,7 @@ public class PlayAnimState : State
 {
     [HideInInspector]
     public string animName;
+    [HideInInspector] public bool automaticallyExit = true;
     private void OnEnable()
     {
         StartCoroutine(PlayAnimation(animName));
@@ -18,7 +19,11 @@ public class PlayAnimState : State
     {
         anim.Play(animName, 0);
         yield return new WaitForSeconds(anim.GetCurrentClipLength());
-        InvokeOnStateExit(true);
-        this.enabled = false;
+
+        if (automaticallyExit)
+        {
+            InvokeOnStateExit(true);
+            this.enabled = false;
+        }
     }
 }
