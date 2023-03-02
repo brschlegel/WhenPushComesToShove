@@ -11,7 +11,7 @@ public class SetExplodeTimeOnSpawn : SpawnerAttachment
         ExplosionTimerFlash timer = t.GetComponentInChildren<ExplosionTimerFlash>();
         if (timer != null)
         {
-            timer.maxTime = time;
+            timer.MaxTime = time;
         }
     }
 }

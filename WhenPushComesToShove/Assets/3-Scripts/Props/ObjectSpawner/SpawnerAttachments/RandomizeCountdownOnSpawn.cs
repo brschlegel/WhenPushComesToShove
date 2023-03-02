@@ -14,7 +14,7 @@ public class RandomizeCountdownOnSpawn : SpawnerAttachment
         ExplosionTimerFlash flash = t.GetComponentInChildren<ExplosionTimerFlash>();
         if(flash != null)
         {
-            flash.maxTime = rand;
+            flash.MaxTime = rand;
         }
 
     }

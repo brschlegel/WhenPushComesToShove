@@ -35,7 +35,7 @@ public class ClusterBombs : EventModifier
             pMode.AddForce(spawnForce * dir.normalized);
 
             ExplosionTimerFlash e = g.GetComponentInChildren<ExplosionTimerFlash>();
-            e.maxTime = timeToExplode;
+            e.MaxTime = timeToExplode;
         }
     }
 

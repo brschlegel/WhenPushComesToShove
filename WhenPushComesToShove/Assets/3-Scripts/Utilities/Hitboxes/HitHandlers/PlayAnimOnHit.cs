@@ -16,6 +16,7 @@ public class PlayAnimOnHit : HitHandler
     }
     public IEnumerator PlayAnimation()
     {
+
         anim.Play(animName, 0);
         yield return new WaitForSeconds(anim.GetCurrentClipLength());
         anim.Play(idleStateName, 0);
