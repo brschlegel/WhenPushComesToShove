@@ -53,7 +53,7 @@ public class VolleyballLogic : MinigameLogic
     public override void Init()
     {
         bombMessageId = Messenger.RegisterEvent("BombExploded", OnBombExplode);
-        clusterMessageId = Messenger.RegisterEvent("ClusterExplode", OnClusterExplode);
+        clusterMessageId = Messenger.RegisterEvent("ClusterExploded", OnClusterExplode);
 
         //Ooooo fancy lambdas :) just tells the minigame that we have actually spawned the object
         middleSpawner.onObjectSpawned += (Transform t) => {spawning = false;};
@@ -126,7 +126,7 @@ public class VolleyballLogic : MinigameLogic
     public override void CleanUp()
     {
         Messenger.UnregisterEvent("BombExploded", bombMessageId);
-        Messenger.UnregisterEvent("ClusterExplode", clusterMessageId);
+        Messenger.UnregisterEvent("ClusterExploded", clusterMessageId);
         base.CleanUp();
     }
 
