@@ -37,7 +37,6 @@ public class ProjectileHitbox : MonoBehaviour
     void Update()
     {
         data.damage = instanceDamageMultiplier * Mathf.Clamp(pMode.Mass * GetThresholdValue(pMode.Velocity.magnitude) * GlobalSettings.velocityDamageCoeff , 0, GlobalSettings.velocityDamageCap);
-        Debug.Log(data.damage);
     }
 
     public List<GameObject> OwnersToIgnore
