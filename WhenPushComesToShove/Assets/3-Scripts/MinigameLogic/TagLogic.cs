@@ -173,6 +173,7 @@ public class TagLogic : MinigameLogic
                 pMovement[i].maxSpeed = speedOfTagged;
                 lightShoveColliders[i].transform.localScale *= sizeMultiplierOfTaggedHitBox;
                 heavyShoveColliders[i].transform.localScale *= sizeMultiplierOfTaggedHitBox;
+                references.fireVFX.gameObject.SetActive(true);
             }
             else
             {
@@ -180,6 +181,7 @@ public class TagLogic : MinigameLogic
                 pMovement[i].maxSpeed = initialSpeed;
                 lightShoveColliders[i].transform.localScale = initalShoveCollider;
                 heavyShoveColliders[i].transform.localScale = initalShoveCollider;
+                references.fireVFX.gameObject.SetActive(false);
             }
         }
     }

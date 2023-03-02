@@ -152,7 +152,7 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
         //Emotes
-        else if (obj.action.name == controls.PlayerMovement.EmoteDown.name)
+        else if (obj.action.name == controls.PlayerMovement.EmoteRight.name)
         {
             if (references.circleVFX != null && !performingAction)
             {
@@ -197,7 +197,7 @@ public class PlayerInputHandler : MonoBehaviour
                 LockAction(.2f, null);
             }
         }
-        else if (obj.action.name == controls.PlayerMovement.EmoteRight.name)
+        else if (obj.action.name == controls.PlayerMovement.EmoteDown.name)
         {
             if (!performingAction)
             {
