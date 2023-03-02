@@ -6327,6 +6327,7 @@ GameObject:
   - component: {fileID: 1075145129282054902}
   - component: {fileID: 102798743431046658}
   - component: {fileID: 5050357902423793123}
+  - component: {fileID: 6608459304867725994}
   m_Layer: 0
   m_Name: HitHandlers
   m_TagString: Untagged
@@ -6367,6 +6368,7 @@ MonoBehaviour:
   - {fileID: 1075145129282054902}
   - {fileID: 5928355534833855564}
   - {fileID: 102798743431046658}
+  - {fileID: 6608459304867725994}
 --- !u!114 &5928355534833855564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6427,6 +6429,19 @@ MonoBehaviour:
   tagsToIgnore:
   - GhostShove
   myPMode: {fileID: 519120853313958755}
+--- !u!114 &6608459304867725994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7232917086713832237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bacfc05ddcd7704eb3729f03b46b968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
 --- !u!1 &8153573459636761399
 GameObject:
   m_ObjectHideFlags: 0
