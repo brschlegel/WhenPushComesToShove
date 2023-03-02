@@ -62,6 +62,9 @@ public class InitLevel : MonoBehaviour
         //Assign Ground UI Colors
         SpriteRenderer[] srs = references.GroundUIRef.GetComponentsInChildren<SpriteRenderer>();
 
+        //Assign Confetti      
+        references.confettiVFX = PlayerConfigManager.Instance.playerConfettiPrefabs[index];
+
         foreach (SpriteRenderer sr in srs)
         {
             sr.color = playerHitboxColors[index];

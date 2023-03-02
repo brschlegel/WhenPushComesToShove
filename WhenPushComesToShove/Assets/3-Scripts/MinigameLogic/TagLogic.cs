@@ -5,19 +5,25 @@ using UnityEngine;
 public class TagLogic : MinigameLogic
 {
     [SerializeField] private Sprite tagIcon;
-    [SerializeField] private float gracePeriod;
+    [SerializeField] private float startingGracePeriodTime;
+    [SerializeField] private float taggedGracePeriodTime;
     [SerializeField] private float speedOfTagged;
     [SerializeField] private float damagePerSecond;
+    [SerializeField] private float sizeMultiplierOfTaggedHitBox;
  
     private List<PlayerConfiguration> playerConfigs;
     private List<PlayerConfiguration> deadPlayers;
     private List<ProjectileHitbox> pHitBoxes;
     private List<PlayerMovementScript> pMovement;
+    private List<GameObject> lightShoveColliders;
+    private List<GameObject> heavyShoveColliders;
 
-    private bool gracePeriodEnded;
+    private bool initialGracePeriodEnded;
+    private bool tagGracePeriodEnded;
 
     private GameObject taggedPlayer;
     private float initialSpeed;
+    private Vector3 initalShoveCollider;
 
     private float currentTime;
 
@@ -30,19 +36,24 @@ public class TagLogic : MinigameLogic
         deadPlayers = new List<PlayerConfiguration>();
         pHitBoxes = new List<ProjectileHitbox>();
         pMovement = new List<PlayerMovementScript>();
+        lightShoveColliders = new List<GameObject>();
+        heavyShoveColliders = new List<GameObject>();
 
         for(int i = 0; i < playerConfigs.Count; i++)
         {
             pHitBoxes.Add(playerConfigs[i].PlayerObject.GetComponentInChildren<ProjectileHitbox>(true));
             pMovement.Add(playerConfigs[i].PlayerObject.GetComponentInChildren<PlayerMovementScript>(true));
+            lightShoveColliders.Add(playerConfigs[i].PlayerObject.transform.Find("AimDirection").Find("LightHitbox").gameObject);
+            heavyShoveColliders.Add(playerConfigs[i].PlayerObject.transform.Find("AimDirection").Find("HeavyHitbox").gameObject);
         }
 
         initialSpeed = pMovement[0].maxSpeed;
-        //initialAcceleration = pMovement[0].acceleration;
+        initalShoveCollider = lightShoveColliders[0].transform.localScale;
 
         UpdateTaggedPlayer(Random.Range(0, playerConfigs.Count));
 
-        gracePeriodEnded = false;
+        initialGracePeriodEnded = false;
+        tagGracePeriodEnded = true;
         currentTime = 0.0f;
 
         for (int i = 0; i < playerConfigs.Count; i++)
@@ -64,11 +75,15 @@ public class TagLogic : MinigameLogic
 
         if (gameRunning)
         {
-            //Prevents tagged player from taking damage at the very beginning of the game
-            if (gracePeriodEnded)
-            {
+            //Only runs the timer when it's needed
+            if(initialGracePeriodEnded || !tagGracePeriodEnded)
                 currentTime += Time.deltaTime;
-                if (currentTime >= 1.0f)
+
+            //Prevents tagged player from taking damage at the very beginning of the game
+            if (initialGracePeriodEnded)
+            {
+                
+                if (currentTime >= 1.0f && tagGracePeriodEnded)
                 {
                     currentTime -= 1.0f;
 
@@ -83,20 +98,33 @@ public class TagLogic : MinigameLogic
                         }
                     }
                 }
+
+                
             }
-          
-            
+
+            //Keeps track of the timer for the tagged grace period
+            if (currentTime >= taggedGracePeriodTime && tagGracePeriodEnded == false)
+            {
+                currentTime -= taggedGracePeriodTime;
+                tagGracePeriodEnded = true;
+            }
+
             for (int i = 0; i < playerConfigs.Count; i++)
             {
-                //Update who's tagged
-                foreach (GameObject owner in pHitBoxes[i].OwnersToIgnore)
+                //Ensures there's no instant tagbacks
+                if (tagGracePeriodEnded)
                 {
-                    if (owner == taggedPlayer)
+                    //Update who's tagged
+                    foreach (GameObject owner in pHitBoxes[i].OwnersToIgnore)
                     {
-                        UpdateTaggedPlayer(i);
-                        break;
+                        if (owner == taggedPlayer)
+                        {
+                            UpdateTaggedPlayer(i);
+                            break;
+                        }
                     }
                 }
+                
             }
 
 
@@ -129,7 +157,9 @@ public class TagLogic : MinigameLogic
                 return;
             }
         }
-        
+
+        tagGracePeriodEnded = false;
+
         //Updated variables for tagged and non-tagged players
         for(int i = 0; i < playerConfigs.Count; i++)
         {
@@ -141,18 +171,22 @@ public class TagLogic : MinigameLogic
                 taggedPlayer = playerConfigs[i].PlayerObject;
                 sr.sprite = tagIcon;
                 pMovement[i].maxSpeed = speedOfTagged;
+                lightShoveColliders[i].transform.localScale *= sizeMultiplierOfTaggedHitBox;
+                heavyShoveColliders[i].transform.localScale *= sizeMultiplierOfTaggedHitBox;
             }
             else
             {
                 sr.sprite = null;
                 pMovement[i].maxSpeed = initialSpeed;
+                lightShoveColliders[i].transform.localScale = initalShoveCollider;
+                heavyShoveColliders[i].transform.localScale = initalShoveCollider;
             }
         }
     }
 
     private IEnumerator StartGracePeriod()
     {
-        yield return new WaitForSeconds(gracePeriod);
-        gracePeriodEnded = true;
+        yield return new WaitForSeconds(startingGracePeriodTime);
+        initialGracePeriodEnded = true;
     }
 }

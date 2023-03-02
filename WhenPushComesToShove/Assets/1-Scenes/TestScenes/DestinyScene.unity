@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6609a40c71c85a54ebcede2d70b2ff42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modifiers: []
   modifierPoolSO: {fileID: 11400000, guid: caf1f156d9cc7cf45b64304a625d617c, type: 2}
   debugList: {fileID: 0}
 --- !u!4 &492785792
@@ -640,6 +641,11 @@ MonoBehaviour:
   - {r: 0, g: 0.91764706, b: 1, a: 1}
   - {r: 0.07058824, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.92156863, b: 0, a: 1}
+  playerConfettiPrefabs:
+  - {fileID: 8946640581007675338, guid: 9ca62d6617267bc4d8f7227faf2009b8, type: 3}
+  - {fileID: 8946640581007675338, guid: ce8b59ea87d45d344910b4c33e3b6d7f, type: 3}
+  - {fileID: 8946640581007675338, guid: 07081cb80e7dba84d98a7a860de55d1a, type: 3}
+  - {fileID: 8946640581007675338, guid: 2dcdbc6ff6c3fba418021b04850f6443, type: 3}
   levelInitRef: {fileID: 0}
   minPlayers: 1
   maxPlayers: 4

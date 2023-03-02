@@ -170,12 +170,11 @@ public class PlayerAnimBrain : StateBrain
         }
     }
 
-    private void OutDeath(bool success)
+    public void OutDeath(bool success)
     {
         if(success)
         {
-            currentState = idleState;
-            currentState.enabled = true;
+            ChangeState(idleState);
         }
     }
 
@@ -227,6 +226,12 @@ public class PlayerAnimBrain : StateBrain
     //Index not neccessary here as this event is hooked up in the inpsector
     public void OnDeath(int playerIndex)
     {
+        if (currentState == deathState)
+        {
+            deathState.enabled = false;
+        }
+
+        deathState.automaticallyExit = true;
         ChangeState(deathState);
     }
     
@@ -238,6 +243,12 @@ public class PlayerAnimBrain : StateBrain
     public void OnLeftEmote()
     {
         ChangeState(leftEmoteState);
+    }
+
+    public void OnRightEmote()
+    {
+        deathState.automaticallyExit = false;
+        ChangeState(deathState);
     }
 
    
