@@ -10,6 +10,28 @@ public class MinigameData : MonoBehaviour
 
     private bool canUpdateScore = true;
 
+    public void Init()
+    {
+        scores = new float[] { -1f, - 1f, -1f, -1f };
+
+        if (GameState.currentRoomType == LevelType.Arena)
+        {
+            //Ensure only active players are counted in score
+            foreach (Transform p in GameState.players)
+            {
+                //p.GetComponentInChildren<PlayerMovementScript>().ResetMoveSpeed();
+                PlayerInputHandler handler = p.GetComponentInChildren<PlayerInputHandler>();
+                AddScoreForTeam(handler.playerConfig.PlayerIndex, 1);
+            }
+        }
+        else
+        {
+            AddScoreForTeam(0, 1);
+            AddScoreForTeam(1, 1);
+        }
+
+    }
+
     public void AddScoreForTeam(int teamIndex, float scoreToAdd)
     {
         if (!canUpdateScore)
@@ -39,7 +61,7 @@ public class MinigameData : MonoBehaviour
     {
         canUpdateScore = false;
 
-        int highestScoreIndex = GetHighestScoreIndex();
+        List<int> highestScoreIndexes = GetHighestScoreWithTies();
 
         //Update Gamestate with winners
         if (useTeamIndex)
@@ -47,15 +69,22 @@ public class MinigameData : MonoBehaviour
             List<PlayerConfiguration> players = PlayerTeamFormations.instance.GetPlayerTeams();
             for (int i = 0; i < players.Count; i++)
             {
-                if (players[i].TeamIndex == highestScoreIndex)
+                foreach (int index in highestScoreIndexes)
                 {
-                    GameState.playerScores[players[i].PlayerIndex] += 1;
+                    if (players[i].TeamIndex == index)
+                    {
+                        GameState.playerScores[players[i].PlayerIndex] += 1;
+                    }
                 }
+
             }
         }
         else
         {
-            GameState.playerScores[highestScoreIndex] += 1;
+            foreach (int index in highestScoreIndexes)
+            {
+                GameState.playerScores[index] += 1;
+            }
         }
 
         //Cleanup just in case
@@ -77,5 +106,28 @@ public class MinigameData : MonoBehaviour
             Debug.Log(scores[i]);
         }
         return highestScoreIndex;
+    }
+
+    public List<int> GetHighestScoreWithTies()
+    {
+        int highestScoreIndex = 0;
+        List<int> tiedIndexes = new List<int>();
+
+        //Find Winning Team
+        for (int i = 0; i < scores.Length; i++)
+        {
+            if (scores[i] > scores[highestScoreIndex])
+            {
+                highestScoreIndex = i;
+                tiedIndexes.Clear();
+                tiedIndexes.Add(i);
+            }
+            else if (scores[i] == scores[highestScoreIndex])
+            {
+                tiedIndexes.Add(i);
+            }
+        }
+
+        return tiedIndexes;
     }
 }
