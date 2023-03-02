@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d70437afcce72904b96d1c673ae70014
+guid: 16bb9817e3a79b74e9717bd548919ab6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,29 +100,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AN_Player_Blue_Spawn_0
+      name: AN_Bomb_Revision1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +118,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a1b29ddee79fe14db41c9d24ca1cc83
-      internalID: 1863938355
+      spriteID: 6051b0210a23e564c804ad3fe85bbdaf
+      internalID: 604792412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AN_Player_Blue_Spawn_1
+      name: AN_Bomb_Revision1_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 131d57a7e4e2e994080ec5bb4200520a
+      internalID: 311233167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AN_Bomb_Revision1_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +160,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73b18891bf0980642abb5d194164cdfa
-      internalID: 466752574
+      spriteID: fac2a43a9407a5544b5174de944ead3b
+      internalID: 1834540503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AN_Player_Blue_Spawn_2
+      name: AN_Bomb_Revision1_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ca60b589d7270d4ba890139d4bf057e
+      internalID: -1960744621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AN_Bomb_Revision1_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 056a41deeda0fd54b97546bc5d32af10
-      internalID: -985418660
+      spriteID: 42ef0fd2acb106b42bcc14c1229cddb3
+      internalID: 1686014342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AN_Player_Blue_Spawn_3
+      name: AN_Bomb_Revision1_5
       rect:
         serializedVersion: 2
-        x: 192
+        x: 160
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,92 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e11d2d97e074c146ad9bbc1a01faf10
-      internalID: 2072927705
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AN_Player_Blue_Spawn_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f4178242c0c8af48aa179cdb45c57be
-      internalID: 1524350905
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AN_Player_Blue_Spawn_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7eca796631e7614eb0d15201ea76f9d
-      internalID: 1262554109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AN_Player_Blue_Spawn_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e741c3142c2ae9a4191e38282715f64b
-      internalID: 1237501683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AN_Player_Blue_Spawn_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e2deb7b0a3d7d241ab216ab3e7e5978
-      internalID: -84890637
+      spriteID: 92f4fbe6c0ab15a41b45901c67e01b84
+      internalID: -1241245422
       vertices: []
       indices: 
       edges: []
@@ -294,14 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AN_Player_Blue_Spawn_1: 466752574
-      AN_Player_Blue_Spawn_4: 1524350905
-      AN_Player_Blue_Spawn_2: -985418660
-      AN_Player_Blue_Spawn_5: 1262554109
-      AN_Player_Blue_Spawn_6: 1237501683
-      AN_Player_Blue_Spawn_7: -84890637
-      AN_Player_Blue_Spawn_0: 1863938355
-      AN_Player_Blue_Spawn_3: 2072927705
+      AN_Bomb_Revision1_5: -1241245422
+      AN_Bomb_Revision1_0: 604792412
+      AN_Bomb_Revision1_2: 1834540503
+      AN_Bomb_Revision1_4: 1686014342
+      AN_Bomb_Revision1_1: 311233167
+      AN_Bomb_Revision1_3: -1960744621
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

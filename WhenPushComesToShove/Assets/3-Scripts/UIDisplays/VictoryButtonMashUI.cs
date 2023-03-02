@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class VictoryButtonMashUI : UIDisplay
 {
@@ -13,7 +14,10 @@ public class VictoryButtonMashUI : UIDisplay
     [SerializeField] private Transform[] tiedPlayerDisplays = new Transform[4];
     [SerializeField] private RawImage sword;
     [SerializeField] private Material[] playerColors = new Material[4];
+    [SerializeField] private Material[] swordOutlines = new Material[4];
+    [SerializeField] private Color[] swordGlowColors = new Color[4];
     [SerializeField] private ThresholdEndCondition threshold;
+    [SerializeField] private TextMeshProUGUI tieText;
     //[SerializeField] private Sprite[] playerPortraitSprites = new Sprite[4];
 
     public override void HideDisplay()
@@ -25,6 +29,11 @@ public class VictoryButtonMashUI : UIDisplay
     public override void ShowDisplay()
     {
         tiedIndexes = CheckForTies();
+
+        if (tiedIndexes.Count < 2)
+        {
+            tieText.gameObject.SetActive(false);
+        }
 
         //Display UI based on team size 
         tiedPlayerDisplays[tiedIndexes.Count - 1].gameObject.SetActive(true);
@@ -99,6 +108,8 @@ public class VictoryButtonMashUI : UIDisplay
     private void ChangeSwordColor(int teamIndex, float scoreToSetAs)
     {
         int index = data.GetHighestScoreIndex();
-        sword.material = PlayerConfigManager.Instance.playerOutlines[index];
+        sword.material = swordOutlines[index];
+        Image glow = sword.transform.GetChild(0).GetComponent<Image>();
+        glow.color = swordGlowColors[index];
     }
 }

@@ -13,4 +13,6 @@ public class PlayerComponentReferences : MonoBehaviour
     public Transform GroundUIRef;
 
     public GameObject circleVFX;
+    public GameObject confettiVFX;
+    public Transform fireVFX;
 }
