@@ -23,8 +23,6 @@ public class PlayAnimOnce : MonoBehaviour
     private IEnumerator PlayAnimation()
     {
         anim.Play(animName, 0);
-
-        Debug.Log(anim.GetCurrentClipLength());
         yield return new WaitForSeconds(anim.GetCurrentClipLength());
         anim.Play(idleStateName, 0);
         onAnimFinish?.Invoke();
