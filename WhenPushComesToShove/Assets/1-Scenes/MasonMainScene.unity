@@ -262,6 +262,63 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6203429871819391875, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 30fbb7e37ebdf4a4f9e2d3e6c430b4e8, type: 3}
+--- !u!1001 &184135450
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1091060518624148139, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952937667556181229, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952937667556181229, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952937667556181229, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952937667556181229, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952937667556181229, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952937667556181229, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952937667556181229, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952937667556181229, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952937667556181229, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952937667556181229, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952937667556181229, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e3988f85ffcd9a74aa3a734c57330d21, type: 3}
 --- !u!1 &387535392
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,7 +987,7 @@ MonoBehaviour:
   availableLevels: []
   playedLevels: []
   path:
-  - {fileID: 7536626136940499219, guid: d49584b65a9060b4185ab7763d596324, type: 3}
+  - {fileID: 8829601026546890495, guid: 90aae7df3f630b249aa117a0dd17fc96, type: 3}
   numOfRooms: 0
   numOfGames: 4
 --- !u!4 &1589640427
@@ -1210,10 +1267,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerOutlines:
-  - {fileID: 2100000, guid: 94d58e58c8e8db24f9efd0fce43c036b, type: 2}
-  - {fileID: 2100000, guid: 8ec0b368fde332544a0656675b2b4047, type: 2}
-  - {fileID: 2100000, guid: eab301b02e8602b45adc63a9570faa6b, type: 2}
-  - {fileID: 2100000, guid: da5f514db9d55be46a2bbc0b4d5e8eb4, type: 2}
+  - {fileID: 2100000, guid: 8dbee81e02ee0894697ced4d70c7c562, type: 2}
+  - {fileID: 2100000, guid: d025b9dac6e35354e911c832df410931, type: 2}
+  - {fileID: 2100000, guid: 9786f921918045b4e84925cbf241a019, type: 2}
+  - {fileID: 2100000, guid: 457098ce81835de4589e1c26a14837bc, type: 2}
   playerPortraits:
   - {fileID: 21300000, guid: 8ecc961859d78c7489cae327b3ac1d87, type: 3}
   - {fileID: 21300000, guid: 1a9a5e8ecb55b414fa099ccd81324e5e, type: 3}
@@ -1229,6 +1286,11 @@ MonoBehaviour:
   - {r: 0, g: 0.91764706, b: 1, a: 1}
   - {r: 0.07058824, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.92156863, b: 0, a: 1}
+  playerConfettiPrefabs:
+  - {fileID: 8946640581007675338, guid: 9ca62d6617267bc4d8f7227faf2009b8, type: 3}
+  - {fileID: 8946640581007675338, guid: ce8b59ea87d45d344910b4c33e3b6d7f, type: 3}
+  - {fileID: 8946640581007675338, guid: 07081cb80e7dba84d98a7a860de55d1a, type: 3}
+  - {fileID: 8946640581007675338, guid: 2dcdbc6ff6c3fba418021b04850f6443, type: 3}
   levelInitRef: {fileID: 0}
   minPlayers: 1
   maxPlayers: 4
