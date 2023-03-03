@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThresholdEndCondition : BaseEndCondition
 {
     [SerializeField] private MinigameData data;
-    [SerializeField] private int threshold = 20;
+    public int threshold = 20;
 
     public override void Init()
     {
