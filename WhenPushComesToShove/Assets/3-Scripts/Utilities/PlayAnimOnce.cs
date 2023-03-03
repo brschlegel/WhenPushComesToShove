@@ -8,7 +8,7 @@ public class PlayAnimOnce : MonoBehaviour
 { 
     public UnityEvent onAnimFinish;
     [SerializeField]
-    [Tooltip("MUST HAVE A LENGTH OF 1 TO BE TIME SCALED CORRECTLY")]
+    [Tooltip("ANIMATION MUST HAVE A LENGTH OF 1 TO BE TIME SCALED CORRECTLY")]
     private string animName;
     [SerializeField]
     private string idleStateName;
