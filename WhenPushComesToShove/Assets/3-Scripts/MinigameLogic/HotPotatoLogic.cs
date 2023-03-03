@@ -37,6 +37,7 @@ public class HotPotatoLogic : MinigameLogic
                 //Assign point to let the system know who won
                 data.AddScoreForTeam(config.PlayerIndex, 1);
 
+                ((PlayerWinUIDisplay)endingUIDisplay).tiedIndexes.Add(config.PlayerIndex);
                 ((PlayerWinUIDisplay)endingUIDisplay).winnerName = GameState.playerNames[config.PlayerIndex];
                 EndGame();
             }
