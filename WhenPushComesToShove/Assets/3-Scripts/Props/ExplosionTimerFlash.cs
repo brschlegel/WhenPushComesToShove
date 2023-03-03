@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Explosion))]
 public class ExplosionTimerFlash : MonoBehaviour
 {
-    public float maxTime = 5;
+   
     [SerializeField]
     private SpriteRenderer render;
     [SerializeField]
@@ -14,14 +14,31 @@ public class ExplosionTimerFlash : MonoBehaviour
     private float transitionToExplosionOffset = 0.5f;
     [SerializeField]
     private AnimationCurve explodeCurve;
+    [SerializeField]
+    private PlayAnimOnce startExplosionAnim;
 
     private Explosion explosion;
     private float timer = 0;
     private bool hasExploded;
+    private bool animStarted;
+    private float maxTime = 5;
+
+    public float MaxTime
+    {
+        get { return maxTime;}
+        set
+        {
+            maxTime = value;
+            startExplosionAnim.Speed = 1 / (maxTime - transitionToExplosionOffset);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
         hasExploded = false;
+        startExplosionAnim.Speed = 1 / (maxTime - transitionToExplosionOffset);
+        startExplosionAnim.PlayAnim();
+        Debug.Log(startExplosionAnim.Speed);
         explosion = GetComponent<Explosion>();
     }
 
@@ -36,10 +53,9 @@ public class ExplosionTimerFlash : MonoBehaviour
             {
                 render.material.SetFloat("_FlashTime", buildUpCurve.Evaluate(timer / maxTime - transitionToExplosionOffset));
             }
-            //Sean: this is what i was talking about, the transitionToExplosion offset is always a fixed time. 
-            //You could have the animation start here, the first time this else is called. Message me if you have any q's about it
             else
             {
+              
                 timer += Time.deltaTime;
                 render.material.SetFloat("_FlashTime", explodeCurve.Evaluate((maxTime - timer) / transitionToExplosionOffset));
                 if (timer >= maxTime)
