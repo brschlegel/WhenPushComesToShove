@@ -60,6 +60,7 @@ public class ReadyUpBase : UIDisplay
         for (int i = 0; i < 4; i++)
         {
             portraits.Add(portraitParent.GetChild(i).GetComponent<PlayerPortrait>());
+            portraits[i].SetAlpha(.5f);
             //portraits[i].Visible = i < numPlayers;
 
             if (portraits[i].Visible && (i == highestScoreIndex || tiedIndexes.Contains(i)))
@@ -96,6 +97,7 @@ public class ReadyUpBase : UIDisplay
             if (p.playerIndex == index)
             {
                 p.Ready = true;
+                p.SetAlpha(1);
             }
         }
 
