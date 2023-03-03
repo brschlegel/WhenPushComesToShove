@@ -5,12 +5,12 @@ using System;
 
 public class MinigameData : MonoBehaviour
 {
-    public int[] scores = new int[4];
-    public static Action<int, int> onScoreAdded;
-    public static Action<int, int> onScoreRemoved;
+    public float[] scores = new float[4];
+    public static Action<int, float> onScoreAdded;
+
     private bool canUpdateScore = true;
 
-    public void AddScoreForTeam(int teamIndex, int scoreToAdd)
+    public void AddScoreForTeam(int teamIndex, float scoreToAdd)
     {
         if (!canUpdateScore)
         {
@@ -33,11 +33,6 @@ public class MinigameData : MonoBehaviour
         }
 
         scores[teamIndex] -= scoreToRemove;
-
-        if (onScoreRemoved != null)
-        {
-            onScoreRemoved.Invoke(teamIndex, scores[teamIndex]);
-        }
     }
 
     public void OnMinigameEnd(bool useTeamIndex = true)
@@ -64,7 +59,7 @@ public class MinigameData : MonoBehaviour
         }
 
         //Cleanup just in case
-        scores = new int[4];
+        scores = new float[4];
     }
 
     public int GetHighestScoreIndex()

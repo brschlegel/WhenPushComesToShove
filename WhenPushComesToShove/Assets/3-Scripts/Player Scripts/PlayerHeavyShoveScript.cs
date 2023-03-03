@@ -109,6 +109,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
         {
             LoggingInfo.instance.heavyShoveUses[handler.playerConfig.PlayerIndex] += 1;
             handler.LockAction(cooldown, handler.onHeavyShoveComplete);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.missShove);
             onHeavyShove();
         }
         else

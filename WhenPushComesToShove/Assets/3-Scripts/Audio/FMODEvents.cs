@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using FMODUnity;
+
+public class FMODEvents : MonoBehaviour
+{
+    public static FMODEvents instance;
+
+    #region Event References
+    [Header("Shove SFX")]
+    public EventReference lightShove;
+    public EventReference heavyShove;
+    public EventReference missShove;
+
+    [Header("Dash")]
+    public EventReference dash;
+    #endregion
+
+    private void Awake()
+    {
+        if (instance != null)
+            Debug.LogError("Found more than one FMODEvents instance in the scene");
+
+        instance = this;
+    }
+}

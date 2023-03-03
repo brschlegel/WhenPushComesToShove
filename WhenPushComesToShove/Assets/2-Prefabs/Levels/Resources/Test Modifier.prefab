@@ -5666,7 +5666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6014340538453473493, guid: 03f276c5d045b6d4086567e209bc7706, type: 3}
       propertyPath: m_text
-      value: 'Modifier Incoming
+      value: 'Gameplay Modifier Incoming
 
 '
       objectReference: {fileID: 0}
@@ -5727,10 +5727,22 @@ PrefabInstance:
       propertyPath: dividerPrefab
       value: 
       objectReference: {fileID: 654282583921664992, guid: 9a09e3f7cf51fd942a95edbc6c7d4827, type: 3}
+    - target: {fileID: 8400829242559552108, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400829242559552108, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8400829242559552110, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
       propertyPath: m_LinearDrag
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8400829242559552111, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0892a536fe32c9f429300004fbb170c8, type: 3}
     - target: {fileID: 8400829243468253490, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
       propertyPath: m_Name
       value: Spinner

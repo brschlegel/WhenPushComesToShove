@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: maxTime
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6831874707499840840, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
+      propertyPath: pDrag
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6831874707499840841, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -99,9 +103,17 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6831874707499840847, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
+      propertyPath: m_Mass
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6831874707499840850, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
       propertyPath: m_Name
       value: BlinkBomb_Normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828119749200211854, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}
+      propertyPath: key
+      value: BombExploded
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2496f6be5a16cf545a7bea62bcf96475, type: 3}

@@ -81,8 +81,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4d45d4bcb66a66144af51b3900b7339e, type: 3}
+  m_Color: {r: 0.6037736, g: 0.48700607, b: 0.5926362, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -139,13 +139,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72bbad3808e30042b498502a8076ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pDrag: 3
+  pDrag: 20
   pMaterial: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
   velocityThreshold: 2
   hitboxVelocityThreshold: 2
   pHitbox: {fileID: 406501625902475273}
   sDrag: 1000000
-  sMaterial: {fileID: 0}
+  sMaterial: {fileID: 6200000, guid: a4a9864577e83a140b29a13f209024e2, type: 2}
   onPModeEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -170,14 +170,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3, y: 3}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.8, y: 2.8}
   m_EdgeRadius: 0
 --- !u!1 &406501625774281949
 GameObject:
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagsToIgnore: []
-  keyStart: Ball
+  keyStart: Wall
 --- !u!1001 &406501625755729618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -307,11 +307,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7725880952350467021, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 7725880952350467021, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 7725880952350467021, guid: cc10b564fd455ec4d89047eb271adbda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -394,7 +394,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.83069193, y: 0.8306919}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &7967985779962518815 stripped
 Transform:
@@ -437,6 +437,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
     - target: {fileID: 6854435290789191532, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_Color.a
+      value: 0.36862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191532, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -446,11 +450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.1
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191533, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -493,6 +497,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6854435290789191535, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191535, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854435290789191535, guid: ca7158aa38fb9574081fdcfe617aff4b, type: 3}
       propertyPath: m_SpriteTilingProperty.border.x
       value: 0
       objectReference: {fileID: 0}
@@ -525,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pMode: {fileID: 0}
-  instanceDamageMultiplier: 2.5
+  instanceDamageMultiplier: 0
 --- !u!114 &4834555873291016450
 MonoBehaviour:
   m_ObjectHideFlags: 0

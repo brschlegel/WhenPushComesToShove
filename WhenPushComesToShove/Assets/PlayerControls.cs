@@ -98,6 +98,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EmoteRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""a87ba268-6fa9-4eea-bf92-ab34e7a3acb9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EmoteUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""dffb8c4b-669a-40d5-bdd1-9548dcba1d9d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -107,17 +125,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": ""StickDeadzone"",
-                    ""groups"": ""Xbox Controller Scheme"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8b31462c-1034-4996-bb04-68aa55d5c26f"",
-                    ""path"": ""<DualShockGamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
@@ -127,17 +134,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""2b895834-6540-4ef0-9f42-b5e59842c99b"",
                     ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7ef7012d-7c13-44eb-9745-7acc3f6adfaa"",
-                    ""path"": ""<DualShockGamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -158,30 +154,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""51c87f3d-186f-4b9b-91b0-75b7e86a0819"",
-                    ""path"": ""<DualShockGamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LightShove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""8ed3f68e-4ca7-4d45-a9fa-57caa2b7ed3c"",
                     ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Xbox Controller Scheme"",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""332990ea-76f8-458a-8bf2-d1d885605a38"",
-                    ""path"": ""<DualShockGamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -195,17 +169,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": ""StickDeadzone"",
-                    ""groups"": ""Xbox Controller Scheme"",
-                    ""action"": ""Aim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3e2e0be4-add5-4b33-a984-b28dfe25ae25"",
-                    ""path"": ""<DualShockGamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
@@ -215,17 +178,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""a4028490-84d2-4288-bd39-f48f08757c39"",
                     ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HeavyShove"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""da816f36-5621-4518-a6cb-f09bb465ea23"",
-                    ""path"": ""<DualShockGamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -246,17 +198,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""94525ef8-f749-4526-aa14-db8fe67aa634"",
-                    ""path"": ""<DualShockGamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""EmoteDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""3edf23da-308f-4d43-bdbf-e245bd812bd5"",
                     ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
@@ -268,12 +209,23 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""000e584a-aeb3-42c5-8753-9ad57485d2a4"",
-                    ""path"": ""<DualShockGamepad>/dpad/left"",
+                    ""id"": ""d8334ec1-28a0-429a-a22d-4b3b9c6633a4"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EmoteLeft"",
+                    ""action"": ""EmoteRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3a70ce4-4445-488c-82e3-717fe004da7e"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EmoteUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -291,6 +243,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Playstation Control Scheme"",
+            ""bindingGroup"": ""Playstation Control Scheme"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<DualShockGamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -304,6 +267,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Aim = m_PlayerMovement.FindAction("Aim", throwIfNotFound: true);
         m_PlayerMovement_EmoteDown = m_PlayerMovement.FindAction("EmoteDown", throwIfNotFound: true);
         m_PlayerMovement_EmoteLeft = m_PlayerMovement.FindAction("EmoteLeft", throwIfNotFound: true);
+        m_PlayerMovement_EmoteRight = m_PlayerMovement.FindAction("EmoteRight", throwIfNotFound: true);
+        m_PlayerMovement_EmoteUp = m_PlayerMovement.FindAction("EmoteUp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -371,6 +336,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Aim;
     private readonly InputAction m_PlayerMovement_EmoteDown;
     private readonly InputAction m_PlayerMovement_EmoteLeft;
+    private readonly InputAction m_PlayerMovement_EmoteRight;
+    private readonly InputAction m_PlayerMovement_EmoteUp;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -383,6 +350,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_PlayerMovement_Aim;
         public InputAction @EmoteDown => m_Wrapper.m_PlayerMovement_EmoteDown;
         public InputAction @EmoteLeft => m_Wrapper.m_PlayerMovement_EmoteLeft;
+        public InputAction @EmoteRight => m_Wrapper.m_PlayerMovement_EmoteRight;
+        public InputAction @EmoteUp => m_Wrapper.m_PlayerMovement_EmoteUp;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -416,6 +385,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @EmoteLeft.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteLeft;
                 @EmoteLeft.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteLeft;
                 @EmoteLeft.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteLeft;
+                @EmoteRight.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteRight;
+                @EmoteRight.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteRight;
+                @EmoteRight.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteRight;
+                @EmoteUp.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteUp;
+                @EmoteUp.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteUp;
+                @EmoteUp.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnEmoteUp;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -444,6 +419,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @EmoteLeft.started += instance.OnEmoteLeft;
                 @EmoteLeft.performed += instance.OnEmoteLeft;
                 @EmoteLeft.canceled += instance.OnEmoteLeft;
+                @EmoteRight.started += instance.OnEmoteRight;
+                @EmoteRight.performed += instance.OnEmoteRight;
+                @EmoteRight.canceled += instance.OnEmoteRight;
+                @EmoteUp.started += instance.OnEmoteUp;
+                @EmoteUp.performed += instance.OnEmoteUp;
+                @EmoteUp.canceled += instance.OnEmoteUp;
             }
         }
     }
@@ -457,6 +438,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_XboxControllerSchemeSchemeIndex];
         }
     }
+    private int m_PlaystationControlSchemeSchemeIndex = -1;
+    public InputControlScheme PlaystationControlSchemeScheme
+    {
+        get
+        {
+            if (m_PlaystationControlSchemeSchemeIndex == -1) m_PlaystationControlSchemeSchemeIndex = asset.FindControlSchemeIndex("Playstation Control Scheme");
+            return asset.controlSchemes[m_PlaystationControlSchemeSchemeIndex];
+        }
+    }
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -467,5 +457,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnEmoteDown(InputAction.CallbackContext context);
         void OnEmoteLeft(InputAction.CallbackContext context);
+        void OnEmoteRight(InputAction.CallbackContext context);
+        void OnEmoteUp(InputAction.CallbackContext context);
     }
 }

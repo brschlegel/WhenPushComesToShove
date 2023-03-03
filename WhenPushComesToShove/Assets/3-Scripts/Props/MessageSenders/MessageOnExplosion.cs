@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Explosion))]
 public class MessageOnExplosion : MonoBehaviour
 {
+    [SerializeField]
+    private string key;
     Explosion exp;
     private void Start()
     {
@@ -14,6 +16,6 @@ public class MessageOnExplosion : MonoBehaviour
 
     private void OnExplosion()
     {
-        Messenger.SendEvent("BombExploded", new MessageArgs(objectArg: exp, vectorArg: exp.gameObject.transform.position));
+        Messenger.SendEvent(key, new MessageArgs(objectArg: exp.rootObject, vectorArg: exp.gameObject.transform.position));
     }
 }

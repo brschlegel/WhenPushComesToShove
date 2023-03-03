@@ -37,6 +37,15 @@ public class ControllerRumble : MonoBehaviour
         }
     }
 
+    private bool CanRumble 
+    {
+        get {
+            if(input.playerConfig == null)
+                return false;
+            return !(input.playerConfig.Input.currentControlScheme != "Xbox Controller Scheme");
+            }
+    }
+
     private void Update()
     {
         //Ensure that we should be rumbling
@@ -48,10 +57,12 @@ public class ControllerRumble : MonoBehaviour
         if (gamepad !=  null)
         {
             gamepad = GetGamepad();
+           
         }
-
-        if (gamepad == null)
+        Debug.Log( input.playerConfig.Input.currentControlScheme);
+        if (gamepad == null || !CanRumble )
         {
+            
             return;
         }
 
@@ -97,6 +108,9 @@ public class ControllerRumble : MonoBehaviour
     public void RumbleConstant(float low, float high, float duration)
     {
         #if UNITY_STANDALONE && !UNITY_EDITOR
+        if(!CanRumble)
+            return;
+
         currentRumbleType = RumbleType.Constant;
         lowFreq = low;
         highFreq = high;
@@ -123,6 +137,8 @@ public class ControllerRumble : MonoBehaviour
     public void RumblePulse(float low, float high, float burstTime, float duration)
     {
 #if UNITY_STANDALONE && !UNITY_EDITOR
+    if(!CanRumble)
+        return;
         currentRumbleType = RumbleType.Pulse;
         lowFreq = low;
         highFreq = high;
@@ -150,6 +166,8 @@ public class ControllerRumble : MonoBehaviour
     /// <param name="duration">Time For Rumble</param>
     public void RumbleLinear(float lowStart, float lowEnd, float highStart, float highEnd, float duration, bool stayConstantAfter)
     {
+        if(!CanRumble)
+            return;
 #if UNITY_STANDALONE && !UNITY_EDITOR
         currentRumbleType = RumbleType.Linear;
         lowFreq = lowStart;
@@ -182,9 +200,10 @@ public class ControllerRumble : MonoBehaviour
     /// <returns></returns>
     public IEnumerator StopRumbleOverTime(float timeBeforeStop, bool goToConstant = false)
     {
+        
         yield return new WaitForSeconds(timeBeforeStop);
-
-        if (gamepad != null)
+  
+        if (gamepad != null && CanRumble)
         {
             if (goToConstant)
             {
@@ -204,6 +223,8 @@ public class ControllerRumble : MonoBehaviour
     /// </summary>
     public void ForceStopRumble()
     {
+        if(!CanRumble)
+            return;
         if (stopRoutine != null)
         {
             StopCoroutine(stopRoutine);
@@ -211,6 +232,7 @@ public class ControllerRumble : MonoBehaviour
 
         gamepad.SetMotorSpeeds(0, 0);
         stopRoutine = null;
+
     }
 
     /// <summary>

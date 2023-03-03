@@ -152,13 +152,24 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
         //Emotes
-        else if (obj.action.name == controls.PlayerMovement.EmoteDown.name)
+        else if (obj.action.name == controls.PlayerMovement.EmoteRight.name)
         {
             if (references.circleVFX != null && !performingAction)
             {
                 GameObject vfx = Instantiate(references.circleVFX, transform);
                 var main = vfx.GetComponent<ParticleSystem>().main;
                 main.startColor = PlayerConfigManager.Instance.playerCircleVFXColors[playerConfig.PlayerIndex];
+
+                LockAction(selectActionCooldown, null);
+            }
+        }
+        else if (obj.action.name == controls.PlayerMovement.EmoteUp.name)
+        {
+            if (references.confettiVFX != null && !performingAction)
+            {
+                GameObject vfx = Instantiate(references.confettiVFX, playerConfig.PlayerObject.transform);
+                //var main = vfx.GetComponent<ParticleSystem>().main;
+                //main.startColor = PlayerConfigManager.Instance.playerCircleVFXColors[playerConfig.PlayerIndex];
 
                 LockAction(selectActionCooldown, null);
             }
@@ -186,6 +197,22 @@ public class PlayerInputHandler : MonoBehaviour
                 LockAction(.2f, null);
             }
         }
+        else if (obj.action.name == controls.PlayerMovement.EmoteDown.name)
+        {
+            if (!performingAction)
+            {
+                if (animBrain.CurrentState.id == "death")
+                {
+                    animBrain.OutDeath(true);
+                }
+                else
+                {
+                    animBrain.OnRightEmote();
+                }
+
+                LockAction(selectActionCooldown, null);
+            }
+        } 
     }
 
     /// <summary>
