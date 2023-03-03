@@ -44,7 +44,7 @@ public static class Extensions
     {
         //Must update to ensure get current methods are accurate
         anim.Update(Time.deltaTime);
-        return anim.GetCurrentAnimatorClipInfo(0)[0].clip.length / anim.GetCurrentAnimatorStateInfo(0).speed;
+        return anim.GetCurrentAnimatorClipInfo(0)[0].clip.length / (anim.GetCurrentAnimatorStateInfo(0).speed * anim.speed);
     }
 
     //https://answers.unity.com/questions/530178/how-to-get-a-component-from-an-object-and-add-it-t.html

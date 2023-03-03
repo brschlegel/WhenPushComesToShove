@@ -49,6 +49,7 @@ public class PlayerDashScript : MonoBehaviour
         else if (dashDirection.x < 0)
             dashVFX.transform.localScale = new Vector3(-1, 1, 1);
         dashVFX.Play();
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.dash);
         if (pMode != null)
         {
             pMode.AddForce(dashDirection * dashSpeed);

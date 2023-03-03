@@ -11,6 +11,7 @@ struct RampingSideParts
     public ObjectSpawner spawner;
     public Transform chalkLineParent;
     public Transform bumperParent;
+    public bool spawnerRampApplied;
 }
 public class VolleyballLogic : MinigameLogic
 {
@@ -49,11 +50,12 @@ public class VolleyballLogic : MinigameLogic
     bool spawning = false;
     private AddForceOnSpawn forceAttachment;
     
+    
 
     public override void Init()
     {
         bombMessageId = Messenger.RegisterEvent("BombExploded", OnBombExplode);
-        clusterMessageId = Messenger.RegisterEvent("ClusterExplode", OnClusterExplode);
+        clusterMessageId = Messenger.RegisterEvent("ClusterExploded", OnClusterExplode);
 
         //Ooooo fancy lambdas :) just tells the minigame that we have actually spawned the object
         middleSpawner.onObjectSpawned += (Transform t) => {spawning = false;};
@@ -66,10 +68,12 @@ public class VolleyballLogic : MinigameLogic
         leftParts.spawner = leftSpawner;
         leftParts.chalkLineParent = leftChalkLineParent;
         leftParts.bumperParent = leftBumperParent;
+        leftParts.spawnerRampApplied = false;
 
         rightParts.spawner = rightSpawner;
         rightParts.chalkLineParent = rightChalkLineParent;
         rightParts.bumperParent = rightBumperParent;
+        rightParts.spawnerRampApplied = false;
         base.Init();
     }
 
@@ -84,7 +88,7 @@ public class VolleyballLogic : MinigameLogic
     {
         //When there are no bombs left, spawn a new one
         //Don't try to spawn a new bomb if there aren't any around but we are just waiting on the spawner
-        if(gameRunning && !spawning && bombParent.childCount == 0)
+        if (gameRunning && !spawning && bombParent.childCount == 0)
         {
             forceAttachment.force = Random.insideUnitCircle.normalized * Random.Range(launchMin, launchMax);
             middleSpawner.SpawnWithDelay();
@@ -105,7 +109,7 @@ public class VolleyballLogic : MinigameLogic
     private void AddScore(float amount, Vector2 position)
     {
         //If on the left, give score to right team
-        if(position.x <= 0)
+        if (position.x <= 0)
         {
             data.AddScoreForTeam(0, amount);
             RampSide(rightParts, data.scores[0]);
@@ -117,7 +121,7 @@ public class VolleyballLogic : MinigameLogic
             RampSide(leftParts, data.scores[1]);
         }
 
-        if(endCondition.TestCondition() && gameRunning)
+        if (endCondition.TestCondition() && gameRunning)
         {
             EndGame();
         }
@@ -126,24 +130,25 @@ public class VolleyballLogic : MinigameLogic
     public override void CleanUp()
     {
         Messenger.UnregisterEvent("BombExploded", bombMessageId);
-        Messenger.UnregisterEvent("ClusterExplode", clusterMessageId);
+        Messenger.UnregisterEvent("ClusterExploded", clusterMessageId);
         base.CleanUp();
     }
 
     private void RampSide(RampingSideParts parts, float score)
     {
-        switch(score)
+        if (score >= 2 && !parts.chalkLineParent.gameObject.activeSelf)
         {
-            case 2: 
             parts.chalkLineParent.gameObject.SetActive(true);
-            break;
-            case 4:
+        }
+        if (score >= 4 && !parts.bumperParent.gameObject.activeSelf)
+        {
             parts.bumperParent.gameObject.SetActive(true);
-            break;
-            case 6:
-            middleSpawner.onObjectSpawned += (Transform t) => parts.spawner.Spawn();
-            break;
+        }
+        if (score >= 6 && !parts.spawnerRampApplied)
+        {
+            middleSpawner.onObjectSpawned += (Transform t) => parts.spawner.SpawnWithoutDelay();
+            parts.spawnerRampApplied = true;
         }
     }
-   
+
 }

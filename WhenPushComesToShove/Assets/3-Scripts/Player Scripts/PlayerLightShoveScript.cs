@@ -40,6 +40,7 @@ public class PlayerLightShoveScript : MonoBehaviour
             handler.LockAction(cooldown, handler.onLightShoveComplete);
             StartCoroutine(mover.ChangeMoveSpeedForTime(speedDecrease, cooldown));
 
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.missShove);
             onLightShove();
         }
     }

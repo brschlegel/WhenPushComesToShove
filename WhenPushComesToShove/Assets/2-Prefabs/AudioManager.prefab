@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1091060518624148139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3952937667556181229}
+  - component: {fileID: 6608550559310179975}
+  - component: {fileID: 4389548288523559029}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3952937667556181229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091060518624148139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6608550559310179975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091060518624148139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0251e9083beb7334eb5942d7ee92009e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4389548288523559029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091060518624148139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1f6c4c4446b2a48ba92a5718e9b93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightShove:
+    Guid:
+      Data1: -2078139428
+      Data2: 1185723338
+      Data3: -1873992014
+      Data4: -14158421
+    Path: event:/Shoves/LightShove
+  heavyShove:
+    Guid:
+      Data1: 820922817
+      Data2: 1281859853
+      Data3: -1930174017
+      Data4: 1901130073
+    Path: event:/Shoves/HeavyShove
+  missShove:
+    Guid:
+      Data1: 1191405747
+      Data2: 1203604741
+      Data3: -1231463489
+      Data4: -504674251
+    Path: event:/Shoves/MissShove
+  dash:
+    Guid:
+      Data1: -1485719240
+      Data2: 1143099345
+      Data3: 1790363819
+      Data4: -2076349366
+    Path: event:/Dash/Dash
