@@ -48,8 +48,21 @@ public class SumoLogic : MinigameLogic
             respawner.spawnDelay = respawnerDelayByTime.Evaluate(1 - (timer.CurrentTimeLeft / timer.MaxTime));
             if (endCondition.TestCondition())
             {
-                int winnerIndex = data.GetHighestScoreIndex();
-                ((PlayerWinUIDisplay)endingUIDisplay).winnerName = GameState.playerNames[winnerIndex];
+                List<int> winningIndexes = data.GetHighestScoreWithTies();
+                string winnerNames = GameState.playerNames[winningIndexes[0]];
+                ((PlayerWinUIDisplay)endingUIDisplay).tiedIndexes = winningIndexes;
+                //Check for ties
+                if (winningIndexes.Count > 1)
+                {
+                    ((PlayerWinUIDisplay)endingUIDisplay).tie = true;
+                    for (int i = 1; i < winningIndexes.Count; i++)
+                    {
+                        winnerNames +=" player and " + GameState.playerNames[winningIndexes[i]];
+                    }
+                }
+
+                //int winnerIndex = data.GetHighestScoreIndex();
+                ((PlayerWinUIDisplay)endingUIDisplay).winnerName = winnerNames;
                 EndGame();
             }
         }
