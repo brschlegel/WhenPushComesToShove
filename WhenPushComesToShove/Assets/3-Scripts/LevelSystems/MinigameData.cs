@@ -66,14 +66,16 @@ public class MinigameData : MonoBehaviour
         //Update Gamestate with winners
         if (useTeamIndex)
         {
-            List<PlayerConfiguration> players = PlayerTeamFormations.instance.GetPlayerTeams();
+            List<Transform> players = GameState.players;
+            //List<PlayerConfiguration> players = PlayerTeamFormations.instance.GetPlayerTeams();
             for (int i = 0; i < players.Count; i++)
             {
                 foreach (int index in highestScoreIndexes)
                 {
-                    if (players[i].TeamIndex == index)
+                    PlayerConfiguration config = players[i].GetComponentInChildren<PlayerInputHandler>().playerConfig;
+                    if (config.TeamIndex == index)
                     {
-                        GameState.playerScores[players[i].PlayerIndex] += 1;
+                        GameState.playerScores[config.PlayerIndex] += 1;
                     }
                 }
 

@@ -20,6 +20,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Action onLeftEmoteEnd;
     public bool movementPaused = false;
     public PlayerHeavyShoveScript heavyShoveScript;
+    public PlayerLightShoveScript lightShoveScript;
 
     [HideInInspector] public PlayerConfiguration playerConfig;
     [HideInInspector] public ControllerRumble rumble;
@@ -32,7 +33,6 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private PlayerAnimBrain animBrain;
 
     private PlayerMovementScript mover;
-    private PlayerLightShoveScript lightShoveScript;
     private PlayerDashScript dashScript;
     private Animator anim;
     private PlayerControls controls;
