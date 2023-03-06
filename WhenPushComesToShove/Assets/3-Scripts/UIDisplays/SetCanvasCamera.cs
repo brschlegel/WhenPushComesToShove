@@ -9,5 +9,6 @@ public class SetCanvasCamera : MonoBehaviour
     {
         GetComponent<Canvas>().worldCamera = Camera.main;
         GetComponent<Canvas>().sortingLayerName = "UI";
+        GetComponent<Canvas>().sortingOrder = 1;
     }
 }

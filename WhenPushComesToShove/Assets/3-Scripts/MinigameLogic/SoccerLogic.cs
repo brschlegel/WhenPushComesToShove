@@ -45,8 +45,16 @@ public class SoccerLogic : MinigameLogic
 
     private void OnGoalScored()
     {
-        ObjectSpawner spawner = spawners.GetRandomElement<ObjectSpawner>();
-        spawner.Spawn();
+        //Find The Spawner Without A Soccer Ball
+        foreach  (ObjectSpawner s in spawners)
+        {
+            if (s.transform.childCount < 2)
+            {
+                s.Spawn();
+            }
+        }
+        //ObjectSpawner spawner = spawners.GetRandomElement<ObjectSpawner>();
+        //spawner.Spawn();
     }
 
 }

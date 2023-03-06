@@ -29,6 +29,8 @@ public class ReadyUpBase : UIDisplay
     private float delay = 1;
     private float countdownTime = 3;
 
+    [SerializeField] private float timeBetweenRumbles;
+
     public override void ShowDisplay()
     {
         numPlayers = GameState.players.Count;
@@ -58,6 +60,7 @@ public class ReadyUpBase : UIDisplay
         for (int i = 0; i < 4; i++)
         {
             portraits.Add(portraitParent.GetChild(i).GetComponent<PlayerPortrait>());
+            portraits[i].SetAlpha(.5f);
             //portraits[i].Visible = i < numPlayers;
 
             if (portraits[i].Visible && (i == highestScoreIndex || tiedIndexes.Contains(i)))
@@ -72,6 +75,7 @@ public class ReadyUpBase : UIDisplay
         //use game state
 
         ShowBasedOnTeams();
+        StartCoroutine(RumbleOverTime());
 
         //Update Modifier Images
         for (int i = 0; i < GameState.ModifierManager.modifiers.Count; i++)
@@ -94,6 +98,7 @@ public class ReadyUpBase : UIDisplay
             {
                 p.Ready = true;
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.readyUp);
+                p.SetAlpha(1);
             }
         }
 
@@ -241,6 +246,25 @@ public class ReadyUpBase : UIDisplay
                 break;
             default:
                 break;
+        }
+    }
+
+    private IEnumerator RumbleOverTime()
+    {
+        yield return new WaitForSeconds(timeBetweenRumbles);
+
+        if (!CheckIsAllReady())
+        {
+            foreach (PlayerPortrait p in portraits)
+            {
+                if (!p.Ready && p.Visible)
+                {
+                    PlayerInputHandler handler = GameState.players[p.playerIndex].GetComponentInChildren<PlayerInputHandler>();
+                    handler.rumble.RumbleLinear(1, 0, 1, 0, .5f, false);
+                }
+            }
+
+            StartCoroutine(RumbleOverTime());
         }
     }
 }
