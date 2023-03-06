@@ -47,6 +47,9 @@ public class LevelManager : MonoBehaviour
         //Temp code to test if the room transitions work
         if (Input.GetKeyDown(KeyCode.E))
         {
+            List<Minigame> allMinigames = new List<Minigame>();
+            allMinigames.Add(Minigame.All);
+            pathGen.PopulateAvailableLevels(allMinigames);
             onNewRoom();
         }
 
