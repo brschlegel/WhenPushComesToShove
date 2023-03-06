@@ -42,6 +42,7 @@ public class Explosion : MonoBehaviour
 
     public void Explode()
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.bombExplosion);
         GameObject g = Instantiate(vfxPrefab, transform.position, Quaternion.identity);
         g.transform.localScale = new Vector3(vfxScale, vfxScale, vfxScale);
         rootSprite.enabled = false;

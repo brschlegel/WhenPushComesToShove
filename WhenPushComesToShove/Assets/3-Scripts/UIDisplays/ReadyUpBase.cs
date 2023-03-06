@@ -93,6 +93,7 @@ public class ReadyUpBase : UIDisplay
             if (p.playerIndex == index)
             {
                 p.Ready = true;
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.readyUp);
             }
         }
 

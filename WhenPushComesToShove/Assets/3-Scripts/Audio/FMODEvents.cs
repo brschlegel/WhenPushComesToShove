@@ -15,6 +15,12 @@ public class FMODEvents : MonoBehaviour
 
     [Header("Dash")]
     public EventReference dash;
+
+    [Header("Props")]
+    public EventReference bombExplosion;
+
+    [Header("UI")]
+    public EventReference readyUp;
     #endregion
 
     private void Awake()
