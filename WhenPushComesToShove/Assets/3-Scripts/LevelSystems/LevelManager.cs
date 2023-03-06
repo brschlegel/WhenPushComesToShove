@@ -44,44 +44,43 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Temp code to test if the room transitions work
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if(GameState.currentRoomType == LevelType.Modifier)
-            {
-                ModifierSelectionLogic modifierRoom = currentRoom.GetComponent<ModifierSelectionLogic>();
+        ////Temp code to test if the room transitions work
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    if(GameState.currentRoomType == LevelType.Modifier)
+        //    {
+        //        ModifierSelectionLogic modifierRoom = currentRoom.GetComponent<ModifierSelectionLogic>();
                 
-                modifierRoom.OnSelectionFinished(0);
-                modifierRoom.StopAllCoroutines();
-                modifierRoom.DebugCleanUp();
-            }
-            else
-            {
-                //Ensures that a new minigame will be set
-                List<Minigame> allMinigames = new List<Minigame>();
-                allMinigames.Add(Minigame.All);
-                pathGen.PopulateAvailableLevels(allMinigames);
+        //        modifierRoom.OnSelectionFinished(0);
+        //        modifierRoom.StopAllCoroutines();
+        //        modifierRoom.DebugCleanUp();
+        //    }
+        //    else
+        //    {
+        //        //Ensures that a new minigame will be set
+        //        List<Minigame> allMinigames = new List<Minigame>();
+        //        allMinigames.Add(Minigame.All);
+        //        pathGen.PopulateAvailableLevels(allMinigames);
 
-                currentRoom.DebugCleanUp();
-            }
+        //        currentRoom.DebugCleanUp();
+        //    }
 
             
 
 
-        }
+        //}
 
-        //Temp code to reset the game fully
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            onEndGame();
-        }
+        ////Temp code to reset the game fully
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    onEndGame();
+        //}
 
         //Hotkeys to add games to the path
 
         //Dodgeball
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            Debug.Log("Test Num");
+        {            
             pathGen.path.Add(pathGen.allLevels[0].gameObject);
             
         }
