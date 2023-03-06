@@ -124,7 +124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5120542337172791068
 RectTransform:
   m_ObjectHideFlags: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.77254903, g: 0.0627451, b: 0.019607844, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -360,7 +360,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4069856626357865507}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -930,7 +930,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4069856625428231531}
   - component: {fileID: 4069856625428231529}
-  - component: {fileID: 4069856625428231528}
+  - component: {fileID: 4352326025857580071}
   m_Layer: 5
   m_Name: Rune
   m_TagString: Untagged
@@ -966,7 +966,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4069856625428231530}
   m_CullTransparentMesh: 1
---- !u!114 &4069856625428231528
+--- !u!114 &4352326025857580071
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -975,10 +975,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4069856625428231530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 47104b34f92d5e345ad0999da1ae4cb8, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -986,13 +986,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 3a5e4ce55c577df40b1b31bdaf30d35d, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 21300000, guid: f7b8a08766882d64f9115d7d2ea702b5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &4069856625504111376
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,7 +1006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4069856625504111377}
   - component: {fileID: 4069856625504111383}
-  - component: {fileID: 4069856625504111382}
+  - component: {fileID: 4068138016403114}
   m_Layer: 5
   m_Name: Sword
   m_TagString: Untagged
@@ -1029,7 +1032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -170}
+  m_AnchoredPosition: {x: 0, y: 38}
   m_SizeDelta: {x: 640, y: 360}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &4069856625504111383
@@ -1040,7 +1043,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4069856625504111376}
   m_CullTransparentMesh: 1
---- !u!114 &4069856625504111382
+--- !u!114 &4068138016403114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1049,10 +1052,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4069856625504111376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 47104b34f92d5e345ad0999da1ae4cb8, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1060,13 +1063,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: a1924039bf870054d86e4f6ad0b29381, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 21300000, guid: 894094a3aeacbaa40858ea84516491d4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &4069856625529587174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,17 +1398,17 @@ MonoBehaviour:
   - {fileID: 4069856626290081041}
   - {fileID: 4069856625264985675}
   - {fileID: 4069856626357865507}
-  sword: {fileID: 4069856625504111382}
+  sword: {fileID: 0}
   playerColors:
   - {fileID: 2100000, guid: 8dbee81e02ee0894697ced4d70c7c562, type: 2}
   - {fileID: 2100000, guid: d025b9dac6e35354e911c832df410931, type: 2}
   - {fileID: 2100000, guid: 9786f921918045b4e84925cbf241a019, type: 2}
   - {fileID: 2100000, guid: 457098ce81835de4589e1c26a14837bc, type: 2}
   swordOutlines:
-  - {fileID: 2100000, guid: e2c460ab223a27c449e071b443963354, type: 2}
-  - {fileID: 2100000, guid: 2cb04c544315cda4a808c4ea729680b6, type: 2}
-  - {fileID: 2100000, guid: 1e2f441b0a136374ab88f85b9b7ca1f6, type: 2}
-  - {fileID: 2100000, guid: 3051778954a8e794ab3d79bdaa5e68f0, type: 2}
+  - {fileID: 2100000, guid: 76912765dee886e4fab12beb8a9f8da0, type: 2}
+  - {fileID: 2100000, guid: 3a5312ae4dec1854fb259770b47e4bc2, type: 2}
+  - {fileID: 2100000, guid: a8d09863384f4bc44bcc34fd5a70e1a4, type: 2}
+  - {fileID: 2100000, guid: 47104b34f92d5e345ad0999da1ae4cb8, type: 2}
   swordGlowColors:
   - {r: 0.77254903, g: 0.0627451, b: 0.019607844, a: 1}
   - {r: 0, g: 0.84313726, b: 0.99607843, a: 1}
@@ -1891,8 +1897,8 @@ RectTransform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4069856624855936992}
   - {fileID: 6272949673877415386}
+  - {fileID: 4069856624855936992}
   m_Father: {fileID: 4069856625713062148}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2299,7 +2305,7 @@ RectTransform:
   - {fileID: 4069856626315899149}
   - {fileID: 4069856625194621986}
   m_Father: {fileID: 4069856626357865507}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

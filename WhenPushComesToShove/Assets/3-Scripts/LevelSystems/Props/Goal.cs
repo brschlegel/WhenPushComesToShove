@@ -50,7 +50,7 @@ public class Goal : MonoBehaviour
             collision.transform.parent.gameObject.SetActive(false);
             Destroy(collision.transform.parent.gameObject);
 
-            StartCoroutine(Delay());
+           goalScored?.Invoke();
         }
     }
 
@@ -60,13 +60,6 @@ public class Goal : MonoBehaviour
         {
             Instantiate(confetti, t);
         }
-    }
-
-    private IEnumerator Delay()
-    {
-        //Only used since destroying objects is not immediate so we must wait for a frame.
-        yield return new WaitForEndOfFrame();
-        goalScored?.Invoke();
     }
 
 }
