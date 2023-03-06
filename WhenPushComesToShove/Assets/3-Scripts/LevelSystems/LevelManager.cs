@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     public static Action onModifierRoom;
     public static Action onEndGame;
     private bool endRoomSpawned = false;
+    private MinigameLogic currentRoom;
 
     private void OnEnable()
     {
@@ -47,10 +48,27 @@ public class LevelManager : MonoBehaviour
         //Temp code to test if the room transitions work
         if (Input.GetKeyDown(KeyCode.E))
         {
-            List<Minigame> allMinigames = new List<Minigame>();
-            allMinigames.Add(Minigame.All);
-            pathGen.PopulateAvailableLevels(allMinigames);
-            onNewRoom();
+            if(GameState.currentRoomType == LevelType.Modifier)
+            {
+                ModifierSelectionLogic modifierRoom = currentRoom.GetComponent<ModifierSelectionLogic>();
+                
+                modifierRoom.OnSelectionFinished(0);
+                modifierRoom.StopAllCoroutines();
+                modifierRoom.DebugCleanUp();
+            }
+            else
+            {
+                //Ensures that a new minigame will be set
+                List<Minigame> allMinigames = new List<Minigame>();
+                allMinigames.Add(Minigame.All);
+                pathGen.PopulateAvailableLevels(allMinigames);
+
+                currentRoom.DebugCleanUp();
+            }
+
+            
+
+
         }
 
         //Temp code to reset the game fully
@@ -111,6 +129,8 @@ public class LevelManager : MonoBehaviour
      
         if(levelProp.transform.GetChild(3).TryGetComponent<MinigameLogic>(out MinigameLogic logic))
         {
+            currentRoom = logic;
+            Debug.Log(currentRoom.gameObject.name);
             logic.Init();
             GameState.ModifierManager.InitMinigame(levelProp.transform);
         }
