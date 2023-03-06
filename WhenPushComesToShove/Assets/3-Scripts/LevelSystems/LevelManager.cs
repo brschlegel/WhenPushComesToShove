@@ -85,7 +85,7 @@ public class LevelManager : MonoBehaviour
             
         }
 
-        //Hot potato
+        //Hot Potato
         if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
         {
             pathGen.path.Add(pathGen.allLevels[1].gameObject);
@@ -102,14 +102,14 @@ public class LevelManager : MonoBehaviour
         {
             pathGen.path.Add(pathGen.allLevels[3].gameObject);
         }
-
+       
         //Tag
         if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
         {
             pathGen.path.Add(pathGen.allLevels[4].gameObject);
         }
 
-        //Volleyball
+        //Volley Bomb
         if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6))
         {
             pathGen.path.Add(pathGen.allLevels[5].gameObject);
