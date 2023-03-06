@@ -7,7 +7,7 @@ public class AreaSelector : MonoBehaviour
 {
     public event RetrieveIndex onSelection;
     [SerializeField]
-    private Rigidbody2D picker;
+    private Rigidbody2D[] pickers;
     [SerializeField]
     private float forceMin;
     [SerializeField]
@@ -33,29 +33,37 @@ public class AreaSelector : MonoBehaviour
             dividerParents.areaParent.GetChild(i).gameObject.SetActive(false);
         }
         dividerParents.barrelParent.gameObject.SetActive(false);
-        picker.gameObject.SetActive(false);
 
-        picker.position = new Vector2(picker.position.x, areaDivider.transform.position.y - areaDivider.height/3);
+        foreach (Rigidbody2D picker in pickers)
+        {
+            picker.gameObject.SetActive(false);
+        }
+
+        pickers[0].position = new Vector2(pickers[0].position.x, areaDivider.transform.position.y - areaDivider.height / 3);
+        pickers[1].position = new Vector2(pickers[1].position.x, areaDivider.transform.position.y + areaDivider.height / 4);
         runningFrames = 0;
     }
     // Update is called once per frame
     void Update()
     {
-        if( picker.position.x >= PickerBounds.y)
+        if (pickers[0].position.x >= PickerBounds.y)
         {
             //picker.position = new Vector2 (PickerBounds.x, picker.position.y);
-            picker.position = new Vector2 (PickerBounds.x, areaDivider.transform.position.y - areaDivider.height/3);
+            pickers[0].position = new Vector2(PickerBounds.x, areaDivider.transform.position.y - areaDivider.height / 3);
         }
 
         //Have to use a count otherwise the velocity will be zero on the first frame after beginning selection
-        if(runningFrames > 10)
+        if (runningFrames > 10)
         {
-            if(Mathf.Abs(picker.velocity.x) <= stopThreshold)
+            if (Mathf.Abs(pickers[0].velocity.x) <= stopThreshold)
             {
-               MakeSelection();
+                MakeSelection();
             }
         }
-        if(Input.GetKeyDown(KeyCode.B))
+
+        pickers[1].position = new Vector2(pickers[0].position.x, areaDivider.transform.position.y + areaDivider.height / 4);
+
+        if (Input.GetKeyDown(KeyCode.B))
         {
             BeginSelection();
         }
@@ -69,7 +77,7 @@ public class AreaSelector : MonoBehaviour
 
     public void BeginSelection()
     {
-        picker.AddForce(new Vector2(Random.Range(forceMin, forceMax), 0));
+        pickers[0].AddForce(new Vector2(Random.Range(forceMin, forceMax), 0));
         runningFrames = 1;
     }
 
@@ -91,7 +99,10 @@ public class AreaSelector : MonoBehaviour
         yield return new WaitForSeconds(elementIntroDelay);
 
         //Picker
-        picker.gameObject.SetActive(true);
+        foreach (Rigidbody2D picker in pickers)
+        {
+            picker.gameObject.SetActive(true);
+        }
         yield return new WaitForSeconds(elementIntroDelay);
         
         //Make Selection
@@ -102,11 +113,15 @@ public class AreaSelector : MonoBehaviour
     private void MakeSelection()
     {
         //Stop the picker and make a selection
-        picker.velocity = Vector2.zero;
+        foreach (Rigidbody2D picker in pickers)
+        {
+            picker.velocity = Vector2.zero;
+        }
+
         for (int i = 0; i < areaDivider.areas.Count; i++)
         {
             //If the picker is in this area
-            if (areaDivider.areas[i].GetComponent<Area>().objectsInArea.Contains(picker.transform))
+            if (areaDivider.areas[i].GetComponent<Area>().objectsInArea.Contains(pickers[0].transform))
             {
                 onSelection?.Invoke(i);
                 runningFrames = 0;
