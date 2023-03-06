@@ -7,7 +7,6 @@ public class LevelManager : MonoBehaviour
 {
     int currentRoomIndex = 0;
     PathGenerator pathGen;
-    List<GameObject> path;
     [Tooltip("Debug Variable. Will cause the path to cycle to the beginning.")]
     [SerializeField] bool repeatPath;
     private DamageEnabler damageEnabler;
@@ -75,6 +74,46 @@ public class LevelManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             onEndGame();
+        }
+
+        //Hotkeys to add games to the path
+
+        //Dodgeball
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            Debug.Log("Test Num");
+            pathGen.path.Add(pathGen.allLevels[0].gameObject);
+            
+        }
+
+        //Hot potato
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            pathGen.path.Add(pathGen.allLevels[1].gameObject);
+        }
+
+        //Soccer
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            pathGen.path.Add(pathGen.allLevels[2].gameObject);
+        }
+
+        //Sumo
+        if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            pathGen.path.Add(pathGen.allLevels[3].gameObject);
+        }
+
+        //Tag
+        if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            pathGen.path.Add(pathGen.allLevels[4].gameObject);
+        }
+
+        //Volleyball
+        if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6))
+        {
+            pathGen.path.Add(pathGen.allLevels[5].gameObject);
         }
     }
 
