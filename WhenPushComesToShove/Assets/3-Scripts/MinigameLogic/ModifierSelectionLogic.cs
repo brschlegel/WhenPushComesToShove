@@ -10,8 +10,7 @@ public class ModifierSelectionLogic : MinigameLogic
     [SerializeField]
     private AreaSelector selector;
     private ModifierManager modifierManager;
-    public List<ModifierSettings> modifiers;
-
+    private List<ModifierSettings> modifiers;
     private int numberOfModifiers = 3;
 
     //Parts
@@ -55,7 +54,7 @@ public class ModifierSelectionLogic : MinigameLogic
         
     }
 
-    public void OnSelectionFinished(int index)
+    private void OnSelectionFinished(int index)
     {
         selectedModifier = modifiers[index];
         //Update ModifierManager

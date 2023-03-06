@@ -2423,13 +2423,12 @@ MonoBehaviour:
   endCondition: {fileID: 1184656233830575938}
   data: {fileID: 8267818113702968908}
   canPlayersTakeDamage: 1
-  gameRunning: 0
-  tagIcon: {fileID: 21300000, guid: 705d9518dd26fa34d81a9daf16870dc7, type: 3}
-  startingGracePeriodTime: 5
-  taggedGracePeriodTime: 1
+  tagIcon: {fileID: 21300000, guid: d4808d82373d60641aa6015e17f044d0, type: 3}
+  startingGracePeriodTime: 0
+  taggedGracePeriodTime: 0
   speedOfTagged: 12
-  fractionOfHealthPerSecond: 0.05
-  sizeMultiplierOfTaggedHitBox: 2
+  damagePerSecond: 5
+  sizeMultiplierOfTaggedHitBox: 0
 --- !u!1 &1867975837
 GameObject:
   m_ObjectHideFlags: 0
@@ -5402,10 +5401,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5148506372952595622, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5580832337497862651, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5432,7 +5427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7255897215275562574, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_fontSize
-      value: 105.85
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 7392229194253305427, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_text

@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     int currentRoomIndex = 0;
     PathGenerator pathGen;
+    List<GameObject> path;
     [Tooltip("Debug Variable. Will cause the path to cycle to the beginning.")]
     [SerializeField] bool repeatPath;
     private DamageEnabler damageEnabler;
@@ -14,7 +15,6 @@ public class LevelManager : MonoBehaviour
     public static Action onModifierRoom;
     public static Action onEndGame;
     private bool endRoomSpawned = false;
-    private MinigameLogic currentRoom;
 
     private void OnEnable()
     {
@@ -44,75 +44,16 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ////Temp code to test if the room transitions work
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    if(GameState.currentRoomType == LevelType.Modifier)
-        //    {
-        //        ModifierSelectionLogic modifierRoom = currentRoom.GetComponent<ModifierSelectionLogic>();
-                
-        //        modifierRoom.OnSelectionFinished(0);
-        //        modifierRoom.StopAllCoroutines();
-        //        modifierRoom.DebugCleanUp();
-        //    }
-        //    else
-        //    {
-        //        //Ensures that a new minigame will be set
-        //        List<Minigame> allMinigames = new List<Minigame>();
-        //        allMinigames.Add(Minigame.All);
-        //        pathGen.PopulateAvailableLevels(allMinigames);
-
-        //        currentRoom.DebugCleanUp();
-        //    }
-
-            
-
-
-        //}
-
-        ////Temp code to reset the game fully
-        //if (Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    onEndGame();
-        //}
-
-        //Hotkeys to add games to the path
-
-        //Dodgeball
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
-        {            
-            pathGen.path.Add(pathGen.allLevels[0].gameObject);
-            
+        //Temp code to test if the room transitions work
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            onNewRoom();
         }
 
-        //Hot Potato
-        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        //Temp code to reset the game fully
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            pathGen.path.Add(pathGen.allLevels[1].gameObject);
-        }
-
-        //Soccer
-        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            pathGen.path.Add(pathGen.allLevels[2].gameObject);
-        }
-
-        //Sumo
-        if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            pathGen.path.Add(pathGen.allLevels[3].gameObject);
-        }
-       
-        //Tag
-        if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
-        {
-            pathGen.path.Add(pathGen.allLevels[4].gameObject);
-        }
-
-        //Volley Bomb
-        if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6))
-        {
-            pathGen.path.Add(pathGen.allLevels[5].gameObject);
+            onEndGame();
         }
     }
 
@@ -167,8 +108,6 @@ public class LevelManager : MonoBehaviour
      
         if(levelProp.transform.GetChild(3).TryGetComponent<MinigameLogic>(out MinigameLogic logic))
         {
-            currentRoom = logic;
-            Debug.Log(currentRoom.gameObject.name);
             logic.Init();
             GameState.ModifierManager.InitMinigame(levelProp.transform);
         }
