@@ -17,6 +17,7 @@ public class Explosion : MonoBehaviour
     [SerializeField]
     private float vfxScale = 1;
 
+
     private List<Hitbox> explosionHitboxes;
 
     // Start is called before the first frame update

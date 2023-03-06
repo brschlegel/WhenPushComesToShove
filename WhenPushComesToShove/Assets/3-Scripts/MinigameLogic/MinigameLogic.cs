@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Minigame {All, Dodgeball, Soccer, HotPotato, Sumo, Tag, Pinball, BreakAway, SlimeRancher};
+public enum Minigame {All, Dodgeball, Soccer, HotPotato, Sumo, Tag, Pinball, Volleyball};
 
 //All minigames flow through these methods and can override to add functionality at any step
 //Init -> StartGame -> EndGame -> CleanUp
@@ -32,6 +32,8 @@ public abstract class MinigameLogic : MonoBehaviour
 
     public virtual void Init()
     {
+        data.Init();
+
         if (startingUIDisplay != null)
         {
             startingUIDisplay.ShowDisplay();

@@ -152,7 +152,7 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
         //Emotes
-        else if (obj.action.name == controls.PlayerMovement.EmoteDown.name)
+        else if (obj.action.name == controls.PlayerMovement.EmoteRight.name && obj.performed)
         {
             if (references.circleVFX != null && !performingAction)
             {
@@ -163,7 +163,19 @@ public class PlayerInputHandler : MonoBehaviour
                 LockAction(selectActionCooldown, null);
             }
         }
-        else if (obj.action.name == controls.PlayerMovement.EmoteLeft.name)
+        else if (obj.action.name == controls.PlayerMovement.EmoteUp.name && obj.performed)
+        {
+            if (references.confettiVFX != null && !performingAction)
+            {
+                GameObject vfx = Instantiate(references.confettiVFX, playerConfig.PlayerObject.transform);
+                vfx.transform.position = new Vector3(vfx.transform.position.x, vfx.transform.position.y + .5f, vfx.transform.position.z);
+                //var main = vfx.GetComponent<ParticleSystem>().main;
+                //main.startColor = PlayerConfigManager.Instance.playerCircleVFXColors[playerConfig.PlayerIndex];
+
+                LockAction(selectActionCooldown, null);
+            }
+        }
+        else if (obj.action.name == controls.PlayerMovement.EmoteLeft.name && obj.performed)
         {
             if (!performingAction)
             {
@@ -186,6 +198,22 @@ public class PlayerInputHandler : MonoBehaviour
                 LockAction(.2f, null);
             }
         }
+        else if (obj.action.name == controls.PlayerMovement.EmoteDown.name && obj.performed)
+        {
+            if (!performingAction)
+            {
+                if (animBrain.CurrentState.id == "death")
+                {
+                    animBrain.OutDeath(true);
+                }
+                else
+                {
+                    animBrain.OnRightEmote();
+                }
+
+                LockAction(selectActionCooldown, null);
+            }
+        } 
     }
 
     /// <summary>

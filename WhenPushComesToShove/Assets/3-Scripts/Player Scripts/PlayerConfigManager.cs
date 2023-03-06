@@ -13,6 +13,7 @@ public class PlayerConfigManager : MonoBehaviour
     public Sprite[] playerPortraits = new Sprite[4];
     public Color[] playerColors = new Color[4];
     public Color[] playerCircleVFXColors = new Color[4];
+    public GameObject[] playerConfettiPrefabs = new GameObject[4];
 
     [HideInInspector] public InitLevel levelInitRef;
 

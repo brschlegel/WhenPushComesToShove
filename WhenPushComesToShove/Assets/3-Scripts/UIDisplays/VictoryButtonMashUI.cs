@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 
 public class VictoryButtonMashUI : UIDisplay
 {
-    [SerializeField] private float timeForMashing = 5;
+    //[SerializeField] private float timeForMashing = 5;
     [SerializeField] private PlayerRankDisplay rankingDisplay;
     [SerializeField] private MinigameData data;
     private List<int> tiedIndexes = new List<int>();
@@ -13,8 +15,18 @@ public class VictoryButtonMashUI : UIDisplay
     [SerializeField] private Transform[] tiedPlayerDisplays = new Transform[4];
     [SerializeField] private RawImage sword;
     [SerializeField] private Material[] playerColors = new Material[4];
+    [SerializeField] private Material[] swordOutlines = new Material[4];
+    [SerializeField] private Color[] swordGlowColors = new Color[4];
     [SerializeField] private ThresholdEndCondition threshold;
+    [SerializeField] private TextMeshProUGUI tieText;
+    [SerializeField] private float swordEndY;
+    [SerializeField] private float swordOutOfStonePositionY = -4;
+    private float swordTransformIncrement;
+    private Vector3 swordStartPosition;
+    [SerializeField] private float timeBetweenDisplays = 3;
     //[SerializeField] private Sprite[] playerPortraitSprites = new Sprite[4];
+
+    [SerializeField] private Transform confettiSpawnParent;
 
     public override void HideDisplay()
     {
@@ -24,7 +36,13 @@ public class VictoryButtonMashUI : UIDisplay
 
     public override void ShowDisplay()
     {
+
         tiedIndexes = CheckForTies();
+
+        if (tiedIndexes.Count < 2)
+        {
+            tieText.gameObject.SetActive(false);
+        }
 
         //Display UI based on team size 
         tiedPlayerDisplays[tiedIndexes.Count - 1].gameObject.SetActive(true);
@@ -78,7 +96,7 @@ public class VictoryButtonMashUI : UIDisplay
     {
         yield return new WaitUntil(() => threshold.TestCondition());
 
-        //Enable each players button mashing
+        //Disable each players button mashing
         foreach (PlayerInputHandler handler in tiedPlayers)
         {
             //handler.DisableButtonMashing();
@@ -86,6 +104,10 @@ public class VictoryButtonMashUI : UIDisplay
         }
 
         MinigameData.onScoreAdded -= ChangeSwordColor;
+
+        DisplaySwordForWinner();
+
+        yield return new WaitForSeconds(timeBetweenDisplays);
 
         data.OnMinigameEnd(false);
         HideDisplay();
@@ -99,6 +121,44 @@ public class VictoryButtonMashUI : UIDisplay
     private void ChangeSwordColor(int teamIndex, float scoreToSetAs)
     {
         int index = data.GetHighestScoreIndex();
-        sword.material = PlayerConfigManager.Instance.playerOutlines[index];
+        sword.material = swordOutlines[index];
+        Image glow = sword.transform.GetChild(0).GetComponent<Image>();
+        glow.color = swordGlowColors[index];
+
+        if (swordStartPosition == Vector3.zero)
+        {
+            swordStartPosition = sword.rectTransform.position;
+            swordTransformIncrement = Mathf.Abs(swordEndY - swordStartPosition.y) / threshold.threshold;
+        }
+
+        //Update Position
+        sword.rectTransform.position = new Vector3(swordStartPosition.x, swordStartPosition.y + (swordTransformIncrement * data.scores[index]), swordStartPosition.z);
+    }
+
+    private void DisplaySwordForWinner()
+    {
+        //Move sword out of stone
+        sword.transform.DOMoveY(swordOutOfStonePositionY, .5f);
+        //sword.rectTransform.position = new Vector3(swordStartPosition.x, swordOutOfStonePositionY, swordStartPosition.z);
+
+        int index = data.GetHighestScoreIndex();
+        PlayerComponentReferences references = GameState.players[index].GetComponent<PlayerComponentReferences>();
+
+        confettiSpawnParent.gameObject.SetActive(true);
+
+        //for (int i = 0; i < confettiSpawnParent.childCount; i++)
+        //{
+        //    GameObject confetti = Instantiate(references.confettiVFX, confettiSpawnParent.GetChild(i));
+        //    confetti.transform.localScale = new Vector3(20, 20, 20);
+        //}
+
+        ParticleSystem[] vfx = confettiSpawnParent.GetComponentsInChildren<ParticleSystem>();
+        
+        //Spawn Confetti in Player's Color
+        foreach (ParticleSystem confetti in vfx)
+        {
+            ParticleSystem.MainModule settings = confetti.main;
+            settings.startColor = references.confettiVFX.GetComponent<ParticleSystem>().main.startColor;
+        }
     }
 }
