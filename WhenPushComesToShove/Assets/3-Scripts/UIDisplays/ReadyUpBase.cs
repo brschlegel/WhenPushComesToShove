@@ -140,6 +140,7 @@ public class ReadyUpBase : UIDisplay
     private void StartCounting()
     {
         readyParent.gameObject.SetActive(false);
+        vs2v2.gameObject.SetActive(false);
         countdown.countdownTime = countdownTime;
         countdown.gameObject.SetActive(true);
         countdown.onCountdownEnded += HideDisplay;
