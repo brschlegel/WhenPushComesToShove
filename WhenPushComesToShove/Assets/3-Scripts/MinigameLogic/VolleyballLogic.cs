@@ -45,6 +45,7 @@ public class VolleyballLogic : MinigameLogic
 
     private RampingSideParts leftParts;
     private RampingSideParts rightParts;
+    private List<SpriteRenderer> chalkSprites;
     private uint bombMessageId;
     private uint clusterMessageId;
     bool spawning = false;
@@ -54,6 +55,8 @@ public class VolleyballLogic : MinigameLogic
 
     public override void Init()
     {
+        chalkSprites = new List<SpriteRenderer>();
+
         bombMessageId = Messenger.RegisterEvent("BombExploded", OnBombExplode);
         clusterMessageId = Messenger.RegisterEvent("ClusterExploded", OnClusterExplode);
 
@@ -67,18 +70,47 @@ public class VolleyballLogic : MinigameLogic
         //Ramping struct
         leftParts.spawner = leftSpawner;
         leftParts.chalkLineParent = leftChalkLineParent;
+
+        for(int i = 0; i < leftParts.chalkLineParent.childCount; i++)
+        {
+            chalkSprites.Add(leftParts.chalkLineParent.GetChild(i).GetComponent<SpriteRenderer>());
+        }
+
         leftParts.bumperParent = leftBumperParent;
+        leftParts.bumperParent.gameObject.SetActive(false);
         leftParts.spawnerRampApplied = false;
 
         rightParts.spawner = rightSpawner;
         rightParts.chalkLineParent = rightChalkLineParent;
+
+        for (int i = 0; i < rightParts.chalkLineParent.childCount; i++)
+        {
+            chalkSprites.Add(rightParts.chalkLineParent.GetChild(i).GetComponent<SpriteRenderer>());
+        }
+
         rightParts.bumperParent = rightBumperParent;
+        rightParts.bumperParent.gameObject.SetActive(false);
         rightParts.spawnerRampApplied = false;
+
+        foreach(SpriteRenderer chalk in chalkSprites)
+        {
+            chalk.enabled = false;
+        }
+
         base.Init();
     }
 
     public override void StartGame()
     {
+        leftParts.chalkLineParent.gameObject.SetActive(false);       
+
+        rightParts.chalkLineParent.gameObject.SetActive(false);
+
+        foreach (SpriteRenderer chalk in chalkSprites)
+        {
+            chalk.enabled = true;
+        }
+
         forceAttachment.force = Random.insideUnitCircle.normalized * Random.Range(launchMin, launchMax);
         middleSpawner.SpawnWithoutDelay();
         base.StartGame();
@@ -131,6 +163,9 @@ public class VolleyballLogic : MinigameLogic
     {
         Messenger.UnregisterEvent("BombExploded", bombMessageId);
         Messenger.UnregisterEvent("ClusterExploded", clusterMessageId);
+
+        chalkSprites.Clear();
+
         base.CleanUp();
     }
 
