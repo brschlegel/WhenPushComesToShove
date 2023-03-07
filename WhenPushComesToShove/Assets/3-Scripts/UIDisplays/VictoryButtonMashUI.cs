@@ -114,10 +114,11 @@ public class VictoryButtonMashUI : UIDisplay
         yield return new WaitUntil(() => threshold.TestCondition());
 
         //Disable each players button mashing
-        foreach (PlayerInputHandler handler in tiedPlayers)
+        foreach (Transform player in GameState.players)
         {
-            //handler.DisableButtonMashing();
-            handler.onSelect -= ButtonMashed;
+            PlayerInputHandler handler = player.GetComponentInChildren<PlayerInputHandler>();
+
+            handler.ClearSelectAction();
         }
 
         MinigameData.onScoreAdded -= ChangeSwordColor;
