@@ -106,7 +106,6 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (onSelect != null && !performingAction && !heavyShoveScript.heavyShoveIsCharging)
             {
-
                 LockAction(selectActionCooldown, null);
                 onSelect.Invoke(playerConfig.PlayerIndex);
             }
