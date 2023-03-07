@@ -5714,6 +5714,30 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4211530718602712037, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc91eb4e2d610694683a8c9436bde6e2, type: 3}
+    - target: {fileID: 4807843216445684471, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807843216445684471, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807843216445684471, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807843216445684471, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807843216445684471, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8400829242466403566, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
       propertyPath: spacerParent
       value: 
@@ -5770,6 +5794,18 @@ PrefabInstance:
       propertyPath: stopThreshold
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8400829243468253644, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: pickers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400829243468253644, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: pickers.Array.data[0]
+      value: 
+      objectReference: {fileID: 6820646143223659901}
+    - target: {fileID: 8400829243468253644, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: pickers.Array.data[1]
+      value: 
+      objectReference: {fileID: 8072693861883389224}
     - target: {fileID: 8400829243468253645, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5814,6 +5850,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9176076296991127129, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176076296991127129, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
 --- !u!4 &6820646142924140254 stripped
@@ -5832,6 +5876,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa16da76daf899c4fb325624c40dff81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &6820646143223659901 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8400829242559552110, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+  m_PrefabInstance: {fileID: 3040616017341589267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &8072693861883389224 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6500251598345404987, guid: 83196310eb0577f4c904d8e76c2e566b, type: 3}
+  m_PrefabInstance: {fileID: 3040616017341589267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3204451973847497078
 PrefabInstance:
   m_ObjectHideFlags: 0
