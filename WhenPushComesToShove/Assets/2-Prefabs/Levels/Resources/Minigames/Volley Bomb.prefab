@@ -314,6 +314,7 @@ MonoBehaviour:
   endCondition: {fileID: 7711334388623652201}
   data: {fileID: 7285882888532369635}
   canPlayersTakeDamage: 0
+  gameRunning: 0
   launchMin: 2500
   launchMax: 3000
   bombTime: 10
@@ -6404,7 +6405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8343724518501587853
 Transform:
   m_ObjectHideFlags: 0
@@ -6468,7 +6469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3330527215039649778
 Transform:
   m_ObjectHideFlags: 0
@@ -6888,7 +6889,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5297953797102305152
 Transform:
   m_ObjectHideFlags: 0
@@ -7454,7 +7455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &985724874697510876
 Transform:
   m_ObjectHideFlags: 0
@@ -7839,7 +7840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7255897215275562574, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 105.85
       objectReference: {fileID: 0}
     - target: {fileID: 7392229194253305427, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_text
