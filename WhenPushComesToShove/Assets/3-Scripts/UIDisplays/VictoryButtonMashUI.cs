@@ -13,7 +13,7 @@ public class VictoryButtonMashUI : UIDisplay
     private List<int> tiedIndexes = new List<int>();
     private List<PlayerInputHandler> tiedPlayers = new List<PlayerInputHandler>();
     [SerializeField] private Transform[] tiedPlayerDisplays = new Transform[4];
-    [SerializeField] private RawImage sword;
+    [SerializeField] private Image sword;
     [SerializeField] private Material[] playerColors = new Material[4];
     [SerializeField] private Material[] swordOutlines = new Material[4];
     [SerializeField] private Color[] swordGlowColors = new Color[4];
@@ -27,6 +27,7 @@ public class VictoryButtonMashUI : UIDisplay
     //[SerializeField] private Sprite[] playerPortraitSprites = new Sprite[4];
 
     [SerializeField] private Transform confettiSpawnParent;
+    private VictoryUILoserPortrait losingPortraits;
 
     public override void HideDisplay()
     {
@@ -47,6 +48,9 @@ public class VictoryButtonMashUI : UIDisplay
         //Display UI based on team size 
         tiedPlayerDisplays[tiedIndexes.Count - 1].gameObject.SetActive(true);
 
+        //Losing Portraits
+        losingPortraits = tiedPlayerDisplays[tiedIndexes.Count - 1].GetComponentInChildren<VictoryUILoserPortrait>();
+
         RawImage[] portraits = tiedPlayerDisplays[tiedIndexes.Count - 1].transform.GetChild(1).GetComponentsInChildren<RawImage>();
 
         for (int i = 0; i < portraits.Length; i++)
@@ -55,13 +59,25 @@ public class VictoryButtonMashUI : UIDisplay
             portraits[i].material = playerColors[tiedIndexes[i]];
         }
 
+        int losingPortraitTracker = 0;
+
         //Enable each players button mashing
-        foreach (int index in tiedIndexes)
+        foreach (Transform player in GameState.players)
         {
-            PlayerInputHandler handler = GameState.players[index].GetComponentInChildren<PlayerInputHandler>();
-            //handler.EnableButonMashing();
-            handler.onSelect += ButtonMashed;
-            tiedPlayers.Add(handler);
+            PlayerInputHandler handler = player.GetComponentInChildren<PlayerInputHandler>();
+
+            if (tiedIndexes.Contains(handler.playerConfig.PlayerIndex))
+            {
+                //handler.EnableButonMashing();
+                handler.onSelect += ButtonMashed;
+                tiedPlayers.Add(handler);
+            }
+            else
+            {
+                //handler.onSelect += ThrowConfetti;
+                losingPortraits.SetMaterial(losingPortraitTracker, playerColors[handler.playerConfig.PlayerIndex]);
+                losingPortraitTracker++;
+            }
         }
 
         MinigameData.onScoreAdded += ChangeSwordColor;
