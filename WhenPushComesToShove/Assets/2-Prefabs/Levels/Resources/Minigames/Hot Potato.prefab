@@ -198,6 +198,7 @@ MonoBehaviour:
   endCondition: {fileID: 6580719124436952548}
   data: {fileID: 6523163525860134486}
   canPlayersTakeDamage: 1
+  gameRunning: 0
   spawner: {fileID: 5482981596809396173}
   startBombSpawnInterval: 5
   endBombSpawnInterval: 3
@@ -485,7 +486,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee605e51ed4a48b4f88703c61ed17f19, type: 2}
+  - {fileID: 2100000, guid: a0e789318e6facc4097f0d819558dd1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3029,7 +3030,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dcfe33720d2e67b4d83784a22d5ec085, type: 2}
+  - {fileID: 2100000, guid: 2227f93850a4a4d42a97a8c651fa0446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4305,7 +4306,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee605e51ed4a48b4f88703c61ed17f19, type: 2}
+  - {fileID: 2100000, guid: a0e789318e6facc4097f0d819558dd1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4959,7 +4960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6016210733039343417, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 37.6
       objectReference: {fileID: 0}
     - target: {fileID: 6075843762753115292, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_Name
