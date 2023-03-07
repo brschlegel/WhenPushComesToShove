@@ -24,10 +24,10 @@ public class VictoryButtonMashUI : UIDisplay
     private float swordTransformIncrement;
     private Vector3 swordStartPosition;
     [SerializeField] private float timeBetweenDisplays = 3;
-    //[SerializeField] private Sprite[] playerPortraitSprites = new Sprite[4];
 
     [SerializeField] private Transform confettiSpawnParent;
     private VictoryUILoserPortrait losingPortraits;
+    public GameObject confetti;
 
     public override void HideDisplay()
     {
@@ -74,8 +74,8 @@ public class VictoryButtonMashUI : UIDisplay
             }
             else
             {
-                //handler.onSelect += ThrowConfetti;
-                losingPortraits.SetMaterial(losingPortraitTracker, playerColors[handler.playerConfig.PlayerIndex]);
+                handler.onSelect += losingPortraits.ThrowConfetti;
+                losingPortraits.SetMaterial(losingPortraitTracker, playerColors[handler.playerConfig.PlayerIndex], handler.playerConfig.PlayerIndex);
                 losingPortraitTracker++;
             }
         }
