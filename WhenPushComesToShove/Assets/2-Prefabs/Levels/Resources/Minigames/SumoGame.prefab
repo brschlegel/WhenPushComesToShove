@@ -307,6 +307,7 @@ MonoBehaviour:
   endCondition: {fileID: 2171664408987911969}
   data: {fileID: 709529347168073206}
   canPlayersTakeDamage: 1
+  gameRunning: 0
   spikeGroups:
   - {fileID: 453466666918981274}
   - {fileID: 766934434941344144}
@@ -8091,6 +8092,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Timer
       objectReference: {fileID: 0}
+    - target: {fileID: 1224345344539793786, guid: 7f95b4c1349e2474288a3caecb4d7c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1224345344539793787, guid: 7f95b4c1349e2474288a3caecb4d7c5b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8182,17 +8187,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1224345344539793787, guid: 7f95b4c1349e2474288a3caecb4d7c5b, type: 3}
   m_PrefabInstance: {fileID: 1777729534713947354}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6773475363294003339 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5092432511131690065, guid: 7f95b4c1349e2474288a3caecb4d7c5b, type: 3}
-  m_PrefabInstance: {fileID: 1777729534713947354}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c20bf6e9c539a60439efa04a512d90bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1853038254622927046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9642,6 +9636,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e796f66c1eafdfd45bf16717b2119d1e, type: 3}
+--- !u!114 &2911313167416458031 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1998599687620161832, guid: e796f66c1eafdfd45bf16717b2119d1e, type: 3}
+  m_PrefabInstance: {fileID: 3736716883060591111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20bf6e9c539a60439efa04a512d90bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5071365521639151842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8483198571183543013, guid: e796f66c1eafdfd45bf16717b2119d1e, type: 3}
@@ -11165,7 +11170,7 @@ PrefabInstance:
     - target: {fileID: 5271440421912720393, guid: b7307b61d7d333f4b92d2e6e14149b82, type: 3}
       propertyPath: timerDisplay
       value: 
-      objectReference: {fileID: 6773475363294003339}
+      objectReference: {fileID: 2911313167416458031}
     - target: {fileID: 5271440421912720393, guid: b7307b61d7d333f4b92d2e6e14149b82, type: 3}
       propertyPath: timeBeforeEnd
       value: 60
