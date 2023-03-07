@@ -30,7 +30,7 @@ public class ScrollingText : MonoBehaviour
 
     IEnumerator Scroll()
     {
-        Debug.Log("Scrolling");
+        //Debug.Log("Scrolling");
         float width = tmp.preferredWidth;//tmp.preferredWidth * tmp.fontSize / 8 / 8.4375f;
         Vector3 startPosition = textTransform.position;
 
@@ -39,14 +39,14 @@ public class ScrollingText : MonoBehaviour
         while(true)
         {
             //Debug.Log("Scroll Position: " + scrollPosition);
-            Debug.Log("Width: " + width);
+            //Debug.Log("Width: " + width);
             //Debug.Log("Scroll Position % Width = " + scrollPosition % width);
             textTransform.anchoredPosition = new Vector3(-scrollPosition % width, textTransform.anchoredPosition.y, 0);
             scrollPosition += scrollSpeed * 20 * Time.deltaTime;
-            Debug.Log("Position X: " + textTransform.position.x);
+            //Debug.Log("Position X: " + textTransform.position.x);
             if (textTransform.anchoredPosition.x <= -width)
             {
-                Debug.Log("Reset");
+                //Debug.Log("Reset");
                 scrollPosition = 0;
             }
                 

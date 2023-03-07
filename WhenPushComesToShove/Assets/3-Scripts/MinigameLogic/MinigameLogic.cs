@@ -28,12 +28,14 @@ public abstract class MinigameLogic : MonoBehaviour
     [SerializeField] 
     protected bool canPlayersTakeDamage = true;
 
-    [HideInInspector]
-    public bool gameRunning;
+    protected bool gameRunning;
 
     public virtual void Init()
     {
-        data.Init();
+        if (data != null)
+        {
+            data.Init();
+        }
 
         if (startingUIDisplay != null)
         {
@@ -94,15 +96,6 @@ public abstract class MinigameLogic : MonoBehaviour
     
     public virtual void CleanUp()
     {
-        //Will unlock player movement just in case
-        foreach (Transform p in GameState.players)
-        {
-            //p.GetComponentInChildren<PlayerMovementScript>().ResetMoveSpeed();
-            p.GetComponentInChildren<PlayerInputHandler>().movementPaused = false;
-            p.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-            p.GetComponentInChildren<PositionFreezer>().UnlockPosition();
-        }
-
         if (!canPlayersTakeDamage)
         {
             UpdatePlayerInvulnurability(true);
@@ -114,13 +107,13 @@ public abstract class MinigameLogic : MonoBehaviour
         }
 
         LevelManager.onNewRoom.Invoke();
-    }
 
-    public virtual void DebugCleanUp()
-    {
-        startingUIDisplay?.HideDisplay();
-        endingUIDisplay?.HideDisplay();
-        CleanUp();
+        //Make sure all players are alive
+        foreach (Transform p in GameState.players)
+        {
+            PlayerInputHandler handler = p.GetComponentInChildren<PlayerInputHandler>();
+            handler.playerConfig.IsDead = false;
+        }
     }
 
     protected void UpdatePlayerInvulnurability(bool enabled)

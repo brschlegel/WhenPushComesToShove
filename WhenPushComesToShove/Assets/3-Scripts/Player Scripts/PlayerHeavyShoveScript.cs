@@ -115,6 +115,9 @@ public class PlayerHeavyShoveScript : MonoBehaviour
         else
         {
             onHeavyFail();
+
+            //Perform Light Shove
+            handler.lightShoveScript.Shove();
         }
 
         heavyShoveCharge = 0;

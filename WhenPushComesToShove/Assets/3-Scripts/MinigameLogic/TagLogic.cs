@@ -8,7 +8,7 @@ public class TagLogic : MinigameLogic
     [SerializeField] private float startingGracePeriodTime;
     [SerializeField] private float taggedGracePeriodTime;
     [SerializeField] private float speedOfTagged;
-    [SerializeField] private float fractionOfHealthPerSecond;
+    [SerializeField] private float damagePerSecond;
     [SerializeField] private float sizeMultiplierOfTaggedHitBox;
  
     private List<PlayerConfiguration> playerConfigs;
@@ -28,7 +28,7 @@ public class TagLogic : MinigameLogic
     private float currentTime;
 
     
-    private float damagePerSecond;
+
 
     public override void Init()
     {
@@ -38,8 +38,6 @@ public class TagLogic : MinigameLogic
         pMovement = new List<PlayerMovementScript>();
         lightShoveColliders = new List<GameObject>();
         heavyShoveColliders = new List<GameObject>();
-
-        damagePerSecond = GameState.players[0].GetComponentInChildren<Health>().maxHealth * fractionOfHealthPerSecond;
 
         for(int i = 0; i < playerConfigs.Count; i++)
         {

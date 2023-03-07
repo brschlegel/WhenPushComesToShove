@@ -107,9 +107,7 @@ public class ControllerRumble : MonoBehaviour
     /// <param name="duration">Time For Rumble</param>
     public void RumbleConstant(float low, float high, float duration)
     {
-        if (!CanRumble)
-            return;
-#if UNITY_STANDALONE && !UNITY_EDITOR
+        #if UNITY_STANDALONE && !UNITY_EDITOR
         if(!CanRumble)
             return;
 
@@ -126,7 +124,7 @@ public class ControllerRumble : MonoBehaviour
         gamepad.SetMotorSpeeds(lowFreq, highFreq);
 
         stopRoutine = StartCoroutine(StopRumbleOverTime(duration));
-#endif
+        #endif
     }
 
     /// <summary>
@@ -138,8 +136,6 @@ public class ControllerRumble : MonoBehaviour
     /// <param name="duration">Time For Rumble</param>
     public void RumblePulse(float low, float high, float burstTime, float duration)
     {
-        if (!CanRumble)
-            return;
 #if UNITY_STANDALONE && !UNITY_EDITOR
     if(!CanRumble)
         return;

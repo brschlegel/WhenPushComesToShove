@@ -20,6 +20,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Action onLeftEmoteEnd;
     public bool movementPaused = false;
     public PlayerHeavyShoveScript heavyShoveScript;
+    public PlayerLightShoveScript lightShoveScript;
 
     [HideInInspector] public PlayerConfiguration playerConfig;
     [HideInInspector] public ControllerRumble rumble;
@@ -32,7 +33,6 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private PlayerAnimBrain animBrain;
 
     private PlayerMovementScript mover;
-    private PlayerLightShoveScript lightShoveScript;
     private PlayerDashScript dashScript;
     private Animator anim;
     private PlayerControls controls;
@@ -106,7 +106,6 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (onSelect != null && !performingAction && !heavyShoveScript.heavyShoveIsCharging)
             {
-
                 LockAction(selectActionCooldown, null);
                 onSelect.Invoke(playerConfig.PlayerIndex);
             }
@@ -152,7 +151,7 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
         //Emotes
-        else if (obj.action.name == controls.PlayerMovement.EmoteRight.name && obj.performed)
+        else if (obj.action.name == controls.PlayerMovement.EmoteRight.name)
         {
             if (references.circleVFX != null && !performingAction)
             {
@@ -163,19 +162,18 @@ public class PlayerInputHandler : MonoBehaviour
                 LockAction(selectActionCooldown, null);
             }
         }
-        else if (obj.action.name == controls.PlayerMovement.EmoteUp.name && obj.performed)
+        else if (obj.action.name == controls.PlayerMovement.EmoteUp.name)
         {
             if (references.confettiVFX != null && !performingAction)
             {
                 GameObject vfx = Instantiate(references.confettiVFX, playerConfig.PlayerObject.transform);
-                vfx.transform.position = new Vector3(vfx.transform.position.x, vfx.transform.position.y + .5f, vfx.transform.position.z);
                 //var main = vfx.GetComponent<ParticleSystem>().main;
                 //main.startColor = PlayerConfigManager.Instance.playerCircleVFXColors[playerConfig.PlayerIndex];
 
                 LockAction(selectActionCooldown, null);
             }
         }
-        else if (obj.action.name == controls.PlayerMovement.EmoteLeft.name && obj.performed)
+        else if (obj.action.name == controls.PlayerMovement.EmoteLeft.name)
         {
             if (!performingAction)
             {
@@ -198,7 +196,7 @@ public class PlayerInputHandler : MonoBehaviour
                 LockAction(.2f, null);
             }
         }
-        else if (obj.action.name == controls.PlayerMovement.EmoteDown.name && obj.performed)
+        else if (obj.action.name == controls.PlayerMovement.EmoteDown.name)
         {
             if (!performingAction)
             {

@@ -20,7 +20,7 @@ public class PathGenerator : MonoBehaviour
 
     [SerializeField] private int numOfGames;
     //All possible minigames
-    [HideInInspector] public List<LevelProperties> allLevels = new List<LevelProperties>();
+    private List<LevelProperties> allLevels = new List<LevelProperties>();
     private int currentPathNum = 0;
 
     // Start is called before the first frame update

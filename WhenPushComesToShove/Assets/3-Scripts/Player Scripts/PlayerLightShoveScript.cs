@@ -37,12 +37,20 @@ public class PlayerLightShoveScript : MonoBehaviour
     {
         if (context.started)
         {
-            handler.LockAction(cooldown, handler.onLightShoveComplete);
-            StartCoroutine(mover.ChangeMoveSpeedForTime(speedDecrease, cooldown));
-
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.missShove);
-            onLightShove();
+            Shove();
         }
+    }
+
+    /// <summary>
+    /// Function for the actual shove logic
+    /// </summary>
+    public void Shove()
+    {
+        handler.LockAction(cooldown, handler.onLightShoveComplete);
+        StartCoroutine(mover.ChangeMoveSpeedForTime(speedDecrease, cooldown));
+
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.missShove);
+        onLightShove();
     }
 
     /// <summary>
