@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Tiles_Floor_FloorPalette_Modifier
-  m_Shader: {fileID: -6465566751694194690, guid: 6ab353e951db3284bbe8f2a04197f416, type: 3}
+  m_Name: M_SwordOutline_Blue
+  m_Shader: {fileID: -6465566751694194690, guid: 609fa891fb5dce347856441bdbf236e9, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -25,7 +25,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9bb0ccc32b5051347ac39d18093fe656, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3069d5f8fbe829b478a572ce3437e18a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -51,12 +51,18 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
+    - _IsDamaged: 0
+    - _OutlineThickness: 1
     m_Colors:
+    - _ArmorColor: {r: 0.0747597, g: 0.6020736, b: 0.754717, a: 1}
+    - _ArmorHighlightColor: {r: 0.5990566, g: 0.9605628, b: 1, a: 1}
+    - _ArmorShadowColor: {r: 0, g: 0.37503752, b: 0.58, a: 1}
+    - _BurnColor: {r: 2.670157, g: 2.670157, b: 2.670157, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color_1: {r: 0.19215687, g: 0.12637585, b: 0.10980392, a: 1}
-    - _Color_2: {r: 0.255, g: 0.18925935, b: 0.170085, a: 1}
-    - _Color_3: {r: 0.291, g: 0.23209488, b: 0.210393, a: 1}
-    - _Color_4: {r: 0.397, g: 0.30436668, b: 0.24481669, a: 1}
+    - _EyeColor: {r: 0.1882353, g: 0.1411765, b: 0.1294118, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _PlayerColor: {r: 0.73399997, g: 0.983375, b: 1, a: 1}
+    - _PlayerOutlineColor: {r: 0, g: 0.84313726, b: 0.99607843, a: 1}
+    - _PlayerShadowColor: {r: 0.46886277, g: 0.6837884, b: 0.76862746, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

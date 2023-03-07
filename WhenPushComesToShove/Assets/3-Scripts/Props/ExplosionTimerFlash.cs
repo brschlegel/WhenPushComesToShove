@@ -23,6 +23,10 @@ public class ExplosionTimerFlash : MonoBehaviour
     private bool animStarted;
     private float maxTime = 5;
 
+    public ParticleSystem smallExplosionRing;
+    public ParticleSystem mediumExplosionRing;
+    public ParticleSystem largeExplosionRing;
+
     public float MaxTime
     {
         get { return maxTime;}
@@ -30,6 +34,9 @@ public class ExplosionTimerFlash : MonoBehaviour
         {
             maxTime = value;
             startExplosionAnim.Speed = 1 / (maxTime - transitionToExplosionOffset);
+            smallExplosionRing.startLifetime = maxTime;
+            mediumExplosionRing.startLifetime = maxTime;
+            largeExplosionRing.startLifetime = maxTime;
         }
     }
     // Start is called before the first frame update
@@ -40,6 +47,12 @@ public class ExplosionTimerFlash : MonoBehaviour
         startExplosionAnim.PlayAnim();
         Debug.Log(startExplosionAnim.Speed);
         explosion = GetComponent<Explosion>();
+
+        
+
+        //smallExplosionRing.gameObject.SetActive(true);
+        //mediumExplosionRing.gameObject.SetActive(true);
+        largeExplosionRing.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -60,6 +73,8 @@ public class ExplosionTimerFlash : MonoBehaviour
                 render.material.SetFloat("_FlashTime", explodeCurve.Evaluate((maxTime - timer) / transitionToExplosionOffset));
                 if (timer >= maxTime)
                 {
+                    Debug.Log("Timer Over Max: " + timer);
+                    Debug.Log("Max Time: " + maxTime);
                     explosion.Explode();
                     hasExploded = true;
                 }
