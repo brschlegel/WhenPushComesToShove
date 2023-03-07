@@ -90,7 +90,7 @@ public class ReadyUpBase : UIDisplay
     {
         foreach (PlayerPortrait p in portraits)
         {
-            if (p.playerIndex == index)
+            if (p.playerIndex == index && !p.Ready)
             {
                 p.Ready = true;
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.readyUp);

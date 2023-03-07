@@ -10659,6 +10659,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3303541355259458316}
     m_Modifications:
+    - target: {fileID: 4068138016403114, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d60df624a0a3ac45ba4dd7a0b46d9dd, type: 2}
     - target: {fileID: 14750362467132595, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
       propertyPath: confetti
       value: 
@@ -10727,6 +10731,10 @@ PrefabInstance:
       propertyPath: data
       value: 
       objectReference: {fileID: 4482299919862746241}
+    - target: {fileID: 1550415445739497573, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: rune
+      value: 
+      objectReference: {fileID: 2056253412890144597}
     - target: {fileID: 1550415445739497573, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
       propertyPath: sword
       value: 
@@ -11143,6 +11151,10 @@ PrefabInstance:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 2800000, guid: 14f2780e2a96b4a41a85af95981d865f, type: 3}
+    - target: {fileID: 4352326025857580071, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d60df624a0a3ac45ba4dd7a0b46d9dd, type: 2}
     - target: {fileID: 8738325341976470397, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -11154,6 +11166,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4069856625713062148, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
   m_PrefabInstance: {fileID: 2373351787792814962}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2056253412890144597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4352326025857580071, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+  m_PrefabInstance: {fileID: 2373351787792814962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2369356381862018520 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4068138016403114, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
