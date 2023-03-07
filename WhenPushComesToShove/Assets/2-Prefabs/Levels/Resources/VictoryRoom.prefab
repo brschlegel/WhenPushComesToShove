@@ -1140,6 +1140,7 @@ MonoBehaviour:
   endCondition: {fileID: 7782802920676206988}
   data: {fileID: 4482299919862746241}
   canPlayersTakeDamage: 0
+  gameRunning: 0
   winnerText: {fileID: 8569882453311885095}
   rankDisplay: {fileID: 7796804561175254644}
 --- !u!1 &2557029340952897469
@@ -10663,6 +10664,54 @@ PrefabInstance:
       propertyPath: confetti
       value: 
       objectReference: {fileID: 8946640581007675338, guid: f0ab85ec06f1fe046ae655f2ae871a8e, type: 3}
+    - target: {fileID: 14750362467132595, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: offset.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 14750362467132595, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: offset.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 14750362467132595, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[0]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: f0ab85ec06f1fe046ae655f2ae871a8e, type: 3}
+    - target: {fileID: 14750362467132595, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[1]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: f59b22dc9010ab64688450d2081ee72f, type: 3}
+    - target: {fileID: 14750362467132595, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[2]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: 677e1b1fb1c6b4b4e99a346ff37de872, type: 3}
+    - target: {fileID: 14750362467132595, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[3]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: fe5c69302c0d6c644982a92f7d667eb9, type: 3}
+    - target: {fileID: 283465650830059277, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: offset.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 283465650830059277, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: offset.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 283465650830059277, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[0]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: f0ab85ec06f1fe046ae655f2ae871a8e, type: 3}
+    - target: {fileID: 283465650830059277, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[1]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: f59b22dc9010ab64688450d2081ee72f, type: 3}
+    - target: {fileID: 283465650830059277, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[2]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: 677e1b1fb1c6b4b4e99a346ff37de872, type: 3}
+    - target: {fileID: 283465650830059277, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[3]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: fe5c69302c0d6c644982a92f7d667eb9, type: 3}
     - target: {fileID: 665148023813520085, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
       propertyPath: m_LocalScale.x
       value: 50
@@ -10682,7 +10731,7 @@ PrefabInstance:
     - target: {fileID: 1550415445739497573, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
       propertyPath: sword
       value: 
-      objectReference: {fileID: 2369356381862018520}
+      objectReference: {fileID: 1771286749303838820}
     - target: {fileID: 1550415445739497573, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
       propertyPath: confetti
       value: 
@@ -10711,6 +10760,30 @@ PrefabInstance:
       propertyPath: swordOutOfStonePosition.y
       value: -4
       objectReference: {fileID: 0}
+    - target: {fileID: 2072943925359295940, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: offset.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072943925359295940, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: offset.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072943925359295940, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[0]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: f0ab85ec06f1fe046ae655f2ae871a8e, type: 3}
+    - target: {fileID: 2072943925359295940, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[1]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: f59b22dc9010ab64688450d2081ee72f, type: 3}
+    - target: {fileID: 2072943925359295940, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[2]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: 677e1b1fb1c6b4b4e99a346ff37de872, type: 3}
+    - target: {fileID: 2072943925359295940, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+      propertyPath: UIConfetti.Array.data[3]
+      value: 
+      objectReference: {fileID: 8946640581007675338, guid: fe5c69302c0d6c644982a92f7d667eb9, type: 3}
     - target: {fileID: 4069856624811246954, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
       propertyPath: m_SizeDelta.x
       value: 96
@@ -11082,15 +11155,15 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4069856625713062148, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
   m_PrefabInstance: {fileID: 2373351787792814962}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2369356381862018520 stripped
+--- !u!114 &1771286749303838820 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4068138016403114, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4069856625504111382, guid: ad6852b8a00b3bb4c82784e2010f4d04, type: 3}
   m_PrefabInstance: {fileID: 2373351787792814962}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3849443270882573079 stripped

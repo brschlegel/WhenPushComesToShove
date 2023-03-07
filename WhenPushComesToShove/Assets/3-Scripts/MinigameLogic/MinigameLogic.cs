@@ -117,6 +117,13 @@ public abstract class MinigameLogic : MonoBehaviour
         }
 
         LevelManager.onNewRoom.Invoke();
+
+        //Make sure all players are alive
+        foreach (Transform p in GameState.players)
+        {
+            PlayerInputHandler handler = p.GetComponentInChildren<PlayerInputHandler>();
+            handler.playerConfig.IsDead = false;
+        }
     }
 
     public virtual void DebugCleanUp()
