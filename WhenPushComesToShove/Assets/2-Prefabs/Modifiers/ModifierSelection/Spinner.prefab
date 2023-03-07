@@ -392,9 +392,9 @@ MonoBehaviour:
   iconParent: {fileID: 8400829242864845040}
   barrelParent: {fileID: 8400829242875751095}
   colors:
-  - {r: 1, g: 0.3726415, b: 0.3726415, a: 0.49019608}
-  - {r: 0.8053531, g: 0.8207547, b: 0.12001601, a: 0.49019608}
-  - {r: 0.7264151, g: 0.08566215, b: 0.68148863, a: 0.49019608}
+  - {r: 0, g: 0.4334793, b: 1, a: 0.078431375}
+  - {r: 0.22352941, g: 1, b: 0.20392157, a: 0.078431375}
+  - {r: 0.38431373, g: 0, b: 1, a: 0.078431375}
 --- !u!1 &8400829242559552082
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa16da76daf899c4fb325624c40dff81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  picker: {fileID: 8400829242559552110}
+  pickers: []
   forceMin: 0
   forceMax: 0
   stopThreshold: 2
