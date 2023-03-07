@@ -168,7 +168,6 @@ public class LevelManager : MonoBehaviour
         if(levelProp.transform.GetChild(3).TryGetComponent<MinigameLogic>(out MinigameLogic logic))
         {
             currentRoom = logic;
-            Debug.Log(currentRoom.gameObject.name);
             logic.Init();
             GameState.ModifierManager.InitMinigame(levelProp.transform);
         }
