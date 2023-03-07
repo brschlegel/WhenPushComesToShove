@@ -13,7 +13,8 @@ public class VictoryButtonMashUI : UIDisplay
     private List<int> tiedIndexes = new List<int>();
     private List<PlayerInputHandler> tiedPlayers = new List<PlayerInputHandler>();
     [SerializeField] private Transform[] tiedPlayerDisplays = new Transform[4];
-    [SerializeField] private Image sword;
+    [SerializeField] private RawImage sword;
+    [SerializeField] private Image rune;
     [SerializeField] private Material[] playerColors = new Material[4];
     [SerializeField] private Material[] swordOutlines = new Material[4];
     [SerializeField] private Color[] swordGlowColors = new Color[4];
@@ -113,10 +114,11 @@ public class VictoryButtonMashUI : UIDisplay
         yield return new WaitUntil(() => threshold.TestCondition());
 
         //Disable each players button mashing
-        foreach (PlayerInputHandler handler in tiedPlayers)
+        foreach (Transform player in GameState.players)
         {
-            //handler.DisableButtonMashing();
-            handler.onSelect -= ButtonMashed;
+            PlayerInputHandler handler = player.GetComponentInChildren<PlayerInputHandler>();
+
+            handler.ClearSelectAction();
         }
 
         MinigameData.onScoreAdded -= ChangeSwordColor;
@@ -138,6 +140,7 @@ public class VictoryButtonMashUI : UIDisplay
     {
         int index = data.GetHighestScoreIndex();
         sword.material = swordOutlines[index];
+        rune.material = swordOutlines[index];
         Image glow = sword.transform.GetChild(0).GetComponent<Image>();
         glow.color = swordGlowColors[index];
 

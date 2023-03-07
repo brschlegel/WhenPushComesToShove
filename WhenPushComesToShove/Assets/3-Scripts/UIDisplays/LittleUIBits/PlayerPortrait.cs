@@ -65,4 +65,12 @@ public class PlayerPortrait : MonoBehaviour
         scoretext.text = score.ToString();
     }
 
+    public void SetAlpha(float alpha)
+    {
+        portrait.color = new Color( portrait.color.r,  portrait.color.g,  portrait.color.b, alpha);
+        Image crownImage = crown.GetComponent<Image>();
+        crownImage.color = new Color(crownImage.color.r, crownImage.color.g, crownImage.color.b, alpha);
+        teamIcon.color = new Color(teamIcon.color.r, teamIcon.color.g, teamIcon.color.b, alpha);
+    }
+
 }
