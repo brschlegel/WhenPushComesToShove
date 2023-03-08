@@ -26,4 +26,17 @@ public class Area : MonoBehaviour
             objectsInArea.Remove(collider.gameObject.transform);
         }
     }
+
+    public void SetColor(bool active)
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (active)
+        {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, .4f);
+        }
+        else
+        {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, .2f);
+        }
+    }
 }

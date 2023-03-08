@@ -73,6 +73,16 @@ public class AreaSelector : MonoBehaviour
             runningFrames++;
         }
 
+        //Brighten Selected Color
+        for (int i = 0; i < areaDivider.areas.Count; i++)
+        {
+            Area area = areaDivider.areas[i].GetComponent<Area>();
+            bool active = area.objectsInArea.Contains(pickers[0].transform);
+
+            area.SetColor(active);
+        }
+
+
     }
 
     public void BeginSelection()
