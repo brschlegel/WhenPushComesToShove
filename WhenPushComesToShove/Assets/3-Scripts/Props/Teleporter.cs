@@ -10,8 +10,11 @@ public class Teleporter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Ensures the object is teleporting along the z axis
-        collision.transform.position = new Vector3(destination.x, destination.y, collision.transform.position.z);
+        if (collision.CompareTag("Player"))
+        {
+            //Ensures the object is teleporting along the z axis
+            collision.transform.position = new Vector3(destination.x, destination.y, collision.transform.position.z);
+        }        
     }
 
     private void OnDrawGizmos()
