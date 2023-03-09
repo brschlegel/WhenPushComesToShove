@@ -199,11 +199,6 @@ public class LevelManager : MonoBehaviour
             obj.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
         }
 
-        foreach (HealthBar b in GameState.playerHealthBars)
-        {
-            b.gameObject.SetActive(false);
-        }
-
         pathGen.ResetPath();
         //Should remake the path
     }

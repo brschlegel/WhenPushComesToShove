@@ -9,8 +9,6 @@ public class Respawner : MonoBehaviour
     public event PlayerEvent onRespawn;
     public float randomOffsetRadius = 3;
 
-    [SerializeField] private ParticleSystem[] playerSpawnAnim = new ParticleSystem[4];
-
     [HideInInspector]
     public List<int> indicesToIgnore;
 
@@ -64,7 +62,6 @@ public class Respawner : MonoBehaviour
         yield return new WaitUntil(() => anim.CurrentState.id != "death");
         yield return new WaitForSeconds(spawnDelay);
         player.position = transform.position + (Vector3)Random.insideUnitCircle * randomOffsetRadius;
-        Instantiate(playerSpawnAnim[input.playerConfig.PlayerIndex], player.position, player.rotation);
         health.ResetHealth();
         respawning[player] = false;
         onRespawn?.Invoke(input.playerConfig.PlayerIndex);
