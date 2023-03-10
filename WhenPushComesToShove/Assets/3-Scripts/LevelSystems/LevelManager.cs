@@ -114,6 +114,12 @@ public class LevelManager : MonoBehaviour
         {
             pathGen.path.Add(pathGen.allLevels[5].gameObject);
         }
+
+        //Clear path
+        if (Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Keypad7))
+        {
+            pathGen.path.Clear();
+        }
     }
 
     //Will ensure that only the current room on the path will show up
