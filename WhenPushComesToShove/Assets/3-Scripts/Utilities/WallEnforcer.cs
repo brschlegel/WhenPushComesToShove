@@ -11,9 +11,10 @@ public class WallEnforcer : MonoBehaviour
     private Transform teleportLocation;
     public void OnTriggerEnter2D(Collider2D collider)
     {
+       
         if (tagsToTeleport.Contains(collider.gameObject.tag))
         {
-            collider.transform.position = teleportLocation.position;
+            collider.attachedRigidbody.transform.position = teleportLocation.position;
             
         }
     }
