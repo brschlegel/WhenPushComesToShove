@@ -45,11 +45,7 @@ public class ExplosionTimerFlash : MonoBehaviour
         hasExploded = false;
         startExplosionAnim.Speed = 1 / (maxTime - transitionToExplosionOffset);
         startExplosionAnim.PlayAnim();
-        Debug.Log(startExplosionAnim.Speed);
         explosion = GetComponent<Explosion>();
-
-        
-
         //smallExplosionRing.gameObject.SetActive(true);
         //mediumExplosionRing.gameObject.SetActive(true);
         largeExplosionRing.gameObject.SetActive(true);
@@ -73,8 +69,6 @@ public class ExplosionTimerFlash : MonoBehaviour
                 render.material.SetFloat("_FlashTime", explodeCurve.Evaluate((maxTime - timer) / transitionToExplosionOffset));
                 if (timer >= maxTime)
                 {
-                    Debug.Log("Timer Over Max: " + timer);
-                    Debug.Log("Max Time: " + maxTime);
                     explosion.Explode();
                     hasExploded = true;
                 }
