@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modifiers: []
-  modifierPoolSO: {fileID: 11400000, guid: 261eae8a30d0b0241870090feb9319ba, type: 2}
+  modifierPoolSO: {fileID: 11400000, guid: caf1f156d9cc7cf45b64304a625d617c, type: 2}
   debugList: {fileID: 0}
 --- !u!4 &514692959
 Transform:
@@ -551,7 +551,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &881617127
 GameObject:
@@ -986,11 +986,10 @@ MonoBehaviour:
   victoryRoom: {fileID: 6254306470328373913, guid: d7ab7802ad9eb7b40bbe132402cfe546, type: 3}
   availableLevels: []
   playedLevels: []
-  path:
-  - {fileID: 805013608764250822, guid: d33d8fc8c691af7419205acae4faa370, type: 3}
-  - {fileID: 3115093129980057568, guid: a39804c57457a0f4ebf9b5e46f826b60, type: 3}
+  path: []
   numOfRooms: 0
   numOfGames: 4
+  minigamePool: {fileID: 11400000, guid: be65db4a189186c4ca1509cdab638a23, type: 2}
   allLevels: []
 --- !u!4 &1589640427
 Transform:
@@ -1005,7 +1004,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1589640428
 MonoBehaviour:
