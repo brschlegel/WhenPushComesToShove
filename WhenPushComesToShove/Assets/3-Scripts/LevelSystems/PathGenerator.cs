@@ -18,10 +18,10 @@ public class PathGenerator : MonoBehaviour
 
     [HideInInspector] public int numOfRooms;
 
-    [SerializeField] private int numOfGames;
+    public int numOfGames;
 
     //All possible minigames
-    [SerializeField] private MinigameList minigamePool;
+    public MinigameList minigamePool;
 
     [HideInInspector] public List<LevelProperties> allLevels = new List<LevelProperties>();
     private int currentPathNum = 0;
@@ -29,14 +29,7 @@ public class PathGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        #if UNITY_EDITOR
-
-        #else
-            path.Clear();
-            numOfGames = 4;
-        #endif
-        
+    
 
         GameState.pathGenerator = this;
         numOfRooms = (numOfGames * 2) - 1;
