@@ -12,7 +12,7 @@ public class PlayerDashScript : MonoBehaviour
 
     [HideInInspector] public ProjectileMode pMode;
 
-    [SerializeField] private float dashSpeed = 15;
+    public float dashSpeed = 10000;
     [SerializeField] private float dashTime = 1;
     [SerializeField] private PlayerCollisions collider;
     [SerializeField] private HitHandler hurtboxHandler;

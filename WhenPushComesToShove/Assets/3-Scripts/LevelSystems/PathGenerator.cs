@@ -26,6 +26,15 @@ public class PathGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        #if UNITY_EDITOR
+
+        #else
+            path.Clear();
+            numOfGames = 4;
+        #endif
+        
+
         GameState.pathGenerator = this;
         numOfRooms = (numOfGames * 2) - 1;
 

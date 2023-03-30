@@ -17,6 +17,8 @@ public class BigDawgStatus : BaseModifier
             }
             PlayerHeavyShoveScript heavy = t.GetComponentInChildren<PlayerHeavyShoveScript>();
             heavy.forceMultiplier *= 2;
+            PlayerDashScript dash = t.GetComponentInChildren<PlayerDashScript>();
+            dash.dashSpeed *= 2;
             PlayerHealth health = t.GetComponentInChildren<PlayerHealth>();
             health.maxHealth *= 2;
         }
