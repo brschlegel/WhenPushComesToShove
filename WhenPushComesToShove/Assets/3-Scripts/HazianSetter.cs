@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using System;
 
-public class HazianSetter : MonoBehaviour
+public class HazianSetter : MonoBehaviour, ISerializationCallbackReceiver
 {
     public GameVariables gameVariables;
     [SerializeField] bool updateVariables = true;
@@ -14,29 +16,36 @@ public class HazianSetter : MonoBehaviour
     [SerializeField] PlayerConfigManager playerManager;
 
     
+
+    
 #if UNITY_EDITOR
     //Will update variables when scene is reloaded or variables change
-    private void OnValidate()
+
+    void ISerializationCallbackReceiver.OnBeforeSerialize()
     {
-        if (updateVariables)
+        if (updateVariables && !EditorApplication.isPlayingOrWillChangePlaymode)
         {
             SetVariables();
 
         }
     }
+
+    void ISerializationCallbackReceiver.OnAfterDeserialize() { }
+
+
 #else
+void ISerializationCallbackReceiver.OnBeforeSerialize() { }
+void ISerializationCallbackReceiver.OnAfterDeserialize() { }
 private void Start()
     {
-        if (updateVariables)
-        {
-            SetVariables();
-        }
+        if(updateVariables)
+        SetVariables();
     }
 #endif
 
-
     private void SetVariables()
     {
+
         Debug.Log("Resetting Variables");
         //Path Generator variables
         pathGen.path.Clear();
