@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3952937667556181229}
   - component: {fileID: 6608550559310179975}
+  - component: {fileID: 6708741586467814279}
   - component: {fileID: 4389548288523559029}
   m_Layer: 0
   m_Name: AudioManager
@@ -45,6 +46,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0251e9083beb7334eb5942d7ee92009e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6708741586467814279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091060518624148139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ec937099230924ca28932766061094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4389548288523559029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,6 +70,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1f6c4c4446b2a48ba92a5718e9b93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgm:
+    Guid:
+      Data1: 1014146387
+      Data2: 1085180876
+      Data3: -53825388
+      Data4: -479280543
+    Path: event:/Music/BGM3
   lightShove:
     Guid:
       Data1: -2078139428
