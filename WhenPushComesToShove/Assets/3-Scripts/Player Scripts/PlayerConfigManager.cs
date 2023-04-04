@@ -17,7 +17,7 @@ public class PlayerConfigManager : MonoBehaviour
 
     [HideInInspector] public InitLevel levelInitRef;
 
-    [SerializeField] private int minPlayers = 2;
+    public int minPlayers = 2;
     [SerializeField] private int maxPlayers = 2;
     [SerializeField] private RuntimeAnimatorController defaultColor;
     [SerializeField] private string[] playerColorNames = new string[4];
