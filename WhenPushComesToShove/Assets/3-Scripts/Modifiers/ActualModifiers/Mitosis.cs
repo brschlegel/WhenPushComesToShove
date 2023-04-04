@@ -10,6 +10,7 @@ public class Mitosis : EventModifier
     private float splitForce;
     [SerializeField]
     private float splitAngle;
+
     public override void Init()
     {
         key = "Ball_Hit";
@@ -26,14 +27,14 @@ public class Mitosis : EventModifier
     private void SetUpObject(GameObject g, HitEvent e, Vector2 dir, float force )
     {
         g.transform.localScale *= .5f;
-        
         ProjectileMode pMode = g.GetComponentInChildren<ProjectileMode>();
         pMode.enabled = true;
         pMode.AddForce(dir * force);
         pMode.Mass *= .5f; 
         
+        Hurtbox ballHurtbox = g.GetComponentInChildren<Hurtbox>();
         //Could break, but if we are sending messages from a hurtbox that doesn't have a splitter we have other problems
-        List<HitHandler> handlers = ((HitEventSplitter)g.GetComponentInChildren<Hurtbox>().handler).outputs;
+        List<HitHandler> handlers = ((HitEventSplitter)ballHurtbox.handler).outputs;
         
         //Products of mitosis should not mitosis
         //Really all of this is trying to future proof, making sure we don't remove the wrong thing
@@ -54,6 +55,9 @@ public class Mitosis : EventModifier
         {
             handlers.Remove(toRemove);
         }
+
+        //Grab some invulnerability for a minute so the new balls aren't immediately affected by the hit that mitosis'd them
+        StartCoroutine(BallInvulnerability(ballHurtbox, e.hitbox.owner));
 
     }
 
@@ -83,6 +87,13 @@ public class Mitosis : EventModifier
         SetUpObject(left, e, dir.RotateAround(e.hitbox.Center,angle ), force);
         SetUpObject(right, e, dir.RotateAround(e.hitbox.Center, -angle ), force);
         Destroy(e.hurtbox.owner);
+    }
+
+    private IEnumerator BallInvulnerability(Hurtbox ballHurtbox, GameObject owner)
+    {
+        ballHurtbox.OwnersToIgnore.Add(owner);
+        yield return new WaitForSeconds(.3f);
+        ballHurtbox.OwnersToIgnore.Remove(owner);
     }
 
 }

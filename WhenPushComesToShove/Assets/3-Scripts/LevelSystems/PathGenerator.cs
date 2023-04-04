@@ -18,31 +18,25 @@ public class PathGenerator : MonoBehaviour
 
     [HideInInspector] public int numOfRooms;
 
-    [SerializeField] private int numOfGames;
+    public int numOfGames;
+
     //All possible minigames
+    public MinigameList minigamePool;
+
     [HideInInspector] public List<LevelProperties> allLevels = new List<LevelProperties>();
     private int currentPathNum = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        #if UNITY_EDITOR
-
-        #else
-            path.Clear();
-            numOfGames = 4;
-        #endif
-        
+    
 
         GameState.pathGenerator = this;
         numOfRooms = (numOfGames * 2) - 1;
 
-       Object[] allMinigames = Resources.LoadAll<Object>("Minigames/");
-
-        foreach(Object obj in allMinigames)
+        foreach(MinigameSettings obj in minigamePool.minigames)
         {
-            GameObject level = (GameObject)obj;
+            GameObject level = obj.minigamePrefab;
             LevelProperties prop = level.GetComponent<LevelProperties>();
             allLevels.Add(prop);
             availableLevels.Add(prop);

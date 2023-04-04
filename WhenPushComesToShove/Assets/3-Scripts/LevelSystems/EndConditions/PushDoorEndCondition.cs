@@ -26,6 +26,7 @@ public class PushDoorEndCondition : BaseEndCondition
         //Tests if the number of players in the trigger box matches the number of players in the game
         if(numOfPlayersInTrigger == PlayerConfigManager.Instance.GetPlayerConfigs().Count)
         {
+            Debug.Log("Door Unlocked");
             PlayerConfigManager.Instance.levelInitRef.lockPlayerSpawn = true;
             this.GetComponent<Animator>().SetTrigger("Opened");
             return true;
@@ -74,22 +75,15 @@ public class PushDoorEndCondition : BaseEndCondition
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Shove")
         {
             this.GetComponent<Animator>().SetTrigger("Locked");
 
-            numOfPlayersInTrigger++;
-            playersInTrigger.Add(collision.gameObject);
-        }
-            
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            numOfPlayersInTrigger--;
-            playersInTrigger.Remove(collision.gameObject);
-        }           
+            if (!playersInTrigger.Contains(collision.transform.parent.parent.gameObject))
+            {
+                numOfPlayersInTrigger++;
+                playersInTrigger.Add(collision.transform.parent.parent.gameObject);
+            }
+        }            
     }
 }
