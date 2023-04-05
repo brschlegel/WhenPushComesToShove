@@ -15,6 +15,8 @@ public class LastTeamStanding : BaseEndCondition
         players = PlayerTeamFormations.instance.GetPlayerTeams();
         winningTeamNum = -1;
         playersToRemove = new List<PlayerConfiguration>();
+        MusicManager.instance.SetDeltaIntensity(3f / (GameState.players.Count - 2));
+
     }
 
     public override bool TestCondition()
@@ -22,7 +24,10 @@ public class LastTeamStanding : BaseEndCondition
         foreach(PlayerConfiguration player in players)
         {
             if(player.IsDead)
+            {
                 playersToRemove.Add(player);
+                MusicManager.instance.ChangeIntensity();
+            }
         }
 
         foreach(PlayerConfiguration player in playersToRemove)

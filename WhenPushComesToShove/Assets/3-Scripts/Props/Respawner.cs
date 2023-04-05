@@ -62,8 +62,8 @@ public class Respawner : MonoBehaviour
 
         //Wait until animation has stopped playing
         yield return new WaitUntil(() => anim.CurrentState.id != "death");
-        yield return new WaitForSeconds(spawnDelay);
         player.position = transform.position + (Vector3)Random.insideUnitCircle * randomOffsetRadius;
+        yield return new WaitForSeconds(spawnDelay);
         Instantiate(playerSpawnAnim[input.playerConfig.PlayerIndex], player.position, player.rotation);
         health.ResetHealth();
         respawning[player] = false;

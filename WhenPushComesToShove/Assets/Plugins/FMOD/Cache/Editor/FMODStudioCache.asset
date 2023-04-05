@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638137993916431305
+  lastModified: 638162056269427812
   FileSizes: []
   Exists: 1
 --- !u!114 &-7759398254355327495
@@ -60,7 +60,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638140464560944747
+  lastModified: 638162056269407869
   FileSizes: []
   Exists: 1
 --- !u!114 &-4428693024752816087
@@ -137,6 +137,34 @@ MonoBehaviour:
   - Name: 
     Value: 908
   Exists: 1
+--- !u!114 &-1253478377357146451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/BGM3
+  m_EditorClassIdentifier: 
+  Path: event:/Music/BGM3
+  Guid:
+    Data1: 1014146387
+    Data2: 1085180876
+    Data3: -53825388
+    Data4: -479280543
+  Banks:
+  - {fileID: -7759398254355327495}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 5858349023531467150}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 18823
 --- !u!114 &-804711880163779284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +207,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638140464560944747
+  lastModified: 638162056268949078
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -200,20 +228,21 @@ MonoBehaviour:
   - {fileID: -7759398254355327495}
   - {fileID: -8612787544886785326}
   EditorEvents:
-  - {fileID: 6580755882717612183}
   - {fileID: 6356220655949778711}
   - {fileID: -9003543967885776302}
   - {fileID: 5401189952285265716}
   - {fileID: -3012361373499150018}
   - {fileID: -804711880163779284}
   - {fileID: -4428693024752816087}
-  EditorParameters: []
+  - {fileID: -1253478377357146451}
+  EditorParameters:
+  - {fileID: 7412354618838380910}
   MasterBanks:
   - {fileID: -123436146901969753}
   StringsBanks:
   - {fileID: -1468950982031199481}
   - {fileID: 392586915098799111}
-  cacheTime: 638140464560944747
+  cacheTime: 638162056269427812
   cacheVersion: 131601
 --- !u!114 &392586915098799111
 MonoBehaviour:
@@ -230,10 +259,10 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638140464560944747
+  lastModified: 638162056268949078
   FileSizes:
   - Name: 
-    Value: 1134
+    Value: 1256
   Exists: 1
 --- !u!114 &5401189952285265716
 MonoBehaviour:
@@ -262,6 +291,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 498
+--- !u!114 &5858349023531467150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGM3/Intensity
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 1
+  ID:
+    data1: 3557750720
+    data2: 2973114691
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &6356220655949778711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +342,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
---- !u!114 &6580755882717612183
+--- !u!114 &7412354618838380910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,21 +351,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/BGM
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Intensity
   m_EditorClassIdentifier: 
-  Path: event:/Music/BGM
-  Guid:
-    Data1: 1539607310
-    Data2: 1333666573
-    Data3: -1923910745
-    Data4: -301808862
-  Banks:
-  - {fileID: -123436146901969753}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 131761
+  Name: Intensity
+  StudioPath: parameter:/Intensity
+  Min: 0
+  Max: 6
+  Default: 1
+  ID:
+    data1: 3557750720
+    data2: 2973114691
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1

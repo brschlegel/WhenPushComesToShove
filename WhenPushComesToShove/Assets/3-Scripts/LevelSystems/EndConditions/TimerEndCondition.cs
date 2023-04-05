@@ -13,6 +13,8 @@ public class TimerEndCondition : BaseEndCondition
         timerDisplay.timeOut = false;
         timerDisplay.timer = timeBeforeEnd;
         timerDisplay.canUpdateTime = true;
+        if (GameState.currentRoomType != LevelType.Lobby)
+            MusicManager.instance.SetDeltaIntensity(1, timeBeforeEnd / 3f);
     }
 
     public override bool TestCondition()

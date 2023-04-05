@@ -149,16 +149,22 @@ public class LevelManager : MonoBehaviour
         if (currentRoomIndex == 0)
         {
             room = pathGen.lobby;
+            MusicManager.instance.SetIntensity(1);
+            Debug.Log("Intensity Set to 1");
         }
         //Spawns a minigame
         else if(currentRoomIndex > 0 && currentRoomIndex % 2 == 1)
         {
             room = pathGen.AssignLevel().gameObject;
+            MusicManager.instance.SetIntensity(3);
+            Debug.Log("Intensity Set to 3");
         }
         //Spawns a modifier room
         else if(currentRoomIndex > 0 && currentRoomIndex % 2 == 0)
         {
             room = pathGen.modifierRoom;
+            MusicManager.instance.SetIntensity(2);
+            Debug.Log("Intensity Set to 2");
         }
 
         GameObject newRoom = pathGen.SpawnRoom(room);
@@ -176,6 +182,7 @@ public class LevelManager : MonoBehaviour
             currentRoom = logic;
             logic.Init();
             GameState.ModifierManager.InitMinigame(levelProp.transform);
+            
         }
 
         //Update Logging
@@ -203,11 +210,6 @@ public class LevelManager : MonoBehaviour
         {
             obj.GetComponentInChildren<Health>().dead = false;
             obj.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-        }
-
-        foreach (HealthBar b in GameState.playerHealthBars)
-        {
-            b.gameObject.SetActive(false);
         }
 
         pathGen.ResetPath();
@@ -246,6 +248,9 @@ public class LevelManager : MonoBehaviour
             SetPlayerSpawns(levelProp);
 
             endRoomSpawned = true;
+
+            MusicManager.instance.SetIntensity(0);
+            Debug.Log("Intensity Set to 0");
         }
     }
 
