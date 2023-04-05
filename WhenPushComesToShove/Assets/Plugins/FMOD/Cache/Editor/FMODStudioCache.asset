@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638137856921755265
+  lastModified: 638162396040663587
   FileSizes: []
   Exists: 1
 --- !u!114 &-7759398254355327495
@@ -60,7 +60,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638140472355860034
+  lastModified: 638162396040643637
   FileSizes: []
   Exists: 1
 --- !u!114 &-4428693024752816087
@@ -90,6 +90,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &-4236220091331777565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Bomb/BombExplosion
+  m_EditorClassIdentifier: 
+  Path: event:/Bomb/BombExplosion
+  Guid:
+    Data1: 576514381
+    Data2: 1225002853
+    Data3: 1875953328
+    Data4: 693369737
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &-3012361373499150018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +206,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638140472355850072
+  lastModified: 638162396040623699
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -205,15 +232,15 @@ MonoBehaviour:
   - {fileID: -9003543967885776302}
   - {fileID: 5401189952285265716}
   - {fileID: -3012361373499150018}
-  - {fileID: -804711880163779284}
-  - {fileID: -4428693024752816087}
+  - {fileID: -4236220091331777565}
+  - {fileID: 1861654328066602965}
   EditorParameters: []
   MasterBanks:
   - {fileID: -123436146901969753}
   StringsBanks:
   - {fileID: -1468950982031199481}
   - {fileID: 392586915098799111}
-  cacheTime: 638140472355860034
+  cacheTime: 638162396040663587
   cacheVersion: 131601
 --- !u!114 &392586915098799111
 MonoBehaviour:
@@ -230,11 +257,38 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638140472355860034
+  lastModified: 638162396040633666
   FileSizes:
   - Name: 
     Value: 1134
   Exists: 1
+--- !u!114 &1861654328066602965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/ReadyUp
+  m_EditorClassIdentifier: 
+  Path: event:/UI/ReadyUp
+  Guid:
+    Data1: 1664842207
+    Data2: 1323446405
+    Data3: -1324418888
+    Data4: 1566480841
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &5401189952285265716
 MonoBehaviour:
   m_ObjectHideFlags: 0

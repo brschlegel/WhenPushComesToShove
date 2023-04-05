@@ -10,6 +10,8 @@ public class VisionSlimeBrain : StateBrain
     VisionSlimeIdleState idleState;
     VisionSlimeRunState runState;
     VisionSlimeDecideState decideState;
+    VisionSlimeAttackState attackState;
+    PlayAnimState landState;
     
     [Header("Next Action Weights")]
     [SerializeField]
@@ -21,6 +23,8 @@ public class VisionSlimeBrain : StateBrain
 
     [SerializeField]
     private Animator anim;
+    [SerializeField]
+    private SpriteRenderer sprite;
     private void Start()
     {
         if(idleState == null)
@@ -34,16 +38,27 @@ public class VisionSlimeBrain : StateBrain
         idleState = GetComponent<VisionSlimeIdleState>();
         runState = GetComponent<VisionSlimeRunState>();
         decideState = GetComponent<VisionSlimeDecideState>();
+        attackState = GetComponent<VisionSlimeAttackState>();
+        landState = GetComponent<PlayAnimState>();
 
         idleState.anim = anim;
         idleState.onStateExit += OutState;
 
         runState.anim = anim;
-        idleState.onStateExit += OutState;
+        runState.sprite = sprite;
+        runState.onStateExit += OutState;
 
         decideState.anim = anim;
         decideState.decideTime = 1f;
         decideState.onStateExit += OutDecide;
+
+        attackState.anim = anim;
+        attackState.sprite = sprite;
+        attackState.onStateExit += OutAttack;
+
+        landState.anim = anim;
+        landState.animName = "Slime_Land";
+        landState.onStateExit += OutState;
 
         currentState = idleState;
         currentState.enabled = true;
@@ -57,6 +72,11 @@ public class VisionSlimeBrain : StateBrain
     private void OutDecide(bool success)
     {
         ChangeState(PickNextState());
+    }
+
+    private void OutAttack(bool success)
+    {
+        ChangeState(landState);
     }
 
 
@@ -76,14 +96,15 @@ public class VisionSlimeBrain : StateBrain
         }
         else if(rand <= attackThresh)
         {
-            return idleState;
+            attackState.target = (Vector2)transform.position + Random.insideUnitCircle.normalized * 4;
+            return attackState;
         }
         return idleState;
     }
 
     private Vector2 PickRunLocation()
     {
-        Vector2 location =  new Vector2(Random.value * 22 - 11, Random.value * 10 - 5);
+        Vector2 location =  new Vector2(Random.value * 20 - 10, Random.value * 9 - 4.5f);
         int failsafe = 0;
         //Just ensure the location is a certain distance away
         //Make sure this doesn't try too many times for whatever reason

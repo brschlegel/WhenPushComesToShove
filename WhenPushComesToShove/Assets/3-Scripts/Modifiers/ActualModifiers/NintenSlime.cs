@@ -9,7 +9,7 @@ public class NintenSlime : BaseModifier
 
     private GameObject spawnedSlime;
     // Start is called before the first frame update
-    public override void GameInit()
+    public override void Init()
     {
         spawnedSlime = Instantiate(slimePrefab);
     }

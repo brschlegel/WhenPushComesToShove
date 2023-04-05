@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2090969654374781668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4167013438068117264}
+  - component: {fileID: 6883668491850115939}
+  m_Layer: 0
+  m_Name: NintenSlime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4167013438068117264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090969654374781668}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.73512, y: -0.51507133, z: 0.2273248}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6883668491850115939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090969654374781668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0516b5b7ef0449a4a9785b3e441881cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGameRoot: {fileID: 0}
+  minigamesAffected: 00000000
+  icon: {fileID: 1039568428, guid: 076322e1fdda43e4ab986cea462a6a41, type: 3}
+  iconAnimator: {fileID: 9100000, guid: 3f2cbaa070de4184795fedabd0671cb0, type: 2}
+  name: Ninten-Slime
+  description: A giant slime blocks your view
+  slimePrefab: {fileID: 693501968257996084, guid: 1d1a6306e08bacc46a8738f8af5885b0, type: 3}
