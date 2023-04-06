@@ -468,7 +468,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a0e789318e6facc4097f0d819558dd1f, type: 2}
+  - {fileID: 2100000, guid: d865bd10cea69e54cb3619fad3d46306, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2174,7 +2174,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a0e789318e6facc4097f0d819558dd1f, type: 2}
+  - {fileID: 2100000, guid: d865bd10cea69e54cb3619fad3d46306, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2429,7 +2429,7 @@ MonoBehaviour:
   taggedGracePeriodTime: 1
   speedOfTagged: 12
   fractionOfHealthPerSecond: 0.05
-  sizeMultiplierOfTaggedHitBox: 1.5
+  sizeMultiplierOfTaggedHitBox: 2
 --- !u!1 &1867975837
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,7 +4352,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2227f93850a4a4d42a97a8c651fa0446, type: 2}
+  - {fileID: 2100000, guid: 18737fbda0dcf8e40aab437a4ed1bd16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4663,15 +4663,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 406501625493467318, guid: d80c9217f8f74d940b18ef71381a3770, type: 3}
       propertyPath: m_Color.b
-      value: 0.70980394
+      value: 0.8306408
       objectReference: {fileID: 0}
     - target: {fileID: 406501625493467318, guid: d80c9217f8f74d940b18ef71381a3770, type: 3}
       propertyPath: m_Color.g
-      value: 0.6862745
+      value: 0.7164471
       objectReference: {fileID: 0}
     - target: {fileID: 406501625493467318, guid: d80c9217f8f74d940b18ef71381a3770, type: 3}
       propertyPath: m_Color.r
-      value: 0.8509804
+      value: 0.8679245
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d80c9217f8f74d940b18ef71381a3770, type: 3}
@@ -4734,6 +4734,18 @@ PrefabInstance:
     - target: {fileID: 406501625493467313, guid: d80c9217f8f74d940b18ef71381a3770, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406501625493467318, guid: d80c9217f8f74d940b18ef71381a3770, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8306408
+      objectReference: {fileID: 0}
+    - target: {fileID: 406501625493467318, guid: d80c9217f8f74d940b18ef71381a3770, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7164471
+      objectReference: {fileID: 0}
+    - target: {fileID: 406501625493467318, guid: d80c9217f8f74d940b18ef71381a3770, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8679245
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d80c9217f8f74d940b18ef71381a3770, type: 3}
@@ -5508,7 +5520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6016210733039343417, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 67.6
       objectReference: {fileID: 0}
     - target: {fileID: 6075843762753115292, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_Name
@@ -5537,6 +5549,18 @@ PrefabInstance:
     - target: {fileID: 8231731457231639593, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714044799247763013, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714044799247763013, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714044799247763013, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10ec4fdc49392824689fb7116b593a60, type: 3}

@@ -8,6 +8,9 @@ public class FMODEvents : MonoBehaviour
     public static FMODEvents instance;
 
     #region Event References
+    [Header("BGM")]
+    public EventReference bgm;
+
     [Header("Shove SFX")]
     public EventReference lightShove;
     public EventReference heavyShove;
