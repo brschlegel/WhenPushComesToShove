@@ -42,9 +42,36 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638162056269427812
+  lastModified: 638163330987151336
   FileSizes: []
   Exists: 1
+--- !u!114 &-8120013589413629435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Spinner/Spinner
+  m_EditorClassIdentifier: 
+  Path: event:/Spinner/Spinner
+  Guid:
+    Data1: -1962760673
+    Data2: 1074019250
+    Data3: 1424058293
+    Data4: -2064452783
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 125
 --- !u!114 &-7759398254355327495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,9 +87,89 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638162056269407869
+  lastModified: 638163330986057622
   FileSizes: []
   Exists: 1
+--- !u!114 &-7344293990957815494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Soccer/GoalCrowd
+  m_EditorClassIdentifier: 
+  Path: event:/Soccer/GoalCrowd
+  Guid:
+    Data1: -949383129
+    Data2: 1226305291
+    Data3: 667099547
+    Data4: -834888018
+  Banks:
+  - {fileID: -7759398254355327495}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -5737275033054697958}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &-5737275033054697958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GoalCrowd/Direction
+  m_EditorClassIdentifier: 
+  Name: Direction
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1419644439
+    data2: 4036131950
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-5537894899860873273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Soccer/Goal
+  m_EditorClassIdentifier: 
+  Path: event:/Soccer/Goal
+  Guid:
+    Data1: 1084583445
+    Data2: 1133864507
+    Data3: -1034266720
+    Data4: -973169467
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -2721436794519081881}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2011
 --- !u!114 &-4428693024752816087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +224,81 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 498
+--- !u!114 &-2721436794519081881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Goal/Direction
+  m_EditorClassIdentifier: 
+  Name: Direction
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1419644439
+    data2: 4036131950
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-2489416555911573064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GeneralCrowd/Intensity
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 2
+  ID:
+    data1: 3557750720
+    data2: 2973114691
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-2442911739857165756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Death/Death
+  m_EditorClassIdentifier: 
+  Path: event:/Death/Death
+  Guid:
+    Data1: -765894847
+    Data2: 1278647432
+    Data3: 772988568
+    Data4: 1315807250
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 875
 --- !u!114 &-1468950982031199481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +389,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638162056268949078
+  lastModified: 638163330984236132
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -235,6 +417,12 @@ MonoBehaviour:
   - {fileID: -804711880163779284}
   - {fileID: -4428693024752816087}
   - {fileID: -1253478377357146451}
+  - {fileID: -7344293990957815494}
+  - {fileID: -5537894899860873273}
+  - {fileID: -8120013589413629435}
+  - {fileID: -2442911739857165756}
+  - {fileID: 6245442426235814837}
+  - {fileID: 59355083625965137}
   EditorParameters:
   - {fileID: 7412354618838380910}
   MasterBanks:
@@ -242,8 +430,35 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -1468950982031199481}
   - {fileID: 392586915098799111}
-  cacheTime: 638162056269427812
+  cacheTime: 638163330987151336
   cacheVersion: 131601
+--- !u!114 &59355083625965137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Shoves/HeavyCharge
+  m_EditorClassIdentifier: 
+  Path: event:/Shoves/HeavyCharge
+  Guid:
+    Data1: 1173886957
+    Data2: 1105871497
+    Data3: 1724694409
+    Data4: -254444873
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2500
 --- !u!114 &392586915098799111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,10 +474,10 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638162056268949078
+  lastModified: 638163330984246116
   FileSizes:
   - Name: 
-    Value: 1256
+    Value: 1610
   Exists: 1
 --- !u!114 &5401189952285265716
 MonoBehaviour:
@@ -307,7 +522,7 @@ MonoBehaviour:
   StudioPath: 
   Min: 0
   Max: 6
-  Default: 1
+  Default: 2
   ID:
     data1: 3557750720
     data2: 2973114691
@@ -315,6 +530,34 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &6245442426235814837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Soccer/GeneralCrowd
+  m_EditorClassIdentifier: 
+  Path: event:/Soccer/GeneralCrowd
+  Guid:
+    Data1: -1547610725
+    Data2: 1083772700
+    Data3: 75694002
+    Data4: 1816931817
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -2489416555911573064}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &6356220655949778711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +601,7 @@ MonoBehaviour:
   StudioPath: parameter:/Intensity
   Min: 0
   Max: 6
-  Default: 1
+  Default: 2
   ID:
     data1: 3557750720
     data2: 2973114691

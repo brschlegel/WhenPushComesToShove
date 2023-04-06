@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+using FMODUnity;
 
 public class PlayerHeavyShoveScript : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     private Collider2D collider;
     private PlayerInputHandler handler;
     private PlayerMovementScript mover;
+
+    private FMOD.Studio.EventInstance sound;
 
     public void Start()
     {
@@ -88,6 +91,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
                 handler.rumble.RumbleLinear(0, .5f, 0, .5f, highTierChargeTime, true);
             }
 
+            sound = AudioManager.instance.PlayWithInstance(FMODEvents.instance.heavyCharge);
             heavyShoveIsCharging = true;
             heavyShoveCharge = 0;
             chargeLevel = 0;
@@ -104,6 +108,7 @@ public class PlayerHeavyShoveScript : MonoBehaviour
     {
         mover.ResetMoveSpeed();
         heavyShoveIsCharging = false;
+        sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
         if (heavyShoveCharge >= lowTierChargeTime)
         {
@@ -167,6 +172,8 @@ public class PlayerHeavyShoveScript : MonoBehaviour
         if (heavyShoveIsCharging)
         {
             LoggingInfo.instance.heavyShoveInterrupts[handler.playerConfig.PlayerIndex] += 1;
+
+            sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
             handler.rumble.ForceStopRumble();
             heavyShoveIsCharging = false;
