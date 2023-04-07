@@ -19,10 +19,6 @@ public class PickerSound : MonoBehaviour
 
         prevXPos = points[points.Count / 2].x - 1;
         currentPoint = (points.Count / 2);
-
-        Debug.Log("Points: " + points.Count);
-        Debug.Log("CurrentPoint: " + currentPoint);
-        Debug.Log("Points[CurrentPoint].x: " + points[currentPoint].x);
     }
 
     private void FixedUpdate()
@@ -31,7 +27,6 @@ public class PickerSound : MonoBehaviour
 
         if(prevXPos < points[currentPoint].x && gameObject.transform.position.x > points[currentPoint].x)
         {
-            Debug.Log("Tick Sound " + currentPoint);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.spinner);
 
             prevXPos = points[currentPoint].x;
