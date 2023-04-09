@@ -23,11 +23,15 @@ public class FMODEvents : MonoBehaviour
     [Header("Death")]
     public EventReference death;
 
+    [Header("Emotes")]
+    public EventReference confetti;
+
     [Header("Props")]
     public EventReference bombExplosion;
 
     [Header("UI")]
     public EventReference readyUp;
+    public EventReference swordUnsheath;
 
     [Header("Soccer")]
     public EventReference goal;
@@ -36,6 +40,7 @@ public class FMODEvents : MonoBehaviour
 
     [Header("Modifier")]
     public EventReference spinner;
+    public EventReference modifierChosen;
     #endregion
 
     private void Awake()

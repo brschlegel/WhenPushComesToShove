@@ -42,36 +42,9 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638164699538613204
+  lastModified: 638165938689949182
   FileSizes: []
   Exists: 1
---- !u!114 &-8120013589413629435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Spinner/Spinner
-  m_EditorClassIdentifier: 
-  Path: event:/Spinner/Spinner
-  Guid:
-    Data1: -1962760673
-    Data2: 1074019250
-    Data3: 1424058293
-    Data4: -2064452783
-  Banks:
-  - {fileID: -8612787544886785326}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 125
 --- !u!114 &-7759398254355327495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +60,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638164699538413745
+  lastModified: 638165938688898678
   FileSizes: []
   Exists: 1
 --- !u!114 &-7344293990957815494
@@ -170,6 +143,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2011
+--- !u!114 &-4675249819420498573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Modifier/ModifierChosen
+  m_EditorClassIdentifier: 
+  Path: event:/Modifier/ModifierChosen
+  Guid:
+    Data1: 1084150171
+    Data2: 1267203058
+    Data3: 910820538
+    Data4: -244315238
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3468
 --- !u!114 &-4428693024752816087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +224,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 498
+--- !u!114 &-2821830948610587727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Emote/Confetti/Confetti
+  m_EditorClassIdentifier: 
+  Path: event:/Emote/Confetti/Confetti
+  Guid:
+    Data1: 375022182
+    Data2: 1164586850
+    Data3: 111132569
+    Data4: -2102554388
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1765
 --- !u!114 &-2721436794519081881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,6 +401,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1000
+--- !u!114 &-773364558963992800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/SwordUnsheath
+  m_EditorClassIdentifier: 
+  Path: event:/UI/SwordUnsheath
+  Guid:
+    Data1: -1640511400
+    Data2: 1323183608
+    Data3: -82539852
+    Data4: -725212647
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 390
 --- !u!114 &-123436146901969753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +443,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638164699537828816
+  lastModified: 638165938686472746
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -419,10 +473,13 @@ MonoBehaviour:
   - {fileID: -1253478377357146451}
   - {fileID: -7344293990957815494}
   - {fileID: -5537894899860873273}
-  - {fileID: -8120013589413629435}
   - {fileID: -2442911739857165756}
   - {fileID: 6245442426235814837}
   - {fileID: 59355083625965137}
+  - {fileID: 1277229855341051600}
+  - {fileID: -773364558963992800}
+  - {fileID: -2821830948610587727}
+  - {fileID: -4675249819420498573}
   EditorParameters:
   - {fileID: 7412354618838380910}
   MasterBanks:
@@ -430,7 +487,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -1468950982031199481}
   - {fileID: 392586915098799111}
-  cacheTime: 638164699538613204
+  cacheTime: 638165938689949182
   cacheVersion: 131601
 --- !u!114 &59355083625965137
 MonoBehaviour:
@@ -474,11 +531,38 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638164699537888706
+  lastModified: 638165938686492686
   FileSizes:
   - Name: 
-    Value: 1610
+    Value: 1790
   Exists: 1
+--- !u!114 &1277229855341051600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Modifier/Spinner
+  m_EditorClassIdentifier: 
+  Path: event:/Modifier/Spinner
+  Guid:
+    Data1: -1962760673
+    Data2: 1074019250
+    Data3: 1424058293
+    Data4: -2064452783
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 125
 --- !u!114 &5401189952285265716
 MonoBehaviour:
   m_ObjectHideFlags: 0

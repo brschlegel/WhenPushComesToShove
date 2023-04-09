@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PickerSound : MonoBehaviour
 {
-    private float prevXPos;
     private int currentPoint;
     public GameObject areaDivider;
     private float dividerWidth;
@@ -17,7 +16,6 @@ public class PickerSound : MonoBehaviour
         dividerWidth = areaDivider.GetComponent<AreaDivider>().width;
         points = BenMath.GetEquidistantPointsOnLine(new Vector2(areaDivider.transform.position.x - (dividerWidth / 2.0f), 0), new Vector2(areaDivider.transform.position.x + (dividerWidth / 2.0f), 0), tickPoints);
 
-        prevXPos = points[points.Count / 2].x - 1;
         currentPoint = (points.Count / 2);
     }
 
@@ -25,18 +23,17 @@ public class PickerSound : MonoBehaviour
     {
         if (points.Count <= 0) return;
 
-        if(prevXPos < points[currentPoint].x && gameObject.transform.position.x > points[currentPoint].x)
+        if(gameObject.transform.position.x > points[currentPoint].x)
         {
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.spinner);
+            if(currentPoint != 0)
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.spinner);
 
-            prevXPos = points[currentPoint].x;
             currentPoint++;
         }
 
         if(currentPoint == tickPoints)
         {
             currentPoint = 0;
-            prevXPos = points[currentPoint].x - 1;
         }
     }
 }
