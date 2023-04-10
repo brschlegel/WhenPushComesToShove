@@ -30,6 +30,7 @@ public class Goal : MonoBehaviour
         if(collision.transform.parent.TryGetComponent<PointDataIndividual>(out PointDataIndividual pointsInd))
         {
             data.AddScoreForTeam(pointsInd.teamIndex, pointsInd.pointsToGain);
+            PlayScoreSounds(pointsInd.teamIndex);
 
             collision.transform.parent.gameObject.SetActive(false);
             Destroy(collision.transform.parent.gameObject);
@@ -46,6 +47,7 @@ public class Goal : MonoBehaviour
             }
 
             data.AddScoreForTeam(teamIndex, points.pointsToGain);
+            PlayScoreSounds(points.teamIndex);
 
             collision.transform.parent.gameObject.SetActive(false);
             Destroy(collision.transform.parent.gameObject);
@@ -69,4 +71,13 @@ public class Goal : MonoBehaviour
         goalScored?.Invoke();
     }
 
+    public void PlayScoreSounds(int index)
+    {
+        //Debug.Log("Trying to play socer sounds");
+        FMOD.Studio.EventInstance goalSound = AudioManager.instance.PlayOneShot(FMODEvents.instance.goal, ("Direction", index));
+        FMOD.Studio.EventInstance goalCrowdSound = AudioManager.instance.PlayOneShot(FMODEvents.instance.goalCrowd, ("Direction", index));
+
+        //goalSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        //goalCrowdSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
 }

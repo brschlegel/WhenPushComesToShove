@@ -58,6 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ec937099230924ca28932766061094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intensity: 1
+  deltaIntensity: 0
 --- !u!114 &4389548288523559029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +93,13 @@ MonoBehaviour:
       Data3: -1930174017
       Data4: 1901130073
     Path: event:/Shoves/HeavyShove
+  heavyCharge:
+    Guid:
+      Data1: 1173886957
+      Data2: 1105871497
+      Data3: 1724694409
+      Data4: -254444873
+    Path: event:/Shoves/HeavyCharge
   missShove:
     Guid:
       Data1: 1191405747
@@ -105,6 +114,20 @@ MonoBehaviour:
       Data3: 1790363819
       Data4: -2076349366
     Path: event:/Dash/Dash
+  death:
+    Guid:
+      Data1: -765894847
+      Data2: 1278647432
+      Data3: 772988568
+      Data4: 1315807250
+    Path: event:/Death/Death
+  confetti:
+    Guid:
+      Data1: 375022182
+      Data2: 1164586850
+      Data3: 111132569
+      Data4: -2102554388
+    Path: event:/Emote/Confetti/Confetti
   bombExplosion:
     Guid:
       Data1: 576514381
@@ -119,3 +142,45 @@ MonoBehaviour:
       Data3: -1324418888
       Data4: 1566480841
     Path: event:/UI/ReadyUp
+  swordUnsheath:
+    Guid:
+      Data1: -1640511400
+      Data2: 1323183608
+      Data3: -82539852
+      Data4: -725212647
+    Path: event:/UI/SwordUnsheath
+  goal:
+    Guid:
+      Data1: 1084583445
+      Data2: 1133864507
+      Data3: -1034266720
+      Data4: -973169467
+    Path: event:/Soccer/Goal
+  generalCrowd:
+    Guid:
+      Data1: -1547610725
+      Data2: 1083772700
+      Data3: 75694002
+      Data4: 1816931817
+    Path: event:/Soccer/GeneralCrowd
+  goalCrowd:
+    Guid:
+      Data1: -949383129
+      Data2: 1226305291
+      Data3: 667099547
+      Data4: -834888018
+    Path: event:/Soccer/GoalCrowd
+  spinner:
+    Guid:
+      Data1: -1962760673
+      Data2: 1074019250
+      Data3: 1424058293
+      Data4: -2064452783
+    Path: event:/Modifier/Spinner
+  modifierChosen:
+    Guid:
+      Data1: 1084150171
+      Data2: 1267203058
+      Data3: 910820538
+      Data4: -244315238
+    Path: event:/Modifier/ModifierChosen

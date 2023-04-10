@@ -64,6 +64,8 @@ public class PlayerHealth : Health
         dead = true;
         playerInputRef.playerConfig.IsDead = true;
 
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.death);
+
         //Fade Ground UI Too
         foreach (SpriteRenderer sr in playerGroundUIRef.GetComponentsInChildren<SpriteRenderer>())
         {

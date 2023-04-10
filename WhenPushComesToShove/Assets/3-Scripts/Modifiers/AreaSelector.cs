@@ -123,6 +123,7 @@ public class AreaSelector : MonoBehaviour
             //If the picker is in this area
             if (areaDivider.areas[i].GetComponent<Area>().objectsInArea.Contains(pickers[0].transform))
             {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.modifierChosen);
                 onSelection?.Invoke(i);
                 runningFrames = 0;
                 return;
