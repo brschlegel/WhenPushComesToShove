@@ -14,16 +14,33 @@ public class FMODEvents : MonoBehaviour
     [Header("Shove SFX")]
     public EventReference lightShove;
     public EventReference heavyShove;
+    public EventReference heavyCharge;
     public EventReference missShove;
 
     [Header("Dash")]
     public EventReference dash;
+
+    [Header("Death")]
+    public EventReference death;
+
+    [Header("Emotes")]
+    public EventReference confetti;
 
     [Header("Props")]
     public EventReference bombExplosion;
 
     [Header("UI")]
     public EventReference readyUp;
+    public EventReference swordUnsheath;
+
+    [Header("Soccer")]
+    public EventReference goal;
+    public EventReference generalCrowd;
+    public EventReference goalCrowd;
+
+    [Header("Modifier")]
+    public EventReference spinner;
+    public EventReference modifierChosen;
     #endregion
 
     private void Awake()

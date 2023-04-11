@@ -168,6 +168,7 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 GameObject vfx = Instantiate(references.confettiVFX, playerConfig.PlayerObject.transform);
                 vfx.transform.position = new Vector3(vfx.transform.position.x, vfx.transform.position.y + .5f, vfx.transform.position.z);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.confetti);
                 //var main = vfx.GetComponent<ParticleSystem>().main;
                 //main.startColor = PlayerConfigManager.Instance.playerCircleVFXColors[playerConfig.PlayerIndex];
 

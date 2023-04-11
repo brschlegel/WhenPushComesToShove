@@ -7,6 +7,7 @@ public class SoccerLogic : MinigameLogic
     [SerializeField] private List<ObjectSpawner> spawners;
     [SerializeField] private List<Goal> goals;
 
+    private FMOD.Studio.EventInstance sound;
 
     public override void Init()
     {
@@ -14,6 +15,8 @@ public class SoccerLogic : MinigameLogic
         {
             g.goalScored += OnGoalScored;
         }
+
+        sound = AudioManager.instance.PlayWithInstance(FMODEvents.instance.generalCrowd);
  
         base.Init();
     }
@@ -37,6 +40,8 @@ public class SoccerLogic : MinigameLogic
                 }
                 //int winningTeamIndex = ((LastTeamStanding)endCondition).winningTeamNum;
                 //((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = winningTeamIndex;
+
+                sound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 EndGame();
             }
         }
