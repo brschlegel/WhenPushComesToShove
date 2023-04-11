@@ -19,7 +19,7 @@ public class AreaSelector : MonoBehaviour
     private AreaDivider areaDivider;
     private DividerParents dividerParents;
 
-    private float elementIntroDelay = 1;
+    private float elementIntroDelay = 1.5f;
 
     public void Init(List<Sprite> iconSprites, List<RuntimeAnimatorController> controllers)
     {
