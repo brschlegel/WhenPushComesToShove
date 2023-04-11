@@ -251,6 +251,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &-4236220091331777565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Bomb/BombExplosion
+  m_EditorClassIdentifier: 
+  Path: event:/Bomb/BombExplosion
+  Guid:
+    Data1: 576514381
+    Data2: 1225002853
+    Data3: 1875953328
+    Data4: 693369737
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &-3012361373499150018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,108 +305,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 498
---- !u!114 &-2821830948610587727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Emote/Confetti/Confetti
-  m_EditorClassIdentifier: 
-  Path: event:/Emote/Confetti/Confetti
-  Guid:
-    Data1: 375022182
-    Data2: 1164586850
-    Data3: 111132569
-    Data4: -2102554388
-  Banks:
-  - {fileID: -8612787544886785326}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1765
---- !u!114 &-2721436794519081881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Goal/Direction
-  m_EditorClassIdentifier: 
-  Name: Direction
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 1419644439
-    data2: 4036131950
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-2489416555911573064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/GeneralCrowd/Intensity
-  m_EditorClassIdentifier: 
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 6
-  Default: 2
-  ID:
-    data1: 3557750720
-    data2: 2973114691
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-2442911739857165756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Death/Death
-  m_EditorClassIdentifier: 
-  Path: event:/Death/Death
-  Guid:
-    Data1: -765894847
-    Data2: 1278647432
-    Data3: 772988568
-    Data4: 1315807250
-  Banks:
-  - {fileID: -8612787544886785326}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 875
 --- !u!114 &-1468950982031199481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +497,7 @@ MonoBehaviour:
   - {fileID: -7759398254355327495}
   - {fileID: -8612787544886785326}
   EditorEvents:
+  - {fileID: 6580755882717612183}
   - {fileID: 6356220655949778711}
   - {fileID: -9003543967885776302}
   - {fileID: 5401189952285265716}
@@ -677,7 +603,7 @@ MonoBehaviour:
   - Name: 
     Value: 2074
   Exists: 1
---- !u!114 &1277229855341051600
+--- !u!114 &1861654328066602965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -687,14 +613,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Modifier/Spinner
+  m_Name: event:/UI/ReadyUp
   m_EditorClassIdentifier: 
-  Path: event:/Modifier/Spinner
+  Path: event:/UI/ReadyUp
   Guid:
-    Data1: -1962760673
-    Data2: 1074019250
-    Data3: 1424058293
-    Data4: -2064452783
+    Data1: 1664842207
+    Data2: 1323446405
+    Data3: -1324418888
+    Data4: 1566480841
   Banks:
   - {fileID: -8612787544886785326}
   IsStream: 0
@@ -758,58 +684,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 498
---- !u!114 &5858349023531467150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/BGM3/Intensity
-  m_EditorClassIdentifier: 
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 6
-  Default: 2
-  ID:
-    data1: 3557750720
-    data2: 2973114691
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &6245442426235814837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Soccer/GeneralCrowd
-  m_EditorClassIdentifier: 
-  Path: event:/Soccer/GeneralCrowd
-  Guid:
-    Data1: -1547610725
-    Data2: 1083772700
-    Data3: 75694002
-    Data4: 1816931817
-  Banks:
-  - {fileID: -8612787544886785326}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -2489416555911573064}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2000
 --- !u!114 &6356220655949778711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,7 +711,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
---- !u!114 &7412354618838380910
+--- !u!114 &6580755882717612183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -846,18 +720,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Intensity
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/BGM
   m_EditorClassIdentifier: 
-  Name: Intensity
-  StudioPath: parameter:/Intensity
-  Min: 0
-  Max: 6
-  Default: 2
-  ID:
-    data1: 3557750720
-    data2: 2973114691
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
+  Path: event:/Music/BGM
+  Guid:
+    Data1: 1539607310
+    Data2: 1333666573
+    Data3: -1923910745
+    Data4: -301808862
+  Banks:
+  - {fileID: -123436146901969753}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 131761

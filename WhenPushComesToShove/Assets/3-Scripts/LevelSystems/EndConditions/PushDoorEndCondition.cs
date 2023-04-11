@@ -81,18 +81,22 @@ public class PushDoorEndCondition : BaseEndCondition
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Shove")
+        if (collision.tag == "Player")
         {
             this.GetComponent<Animator>().SetTrigger("Locked");
             if(!unlocked)
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.doorBudge);
-
-            if (!playersInTrigger.Contains(collision.transform.parent.parent.gameObject))
-            {
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.torchLit);
-                numOfPlayersInTrigger++;
-                playersInTrigger.Add(collision.transform.parent.parent.gameObject);
-            }
+            numOfPlayersInTrigger++;
+            playersInTrigger.Add(collision.gameObject);
         }            
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            numOfPlayersInTrigger--;
+            playersInTrigger.Remove(collision.gameObject);
+        }
     }
 }
