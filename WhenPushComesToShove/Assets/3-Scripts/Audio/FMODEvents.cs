@@ -32,6 +32,7 @@ public class FMODEvents : MonoBehaviour
     [Header("UI")]
     public EventReference readyUp;
     public EventReference swordUnsheath;
+    public EventReference countdown;
 
     [Header("Soccer")]
     public EventReference goal;
@@ -41,6 +42,17 @@ public class FMODEvents : MonoBehaviour
     [Header("Modifier")]
     public EventReference spinner;
     public EventReference modifierChosen;
+
+    [Header("Torch")]
+    public EventReference torchLit;
+    public EventReference torchExtinguish;
+
+    [Header("Door")]
+    public EventReference doorBudge;
+    public EventReference doorOpen;
+
+    [Header("Tag")]
+    public EventReference tagOnFire;
     #endregion
 
     private void Awake()

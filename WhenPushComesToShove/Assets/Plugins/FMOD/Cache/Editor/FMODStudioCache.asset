@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638165938689949182
+  lastModified: 638167746183455603
   FileSizes: []
   Exists: 1
 --- !u!114 &-7759398254355327495
@@ -60,7 +60,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638165938688898678
+  lastModified: 638167746182111055
   FileSizes: []
   Exists: 1
 --- !u!114 &-7344293990957815494
@@ -91,6 +91,60 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
+--- !u!114 &-6326784962281780003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Tag/TagOnFire
+  m_EditorClassIdentifier: 
+  Path: event:/Tag/TagOnFire
+  Guid:
+    Data1: 1774921607
+    Data2: 1306374071
+    Data3: -1320570195
+    Data4: 1649169658
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1200
+--- !u!114 &-6036872725688557518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Door/DoorBudge
+  m_EditorClassIdentifier: 
+  Path: event:/Door/DoorBudge
+  Guid:
+    Data1: -1521176392
+    Data2: 1331150106
+    Data3: -335675007
+    Data4: -181109994
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 839
 --- !u!114 &-5737275033054697958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +400,33 @@ MonoBehaviour:
   - Name: 
     Value: 908
   Exists: 1
+--- !u!114 &-1280149516593533651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Countdown
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Countdown
+  Guid:
+    Data1: -1542906978
+    Data2: 1258076954
+    Data3: 7637386
+    Data4: 1274886428
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1400
 --- !u!114 &-1253478377357146451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +508,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 390
+  Length: 400
+--- !u!114 &-699964417883116553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Torch/TorchLit
+  m_EditorClassIdentifier: 
+  Path: event:/Torch/TorchLit
+  Guid:
+    Data1: 1760844323
+    Data2: 1075041029
+    Data3: 1156304277
+    Data4: 551163282
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 891
 --- !u!114 &-123436146901969753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,7 +551,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638165938686472746
+  lastModified: 638167746179866845
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -480,6 +588,12 @@ MonoBehaviour:
   - {fileID: -773364558963992800}
   - {fileID: -2821830948610587727}
   - {fileID: -4675249819420498573}
+  - {fileID: -699964417883116553}
+  - {fileID: 352412519323328473}
+  - {fileID: -6326784962281780003}
+  - {fileID: -1280149516593533651}
+  - {fileID: 2459450627915247682}
+  - {fileID: -6036872725688557518}
   EditorParameters:
   - {fileID: 7412354618838380910}
   MasterBanks:
@@ -487,7 +601,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -1468950982031199481}
   - {fileID: 392586915098799111}
-  cacheTime: 638165938689949182
+  cacheTime: 638167746183455603
   cacheVersion: 131601
 --- !u!114 &59355083625965137
 MonoBehaviour:
@@ -516,6 +630,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2500
+--- !u!114 &352412519323328473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Torch/TorchExtinguish
+  m_EditorClassIdentifier: 
+  Path: event:/Torch/TorchExtinguish
+  Guid:
+    Data1: -998984887
+    Data2: 1199324774
+    Data3: -1940233290
+    Data4: -884004114
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 958
 --- !u!114 &392586915098799111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,10 +672,10 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638165938686492686
+  lastModified: 638167746179876835
   FileSizes:
   - Name: 
-    Value: 1790
+    Value: 2074
   Exists: 1
 --- !u!114 &1277229855341051600
 MonoBehaviour:
@@ -563,6 +704,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 125
+--- !u!114 &2459450627915247682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Door/DoorOpen
+  m_EditorClassIdentifier: 
+  Path: event:/Door/DoorOpen
+  Guid:
+    Data1: 1296082352
+    Data2: 1299791640
+    Data3: 495801507
+    Data4: -1941227303
+  Banks:
+  - {fileID: -8612787544886785326}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1771
 --- !u!114 &5401189952285265716
 MonoBehaviour:
   m_ObjectHideFlags: 0

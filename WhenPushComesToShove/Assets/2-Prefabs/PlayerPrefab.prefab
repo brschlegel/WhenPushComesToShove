@@ -5231,6 +5231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementPaused: 0
   heavyShoveScript: {fileID: 0}
+  lightShoveScript: {fileID: 0}
   rumble: {fileID: 0}
   performingAction: 0
   sr: {fileID: 0}
@@ -6038,6 +6039,7 @@ GameObject:
   - component: {fileID: 267954124414587227}
   - component: {fileID: 948201899527572969}
   - component: {fileID: 8467673408388576724}
+  - component: {fileID: 2371105162856889141}
   m_Layer: 6
   m_Name: Sword
   m_TagString: Shove
@@ -6235,6 +6237,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToIgnore: []
   keyStart: Shove
+--- !u!114 &2371105162856889141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770348261060822066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bacfc05ddcd7704eb3729f03b46b968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore: []
 --- !u!1 &7031547588185146585
 GameObject:
   m_ObjectHideFlags: 0

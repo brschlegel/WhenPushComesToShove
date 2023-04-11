@@ -8,6 +8,7 @@ public class PushDoorEndCondition : BaseEndCondition
     List<PlayerConfiguration> playerConfigs;
     List<GameObject> lightsToTurnOff = new List<GameObject>();
     List<GameObject> playersInTrigger = new List<GameObject>();
+    private bool unlocked = false;
 
     //dont need to init
     public override void Init() {}
@@ -24,12 +25,17 @@ public class PushDoorEndCondition : BaseEndCondition
             return false;
 
         //Tests if the number of players in the trigger box matches the number of players in the game
-        if(numOfPlayersInTrigger == PlayerConfigManager.Instance.GetPlayerConfigs().Count)
+        if(unlocked == false && numOfPlayersInTrigger == PlayerConfigManager.Instance.GetPlayerConfigs().Count)
         {
             Debug.Log("Door Unlocked");
             PlayerConfigManager.Instance.levelInitRef.lockPlayerSpawn = true;
             this.GetComponent<Animator>().SetTrigger("Opened");
-            return true;
+
+            if(!unlocked)
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.doorOpen);
+
+            unlocked = true;
+            return unlocked;
         }
 
         return false;
@@ -78,9 +84,12 @@ public class PushDoorEndCondition : BaseEndCondition
         if (collision.tag == "Shove")
         {
             this.GetComponent<Animator>().SetTrigger("Locked");
+            if(!unlocked)
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.doorBudge);
 
             if (!playersInTrigger.Contains(collision.transform.parent.parent.gameObject))
             {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.torchLit);
                 numOfPlayersInTrigger++;
                 playersInTrigger.Add(collision.transform.parent.parent.gameObject);
             }
