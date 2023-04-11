@@ -15,6 +15,9 @@ public class Countdown : MonoBehaviour
 
     private Material mat;
 
+    private int prevTime;
+    private FMOD.Studio.EventInstance countdownInstance;
+
     private void OnAwake()
     {
         mat = GetComponent<Material>();
@@ -25,6 +28,8 @@ public class Countdown : MonoBehaviour
         text = GetComponentInChildren<TextMeshProUGUI>();
         text.color = new Color(text.color.r, text.color.g, text.color.b, 1f);
         timer = countdownTime;
+        prevTime = (int)timer;
+        countdownInstance = AudioManager.instance.PlayWithInstance(FMODEvents.instance.countdown);
     }
 
     // Update is called once per frame
@@ -32,7 +37,12 @@ public class Countdown : MonoBehaviour
     {
         timer -= Time.deltaTime;
         text.text = Mathf.CeilToInt(timer).ToString();
-
+        if (Mathf.CeilToInt(timer) < prevTime)
+        {
+            countdownInstance.keyOff();
+            prevTime = Mathf.CeilToInt(timer);
+        }
+            
         if (timer <= 0)
         {
             text.DOFade(0, .4f).OnComplete(OnFadeComplete);

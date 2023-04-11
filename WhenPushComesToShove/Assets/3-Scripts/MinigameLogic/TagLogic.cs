@@ -30,6 +30,8 @@ public class TagLogic : MinigameLogic
     
     private float damagePerSecond;
 
+    private FMOD.Studio.EventInstance playerOnFire;
+
     public override void Init()
     {
         playerConfigs = PlayerConfigManager.Instance.GetPlayerConfigs();
@@ -143,6 +145,8 @@ public class TagLogic : MinigameLogic
 
                 ((PlayerWinUIDisplay)endingUIDisplay).tiedIndexes.Add(config.PlayerIndex);
                 ((PlayerWinUIDisplay)endingUIDisplay).winnerName = GameState.playerNames[config.PlayerIndex];
+
+                playerOnFire.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 EndGame();
             }
         }
@@ -151,11 +155,12 @@ public class TagLogic : MinigameLogic
 
     void UpdateTaggedPlayer(int tagIndex)
     {
-        if(tagIndex < playerConfigs.Count)
+        if (tagIndex < playerConfigs.Count)
         {
             //Keeping looping until a non dead player is found
             if(playerConfigs[tagIndex].IsDead)
             {
+                playerOnFire.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 UpdateTaggedPlayer(Random.Range(0, playerConfigs.Count));
                 return;
             }
@@ -180,6 +185,7 @@ public class TagLogic : MinigameLogic
             }
             else
             {
+                playerOnFire.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 sr.sprite = null;
                 pMovement[i].maxSpeed = initialSpeed;
                 lightShoveColliders[i].transform.localScale = initalShoveCollider;
@@ -187,6 +193,8 @@ public class TagLogic : MinigameLogic
                 references.fireVFX.gameObject.SetActive(false);
             }
         }
+        if(gameRunning)
+            playerOnFire = AudioManager.instance.PlayWithInstance(FMODEvents.instance.tagOnFire);
     }
 
     private IEnumerator StartGracePeriod()

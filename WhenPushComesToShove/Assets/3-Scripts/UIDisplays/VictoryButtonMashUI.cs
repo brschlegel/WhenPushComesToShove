@@ -157,8 +157,8 @@ public class VictoryButtonMashUI : UIDisplay
     private void DisplaySwordForWinner()
     {
         //Move sword out of stone
-        sword.transform.DOMoveY(swordOutOfStonePositionY, .5f);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.swordUnsheath);
+        sword.transform.DOMoveY(swordOutOfStonePositionY, .5f);
         //sword.rectTransform.position = new Vector3(swordStartPosition.x, swordOutOfStonePositionY, swordStartPosition.z);
 
         int index = data.GetHighestScoreIndex();
