@@ -83,6 +83,7 @@ public class PushDoorEndCondition : BaseEndCondition
     {
         if (collision.tag == "Player")
         {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.torchLit);
             this.GetComponent<Animator>().SetTrigger("Locked");
             if(!unlocked)
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.doorBudge);
@@ -95,6 +96,7 @@ public class PushDoorEndCondition : BaseEndCondition
     {
         if(collision.tag == "Player")
         {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.torchExtinguish);
             numOfPlayersInTrigger--;
             playersInTrigger.Remove(collision.gameObject);
         }
