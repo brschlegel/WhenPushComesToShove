@@ -155,6 +155,19 @@ public class VolleyballLogic : MinigameLogic
 
         if (endCondition.TestCondition() && gameRunning)
         {
+            if (data.scores[0] > data.scores[1])
+            {
+                ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = 0;
+            }
+            else if (data.scores[1] > data.scores[0])
+            {
+                ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = 1;
+            }
+            else
+            {
+                ((TeamWinUIDisplay)endingUIDisplay).winningTeamNum = -1;
+            }
+
             EndGame();
         }
     }
